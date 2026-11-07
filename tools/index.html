@@ -106,7 +106,13 @@
         <button class="btn btn-sm btn-secondary filter-btn" data-filter="available">Active & Available</button>
         <button class="btn btn-sm btn-secondary filter-btn" data-filter="pdf">PDF Tools</button>
         <button class="btn btn-sm btn-secondary filter-btn" data-filter="image">Image Tools</button>
+        <button class="btn btn-sm btn-secondary filter-btn" data-filter="developer">Developer</button>
         <button class="btn btn-sm btn-secondary filter-btn" data-filter="text">Text Tools</button>
+        <button class="btn btn-sm btn-secondary filter-btn" data-filter="calculators">Calculators</button>
+        <button class="btn btn-sm btn-secondary filter-btn" data-filter="productivity">Productivity</button>
+        <button class="btn btn-sm btn-secondary filter-btn" data-filter="document">Document</button>
+        <button class="btn btn-sm btn-secondary filter-btn" data-filter="media">Media</button>
+        <button class="btn btn-sm btn-secondary filter-btn" data-filter="ai">AI Tools</button>
       </div>
 
       <!-- Tools Grid (Dynamic from Registry) -->
@@ -186,6 +192,18 @@
 
       let activeFilter = "all";
       let activeQuery = "";
+
+      // Support ?cat= url parameter
+      const urlParams = new URLSearchParams(window.location.search);
+      const catParam = urlParams.get("cat");
+      if (catParam) {
+        const matchingBtn = Array.from(filterBtns).find(b => b.getAttribute("data-filter") === catParam);
+        if (matchingBtn) {
+          filterBtns.forEach(b => b.className = "btn btn-sm btn-secondary filter-btn");
+          matchingBtn.className = "btn btn-sm btn-primary filter-btn";
+          activeFilter = catParam;
+        }
+      }
 
       function render() {
         if (!window.EcrioXRegistry) return;

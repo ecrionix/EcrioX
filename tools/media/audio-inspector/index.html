@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Audio Inspector & Volume Booster Online – Free Web Audio Tool | EcrioX</title>
+  <meta name="description" content="Inspect audio metadata, visualize waveforms, and adjust volume online for free. Decode MP3, WAV, and OGG files with HTML5 Web Audio and download enhanced audio with 100% private in-browser processing.">
+  <link rel="canonical" href="https://ecriox.com/tools/media/audio-inspector/">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Audio Inspector & Volume Booster – EcrioX">
+  <meta property="og:description" content="Analyze audio files, view waveforms, and amplify volume directly in your browser.">
+  <meta property="og:url" content="https://ecriox.com/tools/media/audio-inspector/">
+  <meta property="og:site_name" content="EcrioX">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Audio Inspector & Volume Booster – EcrioX">
+  <meta name="twitter:description" content="Inspect audio metadata and amplify volume with Web Audio in browser.">
+
+  <!-- Global Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i){
+  w[l]=w[l]||[];
+  w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),
+  dl=l!='dataLayer'?'&l='+l:'';
+  j.async=true;
+  j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+  f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PQFRBJ9F');
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Schema.org SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "EcrioX Audio Inspector & Volume Booster",
+    "url": "https://ecriox.com/tools/media/audio-inspector/",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "All",
+    "description": "Client-side audio waveform visualizer, metadata inspector, and volume amplifier.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="../../../css/style.css">
+  <style>
+    .audio-dropzone {
+      border: 2px dashed var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 3rem 2rem;
+      text-align: center;
+      background: var(--bg-surface);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      margin-bottom: 2rem;
+    }
+    .audio-dropzone:hover, .audio-dropzone.dragover {
+      border-color: var(--color-primary);
+      background: var(--bg-surface-alt);
+    }
+    .waveform-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    #canvasWaveform {
+      width: 100%;
+      height: 120px;
+      border-radius: var(--radius-md);
+      background: var(--bg-surface-alt);
+    }
+    .audio-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .audio-meta-item {
+      background: var(--bg-surface-alt);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 0.75rem 1rem;
+    }
+    .audio-meta-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .audio-meta-val {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      margin-top: 0.2rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript>
+  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQFRBJ9F" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- Global Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="brand-logo" aria-label="EcrioX Home">
+        <div class="logo-symbol">E</div>
+        <span>Ecrio<span class="accent-dot">X</span></span>
+      </a>
+
+      <nav class="nav-desktop">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/tools/" class="nav-link">All Tools</a>
+        <a href="/tools/media/" class="nav-link active">Media Tools</a>
+        <a href="/about/" class="nav-link">About</a>
+        <a href="/contact/" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn-icon theme-toggle-btn" aria-label="Toggle color theme">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <button class="btn-icon mobile-toggle" aria-label="Open mobile menu" aria-expanded="false">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav">
+    <a href="/" class="nav-link">Home</a>
+    <a href="/tools/" class="nav-link">All Tools</a>
+    <a href="/tools/media/" class="nav-link active">Media Tools</a>
+    <a href="/about/" class="nav-link">About</a>
+    <a href="/contact/" class="nav-link">Contact</a>
+  </div>
+
+  <main class="page-wrapper">
+    <div class="page-header">
+      <div class="container">
+        <!-- Breadcrumbs -->
+        <nav class="breadcrumbs" aria-label="Breadcrumb" style="justify-content: center;">
+          <a href="/">Home</a>
+          <span class="separator">/</span>
+          <a href="/tools/">Tools</a>
+          <span class="separator">/</span>
+          <a href="/tools/media/">Media Tools</a>
+          <span class="separator">/</span>
+          <span>Audio Inspector</span>
+        </nav>
+        <span class="section-pill">Audio Processing</span>
+        <h1 class="page-title">Audio Inspector & Volume Booster</h1>
+        <p class="page-subtitle">Inspect audio file metadata, visualize waveform peaks, and amplify volume levels in your browser with HTML5 Web Audio processing.</p>
+      </div>
+    </div>
+
+    <div class="container" style="padding-bottom: 5rem;">
+      <div class="tool-workspace">
+        <!-- Dropzone -->
+        <div class="audio-dropzone" id="audioDropzone">
+          <input type="file" id="audioFileInput" accept="audio/*" style="display: none;">
+          <div style="width: 56px; height: 56px; margin: 0 auto 1rem; border-radius: 50%; background: rgba(37, 99, 235, 0.1); color: var(--color-primary); display: flex; align-items: center; justify-content: center;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+          <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--text-heading); margin-bottom: 0.5rem;">Choose an Audio File or Drag & Drop</h3>
+          <p style="color: var(--text-muted); font-size: 0.85rem;">Supports MP3, WAV, OGG, AAC, and FLAC (up to 50 MB)</p>
+          <button type="button" class="btn btn-sm btn-primary" style="margin-top: 1rem;">Select Audio File</button>
+        </div>
+
+        <!-- Waveform & Controls (Hidden until file loaded) -->
+        <div id="audioWorkspace" style="display: none;">
+          <div class="waveform-card">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+              <span style="font-weight: 700; color: var(--text-heading);" id="lblAudioFileName">audio-sample.mp3</span>
+              <span class="badge badge-available">Loaded in Memory</span>
+            </div>
+
+            <!-- Waveform Canvas -->
+            <canvas id="canvasWaveform" width="800" height="120"></canvas>
+
+            <!-- Metadata Grid -->
+            <div class="audio-meta-grid">
+              <div class="audio-meta-item">
+                <div class="audio-meta-label">Duration</div>
+                <div class="audio-meta-val" id="metaDuration">0:00</div>
+              </div>
+              <div class="audio-meta-item">
+                <div class="audio-meta-label">Sample Rate</div>
+                <div class="audio-meta-val" id="metaSampleRate">44,100 Hz</div>
+              </div>
+              <div class="audio-meta-item">
+                <div class="audio-meta-label">Channels</div>
+                <div class="audio-meta-val" id="metaChannels">2 (Stereo)</div>
+              </div>
+              <div class="audio-meta-item">
+                <div class="audio-meta-label">File Size</div>
+                <div class="audio-meta-val" id="metaFileSize">0 KB</div>
+              </div>
+            </div>
+
+            <!-- Volume Booster Controls -->
+            <div style="margin-top: 1.75rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color);">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                <label for="rngGain" style="font-weight: 700; color: var(--text-heading); font-size: 0.95rem;">Volume Gain Adjustment</label>
+                <span id="lblGainVal" style="font-size: 1.1rem; font-weight: 800; color: var(--color-primary);">100% (Normal)</span>
+              </div>
+              <input type="range" id="rngGain" min="20" max="300" value="100" step="5" style="width: 100%; height: 6px; accent-color: var(--color-primary); cursor: pointer;">
+              <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted); margin-top: 0.35rem;">
+                <span>20% (Quiet)</span>
+                <span>100% (Original)</span>
+                <span>200% (2x Boost)</span>
+                <span>300% (3x Boost)</span>
+              </div>
+            </div>
+
+            <!-- Playback Bar -->
+            <div style="margin-top: 1.5rem; display: flex; gap: 1rem; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+              <div style="display: flex; gap: 0.75rem; align-items: center;">
+                <button type="button" class="btn btn-primary" id="btnPlayPause">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 0.4rem;"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                  Play
+                </button>
+                <button type="button" class="btn btn-secondary" id="btnStop">Stop</button>
+              </div>
+
+              <div style="display: flex; gap: 0.75rem;">
+                <button type="button" class="btn btn-secondary" id="btnResetFile">Change File</button>
+                <button type="button" class="btn btn-primary" id="btnExportWav">Export as WAV</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Designated AdSense Slot -->
+      <div class="ad-slot-container">
+        <div class="ad-slot-card">
+          <span>Advertisement Placement Area</span>
+        </div>
+      </div>
+
+      <!-- Educational Content & SEO -->
+      <article class="tool-content-section">
+        <h2>Client-Side Audio Digital Signal Processing</h2>
+        <p>
+          Audio files are typically large, making uploading them to cloud converters slow and privacy-invasive. Many remote converters compress or re-encode your sound files with lossy codecs that degrade audio fidelity.
+        </p>
+        <p>
+          EcrioX utilizes the browser's native Web Audio API to decode the audio stream into raw 32-bit floating point PCM audio buffers. This enables precise peak analysis, waveform visualization, dynamic range adjustment, and clean uncompressed WAV export—all running locally on your hardware.
+        </p>
+
+        <h2>Audio Parameters Explained</h2>
+        <ul>
+          <li><strong>Sample Rate:</strong> The number of audio snapshots taken per second, measured in Hertz (Hz). Standard CD quality is 44,100 Hz (44.1 kHz), while modern video and studio audio commonly uses 48,000 Hz.</li>
+          <li><strong>Channels:</strong> Mono (1 channel) delivers identical audio to both ears, while Stereo (2 channels) creates spatial separation between left and right speakers.</li>
+          <li><strong>Waveform Dynamics:</strong> The visual amplitude representation indicates dynamic headroom and detects digital clipping (when peaks exceed 0 dBFS).</li>
+        </ul>
+
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-list" style="margin-top: 1.5rem;">
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Will boosting volume cause audio distortion?</span>
+              <span class="faq-chevron">&#9662;</span>
+            </button>
+            <div class="faq-answer">
+              Boosting volume above 100% on quiet recordings makes them audible. However, if peaks exceed maximum amplitude, digital clipping occurs. Monitor playback before exporting to ensure clean sound without harsh clipping.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Are my voice notes or music tracks private?</span>
+              <span class="faq-chevron">&#9662;</span>
+            </button>
+            <div class="faq-answer">
+              100% private. Files never leave your browser tab. We do not maintain any server storage for uploaded media.
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Related Tools -->
+      <section style="margin-top: 4rem;">
+        <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 1.5rem; text-align: center;">Related Media & Image Utilities</h3>
+        <div class="grid-tools">
+          <div class="tool-card">
+            <div class="tool-card-header">
+              <div class="tool-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+              </div>
+              <span class="badge badge-available">Available</span>
+            </div>
+            <div class="tool-card-body">
+              <h3 class="tool-card-title">Image Resizer</h3>
+              <p class="tool-card-desc">Resize images by pixel dimensions or percentages with aspect ratio preservation and instant preview.</p>
+            </div>
+            <div class="tool-card-footer">
+              <a href="/image-resizer/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-card-header">
+              <div class="tool-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+              </div>
+              <span class="badge badge-available">Available</span>
+            </div>
+            <div class="tool-card-body">
+              <h3 class="tool-card-title">Image Compressor</h3>
+              <p class="tool-card-desc">Compress JPEG, PNG, and WebP images client-side with zero data leaving your browser.</p>
+            </div>
+            <div class="tool-card-footer">
+              <a href="/tools/image-compressor/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-card-header">
+              <div class="tool-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 7 4 4 20 4 20 7"></polyline><line x1="9" y1="20" x2="15" y2="20"></line><line x1="12" y1="4" x2="12" y2="20"></line></svg>
+              </div>
+              <span class="badge badge-available">Available</span>
+            </div>
+            <div class="tool-card-body">
+              <h3 class="tool-card-title">Text Analyzer</h3>
+              <p class="tool-card-desc">Count words, characters, sentences, estimate reading time, and transform letter case.</p>
+            </div>
+            <div class="tool-card-footer">
+              <a href="/tools/text-analyzer/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="/" class="brand-logo">
+            <div class="logo-symbol">E</div>
+            <span>Ecrio<span class="accent-dot">X</span></span>
+          </a>
+          <p>One Platform. Endless Possibilities. Free, fast, and privacy-conscious online utilities designed for everyday productivity.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Media Tools</h4>
+          <ul class="footer-links">
+            <li><a href="/tools/media/">Media Hub</a></li>
+            <li><a href="/tools/media/audio-inspector/">Audio Inspector</a></li>
+            <li><a href="/image-resizer/">Image Resizer</a></li>
+            <li><a href="/tools/image-compressor/">Image Compressor</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="/about/">About EcrioX</a></li>
+            <li><a href="/contact/">Contact Support</a></li>
+            <li><a href="/contact/">Feedback</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul class="footer-links">
+            <li><a href="/privacy/">Privacy Policy</a></li>
+            <li><a href="/terms/">Terms of Use</a></li>
+            <li><a href="/about/#privacy-architecture">Data Security</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 EcrioX. All rights reserved. Platform built for speed and privacy.</p>
+        <p>Canonical Domain: <a href="https://ecriox.com/" style="color: var(--color-primary);">ecriox.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../../js/tools-registry.js"></script>
+  <script src="../../../js/analytics.js"></script>
+  <script src="../../../js/app.js"></script>
+  <script src="tool.js"></script>
+</body>
+</html>

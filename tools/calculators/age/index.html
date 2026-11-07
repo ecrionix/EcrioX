@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Age Calculator Online – Exact Age, Days & Birthday Countdown | EcrioX</title>
+  <meta name="description" content="Calculate your exact age in years, months, and days online for free. Track total days lived, hours passed, and count down to your next upcoming birthday.">
+  <link rel="canonical" href="https://ecriox.com/tools/calculators/age/">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Age Calculator Online – EcrioX">
+  <meta property="og:description" content="Calculate exact age in years, months, and days with birthday countdown.">
+  <meta property="og:url" content="https://ecriox.com/tools/calculators/age/">
+  <meta property="og:site_name" content="EcrioX">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Age Calculator – EcrioX">
+  <meta name="twitter:description" content="Calculate exact chronological age and life milestones online.">
+
+  <!-- Global Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i){
+  w[l]=w[l]||[];
+  w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),
+  dl=l!='dataLayer'?'&l='+l:'';
+  j.async=true;
+  j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+  f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PQFRBJ9F');
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Schema.org SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "EcrioX Age & Date Calculator",
+    "url": "https://ecriox.com/tools/calculators/age/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "description": "Calculate exact chronological age, total days elapsed, and birthday countdowns.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="../../../css/style.css">
+  <style>
+    .age-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    @media (max-width: 800px) {
+      .age-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .age-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+    }
+    .age-display-box {
+      background: var(--bg-surface-alt);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      border: 1px solid var(--border-color);
+    }
+    .age-big-text {
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: var(--color-primary);
+      margin-top: 0.25rem;
+    }
+    .age-stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+    .age-stat-item {
+      padding: 0.75rem 1rem;
+      background: var(--bg-surface-alt);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+    }
+    .age-stat-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .age-stat-val {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      margin-top: 0.2rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript>
+  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQFRBJ9F" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- Global Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="brand-logo" aria-label="EcrioX Home">
+        <div class="logo-symbol">E</div>
+        <span>Ecrio<span class="accent-dot">X</span></span>
+      </a>
+
+      <nav class="nav-desktop">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/tools/" class="nav-link">All Tools</a>
+        <a href="/tools/calculators/" class="nav-link active">Calculators</a>
+        <a href="/about/" class="nav-link">About</a>
+        <a href="/contact/" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn-icon theme-toggle-btn" aria-label="Toggle color theme">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <button class="btn-icon mobile-toggle" aria-label="Open mobile menu" aria-expanded="false">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav">
+    <a href="/" class="nav-link">Home</a>
+    <a href="/tools/" class="nav-link">All Tools</a>
+    <a href="/tools/calculators/" class="nav-link active">Calculators</a>
+    <a href="/about/" class="nav-link">About</a>
+    <a href="/contact/" class="nav-link">Contact</a>
+  </div>
+
+  <main class="page-wrapper">
+    <div class="page-header">
+      <div class="container">
+        <!-- Breadcrumbs -->
+        <nav class="breadcrumbs" aria-label="Breadcrumb" style="justify-content: center;">
+          <a href="/">Home</a>
+          <span class="separator">/</span>
+          <a href="/tools/">Tools</a>
+          <span class="separator">/</span>
+          <a href="/tools/calculators/">Calculators</a>
+          <span class="separator">/</span>
+          <span>Age Calculator</span>
+        </nav>
+        <span class="section-pill">Date & Time</span>
+        <h1 class="page-title">Exact Age & Birthday Calculator</h1>
+        <p class="page-subtitle">Calculate your precise age in years, months, and days. Discover total days elapsed, hours lived, and countdown to your next birthday.</p>
+      </div>
+    </div>
+
+    <div class="container" style="padding-bottom: 5rem;">
+      <div class="age-grid">
+        <!-- Input Form -->
+        <div class="age-card">
+          <h2 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text-heading);">Date Inputs</h2>
+
+          <div style="margin-bottom: 1.5rem;">
+            <label for="dtBirth" style="display: block; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.95rem;">Date of Birth</label>
+            <input type="date" id="dtBirth" class="control-input" value="1998-05-15">
+          </div>
+
+          <div style="margin-bottom: 1.5rem;">
+            <label for="dtTarget" style="display: block; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.95rem;">Age as of Date</label>
+            <input type="date" id="dtTarget" class="control-input">
+          </div>
+
+          <div style="display: flex; gap: 0.5rem;">
+            <button type="button" class="btn btn-primary" id="btnCalculateAge" style="width: 100%;">Calculate Exact Age</button>
+          </div>
+        </div>
+
+        <!-- Result Summary -->
+        <div class="age-card">
+          <h2 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text-heading);">Age Results</h2>
+
+          <div class="age-display-box">
+            <div style="font-size: 0.8rem; font-weight: 600; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.05em;">Chronological Age</div>
+            <div class="age-big-text" id="lblAgeYMD">28 years, 0 months, 0 days</div>
+          </div>
+
+          <div style="margin-bottom: 1.5rem; padding: 1rem; background: var(--bg-surface-alt); border-radius: var(--radius-md); border: 1px solid var(--border-color); text-align: center;">
+            <div style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">Next Birthday Countdown</div>
+            <div style="font-size: 1.1rem; font-weight: 700; color: var(--color-primary); margin-top: 0.25rem;" id="lblNextBday">Calculating...</div>
+          </div>
+
+          <div class="age-stat-grid">
+            <div class="age-stat-item">
+              <div class="age-stat-label">Total Months</div>
+              <div class="age-stat-val" id="lblTotalMonths">0</div>
+            </div>
+            <div class="age-stat-item">
+              <div class="age-stat-label">Total Weeks</div>
+              <div class="age-stat-val" id="lblTotalWeeks">0</div>
+            </div>
+            <div class="age-stat-item">
+              <div class="age-stat-label">Total Days</div>
+              <div class="age-stat-val" id="lblTotalDays">0</div>
+            </div>
+            <div class="age-stat-item">
+              <div class="age-stat-label">Total Hours</div>
+              <div class="age-stat-val" id="lblTotalHours">0</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Designated AdSense Slot -->
+      <div class="ad-slot-container">
+        <div class="ad-slot-card">
+          <span>Advertisement Placement Area</span>
+        </div>
+      </div>
+
+      <!-- Educational Content & SEO -->
+      <article class="tool-content-section">
+        <h2>How Exact Chronological Age Is Calculated</h2>
+        <p>
+          Calculating chronological age requires more than simply subtracting the birth year from the current year, because calendar months have varying lengths (28, 29, 30, or 31 days) and leap years insert an extra day into February every four years.
+        </p>
+        <p>
+          The EcrioX age calculation algorithm accounts for:
+        </p>
+        <ul>
+          <li><strong>Variable Month Durations:</strong> When borrowing days across months, the exact number of calendar days in the prior month is utilized.</li>
+          <li><strong>Leap Years:</strong> Full 366-day leap year cycles under the Gregorian calendar standard.</li>
+          <li><strong>Time Zones:</strong> Local calendar boundaries to prevent off-by-one errors caused by UTC offsets.</li>
+        </ul>
+
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-list" style="margin-top: 1.5rem;">
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Can I calculate age on a future or historical date?</span>
+              <span class="faq-chevron">&#9662;</span>
+            </button>
+            <div class="faq-answer">
+              Yes. By altering the "Age as of Date" field, you can determine how old you were on a historical anniversary or calculate your future age for retirement planning.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Are leap years included in total days?</span>
+              <span class="faq-chevron">&#9662;</span>
+            </button>
+            <div class="faq-answer">
+              Yes. Total days lived are calculated via true UTC timestamp epoch differentials, precisely factoring in every leap day occurred.
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Related Tools -->
+      <section style="margin-top: 4rem;">
+        <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 1.5rem; text-align: center;">Related Financial & Math Calculators</h3>
+        <div class="grid-tools">
+          <div class="tool-card">
+            <div class="tool-card-header">
+              <div class="tool-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="5" x2="5" y2="19"></line><circle cx="6.5" cy="6.5" r="2.5"></circle><circle cx="17.5" cy="17.5" r="2.5"></circle></svg>
+              </div>
+              <span class="badge badge-available">Available</span>
+            </div>
+            <div class="tool-card-body">
+              <h3 class="tool-card-title">Percentage Calculator</h3>
+              <p class="tool-card-desc">Calculate percentages, percentage differences, and proportions with step-by-step formulas.</p>
+            </div>
+            <div class="tool-card-footer">
+              <a href="/tools/calculators/percentage/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-card-header">
+              <div class="tool-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><line x1="12" y1="8" x2="12" y2="12"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+              </div>
+              <span class="badge badge-available">Available</span>
+            </div>
+            <div class="tool-card-body">
+              <h3 class="tool-card-title">EMI & Loan Calculator</h3>
+              <p class="tool-card-desc">Calculate monthly loan EMIs, interest payable, and total payback with breakdown charts.</p>
+            </div>
+            <div class="tool-card-footer">
+              <a href="/tools/calculators/emi/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-card-header">
+              <div class="tool-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>
+              </div>
+              <span class="badge badge-available">Available</span>
+            </div>
+            <div class="tool-card-body">
+              <h3 class="tool-card-title">Unit Converter</h3>
+              <p class="tool-card-desc">Convert units of length, weight, temperature, and digital data storage with precision.</p>
+            </div>
+            <div class="tool-card-footer">
+              <a href="/tools/calculators/unit-converter/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="/" class="brand-logo">
+            <div class="logo-symbol">E</div>
+            <span>Ecrio<span class="accent-dot">X</span></span>
+          </a>
+          <p>One Platform. Endless Possibilities. Free, fast, and privacy-conscious online utilities designed for everyday productivity.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Calculators</h4>
+          <ul class="footer-links">
+            <li><a href="/tools/calculators/">Calculators Hub</a></li>
+            <li><a href="/tools/calculators/age/">Age Calculator</a></li>
+            <li><a href="/tools/calculators/percentage/">Percentage Calculator</a></li>
+            <li><a href="/tools/calculators/emi/">EMI Calculator</a></li>
+            <li><a href="/tools/calculators/unit-converter/">Unit Converter</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="/about/">About EcrioX</a></li>
+            <li><a href="/contact/">Contact Support</a></li>
+            <li><a href="/contact/">Feedback</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul class="footer-links">
+            <li><a href="/privacy/">Privacy Policy</a></li>
+            <li><a href="/terms/">Terms of Use</a></li>
+            <li><a href="/about/#privacy-architecture">Data Security</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 EcrioX. All rights reserved. Platform built for speed and privacy.</p>
+        <p>Canonical Domain: <a href="https://ecriox.com/" style="color: var(--color-primary);">ecriox.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../../js/tools-registry.js"></script>
+  <script src="../../../js/analytics.js"></script>
+  <script src="../../../js/app.js"></script>
+  <script src="tool.js"></script>
+</body>
+</html>

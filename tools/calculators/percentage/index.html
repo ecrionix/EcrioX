@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Percentage Calculator Online – Free Multi-Mode Calculator | EcrioX</title>
+  <meta name="description" content="Calculate percentages online for free. Find what is X% of Y, calculate percentage change (increase/decrease), and find proportions with step-by-step math formulas.">
+  <link rel="canonical" href="https://ecriox.com/tools/calculators/percentage/">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Percentage Calculator Online – EcrioX">
+  <meta property="og:description" content="Free multi-mode percentage calculator with step-by-step formula explanations.">
+  <meta property="og:url" content="https://ecriox.com/tools/calculators/percentage/">
+  <meta property="og:site_name" content="EcrioX">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Percentage Calculator – EcrioX">
+  <meta name="twitter:description" content="Calculate percentages, proportions, and percentage changes online.">
+
+  <!-- Global Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i){
+  w[l]=w[l]||[];
+  w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),
+  dl=l!='dataLayer'?'&l='+l:'';
+  j.async=true;
+  j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+  f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PQFRBJ9F');
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Schema.org SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "EcrioX Percentage Calculator",
+    "url": "https://ecriox.com/tools/calculators/percentage/",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "All",
+    "description": "Calculate percentages, percentage differences, and step-by-step formula breakdowns.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="../../../css/style.css">
+  <style>
+    .calc-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .calc-card-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .calc-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 1rem;
+      color: var(--text-heading);
+      font-weight: 600;
+    }
+    .calc-input {
+      width: 120px;
+      padding: 0.5rem 0.75rem;
+      font-size: 1.05rem;
+      font-weight: 600;
+      font-family: var(--font-sans);
+    }
+    .calc-result-box {
+      margin-top: 1rem;
+      padding: 0.85rem 1.25rem;
+      background: var(--bg-surface-alt);
+      border-left: 4px solid var(--color-primary);
+      border-radius: var(--radius-md);
+      font-size: 0.95rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .calc-result-val {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--color-primary);
+    }
+    .formula-explanation {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript>
+  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQFRBJ9F" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- Global Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="brand-logo" aria-label="EcrioX Home">
+        <div class="logo-symbol">E</div>
+        <span>Ecrio<span class="accent-dot">X</span></span>
+      </a>
+
+      <nav class="nav-desktop">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/tools/" class="nav-link">All Tools</a>
+        <a href="/tools/calculators/" class="nav-link active">Calculators</a>
+        <a href="/about/" class="nav-link">About</a>
+        <a href="/contact/" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn-icon theme-toggle-btn" aria-label="Toggle color theme">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <button class="btn-icon mobile-toggle" aria-label="Open mobile menu" aria-expanded="false">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav">
+    <a href="/" class="nav-link">Home</a>
+    <a href="/tools/" class="nav-link">All Tools</a>
+    <a href="/tools/calculators/" class="nav-link active">Calculators</a>
+    <a href="/about/" class="nav-link">About</a>
+    <a href="/contact/" class="nav-link">Contact</a>
+  </div>
+
+  <main class="page-wrapper">
+    <div class="page-header">
+      <div class="container">
+        <!-- Breadcrumbs -->
+        <nav class="breadcrumbs" aria-label="Breadcrumb" style="justify-content: center;">
+          <a href="/">Home</a>
+          <span class="separator">/</span>
+          <a href="/tools/">Tools</a>
+          <span class="separator">/</span>
+          <a href="/tools/calculators/">Calculators</a>
+          <span class="separator">/</span>
+          <span>Percentage</span>
+        </nav>
+        <span class="section-pill">Math & Finance</span>
+        <h1 class="page-title">Percentage Calculator</h1>
+        <p class="page-subtitle">Solve all everyday percentage problems with step-by-step formulas. Calculate percentage of a value, proportion ratios, and percentage increase or decrease.</p>
+      </div>
+    </div>
+
+    <div class="container" style="padding-bottom: 5rem;">
+      <div class="tool-workspace">
+        <!-- Mode 1: What is X% of Y? -->
+        <div class="calc-card">
+          <div class="calc-card-title">
+            <span style="display: inline-flex; width: 24px; height: 24px; border-radius: 50%; background: var(--color-primary); color: #fff; align-items: center; justify-content: center; font-size: 0.8rem;">1</span>
+            What is X% of Y?
+          </div>
+          <div class="calc-row">
+            <span>What is</span>
+            <input type="number" id="m1_x" class="control-input calc-input" placeholder="e.g. 15" value="15">
+            <span>% of</span>
+            <input type="number" id="m1_y" class="control-input calc-input" placeholder="e.g. 200" value="200">
+            <span>?</span>
+            <button type="button" class="btn btn-sm btn-primary" id="btnCalc1">Calculate</button>
+          </div>
+          <div class="calc-result-box" id="boxResult1">
+            <div>
+              <div>Answer:</div>
+              <div class="formula-explanation" id="formula1">Formula: (15 / 100) &times; 200 = 30</div>
+            </div>
+            <div class="calc-result-val" id="res1">30</div>
+          </div>
+        </div>
+
+        <!-- Mode 2: X is what percentage of Y? -->
+        <div class="calc-card">
+          <div class="calc-card-title">
+            <span style="display: inline-flex; width: 24px; height: 24px; border-radius: 50%; background: var(--color-primary); color: #fff; align-items: center; justify-content: center; font-size: 0.8rem;">2</span>
+            X is what percentage of Y?
+          </div>
+          <div class="calc-row">
+            <input type="number" id="m2_x" class="control-input calc-input" placeholder="e.g. 25" value="25">
+            <span>is what % of</span>
+            <input type="number" id="m2_y" class="control-input calc-input" placeholder="e.g. 100" value="100">
+            <span>?</span>
+            <button type="button" class="btn btn-sm btn-primary" id="btnCalc2">Calculate</button>
+          </div>
+          <div class="calc-result-box" id="boxResult2">
+            <div>
+              <div>Answer:</div>
+              <div class="formula-explanation" id="formula2">Formula: (25 / 100) &times; 100 = 25%</div>
+            </div>
+            <div class="calc-result-val" id="res2">25%</div>
+          </div>
+        </div>
+
+        <!-- Mode 3: Percentage Increase / Decrease -->
+        <div class="calc-card">
+          <div class="calc-card-title">
+            <span style="display: inline-flex; width: 24px; height: 24px; border-radius: 50%; background: var(--color-primary); color: #fff; align-items: center; justify-content: center; font-size: 0.8rem;">3</span>
+            Percentage Increase or Decrease from X to Y
+          </div>
+          <div class="calc-row">
+            <span>From</span>
+            <input type="number" id="m3_x" class="control-input calc-input" placeholder="Initial" value="80">
+            <span>to</span>
+            <input type="number" id="m3_y" class="control-input calc-input" placeholder="Final" value="100">
+            <button type="button" class="btn btn-sm btn-primary" id="btnCalc3">Calculate</button>
+          </div>
+          <div class="calc-result-box" id="boxResult3">
+            <div>
+              <div>Change:</div>
+              <div class="formula-explanation" id="formula3">Formula: ((100 - 80) / 80) &times; 100 = +25%</div>
+            </div>
+            <div class="calc-result-val" id="res3">+25% Increase</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Designated AdSense Slot -->
+      <div class="ad-slot-container">
+        <div class="ad-slot-card">
+          <span>Advertisement Placement Area</span>
+        </div>
+      </div>
+
+      <!-- Educational Content & SEO -->
+      <article class="tool-content-section">
+        <h2>How Percentages Work: Core Mathematical Formulas</h2>
+        <p>
+          The word "percent" derives from the Latin <em>per centum</em>, meaning "by the hundred." A percentage is simply a ratio or fraction whose denominator is 100.
+        </p>
+
+        <h3>1. Calculating the Percentage of a Value</h3>
+        <p>
+          To find \(P\%\) of a number \(V\), divide the percentage by 100 and multiply by the total:
+        </p>
+        <p>$$\text{Result} = \frac{P}{100} \times V$$</p>
+
+        <h3>2. Finding the Proportion Ratio</h3>
+        <p>
+          To determine what percentage a part \(A\) represents of a whole \(B\), divide \(A\) by \(B\) and multiply by 100:
+        </p>
+        <p>$$\text{Percentage} = \left(\frac{A}{B}\right) \times 100\%$$</p>
+
+        <h3>3. Percentage Change (Increase or Decrease)</h3>
+        <p>
+          To measure how much a metric grew or dropped from an initial value \(V_1\) to a new value \(V_2\):
+        </p>
+        <p>$$\Delta\% = \left(\frac{V_2 - V_1}{V_1}\right) \times 100\%$$</p>
+        <p>
+          If the result is positive, it represents a percentage increase; if negative, it represents a percentage decrease (discount or contraction).
+        </p>
+
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-list" style="margin-top: 1.5rem;">
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How do I calculate a sales discount percentage?</span>
+              <span class="faq-chevron">&#9662;</span>
+            </button>
+            <div class="faq-answer">
+              Use Calculator #3. Enter the original retail price in the "From" field and the discounted price in the "to" field. The calculator will display the exact percentage discount.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Can percentages be greater than 100%?</span>
+              <span class="faq-chevron">&#9662;</span>
+            </button>
+            <div class="faq-answer">
+              Yes. If an investment doubles from \$100 to \$200, it experienced a 100% increase. If it triples to \$300, it grew by 200%.
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Related Tools -->
+      <section style="margin-top: 4rem;">
+        <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 1.5rem; text-align: center;">Related Financial & Math Calculators</h3>
+        <div class="grid-tools">
+          <div class="tool-card">
+            <div class="tool-card-header">
+              <div class="tool-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><line x1="12" y1="8" x2="12" y2="12"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+              </div>
+              <span class="badge badge-available">Available</span>
+            </div>
+            <div class="tool-card-body">
+              <h3 class="tool-card-title">EMI & Loan Calculator</h3>
+              <p class="tool-card-desc">Calculate monthly loan EMIs, interest payable, and total payback with breakdown charts.</p>
+            </div>
+            <div class="tool-card-footer">
+              <a href="/tools/calculators/emi/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-card-header">
+              <div class="tool-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+              </div>
+              <span class="badge badge-available">Available</span>
+            </div>
+            <div class="tool-card-body">
+              <h3 class="tool-card-title">Age & Date Calculator</h3>
+              <p class="tool-card-desc">Calculate exact age in years, months, days, total weeks, and track next birthday countdown.</p>
+            </div>
+            <div class="tool-card-footer">
+              <a href="/tools/calculators/age/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-card-header">
+              <div class="tool-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>
+              </div>
+              <span class="badge badge-available">Available</span>
+            </div>
+            <div class="tool-card-body">
+              <h3 class="tool-card-title">Unit Converter</h3>
+              <p class="tool-card-desc">Convert units of length, weight, temperature, and digital data storage with precision.</p>
+            </div>
+            <div class="tool-card-footer">
+              <a href="/tools/calculators/unit-converter/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="/" class="brand-logo">
+            <div class="logo-symbol">E</div>
+            <span>Ecrio<span class="accent-dot">X</span></span>
+          </a>
+          <p>One Platform. Endless Possibilities. Free, fast, and privacy-conscious online utilities designed for everyday productivity.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Calculators</h4>
+          <ul class="footer-links">
+            <li><a href="/tools/calculators/">Calculators Hub</a></li>
+            <li><a href="/tools/calculators/percentage/">Percentage Calculator</a></li>
+            <li><a href="/tools/calculators/emi/">EMI Calculator</a></li>
+            <li><a href="/tools/calculators/age/">Age Calculator</a></li>
+            <li><a href="/tools/calculators/unit-converter/">Unit Converter</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="/about/">About EcrioX</a></li>
+            <li><a href="/contact/">Contact Support</a></li>
+            <li><a href="/contact/">Feedback</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul class="footer-links">
+            <li><a href="/privacy/">Privacy Policy</a></li>
+            <li><a href="/terms/">Terms of Use</a></li>
+            <li><a href="/about/#privacy-architecture">Data Security</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 EcrioX. All rights reserved. Platform built for speed and privacy.</p>
+        <p>Canonical Domain: <a href="https://ecriox.com/" style="color: var(--color-primary);">ecriox.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../../js/tools-registry.js"></script>
+  <script src="../../../js/analytics.js"></script>
+  <script src="../../../js/app.js"></script>
+  <script src="tool.js"></script>
+</body>
+</html>

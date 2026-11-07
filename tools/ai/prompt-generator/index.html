@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Prompt Studio & Generator Online – ChatGPT, Claude & Gemini | EcrioX</title>
+  <meta name="description" content="Build high-performing structured prompts for ChatGPT, Claude, and Gemini with proven engineering frameworks (RTF, TAG, CoT). 100% private in-browser prompt builder.">
+  <link rel="canonical" href="https://ecriox.com/tools/ai/prompt-generator/">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="AI Prompt Studio & Generator – EcrioX">
+  <meta property="og:description" content="Generate high-converting structured prompts for ChatGPT, Claude, and Gemini.">
+  <meta property="og:url" content="https://ecriox.com/tools/ai/prompt-generator/">
+  <meta property="og:site_name" content="EcrioX">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI Prompt Studio – EcrioX">
+  <meta name="twitter:description" content="Engineer structured prompts with role, task, and formatting constraints.">
+
+  <!-- Global Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i){
+  w[l]=w[l]||[];
+  w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),
+  dl=l!='dataLayer'?'&l='+l:'';
+  j.async=true;
+  j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+  f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PQFRBJ9F');
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Schema.org SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "EcrioX AI Prompt Studio",
+    "url": "https://ecriox.com/tools/ai/prompt-generator/",
+    "applicationCategory": "ProductivityApplication",
+    "operatingSystem": "All",
+    "description": "Structured AI prompt engineering studio for ChatGPT, Claude, and Gemini models.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="../../../css/style.css">
+  <style>
+    .prompt-studio-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 2rem;
+    }
+    @media (max-width: 850px) {
+      .prompt-studio-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .studio-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+    }
+    .preset-pill-group {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+    .preset-pill {
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--radius-full);
+      background: var(--bg-surface-alt);
+      border: 1px solid var(--border-color);
+      cursor: pointer;
+      color: var(--text-body);
+      transition: all 0.2s ease;
+    }
+    .preset-pill:hover, .preset-pill.active {
+      background: var(--color-primary);
+      color: #fff;
+      border-color: var(--color-primary);
+    }
+    .form-group-field {
+      margin-bottom: 1.25rem;
+    }
+    .form-group-field label {
+      display: block;
+      font-weight: 700;
+      font-size: 0.875rem;
+      margin-bottom: 0.4rem;
+      color: var(--text-heading);
+    }
+    .prompt-output-box {
+      width: 100%;
+      height: 380px;
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      padding: 1rem;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      background: var(--bg-surface-alt);
+      color: var(--text-body);
+      resize: vertical;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript>
+  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQFRBJ9F" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- Global Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="brand-logo" aria-label="EcrioX Home">
+        <div class="logo-symbol">E</div>
+        <span>Ecrio<span class="accent-dot">X</span></span>
+      </a>
+
+      <nav class="nav-desktop">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/tools/" class="nav-link">All Tools</a>
+        <a href="/tools/ai/" class="nav-link active">AI Tools</a>
+        <a href="/about/" class="nav-link">About</a>
+        <a href="/contact/" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn-icon theme-toggle-btn" aria-label="Toggle color theme">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <button class="btn-icon mobile-toggle" aria-label="Open mobile menu" aria-expanded="false">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav">
+    <a href="/" class="nav-link">Home</a>
+    <a href="/tools/" class="nav-link">All Tools</a>
+    <a href="/tools/ai/" class="nav-link active">AI Tools</a>
+    <a href="/about/" class="nav-link">About</a>
+    <a href="/contact/" class="nav-link">Contact</a>
+  </div>
+
+  <main class="page-wrapper">
+    <div class="page-header">
+      <div class="container">
+        <!-- Breadcrumbs -->
+        <nav class="breadcrumbs" aria-label="Breadcrumb" style="justify-content: center;">
+          <a href="/">Home</a>
+          <span class="separator">/</span>
+          <a href="/tools/">Tools</a>
+          <span class="separator">/</span>
+          <a href="/tools/ai/">AI Tools</a>
+          <span class="separator">/</span>
+          <span>Prompt Studio</span>
+        </nav>
+        <span class="section-pill">Prompt Engineering</span>
+        <h1 class="page-title">AI Prompt Studio & Generator</h1>
+        <p class="page-subtitle">Craft structured, high-performing prompts for ChatGPT, Claude, and Gemini using established prompt architecture frameworks. 100% private in-browser generation.</p>
+      </div>
+    </div>
+
+    <div class="container" style="padding-bottom: 5rem;">
+      <div class="prompt-studio-grid">
+        <!-- Input Configuration Card -->
+        <div class="studio-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+            <h2 style="font-size: 1.25rem; font-weight: 700; color: var(--text-heading);">Prompt Parameters</h2>
+            <span style="font-size: 0.75rem; color: var(--text-muted);">RTF Framework</span>
+          </div>
+
+          <!-- Presets -->
+          <div class="preset-pill-group">
+            <button type="button" class="preset-pill active" data-preset="coding">Coding & Software</button>
+            <button type="button" class="preset-pill" data-preset="marketing">Copywriting & SEO</button>
+            <button type="button" class="preset-pill" data-preset="research">Research & Analysis</button>
+            <button type="button" class="preset-pill" data-preset="biz">Executive Summary</button>
+          </div>
+
+          <!-- Role -->
+          <div class="form-group-field">
+            <label for="txtRole">Role / Persona</label>
+            <input type="text" id="txtRole" class="control-input" value="Senior Full-Stack Software Engineer & Cloud Architect" placeholder="e.g. Senior Data Scientist">
+          </div>
+
+          <!-- Task -->
+          <div class="form-group-field">
+            <label for="txtTask">Primary Task</label>
+            <textarea id="txtTask" class="control-input" style="height: 70px; resize: vertical;" placeholder="Describe what the AI must accomplish...">Design a resilient, high-speed client-side caching strategy for an online tools web platform.</textarea>
+          </div>
+
+          <!-- Context & Constraints -->
+          <div class="form-group-field">
+            <label for="txtContext">Context & Constraints</label>
+            <textarea id="txtContext" class="control-input" style="height: 70px; resize: vertical;" placeholder="Add rules, limitations, audience info...">Must use pure vanilla JavaScript with zero external dependencies. Prioritize offline capability, low latency, and memory safety.</textarea>
+          </div>
+
+          <!-- Output Format -->
+          <div class="form-group-field">
+            <label for="selFormat">Output Format</label>
+            <select id="selFormat" class="control-input">
+              <option value="step-by-step" selected>Step-by-step implementation guide with code blocks</option>
+              <option value="markdown-table">Structured Markdown comparison table</option>
+              <option value="bullet-points">Executive bulleted summary</option>
+              <option value="json-schema">Structured JSON / schema format</option>
+            </select>
+          </div>
+
+          <!-- Reasoning Mode -->
+          <div style="margin-top: 1rem;">
+            <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; cursor: pointer;">
+              <input type="checkbox" id="chkCoT" checked>
+              <span>Include Chain-of-Thought ("Think step-by-step before answering")</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Output Card -->
+        <div class="studio-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+            <h2 style="font-size: 1.25rem; font-weight: 700; color: var(--text-heading);">Compiled Prompt</h2>
+            <div style="display: flex; gap: 0.5rem;">
+              <button type="button" class="btn btn-sm btn-primary" id="btnCopyPrompt">Copy Prompt</button>
+            </div>
+          </div>
+
+          <textarea id="txtPromptOutput" class="prompt-output-box" readonly placeholder="Compiled structured prompt will appear here..."></textarea>
+
+          <div style="margin-top: 1rem; font-size: 0.8rem; color: var(--text-muted); line-height: 1.5;">
+            Ready to paste into <strong>ChatGPT</strong>, <strong>Claude</strong>, or <strong>Google Gemini</strong>. Prompts structured with RTF and explicit constraints consistently yield higher reasoning accuracy.
+          </div>
+        </div>
+      </div>
+
+      <!-- Designated AdSense Slot -->
+      <div class="ad-slot-container">
+        <div class="ad-slot-card">
+          <span>Advertisement Placement Area</span>
+        </div>
+      </div>
+
+      <!-- Educational Content & SEO -->
+      <article class="tool-content-section">
+        <h2>The Science of Prompt Engineering</h2>
+        <p>
+          Large Language Models (LLMs) such as OpenAI's GPT-4, Anthropic's Claude 3.5 Sonnet, and Google's Gemini 1.5 Pro are probabilistic prediction engines. When provided with vague instructions, they produce generic, verbose, or hallucinated responses.
+        </p>
+        <p>
+          Prompt engineering is the practice of structuring inputs to activate the most relevant latent parameter representations in the model. By assigning an explicit role, specifying strict boundaries, and dictating output formats, response quality improves exponentially.
+        </p>
+
+        <h2>The RTF (Role-Task-Format) Framework</h2>
+        <ul>
+          <li><strong>Role:</strong> Anchors the model's domain expertise and technical vocabulary (e.g., "Act as a principal security auditor").</li>
+          <li><strong>Task:</strong> Clear, imperative command stating the exact deliverable.</li>
+          <li><strong>Format:</strong> Eliminates conversational fluff by specifying the structure (e.g., "Output exclusively a valid JSON object").</li>
+          <li><strong>Chain-of-Thought (CoT):</strong> Research demonstrates that forcing the model to articulate intermediate reasoning steps before delivering the final answer reduces reasoning errors by over 40%.</li>
+        </ul>
+
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-list" style="margin-top: 1.5rem;">
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Is my prompt sent to OpenAI or Anthropic servers?</span>
+              <span class="faq-chevron">&#9662;</span>
+            </button>
+            <div class="faq-answer">
+              No. The prompt builder compiles your parameters locally in your browser memory. You copy the finalized prompt and paste it into whichever AI tool you prefer.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Which models work best with these prompts?</span>
+              <span class="faq-chevron">&#9662;</span>
+            </button>
+            <div class="faq-answer">
+              These prompts adhere to standard architectural guidelines compatible with ChatGPT (GPT-4o, o1), Anthropic Claude (Sonnet, Opus), Google Gemini (Pro, Flash), and open-source models like Llama 3 and Mistral.
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Related Tools -->
+      <section style="margin-top: 4rem;">
+        <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 1.5rem; text-align: center;">Related Developer & Text Utilities</h3>
+        <div class="grid-tools">
+          <div class="tool-card">
+            <div class="tool-card-header">
+              <div class="tool-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+              </div>
+              <span class="badge badge-available">Available</span>
+            </div>
+            <div class="tool-card-body">
+              <h3 class="tool-card-title">JSON Formatter & Validator</h3>
+              <p class="tool-card-desc">Beautify, validate, and minify JSON data with line-by-line syntax error detection.</p>
+            </div>
+            <div class="tool-card-footer">
+              <a href="/tools/developer/json-formatter/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-card-header">
+              <div class="tool-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 7 4 4 20 4 20 7"></polyline><line x1="9" y1="20" x2="15" y2="20"></line><line x1="12" y1="4" x2="12" y2="20"></line></svg>
+              </div>
+              <span class="badge badge-available">Available</span>
+            </div>
+            <div class="tool-card-body">
+              <h3 class="tool-card-title">Text Analyzer</h3>
+              <p class="tool-card-desc">Count words, characters, sentences, estimate reading time, and transform letter case.</p>
+            </div>
+            <div class="tool-card-footer">
+              <a href="/tools/text-analyzer/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-card-header">
+              <div class="tool-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              </div>
+              <span class="badge badge-available">Available</span>
+            </div>
+            <div class="tool-card-body">
+              <h3 class="tool-card-title">Pomodoro Focus Timer</h3>
+              <p class="tool-card-desc">Boost productivity and manage deep work sessions with customizable focus and break timers.</p>
+            </div>
+            <div class="tool-card-footer">
+              <a href="/tools/productivity/pomodoro/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="/" class="brand-logo">
+            <div class="logo-symbol">E</div>
+            <span>Ecrio<span class="accent-dot">X</span></span>
+          </a>
+          <p>One Platform. Endless Possibilities. Free, fast, and privacy-conscious online utilities designed for everyday productivity.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>AI Tools</h4>
+          <ul class="footer-links">
+            <li><a href="/tools/ai/">AI Hub</a></li>
+            <li><a href="/tools/ai/prompt-generator/">Prompt Studio</a></li>
+            <li><a href="/tools/developer/json-formatter/">JSON Formatter</a></li>
+            <li><a href="/tools/text-analyzer/">Text Analyzer</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="/about/">About EcrioX</a></li>
+            <li><a href="/contact/">Contact Support</a></li>
+            <li><a href="/contact/">Feedback</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul class="footer-links">
+            <li><a href="/privacy/">Privacy Policy</a></li>
+            <li><a href="/terms/">Terms of Use</a></li>
+            <li><a href="/about/#privacy-architecture">Data Security</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 EcrioX. All rights reserved. Platform built for speed and privacy.</p>
+        <p>Canonical Domain: <a href="https://ecriox.com/" style="color: var(--color-primary);">ecriox.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../../js/tools-registry.js"></script>
+  <script src="../../../js/analytics.js"></script>
+  <script src="../../../js/app.js"></script>
+  <script src="tool.js"></script>
+</body>
+</html>

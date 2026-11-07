@@ -171,7 +171,7 @@
               <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 500;">
                 ${countAvail > 0 ? `${countAvail} active tool${countAvail > 1 ? 's' : ''}` : 'Roadmap stage'}
               </span>
-              <a href="/tools/?cat=${cat.id}" class="category-link">View Tools &rarr;</a>
+              <a href="${cat.route}" class="category-link">View ${cat.name} &rarr;</a>
             </div>
           </div>
         `;

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Remove Duplicate Lines Online – Free Text Deduplicator | EcrioX</title>
+  <meta name="description" content="Quickly remove duplicate lines from text and lists online for free. Sort alphabetically, trim whitespace, ignore case differences, and clean your data with 100% private in-browser processing.">
+  <link rel="canonical" href="https://ecriox.com/tools/text/remove-duplicate-lines/">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Remove Duplicate Lines Online – EcrioX">
+  <meta property="og:description" content="Clean and deduplicate lists online. Case-sensitive or insensitive, sorting options, and instant results.">
+  <meta property="og:url" content="https://ecriox.com/tools/text/remove-duplicate-lines/">
+  <meta property="og:site_name" content="EcrioX">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Remove Duplicate Lines – EcrioX">
+  <meta name="twitter:description" content="Clean, sort, and deduplicate lists in your browser.">
+
+  <!-- Global Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i){
+  w[l]=w[l]||[];
+  w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),
+  dl=l!='dataLayer'?'&l='+l:'';
+  j.async=true;
+  j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+  f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PQFRBJ9F');
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Schema.org SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "EcrioX Remove Duplicate Lines",
+    "url": "https://ecriox.com/tools/text/remove-duplicate-lines/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "description": "Remove duplicate lines from text and lists with sorting and trimming options.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="../../../css/style.css">
+  <style>
+    .dedupe-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    @media (max-width: 768px) {
+      .dedupe-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .text-pane-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+    }
+    .text-pane-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+    .text-area-field {
+      width: 100%;
+      height: 320px;
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      padding: 1rem;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      background: var(--bg-surface-alt);
+      color: var(--text-body);
+      resize: vertical;
+      line-height: 1.5;
+    }
+    .stat-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: var(--bg-surface-alt);
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-heading);
+      border: 1px solid var(--border-color);
+    }
+  </style>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript>
+  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQFRBJ9F" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- Global Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="brand-logo" aria-label="EcrioX Home">
+        <div class="logo-symbol">E</div>
+        <span>Ecrio<span class="accent-dot">X</span></span>
+      </a>
+
+      <nav class="nav-desktop">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/tools/" class="nav-link">All Tools</a>
+        <a href="/tools/text/" class="nav-link active">Text Tools</a>
+        <a href="/about/" class="nav-link">About</a>
+        <a href="/contact/" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn-icon theme-toggle-btn" aria-label="Toggle color theme">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <button class="btn-icon mobile-toggle" aria-label="Open mobile menu" aria-expanded="false">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav">
+    <a href="/" class="nav-link">Home</a>
+    <a href="/tools/" class="nav-link">All Tools</a>
+    <a href="/tools/text/" class="nav-link active">Text Tools</a>
+    <a href="/about/" class="nav-link">About</a>
+    <a href="/contact/" class="nav-link">Contact</a>
+  </div>
+
+  <main class="page-wrapper">
+    <div class="page-header">
+      <div class="container">
+        <!-- Breadcrumbs -->
+        <nav class="breadcrumbs" aria-label="Breadcrumb" style="justify-content: center;">
+          <a href="/">Home</a>
+          <span class="separator">/</span>
+          <a href="/tools/">Tools</a>
+          <span class="separator">/</span>
+          <a href="/tools/text/">Text Tools</a>
+          <span class="separator">/</span>
+          <span>Remove Duplicate Lines</span>
+        </nav>
+        <span class="section-pill">Text Clean-Up</span>
+        <h1 class="page-title">Remove Duplicate Lines Online</h1>
+        <p class="page-subtitle">Deduplicate lists, emails, keywords, and code lines instantly. Filter duplicates, trim surrounding whitespace, and sort alphabetically.</p>
+      </div>
+    </div>
+
+    <div class="container" style="padding-bottom: 5rem;">
+      <div class="tool-workspace">
+        <!-- Options Bar -->
+        <div style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 1.25rem; margin-bottom: 1.5rem;">
+          <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: center; justify-content: space-between;">
+            <div style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;">
+              <label style="display: flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; cursor: pointer;">
+                <input type="checkbox" id="chkCaseSensitive">
+                <span>Case Sensitive</span>
+              </label>
+              <label style="display: flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; cursor: pointer;">
+                <input type="checkbox" id="chkTrim" checked>
+                <span>Trim Whitespace</span>
+              </label>
+              <label style="display: flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; cursor: pointer;">
+                <input type="checkbox" id="chkRemoveEmpty" checked>
+                <span>Remove Empty Lines</span>
+              </label>
+              <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <label for="selSort" style="font-size: 0.85rem; font-weight: 600;">Sort:</label>
+                <select id="selSort" class="control-input" style="padding: 0.3rem 0.6rem; font-size: 0.85rem;">
+                  <option value="none">Original Order</option>
+                  <option value="az">Alphabetical (A &rarr; Z)</option>
+                  <option value="za">Alphabetical (Z &rarr; A)</option>
+                </select>
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 0.5rem;">
+              <button type="button" class="btn btn-sm btn-secondary" id="btnSample">Load Sample</button>
+              <button type="button" class="btn btn-sm btn-secondary" id="btnClear">Clear</button>
+              <button type="button" class="btn btn-sm btn-primary" id="btnDedupe">Deduplicate</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Text Areas Grid -->
+        <div class="dedupe-grid">
+          <!-- Input -->
+          <div class="text-pane-box">
+            <div class="text-pane-header">
+              <span style="font-weight: 700; color: var(--text-heading);">Original List</span>
+              <span class="stat-badge" id="lblInputStats">0 lines</span>
+            </div>
+            <textarea id="txtDedupeInput" class="text-area-field" placeholder="Paste your text or list here (one item per line)..."></textarea>
+          </div>
+
+          <!-- Output -->
+          <div class="text-pane-box">
+            <div class="text-pane-header">
+              <span style="font-weight: 700; color: var(--text-heading);">Unique Result</span>
+              <div style="display: flex; gap: 0.5rem; align-items: center;">
+                <span class="stat-badge" style="background: rgba(16, 185, 129, 0.1); color: var(--color-success); border-color: rgba(16, 185, 129, 0.2);" id="lblRemovedStats">0 duplicates removed</span>
+                <button type="button" class="btn btn-sm btn-secondary" id="btnDownload">Download</button>
+                <button type="button" class="btn btn-sm btn-primary" id="btnCopy">Copy</button>
+              </div>
+            </div>
+            <textarea id="txtDedupeOutput" class="text-area-field" readonly placeholder="Unique deduplicated list will appear here..."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- Designated AdSense Slot -->
+      <div class="ad-slot-container">
+        <div class="ad-slot-card">
+          <span>Advertisement Placement Area</span>
+        </div>
+      </div>
+
+      <!-- Educational Content & SEO -->
+      <article class="tool-content-section">
+        <h2>Why Deduplicate Lists and Text Files?</h2>
+        <p>
+          Managing large lists of email addresses, SEO search keywords, inventory SKUs, customer IDs, or server log entries often results in redundant repeated lines. Sending marketing emails to duplicated addresses wastes campaign budget, while duplicate database records cause key collision errors.
+        </p>
+        <p>
+          The EcrioX Remove Duplicate Lines utility cleans and organizes lists in milliseconds. With customizable sorting and case-matching rules, you can produce pristine datasets ready for Excel spreadsheets, SQL queries, or mailing software.
+        </p>
+
+        <h2>Key Deduplication Features</h2>
+        <ul>
+          <li><strong>Case Sensitive / Insensitive:</strong> Choose whether items like <code>Hello</code> and <code>hello</code> should be treated as identical duplicates or distinct entries.</li>
+          <li><strong>Whitespace Normalization:</strong> Automatically trim accidental leading and trailing spaces before comparing lines.</li>
+          <li><strong>Alphabetical Sorting:</strong> Sort your cleaned list from A to Z or Z to A, or preserve the exact natural sequence of the first occurrence.</li>
+          <li><strong>Total Privacy:</strong> Your sensitive contacts and lists are never uploaded to our servers. All deduplication runs locally in your web browser.</li>
+        </ul>
+
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-list" style="margin-top: 1.5rem;">
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How many lines can I deduplicate at once?</span>
+              <span class="faq-chevron">&#9662;</span>
+            </button>
+            <div class="faq-answer">
+              Because our deduplication algorithm uses JavaScript hash sets (`Set`), it can process lists containing over 100,000 lines in fractions of a second without lagging.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Which duplicate line is kept?</span>
+              <span class="faq-chevron">&#9662;</span>
+            </button>
+            <div class="faq-answer">
+              When keeping the original order, the first occurrence of each unique line is preserved, and all subsequent duplicates are discarded.
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Related Tools -->
+      <section style="margin-top: 4rem;">
+        <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 1.5rem; text-align: center;">Related Text Utilities</h3>
+        <div class="grid-tools">
+          <div class="tool-card">
+            <div class="tool-card-header">
+              <div class="tool-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 7 4 4 20 4 20 7"></polyline><line x1="9" y1="20" x2="15" y2="20"></line><line x1="12" y1="4" x2="12" y2="20"></line></svg>
+              </div>
+              <span class="badge badge-available">Available</span>
+            </div>
+            <div class="tool-card-body">
+              <h3 class="tool-card-title">Text Analyzer & Word Counter</h3>
+              <p class="tool-card-desc">Count words, characters, sentences, estimate reading time, and transform letter case.</p>
+            </div>
+            <div class="tool-card-footer">
+              <a href="/tools/text-analyzer/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-card-header">
+              <div class="tool-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+              </div>
+              <span class="badge badge-available">Available</span>
+            </div>
+            <div class="tool-card-body">
+              <h3 class="tool-card-title">Lorem Ipsum Generator</h3>
+              <p class="tool-card-desc">Generate dummy placeholder filler text by paragraphs, sentences, or words for designs.</p>
+            </div>
+            <div class="tool-card-footer">
+              <a href="/tools/text/lorem-ipsum/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-card-header">
+              <div class="tool-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+              </div>
+              <span class="badge badge-available">Available</span>
+            </div>
+            <div class="tool-card-body">
+              <h3 class="tool-card-title">JSON Formatter & Validator</h3>
+              <p class="tool-card-desc">Beautify, validate, and minify JSON data with line-by-line syntax error detection.</p>
+            </div>
+            <div class="tool-card-footer">
+              <a href="/tools/developer/json-formatter/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="/" class="brand-logo">
+            <div class="logo-symbol">E</div>
+            <span>Ecrio<span class="accent-dot">X</span></span>
+          </a>
+          <p>One Platform. Endless Possibilities. Free, fast, and privacy-conscious online utilities designed for everyday productivity.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Text Tools</h4>
+          <ul class="footer-links">
+            <li><a href="/tools/text/">Text Tools Hub</a></li>
+            <li><a href="/tools/text/remove-duplicate-lines/">Remove Duplicate Lines</a></li>
+            <li><a href="/tools/text-analyzer/">Text Analyzer</a></li>
+            <li><a href="/tools/text/lorem-ipsum/">Lorem Ipsum Generator</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="/about/">About EcrioX</a></li>
+            <li><a href="/contact/">Contact Support</a></li>
+            <li><a href="/contact/">Feedback</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul class="footer-links">
+            <li><a href="/privacy/">Privacy Policy</a></li>
+            <li><a href="/terms/">Terms of Use</a></li>
+            <li><a href="/about/#privacy-architecture">Data Security</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 EcrioX. All rights reserved. Platform built for speed and privacy.</p>
+        <p>Canonical Domain: <a href="https://ecriox.com/" style="color: var(--color-primary);">ecriox.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../../js/tools-registry.js"></script>
+  <script src="../../../js/analytics.js"></script>
+  <script src="../../../js/app.js"></script>
+  <script src="tool.js"></script>
+</body>
+</html>
