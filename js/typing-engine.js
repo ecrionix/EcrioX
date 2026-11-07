@@ -72,18 +72,26 @@
     }
 
     parseTextIntoWords(rawText) {
-      // Split into words by whitespace, retaining whitespace separator
-      const tokens = rawText.split(' ');
+      // Split into words by whitespace, retaining clean tokens
+      const tokens = rawText.split(/\s+/).filter(Boolean);
       const words = [];
       let globalIndex = 0;
+
+      // Use Intl.Segmenter for grapheme cluster splitting if available
+      const hasSegmenter = typeof Intl !== 'undefined' && typeof Intl.Segmenter === 'function';
+      const segmenter = hasSegmenter ? new Intl.Segmenter(undefined, { granularity: 'grapheme' }) : null;
 
       tokens.forEach((token, wIdx) => {
         const isLastWord = wIdx === tokens.length - 1;
         const chars = [];
 
-        for (let i = 0; i < token.length; i++) {
+        const segments = segmenter
+          ? Array.from(segmenter.segment(token), s => s.segment)
+          : Array.from(token);
+
+        for (let i = 0; i < segments.length; i++) {
           chars.push({
-            char: token[i],
+            char: segments[i],
             status: 'pending', // 'pending', 'correct', 'incorrect'
             globalIndex: globalIndex++
           });

@@ -75,15 +75,8 @@
     if (!passageBox || !engine) return;
 
     const wordsHtml = engine.words.map((wObj, wIdx) => {
-      const charsHtml = wObj.chars.map(c => `
-        <span class="type-char pending" data-idx="${c.globalIndex}">${escapeHtml(c.char)}</span>
-      `).join('');
-
-      let spaceHtml = '';
-      if (wObj.space) {
-        spaceHtml = `<span class="type-char pending" data-idx="${wObj.space.globalIndex}">&nbsp;</span>`;
-      }
-
+      const charsHtml = wObj.chars.map(c => `<span class="type-char pending" data-idx="${c.globalIndex}">${escapeHtml(c.char)}</span>`).join('');
+      const spaceHtml = wObj.space ? `<span class="type-char pending" data-idx="${wObj.space.globalIndex}">&nbsp;</span>` : '';
       return `<span class="type-word" id="word-${wIdx}">${charsHtml}${spaceHtml}</span>`;
     }).join('');
 
@@ -105,11 +98,14 @@
     if (wordEl) {
       wordEl.classList.add('active');
 
-      // Auto-scroll passage container to keep active word visible
-      const boxRect = passageBox.getBoundingClientRect();
-      const wordRect = wordEl.getBoundingClientRect();
-      if (wordRect.bottom > boxRect.bottom - 20 || wordRect.top < boxRect.top + 20) {
-        wordEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      // Auto-scroll passage container to keep active word visible without jumping browser window
+      const wordTop = wordEl.offsetTop;
+      const boxScroll = passageBox.scrollTop;
+      const boxHeight = passageBox.clientHeight;
+      if (wordTop > boxScroll + boxHeight - 55) {
+        passageBox.scrollTop = wordTop - 30;
+      } else if (wordTop < boxScroll + 10) {
+        passageBox.scrollTop = Math.max(0, wordTop - 30);
       }
     }
 
@@ -140,22 +136,25 @@
   }
 
   function handleCharacter(data) {
-    // Update character statuses in DOM
-    const currentWord = engine.words[data.currentWordIndex];
-    if (currentWord) {
-      currentWord.chars.forEach(c => {
-        const el = passageBox.querySelector(`[data-idx="${c.globalIndex}"]`);
-        if (el) {
-          el.className = `type-char ${c.status}`;
-        }
-      });
-      if (currentWord.space) {
-        const el = passageBox.querySelector(`[data-idx="${currentWord.space.globalIndex}"]`);
-        if (el) {
-          el.className = `type-char ${currentWord.space.status}`;
+    // Update character statuses in DOM for active and adjacent words
+    const checkIndices = [data.currentWordIndex - 1, data.currentWordIndex, data.currentWordIndex + 1];
+    checkIndices.forEach(idx => {
+      if (idx >= 0 && idx < engine.words.length) {
+        const wObj = engine.words[idx];
+        wObj.chars.forEach(c => {
+          const el = passageBox.querySelector(`[data-idx="${c.globalIndex}"]`);
+          if (el && el.className !== `type-char ${c.status}`) {
+            el.className = `type-char ${c.status}`;
+          }
+        });
+        if (wObj.space) {
+          const el = passageBox.querySelector(`[data-idx="${wObj.space.globalIndex}"]`);
+          if (el && el.className !== `type-char ${wObj.space.status}`) {
+            el.className = `type-char ${wObj.space.status}`;
+          }
         }
       }
-    }
+    });
 
     updateCaretAndActiveWord();
 
@@ -240,6 +239,15 @@
         if (e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) {
           e.preventDefault();
           engine.handleKeyInput(e.key);
+        }
+      });
+
+      // Mobile and IME text input listener
+      hiddenInput.addEventListener('input', (e) => {
+        if (e.data) {
+          const chars = Array.from(e.data);
+          chars.forEach(char => engine.handleKeyInput(char));
+          hiddenInput.value = '';
         }
       });
 

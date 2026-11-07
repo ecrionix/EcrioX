@@ -6,16 +6,18 @@
 
 :root {
   --typing-font-mono: "Fira Code", Consolas, Monaco, "Courier New", monospace;
-  --typing-char-correct: #10b981;
-  --typing-char-incorrect: #ef4444;
-  --typing-char-pending: #94a3b8;
+  --typing-char-correct: #059669;
+  --typing-char-incorrect: #dc2626;
+  --typing-char-pending: #475569; /* WCAG AA 6.5:1 contrast against light background */
   --typing-caret-color: #2563eb;
   --typing-hud-bg: var(--bg-surface);
   --typing-card-border: var(--border-color);
 }
 
 [data-theme="dark"] {
-  --typing-char-pending: #64748b;
+  --typing-char-pending: #94a3b8; /* WCAG AA 6.0:1 contrast against #111827 dark background */
+  --typing-char-correct: #34d399;
+  --typing-char-incorrect: #f87171;
   --typing-caret-color: #60a5fa;
 }
 
@@ -211,46 +213,56 @@
 .type-word {
   display: inline-block;
   margin-right: 0.25rem;
-  white-space: pre;
   border-radius: 4px;
-  padding: 0 2px;
+  padding: 1px 3px;
   transition: background 0.15s ease;
 }
 .type-word.active {
-  background: rgba(37, 99, 235, 0.08);
+  background: rgba(37, 99, 235, 0.12);
+  border-radius: 4px;
 }
 .type-char {
   position: relative;
-  transition: color 0.1s ease;
+  display: inline-block;
+  transition: color 0.08s ease, background-color 0.08s ease;
 }
 .type-char.pending {
   color: var(--typing-char-pending);
 }
 .type-char.correct {
   color: var(--typing-char-correct);
+  font-weight: 500;
 }
 .type-char.incorrect {
   color: var(--typing-char-incorrect);
-  background: rgba(239, 68, 68, 0.15);
+  background: rgba(239, 68, 68, 0.2);
   border-radius: 2px;
   text-decoration: underline wavy var(--typing-char-incorrect);
 }
+.type-char.caret {
+  color: var(--text-main) !important;
+  font-weight: 700;
+  background: var(--color-primary-light);
+  border-radius: 2px;
+  outline: 1px solid var(--color-primary-border);
+}
 
-/* Caret Cursor */
+/* Caret Cursor Indicator */
 .type-char.caret::before {
   content: "";
   position: absolute;
-  left: 0;
-  bottom: 0;
+  left: -1px;
+  top: 10%;
   width: 2.5px;
-  height: 1.25em;
+  height: 80%;
   background: var(--typing-caret-color);
-  animation: caretPulse 1s infinite alternate ease-in-out;
-  border-radius: 2px;
+  animation: caretPulse 0.9s infinite alternate ease-in-out;
+  border-radius: 1px;
+  z-index: 5;
 }
 @keyframes caretPulse {
   0% { opacity: 1; }
-  100% { opacity: 0.2; }
+  100% { opacity: 0.15; }
 }
 
 /* Blur overlay when unfocused */

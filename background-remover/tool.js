@@ -1,11 +1,12 @@
 /**
  * EcrioX Background Remover
- * 100% Client-Side AI Image Segmentation powered by Transformers.js (BRIA RMBG-1.4)
+ * 100% Client-Side AI Image Segmentation
+ * Powered by Transformers.js (BRIA RMBG-1.4 & Xenova MODNet Fallback)
  */
 
-import { pipeline, env, RawImage } from 'https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.0.0';
+import { AutoModel, AutoProcessor, RawImage, pipeline, env } from 'https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.3.3';
 
-// Configuration: load from HuggingFace Hub CDN
+// HuggingFace CDN configuration
 env.allowLocalModels = false;
 
 // DOM Elements
@@ -37,7 +38,9 @@ const btnCopy = document.getElementById('btn-copy');
 const btnDownload = document.getElementById('btn-download');
 
 // State
-let segmenter = null;
+let rmbgModel = null;
+let rmbgProcessor = null;
+let modnetPipeline = null;
 let currentFile = null;
 let sourceImage = null;       // Original HTMLImageElement
 let cutoutCanvas = null;      // Master canvas with transparent cutout at full resolution
@@ -135,7 +138,7 @@ function initEvents() {
 }
 
 /**
- * Handle chosen image file
+ * Handle chosen image file with multi-tier AI inference
  */
 async function handleSelectedFile(file) {
   if (!file.type.startsWith('image/')) {
@@ -148,7 +151,7 @@ async function handleSelectedFile(file) {
   progressBanner.style.display = 'block';
   studioCard.style.display = 'none';
 
-  updateProgress('Preparing image and AI model...', 5, 'Starting worker');
+  updateProgress('Preparing image and AI engine...', 5, 'Initializing browser memory');
 
   try {
     // 1. Read file as Image
@@ -159,37 +162,88 @@ async function handleSelectedFile(file) {
     imageName.textContent = file.name;
     imageMeta.textContent = `${sourceImage.naturalWidth} × ${sourceImage.naturalHeight} px (${formatBytes(file.size)})`;
 
-    // Set original image in slider
+    // Set original image in comparison slider
     originalImg.src = dataUrl;
 
-    // 2. Initialize or reuse AI Model
-    if (!segmenter) {
-      updateProgress('Loading AI Segmentation Model (briaai/RMBG-1.4)...', 15, 'Downloading model weights (~40MB, cached in browser)');
-      
-      segmenter = await pipeline('image-segmentation', 'briaai/RMBG-1.4', {
-        progress_callback: (info) => {
-          if (info.status === 'progress' && info.total) {
-            const pct = Math.min(90, Math.round((info.loaded / info.total) * 100));
-            updateProgress(
-              `Downloading AI model: ${info.file || 'weights'}...`,
-              pct,
-              `${Math.round(info.loaded / 1024 / 1024)}MB / ${Math.round(info.total / 1024 / 1024)}MB`
-            );
-          } else if (info.status === 'ready') {
-            updateProgress('Model initialized. Segmenting image...', 92, 'Executing neural network');
+    let maskResult = null;
+
+    // TIER 1: Primary Model - BRIA RMBG-1.4 via AutoModel + AutoProcessor
+    try {
+      if (!rmbgModel || !rmbgProcessor) {
+        updateProgress('Loading Neural Model (briaai/RMBG-1.4)...', 15, 'Downloading quantized ONNX weights (~44MB, cached locally)');
+
+        rmbgModel = await AutoModel.from_pretrained('briaai/RMBG-1.4', {
+          config: { model_type: 'custom' },
+          quantized: true,
+          progress_callback: (info) => {
+            if (info.status === 'progress' && info.total) {
+              const pct = Math.min(85, Math.round((info.loaded / info.total) * 75) + 10);
+              updateProgress(
+                `Downloading AI model: ${info.file || 'weights'}...`,
+                pct,
+                `${Math.round(info.loaded / 1024 / 1024)}MB / ${Math.round(info.total / 1024 / 1024)}MB`
+              );
+            } else if (info.status === 'ready') {
+              updateProgress('Neural network ready. Loading image processor...', 88, 'Configuring tensor normalization');
+            }
           }
+        });
+
+        rmbgProcessor = await AutoProcessor.from_pretrained('briaai/RMBG-1.4', {
+          config: {
+            do_normalize: true,
+            do_pad: false,
+            do_rescale: true,
+            do_resize: true,
+            image_mean: [0.5, 0.5, 0.5],
+            feature_extractor_type: 'ImageFeatureExtractor',
+            image_std: [1, 1, 1],
+            resample: 2,
+            rescale_factor: 0.00392156862745098,
+            size: { width: 1024, height: 1024 }
+          }
+        });
+      }
+
+      updateProgress('Detecting subject and computing alpha mask...', 92, 'Running local neural inference');
+      const rawImage = await RawImage.fromURL(dataUrl);
+      const { pixel_values } = await rmbgProcessor(rawImage);
+      const { output } = await rmbgModel({ input: pixel_values });
+      maskResult = await RawImage.fromTensor(output[0].mul(255).to('uint8')).resize(rawImage.width, rawImage.height);
+
+    } catch (rmbgErr) {
+      console.warn('BRIA RMBG-1.4 failed, trying MODNet fallback:', rmbgErr);
+
+      // TIER 2: Secondary Fallback - Xenova/modnet (lightweight 6.6MB matting model)
+      try {
+        updateProgress('Switching to lightweight AI matting model (MODNet)...', 40, 'Fallback model download (~6.6MB)');
+        if (!modnetPipeline) {
+          modnetPipeline = await pipeline('image-segmentation', 'Xenova/modnet', {
+            quantized: true,
+            progress_callback: (info) => {
+              if (info.status === 'progress' && info.total) {
+                const pct = Math.min(85, Math.round((info.loaded / info.total) * 75) + 10);
+                updateProgress('Downloading MODNet weights...', pct, `${Math.round(info.loaded / 1024 / 1024)}MB / ${Math.round(info.total / 1024 / 1024)}MB`);
+              }
+            }
+          });
         }
-      });
+        updateProgress('Segmenting foreground with MODNet...', 90, 'Computing alpha matte');
+        const rawImage = await RawImage.fromURL(dataUrl);
+        maskResult = await modnetPipeline(rawImage);
+      } catch (modnetErr) {
+        console.warn('MODNet fallback failed, attempting local canvas color segmentation:', modnetErr);
+
+        // TIER 3: Local Canvas segmentation fallback (no network/WASM required)
+        updateProgress('Performing edge-aware color segmentation...', 80, 'Browser-native canvas processing');
+        maskResult = computeCanvasMask(sourceImage);
+      }
     }
 
-    updateProgress('Detecting foreground subject and cutting background...', 95, 'Computing alpha mask');
-
-    // 3. Process Segmentation
-    const rawImage = await RawImage.fromURL(dataUrl);
-    const mask = await segmenter(rawImage);
+    updateProgress('Generating high-resolution transparent cutout...', 98, 'Applying alpha channel');
 
     // 4. Build Full-Resolution Transparent Cutout Canvas
-    buildCutoutCanvas(sourceImage, mask);
+    buildCutoutCanvas(sourceImage, maskResult);
 
     // 5. Render to UI
     renderCompositedOutput();
@@ -203,14 +257,13 @@ async function handleSelectedFile(file) {
 
   } catch (err) {
     console.error('Error during background removal:', err);
-    progressStatus.textContent = 'Failed to remove background. ' + (err.message || 'Please try another image.');
+    progressStatus.textContent = 'Failed to process image: ' + (err.message || 'Unknown error');
     progressStatus.style.color = 'var(--color-danger)';
-    progressDetails.textContent = 'Ensure WebGPU or WebAssembly is enabled in your browser.';
-    
-    // Allow re-trying
+    progressDetails.textContent = 'Please check your internet connection or try a different image format (PNG/JPG).';
+
     setTimeout(() => {
       dropzone.style.display = 'block';
-    }, 2500);
+    }, 3500);
   }
 }
 
@@ -229,25 +282,101 @@ function buildCutoutCanvas(img, mask) {
   // 1. Draw source image at full resolution
   ctx.drawImage(img, 0, 0, width, height);
   const imgData = ctx.getImageData(0, 0, width, height);
-
-  // 2. Render the AI mask into a temp canvas scaled to exact full resolution
-  const maskCanvas = mask.toCanvas();
-  const tempMaskCanvas = document.createElement('canvas');
-  tempMaskCanvas.width = width;
-  tempMaskCanvas.height = height;
-  const maskCtx = tempMaskCanvas.getContext('2d');
-  maskCtx.drawImage(maskCanvas, 0, 0, width, height);
-
-  const maskData = maskCtx.getImageData(0, 0, width, height).data;
-
-  // 3. Apply the mask grayscale value to the alpha channel
   const pixels = imgData.data;
-  for (let i = 0; i < pixels.length; i += 4) {
-    const alphaVal = maskData[i]; // Grayscale R channel of mask
-    pixels[i + 3] = alphaVal;
+
+  // 2. Extract mask alpha data
+  if (mask && typeof mask.toCanvas === 'function') {
+    const maskCanvas = mask.toCanvas();
+    const tempMaskCanvas = document.createElement('canvas');
+    tempMaskCanvas.width = width;
+    tempMaskCanvas.height = height;
+    const maskCtx = tempMaskCanvas.getContext('2d');
+    maskCtx.drawImage(maskCanvas, 0, 0, width, height);
+    const maskData = maskCtx.getImageData(0, 0, width, height).data;
+
+    for (let i = 0; i < pixels.length; i += 4) {
+      pixels[i + 3] = maskData[i]; // Grayscale R channel
+    }
+  } else if (mask && mask.data) {
+    // RawImage or Uint8Array
+    const maskData = mask.data;
+    const isSingleChannel = maskData.length === width * height;
+    for (let i = 0; i < width * height; i++) {
+      pixels[i * 4 + 3] = isSingleChannel ? maskData[i] : maskData[i * 4];
+    }
+  } else if (mask instanceof ImageData) {
+    const maskData = mask.data;
+    for (let i = 0; i < pixels.length; i += 4) {
+      pixels[i + 3] = maskData[i + 3];
+    }
   }
 
   ctx.putImageData(imgData, 0, 0);
+}
+
+/**
+ * Client-side canvas fallback mask generator
+ * Detects background color based on perimeter pixels and computes smooth alpha distance
+ */
+function computeCanvasMask(img) {
+  const width = img.naturalWidth;
+  const height = img.naturalHeight;
+
+  const canvas = document.createElement('canvas');
+  canvas.width = width;
+  canvas.height = height;
+  const ctx = canvas.getContext('2d', { willReadFrequently: true });
+  ctx.drawImage(img, 0, 0, width, height);
+
+  const imgData = ctx.getImageData(0, 0, width, height);
+  const data = imgData.data;
+
+  // Sample perimeter pixels to identify background color
+  let rBg = 0, gBg = 0, bBg = 0, samples = 0;
+  for (let x = 0; x < width; x += Math.max(1, Math.floor(width / 50))) {
+    // Top border
+    let idx = (0 * width + x) * 4;
+    rBg += data[idx]; gBg += data[idx + 1]; bBg += data[idx + 2]; samples++;
+    // Bottom border
+    idx = ((height - 1) * width + x) * 4;
+    rBg += data[idx]; gBg += data[idx + 1]; bBg += data[idx + 2]; samples++;
+  }
+  for (let y = 0; y < height; y += Math.max(1, Math.floor(height / 50))) {
+    // Left border
+    let idx = (y * width + 0) * 4;
+    rBg += data[idx]; gBg += data[idx + 1]; bBg += data[idx + 2]; samples++;
+    // Right border
+    idx = (y * width + (width - 1)) * 4;
+    rBg += data[idx]; gBg += data[idx + 1]; bBg += data[idx + 2]; samples++;
+  }
+  rBg = rBg / samples;
+  gBg = gBg / samples;
+  bBg = bBg / samples;
+
+  const thresholdLow = 25;
+  const thresholdHigh = 75;
+
+  const alphaData = new Uint8Array(width * height);
+  for (let i = 0; i < data.length; i += 4) {
+    const dr = data[i] - rBg;
+    const dg = data[i + 1] - gBg;
+    const db = data[i + 2] - bBg;
+    const dist = Math.sqrt(dr * dr + dg * dg + db * db);
+
+    let alpha = 255;
+    if (dist < thresholdLow) {
+      alpha = 0;
+    } else if (dist < thresholdHigh) {
+      alpha = Math.round(((dist - thresholdLow) / (thresholdHigh - thresholdLow)) * 255);
+    }
+    alphaData[i / 4] = alpha;
+  }
+
+  return {
+    width: width,
+    height: height,
+    data: alphaData
+  };
 }
 
 /**
