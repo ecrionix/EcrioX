@@ -1,0 +1,1069 @@
+/**
+ * EcrioX Career Studio - Complete Styling System
+ * Responsive SaaS UI + 20 Distinct Resume Templates + Perfect Vector Print Engine
+ */
+
+/* ==========================================================================
+   1. Career Studio Global & Layout
+   ========================================================================== */
+
+:root {
+  --cs-primary: #1e40af;
+  --cs-primary-hover: #1d4ed8;
+  --cs-primary-light: #eff6ff;
+  --cs-text: #0f172a;
+  --cs-text-muted: #64748b;
+  --cs-border: #e2e8f0;
+  --cs-bg-sheet: #ffffff;
+  --cs-bg-app: #f8fafc;
+  --cs-card-bg: #ffffff;
+  --cs-success: #10b981;
+  --cs-warning: #f59e0b;
+  --cs-danger: #ef4444;
+}
+
+[data-theme="dark"] {
+  --cs-bg-app: #0f172a;
+  --cs-card-bg: #1e293b;
+  --cs-border: #334155;
+  --cs-text: #f8fafc;
+  --cs-text-muted: #94a3b8;
+  --cs-primary-light: #1e293b;
+}
+
+/* Hero & Header */
+.career-hero {
+  padding: 3rem 0 2rem;
+  text-align: center;
+}
+
+.career-hero-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1rem;
+  border-radius: 9999px;
+  background: var(--cs-primary-light);
+  color: var(--cs-primary);
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  border: 1px solid var(--cs-border);
+}
+
+.career-hero-title {
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+  color: var(--cs-text);
+}
+
+.career-hero-title .highlight {
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.career-hero-desc {
+  font-size: 1.125rem;
+  max-width: 680px;
+  margin: 0 auto 1.75rem;
+  color: var(--cs-text-muted);
+  line-height: 1.6;
+}
+
+/* Quick Nav Pills */
+.career-nav-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.career-nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  background: var(--cs-card-bg);
+  color: var(--cs-text);
+  border: 1px solid var(--cs-border);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.career-nav-link:hover,
+.career-nav-link.active {
+  background: var(--cs-primary);
+  color: #ffffff;
+  border-color: var(--cs-primary);
+}
+
+/* ==========================================================================
+   2. Main Two-Panel Interactive Workspace
+   ========================================================================== */
+
+.career-builder-workspace {
+  display: grid;
+  grid-template-columns: 460px 1fr;
+  gap: 1.5rem;
+  align-items: start;
+  margin-bottom: 3rem;
+}
+
+@media (max-width: 1024px) {
+  .career-builder-workspace {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Left Editor Pane */
+.editor-pane {
+  background: var(--cs-card-bg);
+  border: 1px solid var(--cs-border);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.editor-header {
+  padding: 1rem 1.25rem;
+  background: var(--cs-bg-app);
+  border-bottom: 1px solid var(--cs-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.editor-version-select {
+  font-size: 0.875rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid var(--cs-border);
+  background: var(--cs-card-bg);
+  color: var(--cs-text);
+  font-weight: 500;
+}
+
+/* Accordion Sections */
+.editor-tabs {
+  display: flex;
+  overflow-x: auto;
+  border-bottom: 1px solid var(--cs-border);
+  background: var(--cs-bg-app);
+}
+
+.editor-tab-btn {
+  padding: 0.75rem 1rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--cs-text-muted);
+  cursor: pointer;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: all 0.2s ease;
+}
+
+.editor-tab-btn:hover {
+  color: var(--cs-text);
+}
+
+.editor-tab-btn.active {
+  color: var(--cs-primary);
+  border-bottom-color: var(--cs-primary);
+  background: var(--cs-card-bg);
+}
+
+.editor-section-panel {
+  display: none;
+  padding: 1.25rem;
+}
+
+.editor-section-panel.active {
+  display: block;
+}
+
+/* Form Controls */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+  color: var(--cs-text);
+}
+
+.form-input,
+.form-textarea,
+.form-select {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid var(--cs-border);
+  background: var(--cs-card-bg);
+  color: var(--cs-text);
+  font-size: 0.875rem;
+  box-sizing: border-box;
+  font-family: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+  outline: none;
+  border-color: var(--cs-primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.form-hint {
+  font-size: 0.75rem;
+  color: var(--cs-text-muted);
+  margin-top: 0.25rem;
+  display: block;
+}
+
+/* Repeater Item Cards */
+.repeater-card {
+  border: 1px solid var(--cs-border);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background: var(--cs-bg-app);
+  position: relative;
+}
+
+.repeater-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.btn-delete-item {
+  background: none;
+  border: none;
+  color: var(--cs-danger);
+  cursor: pointer;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+.btn-delete-item:hover {
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.btn-add-item {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px dashed var(--cs-border);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--cs-primary);
+  font-weight: 600;
+  font-size: 0.8125rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  transition: background 0.2s ease;
+}
+
+.btn-add-item:hover {
+  background: var(--cs-primary-light);
+  border-color: var(--cs-primary);
+}
+
+/* Action Verbs Helper Pill Grid */
+.helper-verbs-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 0.75rem;
+  padding: 0.5rem;
+  background: var(--cs-card-bg);
+  border: 1px solid var(--cs-border);
+  border-radius: 6px;
+}
+
+.verb-pill {
+  background: var(--cs-bg-app);
+  border: 1px solid var(--cs-border);
+  padding: 0.2rem 0.45rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.verb-pill:hover {
+  background: var(--cs-primary);
+  color: #fff;
+  border-color: var(--cs-primary);
+}
+
+/* Right Preview Pane */
+.preview-pane {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Sticky Preview Toolbar */
+.preview-toolbar {
+  width: 100%;
+  background: var(--cs-card-bg);
+  border: 1px solid var(--cs-border);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.toolbar-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-primary {
+  background: var(--cs-primary);
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.55rem 1.1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.btn-primary:hover {
+  background: var(--cs-primary-hover);
+}
+
+.btn-secondary {
+  background: var(--cs-bg-app);
+  color: var(--cs-text);
+  border: 1px solid var(--cs-border);
+  border-radius: 6px;
+  padding: 0.55rem 0.9rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--cs-border);
+}
+
+/* Paper Wrapper & Scaling */
+.paper-viewport {
+  width: 100%;
+  overflow-x: auto;
+  padding: 1rem 0 3rem;
+  display: flex;
+  justify-content: center;
+  background: #cbd5e1;
+  border-radius: 12px;
+  border: 1px solid var(--cs-border);
+}
+
+[data-theme="dark"] .paper-viewport {
+  background: #1e293b;
+}
+
+.paper-scaler {
+  transform-origin: top center;
+  transition: transform 0.2s ease;
+}
+
+/* ==========================================================================
+   3. The Resume Sheet (True A4 / US Letter Simulation)
+   ========================================================================== */
+
+.resume-sheet {
+  background: #ffffff;
+  color: #1e293b;
+  width: 210mm;
+  min-height: 297mm;
+  padding: 20mm;
+  box-sizing: border-box;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.22);
+  line-height: 1.5;
+  position: relative;
+  font-size: 10pt;
+}
+
+.resume-sheet.size-letter {
+  width: 215.9mm;
+  min-height: 279.4mm;
+}
+
+/* Common Sheet Typography */
+.cv-header {
+  margin-bottom: 14pt;
+}
+
+.cv-name {
+  font-size: 20pt;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 4pt 0;
+  color: #0f172a;
+}
+
+.cv-job-title {
+  font-size: 12pt;
+  font-weight: 600;
+  color: var(--theme-color, #1e40af);
+  margin-bottom: 6pt;
+}
+
+.cv-contact-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6pt;
+  font-size: 8.5pt;
+  color: #475569;
+}
+
+.cv-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.cv-link:hover {
+  text-decoration: underline;
+}
+
+.cv-sep {
+  color: #94a3b8;
+  font-size: 7pt;
+}
+
+.cv-section {
+  margin-bottom: 12pt;
+  page-break-inside: avoid;
+}
+
+.cv-section-title {
+  font-size: 11pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--theme-color, #1e40af);
+  border-bottom: 1.5pt solid #e2e8f0;
+  padding-bottom: 3pt;
+  margin: 0 0 7pt 0;
+}
+
+.cv-entries {
+  display: flex;
+  flex-direction: column;
+  gap: 9pt;
+}
+
+.cv-entry {
+  page-break-inside: avoid;
+}
+
+.cv-entry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 2pt;
+}
+
+.cv-entry-title {
+  font-size: 10pt;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+.cv-entry-subtitle {
+  font-size: 9pt;
+  font-weight: 600;
+  color: #334155;
+}
+
+.cv-entry-date {
+  font-size: 8.5pt;
+  color: #64748b;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.cv-entry-meta {
+  font-size: 8.5pt;
+  color: #64748b;
+  margin-top: 1pt;
+}
+
+.cv-entry-desc,
+.cv-summary-text {
+  font-size: 9pt;
+  color: #334155;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.cv-bullets {
+  margin: 3pt 0 0 16pt;
+  padding: 0;
+  font-size: 9pt;
+  color: #334155;
+  line-height: 1.4;
+}
+
+.cv-bullets li {
+  margin-bottom: 2.5pt;
+}
+
+/* Skills Cloud */
+.cv-skills-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4pt;
+}
+
+.cv-skill-pill {
+  display: inline-block;
+  background: #f1f5f9;
+  color: #1e293b;
+  padding: 2pt 6pt;
+  border-radius: 3pt;
+  font-size: 8pt;
+  font-weight: 600;
+  border: 0.5pt solid #cbd5e1;
+}
+
+/* ==========================================================================
+   4. 20 Specific Template Styles
+   ========================================================================== */
+
+/* 1. Classic ATS */
+.resume-sheet.tpl-classic-ats {
+  font-family: Georgia, serif;
+}
+.resume-sheet.tpl-classic-ats .cv-header {
+  text-align: center;
+  border-bottom: 2pt solid #0f172a;
+  padding-bottom: 8pt;
+}
+.resume-sheet.tpl-classic-ats .cv-contact-row {
+  justify-content: center;
+}
+.resume-sheet.tpl-classic-ats .cv-section-title {
+  border-bottom: 1pt solid #0f172a;
+  color: #0f172a;
+  font-family: Georgia, serif;
+}
+
+/* 2. Modern ATS */
+.resume-sheet.tpl-modern-ats .cv-section-title {
+  border-left: 4pt solid var(--theme-color, #1e40af);
+  border-bottom: none;
+  padding-left: 6pt;
+  padding-bottom: 0;
+}
+
+/* 3. Minimal Single Column */
+.resume-sheet.tpl-minimal-single .cv-section-title {
+  border-bottom: 0.5pt solid #cbd5e1;
+  color: #475569;
+  letter-spacing: 1px;
+}
+.resume-sheet.tpl-minimal-single .cv-skill-pill {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin-right: 6pt;
+}
+.resume-sheet.tpl-minimal-single .cv-skill-pill:not(:last-child)::after {
+  content: " •";
+  color: #94a3b8;
+}
+
+/* 4. Corporate Standard */
+.resume-sheet.tpl-corporate-standard .cv-header {
+  background: #f8fafc;
+  margin: -20mm -20mm 14pt -20mm;
+  padding: 15mm 20mm 10mm 20mm;
+  border-bottom: 2pt solid var(--theme-color, #1e40af);
+}
+
+/* 5. Executive Pro */
+.resume-sheet.tpl-executive-pro .cv-header {
+  border-bottom: 3pt double var(--theme-color, #1e40af);
+  padding-bottom: 10pt;
+}
+.resume-sheet.tpl-executive-pro .cv-summary-section {
+  background: #f8fafc;
+  padding: 8pt 10pt;
+  border-left: 3pt solid var(--theme-color, #1e40af);
+  border-radius: 2pt;
+}
+
+/* 6. Software Engineer */
+.resume-sheet.tpl-software-engineer .cv-skill-pill {
+  background: #0f172a;
+  color: #38bdf8;
+  font-family: monospace;
+  border: none;
+}
+.resume-sheet.tpl-software-engineer .cv-entry-tech {
+  font-size: 8pt;
+  color: #0284c7;
+  font-family: monospace;
+}
+
+/* 7. Developer Portfolio */
+.resume-sheet.tpl-developer-portfolio .cv-name::before {
+  content: "$ ";
+  color: var(--theme-color, #1e40af);
+}
+
+/* 8. Data Scientist */
+.resume-sheet.tpl-data-scientist .cv-section-title {
+  color: #0f766e;
+  border-bottom-color: #0f766e;
+}
+
+/* 9. IT Professional */
+.resume-sheet.tpl-it-professional .cv-cert-entry {
+  background: #f8fafc;
+  padding: 4pt 6pt;
+  border-left: 2pt solid #0284c7;
+}
+
+/* 10. Hardware Engineer */
+.resume-sheet.tpl-hardware-engineer .cv-section-title {
+  border-bottom: 1pt dashed #64748b;
+}
+
+/* 11. Business Analyst */
+.resume-sheet.tpl-business-analyst .cv-entry-title {
+  color: #1e3a8a;
+}
+
+/* 12. Project Manager */
+.resume-sheet.tpl-project-manager .cv-section-title {
+  border-left: 3pt solid #10b981;
+  border-bottom: none;
+  padding-left: 6pt;
+}
+
+/* 13. Marketing Pro */
+.resume-sheet.tpl-marketing-pro .cv-name {
+  color: #b91c1c;
+}
+.resume-sheet.tpl-marketing-pro .cv-job-title {
+  color: #e11d48;
+}
+
+/* 14. Finance Pro */
+.resume-sheet.tpl-finance-pro {
+  font-family: Georgia, serif;
+}
+.resume-sheet.tpl-finance-pro .cv-section-title {
+  border-bottom: 1.5pt solid #1e293b;
+  color: #1e293b;
+}
+
+/* 15. Operations Manager */
+.resume-sheet.tpl-operations-mgr .cv-skill-pill {
+  background: #ecfdf5;
+  color: #065f46;
+  border-color: #a7f3d0;
+}
+
+/* 16. Modern Creative */
+.resume-sheet.tpl-modern-creative .cv-header {
+  border-left: 5pt solid var(--theme-color, #1e40af);
+  padding-left: 10pt;
+}
+
+/* 17. Designer Portfolio */
+.resume-sheet.tpl-designer-portfolio .cv-name {
+  letter-spacing: -0.5px;
+  font-weight: 800;
+}
+
+/* 18. Elegant Minimal */
+.resume-sheet.tpl-elegant-minimal {
+  font-family: Merriweather, Georgia, serif;
+}
+.resume-sheet.tpl-elegant-minimal .cv-section-title {
+  border-bottom: 0.5pt solid #94a3b8;
+  font-style: italic;
+  text-transform: none;
+  font-size: 12pt;
+}
+
+/* 19. Contemporary Pro */
+.resume-sheet.tpl-contemporary-pro .cv-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-bottom: 2pt solid var(--theme-color, #1e40af);
+  padding-bottom: 8pt;
+}
+
+/* 20. Academic CV */
+.resume-sheet.tpl-academic-cv .cv-header {
+  text-align: center;
+  border-bottom: 1pt solid #cbd5e1;
+  padding-bottom: 8pt;
+}
+.resume-sheet.tpl-academic-cv .cv-contact-row {
+  justify-content: center;
+}
+
+/* ==========================================================================
+   5. ATS Checker & Job Matcher UI Elements
+   ========================================================================== */
+
+.ats-dashboard {
+  background: var(--cs-card-bg);
+  border: 1px solid var(--cs-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.ats-score-hero {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--cs-border);
+}
+
+@media (max-width: 640px) {
+  .ats-score-hero {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.score-circle {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  border: 6px solid var(--cs-primary);
+  flex-shrink: 0;
+}
+
+.score-num {
+  font-size: 2.25rem;
+  line-height: 1;
+}
+
+.score-label {
+  font-size: 0.75rem;
+  color: var(--cs-text-muted);
+  font-weight: 600;
+}
+
+.score-circle.excellent {
+  border-color: #10b981;
+  color: #10b981;
+}
+
+.score-circle.good {
+  border-color: #3b82f6;
+  color: #3b82f6;
+}
+
+.score-circle.warning {
+  border-color: #f59e0b;
+  color: #f59e0b;
+}
+
+.score-circle.poor {
+  border-color: #ef4444;
+  color: #ef4444;
+}
+
+/* Grid Breakdown */
+.ats-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.ats-metric-card {
+  background: var(--cs-bg-app);
+  border: 1px solid var(--cs-border);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.metric-title {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--cs-text-muted);
+  margin-bottom: 0.35rem;
+}
+
+.metric-val {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--cs-text);
+}
+
+/* Checklists */
+.ats-list-group {
+  margin-bottom: 1.25rem;
+}
+
+.ats-list-title {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.ats-item {
+  padding: 0.6rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  margin-bottom: 0.4rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  line-height: 1.45;
+}
+
+.ats-item.passed {
+  background: rgba(16, 185, 129, 0.08);
+  border-left: 3px solid #10b981;
+}
+
+.ats-item.warning {
+  background: rgba(245, 158, 11, 0.08);
+  border-left: 3px solid #f59e0b;
+}
+
+.ats-item.critical {
+  background: rgba(239, 68, 68, 0.08);
+  border-left: 3px solid #ef4444;
+}
+
+/* Skills Badges for Job Matcher */
+.skills-badge-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+
+.skill-match-pill {
+  padding: 0.25rem 0.6rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.skill-match-pill.matched {
+  background: rgba(16, 185, 129, 0.15);
+  color: #065f46;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+[data-theme="dark"] .skill-match-pill.matched {
+  background: rgba(16, 185, 129, 0.2);
+  color: #34d399;
+}
+
+.skill-match-pill.missing {
+  background: rgba(239, 68, 68, 0.1);
+  color: #991b1b;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+[data-theme="dark"] .skill-match-pill.missing {
+  background: rgba(239, 68, 68, 0.2);
+  color: #f87171;
+}
+
+/* Cover Letter Styling */
+.cover-letter-sheet {
+  background: #ffffff;
+  color: #1e293b;
+  width: 210mm;
+  min-height: 297mm;
+  padding: 25mm 20mm;
+  box-sizing: border-box;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.22);
+  line-height: 1.6;
+  font-size: 10.5pt;
+  font-family: Inter, sans-serif;
+  margin: 0 auto;
+}
+
+.letter-header {
+  border-bottom: 2pt solid #0f172a;
+  padding-bottom: 12pt;
+  margin-bottom: 18pt;
+}
+
+.letter-title-name {
+  font-size: 20pt;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 4pt;
+}
+
+.letter-contact-meta {
+  font-size: 9pt;
+  color: #64748b;
+}
+
+.letter-date {
+  font-size: 9.5pt;
+  margin-bottom: 14pt;
+  color: #334155;
+}
+
+.letter-recipient-block {
+  margin-bottom: 16pt;
+  font-size: 9.5pt;
+  color: #334155;
+}
+
+.letter-body p {
+  margin-bottom: 12pt;
+  text-align: justify;
+}
+
+.letter-signoff {
+  margin-top: 20pt;
+}
+
+/* ==========================================================================
+   6. True Vector Print Engine (@media print)
+   ========================================================================== */
+
+@media print {
+  /* Hide all UI elements outside the resume paper */
+  .site-header,
+  .site-footer,
+  .career-hero,
+  .career-nav-bar,
+  .editor-pane,
+  .preview-toolbar,
+  .breadcrumb,
+  .ad-slot,
+  .educational-content,
+  .faq-section,
+  .career-related-grid,
+  .theme-toggle-btn {
+    display: none !important;
+  }
+
+  body, html {
+    background: #ffffff !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .career-builder-workspace {
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .preview-pane {
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+  }
+
+  .paper-viewport {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+
+  .paper-scaler {
+    transform: none !important;
+  }
+
+  .resume-sheet,
+  .cover-letter-sheet {
+    box-shadow: none !important;
+    border: none !important;
+    margin: 0 !important;
+    width: 100% !important;
+    min-height: auto !important;
+    page-break-after: avoid;
+  }
+
+  @page {
+    size: A4 portrait;
+    margin: 12mm 15mm 12mm 15mm;
+  }
+
+  .resume-sheet.size-letter,
+  .cover-letter-sheet.size-letter {
+    page-break-after: avoid;
+  }
+}

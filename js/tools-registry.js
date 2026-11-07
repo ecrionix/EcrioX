@@ -94,6 +94,15 @@ const ECRIOX_CATEGORIES = [
     icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"></path><path d="M1.42 9a16 16 0 0 1 21.16 0"></path><path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path><line x1="12" y1="20" x2="12.01" y2="20"></line></svg>`,
     title: "Technology & Device Lab – Internet, Wi-Fi & 5G Diagnostics | EcrioX",
     description: "Explore, test and understand the technology behind everyday devices. Measure internet speed, diagnose Wi-Fi signal quality, and check phone 5G band compatibility."
+  },
+  {
+    id: "career",
+    name: "Career Studio",
+    slug: "career",
+    route: "/resume-builder/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>`,
+    title: "EcrioX Career Studio – Free ATS Resume Builder, Checker & Career Tools",
+    description: "Create ATS-compliant resumes, check resume scores, match job descriptions, generate cover letters, and export print-ready PDFs."
   }
 ];
 
@@ -704,6 +713,106 @@ const ECRIOX_TOOLS = [
     status: "available",
     popular: true,
     tags: ["typing certificate", "wpm certificate", "typing speed certificate", "verified typing test", "resume typing certificate"]
+  },
+
+  // ==========================================
+  // CAREER STUDIO TOOLS
+  // ==========================================
+  {
+    id: "resume-builder",
+    name: "ATS Resume Builder",
+    category: "career",
+    categoryName: "Career Studio",
+    description: "Create professional ATS-compliant resumes with 20+ templates, multi-version management, live preview, and vector PDF export.",
+    route: "/resume-builder/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>`,
+    status: "available",
+    popular: true,
+    tags: ["resume builder", "ats resume", "free resume maker", "cv builder", "professional resume", "resume pdf export", "resume templates"]
+  },
+  {
+    id: "ats-resume-checker",
+    name: "ATS Resume Checker",
+    category: "career",
+    categoryName: "Career Studio",
+    description: "Audit resume structure, formatting, action verbs, and machine readability with an instant 0–100 score and actionable recommendations.",
+    route: "/ats-resume-checker/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline><path d="M22 12h-4"></path><path d="M6 12H2"></path><path d="M12 6V2"></path><path d="M12 22v-4"></path></svg>`,
+    status: "available",
+    popular: true,
+    tags: ["ats checker", "resume score", "resume scanner", "ats score", "ats compatibility", "resume review", "resume test"]
+  },
+  {
+    id: "resume-job-matcher",
+    name: "Job Description Matcher",
+    category: "career",
+    categoryName: "Career Studio",
+    description: "Compare your resume against any job description to discover matched technical competencies, missing keywords, and match percentages.",
+    route: "/resume-job-matcher/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>`,
+    status: "available",
+    popular: true,
+    tags: ["job matcher", "resume job matcher", "keyword match", "job description match", "resume tailoring", "ats keywords"]
+  },
+  {
+    id: "cover-letter-generator",
+    name: "Cover Letter Generator",
+    category: "career",
+    categoryName: "Career Studio",
+    description: "Craft personalized cover letters tailored to your target company and role across formal, tech, and concise tones with printable letterheads.",
+    route: "/cover-letter-generator/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>`,
+    status: "available",
+    popular: true,
+    tags: ["cover letter", "cover letter generator", "cover letter builder", "job application letter", "letterhead pdf"]
+  },
+  {
+    id: "resume-bullet-improver",
+    name: "Resume Bullet Improver",
+    category: "career",
+    categoryName: "Career Studio",
+    description: "Transform weak, passive job descriptions into impactful, achievement-oriented bullets using proven action verb formulas.",
+    route: "/resume-bullet-improver/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>`,
+    status: "available",
+    popular: true,
+    tags: ["bullet point improver", "action verbs", "resume bullets", "resume rewrite", "achievement formula"]
+  },
+  {
+    id: "professional-summary-generator",
+    name: "Summary Generator",
+    category: "career",
+    categoryName: "Career Studio",
+    description: "Create tailored resume summaries and elevator pitches for experienced specialists, entry-level freshers, and career changers.",
+    route: "/professional-summary-generator/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>`,
+    status: "available",
+    popular: false,
+    tags: ["summary generator", "resume summary", "resume objective", "profile summary", "career objective"]
+  },
+  {
+    id: "resume-templates",
+    name: "20+ Resume Templates",
+    category: "career",
+    categoryName: "Career Studio",
+    description: "Browse 20+ professional resume templates optimized for ATS parsers and human hiring managers across tech, business, and creative fields.",
+    route: "/resume-templates/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>`,
+    status: "available",
+    popular: true,
+    tags: ["resume templates", "ats templates", "cv templates", "free resume designs", "software engineer template"]
+  },
+  {
+    id: "resume-keyword-optimizer",
+    name: "Keyword Optimizer",
+    category: "career",
+    categoryName: "Career Studio",
+    description: "Analyze term frequency and keyword density across your resume and job postings to maximize search relevance.",
+    route: "/resume-keyword-optimizer/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>`,
+    status: "available",
+    popular: false,
+    tags: ["keyword optimizer", "resume keywords", "keyword density", "ats density scanner"]
   }
 ];
 
