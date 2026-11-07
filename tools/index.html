@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Online Tools Directory – EcrioX</title>
+  <meta name="description" content="Explore all free online utilities on EcrioX. PDF tools, image compressors, developer utilities, text analyzers, calculators, and productivity apps.">
+  <link rel="canonical" href="https://ecriox.com/tools/">
+  
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="All Online Tools Directory – EcrioX">
+  <meta property="og:description" content="Browse our complete suite of free, high-speed, and privacy-first online tools.">
+  <meta property="og:url" content="https://ecriox.com/tools/">
+  <meta property="og:site_name" content="EcrioX">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="All Online Tools Directory – EcrioX">
+  <meta name="twitter:description" content="Explore all free online tools on EcrioX.">
+
+  <!-- Global Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i){
+  w[l]=w[l]||[];
+  w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),
+  dl=l!='dataLayer'?'&l='+l:'';
+  j.async=true;
+  j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+  f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PQFRBJ9F');
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript>
+  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQFRBJ9F" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- Global Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="brand-logo" aria-label="EcrioX Home">
+        <div class="logo-symbol">E</div>
+        <span>Ecrio<span class="accent-dot">X</span></span>
+      </a>
+
+      <nav class="nav-desktop">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/tools/" class="nav-link active">All Tools</a>
+        <a href="/categories/" class="nav-link">Categories</a>
+        <a href="/about/" class="nav-link">About</a>
+        <a href="/contact/" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn-icon theme-toggle-btn" aria-label="Toggle color theme">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <button class="btn-icon mobile-toggle" aria-label="Open mobile menu" aria-expanded="false">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav">
+    <a href="/" class="nav-link">Home</a>
+    <a href="/tools/" class="nav-link active">All Tools</a>
+    <a href="/categories/" class="nav-link">Categories</a>
+    <a href="/about/" class="nav-link">About</a>
+    <a href="/contact/" class="nav-link">Contact</a>
+  </div>
+
+  <main class="page-wrapper">
+    <div class="page-header">
+      <div class="container">
+        <span class="section-pill">Tools Directory</span>
+        <h1 class="page-title">Explore All EcrioX Tools</h1>
+        <p class="page-subtitle">A growing ecosystem of fast, privacy-respecting online utilities. Find the exact tool you need to get work done.</p>
+        
+        <!-- Live Search Input -->
+        <div style="max-width: 520px; margin: 2rem auto 0;">
+          <input
+            type="search"
+            id="toolsDirectorySearch"
+            placeholder="Search tools by name, keyword, or format..."
+            class="control-input"
+            style="padding: 0.875rem 1.25rem; font-size: 1rem; border-radius: var(--radius-full); box-shadow: var(--shadow-sm);"
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="container" style="padding-bottom: 5rem;">
+      <!-- Filter Category Buttons -->
+      <div id="categoryFilterBar" style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2.5rem; justify-content: center;">
+        <button class="btn btn-sm btn-primary filter-btn" data-filter="all">All Tools</button>
+        <button class="btn btn-sm btn-secondary filter-btn" data-filter="available">Active & Available</button>
+        <button class="btn btn-sm btn-secondary filter-btn" data-filter="pdf">PDF Tools</button>
+        <button class="btn btn-sm btn-secondary filter-btn" data-filter="image">Image Tools</button>
+        <button class="btn btn-sm btn-secondary filter-btn" data-filter="text">Text Tools</button>
+      </div>
+
+      <!-- Tools Grid (Dynamic from Registry) -->
+      <div id="toolsGridContainer" class="grid-tools"></div>
+      
+      <div id="noResultsNotice" style="display: none; text-align: center; padding: 4rem 1rem;">
+        <h3>No tools found</h3>
+        <p style="color: var(--text-muted); margin-top: 0.5rem;">Try adjusting your search query or switching categories.</p>
+      </div>
+
+      <!-- Designated AdSense Slot -->
+      <div class="ad-slot-container">
+        <div class="ad-slot-card">
+          <span>Advertisement Placeholder</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="/" class="brand-logo">
+            <div class="logo-symbol">E</div>
+            <span>Ecrio<span class="accent-dot">X</span></span>
+          </a>
+          <p>One Platform. Endless Possibilities. Free, fast, and privacy-conscious online utilities designed for everyday productivity.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Product</h4>
+          <ul class="footer-links">
+            <li><a href="/tools/">All Tools</a></li>
+            <li><a href="/categories/">Categories</a></li>
+            <li><a href="/tools/image-compressor/">Image Compressor</a></li>
+            <li><a href="/tools/text-analyzer/">Text Analyzer</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="/about/">About EcrioX</a></li>
+            <li><a href="/contact/">Contact Support</a></li>
+            <li><a href="/contact/">Feedback</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul class="footer-links">
+            <li><a href="/privacy/">Privacy Policy</a></li>
+            <li><a href="/terms/">Terms of Use</a></li>
+            <li><a href="/about/#privacy-architecture">Data Security</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 EcrioX. All rights reserved. Platform built for speed and privacy.</p>
+        <p>Canonical Domain: <a href="https://ecriox.com/" style="color: var(--color-primary);">ecriox.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/tools-registry.js"></script>
+  <script src="../js/analytics.js"></script>
+  <script src="../js/app.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const container = document.getElementById("toolsGridContainer");
+      const searchInput = document.getElementById("toolsDirectorySearch");
+      const noResults = document.getElementById("noResultsNotice");
+      const filterBtns = document.querySelectorAll(".filter-btn");
+
+      let activeFilter = "all";
+      let activeQuery = "";
+
+      function render() {
+        if (!window.EcrioXRegistry) return;
+        const allTools = window.EcrioXRegistry.getAllTools();
+
+        const filtered = allTools.filter(tool => {
+          // Category filter
+          if (activeFilter === "available" && tool.status !== "available") return false;
+          if (activeFilter !== "all" && activeFilter !== "available" && tool.category !== activeFilter) return false;
+
+          // Search query
+          if (activeQuery) {
+            const q = activeQuery.toLowerCase();
+            const matchName = tool.name.toLowerCase().includes(q);
+            const matchDesc = tool.description.toLowerCase().includes(q);
+            const matchCat = tool.categoryName.toLowerCase().includes(q);
+            const matchTags = tool.tags && tool.tags.some(t => t.toLowerCase().includes(q));
+            if (!matchName && !matchDesc && !matchCat && !matchTags) return false;
+          }
+          return true;
+        });
+
+        if (filtered.length === 0) {
+          container.innerHTML = "";
+          noResults.style.display = "block";
+          return;
+        }
+
+        noResults.style.display = "none";
+        container.innerHTML = filtered.map(tool => {
+          const isAvail = tool.status === "available";
+          const badge = isAvail
+            ? `<span class="badge badge-available">Available</span>`
+            : `<span class="badge badge-coming-soon">Coming Soon</span>`;
+
+          const action = isAvail
+            ? `<a href="${tool.route}" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>`
+            : `<button class="btn btn-sm btn-secondary" style="width: 100%; opacity: 0.8;" onclick="EcrioXApp.showToast('This tool is under active development. Coming very soon!')">Coming Soon</button>`;
+
+          return `
+            <div class="tool-card ${isAvail ? '' : 'coming-soon'}">
+              <div class="tool-card-header">
+                <div class="tool-icon">${tool.icon}</div>
+                ${badge}
+              </div>
+              <div class="tool-card-body">
+                <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">${tool.categoryName}</span>
+                <h3 class="tool-card-title">${tool.name}</h3>
+                <p class="tool-card-desc">${tool.description}</p>
+              </div>
+              <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+                ${action}
+              </div>
+            </div>
+          `;
+        }).join("");
+      }
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+          filterBtns.forEach(b => {
+            b.className = "btn btn-sm btn-secondary filter-btn";
+          });
+          btn.className = "btn btn-sm btn-primary filter-btn";
+          activeFilter = btn.getAttribute("data-filter");
+          render();
+        });
+      });
+
+      searchInput.addEventListener("input", (e) => {
+        activeQuery = e.target.value.trim();
+        render();
+      });
+
+      render();
+    });
+  </script>
+</body>
+</html>
