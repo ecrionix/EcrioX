@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PDF Editor Online – Edit, Sign, Annotate and Manage PDFs Free | EcrioX</title>
+  <meta name="description" content="Edit PDF files online for free with EcrioX. Add text, draw signatures, highlight, annotate, organize pages, insert images, fill forms and download edited PDFs with 100% private in-browser processing.">
+  <link rel="canonical" href="https://ecriox.com/pdf-editor/">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="PDF Editor Online – Edit, Sign, Annotate and Manage PDFs Free | EcrioX">
+  <meta property="og:description" content="Professional in-browser PDF editor. Add text, sign documents, annotate, insert images, manage pages, and export high-quality PDFs.">
+  <meta property="og:url" content="https://ecriox.com/pdf-editor/">
+  <meta property="og:site_name" content="EcrioX">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PDF Editor Online – EcrioX">
+  <meta name="twitter:description" content="Edit, sign, annotate, and organize PDF documents directly in your browser. 100% private.">
+
+  <!-- Global Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i){
+  w[l]=w[l]||[];
+  w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),
+  dl=l!='dataLayer'?'&l='+l:'';
+  j.async=true;
+  j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+  f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PQFRBJ9F');
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Schema.org SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "EcrioX PDF Editor",
+    "url": "https://ecriox.com/pdf-editor/",
+    "applicationCategory": "OfficeApplication",
+    "operatingSystem": "All",
+    "description": "Professional browser-based PDF workspace for editing text, electronic signing, markup annotations, page reordering, watermarking, and redaction with zero server uploads.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <!-- Google Fonts for Signatures -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Dancing+Script:wght@600&family=Pacifico&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    /* PDF Editor Specific Styles */
+    .editor-landing-container {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .dropzone-card {
+      background: var(--bg-surface);
+      border: 2px dashed var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 3.5rem 2rem;
+      text-align: center;
+      cursor: pointer;
+      transition: var(--transition);
+      position: relative;
+    }
+    .dropzone-card:hover, .dropzone-card.dragover {
+      border-color: var(--color-primary);
+      background: var(--color-primary-light);
+    }
+    .dropzone-icon {
+      width: 68px;
+      height: 68px;
+      margin: 0 auto 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-primary-light);
+      color: var(--color-primary);
+      border-radius: var(--radius-full);
+      font-size: 2rem;
+    }
+
+    /* Fullscreen Workspace Studio */
+    .editor-studio-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: var(--bg-page);
+      z-index: 9999;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .editor-studio-modal.open {
+      display: flex;
+    }
+
+    /* Top Application Bar */
+    .studio-top-bar {
+      height: 54px;
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1rem;
+      gap: 1rem;
+      flex-shrink: 0;
+      z-index: 20;
+    }
+    .studio-doc-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      max-width: 280px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Main Tools Ribbon */
+    .studio-ribbon {
+      background: var(--bg-surface-elevated);
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      padding: 0.35rem 0.75rem;
+      gap: 0.35rem;
+      overflow-x: auto;
+      flex-shrink: 0;
+      z-index: 15;
+    }
+    .ribbon-tool-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      padding: 0.4rem 0.65rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      border: 1px solid transparent;
+      border-radius: var(--radius-md);
+      background: transparent;
+      cursor: pointer;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+    .ribbon-tool-btn svg {
+      width: 18px;
+      height: 18px;
+    }
+    .ribbon-tool-btn:hover {
+      background: var(--bg-subtle);
+      color: var(--text-main);
+    }
+    .ribbon-tool-btn.active {
+      background: var(--color-primary-light);
+      color: var(--color-primary);
+      border-color: var(--color-primary-border);
+    }
+    .ribbon-divider {
+      width: 1px;
+      height: 28px;
+      background: var(--border-color);
+      margin: 0 0.25rem;
+      flex-shrink: 0;
+    }
+
+    /* 3-Column Studio Body */
+    .studio-body {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Left Sidebar: Page Thumbnails */
+    .studio-sidebar-left {
+      width: 200px;
+      background: var(--bg-surface);
+      border-right: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      transition: width 0.2s ease;
+      overflow: hidden;
+      z-index: 10;
+    }
+    .studio-sidebar-left.collapsed {
+      width: 0;
+      border-right: none;
+    }
+    .thumbnails-scroll-pane {
+      flex: 1;
+      overflow-y: auto;
+      padding: 0.85rem 0.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+    .thumb-card {
+      background: var(--bg-page);
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 0.35rem;
+      text-align: center;
+      cursor: pointer;
+      transition: var(--transition);
+      position: relative;
+    }
+    .thumb-card:hover {
+      border-color: var(--color-primary-border);
+    }
+    .thumb-card.active {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 2px var(--color-primary-light);
+    }
+    .thumb-canvas-box {
+      width: 100%;
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .thumb-canvas-box canvas {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+    }
+    .thumb-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0.35rem;
+      font-size: 0.75rem;
+      color: var(--text-subtle);
+      font-weight: 600;
+    }
+    .thumb-mini-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 2px;
+      border-radius: var(--radius-sm);
+    }
+    .thumb-mini-btn:hover {
+      color: var(--color-primary);
+      background: var(--bg-subtle);
+    }
+
+    /* Center: Document Stage */
+    .studio-viewport {
+      flex: 1;
+      background: #475569; /* Slate backdrop typical of professional PDF viewers */
+      overflow: auto;
+      padding: 2.5rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      position: relative;
+      touch-action: pan-x pan-y;
+    }
+    [data-theme="dark"] .studio-viewport {
+      background: #0b0f19;
+    }
+
+    /* Individual Page Container */
+    .page-stage-container {
+      position: relative;
+      background: #ffffff;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+      border-radius: 2px;
+      user-select: none;
+    }
+    .page-pdf-canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    .page-overlay-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: auto;
+    }
+
+    /* Interactive DOM Annotation Objects */
+    .dom-object-layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+    .editable-text-box {
+      position: absolute;
+      pointer-events: auto;
+      cursor: move;
+      outline: 1px dashed var(--color-primary);
+      padding: 2px 4px;
+      font-family: Helvetica, Arial, sans-serif;
+      min-width: 60px;
+      min-height: 24px;
+      line-height: 1.3;
+      user-select: text;
+    }
+    .editable-text-box:focus {
+      outline: 2px solid var(--color-primary);
+      cursor: text;
+    }
+    .placed-signature-box {
+      position: absolute;
+      pointer-events: auto;
+      cursor: move;
+      border: 1px dashed var(--color-primary);
+      line-height: 0;
+    }
+    .placed-signature-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      pointer-events: none;
+    }
+    .placed-redaction-box {
+      position: absolute;
+      pointer-events: auto;
+      cursor: move;
+      background: #000000;
+      border: 1px solid #ef4444;
+      opacity: 0.95;
+    }
+    .delete-obj-btn {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #ef4444;
+      color: #fff;
+      border: 1px solid #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    }
+
+    /* Right Sidebar: Contextual Properties */
+    .studio-sidebar-right {
+      width: 240px;
+      background: var(--bg-surface);
+      border-left: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      overflow-y: auto;
+      padding: 1.25rem 1rem;
+      gap: 1.25rem;
+      z-index: 10;
+    }
+    .sidebar-section-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-subtle);
+      margin-bottom: 0.5rem;
+    }
+    .prop-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      margin-bottom: 0.75rem;
+    }
+    .prop-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* Color Swatch Picker */
+    .swatch-group {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+    .color-swatch-dot {
+      width: 22px;
+      height: 22px;
+      border-radius: var(--radius-full);
+      border: 2px solid var(--border-color);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .color-swatch-dot:hover, .color-swatch-dot.active {
+      transform: scale(1.15);
+      border-color: var(--color-primary);
+    }
+
+    /* Modals (Signatures, Watermark, etc.) */
+    .studio-modal-backdrop {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(2px);
+      z-index: 10000;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .studio-modal-backdrop.open {
+      display: flex;
+    }
+    .studio-modal-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      width: 100%;
+      max-width: 540px;
+      box-shadow: var(--shadow-xl);
+      overflow: hidden;
+      animation: modalFadeIn 0.2s ease-out;
+    }
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: scale(0.96); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .modal-head {
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .modal-body {
+      padding: 1.5rem;
+    }
+    .modal-foot {
+      padding: 1rem 1.5rem;
+      border-top: 1px solid var(--border-color);
+      background: var(--bg-subtle);
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.75rem;
+    }
+
+    /* Signature Canvas Pad */
+    .sig-canvas-pad {
+      width: 100%;
+      height: 180px;
+      background: #ffffff;
+      border: 2px dashed var(--border-color);
+      border-radius: var(--radius-md);
+      cursor: crosshair;
+      touch-action: none;
+    }
+    .cursive-preview-box {
+      font-size: 2.25rem;
+      padding: 1.25rem;
+      text-align: center;
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      color: #002d72;
+      min-height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    /* Features Grid */
+    .features-badge-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin: 3.5rem 0 2.5rem;
+    }
+    .badge-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .badge-card svg {
+      width: 24px;
+      height: 24px;
+      color: var(--color-primary);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* SEO Article */
+    .seo-section {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2rem;
+      margin: 3rem 0;
+    }
+    .seo-section h2 {
+      margin-bottom: 1rem;
+      color: var(--text-main);
+    }
+    .seo-section p, .seo-section li {
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+    .step-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin: 1.75rem 0;
+    }
+    .step-box {
+      background: var(--bg-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+    }
+    .step-number {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--color-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    /* FAQ List */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .faq-item {
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: var(--bg-surface);
+    }
+    .faq-question {
+      padding: 1.25rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--bg-surface);
+      border: none;
+      width: 100%;
+      text-align: left;
+      color: var(--text-main);
+    }
+    .faq-answer {
+      padding: 0 1.25rem 1.25rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      display: none;
+    }
+    .faq-item.open .faq-answer {
+      display: block;
+    }
+    .faq-item.open .faq-icon {
+      transform: rotate(180deg);
+    }
+    .faq-icon {
+      transition: transform 0.2s ease;
+    }
+  </style>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQFRBJ9F"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner container">
+      <a href="../" class="brand-logo" aria-label="EcrioX Home">
+        <span class="logo-mark">⚡</span>
+        <span class="logo-text">Ecrio<span class="logo-accent">X</span></span>
+      </a>
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="../tools/" class="nav-link active">All Tools</a>
+        <a href="../tools/pdf/" class="nav-link">PDF Tools</a>
+        <a href="../tools/image/" class="nav-link">Image Tools</a>
+        <a href="../tools/developer/" class="nav-link">Developer</a>
+        <a href="../categories/" class="nav-link">Categories</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light theme">
+          <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Pre-Upload Landing View -->
+  <main class="page-main container" id="landing-view" style="padding-top: 2rem; padding-bottom: 4rem;">
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb" style="margin-bottom: 1.5rem;">
+      <a href="../">Home</a>
+      <span class="bc-sep">/</span>
+      <a href="../tools/pdf/">PDF Tools</a>
+      <span class="bc-sep">/</span>
+      <span class="bc-current">PDF Editor</span>
+    </nav>
+
+    <div class="editor-landing-container">
+      <!-- Hero Intro -->
+      <div style="text-align: center; margin-bottom: 2.25rem;">
+        <span class="badge" style="background: var(--color-primary-light); color: var(--color-primary); font-weight: 700; margin-bottom: 0.75rem; display: inline-block;">PROFESSIONAL PDF WORKSPACE • 100% PRIVATE</span>
+        <h1 style="font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800; color: var(--text-main); margin-bottom: 0.75rem; letter-spacing: -0.02em;">Free Online PDF Editor</h1>
+        <p style="color: var(--text-muted); font-size: 1.15rem; max-width: 680px; margin: 0 auto;">
+          Edit, sign, annotate, and manage PDF documents right in your browser. Add text, draw signatures, highlight, reorder pages, and redact sensitive data without cloud uploads.
+        </p>
+      </div>
+
+      <!-- Upload Dropzone -->
+      <div class="dropzone-card" id="dropzone" role="button" tabindex="0" aria-label="Upload PDF to edit">
+        <input type="file" id="file-input" accept="application/pdf" style="display: none;">
+        <div class="dropzone-icon">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 20h9"></path>
+            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+          </svg>
+        </div>
+        <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-main);">Drop your PDF here, or <span style="color: var(--color-primary); text-decoration: underline;">browse files</span></h3>
+        <p style="color: var(--text-subtle); font-size: 0.9rem;">Supports PDF documents up to 100MB • 100% client-side privacy</p>
+        
+        <div style="margin-top: 1.5rem;">
+          <button type="button" class="btn btn-secondary" id="btn-start-blank" style="padding: 0.5rem 1rem; font-size: 0.85rem;">
+            + Or Start with a Blank PDF Document
+          </button>
+        </div>
+      </div>
+
+      <!-- Feature Badges -->
+      <div class="features-badge-grid">
+        <div class="badge-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          <div>
+            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">100% In-Browser Privacy</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Confidential contracts and legal documents never leave your computer. All rendering and export execute locally.</p>
+          </div>
+        </div>
+        <div class="badge-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+          <div>
+            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">Electronic Signing Suite</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Draw signatures with mouse or stylus, type realistic cursive signatures, or upload stamp/signature graphics.</p>
+          </div>
+        </div>
+        <div class="badge-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+          <div>
+            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">Add Text & Annotate</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Type editable text, highlight passages, draw arrows and shapes, and add callout notes anywhere on the page.</p>
+          </div>
+        </div>
+        <div class="badge-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          <div>
+            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">Organize & Reorder Pages</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Rotate sideways pages, delete unwanted sheets, duplicate pages, or insert new blank sheets seamlessly.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEO Educational Content -->
+      <section class="seo-section">
+        <h2>What is an Online PDF Editor?</h2>
+        <p>
+          The Portable Document Format (PDF) was developed to preserve fixed layout geometry across every screen and printer. However, editing a PDF traditionally demanded costly desktop installations like Adobe Acrobat Pro. EcrioX provides a professional, full-featured online PDF editor that runs directly in your web browser. From drafting contracts and filling tax forms to signing invoices and redacting private identifiers, you can perform complete document management without software installations.
+        </p>
+
+        <h3 style="margin: 2rem 0 0.75rem; color: var(--text-main);">How to Edit a PDF Online in 3 Simple Steps</h3>
+        <div class="step-grid">
+          <div class="step-box">
+            <div class="step-number">1</div>
+            <h4 style="font-weight: 700; margin-bottom: 0.5rem; color: var(--text-main);">Open Document</h4>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0;">Drag and drop your PDF into the upload area or click to browse files from your computer or mobile device.</p>
+          </div>
+          <div class="step-box">
+            <div class="step-number">2</div>
+            <h4 style="font-weight: 700; margin-bottom: 0.5rem; color: var(--text-main);">Edit, Sign &amp; Markup</h4>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0;">Use the top ribbon toolbar to add text, draw signatures, highlight lines, insert images, and organize pages.</p>
+          </div>
+          <div class="step-box">
+            <div class="step-number">3</div>
+            <h4 style="font-weight: 700; margin-bottom: 0.5rem; color: var(--text-main);">Download Edited PDF</h4>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0;">Click the Download PDF button. Your edits, signatures, and page order are compiled into a crisp standard PDF.</p>
+          </div>
+        </div>
+
+        <h3 style="margin: 2rem 0 0.75rem; color: var(--text-main);">Electronic Signatures vs Digital Signatures</h3>
+        <p>
+          EcrioX provides an advanced <strong>Electronic Signature (e-Sign)</strong> suite that lets you draw your signature by hand, type your name using realistic cursive calligraphy fonts, or upload a digital signature scan with automatic background transparency removal.
+        </p>
+        <p>
+          Under major regulations like the US ESIGN Act and EU eIDAS regulations, electronic signatures placed on commercial agreements, nondisclosure agreements (NDAs), invoices, and employment paperwork carry legitimate legal validity for everyday business transactions.
+        </p>
+
+        <h3 style="margin: 2rem 0 0.75rem; color: var(--text-main);">Redaction and Document Privacy</h3>
+        <p>
+          When redacting sensitive personal identification numbers (SSNs, Aadhaar, tax IDs, credit cards), placing a black rectangle in a word processor can often be reversed by simply copying the text underneath. EcrioX PDF Editor burns redaction rectangles directly into the PDF coordinate stream, shielding confidential information from unauthorized inspection.
+        </p>
+
+        <!-- Frequently Asked Questions -->
+        <h3 style="margin: 2.5rem 0 1rem; color: var(--text-main);">Frequently Asked Questions (FAQ)</h3>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>Is this online PDF editor really 100% free?</span>
+              <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              Yes! EcrioX PDF Editor is completely free. There are no page quotas, no hidden subscriptions, and zero branding watermarks on your downloaded documents.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>Are my confidential PDF documents uploaded to your servers?</span>
+              <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              No. Most online PDF editors upload your files to remote servers. EcrioX renders and edits the PDF completely inside your browser using client-side WebAssembly and PDF-Lib. Your files never leave your device.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>Can I add multiple signatures or sign on multiple pages?</span>
+              <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              Yes. Once you create your signature, you can place it as many times as needed across any page of the document, resize it, and position it with precision.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>Will the exported PDF open in Adobe Acrobat and preview viewers?</span>
+              <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              Yes. The exported file adheres strictly to the ISO 32000 PDF standard and opens smoothly in Adobe Acrobat Reader, Apple Preview, Google Chrome, Microsoft Edge, and all standard PDF software.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>Can I rotate and delete unwanted pages?</span>
+              <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              Yes. Use the left thumbnail sidebar to rotate pages 90 degrees, delete unneeded pages, duplicate pages, or add new blank pages to your document.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Related PDF Tools -->
+      <section style="margin-top: 3rem;">
+        <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 1.25rem; color: var(--text-main);">More Free PDF Utilities</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem;">
+          <a href="../pdf-compressor/" style="display: block; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; text-decoration: none; color: inherit; transition: var(--transition);">
+            <div style="font-weight: 700; color: var(--color-primary); margin-bottom: 0.25rem;">PDF Compressor</div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Reduce PDF document size while preserving crisp vector typography.</p>
+          </a>
+          <a href="../pdf-to-word/" style="display: block; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; text-decoration: none; color: inherit; transition: var(--transition);">
+            <div style="font-weight: 700; color: var(--color-primary); margin-bottom: 0.25rem;">PDF to Word Converter</div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Convert PDF documents into editable Microsoft Word (.docx) files.</p>
+          </a>
+          <a href="../merge-pdf/" style="display: block; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; text-decoration: none; color: inherit; transition: var(--transition);">
+            <div style="font-weight: 700; color: var(--color-primary); margin-bottom: 0.25rem;">Merge PDF</div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Combine multiple PDF files into one clean, well-organized document.</p>
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Fullscreen Professional PDF Workspace Studio -->
+  <div class="editor-studio-modal" id="editor-studio">
+    <!-- Top Studio Bar -->
+    <header class="studio-top-bar">
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <button class="btn btn-sm btn-secondary" id="btn-close-studio" title="Close Workspace" style="padding: 0.35rem 0.65rem;">
+          ✕ Exit
+        </button>
+        <div class="studio-doc-title">
+          <span style="font-size: 1.1rem;">📄</span>
+          <span id="doc-title-text" title="Click to rename document" contenteditable="true" style="outline: none; border-bottom: 1px dashed var(--border-color);">document.pdf</span>
+        </div>
+      </div>
+
+      <!-- Undo / Redo & Zoom Controls -->
+      <div style="display: flex; align-items: center; gap: 0.4rem;">
+        <button class="btn btn-sm btn-secondary" id="btn-undo" title="Undo (Ctrl+Z)" style="padding: 0.35rem 0.6rem;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 14 4 9 9 4"></polyline><path d="M20 20v-7a4 4 0 0 0-4-4H4"></path></svg>
+        </button>
+        <button class="btn btn-sm btn-secondary" id="btn-redo" title="Redo (Ctrl+Y)" style="padding: 0.35rem 0.6rem;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 14 20 9 15 4"></polyline><path d="M4 20v-7a4 4 0 0 1 4-4h12"></path></svg>
+        </button>
+
+        <div class="ribbon-divider" style="height: 20px;"></div>
+
+        <button class="btn btn-sm btn-secondary" id="btn-zoom-out" title="Zoom Out" style="padding: 0.35rem 0.55rem;">-</button>
+        <span id="zoom-level-text" style="font-size: 0.8rem; font-weight: 700; width: 44px; text-align: center;">100%</span>
+        <button class="btn btn-sm btn-secondary" id="btn-zoom-in" title="Zoom In" style="padding: 0.35rem 0.55rem;">+</button>
+        <button class="btn btn-sm btn-secondary" id="btn-fit-width" title="Fit to Width" style="padding: 0.35rem 0.6rem; font-size: 0.75rem;">Fit Width</button>
+      </div>
+
+      <!-- Export & Print Actions -->
+      <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <button class="btn btn-sm btn-secondary" id="btn-print-doc" title="Print Document" style="padding: 0.35rem 0.75rem;">
+          🖨️ Print
+        </button>
+        <button class="btn btn-sm btn-primary" id="btn-export-pdf" style="padding: 0.45rem 1.15rem; font-weight: 700;">
+          ⬇️ Download PDF
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Tool Ribbon -->
+    <nav class="studio-ribbon">
+      <button type="button" class="ribbon-tool-btn active" id="tool-select" data-tool="select" title="Select and Move Objects">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3l7 18 3-7 7-3L3 3z"></path></svg>
+        <span>Select</span>
+      </button>
+
+      <button type="button" class="ribbon-tool-btn" id="tool-text" data-tool="text" title="Add Text or Replace Existing Text">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 7 4 4 20 4 20 7"></polyline><line x1="12" y1="4" x2="12" y2="20"></line></svg>
+        <span>Add Text</span>
+      </button>
+
+      <button type="button" class="ribbon-tool-btn" id="tool-sign" data-tool="sign" title="Add Electronic Signature">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+        <span>Sign</span>
+      </button>
+
+      <div class="ribbon-divider"></div>
+
+      <button type="button" class="ribbon-tool-btn" id="tool-highlight" data-tool="highlight" title="Highlight Passages">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+        <span>Highlight</span>
+      </button>
+
+      <button type="button" class="ribbon-tool-btn" id="tool-draw" data-tool="draw" title="Freehand Pen / Pencil">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
+        <span>Draw</span>
+      </button>
+
+      <button type="button" class="ribbon-tool-btn" id="tool-rect" data-tool="rect" title="Rectangle Shape">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect></svg>
+        <span>Rectangle</span>
+      </button>
+
+      <button type="button" class="ribbon-tool-btn" id="tool-circle" data-tool="circle" title="Circle Shape">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle></svg>
+        <span>Circle</span>
+      </button>
+
+      <button type="button" class="ribbon-tool-btn" id="tool-line" data-tool="line" title="Straight Line">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="19" x2="19" y2="5"></line></svg>
+        <span>Line</span>
+      </button>
+
+      <div class="ribbon-divider"></div>
+
+      <button type="button" class="ribbon-tool-btn" id="tool-image" data-tool="image" title="Insert Image / Logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+        <span>Image</span>
+        <input type="file" id="image-upload-input" accept="image/jpeg, image/png, image/webp" style="display:none;">
+      </button>
+
+      <button type="button" class="ribbon-tool-btn" id="tool-redact" data-tool="redact" title="Permanent Blackout Redaction">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" fill="currentColor"></rect></svg>
+        <span>Redact</span>
+      </button>
+
+      <button type="button" class="ribbon-tool-btn" id="tool-watermark" data-tool="watermark" title="Add Watermark Across All Pages">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+        <span>Watermark</span>
+      </button>
+
+      <button type="button" class="ribbon-tool-btn" id="tool-page-numbers" data-tool="page-numbers" title="Add Page Numbering">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+        <span>Page Numbers</span>
+      </button>
+
+      <div class="ribbon-divider"></div>
+
+      <button type="button" class="ribbon-tool-btn" id="btn-add-blank-page" title="Insert a Blank Page">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><line x1="12" y1="11" x2="12" y2="17"></line><line x1="9" y1="14" x2="15" y2="14"></line></svg>
+        <span>+ Blank Page</span>
+      </button>
+    </nav>
+
+    <!-- 3-Column Studio Body -->
+    <div class="studio-body">
+      <!-- Left Sidebar: Page Thumbnails -->
+      <aside class="studio-sidebar-left" id="sidebar-left">
+        <div style="padding: 0.65rem 0.75rem; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center;">
+          <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-main);">PAGES (<span id="total-pages-counter">0</span>)</span>
+          <button class="thumb-mini-btn" id="btn-rotate-all-pages" title="Rotate All Pages 90°">↻ Rotate All</button>
+        </div>
+        <div class="thumbnails-scroll-pane" id="thumbnails-container">
+          <!-- Populated dynamically -->
+        </div>
+      </aside>
+
+      <!-- Center Document Stage -->
+      <section class="studio-viewport" id="studio-viewport">
+        <!-- Rendered PDF Pages will be appended here dynamically -->
+      </section>
+
+      <!-- Right Sidebar: Contextual Properties Inspector -->
+      <aside class="studio-sidebar-right" id="sidebar-right">
+        <div class="sidebar-section-title">Properties</div>
+
+        <!-- Text Properties Group -->
+        <div id="props-text-group">
+          <div class="prop-row">
+            <label class="prop-label">Font Family</label>
+            <select id="prop-font-family" class="control-input" style="padding: 0.4rem 0.6rem; font-size: 0.85rem;">
+              <option value="Helvetica" selected>Helvetica / Arial</option>
+              <option value="TimesRoman">Times New Roman</option>
+              <option value="Courier">Courier Monospace</option>
+            </select>
+          </div>
+
+          <div class="prop-row">
+            <label class="prop-label">Font Size (<span id="prop-font-size-val">16</span>pt)</label>
+            <input type="range" id="prop-font-size" min="8" max="72" value="16" class="range-slider">
+          </div>
+
+          <div class="prop-row">
+            <label class="prop-label">Text Color</label>
+            <div class="swatch-group">
+              <div class="color-swatch-dot active" data-color="#000000" style="background:#000000;"></div>
+              <div class="color-swatch-dot" data-color="#2563eb" style="background:#2563eb;"></div>
+              <div class="color-swatch-dot" data-color="#dc2626" style="background:#dc2626;"></div>
+              <div class="color-swatch-dot" data-color="#16a34a" style="background:#16a34a;"></div>
+              <div class="color-swatch-dot" data-color="#ffffff" style="background:#ffffff; border:1px solid #cbd5e1;"></div>
+              <input type="color" id="prop-custom-color" value="#000000" style="width:22px; height:22px; border:none; padding:0; cursor:pointer;">
+            </div>
+          </div>
+
+          <div class="prop-row">
+            <label class="prop-label">Background Fill</label>
+            <select id="prop-bg-fill" class="control-input" style="padding: 0.4rem 0.6rem; font-size: 0.85rem;">
+              <option value="transparent" selected>Transparent</option>
+              <option value="#ffffff">Whiteout (Cover Existing Text)</option>
+              <option value="#fef08a">Yellow Highlight</option>
+              <option value="#bfdbfe">Blue Fill</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Pen / Draw / Shape Stroke Group -->
+        <div id="props-draw-group">
+          <div class="prop-row">
+            <label class="prop-label">Stroke Thickness (<span id="prop-stroke-val">3</span>px)</label>
+            <input type="range" id="prop-stroke-width" min="1" max="24" value="3" class="range-slider">
+          </div>
+          <div class="prop-row">
+            <label class="prop-label">Opacity (<span id="prop-opacity-val">100</span>%)</label>
+            <input type="range" id="prop-opacity" min="20" max="100" value="100" class="range-slider">
+          </div>
+        </div>
+
+        <div style="margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+          <div style="font-size: 0.75rem; color: var(--text-subtle); line-height: 1.5;">
+            💡 <strong>Keyboard Shortcuts:</strong><br>
+            • <code>Ctrl + Z</code>: Undo<br>
+            • <code>Ctrl + Y</code>: Redo<br>
+            • <code>Delete</code>: Remove selected<br>
+            • <code>+ / -</code>: Zoom
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- Modal: Electronic Signature Creator -->
+  <div class="studio-modal-backdrop" id="modal-signature">
+    <div class="studio-modal-card">
+      <div class="modal-head">
+        <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--text-main); margin: 0;">Create Electronic Signature</h3>
+        <button type="button" class="thumb-mini-btn" id="btn-close-sig-modal" style="font-size: 1.25rem;">✕</button>
+      </div>
+      <div class="modal-body">
+        <!-- Sig Mode Tabs -->
+        <div style="display: flex; gap: 0.5rem; margin-bottom: 1.25rem;">
+          <button type="button" class="btn btn-sm btn-primary" id="tab-sig-draw" style="flex: 1;">Draw</button>
+          <button type="button" class="btn btn-sm btn-secondary" id="tab-sig-type" style="flex: 1;">Type Cursive</button>
+          <button type="button" class="btn btn-sm btn-secondary" id="tab-sig-upload" style="flex: 1;">Upload Image</button>
+        </div>
+
+        <!-- Draw Mode Pad -->
+        <div id="sig-mode-draw-pane">
+          <canvas id="sig-draw-canvas" class="sig-canvas-pad"></canvas>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.75rem;">
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              <span style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted);">Color:</span>
+              <div class="color-swatch-dot active" data-sig-color="#000000" style="background:#000000;"></div>
+              <div class="color-swatch-dot" data-sig-color="#002d72" style="background:#002d72;" title="Navy Ink"></div>
+              <div class="color-swatch-dot" data-sig-color="#b91c1c" style="background:#b91c1c;" title="Red Ink"></div>
+            </div>
+            <button type="button" class="btn btn-sm btn-secondary" id="btn-clear-sig-pad">Clear Pad</button>
+          </div>
+        </div>
+
+        <!-- Type Mode Pad -->
+        <div id="sig-mode-type-pane" style="display: none;">
+          <input type="text" id="sig-type-input" class="control-input" placeholder="Type your full name..." style="margin-bottom: 1rem; font-size: 1.05rem;" value="John Doe">
+          <div class="cursive-preview-box" id="sig-cursive-preview" style="font-family: 'Dancing Script', cursive;">
+            John Doe
+          </div>
+          <div style="display: flex; gap: 0.5rem; justify-content: center; margin-top: 0.75rem;">
+            <button type="button" class="btn btn-sm btn-secondary sig-font-picker active" data-font="'Dancing Script', cursive">Dancing Script</button>
+            <button type="button" class="btn btn-sm btn-secondary sig-font-picker" data-font="'Caveat', cursive">Caveat</button>
+            <button type="button" class="btn btn-sm btn-secondary sig-font-picker" data-font="'Pacifico', cursive">Pacifico</button>
+          </div>
+        </div>
+
+        <!-- Upload Mode Pad -->
+        <div id="sig-mode-upload-pane" style="display: none; text-align: center;">
+          <input type="file" id="sig-file-input" accept="image/png, image/jpeg" style="display: none;">
+          <div style="border: 2px dashed var(--border-color); border-radius: var(--radius-md); padding: 2rem; cursor: pointer;" id="sig-upload-box">
+            <span style="font-size: 2rem;">🖋️</span>
+            <p style="margin: 0.5rem 0 0; font-size: 0.9rem; font-weight: 600; color: var(--text-main);">Click to upload signature photo</p>
+            <p style="font-size: 0.75rem; color: var(--text-subtle); margin: 0;">PNG or JPG (White background is automatically keyed out)</p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-foot">
+        <button type="button" class="btn btn-secondary" id="btn-cancel-sig">Cancel</button>
+        <button type="button" class="btn btn-primary" id="btn-apply-sig" style="font-weight: 700;">Place Signature on PDF &rarr;</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Watermark Creator -->
+  <div class="studio-modal-backdrop" id="modal-watermark">
+    <div class="studio-modal-card">
+      <div class="modal-head">
+        <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--text-main); margin: 0;">Add Watermark</h3>
+        <button type="button" class="thumb-mini-btn" id="btn-close-wm-modal" style="font-size: 1.25rem;">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="prop-row">
+          <label class="prop-label">Watermark Text</label>
+          <input type="text" id="wm-text-input" class="control-input" value="CONFIDENTIAL">
+        </div>
+        <div class="prop-row">
+          <label class="prop-label">Rotation Angle</label>
+          <select id="wm-angle-select" class="control-input">
+            <option value="-45" selected>Diagonal (-45°)</option>
+            <option value="0">Horizontal (0°)</option>
+            <option value="45">Diagonal (+45°)</option>
+          </select>
+        </div>
+        <div class="prop-row">
+          <label class="prop-label">Opacity (<span id="wm-opacity-val">20</span>%)</label>
+          <input type="range" id="wm-opacity-slider" min="5" max="60" value="20" class="range-slider">
+        </div>
+      </div>
+      <div class="modal-foot">
+        <button type="button" class="btn btn-secondary" id="btn-cancel-wm">Cancel</button>
+        <button type="button" class="btn btn-primary" id="btn-apply-wm" style="font-weight: 700;">Apply to All Pages</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Page Numbering -->
+  <div class="studio-modal-backdrop" id="modal-page-numbers">
+    <div class="studio-modal-card">
+      <div class="modal-head">
+        <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--text-main); margin: 0;">Add Page Numbers</h3>
+        <button type="button" class="thumb-mini-btn" id="btn-close-pn-modal" style="font-size: 1.25rem;">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="prop-row">
+          <label class="prop-label">Numbering Position</label>
+          <select id="pn-position-select" class="control-input">
+            <option value="bottom-center" selected>Bottom Center</option>
+            <option value="bottom-right">Bottom Right</option>
+            <option value="top-right">Top Right</option>
+            <option value="top-center">Top Center</option>
+          </select>
+        </div>
+        <div class="prop-row">
+          <label class="prop-label">Format</label>
+          <select id="pn-format-select" class="control-input">
+            <option value="Page {n} of {total}" selected>Page 1 of 5</option>
+            <option value="Page {n}">Page 1</option>
+            <option value="{n}">1</option>
+          </select>
+        </div>
+        <div class="prop-row">
+          <label class="prop-label">Starting Number</label>
+          <input type="number" id="pn-start-num" class="control-input" value="1" min="1">
+        </div>
+      </div>
+      <div class="modal-foot">
+        <button type="button" class="btn btn-secondary" id="btn-cancel-pn">Cancel</button>
+        <button type="button" class="btn btn-primary" id="btn-apply-pn" style="font-weight: 700;">Insert Page Numbers</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner container">
+      <div class="footer-grid">
+        <div class="footer-col brand-col">
+          <div class="brand-logo footer-logo">
+            <span class="logo-mark">⚡</span>
+            <span class="logo-text">Ecrio<span class="logo-accent">X</span></span>
+          </div>
+          <p class="tagline">One Platform. Endless Possibilities.</p>
+          <p class="brand-desc">Fast, private, in-browser online utilities built for developers, designers, students, and professionals worldwide.</p>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Tools</h4>
+          <ul class="footer-links">
+            <li><a href="../tools/pdf/">PDF Tools</a></li>
+            <li><a href="../tools/image/">Image Tools</a></li>
+            <li><a href="../tools/developer/">Developer Tools</a></li>
+            <li><a href="../tools/text/">Text Tools</a></li>
+            <li><a href="../tools/productivity/">Productivity</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Flagship Utilities</h4>
+          <ul class="footer-links">
+            <li><a href="../pdf-editor/">PDF Editor</a></li>
+            <li><a href="../pdf-compressor/">PDF Compressor</a></li>
+            <li><a href="../pdf-to-word/">PDF to Word</a></li>
+            <li><a href="../heic-to-jpg/">HEIC to JPG</a></li>
+            <li><a href="../background-remover/">Background Remover</a></li>
+            <li><a href="../qr-code-generator/">QR Code Generator</a></li>
+            <li><a href="../password-generator/">Password Generator</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Company & Legal</h4>
+          <ul class="footer-links">
+            <li><a href="../about/">About Us</a></li>
+            <li><a href="../contact/">Contact</a></li>
+            <li><a href="../privacy/">Privacy Policy</a></li>
+            <li><a href="../terms/">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 EcrioX. All rights reserved. Zero file uploads — all conversions run in your browser.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- External Libraries: PDF.js & PDF-Lib -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.9/dist/pdf-lib.min.js"></script>
+
+  <script src="../js/app.js"></script>
+  <script src="tool.js"></script>
+  <script>
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        item.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>
