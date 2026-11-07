@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to EcrioX</title>
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --primary-hover: #4338ca;
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --border: #334155;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 1.5rem;
+    }
+
+    .container {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 2.5rem;
+      max-width: 520px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #818cf8;
+      background: rgba(99, 102, 241, 0.1);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      border-radius: 9999px;
+      margin-bottom: 1.25rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+    }
+
+    p {
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 1.75rem;
+      font-size: 1rem;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: var(--primary);
+      color: #ffffff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background-color 0.2s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn:hover {
+      background-color: var(--primary-hover);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <span class="badge">Ready to build</span>
+    <h1>Welcome to EcrioX</h1>
+    <p>This is a dummy landing page. You can now start customizing your project structure, styles, and scripts.</p>
+    <button class="btn" onclick="alert('Hello from EcrioX!')">Click Me</button>
+  </div>
+</body>
+</html>
