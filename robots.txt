@@ -2,5 +2,9 @@
 User-agent: *
 Allow: /
 
+# Google AdSense Crawler
+User-agent: Mediapartners-Google
+Allow: /
+
 # Sitemap declaration
 Sitemap: https://ecriox.com/sitemap.xml
