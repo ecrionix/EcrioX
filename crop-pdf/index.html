@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crop PDF Online – Trim PDF Margins & Pages Free | EcrioX</title>
+  <meta name="description" content="Free online Crop PDF tool. Trim white margins, crop PDF pages with an interactive visual crop box, and apply crops to single or all pages without losing quality.">
+  <link rel="canonical" href="https://ecriox.com/crop-pdf/">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Crop PDF Online – Trim PDF Margins & Pages Free | EcrioX">
+  <meta property="og:description" content="Visually crop PDF pages or trim empty margins in your browser. Fast, free, and completely private.">
+  <meta property="og:url" content="https://ecriox.com/crop-pdf/">
+  <meta property="og:site_name" content="EcrioX">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Crop PDF Online – EcrioX">
+  <meta name="twitter:description" content="Trim PDF page margins with an interactive resizable crop box.">
+
+  <!-- Global Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i){
+  w[l]=w[l]||[];
+  w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),
+  dl=l!='dataLayer'?'&l='+l:'';
+  j.async=true;
+  j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+  f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PQFRBJ9F');
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Schema.org WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "EcrioX Crop PDF",
+    "url": "https://ecriox.com/crop-pdf/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "description": "Trim empty white margins or crop PDF pages visually with an interactive marquee box and apply to all or specific pages.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .crop-workspace-layout {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 2rem;
+      align-items: start;
+    }
+    @media (max-width: 960px) {
+      .crop-workspace-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Preview & Crop Viewport */
+    .crop-viewport {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      min-height: 520px;
+      display: flex;
+      flex-direction: column;
+    }
+    .drop-zone {
+      border: 2px dashed var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 4rem 2rem;
+      text-align: center;
+      cursor: pointer;
+      transition: var(--transition);
+      background: var(--bg-subtle);
+      margin: auto 0;
+    }
+    .drop-zone:hover, .drop-zone.dragover {
+      border-color: var(--color-primary);
+      background: var(--color-primary-light);
+    }
+
+    /* Stage */
+    .crop-stage-container {
+      position: relative;
+      background: #525659;
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: auto;
+      max-height: 580px;
+    }
+    .crop-stage {
+      position: relative;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+      background: #ffffff;
+      display: inline-block;
+      user-select: none;
+    }
+    #crop-pdf-canvas {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Interactive Crop Box Overlay */
+    .crop-overlay-dim {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      pointer-events: none;
+    }
+    .crop-box {
+      position: absolute;
+      border: 2px solid var(--color-primary);
+      box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.45);
+      cursor: move;
+      box-sizing: border-box;
+    }
+    /* Handles */
+    .crop-handle {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: #ffffff;
+      border: 2px solid var(--color-primary);
+      border-radius: 2px;
+      box-sizing: border-box;
+    }
+    .handle-nw { top: -6px; left: -6px; cursor: nwse-resize; }
+    .handle-ne { top: -6px; right: -6px; cursor: nesw-resize; }
+    .handle-sw { bottom: -6px; left: -6px; cursor: nesw-resize; }
+    .handle-se { bottom: -6px; right: -6px; cursor: nwse-resize; }
+    .handle-n { top: -6px; left: 50%; transform: translateX(-50%); cursor: ns-resize; }
+    .handle-s { bottom: -6px; left: 50%; transform: translateX(-50%); cursor: ns-resize; }
+    .handle-w { top: 50%; left: -6px; transform: translateY(-50%); cursor: ew-resize; }
+    .handle-e { top: 50%; right: -6px; transform: translateY(-50%); cursor: ew-resize; }
+
+    /* Controls Panel */
+    .controls-panel {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .setting-group { margin-bottom: 1.25rem; }
+    .setting-label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-main);
+      display: block;
+      margin-bottom: 0.45rem;
+    }
+
+    /* Margin inputs grid */
+    .margins-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+      background: var(--bg-subtle);
+      padding: 1rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+    }
+    .margin-input-box {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    .margin-input-box label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-subtle);
+      text-transform: uppercase;
+    }
+
+    /* Features Grid */
+    .features-badge-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin: 3.5rem 0 2.5rem;
+    }
+    .badge-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .badge-card svg {
+      width: 24px;
+      height: 24px;
+      color: var(--color-primary);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* SEO Article */
+    .seo-section {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2rem;
+      margin: 3rem 0;
+    }
+    .seo-section h2 { margin-bottom: 1rem; color: var(--text-main); }
+    .seo-section p, .seo-section li { color: var(--text-muted); line-height: 1.7; margin-bottom: 1rem; }
+
+    /* FAQ */
+    .faq-list { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
+    .faq-item { border: 1px solid var(--border-color); border-radius: var(--radius-md); overflow: hidden; background: var(--bg-surface); }
+    .faq-question { padding: 1.25rem; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: var(--bg-surface); border: none; width: 100%; text-align: left; color: var(--text-main); }
+    .faq-answer { padding: 0 1.25rem 1.25rem; color: var(--text-muted); line-height: 1.6; display: none; }
+    .faq-item.open .faq-answer { display: block; }
+    .faq-item.open .faq-icon { transform: rotate(180deg); }
+    .faq-icon { transition: transform 0.2s ease; }
+  </style>
+
+  <!-- PDF.js CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <!-- PDF-Lib CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQFRBJ9F"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner container">
+      <a href="../" class="brand-logo" aria-label="EcrioX Home">
+        <span class="logo-mark">⚡</span>
+        <span class="logo-text">Ecrio<span class="logo-accent">X</span></span>
+      </a>
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="../tools/" class="nav-link active">All Tools</a>
+        <a href="../tools/pdf/" class="nav-link">PDF Tools</a>
+        <a href="../tools/image/" class="nav-link">Image Tools</a>
+        <a href="../tools/calculators/" class="nav-link">Calculators</a>
+        <a href="../categories/" class="nav-link">Categories</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light theme">
+          <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-main container" style="padding-top: 2rem; padding-bottom: 4rem;">
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb" style="margin-bottom: 1.5rem;">
+      <a href="../">Home</a>
+      <span class="bc-sep">/</span>
+      <a href="../tools/pdf/">PDF Tools</a>
+      <span class="bc-sep">/</span>
+      <span class="bc-current">Crop PDF</span>
+    </nav>
+
+    <div style="text-align: center; margin-bottom: 2rem;">
+      <span class="badge" style="background: var(--color-primary-light); color: var(--color-primary); font-weight: 700; margin-bottom: 0.75rem; display: inline-block;">MARGIN TRIMMER • VISUAL CROP</span>
+      <h1 style="font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800; color: var(--text-main); margin-bottom: 0.75rem; letter-spacing: -0.02em;">Crop PDF Online</h1>
+      <p style="color: var(--text-muted); font-size: 1.15rem; max-width: 680px; margin: 0 auto;">
+        Trim unwanted margins and crop PDF pages with an interactive visual crop tool. Apply to one page or the entire document with lossless quality.
+      </p>
+    </div>
+
+    <!-- Main Workspace -->
+    <div class="crop-workspace-layout">
+      <!-- Preview Column -->
+      <div class="crop-viewport">
+        <!-- Initial Drop Zone -->
+        <div class="drop-zone" id="crop-drop-zone">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color: var(--color-primary); margin-bottom: 0.75rem;"><path d="M6 2v14a2 2 0 0 0 2 2h14"></path><path d="M18 22V8a2 2 0 0 0-2-2H2"></path></svg>
+          <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 0.35rem;">Choose a PDF or drag it here</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.25rem;">Adjust crop boundaries visually. 100% private in-browser tool.</p>
+          <label class="btn btn-primary" style="cursor: pointer; display: inline-block;">
+            <span>Select PDF File</span>
+            <input type="file" id="crop-file-input" accept="application/pdf" style="display: none;">
+          </label>
+        </div>
+
+        <!-- Live Crop Stage -->
+        <div id="crop-stage-container" style="display: none; flex-direction: column; height: 100%;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+            <div>
+              <span id="crop-file-name" style="font-weight: 700; color: var(--text-main);">Document.pdf</span>
+              <span id="crop-page-count" style="font-size: 0.85rem; color: var(--text-muted); margin-left: 0.5rem;">(10 pages)</span>
+            </div>
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              <button type="button" class="btn btn-secondary" id="btn-crop-prev" style="padding: 0.35rem 0.65rem;">&larr;</button>
+              <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-main);" id="crop-page-indicator">Page 1 / 1</span>
+              <button type="button" class="btn btn-secondary" id="btn-crop-next" style="padding: 0.35rem 0.65rem;">&rarr;</button>
+              <label class="btn btn-secondary" style="padding: 0.35rem 0.75rem; margin: 0; cursor: pointer;">
+                Change File
+                <input type="file" id="change-crop-file" accept="application/pdf" style="display: none;">
+              </label>
+            </div>
+          </div>
+
+          <div class="crop-stage-container">
+            <div class="crop-stage" id="crop-stage">
+              <canvas id="crop-pdf-canvas"></canvas>
+              <div class="crop-box" id="crop-box">
+                <div class="crop-handle handle-nw" data-handle="nw"></div>
+                <div class="crop-handle handle-ne" data-handle="ne"></div>
+                <div class="crop-handle handle-sw" data-handle="sw"></div>
+                <div class="crop-handle handle-se" data-handle="se"></div>
+                <div class="crop-handle handle-n" data-handle="n"></div>
+                <div class="crop-handle handle-s" data-handle="s"></div>
+                <div class="crop-handle handle-w" data-handle="w"></div>
+                <div class="crop-handle handle-e" data-handle="e"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Controls Panel -->
+      <div class="controls-panel">
+        <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 1.25rem; color: var(--text-main);">Crop Controls</h3>
+
+        <!-- Preset Margins -->
+        <div class="setting-group">
+          <label class="setting-label">Crop Quick Presets</label>
+          <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem;">
+            <button type="button" class="btn btn-secondary" id="btn-preset-reset" style="padding: 0.5rem; font-size: 0.85rem;">Reset (Full Page)</button>
+            <button type="button" class="btn btn-secondary" id="btn-preset-margins" style="padding: 0.5rem; font-size: 0.85rem;">Trim 5% Margins</button>
+            <button type="button" class="btn btn-secondary" id="btn-preset-half-top" style="padding: 0.5rem; font-size: 0.85rem;">Top Half</button>
+            <button type="button" class="btn btn-secondary" id="btn-preset-half-bottom" style="padding: 0.5rem; font-size: 0.85rem;">Bottom Half</button>
+          </div>
+        </div>
+
+        <!-- Margin Percentage Display -->
+        <div class="setting-group">
+          <label class="setting-label">Crop Boundaries (% of page)</label>
+          <div class="margins-grid">
+            <div class="margin-input-box">
+              <label>Left Crop</label>
+              <span id="lbl-margin-left" style="font-weight: 700; color: var(--text-main);">0%</span>
+            </div>
+            <div class="margin-input-box">
+              <label>Right Crop</label>
+              <span id="lbl-margin-right" style="font-weight: 700; color: var(--text-main);">0%</span>
+            </div>
+            <div class="margin-input-box">
+              <label>Top Crop</label>
+              <span id="lbl-margin-top" style="font-weight: 700; color: var(--text-main);">0%</span>
+            </div>
+            <div class="margin-input-box">
+              <label>Bottom Crop</label>
+              <span id="lbl-margin-bottom" style="font-weight: 700; color: var(--text-main);">0%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Apply Scope -->
+        <div class="setting-group">
+          <label class="setting-label">Apply Crop To</label>
+          <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+            <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; cursor: pointer; color: var(--text-main);">
+              <input type="radio" name="crop-scope" value="all" checked style="accent-color: var(--color-primary); width: 16px; height: 16px;">
+              <span>All pages in document</span>
+            </label>
+            <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; cursor: pointer; color: var(--text-main);">
+              <input type="radio" name="crop-scope" value="current" style="accent-color: var(--color-primary); width: 16px; height: 16px;">
+              <span>Current page only</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Download Action -->
+        <div style="margin-top: 1.75rem;">
+          <button type="button" class="btn btn-primary" id="btn-crop-download" style="width: 100%; padding: 0.9rem;" disabled>
+            <span id="btn-crop-label">Crop PDF &amp; Download</span>
+          </button>
+          <div id="crop-spinner" style="display: none; text-align: center; margin-top: 0.75rem; color: var(--color-primary); font-size: 0.9rem; font-weight: 600;">
+            Trimming pages and compiling PDF...
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature Badges -->
+    <div class="features-badge-grid">
+      <div class="badge-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
+        <div>
+          <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">Interactive Visual Marquee</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Drag and resize crop boxes with 8 interactive grab handles directly over your document canvas.</p>
+        </div>
+      </div>
+      <div class="badge-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+        <div>
+          <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">Selective Page Scope</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Apply uniform margin cuts across every page or target specific individual sheets in your PDF.</p>
+        </div>
+      </div>
+      <div class="badge-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+        <div>
+          <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">100% Lossless Vector Quality</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Adjusts PDF CropBox and MediaBox bounds natively without rasterizing or degrading text sharpness.</p>
+        </div>
+      </div>
+      <div class="badge-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+        <div>
+          <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">Zero Server Uploads</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Documents remain strictly confidential on your machine. All PDF trimming is done in your browser.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEO Educational Guide -->
+    <section class="seo-section">
+      <h2>How Does Cropping a PDF Work?</h2>
+      <p>
+        Unlike image cropping which permanently deletes surrounding pixels, standard PDF cropping adjusts the document's <strong>MediaBox</strong> and <strong>CropBox</strong> viewing parameters. This instructs PDF viewers (like Adobe Acrobat, Apple Preview, and web browsers) to display and print only the designated area.
+      </p>
+      <p>
+        Benefits of cropping PDF documents:
+      </p>
+      <ul style="padding-left: 1.5rem; margin-bottom: 1.5rem;">
+        <li><strong>Removing Unwanted White Margins:</strong> Perfect for reading scanned academic articles or eBooks on tablets and mobile screens.</li>
+        <li><strong>Trimming Printer Marks:</strong> Eliminate crop marks, color calibration bars, and bleed zones before distributing presentations.</li>
+        <li><strong>Splitting Multi-Column Content:</strong> Focus attention strictly on specific tables, charts, or diagram segments.</li>
+      </ul>
+
+      <h3 style="margin: 2rem 0 0.75rem; color: var(--text-main);">Frequently Asked Questions (FAQs)</h3>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Can I crop all pages at once or just the active page?</span>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="faq-answer">
+            You can do either! Under "Apply Crop To", choose "All pages in document" to apply the identical crop percentage across every sheet, or select "Current page only" to trim a single slide or invoice.
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Will cropping decrease the resolution or clarity of my PDF text?</span>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="faq-answer">
+            No. The EcrioX Crop PDF tool modifies the internal PDF boundary boxes directly using native PDFLib instructions. Text remains scalable vector curves, and photos preserve their original DPI.
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Is this tool safe for sensitive financial and legal files?</span>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="faq-answer">
+            Yes, 100%. Processing takes place entirely within your browser's local sandbox memory. Neither your PDF nor its content is ever uploaded, stored, or sent across any network.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Tools -->
+    <div style="margin-top: 3rem;">
+      <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--text-main); margin-bottom: 1.25rem;">Related PDF Utilities</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;">
+        <a href="../add-page-numbers-to-pdf/" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; text-decoration: none; color: inherit; display: block; transition: var(--transition);">
+          <div style="font-weight: 700; margin-bottom: 0.35rem; color: var(--text-main);">Add Page Numbers to PDF &rarr;</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">Insert customizable headers, footers, and page numbers.</div>
+        </a>
+        <a href="../pdf-editor/" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; text-decoration: none; color: inherit; display: block; transition: var(--transition);">
+          <div style="font-weight: 700; margin-bottom: 0.35rem; color: var(--text-main);">PDF Editor &rarr;</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">Comprehensive online PDF editing, annotations, and signing.</div>
+        </a>
+        <a href="../pdf-compressor/" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; text-decoration: none; color: inherit; display: block; transition: var(--transition);">
+          <div style="font-weight: 700; margin-bottom: 0.35rem; color: var(--text-main);">PDF Compressor &rarr;</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">Reduce PDF file size without sacrificing readability.</div>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner container">
+      <div class="footer-grid">
+        <div class="footer-col brand-col">
+          <div class="brand-logo" style="margin-bottom: 1rem;">
+            <span class="logo-mark">⚡</span>
+            <span class="logo-text">Ecrio<span class="logo-accent">X</span></span>
+          </div>
+          <p class="footer-tagline">One Platform. Endless Possibilities. Fast, secure, client-side digital utilities.</p>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Top PDF Tools</h4>
+          <ul class="footer-links">
+            <li><a href="../crop-pdf/">Crop PDF</a></li>
+            <li><a href="../add-page-numbers-to-pdf/">Add Page Numbers</a></li>
+            <li><a href="../pdf-editor/">PDF Editor</a></li>
+            <li><a href="../pdf-compressor/">PDF Compressor</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Company & Legal</h4>
+          <ul class="footer-links">
+            <li><a href="../about/">About Us</a></li>
+            <li><a href="../contact/">Contact</a></li>
+            <li><a href="../privacy/">Privacy Policy</a></li>
+            <li><a href="../terms/">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 EcrioX. All rights reserved. Zero file uploads — 100% private in-browser tools.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/app.js"></script>
+  <script src="tool.js"></script>
+  <script>
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.parentElement.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Page Numbers to PDF Online – Free & Instant | EcrioX</title>
+  <meta name="description" content="Add page numbers to PDF documents online for free. Customize position, format ('Page X of Y', 1/n, Roman numerals), font size, skip cover page, and download instantly.">
+  <link rel="canonical" href="https://ecriox.com/add-page-numbers-to-pdf/">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Add Page Numbers to PDF Online – Free & Instant | EcrioX">
+  <meta property="og:description" content="Add customizable page numbers, header/footer pagination to PDF files. 100% private in-browser tool.">
+  <meta property="og:url" content="https://ecriox.com/add-page-numbers-to-pdf/">
+  <meta property="og:site_name" content="EcrioX">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Add Page Numbers to PDF – EcrioX">
+  <meta name="twitter:description" content="Insert page numbers in PDF headers or footers with customizable format and font.">
+
+  <!-- Global Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i){
+  w[l]=w[l]||[];
+  w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),
+  dl=l!='dataLayer'?'&l='+l:'';
+  j.async=true;
+  j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+  f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PQFRBJ9F');
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Schema.org WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "EcrioX Add Page Numbers to PDF",
+    "url": "https://ecriox.com/add-page-numbers-to-pdf/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "description": "Insert customizable page numbers, headers, and footers into PDF documents with full control over position, format, starting number, and font styling.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .pdf-numbering-layout {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 2rem;
+      align-items: start;
+    }
+    @media (max-width: 960px) {
+      .pdf-numbering-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Upload & Preview Area */
+    .preview-viewport {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      min-height: 520px;
+      display: flex;
+      flex-direction: column;
+    }
+    .drop-zone {
+      border: 2px dashed var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 4rem 2rem;
+      text-align: center;
+      cursor: pointer;
+      transition: var(--transition);
+      background: var(--bg-subtle);
+      margin: auto 0;
+    }
+    .drop-zone:hover, .drop-zone.dragover {
+      border-color: var(--color-primary);
+      background: var(--color-primary-light);
+    }
+
+    /* Page Preview Canvas Container */
+    .preview-canvas-box {
+      position: relative;
+      background: #525659;
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: auto;
+      max-height: 560px;
+    }
+    .preview-stage {
+      position: relative;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+      background: #ffffff;
+      display: inline-block;
+    }
+    #pdf-preview-canvas {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+    /* Visual badge showing where the page number will be stamped */
+    .page-number-mock-badge {
+      position: absolute;
+      background: rgba(37, 99, 235, 0.9);
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 3px;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+
+    /* Settings Card */
+    .settings-panel {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .setting-group {
+      margin-bottom: 1.25rem;
+    }
+    .setting-label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-main);
+      display: block;
+      margin-bottom: 0.45rem;
+    }
+
+    /* 3x2 Position Grid */
+    .position-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.45rem;
+    }
+    .pos-btn {
+      padding: 0.65rem 0.25rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      background: var(--bg-surface);
+      color: var(--text-muted);
+      cursor: pointer;
+      text-align: center;
+      transition: var(--transition);
+    }
+    .pos-btn:hover {
+      border-color: var(--color-primary);
+    }
+    .pos-btn.active {
+      background: var(--color-primary-light);
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+    }
+
+    /* Features Grid */
+    .features-badge-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin: 3.5rem 0 2.5rem;
+    }
+    .badge-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .badge-card svg {
+      width: 24px;
+      height: 24px;
+      color: var(--color-primary);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* SEO Article */
+    .seo-section {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2rem;
+      margin: 3rem 0;
+    }
+    .seo-section h2 { margin-bottom: 1rem; color: var(--text-main); }
+    .seo-section p, .seo-section li { color: var(--text-muted); line-height: 1.7; margin-bottom: 1rem; }
+
+    /* FAQ */
+    .faq-list { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
+    .faq-item { border: 1px solid var(--border-color); border-radius: var(--radius-md); overflow: hidden; background: var(--bg-surface); }
+    .faq-question { padding: 1.25rem; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: var(--bg-surface); border: none; width: 100%; text-align: left; color: var(--text-main); }
+    .faq-answer { padding: 0 1.25rem 1.25rem; color: var(--text-muted); line-height: 1.6; display: none; }
+    .faq-item.open .faq-answer { display: block; }
+    .faq-item.open .faq-icon { transform: rotate(180deg); }
+    .faq-icon { transition: transform 0.2s ease; }
+  </style>
+
+  <!-- PDF.js CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <!-- PDF-Lib CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQFRBJ9F"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner container">
+      <a href="../" class="brand-logo" aria-label="EcrioX Home">
+        <span class="logo-mark">⚡</span>
+        <span class="logo-text">Ecrio<span class="logo-accent">X</span></span>
+      </a>
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="../tools/" class="nav-link active">All Tools</a>
+        <a href="../tools/pdf/" class="nav-link">PDF Tools</a>
+        <a href="../tools/image/" class="nav-link">Image Tools</a>
+        <a href="../tools/calculators/" class="nav-link">Calculators</a>
+        <a href="../categories/" class="nav-link">Categories</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light theme">
+          <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-main container" style="padding-top: 2rem; padding-bottom: 4rem;">
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb" style="margin-bottom: 1.5rem;">
+      <a href="../">Home</a>
+      <span class="bc-sep">/</span>
+      <a href="../tools/pdf/">PDF Tools</a>
+      <span class="bc-sep">/</span>
+      <span class="bc-current">Add Page Numbers to PDF</span>
+    </nav>
+
+    <div style="text-align: center; margin-bottom: 2rem;">
+      <span class="badge" style="background: var(--color-primary-light); color: var(--color-primary); font-weight: 700; margin-bottom: 0.75rem; display: inline-block;">PAGINATION • HEADER &amp; FOOTER</span>
+      <h1 style="font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800; color: var(--text-main); margin-bottom: 0.75rem; letter-spacing: -0.02em;">Add Page Numbers to PDF Online</h1>
+      <p style="color: var(--text-muted); font-size: 1.15rem; max-width: 680px; margin: 0 auto;">
+        Stamp clean, customizable page numbers into your PDF documents. Select positions, numbering styles, skip the cover page, and download your paginated PDF instantly.
+      </p>
+    </div>
+
+    <!-- Main Workspace -->
+    <div class="pdf-numbering-layout">
+      <!-- Preview Column -->
+      <div class="preview-viewport">
+        <!-- Initial Drop Zone -->
+        <div class="drop-zone" id="pdf-drop-zone">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color: var(--color-primary); margin-bottom: 0.75rem;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 0.35rem;">Choose a PDF or drag it here</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.25rem;">Supports single or multi-page documents. 100% private in-browser processing.</p>
+          <label class="btn btn-primary" style="cursor: pointer; display: inline-block;">
+            <span>Select PDF File</span>
+            <input type="file" id="pdf-file-input" accept="application/pdf" style="display: none;">
+          </label>
+        </div>
+
+        <!-- Live Preview Stage (Hidden until file selected) -->
+        <div id="preview-stage-container" style="display: none; flex-direction: column; height: 100%;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+            <div>
+              <span id="pdf-file-name" style="font-weight: 700; color: var(--text-main);">Document.pdf</span>
+              <span id="pdf-page-count" style="font-size: 0.85rem; color: var(--text-muted); margin-left: 0.5rem;">(10 pages)</span>
+            </div>
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              <button type="button" class="btn btn-secondary" id="btn-prev-page" style="padding: 0.35rem 0.65rem;">&larr;</button>
+              <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-main);" id="page-indicator">Page 1 / 1</span>
+              <button type="button" class="btn btn-secondary" id="btn-next-page" style="padding: 0.35rem 0.65rem;">&rarr;</button>
+              <label class="btn btn-secondary" style="padding: 0.35rem 0.75rem; margin: 0; cursor: pointer;">
+                Change File
+                <input type="file" id="change-file-input" accept="application/pdf" style="display: none;">
+              </label>
+            </div>
+          </div>
+
+          <div class="preview-canvas-box">
+            <div class="preview-stage" id="preview-stage">
+              <canvas id="pdf-preview-canvas"></canvas>
+              <div class="page-number-mock-badge" id="preview-mock-badge">Page 1 of 10</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Settings Panel -->
+      <div class="settings-panel">
+        <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 1.25rem; color: var(--text-main);">Numbering Settings</h3>
+
+        <!-- Position Selector -->
+        <div class="setting-group">
+          <label class="setting-label">Stamp Position</label>
+          <div class="position-grid">
+            <button type="button" class="pos-btn" data-pos="top-left">Top Left</button>
+            <button type="button" class="pos-btn" data-pos="top-center">Top Center</button>
+            <button type="button" class="pos-btn" data-pos="top-right">Top Right</button>
+            <button type="button" class="pos-btn" data-pos="bottom-left">Bottom Left</button>
+            <button type="button" class="pos-btn active" data-pos="bottom-center">Bottom Center</button>
+            <button type="button" class="pos-btn" data-pos="bottom-right">Bottom Right</button>
+          </div>
+        </div>
+
+        <!-- Format Selector -->
+        <div class="setting-group">
+          <label class="setting-label" for="select-format">Number Format</label>
+          <select id="select-format" class="control-input" style="width: 100%; padding: 0.65rem 0.85rem; font-weight: 600;">
+            <option value="page-n-of-total" selected>Page {n} of {total} (e.g. Page 1 of 10)</option>
+            <option value="n-slash-total">{n} / {total} (e.g. 1 / 10)</option>
+            <option value="number-only">{n} (e.g. 1)</option>
+            <option value="dash-n-dash">- {n} - (e.g. - 1 -)</option>
+            <option value="roman-upper">Roman Upper (I, II, III...)</option>
+            <option value="roman-lower">Roman Lower (i, ii, iii...)</option>
+          </select>
+        </div>
+
+        <!-- Page Range / Skip Cover -->
+        <div class="setting-group">
+          <label class="setting-label">Pages to Number</label>
+          <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+            <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; cursor: pointer; color: var(--text-main);">
+              <input type="checkbox" id="chk-skip-cover" style="accent-color: var(--color-primary); width: 16px; height: 16px;">
+              <span>Skip first page (Cover Page)</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Starting Number -->
+        <div class="setting-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+          <div>
+            <label class="setting-label" for="input-start-num">Start At Number</label>
+            <input type="number" id="input-start-num" class="control-input" value="1" min="1" max="9999" style="width: 100%; padding: 0.65rem 0.85rem;">
+          </div>
+          <div>
+            <label class="setting-label" for="select-font-size">Font Size</label>
+            <select id="select-font-size" class="control-input" style="width: 100%; padding: 0.65rem 0.85rem;">
+              <option value="9">9 pt</option>
+              <option value="11" selected>11 pt</option>
+              <option value="13">13 pt</option>
+              <option value="15">15 pt</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Font Family & Color -->
+        <div class="setting-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+          <div>
+            <label class="setting-label" for="select-font-family">Font</label>
+            <select id="select-font-family" class="control-input" style="width: 100%; padding: 0.65rem 0.85rem;">
+              <option value="Helvetica" selected>Helvetica</option>
+              <option value="TimesRoman">Times New Roman</option>
+              <option value="Courier">Courier</option>
+            </select>
+          </div>
+          <div>
+            <label class="setting-label" for="select-color">Text Color</label>
+            <select id="select-color" class="control-input" style="width: 100%; padding: 0.65rem 0.85rem;">
+              <option value="black" selected>Black</option>
+              <option value="gray">Dark Gray</option>
+              <option value="blue">Blue</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Download Action -->
+        <div style="margin-top: 1.75rem;">
+          <button type="button" class="btn btn-primary" id="btn-process-download" style="width: 100%; padding: 0.9rem;" disabled>
+            <span id="btn-process-label">Add Page Numbers &amp; Download</span>
+          </button>
+          <div id="processing-spinner" style="display: none; text-align: center; margin-top: 0.75rem; color: var(--color-primary); font-size: 0.9rem; font-weight: 600;">
+            Stamping pages and compiling PDF...
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature Badges -->
+    <div class="features-badge-grid">
+      <div class="badge-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 7 4 4 20 4 20 7"></polyline><line x1="9" y1="20" x2="15" y2="20"></line><line x1="12" y1="4" x2="12" y2="20"></line></svg>
+        <div>
+          <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">Flexible Header &amp; Footer Layouts</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Position pagination across 6 positions: top-left, top-center, top-right, bottom-left, bottom-center, and bottom-right.</p>
+        </div>
+      </div>
+      <div class="badge-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="15" y2="15"></line></svg>
+        <div>
+          <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">Skip Cover Page Support</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Easily omit numbering from title/cover pages while keeping body page indexes clean and consecutive.</p>
+        </div>
+      </div>
+      <div class="badge-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+        <div>
+          <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">Multiple Numbering Formats</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Choose between "Page X of Y", "X/Y", standard single numbers, or classic Roman numerals.</p>
+        </div>
+      </div>
+      <div class="badge-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+        <div>
+          <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">100% Client-Side Privacy</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Documents are loaded, numbered, and saved directly inside your web browser. Zero server uploads.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEO Educational Guide -->
+    <section class="seo-section">
+      <h2>How to Add Page Numbers to PDF Files Online</h2>
+      <p>
+        Numbering PDF documents is vital for academic papers, legal briefs, corporate proposals, and technical documentation. Paginated documents ensure smooth review meetings, cross-referencing, and print organization.
+      </p>
+      <p>
+        With the EcrioX PDF Page Numbering utility, you can paginate documents in three easy steps:
+      </p>
+      <ol style="padding-left: 1.5rem; margin-bottom: 1.5rem; color: var(--text-muted); line-height: 1.8;">
+        <li><strong>Select or Drag &amp; Drop Your PDF:</strong> Your file is rendered directly inside your browser without any network delays.</li>
+        <li><strong>Customize Placement &amp; Styling:</strong> Pick your preferred header or footer position (such as Bottom Center or Bottom Right), formatting style ("Page X of Y"), font family, and choose whether to skip the title page.</li>
+        <li><strong>Click 'Add Page Numbers &amp; Download':</strong> The PDF is immediately re-compiled and downloaded directly to your device.</li>
+      </ol>
+
+      <h3 style="margin: 2rem 0 0.75rem; color: var(--text-main);">Frequently Asked Questions (FAQs)</h3>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Can I omit page numbers from the first page (cover page)?</span>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="faq-answer">
+            Yes. Simply check the "Skip first page (Cover Page)" option. The cover page will remain blank, and page numbering will begin cleanly from page 2.
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Does this tool reduce PDF quality or alter text formatting?</span>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="faq-answer">
+            No. The underlying vector text, high-resolution raster images, and document formatting are preserved 100% losslessly. The page numbers are stamped as clean, sharp vector text directly onto the document's content streams.
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Are my confidential business or legal PDFs uploaded to any servers?</span>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="faq-answer">
+            Never. EcrioX processes all PDF operations completely client-side in your web browser using WebAssembly and modern JavaScript. Your files never touch external cloud servers.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Tools -->
+    <div style="margin-top: 3rem;">
+      <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--text-main); margin-bottom: 1.25rem;">Related PDF Tools</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;">
+        <a href="../crop-pdf/" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; text-decoration: none; color: inherit; display: block; transition: var(--transition);">
+          <div style="font-weight: 700; margin-bottom: 0.35rem; color: var(--text-main);">Crop PDF &rarr;</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">Trim page margins and crop PDF pages visually.</div>
+        </a>
+        <a href="../pdf-editor/" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; text-decoration: none; color: inherit; display: block; transition: var(--transition);">
+          <div style="font-weight: 700; margin-bottom: 0.35rem; color: var(--text-main);">PDF Editor &rarr;</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">Comprehensive online PDF editing, annotations, and signing.</div>
+        </a>
+        <a href="../pdf-compressor/" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; text-decoration: none; color: inherit; display: block; transition: var(--transition);">
+          <div style="font-weight: 700; margin-bottom: 0.35rem; color: var(--text-main);">PDF Compressor &rarr;</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">Reduce PDF file size without sacrificing readability.</div>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner container">
+      <div class="footer-grid">
+        <div class="footer-col brand-col">
+          <div class="brand-logo" style="margin-bottom: 1rem;">
+            <span class="logo-mark">⚡</span>
+            <span class="logo-text">Ecrio<span class="logo-accent">X</span></span>
+          </div>
+          <p class="footer-tagline">One Platform. Endless Possibilities. Fast, secure, client-side digital utilities.</p>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Top PDF Tools</h4>
+          <ul class="footer-links">
+            <li><a href="../add-page-numbers-to-pdf/">Add Page Numbers</a></li>
+            <li><a href="../crop-pdf/">Crop PDF</a></li>
+            <li><a href="../pdf-editor/">PDF Editor</a></li>
+            <li><a href="../pdf-compressor/">PDF Compressor</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Company & Legal</h4>
+          <ul class="footer-links">
+            <li><a href="../about/">About Us</a></li>
+            <li><a href="../contact/">Contact</a></li>
+            <li><a href="../privacy/">Privacy Policy</a></li>
+            <li><a href="../terms/">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 EcrioX. All rights reserved. Zero file uploads — 100% private in-browser tools.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/app.js"></script>
+  <script src="tool.js"></script>
+  <script>
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.parentElement.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>

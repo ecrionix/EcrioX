@@ -176,6 +176,30 @@ const ECRIOX_TOOLS = [
     popular: true,
     tags: ["pdf", "word", "docx", "convert", "pdf to word", "pdf to docx", "editable"]
   },
+  {
+    id: "add-page-numbers-to-pdf",
+    name: "Add Page Numbers to PDF",
+    category: "pdf",
+    categoryName: "PDF Tools",
+    description: "Insert customizable page numbers, headers, and footers into PDF documents with position, font, and format options.",
+    route: "/add-page-numbers-to-pdf/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="15" y2="15"></line></svg>`,
+    status: "available",
+    popular: true,
+    tags: ["pdf", "page numbers", "paginate", "number pdf", "header", "footer", "add page numbers to pdf"]
+  },
+  {
+    id: "crop-pdf",
+    name: "Crop PDF",
+    category: "pdf",
+    categoryName: "PDF Tools",
+    description: "Trim empty white margins or crop PDF pages visually with an interactive marquee box and apply to all pages.",
+    route: "/crop-pdf/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2v14a2 2 0 0 0 2 2h14"></path><path d="M18 22V8a2 2 0 0 0-2-2H2"></path></svg>`,
+    status: "available",
+    popular: true,
+    tags: ["pdf", "crop", "trim", "margins", "crop pdf", "trim margins", "resize pdf"]
+  },
 
   // ==========================================
   // IMAGE TOOLS
@@ -239,6 +263,42 @@ const ECRIOX_TOOLS = [
     status: "available",
     popular: true,
     tags: ["ocr", "image to text", "extract text", "photo to text", "screenshot to text", "transcribe"]
+  },
+  {
+    id: "image-color-picker",
+    name: "Image Color Picker",
+    category: "image",
+    categoryName: "Image Tools",
+    description: "Sample pixel colors with 10x magnifier loupe, copy HEX, RGB, HSL, and CMYK codes, and extract palettes.",
+    route: "/image-color-picker/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="12 8 8 12 12 16 16 12 12 8"></polygon></svg>`,
+    status: "available",
+    popular: true,
+    tags: ["color picker", "image color picker", "eyedropper", "hex", "rgb", "hsl", "cmyk", "palette"]
+  },
+  {
+    id: "png-to-webp",
+    name: "PNG to WebP Converter",
+    category: "image",
+    categoryName: "Image Tools",
+    description: "Batch convert PNG images to lightweight WebP format with alpha transparency preservation and ZIP archive packaging.",
+    route: "/png-to-webp/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><polyline points="10 10 14 14 18 10"></polyline></svg>`,
+    status: "available",
+    popular: true,
+    tags: ["png to webp", "convert png to webp", "webp converter", "transparent webp", "compress png"]
+  },
+  {
+    id: "image-metadata-remover",
+    name: "Image Metadata Viewer & Remover",
+    category: "image",
+    categoryName: "Image Tools",
+    description: "Inspect hidden EXIF, camera model, and GPS geolocation coordinates in photos, then wipe all metadata for privacy.",
+    route: "/image-metadata-remover/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>`,
+    status: "available",
+    popular: true,
+    tags: ["exif", "metadata", "remove exif", "strip metadata", "wipe gps", "photo privacy", "exif viewer"]
   },
 
   // ==========================================
@@ -337,6 +397,30 @@ const ECRIOX_TOOLS = [
   // CALCULATORS
   // ==========================================
   {
+    id: "gst-calculator",
+    name: "GST Calculator India",
+    category: "calculators",
+    categoryName: "Calculators",
+    description: "Calculate GST inclusive and exclusive prices, reverse GST, CGST, SGST, and IGST for 5%, 12%, 18%, and 28% slabs.",
+    route: "/gst-calculator/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>`,
+    status: "available",
+    popular: true,
+    tags: ["gst calculator", "gst india", "reverse gst", "inclusive gst", "cgst sgst", "igst", "tax calculator"]
+  },
+  {
+    id: "invoice-generator",
+    name: "Invoice Generator",
+    category: "calculators",
+    categoryName: "Calculators",
+    description: "Create and download professional PDF invoices with custom line items, business logo, GST/VAT taxes, and discounts.",
+    route: "/invoice-generator/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>`,
+    status: "available",
+    popular: true,
+    tags: ["invoice generator", "create invoice", "free invoice", "pdf invoice", "bill maker", "gst invoice"]
+  },
+  {
     id: "percentage-calculator",
     name: "Percentage Calculator",
     category: "calculators",
@@ -366,11 +450,11 @@ const ECRIOX_TOOLS = [
     category: "calculators",
     categoryName: "Calculators",
     description: "Calculate exact age in years, months, days, total weeks, and track the countdown to your next birthday.",
-    route: "/tools/calculators/age/",
+    route: "/age-calculator/",
     icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>`,
     status: "available",
-    popular: false,
-    tags: ["age", "birthday", "date difference", "days between dates", "age calculator"]
+    popular: true,
+    tags: ["age", "birthday", "date difference", "days between dates", "age calculator", "calculate age online"]
   },
   {
     id: "unit-converter",

@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Invoice Generator Online – Create &amp; Download PDF Invoices | EcrioX</title>
+  <meta name="description" content="Free online Invoice Generator for freelancers, contractors, and businesses. Add company logo, line items, GST/VAT taxes, discounts, and print or download professional PDF invoices instantly.">
+  <link rel="canonical" href="https://ecriox.com/invoice-generator/">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Free Invoice Generator Online – EcrioX">
+  <meta property="og:description" content="Create professional PDF invoices with logo, tax, discounts, and bank details in seconds. Free, unlimited, and 100% private.">
+  <meta property="og:url" content="https://ecriox.com/invoice-generator/">
+  <meta property="og:site_name" content="EcrioX">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Invoice Generator – EcrioX">
+  <meta name="twitter:description" content="Build professional PDF invoices with GST/VAT calculations directly in your browser.">
+
+  <!-- Global Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i){
+  w[l]=w[l]||[];
+  w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),
+  dl=l!='dataLayer'?'&l='+l:'';
+  j.async=true;
+  j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+  f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PQFRBJ9F');
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Schema.org WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "EcrioX Free Invoice Generator",
+    "url": "https://ecriox.com/invoice-generator/",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "All",
+    "description": "Create, customize, and download professional PDF invoices online with support for multi-currency, GST/VAT taxes, discounts, and line-item breakdowns.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .invoice-app-wrapper {
+      max-width: 1040px;
+      margin: 0 auto;
+    }
+
+    /* Action bar on top */
+    .invoice-action-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1rem 1.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Invoice Paper (White background always for clean print look) */
+    .invoice-paper {
+      background: #ffffff;
+      color: #1f2937;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 3rem 2.5rem;
+      box-shadow: var(--shadow-md);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+    @media (max-width: 768px) {
+      .invoice-paper {
+        padding: 1.5rem 1rem;
+      }
+    }
+
+    /* Invoice Header */
+    .inv-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .inv-logo-area {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .inv-logo-placeholder {
+      width: 160px;
+      height: 70px;
+      border: 2px dashed #cbd5e1;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      overflow: hidden;
+      background: #f8fafc;
+      color: #64748b;
+      font-size: 0.8rem;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+    .inv-logo-placeholder:hover {
+      border-color: #2563eb;
+      color: #2563eb;
+    }
+    .inv-logo-img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .inv-title-meta {
+      text-align: right;
+      min-width: 200px;
+    }
+    .inv-main-title {
+      font-size: 2.25rem;
+      font-weight: 900;
+      color: #0f172a;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    /* Inputs in Invoice Paper */
+    .inv-input, .inv-textarea {
+      width: 100%;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      padding: 0.35rem 0.5rem;
+      font-size: 0.95rem;
+      color: #1e293b;
+      background: transparent;
+      transition: all 0.15s ease;
+      font-family: inherit;
+    }
+    .inv-input:hover, .inv-textarea:hover {
+      border-color: #cbd5e1;
+      background: #f8fafc;
+    }
+    .inv-input:focus, .inv-textarea:focus {
+      outline: none;
+      border-color: #2563eb;
+      background: #ffffff;
+      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+    }
+    .inv-input-bold {
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    /* Billing Section */
+    .inv-billing-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+    @media (max-width: 640px) {
+      .inv-billing-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+    }
+    .inv-section-title {
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    /* Meta Info Grid (Date, Due Date, Invoice No) */
+    .inv-meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.35rem;
+    }
+    .inv-meta-label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #475569;
+      min-width: 110px;
+      text-align: right;
+    }
+    .inv-meta-val {
+      text-align: right;
+      width: 140px;
+    }
+
+    /* Line Items Table */
+    .inv-items-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1.75rem;
+    }
+    .inv-items-table th {
+      background: #f1f5f9;
+      color: #334155;
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.75rem 0.5rem;
+      border-top: 1px solid #e2e8f0;
+      border-bottom: 1px solid #cbd5e1;
+    }
+    .inv-items-table td {
+      padding: 0.5rem 0.25rem;
+      border-bottom: 1px solid #e2e8f0;
+      vertical-align: top;
+    }
+    .btn-del-item {
+      background: none;
+      border: none;
+      color: #94a3b8;
+      cursor: pointer;
+      font-size: 1.25rem;
+      padding: 0.25rem 0.5rem;
+      line-height: 1;
+      transition: color 0.15s ease;
+    }
+    .btn-del-item:hover {
+      color: #ef4444;
+    }
+
+    /* Totals & Notes Section */
+    .inv-bottom-grid {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 2.5rem;
+      margin-top: 1.5rem;
+    }
+    @media (max-width: 768px) {
+      .inv-bottom-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .totals-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .totals-table td {
+      padding: 0.45rem 0.5rem;
+      font-size: 0.95rem;
+    }
+    .totals-table td:last-child {
+      text-align: right;
+      font-weight: 700;
+      font-family: inherit;
+    }
+    .totals-grand-row td {
+      border-top: 2px solid #0f172a;
+      font-size: 1.25rem;
+      font-weight: 900;
+      color: #0f172a;
+      padding-top: 0.75rem;
+    }
+
+    /* Print Styles */
+    @media print {
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+      }
+      .site-header, .site-footer, .breadcrumb-nav, .invoice-action-bar, .features-badge-grid, .seo-section, .btn-del-item, #btn-add-line-item, .inv-logo-placeholder, .theme-toggle {
+        display: none !important;
+      }
+      .page-main {
+        padding: 0 !important;
+      }
+      .invoice-app-wrapper {
+        max-width: 100% !important;
+        margin: 0 !important;
+      }
+      .invoice-paper {
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+      }
+      .inv-input, .inv-textarea {
+        border: none !important;
+        padding: 0 !important;
+      }
+    }
+
+    /* Features Grid */
+    .features-badge-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin: 3.5rem 0 2.5rem;
+    }
+    .badge-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .badge-card svg {
+      width: 24px;
+      height: 24px;
+      color: var(--color-primary);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* SEO Article */
+    .seo-section {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2rem;
+      margin: 3rem 0;
+    }
+    .seo-section h2 { margin-bottom: 1rem; color: var(--text-main); }
+    .seo-section p, .seo-section li { color: var(--text-muted); line-height: 1.7; margin-bottom: 1rem; }
+
+    /* FAQ */
+    .faq-list { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
+    .faq-item { border: 1px solid var(--border-color); border-radius: var(--radius-md); overflow: hidden; background: var(--bg-surface); }
+    .faq-question { padding: 1.25rem; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: var(--bg-surface); border: none; width: 100%; text-align: left; color: var(--text-main); }
+    .faq-answer { padding: 0 1.25rem 1.25rem; color: var(--text-muted); line-height: 1.6; display: none; }
+    .faq-item.open .faq-answer { display: block; }
+    .faq-item.open .faq-icon { transform: rotate(180deg); }
+    .faq-icon { transition: transform 0.2s ease; }
+  </style>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQFRBJ9F"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner container">
+      <a href="../" class="brand-logo" aria-label="EcrioX Home">
+        <span class="logo-mark">⚡</span>
+        <span class="logo-text">Ecrio<span class="logo-accent">X</span></span>
+      </a>
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="../tools/" class="nav-link active">All Tools</a>
+        <a href="../tools/calculators/" class="nav-link">Calculators</a>
+        <a href="../tools/pdf/" class="nav-link">PDF Tools</a>
+        <a href="../tools/image/" class="nav-link">Image Tools</a>
+        <a href="../categories/" class="nav-link">Categories</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light theme">
+          <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-main container" style="padding-top: 2rem; padding-bottom: 4rem;">
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb" style="margin-bottom: 1.5rem;">
+      <a href="../">Home</a>
+      <span class="bc-sep">/</span>
+      <a href="../tools/calculators/">Calculators</a>
+      <span class="bc-sep">/</span>
+      <span class="bc-current">Invoice Generator</span>
+    </nav>
+
+    <div class="invoice-app-wrapper">
+      <div style="text-align: center; margin-bottom: 2rem;">
+        <span class="badge" style="background: var(--color-primary-light); color: var(--color-primary); font-weight: 700; margin-bottom: 0.75rem; display: inline-block;">PROFESSIONAL INVOICING • MULTI-CURRENCY</span>
+        <h1 style="font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800; color: var(--text-main); margin-bottom: 0.75rem; letter-spacing: -0.02em;">Free Invoice Generator Online</h1>
+        <p style="color: var(--text-muted); font-size: 1.15rem; max-width: 680px; margin: 0 auto;">
+          Create and download professional PDF invoices in seconds. Add your business logo, custom line items, GST/VAT taxes, discounts, and print or export without watermarks.
+        </p>
+      </div>
+
+      <!-- Action Bar -->
+      <div class="invoice-action-bar">
+        <div style="display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap;">
+          <label style="font-size: 0.85rem; font-weight: 700; color: var(--text-main);">Currency:</label>
+          <select id="currency-select" class="control-input" style="padding: 0.4rem 0.75rem; font-weight: 700;">
+            <option value="₹" selected>INR (₹)</option>
+            <option value="$">USD ($)</option>
+            <option value="€">EUR (€)</option>
+            <option value="£">GBP (£)</option>
+            <option value="A$">AUD (A$)</option>
+            <option value="C$">CAD (C$)</option>
+            <option value="AED ">AED</option>
+            <option value="¥">JPY (¥)</option>
+          </select>
+          <button type="button" class="btn btn-secondary" id="btn-load-sample" style="padding: 0.45rem 0.85rem; font-size: 0.85rem;">
+            Load Sample Invoice
+          </button>
+          <button type="button" class="btn btn-secondary" id="btn-reset-inv" style="padding: 0.45rem 0.85rem; font-size: 0.85rem;">
+            Reset Form
+          </button>
+        </div>
+
+        <div style="display: flex; gap: 0.75rem;">
+          <button type="button" class="btn btn-primary" id="btn-print-inv" style="padding: 0.55rem 1.25rem;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 4px;"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+            Print / Save PDF
+          </button>
+        </div>
+      </div>
+
+      <!-- Invoice Document Paper -->
+      <div class="invoice-paper" id="invoice-printable-doc">
+        <!-- Header: Logo & Title -->
+        <div class="inv-header">
+          <div class="inv-logo-area">
+            <div class="inv-logo-placeholder" id="logo-placeholder" title="Click to upload company logo">
+              <span id="logo-prompt-text">+ Add Logo</span>
+              <img id="logo-preview-img" class="inv-logo-img" style="display: none;" alt="Company Logo">
+              <input type="file" id="logo-file-input" accept="image/*" style="display: none;">
+            </div>
+            <input type="text" class="inv-input inv-input-bold" id="business-name" value="Acme Digital Agency" placeholder="Your Company Name" style="font-size: 1.25rem; font-weight: 800; color: #0f172a;">
+            <textarea class="inv-textarea" id="business-address" rows="3" placeholder="Company Address&#10;City, State, ZIP&#10;Email: contact@acme.com | GSTIN: 07AAAAA0000A1Z5">123 Business Avenue, Suite 400
+New Delhi, DL 110001
+contact@acmeagency.com | GSTIN: 07AAAAA0000A1Z5</textarea>
+          </div>
+
+          <div class="inv-title-meta">
+            <h2 class="inv-main-title">INVOICE</h2>
+            <div class="inv-meta-row">
+              <span class="inv-meta-label">Invoice No:</span>
+              <input type="text" class="inv-input inv-meta-val" id="inv-number" value="INV-2026-001" style="font-weight: 700;">
+            </div>
+            <div class="inv-meta-row">
+              <span class="inv-meta-label">Invoice Date:</span>
+              <input type="date" class="inv-input inv-meta-val" id="inv-date">
+            </div>
+            <div class="inv-meta-row">
+              <span class="inv-meta-label">Due Date:</span>
+              <input type="date" class="inv-input inv-meta-val" id="inv-due-date">
+            </div>
+            <div class="inv-meta-row">
+              <span class="inv-meta-label">P.O. Number:</span>
+              <input type="text" class="inv-input inv-meta-val" id="inv-po" placeholder="PO-9842">
+            </div>
+          </div>
+        </div>
+
+        <!-- Bill To Section -->
+        <div class="inv-billing-grid">
+          <div>
+            <span class="inv-section-title">Billed To (Client Details)</span>
+            <input type="text" class="inv-input inv-input-bold" id="client-name" value="Starlight Retail Pvt Ltd" placeholder="Client or Organization Name">
+            <textarea class="inv-textarea" id="client-address" rows="3" placeholder="Client Address&#10;City, State, Country&#10;Client Tax / GSTIN ID">45 Market Road, Cyber City
+Gurugram, HR 122002
+GSTIN: 06BBBBB1111B1Z2</textarea>
+          </div>
+          <div>
+            <span class="inv-section-title">Payment Terms &amp; Instructions</span>
+            <textarea class="inv-textarea" id="payment-instructions" rows="4" placeholder="Bank Name: HDFC Bank&#10;Account No: 123456789012&#10;IFSC Code: HDFC0001234&#10;UPI: acme@okhdfcbank">Bank: State Bank of India
+A/C: 987654321012345
+IFSC: SBIN0001234
+UPI ID: acmeagency@sbi</textarea>
+          </div>
+        </div>
+
+        <!-- Line Items Table -->
+        <table class="inv-items-table">
+          <thead>
+            <tr>
+              <th style="width: 50%; text-align: left;">Item Description</th>
+              <th style="width: 14%; text-align: center;">Qty</th>
+              <th style="width: 18%; text-align: right;">Rate (<span class="currency-label">₹</span>)</th>
+              <th style="width: 18%; text-align: right;">Amount (<span class="currency-label">₹</span>)</th>
+              <th style="width: 5%;"></th>
+            </tr>
+          </thead>
+          <tbody id="line-items-tbody">
+            <!-- Dynamically populated rows -->
+          </tbody>
+        </table>
+
+        <button type="button" class="btn btn-secondary" id="btn-add-line-item" style="padding: 0.45rem 0.9rem; font-size: 0.85rem; margin-bottom: 2rem;">
+          + Add New Line Item
+        </button>
+
+        <!-- Bottom Totals Section -->
+        <div class="inv-bottom-grid">
+          <div>
+            <span class="inv-section-title">Terms &amp; Notes</span>
+            <textarea class="inv-textarea" id="inv-terms" rows="4" placeholder="Terms & Conditions: Payment is due within 15 days of invoice date. Thank you for your business!">Payment is due within 15 days of invoice date.
+Late payments are subject to a 1.5% monthly finance charge.
+Thank you for your business!</textarea>
+          </div>
+
+          <div>
+            <table class="totals-table">
+              <tbody>
+                <tr>
+                  <td>Subtotal:</td>
+                  <td id="tot-subtotal">₹0.00</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 0.35rem;">
+                      <span>Discount:</span>
+                      <input type="number" id="discount-pct" value="0" min="0" max="100" step="1" style="width: 48px; padding: 2px 4px; font-size: 0.85rem; border: 1px solid #cbd5e1; border-radius: 3px; text-align: center;">
+                      <span>%</span>
+                    </div>
+                  </td>
+                  <td id="tot-discount" style="color: #dc2626;">-₹0.00</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 0.35rem;">
+                      <span>Tax / GST:</span>
+                      <input type="number" id="tax-pct" value="18" min="0" max="100" step="0.5" style="width: 48px; padding: 2px 4px; font-size: 0.85rem; border: 1px solid #cbd5e1; border-radius: 3px; text-align: center;">
+                      <span>%</span>
+                    </div>
+                  </td>
+                  <td id="tot-tax">₹0.00</td>
+                </tr>
+                <tr>
+                  <td>Shipping / Extras:</td>
+                  <td style="text-align: right;">
+                    <input type="number" id="shipping-fee" value="0" min="0" step="10" style="width: 80px; padding: 2px 4px; font-size: 0.9rem; border: 1px solid #cbd5e1; border-radius: 3px; text-align: right; font-weight: 700;">
+                  </td>
+                </tr>
+                <tr class="totals-grand-row">
+                  <td>Total Due:</td>
+                  <td id="tot-grand-total" style="color: #2563eb;">₹0.00</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature Badges -->
+      <div class="features-badge-grid">
+        <div class="badge-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+          <div>
+            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">Clean PDF &amp; Print Output</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Export pixel-perfect PDF documents using your browser's native print engine with zero watermarks.</p>
+          </div>
+        </div>
+        <div class="badge-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+          <div>
+            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">Global Currencies &amp; GST</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Supports INR (₹), USD ($), EUR (€), GBP (£), and flexible GST/VAT tax percentage calculations.</p>
+          </div>
+        </div>
+        <div class="badge-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+          <div>
+            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">Custom Business Logo</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Upload your high-res company logo directly onto the document header for a polished, professional brand image.</p>
+          </div>
+        </div>
+        <div class="badge-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          <div>
+            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">100% In-Browser Privacy</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Zero cloud storage. Your bank details, customer names, and pricing are never uploaded to any remote server.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEO Educational Guide -->
+      <section class="seo-section">
+        <h2>What Makes a Professional, Legally Compliant Invoice?</h2>
+        <p>
+          Whether you are a freelance software developer, graphic designer, legal consultant, or small business owner, issuing clean and structured invoices ensures fast client payments and accurate tax bookkeeping.
+        </p>
+        <p>
+          Key elements required on every commercial invoice:
+        </p>
+        <ul style="padding-left: 1.5rem; margin-bottom: 1.5rem;">
+          <li><strong>Clear Identifier:</strong> The word "INVOICE" prominently displayed along with a unique, sequential invoice number (e.g. <code>INV-2026-001</code>).</li>
+          <li><strong>Seller &amp; Buyer Identification:</strong> Legal entity names, registered addresses, email contacts, and applicable Tax / GSTIN identification numbers.</li>
+          <li><strong>Key Dates:</strong> The invoice issuance date and the clear payment due date (e.g., Net 15, Net 30, or Due on Receipt).</li>
+          <li><strong>Itemized Line Items:</strong> Specific descriptions of services rendered or goods sold, quantities, unit prices, and line-item totals.</li>
+          <li><strong>Tax &amp; Discounts:</strong> Explicit breakdown of subtotal, applicable GST/VAT percentages, applied discounts, and the final grand total due.</li>
+          <li><strong>Remittance Info:</strong> Clear bank account numbers, IFSC codes, SWIFT/IBAN, or UPI payment addresses.</li>
+        </ul>
+
+        <h3 style="margin: 2rem 0 0.75rem; color: var(--text-main);">Frequently Asked Questions (FAQs)</h3>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Is this invoice generator completely free? Are there any hidden fees or limits?</span>
+              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              Yes, 100% free with zero limitations. You can generate unlimited invoices for all your clients, customize line items, and print or export without watermarks or mandatory user signups.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How do I save the invoice as a PDF file on my computer?</span>
+              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              Click the blue <strong>"Print / Save PDF"</strong> button. In the browser print dialog that appears, set the Destination printer to <em>"Save as PDF"</em> (or <em>"Microsoft Print to PDF"</em>) and click Save.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Is my client or banking information stored on EcrioX servers?</span>
+              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              No. EcrioX does not transmit, store, or log any of your financial data on remote servers. All calculations and rendering take place locally in your web browser.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Related Tools -->
+      <div style="margin-top: 3rem;">
+        <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--text-main); margin-bottom: 1.25rem;">Related Business &amp; Financial Tools</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;">
+          <a href="../gst-calculator/" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; text-decoration: none; color: inherit; display: block; transition: var(--transition);">
+            <div style="font-weight: 700; margin-bottom: 0.35rem; color: var(--text-main);">GST Calculator India &rarr;</div>
+            <div style="font-size: 0.85rem; color: var(--text-muted);">Calculate inclusive, exclusive, and reverse GST with tax splits.</div>
+          </a>
+          <a href="../pdf-editor/" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; text-decoration: none; color: inherit; display: block; transition: var(--transition);">
+            <div style="font-weight: 700; margin-bottom: 0.35rem; color: var(--text-main);">PDF Editor &rarr;</div>
+            <div style="font-size: 0.85rem; color: var(--text-muted);">Sign, edit, annotate, and redact PDF documents.</div>
+          </a>
+          <a href="../add-page-numbers-to-pdf/" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; text-decoration: none; color: inherit; display: block; transition: var(--transition);">
+            <div style="font-weight: 700; margin-bottom: 0.35rem; color: var(--text-main);">Add Page Numbers to PDF &rarr;</div>
+            <div style="font-size: 0.85rem; color: var(--text-muted);">Stamp clean headers and footers on multi-page proposals.</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner container">
+      <div class="footer-grid">
+        <div class="footer-col brand-col">
+          <div class="brand-logo" style="margin-bottom: 1rem;">
+            <span class="logo-mark">⚡</span>
+            <span class="logo-text">Ecrio<span class="logo-accent">X</span></span>
+          </div>
+          <p class="footer-tagline">One Platform. Endless Possibilities. Fast, secure, client-side digital utilities.</p>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Top Calculators</h4>
+          <ul class="footer-links">
+            <li><a href="../invoice-generator/">Invoice Generator</a></li>
+            <li><a href="../gst-calculator/">GST Calculator</a></li>
+            <li><a href="../age-calculator/">Age Calculator</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Company & Legal</h4>
+          <ul class="footer-links">
+            <li><a href="../about/">About Us</a></li>
+            <li><a href="../contact/">Contact</a></li>
+            <li><a href="../privacy/">Privacy Policy</a></li>
+            <li><a href="../terms/">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 EcrioX. All rights reserved. Zero file uploads — 100% private in-browser tools.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/app.js"></script>
+  <script src="tool.js"></script>
+  <script>
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.parentElement.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>

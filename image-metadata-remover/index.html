@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Metadata Viewer &amp; Remover – View &amp; Wipe EXIF Online | EcrioX</title>
+  <meta name="description" content="Free online Image Metadata Viewer & Remover. Inspect EXIF, camera, lens, and GPS geolocation coordinates in photos, then wipe all metadata with 1-click for privacy.">
+  <link rel="canonical" href="https://ecriox.com/image-metadata-remover/">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Image Metadata Viewer &amp; Remover – View &amp; Wipe EXIF Online | EcrioX">
+  <meta property="og:description" content="Inspect hidden EXIF camera and GPS tags in your pictures, and completely strip all metadata before sharing online.">
+  <meta property="og:url" content="https://ecriox.com/image-metadata-remover/">
+  <meta property="og:site_name" content="EcrioX">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Image Metadata Viewer &amp; Remover – EcrioX">
+  <meta name="twitter:description" content="View hidden photo tags and wipe EXIF/GPS metadata in your browser.">
+
+  <!-- Global Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i){
+  w[l]=w[l]||[];
+  w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),
+  dl=l!='dataLayer'?'&l='+l:'';
+  j.async=true;
+  j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+  f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PQFRBJ9F');
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Schema.org WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "EcrioX Image Metadata Viewer & Remover",
+    "url": "https://ecriox.com/image-metadata-remover/",
+    "applicationCategory": "SecurityApplication",
+    "operatingSystem": "All",
+    "description": "Inspect hidden EXIF, TIFF, camera, and GPS coordinates embedded in photos, and safely strip all metadata client-side before sharing online.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .meta-tool-layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .meta-tool-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Left Card: Upload & Preview */
+    .upload-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .drop-zone {
+      border: 2px dashed var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 3rem 1.25rem;
+      text-align: center;
+      cursor: pointer;
+      transition: var(--transition);
+      background: var(--bg-subtle);
+    }
+    .drop-zone:hover, .drop-zone.dragover {
+      border-color: var(--color-primary);
+      background: var(--color-primary-light);
+    }
+
+    .img-preview-box {
+      margin-top: 1.25rem;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      background: repeating-conic-gradient(var(--bg-subtle) 0% 25%, transparent 0% 50%) 50% / 12px 12px;
+      text-align: center;
+    }
+    #meta-preview-img {
+      max-width: 100%;
+      max-height: 240px;
+      display: block;
+      margin: 0 auto;
+      object-fit: contain;
+    }
+
+    /* Right Card: Metadata Inspector */
+    .inspector-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem 2rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Privacy Risk Alert Banner */
+    .privacy-risk-banner {
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .risk-high {
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.35);
+      color: #b91c1c;
+    }
+    .risk-safe {
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      color: #047857;
+    }
+    .risk-medium {
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      color: #b45309;
+    }
+
+    /* Metadata Table */
+    .metadata-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      margin-top: 1rem;
+    }
+    .metadata-table th, .metadata-table td {
+      padding: 0.65rem 0.75rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .metadata-table th {
+      font-weight: 700;
+      color: var(--text-subtle);
+      width: 38%;
+      background: var(--bg-subtle);
+    }
+    .metadata-table td {
+      color: var(--text-main);
+      font-family: var(--font-mono);
+      word-break: break-all;
+    }
+
+    /* Section Subheaders in Table */
+    .meta-section-hdr {
+      background: var(--bg-surface) !important;
+      color: var(--color-primary) !important;
+      font-family: var(--font-sans) !important;
+      font-weight: 800 !important;
+      font-size: 0.85rem !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.05em !important;
+      padding-top: 1.25rem !important;
+    }
+
+    /* Features Grid */
+    .features-badge-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin: 3.5rem 0 2.5rem;
+    }
+    .badge-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .badge-card svg {
+      width: 24px;
+      height: 24px;
+      color: var(--color-primary);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* SEO Article */
+    .seo-section {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2rem;
+      margin: 3rem 0;
+    }
+    .seo-section h2 { margin-bottom: 1rem; color: var(--text-main); }
+    .seo-section p, .seo-section li { color: var(--text-muted); line-height: 1.7; margin-bottom: 1rem; }
+
+    /* FAQ */
+    .faq-list { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
+    .faq-item { border: 1px solid var(--border-color); border-radius: var(--radius-md); overflow: hidden; background: var(--bg-surface); }
+    .faq-question { padding: 1.25rem; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: var(--bg-surface); border: none; width: 100%; text-align: left; color: var(--text-main); }
+    .faq-answer { padding: 0 1.25rem 1.25rem; color: var(--text-muted); line-height: 1.6; display: none; }
+    .faq-item.open .faq-answer { display: block; }
+    .faq-item.open .faq-icon { transform: rotate(180deg); }
+    .faq-icon { transition: transform 0.2s ease; }
+  </style>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQFRBJ9F"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner container">
+      <a href="../" class="brand-logo" aria-label="EcrioX Home">
+        <span class="logo-mark">⚡</span>
+        <span class="logo-text">Ecrio<span class="logo-accent">X</span></span>
+      </a>
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="../tools/" class="nav-link active">All Tools</a>
+        <a href="../tools/image/" class="nav-link">Image Tools</a>
+        <a href="../tools/pdf/" class="nav-link">PDF Tools</a>
+        <a href="../tools/calculators/" class="nav-link">Calculators</a>
+        <a href="../categories/" class="nav-link">Categories</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light theme">
+          <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-main container" style="padding-top: 2rem; padding-bottom: 4rem;">
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb" style="margin-bottom: 1.5rem;">
+      <a href="../">Home</a>
+      <span class="bc-sep">/</span>
+      <a href="../tools/image/">Image Tools</a>
+      <span class="bc-sep">/</span>
+      <span class="bc-current">Image Metadata Remover</span>
+    </nav>
+
+    <div style="text-align: center; margin-bottom: 2rem;">
+      <span class="badge" style="background: var(--color-primary-light); color: var(--color-primary); font-weight: 700; margin-bottom: 0.75rem; display: inline-block;">EXIF VIEWER • PRIVACY CLEANER</span>
+      <h1 style="font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800; color: var(--text-main); margin-bottom: 0.75rem; letter-spacing: -0.02em;">Image Metadata Viewer &amp; Remover</h1>
+      <p style="color: var(--text-muted); font-size: 1.15rem; max-width: 680px; margin: 0 auto;">
+        Inspect hidden EXIF, camera model, shutter settings, and GPS location coordinates stored in your photos. Wipe all metadata in 1 click to protect your privacy before sharing online.
+      </p>
+    </div>
+
+    <!-- Main Workspace -->
+    <div class="meta-tool-layout">
+      <!-- Left Column: Upload & Actions -->
+      <div class="upload-card">
+        <div class="drop-zone" id="meta-drop-zone">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color: var(--color-primary); margin-bottom: 0.5rem;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+          <h4 style="font-size: 1rem; margin-bottom: 0.25rem;">Choose a photo or drop it here</h4>
+          <p style="color: var(--text-muted); font-size: 0.8rem; margin-bottom: 1rem;">Supports JPG, JPEG, PNG, WebP, and TIFF</p>
+          <label class="btn btn-primary" style="font-size: 0.85rem; padding: 0.5rem 1rem; cursor: pointer; display: inline-block;">
+            <span>Browse Image</span>
+            <input type="file" id="meta-file-input" accept="image/*" style="display: none;">
+          </label>
+        </div>
+
+        <div class="img-preview-box" id="preview-wrapper" style="display: none;">
+          <img id="meta-preview-img" alt="Uploaded Preview">
+        </div>
+
+        <div style="margin-top: 1.25rem; display: flex; flex-direction: column; gap: 0.75rem;">
+          <button type="button" class="btn btn-primary" id="btn-strip-meta" style="width: 100%; padding: 0.75rem;" disabled>
+            Strip All Metadata &amp; Download
+          </button>
+          <button type="button" class="btn btn-secondary" id="btn-load-sample-meta" style="width: 100%; font-size: 0.85rem;">
+            Load Sample EXIF Photo
+          </button>
+        </div>
+      </div>
+
+      <!-- Right Column: Metadata Inspector -->
+      <div class="inspector-card">
+        <!-- Privacy Banner -->
+        <div class="privacy-risk-banner risk-safe" id="privacy-banner">
+          <div>
+            <div style="font-weight: 800; font-size: 0.95rem;" id="privacy-title">No Image Loaded</div>
+            <div style="font-size: 0.85rem; opacity: 0.9;" id="privacy-desc">Upload a photo to inspect embedded metadata and GPS tags.</div>
+          </div>
+          <span class="badge" id="privacy-badge" style="background: rgba(0,0,0,0.1); font-weight: 700;">Awaiting file</span>
+        </div>
+
+        <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.5rem;">Embedded Metadata Details</h3>
+        <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1rem;">
+          Extracted directly from the file header. All parsing runs client-side in your browser.
+        </p>
+
+        <table class="metadata-table" id="meta-table">
+          <tbody>
+            <tr>
+              <td colspan="2" style="text-align: center; color: var(--text-muted); padding: 2rem;">
+                No metadata loaded yet. Drop a photo to inspect its details.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Feature Badges -->
+    <div class="features-badge-grid">
+      <div class="badge-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+        <div>
+          <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">GPS Geolocation Detection</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Detect exact latitude, longitude, and elevation coordinates that pinpoint where a photo was taken.</p>
+        </div>
+      </div>
+      <div class="badge-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+        <div>
+          <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">Camera &amp; Lens Diagnostics</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">View lens focal length, aperture (f-number), shutter exposure speed, ISO sensitivity, and camera serials.</p>
+        </div>
+      </div>
+      <div class="badge-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+        <div>
+          <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">1-Click Deep Privacy Clean</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Re-encodes pixel matrices cleanly to eliminate all EXIF, XMP, and IPTC segments without degrading visual image clarity.</p>
+        </div>
+      </div>
+      <div class="badge-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+        <div>
+          <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">100% In-Browser Execution</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Zero image uploads. All parsing and metadata wiping occurs strictly inside your computer's local memory.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEO Educational Guide -->
+    <section class="seo-section">
+      <h2>What is EXIF Metadata and Why Should You Strip It?</h2>
+      <p>
+        Whenever you take a photograph using a smartphone (iPhone, Samsung Galaxy, Google Pixel) or a DSLR camera, the device automatically records extensive background information known as <strong>Exchangeable Image File Format (EXIF)</strong>.
+      </p>
+      <p>
+        While EXIF is useful for photographers archiving camera exposure settings, it also carries serious privacy risks when shared publicly on forums, classified ads, social media, or blogs:
+      </p>
+      <ul style="padding-left: 1.5rem; margin-bottom: 1.5rem;">
+        <li><strong>Exact Home Geolocation:</strong> Smartphones embed GPS latitude and longitude accurate to within 3 meters. Sharing photos of pets, kids, or personal possessions can expose your home or work address to stalkers.</li>
+        <li><strong>Unique Device Identifiers:</strong> Camera serial numbers and device hardware identifiers can be correlated across websites to track individual photographers.</li>
+        <li><strong>Precise Timestamps:</strong> EXIF records the exact second a photo was snapped, exposing daily travel routines and work patterns.</li>
+      </ul>
+
+      <h3 style="margin: 2rem 0 0.75rem; color: var(--text-main);">Frequently Asked Questions (FAQs)</h3>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Does stripping EXIF data lower the visual quality of my photo?</span>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="faq-answer">
+            No. The EcrioX cleaner extracts the true pixel RGB buffer and writes a fresh image file without the ancillary EXIF APP1 header blocks. The visible content remains crisp and sharp.
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Can wiped metadata be recovered once removed?</span>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="faq-answer">
+            No. When you download the cleaned image, the metadata headers are permanently omitted from the file structure. No external software or forensic tool can recover the deleted tags from the clean file.
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Does this tool upload my photos to any remote servers?</span>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="faq-answer">
+            Never. The binary EXIF parser and the canvas sanitizer run 100% locally in your web browser. Your private pictures never travel across the internet.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Tools -->
+    <div style="margin-top: 3rem;">
+      <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--text-main); margin-bottom: 1.25rem;">Related Image Utilities</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;">
+        <a href="../png-to-webp/" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; text-decoration: none; color: inherit; display: block; transition: var(--transition);">
+          <div style="font-weight: 700; margin-bottom: 0.35rem; color: var(--text-main);">PNG to WebP Converter &rarr;</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">Shrink image file size with lossless WebP compression.</div>
+        </a>
+        <a href="../image-color-picker/" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; text-decoration: none; color: inherit; display: block; transition: var(--transition);">
+          <div style="font-weight: 700; margin-bottom: 0.35rem; color: var(--text-main);">Image Color Picker &rarr;</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">Pick colors with 10x magnifier and extract dominant palettes.</div>
+        </a>
+        <a href="../heic-to-jpg/" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; text-decoration: none; color: inherit; display: block; transition: var(--transition);">
+          <div style="font-weight: 700; margin-bottom: 0.35rem; color: var(--text-main);">HEIC to JPG Converter &rarr;</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">Convert iPhone HEIC photos to compatible JPG or PNG.</div>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner container">
+      <div class="footer-grid">
+        <div class="footer-col brand-col">
+          <div class="brand-logo" style="margin-bottom: 1rem;">
+            <span class="logo-mark">⚡</span>
+            <span class="logo-text">Ecrio<span class="logo-accent">X</span></span>
+          </div>
+          <p class="footer-tagline">One Platform. Endless Possibilities. Fast, secure, client-side digital utilities.</p>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Top Image Tools</h4>
+          <ul class="footer-links">
+            <li><a href="../image-metadata-remover/">Image Metadata Remover</a></li>
+            <li><a href="../png-to-webp/">PNG to WebP</a></li>
+            <li><a href="../image-color-picker/">Image Color Picker</a></li>
+            <li><a href="../heic-to-jpg/">HEIC to JPG</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Company & Legal</h4>
+          <ul class="footer-links">
+            <li><a href="../about/">About Us</a></li>
+            <li><a href="../contact/">Contact</a></li>
+            <li><a href="../privacy/">Privacy Policy</a></li>
+            <li><a href="../terms/">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 EcrioX. All rights reserved. Zero file uploads — 100% private in-browser tools.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/app.js"></script>
+  <script src="tool.js"></script>
+  <script>
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.parentElement.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>

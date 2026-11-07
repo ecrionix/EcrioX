@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Age Calculator Online – Calculate Exact Age, Days & Birthday | EcrioX</title>
+  <meta name="description" content="Free online Age Calculator. Calculate your exact age in years, months, and days, count down to your next birthday, and see total hours, minutes, and days lived.">
+  <link rel="canonical" href="https://ecriox.com/age-calculator/">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Age Calculator Online – Exact Age & Birthday Countdown | EcrioX">
+  <meta property="og:description" content="Calculate your exact age in years, months, days, hours, and minutes with real-time countdown to your next birthday.">
+  <meta property="og:url" content="https://ecriox.com/age-calculator/">
+  <meta property="og:site_name" content="EcrioX">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Age Calculator Online – EcrioX">
+  <meta name="twitter:description" content="Find out your exact chronological age, day of birth, and next birthday countdown online.">
+
+  <!-- Global Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i){
+  w[l]=w[l]||[];
+  w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),
+  dl=l!='dataLayer'?'&l='+l:'';
+  j.async=true;
+  j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+  f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PQFRBJ9F');
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Schema.org WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "EcrioX Age Calculator",
+    "url": "https://ecriox.com/age-calculator/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "description": "Calculate exact chronological age in years, months, and days, next birthday countdown, total days and hours lived, and compare ages between two dates.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .age-calc-container {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .calc-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem 2rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .tabs-header {
+      display: flex;
+      gap: 0.5rem;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 2rem;
+    }
+    .tab-btn {
+      padding: 0.75rem 1.25rem;
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      color: var(--text-muted);
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .tab-btn.active {
+      color: var(--color-primary);
+      border-bottom-color: var(--color-primary);
+    }
+    .tab-pane {
+      display: none;
+    }
+    .tab-pane.active {
+      display: block;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--text-main);
+    }
+    .form-control {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      background: var(--bg-surface);
+      color: var(--text-main);
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+    .form-control:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px var(--color-primary-light);
+    }
+
+    /* Primary Hero Highlight */
+    .primary-age-hero {
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(99, 102, 241, 0.04));
+      border: 1px solid var(--color-primary-border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .hero-age-val {
+      font-size: clamp(2.2rem, 5vw, 3.25rem);
+      font-weight: 800;
+      color: var(--color-primary);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin: 0.5rem 0;
+    }
+    .hero-sub {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
+    /* Metric Grid */
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+    .metric-card {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      text-align: center;
+    }
+    .metric-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-subtle);
+      margin-bottom: 0.35rem;
+    }
+    .metric-value {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    /* Comparison Box */
+    .comp-result-box {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.75rem;
+      margin-top: 1.5rem;
+      display: none;
+    }
+
+    /* Features Grid */
+    .features-badge-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin: 3.5rem 0 2.5rem;
+    }
+    .badge-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .badge-card svg {
+      width: 24px;
+      height: 24px;
+      color: var(--color-primary);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* SEO Article */
+    .seo-section {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2rem;
+      margin: 3rem 0;
+    }
+    .seo-section h2 { margin-bottom: 1rem; color: var(--text-main); }
+    .seo-section p, .seo-section li { color: var(--text-muted); line-height: 1.7; margin-bottom: 1rem; }
+
+    /* FAQ */
+    .faq-list { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
+    .faq-item { border: 1px solid var(--border-color); border-radius: var(--radius-md); overflow: hidden; background: var(--bg-surface); }
+    .faq-question { padding: 1.25rem; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: var(--bg-surface); border: none; width: 100%; text-align: left; color: var(--text-main); }
+    .faq-answer { padding: 0 1.25rem 1.25rem; color: var(--text-muted); line-height: 1.6; display: none; }
+    .faq-item.open .faq-answer { display: block; }
+    .faq-item.open .faq-icon { transform: rotate(180deg); }
+    .faq-icon { transition: transform 0.2s ease; }
+  </style>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQFRBJ9F"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner container">
+      <a href="../" class="brand-logo" aria-label="EcrioX Home">
+        <span class="logo-mark">⚡</span>
+        <span class="logo-text">Ecrio<span class="logo-accent">X</span></span>
+      </a>
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="../tools/" class="nav-link active">All Tools</a>
+        <a href="../tools/calculators/" class="nav-link">Calculators</a>
+        <a href="../tools/pdf/" class="nav-link">PDF Tools</a>
+        <a href="../tools/image/" class="nav-link">Image Tools</a>
+        <a href="../categories/" class="nav-link">Categories</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light theme">
+          <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-main container" style="padding-top: 2rem; padding-bottom: 4rem;">
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb" style="margin-bottom: 1.5rem;">
+      <a href="../">Home</a>
+      <span class="bc-sep">/</span>
+      <a href="../tools/calculators/">Calculators</a>
+      <span class="bc-sep">/</span>
+      <span class="bc-current">Age Calculator</span>
+    </nav>
+
+    <div class="age-calc-container">
+      <div style="text-align: center; margin-bottom: 2.25rem;">
+        <span class="badge" style="background: var(--color-primary-light); color: var(--color-primary); font-weight: 700; margin-bottom: 0.75rem; display: inline-block;">EXACT CHRONOLOGICAL CALCULATOR</span>
+        <h1 style="font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800; color: var(--text-main); margin-bottom: 0.75rem; letter-spacing: -0.02em;">Age Calculator Online</h1>
+        <p style="color: var(--text-muted); font-size: 1.15rem; max-width: 680px; margin: 0 auto;">
+          Calculate your exact chronological age in years, months, and days. Discover your next birthday countdown, total days lived, and compare ages between two people.
+        </p>
+      </div>
+
+      <div class="calc-card">
+        <!-- Tabs -->
+        <div class="tabs-header">
+          <button type="button" class="tab-btn active" data-tab="tab-age">Calculate Exact Age</button>
+          <button type="button" class="tab-btn" data-tab="tab-compare">Compare Two Ages</button>
+          <button type="button" class="tab-btn" data-tab="tab-diff">Date Duration Between 2 Dates</button>
+        </div>
+
+        <!-- Tab 1: Exact Age -->
+        <div class="tab-pane active" id="tab-age">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="birth-date">Date of Birth</label>
+              <input type="date" id="birth-date" class="form-control" value="2000-01-15">
+            </div>
+            <div class="form-group">
+              <label for="target-date">Age at the Date of (Defaults to Today)</label>
+              <input type="date" id="target-date" class="form-control">
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 0.75rem; margin-bottom: 2rem;">
+            <button type="button" class="btn btn-primary" id="btn-calc-age" style="flex: 1;">Calculate Age</button>
+            <button type="button" class="btn btn-secondary" id="btn-reset-age">Reset</button>
+          </div>
+
+          <!-- Hero Highlight -->
+          <div class="primary-age-hero">
+            <div class="metric-title">Your Exact Chronological Age</div>
+            <div class="hero-age-val" id="res-hero-age">--</div>
+            <div class="hero-sub" id="res-hero-sub">Born on a Saturday • Capricorn</div>
+          </div>
+
+          <!-- Metric Grid -->
+          <div class="metric-grid">
+            <div class="metric-card">
+              <div class="metric-title">Next Birthday In</div>
+              <div class="metric-value" id="res-next-bday" style="color: var(--color-success);">--</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-title">Total Months</div>
+              <div class="metric-value" id="res-total-months">--</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-title">Total Weeks</div>
+              <div class="metric-value" id="res-total-weeks">--</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-title">Total Days Lived</div>
+              <div class="metric-value" id="res-total-days">--</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-title">Total Hours</div>
+              <div class="metric-value" id="res-total-hours">--</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-title">Total Minutes</div>
+              <div class="metric-value" id="res-total-minutes">--</div>
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: flex-end;">
+            <button type="button" class="btn btn-secondary" id="btn-copy-age">Copy Age Summary</button>
+          </div>
+        </div>
+
+        <!-- Tab 2: Compare Two Ages -->
+        <div class="tab-pane" id="tab-compare">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="p1-date">Person 1 Date of Birth</label>
+              <input type="date" id="p1-date" class="form-control" value="1995-05-20">
+            </div>
+            <div class="form-group">
+              <label for="p2-date">Person 2 Date of Birth</label>
+              <input type="date" id="p2-date" class="form-control" value="1998-09-12">
+            </div>
+          </div>
+          <button type="button" class="btn btn-primary" id="btn-compare-ages" style="width: 100%;">Compare Ages</button>
+
+          <div class="comp-result-box" id="comp-result">
+            <h3 style="margin-bottom: 0.75rem; color: var(--text-main);" id="comp-heading">Age Comparison</h3>
+            <p style="font-size: 1.1rem; line-height: 1.6; color: var(--text-main); margin-bottom: 0.5rem;" id="comp-summary"></p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem;">
+              <div style="background: var(--bg-surface); padding: 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+                <div style="font-size: 0.8rem; font-weight: 700; color: var(--text-subtle);">PERSON 1 AGE</div>
+                <div style="font-size: 1.2rem; font-weight: 700; color: var(--color-primary);" id="comp-p1-age"></div>
+              </div>
+              <div style="background: var(--bg-surface); padding: 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+                <div style="font-size: 0.8rem; font-weight: 700; color: var(--text-subtle);">PERSON 2 AGE</div>
+                <div style="font-size: 1.2rem; font-weight: 700; color: var(--color-primary);" id="comp-p2-age"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 3: Date Duration -->
+        <div class="tab-pane" id="tab-diff">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="start-date">Start Date</label>
+              <input type="date" id="start-date" class="form-control" value="2024-01-01">
+            </div>
+            <div class="form-group">
+              <label for="end-date">End Date</label>
+              <input type="date" id="end-date" class="form-control">
+            </div>
+          </div>
+          <button type="button" class="btn btn-primary" id="btn-calc-diff" style="width: 100%;">Calculate Date Difference</button>
+
+          <div class="comp-result-box" id="diff-result">
+            <h3 style="margin-bottom: 0.75rem; color: var(--text-main);">Duration Between Dates</h3>
+            <p style="font-size: 1.25rem; font-weight: 700; color: var(--color-primary); margin-bottom: 0.5rem;" id="diff-summary"></p>
+            <p style="color: var(--text-muted); font-size: 0.95rem;" id="diff-sub"></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature Badges -->
+      <div class="features-badge-grid">
+        <div class="badge-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          <div>
+            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">Exact Leap Year Precision</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Calculates exact calendar months and leap year days without rough average rounding.</p>
+          </div>
+        </div>
+        <div class="badge-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          <div>
+            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">Two-Person Comparison</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Easily find out who is older and the exact age gap between partners, siblings, or friends.</p>
+          </div>
+        </div>
+        <div class="badge-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+          <div>
+            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">Birthday Countdown</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">See the exact day of the week and days remaining until your next birthday milestone.</p>
+          </div>
+        </div>
+        <div class="badge-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          <div>
+            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">100% Private</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">No birth dates or personal timelines are ever uploaded to any web servers or logged.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEO Educational Section -->
+      <section class="seo-section">
+        <h2>How Does Chronological Age Calculation Work?</h2>
+        <p>
+          Most people think calculating age is as simple as subtracting birth year from current year. However, true chronological age requires calculating exact days, calendar months with varying day counts (28, 29, 30, or 31 days), and leap years.
+        </p>
+        <p>
+          The EcrioX Age Calculator uses the Gregorian calendar standard to determine exact time elapsed:
+        </p>
+        <ul style="padding-left: 1.5rem; margin-bottom: 1.5rem;">
+          <li><strong>Day-Level Borrowing:</strong> If target day is earlier than birth day, days are borrowed from the previous calendar month using that specific month's exact number of days.</li>
+          <li><strong>Month-Level Borrowing:</strong> If target month is earlier than birth month, 12 months are borrowed from the year count.</li>
+          <li><strong>Leap Years:</strong> February 29th leap days occurring throughout your lifespan are completely accounted for in total day counts.</li>
+        </ul>
+
+        <h3 style="margin: 2rem 0 0.75rem; color: var(--text-main);">Frequently Asked Questions (FAQs)</h3>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How is age calculated if someone was born on February 29th (Leap Day)?</span>
+              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              In non-leap years, February has only 28 days. In legal jurisdictions such as the United Kingdom and United States, a person born on February 29th legally turns one year older on March 1st in non-leap years. Our calculator handles leap years accurately and counts down to your next true birthday.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Can I calculate someone's age on a future or historical date?</span>
+              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              Yes. Simply change the "Age at the Date of" field to any date in the past or future. This is ideal for job eligibility checks, retirement planning, passport validity, school admissions, and historical research.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Why do some age calculators give different total day counts?</span>
+              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              Inferior calculators approximate each month as 30 or 30.4375 days and each year as 365 days. The EcrioX Age Calculator counts exact real-world UTC dates, leap days, and true monthly calendar boundaries.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Related Tools -->
+      <div style="margin-top: 3rem;">
+        <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--text-main); margin-bottom: 1.25rem;">Related Calculators & Utilities</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;">
+          <a href="../gst-calculator/" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; text-decoration: none; color: inherit; display: block; transition: var(--transition);">
+            <div style="font-weight: 700; margin-bottom: 0.35rem; color: var(--text-main);">GST Calculator &rarr;</div>
+            <div style="font-size: 0.85rem; color: var(--text-muted);">Calculate Indian GST rates, reverse tax, and tax splits.</div>
+          </a>
+          <a href="../invoice-generator/" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; text-decoration: none; color: inherit; display: block; transition: var(--transition);">
+            <div style="font-weight: 700; margin-bottom: 0.35rem; color: var(--text-main);">Invoice Generator &rarr;</div>
+            <div style="font-size: 0.85rem; color: var(--text-muted);">Generate clean PDF invoices with taxes and discounts.</div>
+          </a>
+          <a href="../password-generator/" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; text-decoration: none; color: inherit; display: block; transition: var(--transition);">
+            <div style="font-weight: 700; margin-bottom: 0.35rem; color: var(--text-main);">Password Generator &rarr;</div>
+            <div style="font-size: 0.85rem; color: var(--text-muted);">Create cryptographically secure passwords & passphrases.</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner container">
+      <div class="footer-grid">
+        <div class="footer-col brand-col">
+          <div class="brand-logo" style="margin-bottom: 1rem;">
+            <span class="logo-mark">⚡</span>
+            <span class="logo-text">Ecrio<span class="logo-accent">X</span></span>
+          </div>
+          <p class="footer-tagline">One Platform. Endless Possibilities. Fast, secure, client-side digital utilities.</p>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Top Calculators</h4>
+          <ul class="footer-links">
+            <li><a href="../gst-calculator/">GST Calculator India</a></li>
+            <li><a href="../age-calculator/">Age Calculator</a></li>
+            <li><a href="../invoice-generator/">Invoice Generator</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Company & Legal</h4>
+          <ul class="footer-links">
+            <li><a href="../about/">About Us</a></li>
+            <li><a href="../contact/">Contact</a></li>
+            <li><a href="../privacy/">Privacy Policy</a></li>
+            <li><a href="../terms/">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 EcrioX. All rights reserved. Zero file uploads — 100% private in-browser tools.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/app.js"></script>
+  <script src="tool.js"></script>
+  <script>
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.parentElement.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>

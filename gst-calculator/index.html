@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GST Calculator India – Calculate GST, CGST, SGST & IGST Online | EcrioX</title>
+  <meta name="description" content="Free GST Calculator India. Calculate GST inclusive and exclusive prices, reverse GST, CGST, SGST and IGST instantly for 5%, 12%, 18% and 28% rates.">
+  <link rel="canonical" href="https://ecriox.com/gst-calculator/">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="GST Calculator India – Calculate GST, CGST, SGST & IGST Online | EcrioX">
+  <meta property="og:description" content="Calculate GST inclusive and exclusive prices, reverse GST, and tax splits instantly online. Free and accurate.">
+  <meta property="og:url" content="https://ecriox.com/gst-calculator/">
+  <meta property="og:site_name" content="EcrioX">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="GST Calculator India – EcrioX">
+  <meta name="twitter:description" content="Calculate GST inclusive and exclusive amounts, CGST, SGST, and IGST with one click.">
+
+  <!-- Global Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i){
+  w[l]=w[l]||[];
+  w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),
+  dl=l!='dataLayer'?'&l='+l:'';
+  j.async=true;
+  j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+  f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PQFRBJ9F');
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Schema.org WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "EcrioX GST Calculator India",
+    "url": "https://ecriox.com/gst-calculator/",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "All",
+    "description": "Calculate Goods and Services Tax (GST) in India with support for inclusive, exclusive, reverse GST, CGST, SGST, and IGST calculations across 5%, 12%, 18%, and 28% slabs.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .gst-calc-layout {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .calc-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem 2rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .toggle-pill-group {
+      display: flex;
+      background: var(--bg-subtle);
+      border-radius: var(--radius-full);
+      padding: 0.35rem;
+      gap: 0.35rem;
+      margin-bottom: 1.5rem;
+    }
+    .toggle-pill-btn {
+      flex: 1;
+      padding: 0.65rem 1rem;
+      font-size: 0.9rem;
+      font-weight: 700;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      transition: var(--transition);
+      text-align: center;
+    }
+    .toggle-pill-btn.active {
+      background: var(--bg-surface);
+      color: var(--color-primary);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .rate-presets {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(68px, 1fr));
+      gap: 0.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .rate-btn {
+      padding: 0.65rem 0.5rem;
+      font-size: 0.95rem;
+      font-weight: 700;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      background: var(--bg-surface);
+      color: var(--text-main);
+      cursor: pointer;
+      transition: var(--transition);
+      text-align: center;
+    }
+    .rate-btn:hover {
+      border-color: var(--color-primary);
+    }
+    .rate-btn.active {
+      background: var(--color-primary-light);
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+    }
+
+    /* Result Grid */
+    .result-summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.25rem;
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-color);
+    }
+    .result-tile {
+      background: var(--bg-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      border: 1px solid var(--border-color);
+    }
+    .result-tile.highlight {
+      background: var(--color-primary-light);
+      border-color: var(--color-primary-border);
+    }
+    .result-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-subtle);
+      margin-bottom: 0.35rem;
+    }
+    .result-amount {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--text-main);
+      font-family: var(--font-sans);
+    }
+    .result-tile.highlight .result-amount {
+      color: var(--color-primary);
+    }
+
+    /* Breakdown Table */
+    .breakdown-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1.5rem;
+      font-size: 0.95rem;
+    }
+    .breakdown-table tr {
+      border-bottom: 1px solid var(--border-color);
+    }
+    .breakdown-table td {
+      padding: 0.85rem 0.5rem;
+    }
+    .breakdown-table td:last-child {
+      text-align: right;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    /* Features Grid */
+    .features-badge-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin: 3.5rem 0 2.5rem;
+    }
+    .badge-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .badge-card svg {
+      width: 24px;
+      height: 24px;
+      color: var(--color-primary);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* SEO Section */
+    .seo-section {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2rem;
+      margin: 3rem 0;
+    }
+    .seo-section h2 {
+      margin-bottom: 1rem;
+      color: var(--text-main);
+    }
+    .seo-section p, .seo-section li {
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    /* FAQ list */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .faq-item {
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: var(--bg-surface);
+    }
+    .faq-question {
+      padding: 1.25rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--bg-surface);
+      border: none;
+      width: 100%;
+      text-align: left;
+      color: var(--text-main);
+    }
+    .faq-answer {
+      padding: 0 1.25rem 1.25rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      display: none;
+    }
+    .faq-item.open .faq-answer {
+      display: block;
+    }
+    .faq-item.open .faq-icon {
+      transform: rotate(180deg);
+    }
+    .faq-icon {
+      transition: transform 0.2s ease;
+    }
+  </style>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQFRBJ9F"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner container">
+      <a href="../" class="brand-logo" aria-label="EcrioX Home">
+        <span class="logo-mark">⚡</span>
+        <span class="logo-text">Ecrio<span class="logo-accent">X</span></span>
+      </a>
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="../tools/" class="nav-link active">All Tools</a>
+        <a href="../tools/calculators/" class="nav-link">Calculators</a>
+        <a href="../tools/pdf/" class="nav-link">PDF Tools</a>
+        <a href="../tools/image/" class="nav-link">Image Tools</a>
+        <a href="../categories/" class="nav-link">Categories</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light theme">
+          <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-main container" style="padding-top: 2rem; padding-bottom: 4rem;">
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb" style="margin-bottom: 1.5rem;">
+      <a href="../">Home</a>
+      <span class="bc-sep">/</span>
+      <a href="../tools/calculators/">Calculators</a>
+      <span class="bc-sep">/</span>
+      <span class="bc-current">GST Calculator India</span>
+    </nav>
+
+    <div class="gst-calc-layout">
+      <!-- Hero Intro -->
+      <div style="text-align: center; margin-bottom: 2.25rem;">
+        <span class="badge" style="background: var(--color-primary-light); color: var(--color-primary); font-weight: 700; margin-bottom: 0.75rem; display: inline-block;">INDIA GST • 2026 RATES</span>
+        <h1 style="font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800; color: var(--text-main); margin-bottom: 0.75rem; letter-spacing: -0.02em;">GST Calculator India</h1>
+        <p style="color: var(--text-muted); font-size: 1.15rem; max-width: 680px; margin: 0 auto;">
+          Calculate GST inclusive and exclusive prices, reverse GST, CGST, SGST, and IGST for 5%, 12%, 18%, and 28% tax slabs. Free, instant, and accurate tax calculations.
+        </p>
+      </div>
+
+      <!-- Main Calculator Card -->
+      <div class="calc-card">
+        <!-- Calculation Mode Toggle -->
+        <div class="toggle-pill-group">
+          <button type="button" class="toggle-pill-btn active" id="btn-mode-exclusive">GST Exclusive (Add Tax)</button>
+          <button type="button" class="toggle-pill-btn" id="btn-mode-inclusive">GST Inclusive (Remove Tax)</button>
+        </div>
+
+        <!-- Amount Input -->
+        <div style="margin-bottom: 1.5rem;">
+          <label style="font-size: 0.85rem; font-weight: 700; color: var(--text-main); display: block; margin-bottom: 0.4rem;" id="amount-input-label">
+            Initial Amount (₹)
+          </label>
+          <div style="position: relative;">
+            <span style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); font-weight: 700; font-size: 1.2rem; color: var(--text-subtle);">₹</span>
+            <input type="number" id="input-amount" class="control-input" value="10000" min="0" step="any" style="padding-left: 2.25rem; font-size: 1.25rem; font-weight: 700;" placeholder="Enter amount">
+          </div>
+        </div>
+
+        <!-- GST Rate Presets -->
+        <div style="margin-bottom: 1.5rem;">
+          <label style="font-size: 0.85rem; font-weight: 700; color: var(--text-main); display: block; margin-bottom: 0.4rem;">
+            GST Tax Slab Rate (%)
+          </label>
+          <div class="rate-presets">
+            <button type="button" class="rate-btn" data-rate="0">0%</button>
+            <button type="button" class="rate-btn" data-rate="5">5%</button>
+            <button type="button" class="rate-btn" data-rate="12">12%</button>
+            <button type="button" class="rate-btn active" data-rate="18">18%</button>
+            <button type="button" class="rate-btn" data-rate="28">28%</button>
+            <div style="position: relative; display: flex; align-items: center;">
+              <input type="number" id="custom-rate-input" class="control-input" placeholder="Custom %" min="0" max="100" step="0.1" style="padding: 0.65rem 0.5rem; text-align: center; font-weight: 700; font-size: 0.85rem;">
+            </div>
+          </div>
+        </div>
+
+        <!-- Supply Type (Intra vs Inter State) -->
+        <div style="margin-bottom: 1.5rem;">
+          <label style="font-size: 0.85rem; font-weight: 700; color: var(--text-main); display: block; margin-bottom: 0.4rem;">
+            Transaction Type
+          </label>
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; font-size: 0.95rem; color: var(--text-main);">
+              <input type="radio" name="supply-type" value="intra" checked style="accent-color: var(--color-primary); width: 18px; height: 18px;">
+              <span>Intra-State (CGST + SGST Split)</span>
+            </label>
+            <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; font-size: 0.95rem; color: var(--text-main);">
+              <input type="radio" name="supply-type" value="inter" style="accent-color: var(--color-primary); width: 18px; height: 18px;">
+              <span>Inter-State (IGST)</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Results Display Grid -->
+        <div class="result-summary-grid">
+          <div class="result-tile">
+            <div class="result-label" id="lbl-net-amount">Net Base Amount</div>
+            <div class="result-amount" id="res-net-amount">₹10,000.00</div>
+          </div>
+          <div class="result-tile">
+            <div class="result-label">Total GST (<span id="res-rate-badge">18%</span>)</div>
+            <div class="result-amount" id="res-gst-amount" style="color: var(--color-warning);">₹1,800.00</div>
+          </div>
+          <div class="result-tile highlight">
+            <div class="result-label" id="lbl-total-amount">Final Gross Amount</div>
+            <div class="result-amount" id="res-total-amount">₹11,800.00</div>
+          </div>
+        </div>
+
+        <!-- Itemized Breakdown Table -->
+        <table class="breakdown-table">
+          <tbody>
+            <tr>
+              <td>Original Base Value</td>
+              <td id="tbl-base-val">₹10,000.00</td>
+            </tr>
+            <tr id="row-cgst">
+              <td>Central GST (CGST - <span id="tbl-cgst-rate">9%</span>)</td>
+              <td id="tbl-cgst-val">₹900.00</td>
+            </tr>
+            <tr id="row-sgst">
+              <td>State GST (SGST - <span id="tbl-sgst-rate">9%</span>)</td>
+              <td id="tbl-sgst-val">₹900.00</td>
+            </tr>
+            <tr id="row-igst" style="display: none;">
+              <td>Integrated GST (IGST - <span id="tbl-igst-rate">18%</span>)</td>
+              <td id="tbl-igst-val">₹1,800.00</td>
+            </tr>
+            <tr style="border-top: 2px solid var(--border-color); font-size: 1.05rem;">
+              <td style="font-weight: 800; color: var(--text-main);">Final Total Amount</td>
+              <td id="tbl-final-val" style="color: var(--color-primary);">₹11,800.00</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Action Buttons -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.75rem; flex-wrap: wrap; gap: 0.75rem;">
+          <button type="button" class="btn btn-secondary" id="btn-reset-calc">Reset</button>
+          <div style="display: flex; gap: 0.75rem;">
+            <a href="../invoice-generator/" class="btn btn-secondary">Create GST Invoice &rarr;</a>
+            <button type="button" class="btn btn-primary" id="btn-copy-gst">Copy Summary</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature Badges -->
+      <div class="features-badge-grid">
+        <div class="badge-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+          <div>
+            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">Standard 2026 GST Slabs</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Pre-configured rates for 0%, 5%, 12%, 18%, and 28% alongside custom tax rate input.</p>
+          </div>
+        </div>
+        <div class="badge-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+          <div>
+            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">Inclusive &amp; Reverse GST</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Extract underlying tax from MRP or add GST on top of net manufacturer prices with 1-click toggling.</p>
+          </div>
+        </div>
+        <div class="badge-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="12" y1="3" x2="12" y2="21"></line></svg>
+          <div>
+            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">CGST, SGST &amp; IGST Split</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Automatic 50/50 division for local intra-state trade and full IGST for inter-state commercial supplies.</p>
+          </div>
+        </div>
+        <div class="badge-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          <div>
+            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">100% Free &amp; Private</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Calculates entirely in your browser. No financial data or billing numbers are saved or sent to servers.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEO Informational Content -->
+      <section class="seo-section">
+        <h2>What is GST and How Is It Calculated in India?</h2>
+        <p>
+          The <strong>Goods and Services Tax (GST)</strong> is a destination-based, multi-stage indirect tax levied on the manufacture, sale, and consumption of goods and services throughout India. Replacing complex cascading taxes like VAT, Service Tax, and Excise Duty, GST simplifies compliance under unified slabs: 0%, 5%, 12%, 18%, and 28%.
+        </p>
+
+        <h3 style="margin: 2rem 0 0.75rem; color: var(--text-main);">GST Calculation Formulas</h3>
+        <p>
+          Depending on whether the retail quote already includes tax or requires tax addition, GST is calculated using standard formulas:
+        </p>
+        <div style="background: var(--bg-subtle); border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: 1.5rem; font-family: var(--font-mono); font-size: 0.9rem; line-height: 1.8;">
+          <strong>1. GST Exclusive (Adding GST to Base Price):</strong><br>
+          GST Amount = (Base Price × GST Rate) / 100<br>
+          Total Payable = Base Price + GST Amount<br><br>
+          <strong>2. GST Inclusive (Extracting / Reverse GST from MRP):</strong><br>
+          Base Price = Total Price / (1 + (GST Rate / 100))<br>
+          GST Amount = Total Price - Base Price
+        </div>
+
+        <h3 style="margin: 2rem 0 0.75rem; color: var(--text-main);">How to Calculate 18% GST (Example)</h3>
+        <p>
+          18% is the most common GST rate in India, applied across software services, electronics, professional fees, and consumer dining.
+        </p>
+        <ul style="padding-left: 1.25rem;">
+          <li><strong>Exclusive Example:</strong> If your consulting invoice is ₹10,000 + 18% GST:<br>
+          GST Amount = (10,000 × 18) / 100 = <strong>₹1,800</strong>.<br>
+          For local supply, this splits into <strong>CGST ₹900</strong> and <strong>SGST ₹900</strong>. Total Payable = <strong>₹11,800</strong>.</li>
+          <li><strong>Inclusive Example:</strong> If an electronic accessory retails at an MRP of ₹11,800 inclusive of 18% GST:<br>
+          Base Net Amount = 11,800 / 1.18 = <strong>₹10,000</strong>.<br>
+          Embedded Tax = 11,800 - 10,000 = <strong>₹1,800</strong>.</li>
+        </ul>
+
+        <h3 style="margin: 2rem 0 0.75rem; color: var(--text-main);">Difference Between CGST, SGST, and IGST</h3>
+        <ul style="padding-left: 1.25rem;">
+          <li><strong>CGST (Central GST):</strong> Collected by the Central Government on transactions occurring within a single state (Intra-state).</li>
+          <li><strong>SGST (State GST):</strong> Collected by the State Government on intra-state transactions alongside CGST.</li>
+          <li><strong>IGST (Integrated GST):</strong> Levied on commercial transactions that cross state borders (Inter-state) or import/export supplies, collected directly by the Central Government.</li>
+        </ul>
+
+        <div style="background: rgba(245, 158, 11, 0.08); border-left: 4px solid var(--color-warning); padding: 1rem 1.25rem; border-radius: var(--radius-sm); margin: 2rem 0;">
+          <strong>Tax Disclaimer:</strong> This online GST calculator is provided for estimation, price modeling, and commercial quotation purposes. It does not constitute formal legal, accounting, or chartered tax advice. Always verify official tax filings with the GST Portal (gst.gov.in) or a licensed tax professional.
+        </div>
+
+        <!-- FAQs -->
+        <h3 style="margin: 2.5rem 0 1rem; color: var(--text-main);">Frequently Asked Questions (FAQ)</h3>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>What is the difference between GST inclusive and GST exclusive?</span>
+              <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              A <em>GST exclusive</em> price is the net pre-tax price; tax must be added on top to reach the final bill. A <em>GST inclusive</em> price already contains the tax amount inside the total tag (such as consumer retail MRP).
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>What are the 4 standard GST slabs in India?</span>
+              <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              The primary GST slabs in India are 5% (basic necessities and economy travel), 12% (processed foods and business class services), 18% (most manufactured goods, SaaS, and electronics), and 28% (luxury items, tobacco, and automobiles). Essential unpackaged foods carry a 0% rate.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>When does a business need to register for GST?</span>
+              <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              In India, businesses with an annual turnover exceeding ₹40 lakhs for goods (₹20 lakhs in special category northeastern states) or ₹20 lakhs for service providers (₹10 lakhs in special states) are required to register for GST. E-commerce sellers must register regardless of turnover.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>Can I create a downloadable GST invoice with this calculation?</span>
+              <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              Yes! You can take your calculated GST breakdown directly into our free <a href="../invoice-generator/">Invoice Generator</a> to add customer details, business logos, payment terms, and download a professional PDF invoice.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Related Tools -->
+      <section style="margin-top: 3rem;">
+        <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 1.25rem; color: var(--text-main);">Related Business &amp; Financial Utilities</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem;">
+          <a href="../invoice-generator/" style="display: block; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; text-decoration: none; color: inherit; transition: var(--transition);">
+            <div style="font-weight: 700; color: var(--color-primary); margin-bottom: 0.25rem;">Invoice Generator</div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Create professional GST tax invoices with client details and instant PDF download.</p>
+          </a>
+          <a href="../tools/calculators/percentage/" style="display: block; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; text-decoration: none; color: inherit; transition: var(--transition);">
+            <div style="font-weight: 700; color: var(--color-primary); margin-bottom: 0.25rem;">Percentage Calculator</div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Calculate percentage increases, discounts, margins, and proportions.</p>
+          </a>
+          <a href="../tools/calculators/emi/" style="display: block; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; text-decoration: none; color: inherit; transition: var(--transition);">
+            <div style="font-weight: 700; color: var(--color-primary); margin-bottom: 0.25rem;">EMI Calculator</div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Calculate monthly loan payments, interest charges, and loan amortization.</p>
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner container">
+      <div class="footer-grid">
+        <div class="footer-col brand-col">
+          <div class="brand-logo footer-logo">
+            <span class="logo-mark">⚡</span>
+            <span class="logo-text">Ecrio<span class="logo-accent">X</span></span>
+          </div>
+          <p class="tagline">One Platform. Endless Possibilities.</p>
+          <p class="brand-desc">Fast, private, in-browser online utilities built for developers, designers, students, and professionals worldwide.</p>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Tools</h4>
+          <ul class="footer-links">
+            <li><a href="../tools/pdf/">PDF Tools</a></li>
+            <li><a href="../tools/image/">Image Tools</a></li>
+            <li><a href="../tools/developer/">Developer Tools</a></li>
+            <li><a href="../tools/text/">Text Tools</a></li>
+            <li><a href="../tools/productivity/">Productivity</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Calculators & Business</h4>
+          <ul class="footer-links">
+            <li><a href="../gst-calculator/">GST Calculator</a></li>
+            <li><a href="../invoice-generator/">Invoice Generator</a></li>
+            <li><a href="../age-calculator/">Age Calculator</a></li>
+            <li><a href="../tools/calculators/percentage/">Percentage Calculator</a></li>
+            <li><a href="../tools/calculators/emi/">EMI Calculator</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Company & Legal</h4>
+          <ul class="footer-links">
+            <li><a href="../about/">About Us</a></li>
+            <li><a href="../contact/">Contact</a></li>
+            <li><a href="../privacy/">Privacy Policy</a></li>
+            <li><a href="../terms/">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 EcrioX. All rights reserved. Zero file uploads — all conversions run in your browser.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/app.js"></script>
+  <script src="tool.js"></script>
+  <script>
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        item.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>
