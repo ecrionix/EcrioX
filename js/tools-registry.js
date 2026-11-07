@@ -71,7 +71,79 @@ const ECRIOX_CATEGORIES = [
 ];
 
 const ECRIOX_TOOLS = [
-  // --- Implemented & Active Tools ---
+  // --- Active & Production-Ready Tools ---
+  {
+    id: "pdf-compressor",
+    name: "PDF Compressor",
+    category: "pdf",
+    categoryName: "PDF Tools",
+    description: "Reduce PDF document size while preserving readable text, crisp vector graphics and document quality.",
+    route: "/pdf-compressor/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><polyline points="10 13 12 11 14 13"></polyline><line x1="12" y1="11" x2="12" y2="17"></line></svg>`,
+    status: "available",
+    popular: true,
+    tags: ["pdf", "compress", "shrink", "reduce", "optimize", "reduce pdf size", "compress pdf online"]
+  },
+  {
+    id: "merge-pdf",
+    name: "Merge PDF",
+    category: "pdf",
+    categoryName: "PDF Tools",
+    description: "Combine multiple PDF files into one document online for free. Arrange file order, preview, and download.",
+    route: "/merge-pdf/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"></rect><line x1="12" y1="9" x2="12" y2="15"></line><line x1="9" y1="12" x2="15" y2="12"></line></svg>`,
+    status: "available",
+    popular: true,
+    tags: ["pdf", "merge", "combine", "join", "merge pdf online", "combine pdf files"]
+  },
+  {
+    id: "split-pdf",
+    name: "Split PDF",
+    category: "pdf",
+    categoryName: "PDF Tools",
+    description: "Extract selected pages, separate page ranges or create individual PDFs from your document.",
+    route: "/split-pdf/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><line x1="20" y1="4" x2="8.12" y2="15.88"></line><line x1="14.47" y1="14.48" x2="20" y2="20"></line><line x1="8.12" y1="8.12" x2="12" y2="12"></line></svg>`,
+    status: "available",
+    popular: true,
+    tags: ["pdf", "split", "extract", "pages", "split pdf online", "separate pdf pages"]
+  },
+  {
+    id: "jpg-to-pdf",
+    name: "JPG to PDF",
+    category: "pdf",
+    categoryName: "PDF Tools",
+    description: "Convert JPG and JPEG images into PDF files online. Arrange images, select page size, orientation, and margins.",
+    route: "/jpg-to-pdf/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><circle cx="10" cy="13" r="1.5"></circle></svg>`,
+    status: "available",
+    popular: true,
+    tags: ["pdf", "jpg", "convert", "image to pdf", "jpg to pdf", "jpeg to pdf", "photos to pdf"]
+  },
+  {
+    id: "pdf-to-jpg",
+    name: "PDF to JPG",
+    category: "pdf",
+    categoryName: "PDF Tools",
+    description: "Convert PDF pages into high-quality JPG images online. Choose resolution, preview, and download individually or as ZIP.",
+    route: "/pdf-to-jpg/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><polyline points="8 17 12 13 16 17"></polyline></svg>`,
+    status: "available",
+    popular: true,
+    tags: ["pdf", "jpg", "export", "extract image", "pdf to jpg", "pdf to jpeg", "convert pdf to jpg"]
+  },
+  {
+    id: "image-resizer",
+    name: "Image Resizer",
+    category: "image",
+    categoryName: "Image Tools",
+    description: "Resize images online for free. Change pixel dimensions or percentages, maintain aspect ratio, and export JPG, PNG, or WebP.",
+    route: "/image-resizer/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>`,
+    status: "available",
+    popular: true,
+    tags: ["image", "resize", "scale", "dimensions", "pixels", "image resizer online", "resize jpg", "resize png"]
+  },
   {
     id: "image-compressor",
     name: "Image Compressor & Optimizer",
@@ -89,7 +161,7 @@ const ECRIOX_TOOLS = [
     name: "Text Analyzer & Case Converter",
     category: "text",
     categoryName: "Text Tools",
-    description: "Count words, characters, sentences, reading time, and transform case instantly.",
+    description: "Count words, characters, sentences, reading time, and transform case formats instantly.",
     route: "/tools/text-analyzer/",
     icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 7 4 4 20 4 20 7"></polyline><line x1="9" y1="20" x2="15" y2="20"></line><line x1="12" y1="4" x2="12" y2="20"></line></svg>`,
     status: "available",
@@ -97,89 +169,17 @@ const ECRIOX_TOOLS = [
     tags: ["text", "word counter", "case converter", "uppercase", "lowercase", "reading time"]
   },
 
-  // --- Upcoming Roadmap Tools (Transparently marked Coming Soon) ---
-  {
-    id: "pdf-compressor",
-    name: "PDF Compressor",
-    category: "pdf",
-    categoryName: "PDF Tools",
-    description: "Reduce PDF file sizes while retaining optimal document quality.",
-    route: "/tools/pdf-compressor/",
-    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><polyline points="10 13 12 11 14 13"></polyline><line x1="12" y1="11" x2="12" y2="17"></line></svg>`,
-    status: "coming_soon",
-    popular: true,
-    tags: ["pdf", "compress", "shrink", "reduce"]
-  },
-  {
-    id: "merge-pdf",
-    name: "Merge PDF",
-    category: "pdf",
-    categoryName: "PDF Tools",
-    description: "Combine multiple PDF files into one clean, well-organized document.",
-    route: "/tools/merge-pdf/",
-    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"></rect><line x1="12" y1="9" x2="12" y2="15"></line><line x1="9" y1="12" x2="15" y2="12"></line></svg>`,
-    status: "coming_soon",
-    popular: true,
-    tags: ["pdf", "merge", "combine", "join"]
-  },
-  {
-    id: "split-pdf",
-    name: "Split PDF",
-    category: "pdf",
-    categoryName: "PDF Tools",
-    description: "Extract specific pages or separate PDF files into individual documents.",
-    route: "/tools/split-pdf/",
-    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><line x1="20" y1="4" x2="8.12" y2="15.88"></line><line x1="14.47" y1="14.48" x2="20" y2="20"></line><line x1="8.12" y1="8.12" x2="12" y2="12"></line></svg>`,
-    status: "coming_soon",
-    popular: true,
-    tags: ["pdf", "split", "extract", "pages"]
-  },
-  {
-    id: "jpg-to-pdf",
-    name: "JPG to PDF",
-    category: "pdf",
-    categoryName: "PDF Tools",
-    description: "Convert photos and image files into a clean, shareable PDF document.",
-    route: "/tools/jpg-to-pdf/",
-    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><circle cx="10" cy="13" r="1.5"></circle></svg>`,
-    status: "coming_soon",
-    popular: true,
-    tags: ["pdf", "jpg", "convert", "image to pdf"]
-  },
-  {
-    id: "pdf-to-jpg",
-    name: "PDF to JPG",
-    category: "pdf",
-    categoryName: "PDF Tools",
-    description: "Export high-resolution images from your PDF pages with ease.",
-    route: "/tools/pdf-to-jpg/",
-    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><polyline points="8 17 12 13 16 17"></polyline></svg>`,
-    status: "coming_soon",
-    popular: true,
-    tags: ["pdf", "jpg", "export", "extract image"]
-  },
-  {
-    id: "image-resizer",
-    name: "Image Resizer",
-    category: "image",
-    categoryName: "Image Tools",
-    description: "Change image dimensions by exact pixels or percentage scale accurately.",
-    route: "/tools/image-resizer/",
-    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>`,
-    status: "coming_soon",
-    popular: true,
-    tags: ["image", "resize", "scale", "dimensions", "pixels"]
-  },
+  // --- Upcoming Roadmap Tools ---
   {
     id: "image-converter",
     name: "Image Converter",
     category: "image",
     categoryName: "Image Tools",
     description: "Convert images seamlessly between PNG, JPG, WebP, GIF, and SVG formats.",
-    route: "/tools/image-converter/",
+    route: "/tools/?cat=image",
     icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="17 1 21 5 17 9"></polyline><path d="M3 11V9a4 4 0 0 1 4-4h14"></path><polyline points="7 23 3 19 7 15"></polyline><path d="M21 13v2a4 4 0 0 1-4 4H3"></path></svg>`,
     status: "coming_soon",
-    popular: true,
+    popular: false,
     tags: ["image", "convert", "format", "png", "webp", "jpg"]
   }
 ];
@@ -188,18 +188,19 @@ const ECRIOX_TOOLS = [
 const EcrioXRegistry = {
   getCategories: () => ECRIOX_CATEGORIES,
   getAllTools: () => ECRIOX_TOOLS,
-  getAvailableTools: () => ECRIOX_TOOLS.filter(t => t.status === "available"),
-  getPopularTools: () => ECRIOX_TOOLS.filter(t => t.popular),
-  getToolsByCategory: (categorySlug) => ECRIOX_TOOLS.filter(t => t.category === categorySlug),
-  getToolById: (id) => ECRIOX_TOOLS.find(t => t.id === id),
+  getAvailableTools: () => ECRIOX_TOOLS.filter((t) => t.status === "available"),
+  getPopularTools: () => ECRIOX_TOOLS.filter((t) => t.popular && t.status === "available"),
+  getToolsByCategory: (categorySlug) => ECRIOX_TOOLS.filter((t) => t.category === categorySlug),
+  getToolById: (id) => ECRIOX_TOOLS.find((t) => t.id === id),
   searchTools: (query) => {
     if (!query || typeof query !== "string") return [];
     const q = query.toLowerCase().trim();
-    return ECRIOX_TOOLS.filter(t => 
-      t.name.toLowerCase().includes(q) ||
-      t.description.toLowerCase().includes(q) ||
-      t.categoryName.toLowerCase().includes(q) ||
-      (t.tags && t.tags.some(tag => tag.toLowerCase().includes(q)))
+    return ECRIOX_TOOLS.filter(
+      (t) =>
+        t.name.toLowerCase().includes(q) ||
+        t.description.toLowerCase().includes(q) ||
+        t.categoryName.toLowerCase().includes(q) ||
+        (t.tags && t.tags.some((tag) => tag.toLowerCase().includes(q)))
     );
   }
 };

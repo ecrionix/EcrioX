@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Image Resizer Online – Resize JPG, PNG & WebP | EcrioX</title>
+  <meta name="description" content="Resize images online for free. Change pixel dimensions or percentages, maintain aspect ratio and download resized JPG, PNG or WebP images.">
+  <link rel="canonical" href="https://ecriox.com/image-resizer/">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Free Image Resizer Online – Resize JPG, PNG & WebP | EcrioX">
+  <meta property="og:description" content="Resize images online for free without quality distortion. Change dimensions by pixels or percentage.">
+  <meta property="og:url" content="https://ecriox.com/image-resizer/">
+  <meta property="og:site_name" content="EcrioX">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Image Resizer Online – EcrioX">
+  <meta name="twitter:description" content="Resize images by pixels or percentage with high-quality resampling.">
+
+  <!-- Global Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i){
+  w[l]=w[l]||[];
+  w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),
+  dl=l!='dataLayer'?'&l='+l:'';
+  j.async=true;
+  j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+  f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PQFRBJ9F');
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Schema.org WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "EcrioX Image Resizer",
+    "url": "https://ecriox.com/image-resizer/",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript.",
+    "description": "Free client-side image resizer supporting custom pixel dimensions, percentage scaling, aspect-ratio locking, and social media presets.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript>
+  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQFRBJ9F" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- Global Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="brand-logo" aria-label="EcrioX Home">
+        <div class="logo-symbol">E</div>
+        <span>Ecrio<span class="accent-dot">X</span></span>
+      </a>
+
+      <nav class="nav-desktop">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/tools/" class="nav-link active">All Tools</a>
+        <a href="/categories/" class="nav-link">Categories</a>
+        <a href="/about/" class="nav-link">About</a>
+        <a href="/contact/" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn-icon theme-toggle-btn" aria-label="Toggle color theme">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <button class="btn-icon mobile-toggle" aria-label="Open mobile menu" aria-expanded="false">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav">
+    <a href="/" class="nav-link">Home</a>
+    <a href="/tools/" class="nav-link active">All Tools</a>
+    <a href="/categories/" class="nav-link">Categories</a>
+    <a href="/about/" class="nav-link">About</a>
+    <a href="/contact/" class="nav-link">Contact</a>
+  </div>
+
+  <main class="page-wrapper" style="padding-top: 2rem;">
+    <div class="container">
+      <!-- Breadcrumbs -->
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="separator">/</span>
+        <a href="/tools/">Tools</a>
+        <span class="separator">/</span>
+        <a href="/categories/">Image Tools</a>
+        <span class="separator">/</span>
+        <span>Image Resizer</span>
+      </nav>
+
+      <!-- Tool Header -->
+      <div class="tool-header-block">
+        <span class="badge badge-category" style="margin-bottom: 0.75rem;">Image Utility</span>
+        <h1 style="font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800; margin-bottom: 0.75rem;">Free Image Resizer Online</h1>
+        <p style="font-size: 1.1rem; color: var(--text-muted);">
+          Change image dimensions by exact pixels or percentage scale. Maintain perfect aspect ratios and export resized JPG, PNG, or WebP images with zero server uploads.
+        </p>
+      </div>
+
+      <!-- Main Tool Workspace -->
+      <div class="tool-main-workspace" style="max-width: 900px;">
+        <div id="dropzone" class="dropzone-area">
+          <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp" style="display: none;">
+          <div class="dropzone-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+          </div>
+          <h3 class="dropzone-title">Drop your image here, or browse</h3>
+          <p class="dropzone-sub">Supports JPG, PNG, and WebP (Up to 50MB)</p>
+          <button type="button" class="btn btn-primary btn-sm">Select Image File</button>
+        </div>
+
+        <!-- Controls (Visible after image selection) -->
+        <div id="workspaceControls" class="workspace-controls" style="display: none;">
+          <!-- Original Image Stats -->
+          <div style="background-color: var(--bg-subtle); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1rem 1.25rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
+            <div>
+              <span style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Original Dimensions</span>
+              <p id="origDimensionsText" style="font-size: 1.05rem; font-weight: 700; color: var(--text-main);">-</p>
+            </div>
+            <div>
+              <span style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">File Size</span>
+              <p id="origSizeText" style="font-size: 1.05rem; font-weight: 700; color: var(--color-primary);">-</p>
+            </div>
+            <div>
+              <span style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Format</span>
+              <p id="origFormatText" style="font-size: 1.05rem; font-weight: 600;">-</p>
+            </div>
+          </div>
+
+          <!-- Dimension Inputs -->
+          <div style="display: flex; align-items: flex-end; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.25rem;">
+            <div style="flex: 1; min-width: 140px;">
+              <label class="control-label" for="widthInput">Width (Pixels)</label>
+              <input type="number" id="widthInput" class="control-input" placeholder="Width">
+            </div>
+
+            <button type="button" id="lockAspectBtn" class="btn btn-sm btn-primary" aria-pressed="true" title="Lock/Unlock Aspect Ratio" style="height: 42px; margin-bottom: 0.15rem;">
+              <span id="lockIcon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              </span>
+              <span>Lock Aspect</span>
+            </button>
+
+            <div style="flex: 1; min-width: 140px;">
+              <label class="control-label" for="heightInput">Height (Pixels)</label>
+              <input type="number" id="heightInput" class="control-input" placeholder="Height">
+            </div>
+          </div>
+
+          <!-- Quick Scale Percentages -->
+          <div style="margin-bottom: 1.5rem;">
+            <label class="control-label" style="margin-bottom: 0.5rem;">Scale by Percentage</label>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <button type="button" class="btn btn-sm btn-secondary percent-btn" data-pct="25">25%</button>
+              <button type="button" class="btn btn-sm btn-secondary percent-btn" data-pct="50">50%</button>
+              <button type="button" class="btn btn-sm btn-secondary percent-btn" data-pct="75">75%</button>
+              <button type="button" class="btn btn-sm btn-secondary percent-btn" data-pct="150">150%</button>
+              <button type="button" class="btn btn-sm btn-secondary percent-btn" data-pct="200">200%</button>
+            </div>
+          </div>
+
+          <!-- Presets and Output Format -->
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; margin-bottom: 1.5rem;">
+            <div class="control-group">
+              <label class="control-label" for="presetSelect">Social Media Presets</label>
+              <select id="presetSelect" class="control-input">
+                <option value="" selected>Custom Dimensions</option>
+                <option value="ig-square">Instagram Square (1080 × 1080)</option>
+                <option value="ig-story">Instagram Story / Reel (1080 × 1920)</option>
+                <option value="yt-thumb">YouTube Thumbnail (1280 × 720)</option>
+                <option value="tw-post">Twitter / X Post (1200 × 675)</option>
+                <option value="fb-post">Facebook Feed Post (1200 × 630)</option>
+                <option value="hd-1080">Full HD (1920 × 1080)</option>
+                <option value="hd-720">HD Ready (1280 × 720)</option>
+              </select>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="formatSelect">Output Format</label>
+              <select id="formatSelect" class="control-input">
+                <option value="original" selected>Keep Original Format</option>
+                <option value="image/png">PNG (Preserves Transparency)</option>
+                <option value="image/webp">WebP (High Compression)</option>
+                <option value="image/jpeg">JPEG</option>
+              </select>
+            </div>
+
+            <div class="control-group" id="qualityGroup">
+              <label class="control-label" for="qualityRange">
+                <span>Output Quality</span>
+                <span id="qualityVal" style="color: var(--color-primary); font-weight: 700;">85%</span>
+              </label>
+              <input type="range" id="qualityRange" min="10" max="100" value="85" style="width: 100%;">
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <button type="button" id="resizeBtn" class="btn btn-primary">Resize Image</button>
+            <button type="button" id="resetBtn" class="btn btn-secondary">Choose Another File</button>
+          </div>
+        </div>
+
+        <!-- Results Box -->
+        <div id="resultsBox" class="results-box" style="display: none;">
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.25rem;">
+            <div>
+              <span style="font-size: 0.85rem; color: var(--text-muted); display: block;">Resized Dimensions:</span>
+              <strong id="finalDimensionsText" style="font-size: 1.15rem; color: var(--color-primary);">-</strong>
+              <span id="finalSizeText" style="font-size: 0.85rem; color: var(--text-muted); display: block; margin-top: 0.25rem;">-</span>
+            </div>
+            <div style="display: flex; gap: 0.75rem;">
+              <button type="button" id="downloadBtn" class="btn btn-primary btn-sm">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                Download Resized Image
+              </button>
+              <button type="button" id="resizeAnotherBtn" class="btn btn-secondary btn-sm">Resize Another</button>
+            </div>
+          </div>
+
+          <div style="text-align: center; max-height: 380px; overflow: hidden; border-radius: var(--radius-md); border: 1px solid var(--border-color); background-color: var(--bg-page);">
+            <img id="previewImage" alt="Resized Preview" style="max-height: 360px; margin: 0 auto; object-fit: contain;">
+          </div>
+        </div>
+      </div>
+
+      <!-- Designated AdSense Slot -->
+      <div class="ad-slot-container">
+        <div class="ad-slot-card">
+          <span>Advertisement Placeholder</span>
+        </div>
+      </div>
+
+      <!-- SEO Educational Content -->
+      <article class="tool-content-section">
+        <h2>How to Resize Images Online with EcrioX</h2>
+        <ol>
+          <li><strong>Upload your image:</strong> Drag and drop your JPG, PNG, or WebP photo into the workspace.</li>
+          <li><strong>Set your dimensions:</strong> Enter target pixel values for width and height, or select quick percentage buttons (such as 50% or 75%).</li>
+          <li><strong>Choose Social Media Presets:</strong> Quickly scale photos for Instagram, YouTube thumbnails, Facebook, or Twitter headers.</li>
+          <li><strong>Lock Aspect Ratio:</strong> Keep the aspect ratio locked to prevent unintended image stretching or distortion.</li>
+          <li><strong>Download:</strong> Click "Download Resized Image" to save the file instantly to your device.</li>
+        </ol>
+
+        <h2>High-Quality Interpolation & Smoothing</h2>
+        <p>
+          Rescaling pixel dimensions without proper interpolation can produce jagged edges (aliasing) or blurry artifacts. EcrioX leverages advanced HTML5 Canvas rendering with <code>imageSmoothingQuality = 'high'</code>, applying smooth bilinear and bicubic sampling algorithms to preserve fine lines, sharp text, and natural skin tones.
+        </p>
+
+        <h2>Format Selection & Transparency Support</h2>
+        <ul>
+          <li><strong>PNG (.png):</strong> Recommended for logos, icons, and illustrations where transparent backgrounds must be maintained.</li>
+          <li><strong>WebP (.webp):</strong> Next-generation image format offering up to 30% smaller file sizes than JPEG with identical visual fidelity.</li>
+          <li><strong>JPEG (.jpg):</strong> Best for standard photographs, gallery pictures, and social media uploads. Transparent PNG pixels are filled with a clean white backdrop.</li>
+        </ul>
+
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-list" style="margin-top: 1.5rem;">
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How do I resize an image without losing its original proportions?</span>
+              <span class="faq-chevron">&#9662;</span>
+            </button>
+            <div class="faq-answer">
+              Leave the "Lock Aspect" button active (default). When you enter a new width, the tool automatically calculates and updates the proportional height, ensuring your image never appears stretched or squished.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>What is the difference between resizing by pixels vs. percentage?</span>
+              <span class="faq-chevron">&#9662;</span>
+            </button>
+            <div class="faq-answer">
+              Pixel resizing allows you to match exact display dimensions (e.g. 1920x1080 for web banners or 1080x1080 for Instagram). Percentage scaling downscales or upscales the entire image relative to its original size (e.g., 50% reduces both width and height by half).
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Can I resize transparent PNG images?</span>
+              <span class="faq-chevron">&#9662;</span>
+            </button>
+            <div class="faq-answer">
+              Yes. If you select "PNG" or "Keep Original Format", all alpha channels and transparency layers are preserved.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Are my photos uploaded to any server?</span>
+              <span class="faq-chevron">&#9662;</span>
+            </button>
+            <div class="faq-answer">
+              No. All resampling and rendering is performed locally on your device's graphics engine via browser Canvas APIs. Your images are never transmitted over the internet or saved remotely.
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Related Tools -->
+      <section style="margin: 4rem 0 2rem;">
+        <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 1.5rem; text-align: center;">Related Image & PDF Tools</h3>
+        <div class="grid-tools">
+          <div class="tool-card">
+            <div class="tool-card-header">
+              <div class="tool-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+              </div>
+              <span class="badge badge-available">Available</span>
+            </div>
+            <div class="tool-card-body">
+              <h4 class="tool-card-title">Image Compressor & Optimizer</h4>
+              <p class="tool-card-desc">Compress JPEG, PNG, and WebP images client-side with zero data leaving your browser.</p>
+            </div>
+            <div class="tool-card-footer">
+              <a href="/tools/image-compressor/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-card-header">
+              <div class="tool-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><circle cx="10" cy="13" r="1.5"></circle></svg>
+              </div>
+              <span class="badge badge-available">Available</span>
+            </div>
+            <div class="tool-card-body">
+              <h4 class="tool-card-title">JPG to PDF</h4>
+              <p class="tool-card-desc">Convert and bind photos or gallery images into clean, standardized PDF pages.</p>
+            </div>
+            <div class="tool-card-footer">
+              <a href="/jpg-to-pdf/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-card-header">
+              <div class="tool-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><polyline points="8 17 12 13 16 17"></polyline></svg>
+              </div>
+              <span class="badge badge-available">Available</span>
+            </div>
+            <div class="tool-card-body">
+              <h4 class="tool-card-title">PDF to JPG</h4>
+              <p class="tool-card-desc">Convert PDF pages into high-resolution JPG images with custom scale settings.</p>
+            </div>
+            <div class="tool-card-footer">
+              <a href="/pdf-to-jpg/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="/" class="brand-logo">
+            <div class="logo-symbol">E</div>
+            <span>Ecrio<span class="accent-dot">X</span></span>
+          </a>
+          <p>One Platform. Endless Possibilities. Free, fast, and privacy-conscious online utilities designed for everyday productivity.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Product</h4>
+          <ul class="footer-links">
+            <li><a href="/tools/">All Tools</a></li>
+            <li><a href="/categories/">Categories</a></li>
+            <li><a href="/image-resizer/">Image Resizer</a></li>
+            <li><a href="/tools/image-compressor/">Image Compressor</a></li>
+            <li><a href="/jpg-to-pdf/">JPG to PDF</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="/about/">About EcrioX</a></li>
+            <li><a href="/contact/">Contact Support</a></li>
+            <li><a href="/contact/">Feedback</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul class="footer-links">
+            <li><a href="/privacy/">Privacy Policy</a></li>
+            <li><a href="/terms/">Terms of Use</a></li>
+            <li><a href="/about/#privacy-architecture">Data Security</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 EcrioX. All rights reserved. Platform built for speed and privacy.</p>
+        <p>Canonical Domain: <a href="https://ecriox.com/" style="color: var(--color-primary);">ecriox.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/tools-registry.js"></script>
+  <script src="../js/analytics.js"></script>
+  <script src="../js/app.js"></script>
+  <script src="tool.js"></script>
+</body>
+</html>
