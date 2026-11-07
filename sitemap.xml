@@ -122,6 +122,18 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://ecriox.com/heic-to-jpg/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://ecriox.com/image-to-text/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://ecriox.com/image-resizer/</loc>
     <lastmod>2026-11-07</lastmod>
     <changefreq>weekly</changefreq>
@@ -209,6 +221,12 @@
   <!-- Productivity Tools -->
   <url>
     <loc>https://ecriox.com/qr-code-generator/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://ecriox.com/password-generator/</loc>
     <lastmod>2026-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>

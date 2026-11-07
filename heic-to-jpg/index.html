@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HEIC to JPG Converter – Convert iPhone Photos Online Free | EcrioX</title>
+  <meta name="description" content="Convert HEIC and HEIF iPhone photos to JPG or PNG online for free. Batch convert images, adjust quality, resize, and download compatible photos with EcrioX without uploading files.">
+  <link rel="canonical" href="https://ecriox.com/heic-to-jpg/">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="HEIC to JPG Converter – Convert iPhone Photos Online Free | EcrioX">
+  <meta property="og:description" content="Batch convert Apple HEIC/HEIF photos to standard JPG or PNG images directly in your browser. 100% private, zero uploads, ZIP export.">
+  <meta property="og:url" content="https://ecriox.com/heic-to-jpg/">
+  <meta property="og:site_name" content="EcrioX">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="HEIC to JPG Converter – EcrioX">
+  <meta name="twitter:description" content="Convert Apple HEIC photos to JPG or PNG online in your browser. Free batch conversion with ZIP download.">
+
+  <!-- Global Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i){
+  w[l]=w[l]||[];
+  w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),
+  dl=l!='dataLayer'?'&l='+l:'';
+  j.async=true;
+  j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+  f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PQFRBJ9F');
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Schema.org SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "EcrioX HEIC to JPG Converter",
+    "url": "https://ecriox.com/heic-to-jpg/",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "All",
+    "description": "Convert Apple HEIC and HEIF photos from iPhone or iPad into high-quality JPG or PNG images with 100% private in-browser decoding and batch ZIP download.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .heic-container {
+      max-width: 1040px;
+      margin: 0 auto;
+    }
+
+    .dropzone-card {
+      background: var(--bg-surface);
+      border: 2px dashed var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 3.5rem 2rem;
+      text-align: center;
+      cursor: pointer;
+      transition: var(--transition);
+      position: relative;
+    }
+    .dropzone-card:hover, .dropzone-card.dragover {
+      border-color: var(--color-primary);
+      background: var(--color-primary-light);
+    }
+    .dropzone-icon {
+      width: 68px;
+      height: 68px;
+      margin: 0 auto 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-primary-light);
+      color: var(--color-primary);
+      border-radius: var(--radius-full);
+      font-size: 2rem;
+    }
+
+    /* Settings Panel */
+    .settings-panel {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      margin-top: 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      align-items: end;
+    }
+    .setting-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .setting-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-main);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* Overall Batch Action Bar */
+    .batch-action-bar {
+      display: none;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem 1.5rem;
+      margin-top: 1.5rem;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    /* Progress Banner */
+    .batch-progress-card {
+      display: none;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .progress-bar-track {
+      width: 100%;
+      height: 10px;
+      background: var(--bg-subtle);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+      margin: 0.75rem 0 0.5rem;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--color-primary), #10b981);
+      border-radius: var(--radius-full);
+      transition: width 0.25s ease;
+    }
+
+    /* Image Queue Grid */
+    .queue-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+    .image-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition);
+    }
+    .image-card:hover {
+      box-shadow: var(--shadow-md);
+    }
+    .image-thumb-box {
+      width: 100%;
+      height: 170px;
+      background: var(--bg-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .image-thumb-box img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+    .image-thumb-placeholder {
+      color: var(--text-subtle);
+      font-size: 2.5rem;
+    }
+    .image-card-body {
+      padding: 1.15rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      flex: 1;
+    }
+    .image-card-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-main);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .image-card-meta {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .status-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.2rem 0.5rem;
+      border-radius: var(--radius-full);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .status-badge.queued {
+      background: var(--bg-subtle);
+      color: var(--text-muted);
+    }
+    .status-badge.converting {
+      background: rgba(37, 99, 235, 0.1);
+      color: var(--color-primary);
+    }
+    .status-badge.done {
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--color-success);
+    }
+    .status-badge.error {
+      background: rgba(239, 68, 68, 0.1);
+      color: var(--color-danger);
+    }
+
+    .image-card-actions {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: auto;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--border-color);
+    }
+
+    /* SEO Feature Badges */
+    .features-badge-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin: 3.5rem 0 2.5rem;
+    }
+    .badge-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .badge-card svg {
+      width: 24px;
+      height: 24px;
+      color: var(--color-primary);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .seo-section {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2rem;
+      margin: 3rem 0;
+    }
+    .seo-section h2 {
+      margin-bottom: 1rem;
+      color: var(--text-main);
+    }
+    .seo-section p, .seo-section li {
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+    .step-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin: 1.75rem 0;
+    }
+    .step-box {
+      background: var(--bg-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+    }
+    .step-number {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--color-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    /* FAQ Accordion */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .faq-item {
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: var(--bg-surface);
+    }
+    .faq-question {
+      padding: 1.25rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--bg-surface);
+      border: none;
+      width: 100%;
+      text-align: left;
+      color: var(--text-main);
+    }
+    .faq-answer {
+      padding: 0 1.25rem 1.25rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      display: none;
+    }
+    .faq-item.open .faq-answer {
+      display: block;
+    }
+    .faq-item.open .faq-icon {
+      transform: rotate(180deg);
+    }
+    .faq-icon {
+      transition: transform 0.2s ease;
+    }
+  </style>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQFRBJ9F"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner container">
+      <a href="../" class="brand-logo" aria-label="EcrioX Home">
+        <span class="logo-mark">⚡</span>
+        <span class="logo-text">Ecrio<span class="logo-accent">X</span></span>
+      </a>
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="../tools/" class="nav-link active">All Tools</a>
+        <a href="../tools/pdf/" class="nav-link">PDF Tools</a>
+        <a href="../tools/image/" class="nav-link">Image Tools</a>
+        <a href="../tools/developer/" class="nav-link">Developer</a>
+        <a href="../categories/" class="nav-link">Categories</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light theme">
+          <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-main container" style="padding-top: 2rem; padding-bottom: 4rem;">
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb" style="margin-bottom: 1.5rem;">
+      <a href="../">Home</a>
+      <span class="bc-sep">/</span>
+      <a href="../tools/image/">Image Tools</a>
+      <span class="bc-sep">/</span>
+      <span class="bc-current">HEIC to JPG</span>
+    </nav>
+
+    <div class="heic-container">
+      <!-- Hero Intro -->
+      <div style="text-align: center; margin-bottom: 2.25rem;">
+        <span class="badge" style="background: var(--color-primary-light); color: var(--color-primary); font-weight: 700; margin-bottom: 0.75rem; display: inline-block;">APPLE IPHONE PHOTOS • BATCH CONVERSION</span>
+        <h1 style="font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800; color: var(--text-main); margin-bottom: 0.75rem; letter-spacing: -0.02em;">Free HEIC to JPG Converter</h1>
+        <p style="color: var(--text-muted); font-size: 1.15rem; max-width: 680px; margin: 0 auto;">
+          Convert Apple HEIC and HEIF photos from iPhone or iPad into high-quality JPG or PNG images. 100% private in-browser decoding with batch ZIP download and zero file uploads.
+        </p>
+      </div>
+
+      <!-- Upload Dropzone -->
+      <div class="dropzone-card" id="dropzone" role="button" tabindex="0" aria-label="Upload HEIC photos to convert">
+        <input type="file" id="file-input" accept=".heic, .heif, image/heic, image/heif" multiple style="display: none;">
+        <div class="dropzone-icon">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+            <polyline points="21 15 16 10 5 21"></polyline>
+          </svg>
+        </div>
+        <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-main);">Drop your HEIC/HEIF photos here, or <span style="color: var(--color-primary); text-decoration: underline;">browse files</span></h3>
+        <p style="color: var(--text-subtle); font-size: 0.9rem;">Supports batch selection of Apple .heic and .heif photos • 100% private in-browser conversion</p>
+      </div>
+
+      <!-- Conversion Settings Panel -->
+      <div class="settings-panel" id="settings-panel">
+        <div class="setting-group">
+          <label class="setting-label">Target Format</label>
+          <select id="format-select" class="control-input" style="padding: 0.6rem 0.85rem;">
+            <option value="image/jpeg" selected>JPG (Standard, Universal Compatibility)</option>
+            <option value="image/png">PNG (Lossless, Transparency Support)</option>
+          </select>
+        </div>
+
+        <div class="setting-group" id="quality-group">
+          <label class="setting-label">
+            <span>JPG Quality</span>
+            <span id="quality-display" style="color: var(--color-primary);">90%</span>
+          </label>
+          <input type="range" id="quality-slider" min="60" max="100" value="90" class="range-slider">
+        </div>
+
+        <div class="setting-group">
+          <label class="setting-label">Image Scaling</label>
+          <select id="resize-select" class="control-input" style="padding: 0.6rem 0.85rem;">
+            <option value="1" selected>Original Full Resolution (100%)</option>
+            <option value="0.75">Scale to 75% Dimensions</option>
+            <option value="0.5">Scale to 50% Dimensions (Web/Email)</option>
+            <option value="1920">Max 1920px (Full HD Fit)</option>
+          </select>
+        </div>
+
+        <div style="display: flex; gap: 0.5rem;">
+          <button class="btn btn-secondary" id="btn-add-more" style="width: 100%; padding: 0.65rem 1rem;">
+            + Add Photos
+          </button>
+        </div>
+      </div>
+
+      <!-- Overall Batch Action Bar -->
+      <div class="batch-action-bar" id="batch-action-bar">
+        <div>
+          <span style="font-weight: 700; color: var(--text-main);" id="queue-summary">0 photos selected</span>
+          <span style="font-size: 0.85rem; color: var(--text-subtle); margin-left: 0.5rem;" id="queue-size">(0 MB)</span>
+        </div>
+        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+          <button class="btn btn-secondary" id="btn-clear-all" style="padding: 0.6rem 1rem;">
+            Clear All
+          </button>
+          <button class="btn btn-primary" id="btn-convert-all" style="padding: 0.6rem 1.5rem; font-weight: 700;">
+            Convert All Photos &rarr;
+          </button>
+          <button class="btn btn-success" id="btn-download-zip" style="display: none; padding: 0.6rem 1.5rem; font-weight: 700; background: var(--color-success); color: #fff;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 4px; vertical-align: middle;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            Download All (ZIP)
+          </button>
+        </div>
+      </div>
+
+      <!-- Overall Progress Card -->
+      <div class="batch-progress-card" id="batch-progress-card">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <span id="batch-progress-status" style="font-weight: 700; color: var(--text-main);">Converting photos...</span>
+          <span id="batch-progress-percent" style="font-weight: 700; color: var(--color-primary);">0%</span>
+        </div>
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill" id="batch-progress-fill"></div>
+        </div>
+        <span id="batch-progress-details" style="font-size: 0.85rem; color: var(--text-subtle);">Decoding HEIC bitstreams in browser WebAssembly</span>
+      </div>
+
+      <!-- Image Queue Grid -->
+      <div class="queue-grid" id="queue-grid">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <!-- Feature Badges -->
+      <div class="features-badge-grid">
+        <div class="badge-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          <div>
+            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">100% In-Browser Privacy</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Photos never leave your phone or laptop. Conversion runs locally using browser WebAssembly decoding.</p>
+          </div>
+        </div>
+        <div class="badge-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 16 12 12 8 16"></polyline><line x1="12" y1="12" x2="12" y2="21"></line><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"></path></svg>
+          <div>
+            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">Batch Processing & ZIP</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Convert entire galleries of iPhone photos simultaneously and package them into a single organized ZIP archive.</p>
+          </div>
+        </div>
+        <div class="badge-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+          <div>
+            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">True HEIF Decoding</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Genuine pixel decompression and re-encoding. We never execute fake file-extension renames.</p>
+          </div>
+        </div>
+        <div class="badge-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <div>
+            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">Preserved Orientation</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Maintains portrait and landscape camera orientations automatically without upside-down rotations.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEO Educational Content -->
+      <section class="seo-section">
+        <h2>What is HEIC and Why Convert to JPG?</h2>
+        <p>
+          <strong>HEIC</strong> (High Efficiency Image Container) is the modern image format adopted by Apple starting with iOS 11. Built upon the HEVC (H.265) compression standard, HEIC produces photos that are roughly half the file size of an equivalent JPG while maintaining identical or superior visual quality and supporting 16-bit wide color gamuts.
+        </p>
+        <p>
+          Despite its compression advantages, HEIC suffers from a major drawback: <strong>limited compatibility</strong>. Older versions of Windows, Android devices, photo-editing tools, e-commerce platforms, and government application portals frequently reject <code>.heic</code> and <code>.heif</code> files. Converting your iPhone photos to standard <strong>JPG</strong> or <strong>PNG</strong> ensures they can be opened, viewed, and shared everywhere.
+        </p>
+
+        <div class="step-grid">
+          <div class="step-box">
+            <div class="step-number">1</div>
+            <h4 style="font-weight: 700; margin-bottom: 0.5rem; color: var(--text-main);">Upload HEIC Photos</h4>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0;">Select one or multiple .heic photos from your iPhone, Mac, or PC. You can drag and drop entire batches.</p>
+          </div>
+          <div class="step-box">
+            <div class="step-number">2</div>
+            <h4 style="font-weight: 700; margin-bottom: 0.5rem; color: var(--text-main);">Configure Quality</h4>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0;">Choose JPG or PNG format, adjust the compression quality slider, and optionally downscale dimensions for email or web use.</p>
+          </div>
+          <div class="step-box">
+            <div class="step-number">3</div>
+            <h4 style="font-weight: 700; margin-bottom: 0.5rem; color: var(--text-main);">Download Files</h4>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0;">Download converted images individually, or click <em>Download All (ZIP)</em> to save the entire converted batch in one click.</p>
+          </div>
+        </div>
+
+        <h3 style="margin: 2rem 0 0.75rem; color: var(--text-main);">HEIC vs JPG Comparison</h3>
+        <div style="overflow-x: auto; margin-bottom: 1.5rem;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem; text-align: left;">
+            <thead>
+              <tr style="border-bottom: 2px solid var(--border-color); color: var(--text-main);">
+                <th style="padding: 0.75rem 1rem;">Feature</th>
+                <th style="padding: 0.75rem 1rem;">HEIC / HEIF</th>
+                <th style="padding: 0.75rem 1rem;">JPG / JPEG</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 0.75rem 1rem; font-weight: 600;">File Size</td>
+                <td style="padding: 0.75rem 1rem; color: var(--color-success);">~50% smaller at equal quality</td>
+                <td style="padding: 0.75rem 1rem;">Standard baseline</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 0.75rem 1rem; font-weight: 600;">Global Compatibility</td>
+                <td style="padding: 0.75rem 1rem; color: var(--color-warning);">Apple iOS & macOS native only</td>
+                <td style="padding: 0.75rem 1rem; color: var(--color-success);">100% universal (Windows, Android, Web)</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 0.75rem 1rem; font-weight: 600;">Color Depth</td>
+                <td style="padding: 0.75rem 1rem;">Up to 16-bit color</td>
+                <td style="padding: 0.75rem 1rem;">8-bit color</td>
+              </tr>
+              <tr>
+                <td style="padding: 0.75rem 1rem; font-weight: 600;">Live Photo Support</td>
+                <td style="padding: 0.75rem 1rem;">Supports image sequences & audio</td>
+                <td style="padding: 0.75rem 1rem;">Single static frame</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Frequently Asked Questions -->
+        <h3 style="margin: 2.5rem 0 1rem; color: var(--text-main);">Frequently Asked Questions (FAQ)</h3>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>Why does my PC or Android phone fail to open HEIC files?</span>
+              <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              HEIC is a proprietary format based on the HEVC patent pool. Windows and older Android distributions do not ship with HEIC decoders by default. Converting your photos to JPG provides instant compatibility across all devices.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>Are my photos uploaded to any external server?</span>
+              <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              No! Unlike many online converters that upload your personal gallery to remote cloud servers, EcrioX compiles libheif into WebAssembly directly inside your browser. Your photos never leave your device.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>Can I convert multiple HEIC photos at the same time?</span>
+              <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              Yes. You can select multiple HEIC files or drag in an entire batch. Once converted, you can download photos individually or all together as a single .ZIP archive.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>Does converting HEIC to JPG reduce image quality?</span>
+              <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              Our converter defaults to 90% JPG quality, which preserves high fidelity and crisp detail without introducing compression artifacts. You can also slide quality up to 100% or choose lossless PNG.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>Will my photos stay right-side up?</span>
+              <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              Yes. The decoder reads embedded EXIF orientation tags so portrait and landscape iPhone photos maintain their proper orientation.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Related Image Tools -->
+      <section style="margin-top: 3rem;">
+        <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 1.25rem; color: var(--text-main);">More Free Image Utilities</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem;">
+          <a href="../background-remover/" style="display: block; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; text-decoration: none; color: inherit; transition: var(--transition);">
+            <div style="font-weight: 700; color: var(--color-primary); margin-bottom: 0.25rem;">AI Background Remover</div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Remove backgrounds automatically with 100% in-browser AI and export transparent PNGs.</p>
+          </a>
+          <a href="../image-resizer/" style="display: block; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; text-decoration: none; color: inherit; transition: var(--transition);">
+            <div style="font-weight: 700; color: var(--color-primary); margin-bottom: 0.25rem;">Image Resizer</div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Resize JPG, PNG, and WebP photos by dimensions or percentages with aspect ratio lock.</p>
+          </a>
+          <a href="../jpg-to-pdf/" style="display: block; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; text-decoration: none; color: inherit; transition: var(--transition);">
+            <div style="font-weight: 700; color: var(--color-primary); margin-bottom: 0.25rem;">JPG to PDF</div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Convert images into a single professional PDF document with custom margins.</p>
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner container">
+      <div class="footer-grid">
+        <div class="footer-col brand-col">
+          <div class="brand-logo footer-logo">
+            <span class="logo-mark">⚡</span>
+            <span class="logo-text">Ecrio<span class="logo-accent">X</span></span>
+          </div>
+          <p class="tagline">One Platform. Endless Possibilities.</p>
+          <p class="brand-desc">Fast, private, in-browser online utilities built for developers, designers, students, and professionals worldwide.</p>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Tools</h4>
+          <ul class="footer-links">
+            <li><a href="../tools/pdf/">PDF Tools</a></li>
+            <li><a href="../tools/image/">Image Tools</a></li>
+            <li><a href="../tools/developer/">Developer Tools</a></li>
+            <li><a href="../tools/text/">Text Tools</a></li>
+            <li><a href="../tools/productivity/">Productivity</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Flagship Utilities</h4>
+          <ul class="footer-links">
+            <li><a href="../heic-to-jpg/">HEIC to JPG</a></li>
+            <li><a href="../password-generator/">Password Generator</a></li>
+            <li><a href="../image-to-text/">Image to Text OCR</a></li>
+            <li><a href="../qr-code-generator/">QR Code Generator</a></li>
+            <li><a href="../background-remover/">Background Remover</a></li>
+            <li><a href="../pdf-to-word/">PDF to Word</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Company & Legal</h4>
+          <ul class="footer-links">
+            <li><a href="../about/">About Us</a></li>
+            <li><a href="../contact/">Contact</a></li>
+            <li><a href="../privacy/">Privacy Policy</a></li>
+            <li><a href="../terms/">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 EcrioX. All rights reserved. Zero file uploads — all conversions run in your browser.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- External Libraries: heic2any & JSZip -->
+  <script src="https://cdn.jsdelivr.net/npm/heic2any@0.0.4/dist/heic2any.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+  <script src="../js/app.js"></script>
+  <script src="tool.js"></script>
+  <script>
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        item.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>

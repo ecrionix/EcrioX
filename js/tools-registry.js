@@ -204,6 +204,30 @@ const ECRIOX_TOOLS = [
     popular: true,
     tags: ["image", "background remover", "remove bg", "transparent background", "ai", "cutout", "png"]
   },
+  {
+    id: "heic-to-jpg",
+    name: "HEIC to JPG Converter",
+    category: "image",
+    categoryName: "Image Tools",
+    description: "Convert Apple HEIC and HEIF iPhone photos into high-quality JPG or PNG images with batch ZIP download.",
+    route: "/heic-to-jpg/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>`,
+    status: "available",
+    popular: true,
+    tags: ["heic", "heif", "iphone photos", "convert heic to jpg", "heic to png", "apple photos"]
+  },
+  {
+    id: "image-to-text",
+    name: "Image to Text OCR",
+    category: "image",
+    categoryName: "Image Tools",
+    description: "Extract readable, editable text from photos, scans, and screenshots with 100% private in-browser OCR.",
+    route: "/image-to-text/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3"></path><path d="M9 20h6"></path><path d="M12 4v16"></path></svg>`,
+    status: "available",
+    popular: true,
+    tags: ["ocr", "image to text", "extract text", "photo to text", "screenshot to text", "transcribe"]
+  },
 
   // ==========================================
   // DEVELOPER TOOLS
@@ -378,15 +402,15 @@ const ECRIOX_TOOLS = [
   },
   {
     id: "password-generator",
-    name: "Secure Password Generator",
+    name: "Password Generator",
     category: "productivity",
     categoryName: "Productivity Tools",
-    description: "Generate cryptographically secure passwords with custom character sets and live strength meter.",
-    route: "/tools/productivity/password-generator/",
+    description: "Generate cryptographically secure passwords and memorable passphrases with custom character sets and live entropy meter.",
+    route: "/password-generator/",
     icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>`,
     status: "available",
-    popular: false,
-    tags: ["password", "generator", "security", "random password", "secure password"]
+    popular: true,
+    tags: ["password", "generator", "passphrase", "security", "random password", "secure password", "diceware"]
   },
 
   // ==========================================

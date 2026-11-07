@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image to Text Converter – Free Online OCR Tool | EcrioX</title>
+  <meta name="description" content="Extract text from images, screenshots and scanned documents using free online OCR. Convert images into editable text and download results with EcrioX without uploading files.">
+  <link rel="canonical" href="https://ecriox.com/image-to-text/">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Image to Text Converter – Free Online OCR Tool | EcrioX">
+  <meta property="og:description" content="Extract editable text from images, screenshots, and scans. 100% private in-browser OCR with preprocessing filters.">
+  <meta property="og:url" content="https://ecriox.com/image-to-text/">
+  <meta property="og:site_name" content="EcrioX">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Image to Text OCR Converter – EcrioX">
+  <meta name="twitter:description" content="Extract text from photos and screenshots directly in your browser with free online OCR.">
+
+  <!-- Global Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i){
+  w[l]=w[l]||[];
+  w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),
+  dl=l!='dataLayer'?'&l='+l:'';
+  j.async=true;
+  j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+  f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PQFRBJ9F');
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Schema.org SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "EcrioX Image to Text OCR",
+    "url": "https://ecriox.com/image-to-text/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "description": "Extract readable text from photos, scans, and screenshots with 100% private client-side OCR and image preprocessing filters.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .ocr-container {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    .dropzone-card {
+      background: var(--bg-surface);
+      border: 2px dashed var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 3.5rem 2rem;
+      text-align: center;
+      cursor: pointer;
+      transition: var(--transition);
+      position: relative;
+    }
+    .dropzone-card:hover, .dropzone-card.dragover {
+      border-color: var(--color-primary);
+      background: var(--color-primary-light);
+    }
+    .dropzone-icon {
+      width: 68px;
+      height: 68px;
+      margin: 0 auto 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-primary-light);
+      color: var(--color-primary);
+      border-radius: var(--radius-full);
+      font-size: 2rem;
+    }
+
+    /* OCR Workspace Studio */
+    .ocr-studio {
+      display: none;
+      margin-top: 1.5rem;
+    }
+    .ocr-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      align-items: start;
+    }
+    @media (max-width: 860px) {
+      .ocr-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .studio-panel {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Image Preview & Preprocessing */
+    .image-preview-wrapper {
+      width: 100%;
+      height: 320px;
+      background: var(--bg-page);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+      position: relative;
+    }
+    .image-preview-wrapper canvas, .image-preview-wrapper img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    /* Filter Tools Row */
+    .filter-btn-bar {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+    .filter-pill {
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.35rem 0.75rem;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-full);
+      background: var(--bg-subtle);
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .filter-pill:hover, .filter-pill.active {
+      border-color: var(--color-primary);
+      background: var(--color-primary-light);
+      color: var(--color-primary);
+    }
+
+    /* Progress Banner */
+    .ocr-progress-box {
+      display: none;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      margin-top: 1.5rem;
+      text-align: center;
+    }
+    .progress-bar-track {
+      width: 100%;
+      height: 10px;
+      background: var(--bg-subtle);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+      margin: 1rem 0 0.5rem;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--color-primary), #10b981);
+      border-radius: var(--radius-full);
+      transition: width 0.25s ease;
+    }
+
+    /* Text Output Area */
+    .ocr-textarea {
+      width: 100%;
+      height: 320px;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      background: var(--bg-page);
+      color: var(--text-main);
+      resize: vertical;
+      margin-bottom: 1rem;
+    }
+
+    /* Stats Bar */
+    .ocr-stats-bar {
+      display: flex;
+      gap: 1.25rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+    }
+    .ocr-stats-bar strong {
+      color: var(--text-main);
+    }
+
+    /* Actions */
+    .panel-actions {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-top: auto;
+    }
+
+    /* SEO Feature Badges */
+    .features-badge-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin: 3.5rem 0 2.5rem;
+    }
+    .badge-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .badge-card svg {
+      width: 24px;
+      height: 24px;
+      color: var(--color-primary);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .seo-section {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2rem;
+      margin: 3rem 0;
+    }
+    .seo-section h2 {
+      margin-bottom: 1rem;
+      color: var(--text-main);
+    }
+    .seo-section p, .seo-section li {
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+    .step-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin: 1.75rem 0;
+    }
+    .step-box {
+      background: var(--bg-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+    }
+    .step-number {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--color-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    /* FAQ list */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .faq-item {
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: var(--bg-surface);
+    }
+    .faq-question {
+      padding: 1.25rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--bg-surface);
+      border: none;
+      width: 100%;
+      text-align: left;
+      color: var(--text-main);
+    }
+    .faq-answer {
+      padding: 0 1.25rem 1.25rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      display: none;
+    }
+    .faq-item.open .faq-answer {
+      display: block;
+    }
+    .faq-item.open .faq-icon {
+      transform: rotate(180deg);
+    }
+    .faq-icon {
+      transition: transform 0.2s ease;
+    }
+  </style>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQFRBJ9F"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner container">
+      <a href="../" class="brand-logo" aria-label="EcrioX Home">
+        <span class="logo-mark">⚡</span>
+        <span class="logo-text">Ecrio<span class="logo-accent">X</span></span>
+      </a>
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="../tools/" class="nav-link active">All Tools</a>
+        <a href="../tools/pdf/" class="nav-link">PDF Tools</a>
+        <a href="../tools/image/" class="nav-link">Image Tools</a>
+        <a href="../tools/developer/" class="nav-link">Developer</a>
+        <a href="../categories/" class="nav-link">Categories</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light theme">
+          <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-main container" style="padding-top: 2rem; padding-bottom: 4rem;">
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb" style="margin-bottom: 1.5rem;">
+      <a href="../">Home</a>
+      <span class="bc-sep">/</span>
+      <a href="../tools/image/">Image Tools</a>
+      <span class="bc-sep">/</span>
+      <span class="bc-current">Image to Text OCR</span>
+    </nav>
+
+    <div class="ocr-container">
+      <!-- Hero Intro -->
+      <div style="text-align: center; margin-bottom: 2.25rem;">
+        <span class="badge" style="background: var(--color-primary-light); color: var(--color-primary); font-weight: 700; margin-bottom: 0.75rem; display: inline-block;">100% PRIVATE • WEB WORKER OCR ENGINE</span>
+        <h1 style="font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800; color: var(--text-main); margin-bottom: 0.75rem; letter-spacing: -0.02em;">Free Image to Text OCR</h1>
+        <p style="color: var(--text-muted); font-size: 1.15rem; max-width: 680px; margin: 0 auto;">
+          Extract editable text from photos, scans, and screenshots instantly. Powered by client-side Tesseract.js with built-in contrast and rotation preprocessing filters.
+        </p>
+      </div>
+
+      <!-- Upload Dropzone -->
+      <div class="dropzone-card" id="dropzone" role="button" tabindex="0" aria-label="Upload image to extract text">
+        <input type="file" id="file-input" accept="image/jpeg, image/png, image/webp, image/bmp" multiple style="display: none;">
+        <div class="dropzone-icon">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 7V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3"></path>
+            <path d="M9 20h6"></path>
+            <path d="M12 4v16"></path>
+          </svg>
+        </div>
+        <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-main);">Drop your image here, or <span style="color: var(--color-primary); text-decoration: underline;">browse files</span></h3>
+        <p style="color: var(--text-subtle); font-size: 0.9rem;">Supports JPG, PNG, WebP, BMP, and Screenshots • 100% private in-browser OCR</p>
+      </div>
+
+      <!-- OCR Progress Box -->
+      <div class="ocr-progress-box" id="ocr-progress-box">
+        <div style="display: flex; align-items: center; justify-content: center; gap: 0.75rem;">
+          <div class="spinner" style="width: 20px; height: 20px; border: 2px solid var(--border-color); border-top-color: var(--color-primary); border-radius: 50%; animation: spin 0.8s linear infinite;"></div>
+          <span id="ocr-progress-status" style="font-weight: 700; color: var(--text-main);">Initializing OCR Engine...</span>
+        </div>
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill" id="ocr-progress-fill"></div>
+        </div>
+        <span id="ocr-progress-percent" style="font-size: 0.85rem; color: var(--color-primary); font-weight: 700;">0%</span>
+        <div id="ocr-progress-details" style="font-size: 0.8rem; color: var(--text-subtle); margin-top: 0.25rem;">Loading language model into Web Worker</div>
+      </div>
+
+      <!-- OCR Studio Workspace -->
+      <div class="ocr-studio" id="ocr-studio">
+        <div class="ocr-layout">
+          <!-- Left Panel: Image Preview & Preprocessing -->
+          <div class="studio-panel">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+              <span style="font-weight: 700; color: var(--text-main);" id="current-image-name">Document Photo</span>
+              <div style="display: flex; gap: 0.5rem; align-items: center;">
+                <label style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted);">OCR Language:</label>
+                <select id="language-select" class="control-input" style="padding: 0.3rem 0.6rem; font-size: 0.8rem; width: auto;">
+                  <option value="eng" selected>English</option>
+                  <option value="spa">Spanish (Español)</option>
+                  <option value="fra">French (Français)</option>
+                  <option value="deu">German (Deutsch)</option>
+                  <option value="hin">Hindi (हिन्दी)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="image-preview-wrapper" id="image-preview-wrapper">
+              <canvas id="filter-canvas"></canvas>
+            </div>
+
+            <!-- Preprocessing Enhancements -->
+            <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); margin-bottom: 0.5rem; display: block;">Image Preprocessing Filters:</label>
+            <div class="filter-btn-bar">
+              <button type="button" class="filter-pill" id="btn-filter-grayscale">Grayscale</button>
+              <button type="button" class="filter-pill" id="btn-filter-contrast">High Contrast</button>
+              <button type="button" class="filter-pill" id="btn-filter-threshold">Black & White</button>
+              <button type="button" class="filter-pill" id="btn-rotate-cw" title="Rotate 90 degrees clockwise">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
+                Rotate
+              </button>
+              <button type="button" class="filter-pill" id="btn-filter-reset">Reset Image</button>
+            </div>
+
+            <div class="panel-actions">
+              <button class="btn btn-secondary" id="btn-upload-new" style="padding: 0.55rem 1rem; font-size: 0.85rem;">
+                Upload Different Image
+              </button>
+              <button class="btn btn-primary" id="btn-run-ocr" style="padding: 0.55rem 1.25rem; font-weight: 700;">
+                Extract Text &rarr;
+              </button>
+            </div>
+          </div>
+
+          <!-- Right Panel: Extracted Editable Text -->
+          <div class="studio-panel">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+              <span style="font-weight: 700; color: var(--text-main);">Extracted Text</span>
+              <button class="btn btn-sm btn-secondary" id="btn-clear-format" title="Remove excessive blank lines" style="font-size: 0.75rem; padding: 0.25rem 0.5rem;">
+                Clean Spacing
+              </button>
+            </div>
+
+            <textarea id="ocr-result-text" class="ocr-textarea" placeholder="Extracted text will appear here. Click 'Extract Text' to begin..."></textarea>
+
+            <!-- Text Statistics -->
+            <div class="ocr-stats-bar">
+              <span>Words: <strong id="stat-words">0</strong></span>
+              <span>Characters: <strong id="stat-chars">0</strong></span>
+              <span>Lines: <strong id="stat-lines">0</strong></span>
+              <span>OCR Accuracy: <strong id="stat-confidence" style="color: var(--color-success);">-</strong></span>
+            </div>
+
+            <div class="panel-actions">
+              <button class="btn btn-secondary" id="btn-copy-text" style="padding: 0.6rem 1.25rem;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 4px; vertical-align: middle;"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                Copy Text
+              </button>
+              <button class="btn btn-primary" id="btn-download-txt" style="padding: 0.6rem 1.5rem; font-weight: 700;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 4px; vertical-align: middle;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                Download (.TXT)
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature Badges -->
+      <div class="features-badge-grid">
+        <div class="badge-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          <div>
+            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">100% In-Browser Privacy</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Images and recognized text never leave your device. The OCR neural net runs in an isolated Web Worker.</p>
+          </div>
+        </div>
+        <div class="badge-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          <div>
+            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">Instant Recognition</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Powered by Tesseract.js v5 compiled to WebAssembly for rapid character classification.</p>
+          </div>
+        </div>
+        <div class="badge-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line></svg>
+          <div>
+            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">Image Preprocessing</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Enhance noisy screenshots with grayscale, contrast boost, binarization, and rotation tools.</p>
+          </div>
+        </div>
+        <div class="badge-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <div>
+            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">Multi-Image Batch Support</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Upload multiple document scans or screenshots and extract concatenated text cleanly.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEO Informational Content -->
+      <section class="seo-section">
+        <h2>How to Extract Text from Images with Free Online OCR</h2>
+        <p>
+          <strong>Optical Character Recognition (OCR)</strong> is the technological process of converting visual letterforms from photographs, paper scans, and screenshots into machine-readable digital text characters. Whether you need to extract text from a receipt, copy information from an unselectable infographic, or transcribe scanned textbook pages, EcrioX delivers instant in-browser transcription without software installation.
+        </p>
+
+        <div class="step-grid">
+          <div class="step-box">
+            <div class="step-number">1</div>
+            <h4 style="font-weight: 700; margin-bottom: 0.5rem; color: var(--text-main);">Upload Picture or Scan</h4>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0;">Drag and drop any JPG, PNG, WebP, or screenshot into the workspace or browse your files.</p>
+          </div>
+          <div class="step-box">
+            <div class="step-number">2</div>
+            <h4 style="font-weight: 700; margin-bottom: 0.5rem; color: var(--text-main);">Enhance &amp; Preprocess</h4>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0;">Apply high contrast, binarization, or rotation if the photograph is taken in dim lighting or rotated.</p>
+          </div>
+          <div class="step-box">
+            <div class="step-number">3</div>
+            <h4 style="font-weight: 700; margin-bottom: 0.5rem; color: var(--text-main);">Copy or Download Text</h4>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0;">Inspect the extracted text in the live editor, fix any terms, and download a .TXT file or copy to clipboard.</p>
+          </div>
+        </div>
+
+        <h3 style="margin: 2rem 0 0.75rem; color: var(--text-main);">Tips for Achieving Maximum OCR Accuracy</h3>
+        <ul style="padding-left: 1.25rem;">
+          <li><strong>Ensure Sharp Focus:</strong> Blurry or unfocused camera photos cause letters like 'c', 'e', and 'o' to blend together. Keep camera lenses stable.</li>
+          <li><strong>Boost Contrast:</strong> Use our built-in <em>High Contrast</em> and <em>Black &amp; White</em> filters to eliminate textured background paper noise.</li>
+          <li><strong>Straighten Orientations:</strong> If a smartphone document is rotated sideways, click the <em>Rotate</em> button so words read horizontally left-to-right.</li>
+          <li><strong>Select the Correct Language:</strong> When transcribing non-English text, select the appropriate trained language model from the dropdown.</li>
+        </ul>
+
+        <!-- Frequently Asked Questions -->
+        <h3 style="margin: 2.5rem 0 1rem; color: var(--text-main);">Frequently Asked Questions (FAQ)</h3>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>Is this OCR tool completely free and private?</span>
+              <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              Yes. EcrioX OCR executes 100% locally on your computer or smartphone using WebAssembly. Your photos, screenshots, and confidential documents are never uploaded to any remote server.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>Can I extract text from screenshots?</span>
+              <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              Yes. Screenshots of tweets, error messages, code snippets, and websites are processed with near-perfect accuracy because digital screenshots contain clean, uncompressed typography.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>Can it read handwritten notes?</span>
+              <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              Tesseract OCR is optimized primarily for printed typography, signage, digital fonts, and book text. Extremely neat hand-lettering can be transcribed, but cursive or fast handwriting may produce unpredictable results.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>What output formats are supported?</span>
+              <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              You can copy the extracted text straight to your clipboard, or download it as a standard Plain Text (.txt) file. You can also paste the text directly into our PDF to Word or Text Analyzer tools.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Related Tools -->
+      <section style="margin-top: 3rem;">
+        <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 1.25rem; color: var(--text-main);">More Free Online Utilities</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem;">
+          <a href="../pdf-to-word/" style="display: block; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; text-decoration: none; color: inherit; transition: var(--transition);">
+            <div style="font-weight: 700; color: var(--color-primary); margin-bottom: 0.25rem;">PDF to Word Converter</div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Convert PDF documents into editable Microsoft Word (.docx) files.</p>
+          </a>
+          <a href="../tools/text-analyzer/" style="display: block; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; text-decoration: none; color: inherit; transition: var(--transition);">
+            <div style="font-weight: 700; color: var(--color-primary); margin-bottom: 0.25rem;">Text Analyzer</div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Count words, characters, reading time, and transform case formats instantly.</p>
+          </a>
+          <a href="../background-remover/" style="display: block; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; text-decoration: none; color: inherit; transition: var(--transition);">
+            <div style="font-weight: 700; color: var(--color-primary); margin-bottom: 0.25rem;">AI Background Remover</div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Erase photo backgrounds automatically with browser-based neural network AI.</p>
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner container">
+      <div class="footer-grid">
+        <div class="footer-col brand-col">
+          <div class="brand-logo footer-logo">
+            <span class="logo-mark">⚡</span>
+            <span class="logo-text">Ecrio<span class="logo-accent">X</span></span>
+          </div>
+          <p class="tagline">One Platform. Endless Possibilities.</p>
+          <p class="brand-desc">Fast, private, in-browser online utilities built for developers, designers, students, and professionals worldwide.</p>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Tools</h4>
+          <ul class="footer-links">
+            <li><a href="../tools/pdf/">PDF Tools</a></li>
+            <li><a href="../tools/image/">Image Tools</a></li>
+            <li><a href="../tools/developer/">Developer Tools</a></li>
+            <li><a href="../tools/text/">Text Tools</a></li>
+            <li><a href="../tools/productivity/">Productivity</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Flagship Utilities</h4>
+          <ul class="footer-links">
+            <li><a href="../heic-to-jpg/">HEIC to JPG</a></li>
+            <li><a href="../password-generator/">Password Generator</a></li>
+            <li><a href="../image-to-text/">Image to Text OCR</a></li>
+            <li><a href="../qr-code-generator/">QR Code Generator</a></li>
+            <li><a href="../background-remover/">Background Remover</a></li>
+            <li><a href="../pdf-to-word/">PDF to Word</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Company & Legal</h4>
+          <ul class="footer-links">
+            <li><a href="../about/">About Us</a></li>
+            <li><a href="../contact/">Contact</a></li>
+            <li><a href="../privacy/">Privacy Policy</a></li>
+            <li><a href="../terms/">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 EcrioX. All rights reserved. Zero file uploads — all conversions run in your browser.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Tesseract.js v5 CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+
+  <script src="../js/app.js"></script>
+  <script src="tool.js"></script>
+  <script>
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        item.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>

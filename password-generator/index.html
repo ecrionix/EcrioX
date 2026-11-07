@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Password Generator – Create Strong Random Passwords | EcrioX</title>
+  <meta name="description" content="Generate strong random passwords and memorable passphrases online for free. Customize length, numbers, symbols, and character sets with a 100% private in-browser generator.">
+  <link rel="canonical" href="https://ecriox.com/password-generator/">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Free Password Generator – Create Strong Random Passwords | EcrioX">
+  <meta property="og:description" content="Generate cryptographically secure random passwords and passphrases in your browser. Zero tracking, zero storage, 100% private.">
+  <meta property="og:url" content="https://ecriox.com/password-generator/">
+  <meta property="og:site_name" content="EcrioX">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Password Generator – EcrioX">
+  <meta name="twitter:description" content="Generate strong passwords and passphrases with cryptographic randomness in your browser.">
+
+  <!-- Global Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i){
+  w[l]=w[l]||[];
+  w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),
+  dl=l!='dataLayer'?'&l='+l:'';
+  j.async=true;
+  j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+  f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PQFRBJ9F');
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Schema.org SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "EcrioX Password Generator",
+    "url": "https://ecriox.com/password-generator/",
+    "applicationCategory": "SecurityApplication",
+    "operatingSystem": "All",
+    "description": "Cryptographically secure in-browser password and passphrase generator using Web Crypto getRandomValues with live entropy scoring and zero remote data retention.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .pwd-container {
+      max-width: 840px;
+      margin: 0 auto;
+    }
+
+    .pwd-workspace {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem 2rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Mode Tabs */
+    .mode-tab-bar {
+      display: flex;
+      background: var(--bg-subtle);
+      border-radius: var(--radius-full);
+      padding: 0.35rem;
+      margin-bottom: 2rem;
+      gap: 0.25rem;
+    }
+    .mode-tab-btn {
+      flex: 1;
+      padding: 0.65rem 1rem;
+      font-size: 0.9rem;
+      font-weight: 700;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      transition: var(--transition);
+      text-align: center;
+    }
+    .mode-tab-btn.active {
+      background: var(--bg-surface);
+      color: var(--color-primary);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Primary Password Display Screen */
+    .pwd-display-card {
+      background: var(--bg-page);
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      transition: var(--transition);
+    }
+    .pwd-display-card:hover {
+      border-color: var(--color-primary-border);
+    }
+    .pwd-text {
+      font-family: var(--font-mono);
+      font-size: clamp(1.2rem, 3vw, 1.65rem);
+      font-weight: 700;
+      color: var(--text-main);
+      word-break: break-all;
+      user-select: all;
+      letter-spacing: 0.05em;
+    }
+    .pwd-actions {
+      display: flex;
+      gap: 0.5rem;
+      flex-shrink: 0;
+    }
+
+    /* Entropy & Strength Meter */
+    .meter-container {
+      margin-bottom: 2rem;
+    }
+    .meter-bar-track {
+      width: 100%;
+      height: 8px;
+      background: var(--bg-subtle);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+      margin-top: 0.5rem;
+    }
+    .meter-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--color-danger);
+      border-radius: var(--radius-full);
+      transition: width 0.3s ease, background-color 0.3s ease;
+    }
+
+    /* Configuration Controls */
+    .control-section {
+      border-top: 1px solid var(--border-color);
+      padding-top: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .slider-row {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    .slider-val-box {
+      font-family: var(--font-mono);
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--color-primary);
+      width: 54px;
+      text-align: right;
+    }
+
+    .checkbox-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      cursor: pointer;
+      font-size: 0.95rem;
+      color: var(--text-main);
+      user-select: none;
+    }
+    .checkbox-item input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--color-primary);
+      cursor: pointer;
+    }
+
+    /* Multi-Password Output Area */
+    .multi-pwd-box {
+      display: none;
+      margin-top: 1.5rem;
+      border-top: 1px solid var(--border-color);
+      padding-top: 1.5rem;
+    }
+    .multi-pwd-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 1rem;
+      background: var(--bg-subtle);
+      border-radius: var(--radius-sm);
+      margin-bottom: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      color: var(--text-main);
+    }
+
+    /* Privacy Banner */
+    .privacy-notice {
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      margin-top: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      color: var(--text-main);
+      font-size: 0.85rem;
+    }
+
+    /* SEO Feature Badges */
+    .features-badge-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin: 3.5rem 0 2.5rem;
+    }
+    .badge-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .badge-card svg {
+      width: 24px;
+      height: 24px;
+      color: var(--color-primary);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* SEO Educational Content */
+    .seo-section {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2rem;
+      margin: 3rem 0;
+    }
+    .seo-section h2 {
+      margin-bottom: 1rem;
+      color: var(--text-main);
+    }
+    .seo-section p, .seo-section li {
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    /* FAQ accordion */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .faq-item {
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: var(--bg-surface);
+    }
+    .faq-question {
+      padding: 1.25rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--bg-surface);
+      border: none;
+      width: 100%;
+      text-align: left;
+      color: var(--text-main);
+    }
+    .faq-answer {
+      padding: 0 1.25rem 1.25rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      display: none;
+    }
+    .faq-item.open .faq-answer {
+      display: block;
+    }
+    .faq-item.open .faq-icon {
+      transform: rotate(180deg);
+    }
+    .faq-icon {
+      transition: transform 0.2s ease;
+    }
+  </style>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQFRBJ9F"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner container">
+      <a href="../" class="brand-logo" aria-label="EcrioX Home">
+        <span class="logo-mark">⚡</span>
+        <span class="logo-text">Ecrio<span class="logo-accent">X</span></span>
+      </a>
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="../tools/" class="nav-link active">All Tools</a>
+        <a href="../tools/pdf/" class="nav-link">PDF Tools</a>
+        <a href="../tools/image/" class="nav-link">Image Tools</a>
+        <a href="../tools/developer/" class="nav-link">Developer</a>
+        <a href="../categories/" class="nav-link">Categories</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light theme">
+          <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-main container" style="padding-top: 2rem; padding-bottom: 4rem;">
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb" style="margin-bottom: 1.5rem;">
+      <a href="../">Home</a>
+      <span class="bc-sep">/</span>
+      <a href="../tools/productivity/">Productivity</a>
+      <span class="bc-sep">/</span>
+      <span class="bc-current">Password Generator</span>
+    </nav>
+
+    <div class="pwd-container">
+      <!-- Hero Intro -->
+      <div style="text-align: center; margin-bottom: 2.25rem;">
+        <span class="badge" style="background: var(--color-primary-light); color: var(--color-primary); font-weight: 700; margin-bottom: 0.75rem; display: inline-block;">CRYPTOGRAPHICALLY SECURE • 100% PRIVATE</span>
+        <h1 style="font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800; color: var(--text-main); margin-bottom: 0.75rem; letter-spacing: -0.02em;">Free Password Generator</h1>
+        <p style="color: var(--text-muted); font-size: 1.15rem; max-width: 680px; margin: 0 auto;">
+          Generate strong random passwords and memorable passphrases with client-side Web Crypto entropy. Never transmitted across the network, never stored.
+        </p>
+      </div>
+
+      <!-- Main Generator Workspace -->
+      <div class="pwd-workspace">
+        <!-- Generator Mode Tabs -->
+        <div class="mode-tab-bar">
+          <button type="button" class="mode-tab-btn active" id="tab-password">Standard Password</button>
+          <button type="button" class="mode-tab-btn" id="tab-passphrase">Memorable Passphrase</button>
+        </div>
+
+        <!-- Password Display Screen -->
+        <div class="pwd-display-card">
+          <div class="pwd-text" id="password-display">Loading...</div>
+          <div class="pwd-actions">
+            <button class="btn btn-secondary" id="btn-toggle-mask" title="Show / Hide Password" style="padding: 0.6rem 0.8rem;">
+              <svg id="eye-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+            </button>
+            <button class="btn btn-secondary" id="btn-regenerate" title="Generate New Password" style="padding: 0.6rem 0.8rem;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+            </button>
+            <button class="btn btn-primary" id="btn-copy" style="padding: 0.6rem 1.25rem; font-weight: 700;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 4px; vertical-align: middle;"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              <span>Copy</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Strength & Entropy Meter -->
+        <div class="meter-container">
+          <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem;">
+            <div>
+              <span style="color: var(--text-muted);">Strength: </span>
+              <strong id="strength-label" style="color: var(--color-success);">Very Strong</strong>
+            </div>
+            <div style="color: var(--text-subtle);">
+              Entropy: <strong id="entropy-label" style="color: var(--text-main);">0 bits</strong>
+            </div>
+          </div>
+          <div class="meter-bar-track">
+            <div class="meter-bar-fill" id="meter-fill"></div>
+          </div>
+          <!-- Character Composition Stats -->
+          <div style="display: flex; gap: 1rem; margin-top: 0.5rem; font-size: 0.75rem; color: var(--text-subtle);" id="char-composition">
+            <span id="stat-upper">Upper: 0</span>
+            <span id="stat-lower">Lower: 0</span>
+            <span id="stat-nums">Numbers: 0</span>
+            <span id="stat-syms">Symbols: 0</span>
+          </div>
+        </div>
+
+        <!-- Standard Password Settings -->
+        <div id="section-password-settings">
+          <div class="control-section">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+              <label class="setting-label" style="font-weight: 700;">Password Length</label>
+              <div class="slider-val-box" id="length-display">16</div>
+            </div>
+            <div class="slider-row">
+              <input type="range" id="length-slider" min="8" max="128" value="16" class="range-slider" style="flex: 1;">
+            </div>
+
+            <div class="checkbox-grid">
+              <label class="checkbox-item">
+                <input type="checkbox" id="chk-upper" checked>
+                <span>Uppercase (A-Z)</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" id="chk-lower" checked>
+                <span>Lowercase (a-z)</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" id="chk-numbers" checked>
+                <span>Numbers (0-9)</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" id="chk-symbols" checked>
+                <span>Symbols (!@#$%^&*)</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" id="chk-no-ambiguous" checked>
+                <span>Avoid Ambiguous (0, O, l, 1, I)</span>
+              </label>
+            </div>
+
+            <!-- Custom Exclusion Box -->
+            <div style="margin-top: 1rem;">
+              <label style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 0.35rem;">Custom Excluded Characters</label>
+              <input type="text" id="input-custom-exclude" class="control-input" placeholder="e.g. { } [ ] ( ) / \ ' &quot; `" style="max-width: 360px; padding: 0.5rem 0.85rem; font-family: var(--font-mono);">
+            </div>
+          </div>
+        </div>
+
+        <!-- Passphrase Settings (Shown when tab selected) -->
+        <div id="section-passphrase-settings" style="display: none;">
+          <div class="control-section">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+              <label class="setting-label" style="font-weight: 700;">Number of Words</label>
+              <div class="slider-val-box" id="words-display">5</div>
+            </div>
+            <div class="slider-row">
+              <input type="range" id="words-slider" min="3" max="10" value="5" class="range-slider" style="flex: 1;">
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
+              <div>
+                <label style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 0.35rem;">Word Separator</label>
+                <select id="passphrase-separator" class="control-input" style="padding: 0.5rem 0.85rem;">
+                  <option value="-" selected>Hyphen (-)</option>
+                  <option value="_">Underscore (_)</option>
+                  <option value=".">Period (.)</option>
+                  <option value=" ">Space ( )</option>
+                  <option value="num">Random Digits</option>
+                </select>
+              </div>
+
+              <div>
+                <label style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 0.35rem;">Capitalization</label>
+                <select id="passphrase-casing" class="control-input" style="padding: 0.5rem 0.85rem;">
+                  <option value="title" selected>Title Case (Word-Word)</option>
+                  <option value="lower">Lowercase (word-word)</option>
+                  <option value="upper">Uppercase (WORD-WORD)</option>
+                </select>
+              </div>
+            </div>
+
+            <div style="margin-top: 1rem;">
+              <label class="checkbox-item">
+                <input type="checkbox" id="chk-passphrase-num" checked>
+                <span>Append a random number (0-99)</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bulk Multiple Passwords Generator -->
+        <div class="control-section">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+              <label style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted);">Generate in Bulk:</label>
+              <select id="bulk-count-select" class="control-input" style="width: auto; padding: 0.4rem 0.75rem;">
+                <option value="1" selected>1 Password</option>
+                <option value="5">5 Passwords</option>
+                <option value="10">10 Passwords</option>
+              </select>
+            </div>
+
+            <button class="btn btn-secondary" id="btn-reset-tool" style="font-size: 0.85rem; padding: 0.45rem 0.85rem;">
+              Reset to Defaults
+            </button>
+          </div>
+
+          <div class="multi-pwd-box" id="multi-pwd-box">
+            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--text-main);">Generated Passwords Batch</h4>
+            <div id="multi-pwd-list"></div>
+          </div>
+        </div>
+
+        <!-- Privacy Notice -->
+        <div class="privacy-notice">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-success); flex-shrink: 0;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          <div>
+            <strong>Privacy Guarantee:</strong> Passwords are generated locally in your browser using the cryptographically secure <code>crypto.getRandomValues()</code> API. EcrioX does not transmit, receive, or store your passwords.
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature Badges -->
+      <div class="features-badge-grid">
+        <div class="badge-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          <div>
+            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">Cryptographic Randomness</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Built using browser CSPRNG with unbiased rejection sampling. Never pseudo-random.</p>
+          </div>
+        </div>
+        <div class="badge-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+          <div>
+            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">Live Shannon Entropy</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Calculates mathematical entropy bits based on character pool size and length.</p>
+          </div>
+        </div>
+        <div class="badge-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <div>
+            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">Memorable Passphrases</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Generates Diceware-style multi-word passphrases that are easy to remember but hard to crack.</p>
+          </div>
+        </div>
+        <div class="badge-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          <div>
+            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">Zero Data Retention</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">No passwords sent to analytics, cookies, or databases. Values reset immediately on request.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEO Educational Content -->
+      <section class="seo-section">
+        <h2>What Makes a Password Truly Strong?</h2>
+        <p>
+          In modern cybersecurity, brute-force attacks and credential-stuffing bots test billions of password combinations per second. A truly strong password requires a combination of <strong>sufficient length</strong>, <strong>character unpredictability</strong>, and <strong>mathematical entropy</strong>.
+        </p>
+
+        <h3 style="margin: 2rem 0 0.75rem; color: var(--text-main);">Password Length vs Complexity</h3>
+        <p>
+          For decades, users were advised to substitute letters with symbols (such as replacing 'E' with '3' or 'A' with '@'). Modern password cracking dictionaries anticipate these common human patterns instantly.
+        </p>
+        <p>
+          <strong>Length is exponentially more protective than cosmetic substitution.</strong> An 8-character password with symbols has approximately $5 \times 10^{15}$ combinations, which modern GPU clusters can crack in minutes. A randomly generated 16-character password has over $10^{30}$ combinations—requiring millions of years of computing power.
+        </p>
+
+        <h3 style="margin: 2rem 0 0.75rem; color: var(--text-main);">Passwords vs Memorable Passphrases</h3>
+        <p>
+          When you need a password you can remember without looking at a password manager (such as a master password or disk encryption key), a <strong>Passphrase</strong> is the recommended standard:
+        </p>
+        <ul style="padding-left: 1.25rem;">
+          <li><strong>Random Passwords:</strong> Best for autofill password managers (e.g., <code>k7#vP9$mQ2!wX8&amp;z</code>). Extremely compact and strong.</li>
+          <li><strong>Passphrases (Diceware style):</strong> A sequence of randomly chosen common words separated by hyphens (e.g., <code>Battery-Staple-Orchard-Vibrant-94</code>). Humanly memorable and resilient against dictionary analysis.</li>
+        </ul>
+
+        <!-- Frequently Asked Questions -->
+        <h3 style="margin: 2.5rem 0 1rem; color: var(--text-main);">Frequently Asked Questions (FAQ)</h3>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>How does EcrioX guarantee password randomness?</span>
+              <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              We use <code>window.crypto.getRandomValues()</code>, the browser's native cryptographic pseudo-random number generator (CSPRNG), combined with unbiased rejection sampling. We never use standard <code>Math.random()</code>, which is predictable.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>Does EcrioX store or log my generated passwords?</span>
+              <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              Never. Generated passwords exist only in your browser's temporary memory while the page is open. No passwords are sent to servers, cookies, localStorage, or analytics platforms.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>What is password entropy and why does it matter?</span>
+              <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              Entropy measures unpredictability in bits. A password with 80+ bits of entropy is considered cryptographically strong and infeasible to crack with contemporary brute-force methods.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>Why should I avoid ambiguous characters like 0, O, l, 1, and I?</span>
+              <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              On many screens and mobile fonts, capital 'O' looks identical to number '0', and lowercase 'l' looks identical to capital 'I' and number '1'. Excluding them prevents typos when typing passwords manually on mobile devices or TV screens.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Related Productivity Tools -->
+      <section style="margin-top: 3rem;">
+        <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 1.25rem; color: var(--text-main);">More Free Productivity Utilities</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem;">
+          <a href="../qr-code-generator/" style="display: block; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; text-decoration: none; color: inherit; transition: var(--transition);">
+            <div style="font-weight: 700; color: var(--color-primary); margin-bottom: 0.25rem;">QR Code Generator</div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Create custom QR codes for Wi-Fi, WhatsApp, vCards, and URLs with PNG/SVG vector export.</p>
+          </a>
+          <a href="../tools/productivity/pomodoro/" style="display: block; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; text-decoration: none; color: inherit; transition: var(--transition);">
+            <div style="font-weight: 700; color: var(--color-primary); margin-bottom: 0.25rem;">Pomodoro Focus Timer</div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Track productive work intervals and rest breaks with customizable chimes.</p>
+          </a>
+          <a href="../tools/developer/hash-generator/" style="display: block; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; text-decoration: none; color: inherit; transition: var(--transition);">
+            <div style="font-weight: 700; color: var(--color-primary); margin-bottom: 0.25rem;">Hash Generator</div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Compute cryptographic SHA-256 and SHA-512 hashes in your browser with Web Crypto.</p>
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner container">
+      <div class="footer-grid">
+        <div class="footer-col brand-col">
+          <div class="brand-logo footer-logo">
+            <span class="logo-mark">⚡</span>
+            <span class="logo-text">Ecrio<span class="logo-accent">X</span></span>
+          </div>
+          <p class="tagline">One Platform. Endless Possibilities.</p>
+          <p class="brand-desc">Fast, private, in-browser online utilities built for developers, designers, students, and professionals worldwide.</p>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Tools</h4>
+          <ul class="footer-links">
+            <li><a href="../tools/pdf/">PDF Tools</a></li>
+            <li><a href="../tools/image/">Image Tools</a></li>
+            <li><a href="../tools/developer/">Developer Tools</a></li>
+            <li><a href="../tools/text/">Text Tools</a></li>
+            <li><a href="../tools/productivity/">Productivity</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Flagship Utilities</h4>
+          <ul class="footer-links">
+            <li><a href="../heic-to-jpg/">HEIC to JPG</a></li>
+            <li><a href="../password-generator/">Password Generator</a></li>
+            <li><a href="../image-to-text/">Image to Text OCR</a></li>
+            <li><a href="../qr-code-generator/">QR Code Generator</a></li>
+            <li><a href="../background-remover/">Background Remover</a></li>
+            <li><a href="../pdf-to-word/">PDF to Word</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Company & Legal</h4>
+          <ul class="footer-links">
+            <li><a href="../about/">About Us</a></li>
+            <li><a href="../contact/">Contact</a></li>
+            <li><a href="../privacy/">Privacy Policy</a></li>
+            <li><a href="../terms/">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 EcrioX. All rights reserved. Zero file uploads — all conversions run in your browser.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/app.js"></script>
+  <script src="tool.js"></script>
+  <script>
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        item.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>
