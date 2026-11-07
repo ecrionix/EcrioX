@@ -616,6 +616,18 @@ const ECRIOX_TOOLS = [
     status: "available",
     popular: true,
     tags: ["5g band checker", "phone 5g bands", "supported 5g bands", "mobile network compatibility", "4g lte band checker", "jio 5g", "airtel 5g", "n78", "n28"]
+  },
+  {
+    id: "diwali-wishes-maker",
+    name: "Happy Diwali Wishes Maker",
+    category: "productivity",
+    categoryName: "Productivity Tools",
+    description: "Create personalized Diwali greeting cards with custom names, photos, 20 royal templates, 10 Indian languages, and instant WhatsApp sharing.",
+    route: "/diwali-wishes-maker/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a5 5 0 0 0-5 5c0 3 5 9 5 9s5-6 5-9a5 5 0 0 0-5-5z"></path><circle cx="12" cy="7" r="1.5"></circle></svg>`,
+    status: "available",
+    popular: true,
+    tags: ["diwali", "diwali wishes", "diwali card maker", "happy diwali", "deepavali", "diwali greeting", "whatsapp wishes", "diwali photo card", "tamil diwali", "hindi diwali"]
   }
 ];
 

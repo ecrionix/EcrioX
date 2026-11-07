@@ -360,6 +360,14 @@
     <priority>0.9</priority>
   </url>
 
+  <!-- Festive & Viral Utilities -->
+  <url>
+    <loc>https://ecriox.com/diwali-wishes-maker/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
   <!-- Trust & Legal Pages -->
   <url>
     <loc>https://ecriox.com/about/</loc>
