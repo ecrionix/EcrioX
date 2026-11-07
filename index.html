@@ -550,6 +550,57 @@
               <a href="/image-metadata-remover/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
             </div>
           </div>
+
+          <!-- Active Tool: Internet Speed Test -->
+          <div class="tool-card">
+            <div class="tool-card-header">
+              <div class="tool-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              </div>
+              <span class="badge badge-available">Available</span>
+            </div>
+            <div class="tool-card-body">
+              <h3 class="tool-card-title">Internet Speed Test</h3>
+              <p class="tool-card-desc">Accurately benchmark download, upload throughput, ping latency, and RFC 3550 jitter with adaptive streaming.</p>
+            </div>
+            <div class="tool-card-footer">
+              <a href="/internet-speed-test/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+            </div>
+          </div>
+
+          <!-- Active Tool: Wi-Fi Analyzer -->
+          <div class="tool-card">
+            <div class="tool-card-header">
+              <div class="tool-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"></path><path d="M1.42 9a16 16 0 0 1 21.16 0"></path><path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path><line x1="12" y1="20" x2="12.01" y2="20"></line></svg>
+              </div>
+              <span class="badge badge-available">Available</span>
+            </div>
+            <div class="tool-card-body">
+              <h3 class="tool-card-title">Wi-Fi Analyzer</h3>
+              <p class="tool-card-desc">Check signal strength in dBm, evaluate 2.4 GHz vs 5 GHz channels, visualize spectrum overlap, and fix dead zones.</p>
+            </div>
+            <div class="tool-card-footer">
+              <a href="/wifi-analyzer/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+            </div>
+          </div>
+
+          <!-- Active Tool: 5G Band Checker -->
+          <div class="tool-card">
+            <div class="tool-card-header">
+              <div class="tool-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 20h20"></path><path d="M6 16l6-12 6 12"></path></svg>
+              </div>
+              <span class="badge badge-available">Available</span>
+            </div>
+            <div class="tool-card-body">
+              <h3 class="tool-card-title">5G Band Checker</h3>
+              <p class="tool-card-desc">Check verified smartphone 5G NR frequency bands, C-Band (n77/n78), mmWave, and evaluate carrier compatibility.</p>
+            </div>
+            <div class="tool-card-footer">
+              <a href="/5g-band-checker/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -764,6 +815,10 @@
             <li><a href="/image-resizer/">Image Resizer</a></li>
             <li><a href="/tools/image-compressor/">Image Compressor</a></li>
             <li><a href="/tools/text-analyzer/">Text Analyzer</a></li>
+            <li><a href="/internet-speed-test/">Internet Speed Test</a></li>
+            <li><a href="/wifi-analyzer/">Wi-Fi Analyzer</a></li>
+            <li><a href="/5g-band-checker/">5G Band Checker</a></li>
+            <li><a href="/tools/tech-lab/">Technology &amp; Device Lab</a></li>
           </ul>
         </div>
 
@@ -808,7 +863,7 @@
             <div class="category-icon">${cat.icon}</div>
             <h3 class="category-title">${cat.name}</h3>
             <p class="category-desc">${cat.description}</p>
-            <a href="/categories/" class="category-link" style="margin-top: auto;">Explore &rarr;</a>
+            <a href="${cat.route || '/categories/'}" class="category-link" style="margin-top: auto;">Explore &rarr;</a>
           </div>
         `;
       }).join("");

@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WiFi Analyzer Online – Check WiFi Signal &amp; Network Quality | EcrioX</title>
+  <meta name="description" content="Free online WiFi Analyzer. Check Wi-Fi signal strength in dBm, evaluate 2.4 GHz vs 5 GHz vs 6 GHz frequency bands, view channel interference, and troubleshoot dead zones.">
+  <link rel="canonical" href="https://ecriox.com/wifi-analyzer/">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="WiFi Analyzer Online – Check WiFi Signal &amp; Network Quality | EcrioX">
+  <meta property="og:description" content="Analyze Wi-Fi signal quality in dBm, understand 2.4 GHz, 5 GHz and 6 GHz spectrums, inspect channel overlap, and optimize home wireless networks.">
+  <meta property="og:url" content="https://ecriox.com/wifi-analyzer/">
+  <meta property="og:site_name" content="EcrioX">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="WiFi Analyzer Online – EcrioX">
+  <meta name="twitter:description" content="Check Wi-Fi signal in dBm, frequency channels, and optimize wireless coverage.">
+
+  <!-- Global Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i){
+  w[l]=w[l]||[];
+  w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),
+  dl=l!='dataLayer'?'&l='+l:'';
+  j.async=true;
+  j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+  f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PQFRBJ9F');
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Schema.org WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "EcrioX Wi-Fi Analyzer & Network Quality Lab",
+    "url": "https://ecriox.com/wifi-analyzer/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "description": "Inspect live browser connection telemetry, diagnose Wi-Fi signal strength in dBm, visualize 2.4 GHz and 5 GHz channel overlap, and troubleshoot wireless home network dead zones.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .wifi-analyzer-layout {
+      max-width: 1040px;
+      margin: 0 auto;
+    }
+
+    /* Tabs Header */
+    .analyzer-tabs-nav {
+      display: flex;
+      gap: 0.5rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-full);
+      padding: 0.4rem;
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .analyzer-tab-btn {
+      flex: 1;
+      padding: 0.75rem 1.25rem;
+      border-radius: var(--radius-full);
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: var(--transition);
+      text-align: center;
+    }
+    .analyzer-tab-btn.active {
+      background: var(--color-primary);
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+    }
+
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+    }
+
+    /* Main Dashboard Cards */
+    .dashboard-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem 2rem;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 2rem;
+    }
+
+    /* Telemetry Grid (Mode A) */
+    .telemetry-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .telemetry-tile {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      text-align: center;
+    }
+    .telemetry-label {
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-subtle);
+      margin-bottom: 0.35rem;
+    }
+    .telemetry-val {
+      font-size: 1.75rem;
+      font-weight: 900;
+      color: var(--text-main);
+    }
+    .telemetry-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    /* Browser sandbox note callout */
+    .sandbox-callout {
+      background: rgba(37, 99, 235, 0.06);
+      border: 1px solid var(--color-primary-border);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.5rem;
+      margin-top: 1.5rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .sandbox-callout svg {
+      width: 24px;
+      height: 24px;
+      color: var(--color-primary);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* Manual Analyzer Form (Mode B) */
+    .manual-controls-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.45rem;
+    }
+    .form-group .control-input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+    }
+
+    /* Signal Meter Gauge Visualizer */
+    .signal-meter-box {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      text-align: center;
+      margin: 1.5rem 0 2rem;
+    }
+    .signal-bars-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 8px;
+      height: 70px;
+      margin-bottom: 1rem;
+    }
+    .signal-bar {
+      width: 16px;
+      border-radius: 4px;
+      background: var(--border-color);
+      transition: all 0.3s ease;
+    }
+    .signal-bar.active {
+      background: var(--color-primary);
+    }
+    .signal-bar.bar-1 { height: 25%; }
+    .signal-bar.bar-2 { height: 45%; }
+    .signal-bar.bar-3 { height: 65%; }
+    .signal-bar.bar-4 { height: 85%; }
+    .signal-bar.bar-5 { height: 100%; }
+
+    .signal-classification-badge {
+      font-size: 1.35rem;
+      font-weight: 900;
+      display: inline-block;
+      padding: 0.4rem 1.25rem;
+      border-radius: var(--radius-full);
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.01em;
+    }
+    .class-excellent { background: rgba(16, 185, 129, 0.15); color: #059669; }
+    .class-very-good { background: rgba(6, 182, 212, 0.15); color: #0891b2; }
+    .class-good { background: rgba(37, 99, 235, 0.15); color: #2563eb; }
+    .class-fair { background: rgba(245, 158, 11, 0.15); color: #d97706; }
+    .class-weak { background: rgba(239, 68, 68, 0.15); color: #dc2626; }
+
+    /* Channel Overlap Visualizer */
+    .channel-spectrum-box {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      margin: 2rem 0;
+    }
+    .spectrum-canvas {
+      width: 100%;
+      height: 180px;
+      display: block;
+      background: var(--bg-surface);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+    }
+
+    /* Classification Table */
+    .ref-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      margin-top: 1.5rem;
+    }
+    .ref-table th, .ref-table td {
+      padding: 0.85rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .ref-table th {
+      background: var(--bg-subtle);
+      font-weight: 700;
+      color: var(--text-subtle);
+    }
+    .ref-table td {
+      color: var(--text-main);
+    }
+
+    /* Features Grid */
+    .features-badge-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin: 3.5rem 0 2.5rem;
+    }
+    .badge-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .badge-card svg {
+      width: 24px;
+      height: 24px;
+      color: var(--color-primary);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* SEO Section */
+    .seo-section {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2rem;
+      margin: 3rem 0;
+    }
+    .seo-section h2 { margin-bottom: 1rem; color: var(--text-main); }
+    .seo-section p, .seo-section li { color: var(--text-muted); line-height: 1.7; margin-bottom: 1rem; }
+
+    /* FAQ */
+    .faq-list { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
+    .faq-item { border: 1px solid var(--border-color); border-radius: var(--radius-md); overflow: hidden; background: var(--bg-surface); }
+    .faq-question { padding: 1.25rem; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: var(--bg-surface); border: none; width: 100%; text-align: left; color: var(--text-main); }
+    .faq-answer { padding: 0 1.25rem 1.25rem; color: var(--text-muted); line-height: 1.6; display: none; }
+    .faq-item.open .faq-answer { display: block; }
+    .faq-item.open .faq-icon { transform: rotate(180deg); }
+    .faq-icon { transition: transform 0.2s ease; }
+  </style>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQFRBJ9F"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner container">
+      <a href="../" class="brand-logo" aria-label="EcrioX Home">
+        <span class="logo-mark">⚡</span>
+        <span class="logo-text">Ecrio<span class="logo-accent">X</span></span>
+      </a>
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="../tools/" class="nav-link active">All Tools</a>
+        <a href="../tools/tech-lab/" class="nav-link">Tech Lab</a>
+        <a href="../tools/pdf/" class="nav-link">PDF Tools</a>
+        <a href="../tools/image/" class="nav-link">Image Tools</a>
+        <a href="../categories/" class="nav-link">Categories</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light theme">
+          <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-main container" style="padding-top: 2rem; padding-bottom: 4rem;">
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb" style="margin-bottom: 1.5rem;">
+      <a href="../">Home</a>
+      <span class="bc-sep">/</span>
+      <a href="../tools/tech-lab/">Technology &amp; Device Lab</a>
+      <span class="bc-sep">/</span>
+      <span class="bc-current">Wi-Fi Analyzer</span>
+    </nav>
+
+    <div class="wifi-analyzer-layout">
+      <div style="text-align: center; margin-bottom: 2rem;">
+        <span class="badge" style="background: var(--color-primary-light); color: var(--color-primary); font-weight: 700; margin-bottom: 0.75rem; display: inline-block;">WIRELESS SPECTRUM &amp; SIGNAL LAB</span>
+        <h1 style="font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800; color: var(--text-main); margin-bottom: 0.75rem; letter-spacing: -0.02em;">Wi-Fi Analyzer Online</h1>
+        <p style="color: var(--text-muted); font-size: 1.15rem; max-width: 680px; margin: 0 auto;">
+          Analyze Wi-Fi signal strength in dBm, evaluate 2.4 GHz vs 5 GHz vs 6 GHz frequency bands, visualize channel interference, and troubleshoot wireless coverage dead zones.
+        </p>
+      </div>
+
+      <!-- Mode Selector Tabs -->
+      <div class="analyzer-tabs-nav">
+        <button type="button" class="analyzer-tab-btn active" data-tab="tab-manual">Manual Signal &amp; Channel Analyzer</button>
+        <button type="button" class="analyzer-tab-btn" data-tab="tab-browser">Live Browser Telemetry</button>
+      </div>
+
+      <!-- TAB 1: MANUAL WI-FI ANALYSIS (PRIMARY DIAGNOSTIC ENGINE) -->
+      <div class="tab-content active" id="tab-manual">
+        <div class="dashboard-card">
+          <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.5rem;">Signal Diagnostics &amp; Channel Assessment</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.75rem;">
+            Enter your observed signal strength in dBm (from your phone settings or router admin panel) to inspect signal quality, bandwidth capability, and channel interference.
+          </p>
+
+          <!-- Input Controls -->
+          <div class="manual-controls-grid">
+            <!-- Signal dBm -->
+            <div class="form-group">
+              <div style="display: flex; justify-content: space-between;">
+                <label for="input-dbm">Signal Strength (dBm)</label>
+                <span id="label-dbm-val" style="font-weight: 800; color: var(--color-primary);">-55 dBm</span>
+              </div>
+              <input type="range" id="input-dbm" min="-95" max="-30" value="-55" step="1" style="width: 100%; accent-color: var(--color-primary);">
+              <span style="font-size: 0.75rem; color: var(--text-subtle);">(-30 dBm is strongest, -90 dBm is weakest)</span>
+            </div>
+
+            <!-- Frequency Band -->
+            <div class="form-group">
+              <label for="select-band">Frequency Band</label>
+              <select id="select-band" class="control-input" style="font-weight: 700;">
+                <option value="5" selected>5 GHz (Wi-Fi 5 / Wi-Fi 6)</option>
+                <option value="2.4">2.4 GHz (Long Range / Legacy)</option>
+                <option value="6">6 GHz (Wi-Fi 6E / Wi-Fi 7)</option>
+              </select>
+            </div>
+
+            <!-- Wi-Fi Channel -->
+            <div class="form-group">
+              <label for="select-channel">Wi-Fi Channel</label>
+              <select id="select-channel" class="control-input" style="font-weight: 700;">
+                <!-- Populated dynamically based on band -->
+              </select>
+            </div>
+
+            <!-- Environment / Obstacles -->
+            <div class="form-group">
+              <label for="select-environment">Router Distance &amp; Obstacles</label>
+              <select id="select-environment" class="control-input">
+                <option value="los" selected>Same Room (Direct Line of Sight)</option>
+                <option value="drywall">1 Drywall / Glass Partition</option>
+                <option value="brick">Thick Brick / Concrete Wall</option>
+                <option value="multistory">Different Floor (Ceiling / Multi-story)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Live Signal Quality Meter -->
+          <div class="signal-meter-box">
+            <div class="signal-bars-row" id="meter-bars">
+              <div class="signal-bar bar-1 active"></div>
+              <div class="signal-bar bar-2 active"></div>
+              <div class="signal-bar bar-3 active"></div>
+              <div class="signal-bar bar-4 active"></div>
+              <div class="signal-bar bar-5"></div>
+            </div>
+            <div>
+              <span class="signal-classification-badge class-very-good" id="verdict-badge">Very Good (-55 dBm)</span>
+            </div>
+            <p style="font-size: 0.95rem; color: var(--text-main); max-width: 650px; margin: 0.5rem auto 0; line-height: 1.6;" id="verdict-desc">
+              Fast, dependable connection. Excellent for 4K video streaming, high-resolution video conferencing, and low-latency cloud gaming.
+            </p>
+          </div>
+
+          <!-- Channel Interference & Spectrum Visualizer -->
+          <div class="channel-spectrum-box">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
+              <h4 style="font-size: 1rem; font-weight: 800; color: var(--text-main); margin: 0;" id="spectrum-title">
+                2.4 GHz vs 5 GHz Channel Spectrum Overlap
+              </h4>
+              <span style="font-size: 0.8rem; color: var(--text-subtle);">Active Channel: <strong id="spec-channel-badge" style="color: var(--color-primary);">CH 36</strong></span>
+            </div>
+            <canvas id="spectrum-canvas" class="spectrum-canvas" width="800" height="180"></canvas>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.75rem;" id="spectrum-note">
+              On 2.4 GHz, channels are 20 MHz wide with only 5 MHz spacing. Only channels <strong>1, 6, and 11</strong> do not overlap. On 5 GHz, channels operate with wider 40/80/160 MHz clean separation.
+            </p>
+          </div>
+
+          <!-- Troubleshooting Recommendations -->
+          <div style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.5rem;">
+            <h4 style="font-size: 1rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.75rem;">Practical Optimization Recommendations</h4>
+            <ul style="padding-left: 1.5rem; color: var(--text-muted); line-height: 1.7; font-size: 0.9rem;" id="recommendations-list">
+              <li><strong>Switch to 5 GHz for bandwidth-intensive tasks:</strong> Your selected 5 GHz band avoids microwave and Bluetooth interference prevalent on 2.4 GHz.</li>
+              <li><strong>Elevate your router:</strong> Place the Wi-Fi router on a desk or shelf 1.5 meters off the ground rather than behind a television or near metal pipes.</li>
+              <li><strong>Avoid non-standard 2.4 GHz channels:</strong> If using 2.4 GHz, stick strictly to channels 1, 6, or 11 to avoid adjacent channel interference from neighboring routers.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 2: LIVE BROWSER TELEMETRY (MODE A) -->
+      <div class="tab-content" id="tab-browser">
+        <div class="dashboard-card">
+          <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.5rem;">Browser Network Interface Information</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">
+            Exposed via the W3C Network Information API where supported by your browser engine.
+          </p>
+
+          <div class="telemetry-grid">
+            <div class="telemetry-tile">
+              <div class="telemetry-label">Effective Type</div>
+              <div class="telemetry-val" id="tele-effective-type">4G</div>
+              <div class="telemetry-sub">Cellular / Wi-Fi Tier</div>
+            </div>
+            <div class="telemetry-tile">
+              <div class="telemetry-label">Estimated Downlink</div>
+              <div class="telemetry-val" id="tele-downlink">10.0</div>
+              <div class="telemetry-sub">Mbps throughput</div>
+            </div>
+            <div class="telemetry-tile">
+              <div class="telemetry-label">Estimated RTT</div>
+              <div class="telemetry-val" id="tele-rtt">50</div>
+              <div class="telemetry-sub">ms round-trip latency</div>
+            </div>
+            <div class="telemetry-tile">
+              <div class="telemetry-label">Data Saver</div>
+              <div class="telemetry-val" id="tele-save-data">Off</div>
+              <div class="telemetry-sub">Browser bandwidth mode</div>
+            </div>
+          </div>
+
+          <!-- Sandbox Transparency Callout -->
+          <div class="sandbox-callout">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            <div>
+              <h4 style="font-size: 0.95rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.25rem;">Why Can't Browsers Scan All Nearby Wi-Fi Networks?</h4>
+              <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; margin: 0;">
+                For user security and location privacy, standard W3C browser specifications strictly prohibit web pages from querying low-level 802.11 network hardware or sniffing nearby router BSSID MAC addresses. Web applications claiming to "scan all neighborhood Wi-Fi routers" are fabricating mock data. EcrioX provides genuine browser telemetry alongside our verified manual RF diagnostic engine above.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Signal Reference Table -->
+      <div class="dashboard-card" style="margin-top: 2rem;">
+        <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.5rem;">Wi-Fi Signal Strength (dBm) Classification Guide</h3>
+        <p style="color: var(--text-muted); font-size: 0.85rem;">
+          In radio frequency physics, signal is expressed as decibels relative to one milliwatt (dBm). Because numbers are negative, values closer to zero indicate stronger signal power.
+        </p>
+
+        <div style="overflow-x: auto;">
+          <table class="ref-table">
+            <thead>
+              <tr>
+                <th>Signal (dBm)</th>
+                <th>Classification</th>
+                <th>Real-World Performance</th>
+                <th>Recommended Use Cases</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="font-weight: 800; color: #059669;">-30 to -50 dBm</td>
+                <td><span class="signal-classification-badge class-excellent" style="font-size: 0.8rem; padding: 2px 8px;">Excellent</span></td>
+                <td>Maximum theoretical link speed, zero packet loss</td>
+                <td>4K/8K video streaming, high-speed file transfers, competitive gaming</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 800; color: #0891b2;">-51 to -60 dBm</td>
+                <td><span class="signal-classification-badge class-very-good" style="font-size: 0.8rem; padding: 2px 8px;">Very Good</span></td>
+                <td>Strong, stable connection with high throughput</td>
+                <td>HD video conferencing, simultaneous multi-device streaming</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 800; color: #2563eb;">-61 to -67 dBm</td>
+                <td><span class="signal-classification-badge class-good" style="font-size: 0.8rem; padding: 2px 8px;">Good</span></td>
+                <td>Minimum recommended standard for reliable VoIP &amp; Zoom</td>
+                <td>Web browsing, video calls, music streaming, office work</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 800; color: #d97706;">-68 to -75 dBm</td>
+                <td><span class="signal-classification-badge class-fair" style="font-size: 0.8rem; padding: 2px 8px;">Fair</span></td>
+                <td>Marginal signal; throughput drops, occasional buffering</td>
+                <td>Email, basic web reading, smart home sensor connectivity</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 800; color: #dc2626;">Below -75 dBm</td>
+                <td><span class="signal-classification-badge class-weak" style="font-size: 0.8rem; padding: 2px 8px;">Weak</span></td>
+                <td>Unstable, frequent packet drops and Wi-Fi disconnects</td>
+                <td>Connection drops likely; consider moving closer or adding a mesh node</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Feature Badges -->
+      <div class="features-badge-grid">
+        <div class="badge-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"></path><path d="M1.42 9a16 16 0 0 1 21.16 0"></path><path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path><line x1="12" y1="20" x2="12.01" y2="20"></line></svg>
+          <div>
+            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">Multi-Band RF Modeling</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Compares range, attenuation, and channel capacities across 2.4 GHz, 5 GHz, and 6 GHz spectrums.</p>
+          </div>
+        </div>
+        <div class="badge-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          <div>
+            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">Channel Overlap Diagrams</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Interactive bell curves illustrate adjacent and co-channel interference across congested wireless bands.</p>
+          </div>
+        </div>
+        <div class="badge-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+          <div>
+            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">Troubleshooting Playbook</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Actionable steps to eliminate Wi-Fi dead spots, resolve co-channel congestion, and choose mesh nodes.</p>
+          </div>
+        </div>
+        <div class="badge-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          <div>
+            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">100% Privacy Respecting</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Zero Wi-Fi names or router identifiers are collected or stored on external servers.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEO Educational Section -->
+      <section class="seo-section">
+        <h2>Understanding Wi-Fi Signals &amp; Frequency Bands</h2>
+        <p>
+          Wireless networks transmit data using high-frequency electromagnetic radio waves. Understanding frequency bands and channel management is essential for optimizing wireless performance:
+        </p>
+        <ul style="padding-left: 1.5rem; margin-bottom: 1.5rem;">
+          <li><strong>2.4 GHz Band:</strong> Longer wavelengths penetrate through solid brick walls and floors efficiently. However, the spectrum only accommodates three non-overlapping 20 MHz channels (Channels 1, 6, and 11) and suffers heavy interference from baby monitors, Bluetooth, and microwaves.</li>
+          <li><strong>5 GHz Band:</strong> Provides significantly wider channels (40 MHz, 80 MHz, and 160 MHz) and much higher throughput with lower latency. However, 5 GHz signals attenuate rapidly through solid concrete and drywall.</li>
+          <li><strong>6 GHz Band (Wi-Fi 6E &amp; Wi-Fi 7):</strong> Opens up to 1,200 MHz of pristine spectrum with up to seven ultra-wide 160 MHz channels or three 320 MHz channels. Operates with zero legacy Wi-Fi 4/5 interference, ideal for VR and multi-gigabit connections.</li>
+        </ul>
+
+        <h3 style="margin: 2rem 0 0.75rem; color: var(--text-main);">Frequently Asked Questions (FAQs)</h3>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How do I find my current Wi-Fi signal strength in dBm on my device?</span>
+              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              On Android, navigate to <strong>Settings &gt; Network &amp; Internet &gt; Wi-Fi &gt; tap your connected network</strong> to view signal strength in dBm. On Mac, hold the <strong>Option (&tau;) key and click the Wi-Fi icon</strong> in the top menu bar to view exact RSSI in dBm. On Windows, open PowerShell and type <code>netsh wlan show interfaces</code>.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Why should I avoid Wi-Fi channels other than 1, 6, or 11 on 2.4 GHz?</span>
+              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              In 2.4 GHz Wi-Fi, each channel is 20 MHz wide, but channel center frequencies are spaced only 5 MHz apart. Setting your router to an intermediate channel (like Channel 3 or Channel 8) overlaps with BOTH Channels 1 and 6, causing destructive adjacent channel interference that severely degrades packet throughput for everyone nearby.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>What is the difference between a Wi-Fi Range Extender and a Mesh Network?</span>
+              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              Traditional range extenders repeat an existing wireless signal on a new network name (SSID), which cuts throughput by approximately 50% due to half-duplex retransmissions. Mesh systems use a unified network name with dedicated wireless backhaul channels and 802.11k/v/r seamless client roaming between nodes.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Related Tools in Tech Lab -->
+      <div style="margin-top: 3rem;">
+        <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--text-main); margin-bottom: 1.25rem;">Related Connectivity Utilities</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem;">
+          <a href="../internet-speed-test/" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; text-decoration: none; color: inherit; display: block; transition: var(--transition);">
+            <div style="font-weight: 700; margin-bottom: 0.35rem; color: var(--text-main);">Internet Speed Test &rarr;</div>
+            <div style="font-size: 0.85rem; color: var(--text-muted);">Measure download, upload, ping latency, and packet jitter.</div>
+          </a>
+          <a href="../5g-band-checker/" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; text-decoration: none; color: inherit; display: block; transition: var(--transition);">
+            <div style="font-weight: 700; margin-bottom: 0.35rem; color: var(--text-main);">5G Band Checker &rarr;</div>
+            <div style="font-size: 0.85rem; color: var(--text-muted);">Check your phone's 5G NR and LTE carrier compatibility.</div>
+          </a>
+          <a href="../password-generator/" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; text-decoration: none; color: inherit; display: block; transition: var(--transition);">
+            <div style="font-weight: 700; margin-bottom: 0.35rem; color: var(--text-main);">Password Generator &rarr;</div>
+            <div style="font-size: 0.85rem; color: var(--text-muted);">Create strong, cryptographically secure WPA3 Wi-Fi passwords.</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner container">
+      <div class="footer-grid">
+        <div class="footer-col brand-col">
+          <div class="brand-logo" style="margin-bottom: 1rem;">
+            <span class="logo-mark">⚡</span>
+            <span class="logo-text">Ecrio<span class="logo-accent">X</span></span>
+          </div>
+          <p class="footer-tagline">One Platform. Endless Possibilities. Fast, secure, client-side digital utilities.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Technology Lab</h4>
+          <ul class="footer-links">
+            <li><a href="../wifi-analyzer/">Wi-Fi Analyzer</a></li>
+            <li><a href="../internet-speed-test/">Internet Speed Test</a></li>
+            <li><a href="../5g-band-checker/">5G Band Checker</a></li>
+            <li><a href="../tools/tech-lab/">Tech Lab Hub</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company &amp; Legal</h4>
+          <ul class="footer-links">
+            <li><a href="../about/">About Us</a></li>
+            <li><a href="../contact/">Contact</a></li>
+            <li><a href="../privacy/">Privacy Policy</a></li>
+            <li><a href="../terms/">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 EcrioX. All rights reserved. Zero simulations — authentic wireless diagnostic tools.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/analytics.js"></script>
+  <script src="../js/app.js"></script>
+  <script src="tool.js"></script>
+  <script>
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.parentElement.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>

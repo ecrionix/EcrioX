@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5G Band Checker – Check Smartphone 5G Bands &amp; Carrier Compatibility | EcrioX</title>
+  <meta name="description" content="Free online 5G Band Checker. Check supported 5G NR frequency bands, C-Band (n77/n78), mmWave, Standalone (SA) vs Non-Standalone (NSA), and telecom carrier compatibility.">
+  <link rel="canonical" href="https://ecriox.com/5g-band-checker/">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="5G Band Checker – Check Smartphone 5G Bands &amp; Carrier Compatibility | EcrioX">
+  <meta property="og:description" content="Check which 5G NR bands your phone supports, test carrier compatibility for Jio, Airtel, T-Mobile, Verizon, and compare smartphones side-by-side.">
+  <meta property="og:url" content="https://ecriox.com/5g-band-checker/">
+  <meta property="og:site_name" content="EcrioX">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="5G Band Checker – EcrioX">
+  <meta name="twitter:description" content="Check smartphone 5G frequency bands, carrier compatibility, and compare devices side-by-side.">
+
+  <!-- Global Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i){
+  w[l]=w[l]||[];
+  w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),
+  dl=l!='dataLayer'?'&l='+l:'';
+  j.async=true;
+  j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+  f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PQFRBJ9F');
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Schema.org WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "EcrioX 5G Band Checker & Carrier Compatibility Engine",
+    "url": "https://ecriox.com/5g-band-checker/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "description": "Examine authentic smartphone 5G NR frequency band specifications, evaluate carrier compatibility across global operators, compare phone bands side-by-side, and explore 5G spectrum guides.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <!-- Schema.org FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I check which 5G bands my smartphone supports?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Select your smartphone brand and model in the EcrioX 5G Band Checker above to inspect the exact verified 5G NR frequency bands, C-Band (n77/n78), mmWave capability, and 4G LTE fallback bands from official manufacturer regulatory filings. On iPhone, you can also dial *3001#12345#* for Field Test Mode. On Android, dial *#*#4636#*#* or check Settings > About Phone > Regulatory labels."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between Sub-6 GHz and mmWave 5G?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sub-6 GHz 5G uses frequencies below 6 GHz (including Low-band n28/n71 and Mid-band C-Band n77/n78). It provides wide geographic coverage and easily penetrates walls and buildings with speeds between 100 to 900 Mbps. mmWave (millimeter-wave, 24 GHz to 40 GHz like n258, n260, n261) delivers multi-gigabit speeds (1,000 to 3,000+ Mbps) but travels only short distances (a few hundred meters) and is blocked by walls, glass, and foliage."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is band n78 called the gold standard of 5G?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Band n78 (3300 MHz to 3800 MHz, part of C-Band) is the most globally adopted 5G frequency. Major telecommunication providers in India (Reliance Jio and Bharti Airtel), the United Kingdom (EE, Vodafone, Three, O2), Europe, and Asia-Pacific deploy n78 as their primary high-speed capacity layer, delivering real-world download speeds exceeding 500 Mbps to 1 Gbps."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between 5G Standalone (SA) and Non-Standalone (NSA)?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "5G Non-Standalone (NSA) anchors 5G radio towers on an existing 4G LTE core network. 5G Standalone (SA) runs entirely on a dedicated, cloud-native 5G core network without relying on legacy 4G signaling. Reliance Jio in India deploys 5G SA (requiring phone support for SA and low-band n28), while Bharti Airtel operates 5G NSA anchored on LTE band 3/40."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will a US-bought 5G phone work on Indian or European 5G networks?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most modern US flagship smartphones (like iPhone 13, 14, 15, 16 series, Galaxy S23/S24 series, and Pixel 7/8/9 series) support the essential global 5G band n78 (3500MHz) and low-band n28 (700MHz), meaning they work seamlessly on Reliance Jio and Airtel in India and across Europe. However, some carrier-locked or budget US variants may lack band n28 or n78, restricting them to 4G LTE. Check your exact model number using our checker before traveling or purchasing."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .checker-layout {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    /* Tabs Header */
+    .band-tabs-nav {
+      display: flex;
+      gap: 0.5rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-full);
+      padding: 0.4rem;
+      margin-bottom: 2rem;
+      max-width: 680px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .band-checker-tab-btn {
+      flex: 1;
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-full);
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-weight: 700;
+      font-size: 0.92rem;
+      cursor: pointer;
+      transition: var(--transition);
+      text-align: center;
+    }
+    .band-checker-tab-btn.active {
+      background: var(--color-primary);
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+    }
+
+    .tab-section {
+      display: none;
+    }
+    .tab-section.active {
+      display: block;
+    }
+
+    /* Brand filter pills */
+    .brand-pills-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      justify-content: center;
+    }
+    .brand-pill {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 0.45rem 1rem;
+      border-radius: var(--radius-full);
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .brand-pill:hover, .brand-pill.active {
+      background: var(--color-primary);
+      color: #ffffff;
+      border-color: var(--color-primary);
+    }
+
+    /* Search Box */
+    .search-box-wrapper {
+      position: relative;
+      max-width: 620px;
+      margin: 0 auto 2.5rem;
+    }
+    .search-input-field {
+      width: 100%;
+      padding: 1rem 1.25rem 1rem 3rem;
+      background: var(--bg-surface);
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      font-size: 1.05rem;
+      color: var(--text-main);
+      transition: var(--transition);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    }
+    .search-input-field:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+    }
+    .search-icon-inside {
+      position: absolute;
+      left: 1.1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Dropdown */
+    .search-dropdown-menu {
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      right: 0;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      max-height: 380px;
+      overflow-y: auto;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+      z-index: 100;
+      display: none;
+    }
+    .search-dropdown-menu.show {
+      display: block;
+    }
+    .dropdown-item {
+      padding: 0.85rem 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-color);
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+    .dropdown-item:last-child {
+      border-bottom: none;
+    }
+    .dropdown-item:hover {
+      background: rgba(37, 99, 235, 0.08);
+    }
+    .dropdown-item-main strong {
+      display: block;
+      font-size: 0.98rem;
+      color: var(--text-main);
+    }
+    .dropdown-item-sub {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+    .dropdown-item-badge {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: var(--radius-full);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .badge-sub6 {
+      background: rgba(14, 165, 233, 0.15);
+      color: #0284c7;
+    }
+
+    /* Device Card */
+    .device-spec-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-xl);
+      padding: 2rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+      margin-bottom: 2.5rem;
+    }
+    .device-card-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .device-title-area h2 {
+      font-size: 1.8rem;
+      margin-bottom: 0.25rem;
+      color: var(--text-main);
+    }
+    .device-meta-text {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    .device-badges-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.35rem 0.8rem;
+      border-radius: var(--radius-full);
+      font-size: 0.82rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .badge-primary {
+      background: rgba(37, 99, 235, 0.15);
+      color: var(--color-primary);
+    }
+    .badge-success {
+      background: rgba(16, 185, 129, 0.15);
+      color: #059669;
+    }
+    .badge-warning {
+      background: rgba(245, 158, 11, 0.15);
+      color: #d97706;
+    }
+    .badge-danger {
+      background: rgba(239, 68, 68, 0.15);
+      color: #dc2626;
+    }
+    .badge-info {
+      background: rgba(14, 165, 233, 0.15);
+      color: #0284c7;
+    }
+    .badge-muted {
+      background: rgba(100, 116, 139, 0.12);
+      color: var(--text-muted);
+    }
+
+    .chipset-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: rgba(37, 99, 235, 0.05);
+      border-radius: var(--radius-md);
+      padding: 0.75rem 1.25rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.92rem;
+      color: var(--text-main);
+    }
+    .chipset-icon {
+      font-size: 1.25rem;
+    }
+
+    .mmwave-alert {
+      background: rgba(245, 158, 11, 0.1);
+      border-left: 4px solid #f59e0b;
+      padding: 0.85rem 1.25rem;
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      margin-bottom: 1.75rem;
+      font-size: 0.88rem;
+      color: var(--text-main);
+    }
+
+    /* Band Groups */
+    .band-spectrum-groups {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+    .spectrum-card {
+      background: var(--bg-main);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+    }
+    .spectrum-card h4 {
+      font-size: 0.95rem;
+      margin-bottom: 0.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .spectrum-sub {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 0.85rem;
+    }
+    .band-chips-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .band-chip {
+      display: inline-flex;
+      flex-direction: column;
+      padding: 0.35rem 0.6rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+      background: var(--bg-surface);
+      font-size: 0.82rem;
+      line-height: 1.2;
+      transition: transform 0.15s ease;
+    }
+    .band-chip:hover {
+      transform: translateY(-2px);
+    }
+    .band-chip-low {
+      border-color: rgba(16, 185, 129, 0.4);
+      background: rgba(16, 185, 129, 0.06);
+    }
+    .band-chip-mid {
+      border-color: rgba(37, 99, 235, 0.4);
+      background: rgba(37, 99, 235, 0.06);
+    }
+    .band-chip-cband {
+      border-color: rgba(245, 158, 11, 0.4);
+      background: rgba(245, 158, 11, 0.08);
+    }
+    .band-chip-mmwave {
+      border-color: rgba(239, 68, 68, 0.4);
+      background: rgba(239, 68, 68, 0.08);
+    }
+    .band-code {
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .band-freq {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    /* 4G Section */
+    .lte-fallback-section {
+      border-top: 1px dashed var(--border-color);
+      padding-top: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    .lte-fallback-section h4 {
+      font-size: 0.92rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-main);
+    }
+    .lte-tags-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+    .band-tag {
+      font-size: 0.75rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: var(--radius-sm);
+      background: var(--bg-main);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      font-family: monospace;
+    }
+
+    /* Verified Source Box */
+    .verified-source-box {
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      border-radius: var(--radius-md);
+      padding: 0.75rem 1.25rem;
+      font-size: 0.82rem;
+      color: var(--text-main);
+    }
+    .verified-badge-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Carrier Section */
+    .carrier-evaluator-wrapper {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-xl);
+      padding: 2rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+      margin-bottom: 2.5rem;
+    }
+    .carrier-controls-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.75rem;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 1.25rem;
+    }
+    .carrier-country-selector {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .country-select-dropdown {
+      padding: 0.65rem 1.2rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      background: var(--bg-main);
+      color: var(--text-main);
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+    .country-select-dropdown:focus {
+      outline: none;
+      border-color: var(--color-primary);
+    }
+
+    .carrier-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 1.5rem;
+    }
+    .carrier-compat-card {
+      background: var(--bg-main);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.4rem;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+    .carrier-compat-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+    }
+    .carrier-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.75rem;
+    }
+    .carrier-name {
+      font-size: 1.1rem;
+      color: var(--text-main);
+      margin-bottom: 0.35rem;
+    }
+    .carrier-tech-tags {
+      display: flex;
+      gap: 0.35rem;
+      flex-wrap: wrap;
+    }
+    .mini-tag {
+      font-size: 0.72rem;
+      padding: 0.15rem 0.45rem;
+      border-radius: var(--radius-sm);
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+    }
+    .compat-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.25rem 0.6rem;
+      border-radius: var(--radius-full);
+      white-space: nowrap;
+    }
+    .compat-full {
+      background: rgba(16, 185, 129, 0.15);
+      color: #059669;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+    .compat-great {
+      background: rgba(37, 99, 235, 0.15);
+      color: var(--color-primary);
+      border: 1px solid rgba(37, 99, 235, 0.3);
+    }
+    .compat-partial {
+      background: rgba(245, 158, 11, 0.15);
+      color: #d97706;
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+    .compat-none {
+      background: rgba(239, 68, 68, 0.15);
+      color: #dc2626;
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+
+    .carrier-summary {
+      font-size: 0.85rem;
+      color: var(--text-main);
+      margin-bottom: 1.2rem;
+      line-height: 1.4;
+    }
+    .carrier-band-matrix {
+      flex: 1;
+      margin-bottom: 1rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 0.85rem;
+    }
+    .matrix-group {
+      margin-bottom: 0.65rem;
+    }
+    .matrix-group:last-child {
+      margin-bottom: 0;
+    }
+    .matrix-label {
+      display: block;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+      font-weight: 700;
+    }
+    .matrix-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+    .chip-status {
+      font-size: 0.78rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+    }
+    .chip-status.match {
+      background: rgba(16, 185, 129, 0.15);
+      color: #059669;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+    .chip-status.miss {
+      background: rgba(239, 68, 68, 0.12);
+      color: #dc2626;
+      border: 1px solid rgba(239, 68, 68, 0.25);
+    }
+    .chip-status.miss-opt {
+      background: rgba(100, 116, 139, 0.1);
+      color: var(--text-muted);
+      border: 1px solid var(--border-color);
+    }
+    .carrier-notes {
+      display: flex;
+      gap: 0.5rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      background: rgba(0, 0, 0, 0.02);
+      padding: 0.65rem;
+      border-radius: var(--radius-sm);
+      line-height: 1.35;
+    }
+
+    /* Comparison Table */
+    .comparison-container {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-xl);
+      padding: 2rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+      margin-bottom: 2.5rem;
+    }
+    .compare-selectors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .compare-table-responsive {
+      overflow-x: auto;
+    }
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+    }
+    .compare-table th, .compare-table td {
+      padding: 0.95rem 1.25rem;
+      border-bottom: 1px solid var(--border-color);
+      text-align: left;
+    }
+    .compare-table th {
+      background: var(--bg-main);
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .compare-table tr:hover td {
+      background: rgba(37, 99, 235, 0.03);
+    }
+    .table-section-divider td {
+      background: rgba(37, 99, 235, 0.06);
+      font-weight: 700;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      letter-spacing: 0.5px;
+    }
+    .status-yes {
+      color: #059669;
+      font-weight: 700;
+    }
+    .status-no {
+      color: #dc2626;
+      font-weight: 600;
+    }
+
+    /* Bands Directory Table */
+    .bands-directory-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-xl);
+      padding: 2rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+      margin-bottom: 2.5rem;
+    }
+    .band-search-wrapper {
+      max-width: 480px;
+      margin-bottom: 1.5rem;
+    }
+    .band-title-code {
+      color: var(--color-primary);
+      font-size: 1.05rem;
+    }
+
+    /* Educational guide & Accordion */
+    .tech-guide-section {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-xl);
+      padding: 2.5rem 2rem;
+      margin-bottom: 2.5rem;
+    }
+    .tech-guide-section h3 {
+      font-size: 1.45rem;
+      margin-top: 1.75rem;
+      margin-bottom: 0.75rem;
+      color: var(--text-main);
+    }
+    .tech-guide-section h3:first-child {
+      margin-top: 0;
+    }
+    .tech-guide-section p {
+      font-size: 0.98rem;
+      line-height: 1.65;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+    .tech-guide-section ul {
+      margin-bottom: 1.25rem;
+      padding-left: 1.5rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .tech-guide-section li {
+      margin-bottom: 0.5rem;
+    }
+
+    .faq-accordion {
+      margin-top: 2rem;
+    }
+    .faq-item {
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      margin-bottom: 0.75rem;
+      background: var(--bg-main);
+      overflow: hidden;
+    }
+    .faq-question {
+      padding: 1.1rem 1.4rem;
+      font-weight: 700;
+      font-size: 1.02rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text-main);
+    }
+    .faq-question:hover {
+      background: rgba(37, 99, 235, 0.04);
+    }
+    .faq-answer {
+      padding: 0 1.4rem 1.2rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .device-card-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .carrier-controls-bar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .country-select-dropdown {
+        width: 100%;
+      }
+      .band-tabs-nav {
+        flex-direction: column;
+        border-radius: var(--radius-lg);
+      }
+      .band-checker-tab-btn {
+        border-radius: var(--radius-md);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQFRBJ9F"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner container">
+      <a href="../" class="brand-logo">
+        <span class="logo-icon">⚡</span>
+        <span class="logo-text">Ecrio<strong>X</strong></span>
+      </a>
+      <nav class="header-nav">
+        <a href="../tools/">All Tools</a>
+        <a href="../tools/tech-lab/" class="active">Tech Lab</a>
+        <a href="../categories/">Categories</a>
+        <a href="../about/">About</a>
+      </nav>
+      <div class="header-actions">
+        <button id="themeToggle" class="theme-btn" aria-label="Toggle Dark/Light Mode">
+          <svg class="sun-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-main container">
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../">Home</a>
+      <span class="sep">/</span>
+      <a href="../tools/tech-lab/">Technology &amp; Device Lab</a>
+      <span class="sep">/</span>
+      <span class="current">5G Band Checker</span>
+    </nav>
+
+    <!-- Hero Header -->
+    <div class="tool-hero text-center">
+      <span class="category-badge">Technology &amp; Device Lab</span>
+      <h1 class="tool-title">5G Band Checker &amp; Carrier Compatibility</h1>
+      <p class="tool-subtitle">
+        Inspect authentic smartphone 5G NR frequency bands, C-Band (n77/n78), mmWave, Standalone (SA) vs Non-Standalone (NSA) support, and telecom carrier compatibility.
+      </p>
+      <div class="tool-meta-pills">
+        <span class="meta-pill">🛡️ Verified OEM Specs</span>
+        <span class="meta-pill">🌐 Multi-Country Carrier Engine</span>
+        <span class="meta-pill">⚡ Side-by-Side Comparison</span>
+        <span class="meta-pill">🔒 100% Client-Side</span>
+      </div>
+    </div>
+
+    <!-- AdSense Slot Header -->
+    <div class="ad-slot ad-header text-center my-3" style="min-height: 90px; background: rgba(0,0,0,0.02); border: 1px dashed var(--border-color); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center;">
+      <span class="text-muted small">Advertisement</span>
+    </div>
+
+    <div class="checker-layout">
+      <!-- Tabs Navigation -->
+      <div class="band-tabs-nav">
+        <button class="band-checker-tab-btn active" data-tab="lookup">Device Specs &amp; Compatibility</button>
+        <button class="band-checker-tab-btn" data-tab="compare">Compare 2 Phones</button>
+        <button class="band-checker-tab-btn" data-tab="bands">5G NR Bands Directory</button>
+      </div>
+
+      <!-- TAB 1: LOOKUP & COMPATIBILITY -->
+      <section id="tab-lookup" class="tab-section active">
+        <!-- Brand Pills -->
+        <div class="brand-pills-row" id="brandPillContainer">
+          <!-- Populated by JavaScript -->
+        </div>
+
+        <!-- Search Input -->
+        <div class="search-box-wrapper">
+          <div class="search-icon-inside">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          </div>
+          <input type="text" id="deviceSearchInput" class="search-input-field" placeholder="Search phone model (e.g. iPhone 16 Pro, S24 Ultra, Pixel 9, Nord 4)..." autocomplete="off" value="Apple iPhone 16 Pro Max">
+          <div class="search-dropdown-menu" id="searchDropdown">
+            <!-- Populated on typing -->
+          </div>
+        </div>
+
+        <!-- Device Specification Card -->
+        <div class="device-spec-card">
+          <div class="device-card-header">
+            <div class="device-title-area">
+              <h2 id="deviceTitle">Apple iPhone 16 Pro Max</h2>
+              <div class="device-meta-text" id="deviceMeta">Released: 2024 | Model Numbers: A3296, A3084, A3295, A3297</div>
+            </div>
+            <div class="device-badges-row">
+              <span class="badge badge-primary" id="totalBandsBadge">28 5G Bands</span>
+              <span class="badge badge-success" id="saBadge">✓ 5G SA (Standalone)</span>
+              <span class="badge badge-success" id="nsaBadge">✓ 5G NSA (Non-Standalone)</span>
+              <span class="badge badge-primary" id="mmWaveBadge">⚡ mmWave Capable</span>
+              <span class="badge badge-info" id="vonrBadge">✓ VoNR Ready</span>
+            </div>
+          </div>
+
+          <div class="chipset-row">
+            <span class="chipset-icon">⚙️</span>
+            <div>
+              <strong>Modem &amp; Processor:</strong>
+              <span id="deviceChipset">Apple A18 Pro (Snapdragon X75 5G Modem)</span>
+            </div>
+          </div>
+
+          <div id="mmWaveNotice" class="mmwave-alert">
+            mmWave (n258, n260, n261) available on North American models (A3084). Global models feature comprehensive Sub-6GHz bands.
+          </div>
+
+          <div class="band-spectrum-groups">
+            <!-- Low-Band -->
+            <div class="spectrum-card">
+              <h4>
+                <span>Low-Band (Sub-1 GHz)</span>
+                <span class="badge badge-success">Coverage</span>
+              </h4>
+              <div class="spectrum-sub">Penetrates concrete walls, basements &amp; rural spans</div>
+              <div class="band-chips-container" id="lowBandsContainer"></div>
+            </div>
+
+            <!-- Mid-Band -->
+            <div class="spectrum-card">
+              <h4>
+                <span>Mid-Band (1–3 GHz)</span>
+                <span class="badge badge-primary">Capacity</span>
+              </h4>
+              <div class="spectrum-sub">Refarmed LTE spectrum for suburban download speeds</div>
+              <div class="band-chips-container" id="midBandsContainer"></div>
+            </div>
+
+            <!-- C-Band -->
+            <div class="spectrum-card">
+              <h4>
+                <span>C-Band (3.3–4.2 GHz)</span>
+                <span class="badge badge-warning">Gold Standard</span>
+              </h4>
+              <div class="spectrum-sub">Core high-speed band (n78/n77) for 500+ Mbps downloads</div>
+              <div class="band-chips-container" id="cBandsContainer"></div>
+            </div>
+
+            <!-- mmWave -->
+            <div class="spectrum-card">
+              <h4>
+                <span>mmWave (24–40 GHz)</span>
+                <span class="badge badge-danger">Gigabit Peak</span>
+              </h4>
+              <div class="spectrum-sub">Short range, ultra-high density stadiums &amp; city centers</div>
+              <div class="band-chips-container" id="mmWaveContainer"></div>
+            </div>
+          </div>
+
+          <!-- 4G LTE Fallback Section -->
+          <div class="lte-fallback-section">
+            <h4>Supported 4G LTE Fallback Frequency Bands</h4>
+            <div class="lte-tags-container" id="lteBandsContainer"></div>
+          </div>
+
+          <!-- Verified Source Certificate -->
+          <div class="verified-source-box" id="verificationFooter">
+            <div class="verified-badge-row">
+              <span class="icon">🛡️</span>
+              <span><strong>Verified Hardware Specifications:</strong> Source: Apple Technical Specs &amp; FCC ID BCG-E8440A (Last verified: October 2024).</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Carrier Compatibility Section -->
+        <div class="carrier-evaluator-wrapper">
+          <div class="carrier-controls-bar">
+            <div>
+              <h3>Carrier &amp; Telecom Operator Compatibility</h3>
+              <p class="text-muted small">Evaluate how this smartphone pairs with specific commercial 5G networks in your country.</p>
+            </div>
+            <div class="carrier-country-selector">
+              <label for="countrySelect"><strong>Select Country:</strong></label>
+              <select id="countrySelect" class="country-select-dropdown">
+                <option value="IN" selected>India (Jio, Airtel, Vi, BSNL)</option>
+                <option value="US">United States (T-Mobile, Verizon, AT&amp;T)</option>
+                <option value="UK">United Kingdom (EE, Vodafone, Three, O2)</option>
+                <option value="CA">Canada (Rogers, Bell, Telus)</option>
+                <option value="AU">Australia (Telstra, Optus, Vodafone AU)</option>
+                <option value="EU">European Union (Universal 5G Standards)</option>
+                <option value="AE">United Arab Emirates (e&amp; Etisalat, du)</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="carrierResultsContainer">
+            <!-- Dynamically populated carrier cards -->
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 2: SIDE-BY-SIDE PHONE COMPARISON -->
+      <section id="tab-compare" class="tab-section">
+        <div class="comparison-container">
+          <div class="text-center mb-3">
+            <h3>Side-by-Side 5G Hardware Comparison</h3>
+            <p class="text-muted">Compare two smartphones to see which offers broader 5G frequency coverage, mmWave, and better roaming support.</p>
+          </div>
+
+          <div class="compare-selectors-grid">
+            <div class="search-box-wrapper" style="margin-bottom: 0;">
+              <label for="compareSearchA" class="form-label"><strong>Phone 1:</strong></label>
+              <input type="text" id="compareSearchA" class="search-input-field" placeholder="Search first phone..." value="Apple iPhone 16 Pro Max">
+              <div class="search-dropdown-menu" id="compareDropdownA"></div>
+            </div>
+            <div class="search-box-wrapper" style="margin-bottom: 0;">
+              <label for="compareSearchB" class="form-label"><strong>Phone 2:</strong></label>
+              <input type="text" id="compareSearchB" class="search-input-field" placeholder="Search second phone..." value="Samsung Galaxy S24 Ultra">
+              <div class="search-dropdown-menu" id="compareDropdownB"></div>
+            </div>
+          </div>
+
+          <div class="compare-table-responsive">
+            <table class="compare-table">
+              <thead>
+                <tr>
+                  <th style="width: 34%;">Feature / Spectrum Band</th>
+                  <th style="width: 33%;" id="compareTitleA">Apple iPhone 16 Pro Max</th>
+                  <th style="width: 33%;" id="compareTitleB">Samsung Galaxy S24 Ultra</th>
+                </tr>
+              </thead>
+              <tbody id="compareTableBody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 3: 5G NR BANDS DIRECTORY -->
+      <section id="tab-bands" class="tab-section">
+        <div class="bands-directory-card">
+          <div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
+            <div>
+              <h3>5G NR Frequency Bands Directory</h3>
+              <p class="text-muted small">Standardized 3GPP frequency allocation reference table with duplex types and global deployments.</p>
+            </div>
+            <div class="band-search-wrapper">
+              <input type="text" id="bandSearchInput" class="search-input-field" placeholder="Filter by band (e.g. n78, 3500, C-Band, mmWave)..." style="padding-top: 0.65rem; padding-bottom: 0.65rem;">
+            </div>
+          </div>
+
+          <div class="compare-table-responsive">
+            <table class="compare-table">
+              <thead>
+                <tr>
+                  <th>Band</th>
+                  <th>Frequency Name</th>
+                  <th>Spectrum Tier</th>
+                  <th>Uplink / Downlink Range</th>
+                  <th>Global Deployment Notes</th>
+                </tr>
+              </thead>
+              <tbody id="bandsDirectoryBody">
+                <!-- Populated dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Deep Educational & Technical Guide -->
+      <div class="tech-guide-section">
+        <h2>Complete Guide to Smartphone 5G Bands &amp; Frequency Architecture</h2>
+        <p>
+          As fifth-generation wireless technology (5G New Radio, or 5G NR) rolls out globally, smartphones are no longer measured merely by megapixels or processor speeds. A phone's ability to achieve gigabit data rates, stay connected in elevators and basements, and roam internationally depends directly on the <strong>exact 5G frequency bands built into its hardware radio transceiver and antenna RF front-end</strong>.
+        </p>
+
+        <h3>1. The Three 5G Spectrum Tiers: Low, Mid, and High</h3>
+        <p>5G utilizes a wide range of frequencies, categorized into three distinct operational tiers:</p>
+        <ul>
+          <li><strong>Low-Band 5G (Sub-1 GHz — n5, n8, n12, n20, n28, n71):</strong> Operates below 1 GHz. The hallmark of low-band 5G is exceptional physical range and indoor wall penetration. While peak speeds range between 50 to 250 Mbps, it provides the vital foundation that keeps you connected inside basements, concrete high-rises, and rural highways. For example, <strong>Reliance Jio's band n28 (700 MHz)</strong> is the backbone of indoor 5G reception across India.</li>
+          <li><strong>Mid-Band &amp; C-Band 5G (1 GHz to 6 GHz — n1, n3, n41, n77, n78):</strong> Often called the "sweet spot" of 5G. It blends substantial bandwidth with respectable coverage. Within this tier lies <strong>band n78 (3.5 GHz)</strong>, the global gold standard used by virtually every major telecom operator in India, the UK, Europe, Australia, and Asia. Speeds typically range from 300 Mbps to well over 1 Gbps.</li>
+          <li><strong>High-Band Millimeter Wave (mmWave — 24 GHz to 40 GHz — n257, n258, n260, n261):</strong> Millimeter-wave signals operate at immense frequencies capable of delivering 2 to 4 Gbps theoretical throughput. However, millimeter waves cannot travel through human hands, glass, or brick walls and have an effective radius of only 200–300 meters. mmWave is primarily deployed in high-capacity venues like sports stadiums, airports, and dense downtown intersections in the United States and Japan.</li>
+        </ul>
+
+        <h3>2. Standalone (SA) vs Non-Standalone (NSA) 5G Architecture</h3>
+        <p>
+          Not all 5G networks are built the same under the hood:
+        </p>
+        <ul>
+          <li><strong>Non-Standalone (NSA):</strong> The 5G radio towers are connected to an existing 4G LTE core network. 4G handles call setup and signaling, while 5G boosts data download speeds. Bharti Airtel in India and most initial US networks launched on NSA. Nearly all 5G phones support NSA.</li>
+          <li><strong>Standalone (SA):</strong> The entire cellular pipeline — from the cell tower radio to the core routing software — is 100% cloud-native 5G. SA enables lower latency, network slicing, and Voice over New Radio (VoNR). Reliance Jio in India built a pure 5G SA network. If a phone lacks SA support or misses band n28, it cannot connect to Jio's 5G network.</li>
+        </ul>
+
+        <h3>3. How to Check 5G Bands Directly on Your Device</h3>
+        <p>If you wish to verify your phone's live connected radio band in real time, use these diagnostic shortcuts:</p>
+        <ul>
+          <li><strong>Apple iPhone:</strong> Open the Phone dialer and enter <code>*3001#12345#*</code> and press Call. This launches iOS <em>Field Test Mode</em>. Navigate to <strong>Serving Cell Info</strong> or <strong>RAT (Radio Access Technology)</strong> to see the exact connected band (e.g., Band 78).</li>
+          <li><strong>Samsung Galaxy:</strong> Dial <code>*#0011#</code> to open ServiceMode. If you have dual SIMs, select SIM 1 or SIM 2 to view the active 5G NR band, carrier aggregation status, and signal strength (RSRP/RSRQ).</li>
+          <li><strong>OnePlus, Google Pixel, and Other Androids:</strong> Dial <code>*#*#4636#*#*</code> to access the Phone Information menu, or download trusted diagnostic tools like <em>NetMonster</em> or <em>CellMapper</em> to view the active tower band.</li>
+        </ul>
+
+        <!-- FAQ Accordion -->
+        <h3 class="mt-4">Frequently Asked Questions</h3>
+        <div class="faq-accordion">
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Why do US phones often have different 5G bands than European or Indian models?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              Every country's telecommunication ministry (such as the FCC in the US, DoT/TRAI in India, and Ofcom in the UK) auctions different radio spectrum frequencies. US carriers heavily purchased mmWave (n260/n261) and Band n71 (600MHz), whereas India and Europe centered their auctions around C-Band n78 (3500MHz) and n28 (700MHz). Smartphone manufacturers adjust antenna arrays per regional SKU to minimize licensing and production costs.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Can a software update add a missing 5G band to my phone?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              In most cases, no. Supporting a 5G band requires physical hardware: specific RF filters, power amplifiers, and antenna geometry tuned to that exact radio frequency. While software updates can enable bands that were already physically present in the modem but disabled pending regulatory approval, a phone cannot receive a band that lacks the necessary hardware RF front-end components.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>What is Carrier Aggregation in 5G?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              Carrier Aggregation (CA) allows a phone to combine multiple frequency bands simultaneously — for example, bonding low-band n28 (for coverage) with mid-band n78 (for speed). This dramatically increases both peak download speeds and connection stability, especially when moving between cell towers or moving indoors.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Does having more 5G bands consume more battery life?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              No. Having more supported bands actually improves battery life. When your phone has access to optimal local frequencies (such as low-band n28 indoors), it transmits at lower power levels. Conversely, if your phone lacks proper indoor bands, the radio transceiver continuously ramps up output wattage to search for distant signals, draining battery faster.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Related Tools Section -->
+      <div class="related-tools-section text-center my-4">
+        <h3>Explore Related Technology &amp; Device Tools</h3>
+        <p class="text-muted">Test connection quality and optimize everyday digital devices with our free utilities.</p>
+        <div class="tools-grid mt-3">
+          <a href="../internet-speed-test/" class="tool-card">
+            <div class="tool-card-icon">🚀</div>
+            <div class="tool-card-content">
+              <h4>Internet Speed Test</h4>
+              <p>Benchmark download, upload, ping latency, and RFC 3550 jitter via edge servers.</p>
+            </div>
+          </a>
+          <a href="../wifi-analyzer/" class="tool-card">
+            <div class="tool-card-icon">📡</div>
+            <div class="tool-card-content">
+              <h4>Wi-Fi Analyzer</h4>
+              <p>Check wireless signal strength in dBm and inspect 2.4 GHz vs 5 GHz channel overlap.</p>
+            </div>
+          </a>
+          <a href="../tools/tech-lab/" class="tool-card">
+            <div class="tool-card-icon">🔬</div>
+            <div class="tool-card-content">
+              <h4>Technology &amp; Device Lab</h4>
+              <p>Discover interactive diagnostic tools for networks, displays, and devices.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner container">
+      <div class="footer-brand">
+        <a href="../" class="brand-logo">
+          <span class="logo-icon">⚡</span>
+          <span class="logo-text">Ecrio<strong>X</strong></span>
+        </a>
+        <p class="brand-tagline">One Platform. Endless Possibilities.</p>
+        <p class="brand-desc">Free, secure, and privacy-respecting online tools for developers, designers, students, and everyday digital productivity.</p>
+      </div>
+
+      <div class="footer-links-group">
+        <div class="footer-col">
+          <h5>Categories</h5>
+          <ul>
+            <li><a href="../tools/tech-lab/">Technology &amp; Device Lab</a></li>
+            <li><a href="../tools/pdf/">PDF Tools</a></li>
+            <li><a href="../tools/image/">Image Tools</a></li>
+            <li><a href="../tools/calculators/">Calculators</a></li>
+            <li><a href="../tools/developer/">Developer Tools</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Featured Utilities</h5>
+          <ul>
+            <li><a href="../internet-speed-test/">Internet Speed Test</a></li>
+            <li><a href="../wifi-analyzer/">Wi-Fi Analyzer</a></li>
+            <li><a href="../5g-band-checker/">5G Band Checker</a></li>
+            <li><a href="../qr-code-generator/">QR Code Generator</a></li>
+            <li><a href="../heic-to-jpg/">HEIC to JPG Converter</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Company</h5>
+          <ul>
+            <li><a href="../about/">About EcrioX</a></li>
+            <li><a href="../contact/">Contact Us</a></li>
+            <li><a href="../privacy/">Privacy Policy</a></li>
+            <li><a href="../terms/">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom container">
+      <p>&copy; 2026 EcrioX. All rights reserved. 5G NR band specifications sourced from FCC, BIS, CE regulatory databases and official OEM datasheets.</p>
+    </div>
+  </footer>
+
+  <!-- Theme Script -->
+  <script src="../js/theme.js"></script>
+  <!-- 5G Band Checker Controller -->
+  <script src="tool.js"></script>
+</body>
+</html>

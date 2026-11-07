@@ -85,6 +85,15 @@ const ECRIOX_CATEGORIES = [
     icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>`,
     title: "Free Productivity Tools Online – Timers, Checklists & Task Utilities | EcrioX",
     description: "Pomodoro focus timers, QR code generators, secure password creators, and everyday task utilities."
+  },
+  {
+    id: "tech-lab",
+    name: "Technology & Device Lab",
+    slug: "tech-lab",
+    route: "/tools/tech-lab/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"></path><path d="M1.42 9a16 16 0 0 1 21.16 0"></path><path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path><line x1="12" y1="20" x2="12.01" y2="20"></line></svg>`,
+    title: "Technology & Device Lab – Internet, Wi-Fi & 5G Diagnostics | EcrioX",
+    description: "Explore, test and understand the technology behind everyday devices. Measure internet speed, diagnose Wi-Fi signal quality, and check phone 5G band compatibility."
   }
 ];
 
@@ -567,6 +576,46 @@ const ECRIOX_TOOLS = [
     status: "available",
     popular: true,
     tags: ["ai", "prompt", "generator", "chatgpt", "claude", "gemini", "framework"]
+  },
+
+  // ==========================================
+  // TECHNOLOGY & DEVICE LAB
+  // ==========================================
+  {
+    id: "internet-speed-test",
+    name: "Internet Speed Test",
+    category: "tech-lab",
+    categoryName: "Technology & Device Lab",
+    description: "Test real-time download speed, upload speed, latency ping, and jitter with an animated speedometer gauge. 100% genuine network transfers.",
+    route: "/internet-speed-test/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline><path d="M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0z"></path></svg>`,
+    status: "available",
+    popular: true,
+    tags: ["internet speed test", "wifi speed test", "broadband speed test", "download speed", "upload speed", "ping test", "jitter", "bandwidth"]
+  },
+  {
+    id: "wifi-analyzer",
+    name: "Wi-Fi Analyzer",
+    category: "tech-lab",
+    categoryName: "Technology & Device Lab",
+    description: "Analyze Wi-Fi signal strength in dBm, evaluate 2.4 GHz vs 5 GHz vs 6 GHz frequency bands, view channel overlap interference, and troubleshoot network dead zones.",
+    route: "/wifi-analyzer/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"></path><path d="M1.42 9a16 16 0 0 1 21.16 0"></path><path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path><line x1="12" y1="20" x2="12.01" y2="20"></line></svg>`,
+    status: "available",
+    popular: true,
+    tags: ["wifi analyzer", "wifi signal strength", "wifi network analyzer", "wifi frequency checker", "2.4ghz vs 5ghz", "wifi troubleshooter", "dbm"]
+  },
+  {
+    id: "5g-band-checker",
+    name: "5G Band Checker",
+    category: "tech-lab",
+    categoryName: "Technology & Device Lab",
+    description: "Check your smartphone's supported 5G NR (Sub-6 & mmWave) and 4G LTE bands, verify carrier compatibility (Jio, Airtel, T-Mobile, Verizon), and compare phone models.",
+    route: "/5g-band-checker/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>`,
+    status: "available",
+    popular: true,
+    tags: ["5g band checker", "phone 5g bands", "supported 5g bands", "mobile network compatibility", "4g lte band checker", "jio 5g", "airtel 5g", "n78", "n28"]
   }
 ];
 

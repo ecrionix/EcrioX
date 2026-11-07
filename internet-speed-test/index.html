@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Internet Speed Test – Check Download, Upload &amp; Ping | EcrioX</title>
+  <meta name="description" content="Free, accurate online Internet Speed Test. Measure genuine download speed, upload speed, latency ping, and jitter with an animated speedometer gauge. Zero simulations.">
+  <link rel="canonical" href="https://ecriox.com/internet-speed-test/">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Internet Speed Test – Check Download, Upload &amp; Ping | EcrioX">
+  <meta property="og:description" content="Check broadband, Wi-Fi, 4G and 5G internet speeds with genuine data transfers, low data consumption, and local history tracking.">
+  <meta property="og:url" content="https://ecriox.com/internet-speed-test/">
+  <meta property="og:site_name" content="EcrioX">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Internet Speed Test – EcrioX">
+  <meta name="twitter:description" content="Accurate internet speed test with live animated gauge, download, upload, ping and jitter analysis.">
+
+  <!-- Global Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i){
+  w[l]=w[l]||[];
+  w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),
+  dl=l!='dataLayer'?'&l='+l:'';
+  j.async=true;
+  j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+  f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PQFRBJ9F');
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Schema.org WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "EcrioX Internet Speed Test",
+    "url": "https://ecriox.com/internet-speed-test/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "description": "Benchmark broadband and mobile internet connection speeds with real data transfer metrics for download, upload, latency ping, and jitter.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .speedtest-container {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    /* Main Gauge Dashboard Card */
+    .speed-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2rem;
+      box-shadow: var(--shadow-sm);
+      text-align: center;
+      position: relative;
+    }
+
+    /* Status & Server Bar */
+    .server-info-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      padding: 0.75rem 1.25rem;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-full);
+      margin-bottom: 2rem;
+      font-size: 0.85rem;
+    }
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .status-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #10b981;
+      display: inline-block;
+    }
+    .status-dot.active {
+      animation: pulseDot 1.5s infinite;
+    }
+    @keyframes pulseDot {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.4); opacity: 0.6; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    /* Gauge Area */
+    .gauge-wrapper {
+      position: relative;
+      width: 320px;
+      height: 320px;
+      margin: 0 auto 1.5rem;
+    }
+    @media (max-width: 480px) {
+      .gauge-wrapper {
+        width: 260px;
+        height: 260px;
+      }
+    }
+
+    .gauge-svg {
+      width: 100%;
+      height: 100%;
+      transform: rotate(-90deg);
+    }
+    .gauge-track {
+      fill: none;
+      stroke: var(--bg-subtle-hover);
+      stroke-width: 16;
+      stroke-linecap: round;
+    }
+    .gauge-progress {
+      fill: none;
+      stroke: url(#speedGradient);
+      stroke-width: 16;
+      stroke-linecap: round;
+      stroke-dasharray: 690;
+      stroke-dashoffset: 690;
+      transition: stroke-dashoffset 0.15s ease-out;
+    }
+
+    /* Gauge Center Metrics */
+    .gauge-center-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+    }
+    .gauge-stage-label {
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-primary);
+      margin-bottom: 0.25rem;
+    }
+    .gauge-main-speed {
+      font-size: clamp(2.8rem, 7vw, 4rem);
+      font-weight: 900;
+      color: var(--text-main);
+      line-height: 1;
+      font-family: var(--font-sans);
+      letter-spacing: -0.03em;
+    }
+    .gauge-unit {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    /* Primary Start / Action Button */
+    .btn-speed-start {
+      padding: 0.9rem 2.75rem;
+      font-size: 1.15rem;
+      font-weight: 800;
+      border-radius: var(--radius-full);
+      letter-spacing: 0.02em;
+      transition: var(--transition);
+      cursor: pointer;
+      border: none;
+      background: var(--color-primary);
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+    }
+    .btn-speed-start:hover:not(:disabled) {
+      background: var(--color-primary-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.45);
+    }
+    .btn-speed-start:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* Metric Tiles Grid */
+    .metric-tiles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.25rem;
+      margin-top: 2.5rem;
+    }
+    .metric-tile {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      text-align: center;
+      transition: var(--transition);
+    }
+    .metric-tile.active-test {
+      border-color: var(--color-primary);
+      background: var(--color-primary-light);
+    }
+    .metric-tile-label {
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-subtle);
+      margin-bottom: 0.4rem;
+    }
+    .metric-tile-val {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      letter-spacing: -0.02em;
+    }
+    .metric-tile-unit {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+
+    /* Actions Bar */
+    .speed-actions-bar {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    /* History Table Card */
+    .history-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+      margin-top: 2.5rem;
+    }
+    .history-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      margin-top: 1rem;
+    }
+    .history-table th, .history-table td {
+      padding: 0.75rem 0.65rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .history-table th {
+      font-weight: 700;
+      color: var(--text-subtle);
+      background: var(--bg-subtle);
+    }
+    .history-table td {
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    /* Features Grid */
+    .features-badge-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin: 3.5rem 0 2.5rem;
+    }
+    .badge-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .badge-card svg {
+      width: 24px;
+      height: 24px;
+      color: var(--color-primary);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* SEO Section */
+    .seo-section {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2rem;
+      margin: 3rem 0;
+    }
+    .seo-section h2 { margin-bottom: 1rem; color: var(--text-main); }
+    .seo-section p, .seo-section li { color: var(--text-muted); line-height: 1.7; margin-bottom: 1rem; }
+
+    /* FAQ */
+    .faq-list { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
+    .faq-item { border: 1px solid var(--border-color); border-radius: var(--radius-md); overflow: hidden; background: var(--bg-surface); }
+    .faq-question { padding: 1.25rem; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: var(--bg-surface); border: none; width: 100%; text-align: left; color: var(--text-main); }
+    .faq-answer { padding: 0 1.25rem 1.25rem; color: var(--text-muted); line-height: 1.6; display: none; }
+    .faq-item.open .faq-answer { display: block; }
+    .faq-item.open .faq-icon { transform: rotate(180deg); }
+    .faq-icon { transition: transform 0.2s ease; }
+  </style>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQFRBJ9F"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner container">
+      <a href="../" class="brand-logo" aria-label="EcrioX Home">
+        <span class="logo-mark">⚡</span>
+        <span class="logo-text">Ecrio<span class="logo-accent">X</span></span>
+      </a>
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="../tools/" class="nav-link active">All Tools</a>
+        <a href="../tools/tech-lab/" class="nav-link">Tech Lab</a>
+        <a href="../tools/pdf/" class="nav-link">PDF Tools</a>
+        <a href="../tools/image/" class="nav-link">Image Tools</a>
+        <a href="../categories/" class="nav-link">Categories</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light theme">
+          <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-main container" style="padding-top: 2rem; padding-bottom: 4rem;">
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb" style="margin-bottom: 1.5rem;">
+      <a href="../">Home</a>
+      <span class="bc-sep">/</span>
+      <a href="../tools/tech-lab/">Technology &amp; Device Lab</a>
+      <span class="bc-sep">/</span>
+      <span class="bc-current">Internet Speed Test</span>
+    </nav>
+
+    <div class="speedtest-container">
+      <div style="text-align: center; margin-bottom: 2rem;">
+        <span class="badge" style="background: var(--color-primary-light); color: var(--color-primary); font-weight: 700; margin-bottom: 0.75rem; display: inline-block;">REAL NETWORK BENCHMARK • ZERO SIMULATION</span>
+        <h1 style="font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800; color: var(--text-main); margin-bottom: 0.75rem; letter-spacing: -0.02em;">Internet Speed Test Online</h1>
+        <p style="color: var(--text-muted); font-size: 1.15rem; max-width: 680px; margin: 0 auto;">
+          Measure genuine download speed, upload speed, latency ping, and jitter. Accurate browser-based data transfers with low mobile bandwidth consumption.
+        </p>
+      </div>
+
+      <!-- Main Testing Dashboard -->
+      <div class="speed-card">
+        <!-- Status & Edge Server Info -->
+        <div class="server-info-bar">
+          <div class="status-pill">
+            <span class="status-dot" id="network-status-dot"></span>
+            <span id="network-status-text">Ready to Test</span>
+          </div>
+          <div style="color: var(--text-muted);" id="server-location-text">
+            Edge Server: Cloudflare Global Anycast (Low Latency)
+          </div>
+          <div style="color: var(--text-subtle); font-size: 0.8rem;" id="client-net-info">
+            Connection: Wi-Fi / Broadband
+          </div>
+        </div>
+
+        <!-- Animated Radial Speedometer -->
+        <div class="gauge-wrapper">
+          <svg class="gauge-svg" viewBox="0 0 260 260">
+            <defs>
+              <linearGradient id="speedGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#3b82f6" />
+                <stop offset="50%" stop-color="#6366f1" />
+                <stop offset="100%" stop-color="#10b981" />
+              </linearGradient>
+            </defs>
+            <!-- Background Arc (~240 degrees) -->
+            <circle class="gauge-track" cx="130" cy="130" r="110" stroke-dasharray="575" stroke-dashoffset="144" />
+            <!-- Animated Progress Arc -->
+            <circle class="gauge-progress" id="gauge-circle" cx="130" cy="130" r="110" />
+          </svg>
+
+          <div class="gauge-center-content">
+            <span class="gauge-stage-label" id="gauge-stage">SPEED</span>
+            <span class="gauge-main-speed" id="gauge-number">0.0</span>
+            <span class="gauge-unit" id="gauge-unit">Mbps</span>
+          </div>
+        </div>
+
+        <!-- Action Button -->
+        <div>
+          <button type="button" class="btn-speed-start" id="btn-start-test">
+            Start Speed Test
+          </button>
+        </div>
+
+        <!-- Metric Tiles: Download, Upload, Ping, Jitter -->
+        <div class="metric-tiles-grid">
+          <div class="metric-tile" id="tile-download">
+            <div class="metric-tile-label">Download</div>
+            <div class="metric-tile-val" id="val-download">--</div>
+            <div class="metric-tile-unit">Mbps</div>
+          </div>
+          <div class="metric-tile" id="tile-upload">
+            <div class="metric-tile-label">Upload</div>
+            <div class="metric-tile-val" id="val-upload">--</div>
+            <div class="metric-tile-unit">Mbps</div>
+          </div>
+          <div class="metric-tile" id="tile-ping">
+            <div class="metric-tile-label">Ping (Latency)</div>
+            <div class="metric-tile-val" id="val-ping">--</div>
+            <div class="metric-tile-unit">ms</div>
+          </div>
+          <div class="metric-tile" id="tile-jitter">
+            <div class="metric-tile-label">Jitter</div>
+            <div class="metric-tile-val" id="val-jitter">--</div>
+            <div class="metric-tile-unit">ms</div>
+          </div>
+        </div>
+
+        <!-- Share / Copy Actions -->
+        <div class="speed-actions-bar" id="actions-bar" style="display: none;">
+          <button type="button" class="btn btn-secondary" id="btn-copy-result">
+            Copy Result Summary
+          </button>
+          <button type="button" class="btn btn-secondary" id="btn-restart-test">
+            Restart Test
+          </button>
+        </div>
+      </div>
+
+      <!-- Test History Section -->
+      <div class="history-card" id="history-section">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin: 0;">Local Test History</h3>
+          <button type="button" class="btn btn-secondary" id="btn-clear-history" style="padding: 0.35rem 0.75rem; font-size: 0.8rem;">
+            Clear History
+          </button>
+        </div>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0.4rem 0 1rem;">
+          Saved privately inside your browser's local storage. Never uploaded to any servers.
+        </p>
+
+        <div style="overflow-x: auto;">
+          <table class="history-table" id="history-table">
+            <thead>
+              <tr>
+                <th>Date &amp; Time</th>
+                <th>Download</th>
+                <th>Upload</th>
+                <th>Ping</th>
+                <th>Jitter</th>
+              </tr>
+            </thead>
+            <tbody id="history-tbody">
+              <tr>
+                <td colspan="5" style="text-align: center; color: var(--text-subtle); padding: 1.5rem;">
+                  No previous tests recorded. Click "Start Speed Test" above to run your first benchmark!
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Feature Badges -->
+      <div class="features-badge-grid">
+        <div class="badge-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+          <div>
+            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">Authentic Network Transfers</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">We test throughput using real HTTP data transfers to nearest global edge servers, never simulated animations.</p>
+          </div>
+        </div>
+        <div class="badge-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+          <div>
+            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">RFC 3550 Jitter Computation</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Measures latency variance between consecutive packets—crucial for diagnosing VoIP, Zoom, and online gaming lag.</p>
+          </div>
+        </div>
+        <div class="badge-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+          <div>
+            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">Bandwidth-Conservative</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Adaptive chunk streaming ensures high measurement precision while preventing excessive mobile cellular data waste.</p>
+          </div>
+        </div>
+        <div class="badge-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          <div>
+            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">Zero Personal Tracking</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Your IP address, location, and speed records are never collected, profiled, or sold to third-party advertisers.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Educational Content Section -->
+      <section class="seo-section">
+        <h2>How Does an Internet Speed Test Work?</h2>
+        <p>
+          An internet speed test benchmarks the actual transfer rate and latency between your web browser and the nearest high-performance edge server across the internet backbone.
+        </p>
+        <p>
+          The test evaluates four essential performance dimensions:
+        </p>
+        <ul style="padding-left: 1.5rem; margin-bottom: 1.5rem;">
+          <li><strong>Download Speed (Mbps):</strong> The rate at which binary data travels from the remote edge server to your computer or phone. High download throughput is vital for 4K streaming, game updates, and loading heavy web pages.</li>
+          <li><strong>Upload Speed (Mbps):</strong> The rate at which your device sends data to the cloud. Upload speed determines video call clarity (Zoom, Teams), cloud backup speed (Google Drive, iCloud), and live streaming.</li>
+          <li><strong>Ping (Latency in ms):</strong> The time in milliseconds required for a network packet to travel to the server and return. Lower ping (under 30 ms) is critical for responsive multiplayer gaming and voice calls.</li>
+          <li><strong>Jitter (ms):</strong> The fluctuation or inconsistency in latency over consecutive network requests. High jitter causes sudden stuttering, audio dropouts, and rubber-banding even when download speeds appear fast.</li>
+        </ul>
+
+        <h3 style="margin: 2rem 0 0.75rem; color: var(--text-main);">Why Does My Test Speed Differ From My ISP Plan?</h3>
+        <p>
+          Internet Service Providers (ISPs) advertise theoretical maximum throughput under ideal wired conditions. Real-world speeds can be affected by:
+        </p>
+        <ul style="padding-left: 1.5rem; margin-bottom: 1.5rem;">
+          <li><strong>Wi-Fi Signal Degradation:</strong> Distance from your router, thick concrete walls, and radio interference on the 2.4 GHz band reduce speeds significantly compared to direct Ethernet cables.</li>
+          <li><strong>Household Network Congestion:</strong> Other family members downloading torrents, streaming movies, or smart TVs updating in the background consume bandwidth.</li>
+          <li><strong>Device CPU &amp; Browser Limitations:</strong> Older mobile chips or heavy browser extensions can introduce processing bottlenecks during high-speed gigabit tests.</li>
+        </ul>
+
+        <h3 style="margin: 2rem 0 0.75rem; color: var(--text-main);">Frequently Asked Questions (FAQs)</h3>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>What is a good internet speed for everyday use?</span>
+              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              For general browsing, social media, and HD video on a single device, 25 Mbps download is sufficient. For a modern family household with multiple 4K smart TVs, remote video conferences, and smart home appliances, 100 to 300 Mbps provides a seamless experience without buffer delays.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Does this speed test consume a large amount of mobile data?</span>
+              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              No. Unlike bloated speed tests that download hundreds of megabytes of redundant files, the EcrioX speed test uses an adaptive streaming algorithm that converges on your true throughput quickly while capping total test payload consumption (~15–25 MB).
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How can I improve my Wi-Fi speed and reduce ping?</span>
+              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              Connect to your router's 5 GHz or 6 GHz Wi-Fi band instead of 2.4 GHz, position the router in a central, elevated location away from metal objects and microwave ovens, or connect via an Ethernet cable for zero radio interference. You can also diagnose your signal strength using our companion <a href="../wifi-analyzer/" style="color: var(--color-primary); font-weight: 700;">Wi-Fi Analyzer</a> tool.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Related Tools in Tech Lab -->
+      <div style="margin-top: 3rem;">
+        <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--text-main); margin-bottom: 1.25rem;">Companion Diagnostic Tools</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem;">
+          <a href="../wifi-analyzer/" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; text-decoration: none; color: inherit; display: block; transition: var(--transition);">
+            <div style="font-weight: 700; margin-bottom: 0.35rem; color: var(--text-main);">Wi-Fi Analyzer &rarr;</div>
+            <div style="font-size: 0.85rem; color: var(--text-muted);">Inspect signal strength in dBm, frequency bands, and channel overlap.</div>
+          </a>
+          <a href="../5g-band-checker/" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; text-decoration: none; color: inherit; display: block; transition: var(--transition);">
+            <div style="font-weight: 700; margin-bottom: 0.35rem; color: var(--text-main);">5G Band Checker &rarr;</div>
+            <div style="font-size: 0.85rem; color: var(--text-muted);">Check your phone's 5G NR and LTE carrier compatibility.</div>
+          </a>
+          <a href="../qr-code-generator/" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; text-decoration: none; color: inherit; display: block; transition: var(--transition);">
+            <div style="font-weight: 700; margin-bottom: 0.35rem; color: var(--text-main);">QR Code Generator &rarr;</div>
+            <div style="font-size: 0.85rem; color: var(--text-muted);">Share your Wi-Fi credentials effortlessly with a custom QR code.</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner container">
+      <div class="footer-grid">
+        <div class="footer-col brand-col">
+          <div class="brand-logo" style="margin-bottom: 1rem;">
+            <span class="logo-mark">⚡</span>
+            <span class="logo-text">Ecrio<span class="logo-accent">X</span></span>
+          </div>
+          <p class="footer-tagline">One Platform. Endless Possibilities. Fast, secure, client-side digital utilities.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Technology Lab</h4>
+          <ul class="footer-links">
+            <li><a href="../internet-speed-test/">Internet Speed Test</a></li>
+            <li><a href="../wifi-analyzer/">Wi-Fi Analyzer</a></li>
+            <li><a href="../5g-band-checker/">5G Band Checker</a></li>
+            <li><a href="../tools/tech-lab/">Tech Lab Hub</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company &amp; Legal</h4>
+          <ul class="footer-links">
+            <li><a href="../about/">About Us</a></li>
+            <li><a href="../contact/">Contact</a></li>
+            <li><a href="../privacy/">Privacy Policy</a></li>
+            <li><a href="../terms/">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 EcrioX. All rights reserved. Zero simulations — genuine browser-based network benchmarks.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/analytics.js"></script>
+  <script src="../js/app.js"></script>
+  <script src="tool.js"></script>
+  <script>
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.parentElement.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>
