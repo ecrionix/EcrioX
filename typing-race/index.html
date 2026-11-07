@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Typing Race Online – Race Against Pacers &amp; Friends | EcrioX</title>
+  <meta name="description" content="Race against AI pacers or challenge friends on the visual typing race track. Benchmark your WPM in real-time head-to-head keyboard competitions.">
+  <link rel="canonical" href="https://ecriox.com/typing-race/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Typing Race Online – Head-to-Head Typing Speed Track | EcrioX">
+  <meta property="og:description" content="Race your car across the track with typing speed! Challenge pacers and friends online.">
+  <meta property="og:url" content="https://ecriox.com/typing-race/">
+  <meta property="og:site_name" content="EcrioX">
+
+  <!-- Global Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i){
+  w[l]=w[l]||[];
+  w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),
+  dl=l!='dataLayer'?'&l='+l:'';
+  j.async=true;
+  j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+  f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PQFRBJ9F');
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/typing-arena.css">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6672302762343789"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner container">
+      <a href="../" class="brand-logo">
+        <span class="logo-icon">⚡</span>
+        <span class="logo-text">Ecrio<strong>X</strong></span>
+      </a>
+      <nav class="header-nav">
+        <a href="../tools/">All Tools</a>
+        <a href="../typing-speed-test/">Typing Arena</a>
+        <a href="../typing-race/" class="active">Typing Race</a>
+        <a href="../typing-games/">Games</a>
+      </nav>
+      <div class="header-actions">
+        <button class="btn-icon theme-toggle-btn" aria-label="Toggle color theme">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-main container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../">Home</a>
+      <span class="sep">/</span>
+      <a href="../typing-speed-test/">Typing Arena</a>
+      <span class="sep">/</span>
+      <span class="current">Typing Race</span>
+    </nav>
+
+    <div class="arena-hero">
+      <div class="arena-hero-pill">
+        <span>🏎️</span> Real-Time Head-to-Head Typing Speedway
+      </div>
+      <h1 class="arena-hero-title">
+        EcrioX <span class="highlight">Typing Race</span>
+      </h1>
+      <p class="arena-hero-desc">
+        Accelerate your vehicle by typing words correctly. Test your nerves racing against calibrated pacer bots or challenge friends with private race rooms.
+      </p>
+
+      <div class="arena-nav-bar">
+        <a href="../typing-speed-test/" class="arena-nav-link">⚡ Speed Test</a>
+        <a href="../wpm-test/" class="arena-nav-link">⏱️ WPM Test</a>
+        <a href="../typing-race/" class="arena-nav-link active">🏎️ Typing Race</a>
+        <a href="../typing-games/" class="arena-nav-link">🎮 Games</a>
+        <a href="../typing-certificate/" class="arena-nav-link">📜 Certificate</a>
+      </div>
+    </div>
+
+    <!-- Visual Race Track -->
+    <div class="race-arena-container">
+      <div class="race-track-wrapper">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h4>Grand Prix Track (4 Lanes)</h4>
+          <span class="badge" style="background: rgba(37,99,235,0.1); color: var(--color-primary);">Sprint Circuit</span>
+        </div>
+
+        <!-- Lane 1: User -->
+        <div class="race-lane" id="laneUser">
+          <div class="race-car" id="carUser" style="left: 10px;">
+            <span>🏎️</span>
+            <span class="race-driver-name" id="driverUser">You (0 WPM)</span>
+          </div>
+          <div class="race-finish-line"></div>
+        </div>
+
+        <!-- Lane 2: Pacer 1 -->
+        <div class="race-lane" id="lanePacer1">
+          <div class="race-car" id="carPacer1" style="left: 10px;">
+            <span>🐢</span>
+            <span class="race-driver-name">Turtle Bot (40 WPM)</span>
+          </div>
+          <div class="race-finish-line"></div>
+        </div>
+
+        <!-- Lane 3: Pacer 2 -->
+        <div class="race-lane" id="lanePacer2">
+          <div class="race-car" id="carPacer2" style="left: 10px;">
+            <span>🐆</span>
+            <span class="race-driver-name">Cheetah Bot (70 WPM)</span>
+          </div>
+          <div class="race-finish-line"></div>
+        </div>
+
+        <!-- Lane 4: Pacer 3 -->
+        <div class="race-lane" id="lanePacer3">
+          <div class="race-car" id="carPacer3" style="left: 10px;">
+            <span>🦅</span>
+            <span class="race-driver-name">Falcon Bot (100 WPM)</span>
+          </div>
+          <div class="race-finish-line"></div>
+        </div>
+      </div>
+
+      <!-- Typing Passage Box for Race -->
+      <div class="typing-workspace-card" style="margin-bottom: 2rem;">
+        <div class="typing-hud-bar">
+          <div class="hud-stat-item">
+            <span class="hud-stat-value hud-timer-val" id="hudTimer">01:00</span>
+            <span class="hud-stat-label">Race Clock</span>
+          </div>
+          <div class="hud-stat-item">
+            <span class="hud-stat-value" id="hudWpm">0</span>
+            <span class="hud-stat-label">Live WPM</span>
+          </div>
+          <div class="hud-stat-item">
+            <span class="hud-stat-value" id="hudAcc">100%</span>
+            <span class="hud-stat-label">Accuracy</span>
+          </div>
+          <div class="hud-stat-item">
+            <span class="hud-stat-value" id="raceRank">4th</span>
+            <span class="hud-stat-label">Current Position</span>
+          </div>
+        </div>
+
+        <div style="position: relative;">
+          <input type="text" id="typingHiddenInput" class="typing-hidden-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+          <div id="typingPassageBox" class="typing-passage-box"></div>
+          <div id="focusOverlay" class="passage-focus-warning">
+            <span>Click here or press any key to start the race! 🏁</span>
+          </div>
+        </div>
+
+        <div class="typing-footer-controls">
+          <div class="text-muted small">
+            🏁 Type without errors to maintain top acceleration.
+          </div>
+          <div>
+            <button type="button" id="restartRaceBtn" class="btn btn-sm btn-primary">
+              🔄 New Race
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Private Room Invite Box -->
+      <div class="card p-3 text-center" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-lg);">
+        <h4>Challenge Your Friends</h4>
+        <p class="text-muted small">Copy the race link below and share it with colleagues or classmates.</p>
+        <div style="display: flex; gap: 0.5rem; max-width: 450px; margin: 0.5rem auto;">
+          <input type="text" id="roomLinkInput" class="control-input" readonly value="https://ecriox.com/typing-race/?room=apex78">
+          <button type="button" id="copyRoomBtn" class="btn btn-sm btn-primary">
+            Copy Link
+          </button>
+        </div>
+        <span class="text-muted" style="font-size: 0.75rem; margin-top: 0.4rem; display: block;">
+          Note: Real-time peer-to-peer room synchronization is in active beta. Pacer bots provide reliable offline racing.
+        </span>
+      </div>
+    </div>
+
+    <!-- AdSense Slot -->
+    <div class="ad-slot-container my-4">
+      <div class="ad-slot-card">
+        <span>Advertisement Placeholder</span>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="../" class="brand-logo">
+          <span class="logo-icon">⚡</span>
+          <span class="logo-text">Ecrio<strong>X</strong></span>
+        </a>
+        <p class="brand-tagline">One Platform. Endless Possibilities.</p>
+      </div>
+    </div>
+    <div class="footer-bottom container">
+      <p>&copy; 2026 EcrioX. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../js/app.js"></script>
+  <script src="../js/typing-passages.js"></script>
+  <script src="../js/typing-engine.js"></script>
+  <script src="../js/typing-test-ui.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      window.ECRIOX_TYPING_UI.init({
+        defaultCategory: 'english',
+        defaultDuration: 60
+      });
+
+      const carUser = document.getElementById('carUser');
+      const driverUser = document.getElementById('driverUser');
+      const carPacer1 = document.getElementById('carPacer1');
+      const carPacer2 = document.getElementById('carPacer2');
+      const carPacer3 = document.getElementById('carPacer3');
+      const rankDisplay = document.getElementById('raceRank');
+
+      let raceStartTime = null;
+      let pacerInterval = null;
+
+      // Track progress listener
+      setInterval(() => {
+        const hudWpm = parseInt(document.getElementById('hudWpm').textContent, 10) || 0;
+        const totalWords = document.querySelectorAll('.type-word').length || 1;
+        const completedWords = document.querySelectorAll('.type-word.active').length || 0;
+
+        // Position user car based on completed character percentage
+        const progressPct = Math.min(92, Math.max(2, (completedWords / totalWords) * 100));
+        if (carUser) {
+          carUser.style.left = `${progressPct}%`;
+          if (driverUser) driverUser.textContent = `You (${hudWpm} WPM)`;
+        }
+
+        // Advance pacers linearly based on time elapsed
+        if (hudWpm > 0 && !raceStartTime) {
+          raceStartTime = Date.now();
+        }
+
+        if (raceStartTime) {
+          const elapsedMin = (Date.now() - raceStartTime) / 60000;
+          const pacer1Pct = Math.min(92, (elapsedMin * 40 / totalWords) * 100);
+          const pacer2Pct = Math.min(92, (elapsedMin * 70 / totalWords) * 100);
+          const pacer3Pct = Math.min(92, (elapsedMin * 100 / totalWords) * 100);
+
+          if (carPacer1) carPacer1.style.left = `${pacer1Pct}%`;
+          if (carPacer2) carPacer2.style.left = `${pacer2Pct}%`;
+          if (carPacer3) carPacer3.style.left = `${pacer3Pct}%`;
+
+          // Calculate current place
+          let rank = 1;
+          if (pacer1Pct > progressPct) rank++;
+          if (pacer2Pct > progressPct) rank++;
+          if (pacer3Pct > progressPct) rank++;
+
+          const rankSuffix = ['1st', '2nd', '3rd', '4th'][rank - 1];
+          if (rankDisplay) rankDisplay.textContent = rankSuffix;
+        }
+      }, 250);
+
+      document.getElementById('restartRaceBtn').addEventListener('click', () => {
+        raceStartTime = null;
+        if (carUser) carUser.style.left = '10px';
+        if (carPacer1) carPacer1.style.left = '10px';
+        if (carPacer2) carPacer2.style.left = '10px';
+        if (carPacer3) carPacer3.style.left = '10px';
+        window.ECRIOX_TYPING_UI.loadNewPassage();
+      });
+
+      document.getElementById('copyRoomBtn').addEventListener('click', () => {
+        const input = document.getElementById('roomLinkInput');
+        input.select();
+        navigator.clipboard.writeText(input.value);
+        document.getElementById('copyRoomBtn').textContent = '✓ Copied!';
+        setTimeout(() => { document.getElementById('copyRoomBtn').textContent = 'Copy Link'; }, 2000);
+      });
+    });
+  </script>
+</body>
+</html>

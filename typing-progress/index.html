@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Typing Progress Dashboard – Track Speed, Accuracy &amp; History | EcrioX</title>
+  <meta name="description" content="View your personal typing statistics, progress charts, average WPM, and test history. Track improvement over time with 100% private local storage.">
+  <link rel="canonical" href="https://ecriox.com/typing-progress/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Typing Progress Dashboard | EcrioX">
+  <meta property="og:description" content="Track your personal typing metrics, speed improvement curves, and test records.">
+  <meta property="og:url" content="https://ecriox.com/typing-progress/">
+  <meta property="og:site_name" content="EcrioX">
+
+  <!-- Global Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i){
+  w[l]=w[l]||[];
+  w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),
+  dl=l!='dataLayer'?'&l='+l:'';
+  j.async=true;
+  j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+  f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PQFRBJ9F');
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/typing-arena.css">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6672302762343789"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner container">
+      <a href="../" class="brand-logo">
+        <span class="logo-icon">⚡</span>
+        <span class="logo-text">Ecrio<strong>X</strong></span>
+      </a>
+      <nav class="header-nav">
+        <a href="../tools/">All Tools</a>
+        <a href="../typing-speed-test/">Typing Arena</a>
+        <a href="../typing-progress/" class="active">My Progress</a>
+        <a href="../typing-certificate/">Certificate</a>
+      </nav>
+      <div class="header-actions">
+        <button class="btn-icon theme-toggle-btn" aria-label="Toggle color theme">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-main container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../">Home</a>
+      <span class="sep">/</span>
+      <a href="../typing-speed-test/">Typing Arena</a>
+      <span class="sep">/</span>
+      <span class="current">My Progress</span>
+    </nav>
+
+    <div class="arena-hero">
+      <div class="arena-hero-pill">
+        <span>📊</span> Personal Analytics &amp; Improvement Tracking
+      </div>
+      <h1 class="arena-hero-title">
+        Your Typing <span class="highlight">Dashboard</span>
+      </h1>
+      <p class="arena-hero-desc">
+        Inspect your speed gains, accuracy consistency, and full historical log. Saved 100% locally on your browser.
+      </p>
+
+      <div class="arena-nav-bar">
+        <a href="../typing-speed-test/" class="arena-nav-link">⚡ Speed Test</a>
+        <a href="../wpm-test/" class="arena-nav-link">⏱️ WPM Test</a>
+        <a href="../typing-progress/" class="arena-nav-link active">📊 My Progress</a>
+        <a href="../typing-practice/" class="arena-nav-link">🎯 Weak Keys</a>
+        <a href="../typing-certificate/" class="arena-nav-link">📜 Certificate</a>
+      </div>
+    </div>
+
+    <div class="dashboard-container">
+      <!-- Lifetime Metrics Overview Cards -->
+      <div class="result-breakdown-grid" style="max-width: 100%; margin-bottom: 2rem;">
+        <div class="result-stat-box">
+          <span class="val text-primary" id="dashBestWpm">0</span>
+          <span class="lbl">Top Speed (WPM)</span>
+        </div>
+        <div class="result-stat-box">
+          <span class="val" id="dashAvgWpm">0</span>
+          <span class="lbl">Average WPM</span>
+        </div>
+        <div class="result-stat-box">
+          <span class="val" id="dashBestAcc">100%</span>
+          <span class="lbl">Best Accuracy</span>
+        </div>
+        <div class="result-stat-box">
+          <span class="val" id="dashTotalTests">0</span>
+          <span class="lbl">Tests Completed</span>
+        </div>
+        <div class="result-stat-box">
+          <span class="val" id="dashTotalTime">0m</span>
+          <span class="lbl">Practice Time</span>
+        </div>
+      </div>
+
+      <!-- SVG Progress Trend Chart -->
+      <div class="chart-box-card">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h4>Speed Trend (Recent Tests)</h4>
+          <span class="badge" style="background: rgba(37,99,235,0.1); color: var(--color-primary);">Net WPM Timeline</span>
+        </div>
+        <div style="width: 100%; height: 220px; position: relative;" id="chartContainer">
+          <svg id="progressSvgChart" width="100%" height="220" style="overflow: visible;"></svg>
+        </div>
+      </div>
+
+      <!-- Full History Table Card -->
+      <div class="chart-box-card">
+        <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+          <h4>Recent Test Records</h4>
+          <div class="d-flex gap-2">
+            <button type="button" id="exportHistoryBtn" class="btn btn-sm btn-secondary">
+              📥 Export CSV
+            </button>
+            <button type="button" id="clearAllHistoryBtn" class="btn btn-sm btn-secondary" style="color: #ef4444;">
+              🗑️ Clear History
+            </button>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="history-table">
+            <thead>
+              <tr>
+                <th>Date &amp; Time</th>
+                <th>Mode</th>
+                <th>Duration</th>
+                <th>Net WPM</th>
+                <th>Gross WPM</th>
+                <th>Accuracy</th>
+                <th>Errors</th>
+              </tr>
+            </thead>
+            <tbody id="historyTableBody">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- AdSense Slot -->
+    <div class="ad-slot-container my-4">
+      <div class="ad-slot-card">
+        <span>Advertisement Placeholder</span>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="../" class="brand-logo">
+          <span class="logo-icon">⚡</span>
+          <span class="logo-text">Ecrio<strong>X</strong></span>
+        </a>
+        <p class="brand-tagline">One Platform. Endless Possibilities.</p>
+      </div>
+    </div>
+    <div class="footer-bottom container">
+      <p>&copy; 2026 EcrioX. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../js/app.js"></script>
+  <script src="../js/typing-engine.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const history = window.ECRIOX_TYPING_ENGINE ? window.ECRIOX_TYPING_ENGINE.getHistory() : [];
+      renderDashboard(history);
+
+      document.getElementById('clearAllHistoryBtn').addEventListener('click', () => {
+        if (confirm('Permanently delete all typing history from this browser?')) {
+          window.ECRIOX_TYPING_ENGINE.clearHistory();
+          renderDashboard([]);
+        }
+      });
+
+      document.getElementById('exportHistoryBtn').addEventListener('click', () => {
+        if (history.length === 0) {
+          alert('No test records to export.');
+          return;
+        }
+        let csv = 'Date,Mode,Duration(s),Net WPM,Gross WPM,Accuracy(%),Errors\n';
+        history.forEach(r => {
+          csv += `"${r.date}","${r.mode}",${r.duration || r.elapsedSeconds},${r.netWpm},${r.grossWpm},${r.accuracy},${r.errorCount}\n`;
+        });
+        const blob = new Blob([csv], { type: 'text/csv' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = `EcrioX-Typing-History-${Date.now()}.csv`;
+        link.click();
+      });
+
+      function renderDashboard(data) {
+        const totalTests = data.length;
+        let bestWpm = 0;
+        let sumWpm = 0;
+        let bestAcc = 0;
+        let totalSeconds = 0;
+
+        data.forEach(item => {
+          if (item.netWpm > bestWpm) bestWpm = item.netWpm;
+          sumWpm += item.netWpm;
+          if (item.accuracy > bestAcc) bestAcc = item.accuracy;
+          totalSeconds += item.elapsedSeconds || item.duration || 60;
+        });
+
+        const avgWpm = totalTests > 0 ? Math.round(sumWpm / totalTests) : 0;
+        const totalMinutes = Math.round(totalSeconds / 60);
+
+        document.getElementById('dashBestWpm').textContent = bestWpm;
+        document.getElementById('dashAvgWpm').textContent = avgWpm;
+        document.getElementById('dashBestAcc').textContent = `${bestAcc}%`;
+        document.getElementById('dashTotalTests').textContent = totalTests;
+        document.getElementById('dashTotalTime').textContent = `${totalMinutes}m`;
+
+        // Render Table
+        const tbody = document.getElementById('historyTableBody');
+        if (data.length === 0) {
+          tbody.innerHTML = '<tr><td colspan="7" class="text-center text-muted py-4">No tests completed yet. Take your first test on the Typing Speed Test page!</td></tr>';
+        } else {
+          tbody.innerHTML = data.slice(0, 30).map(r => `
+            <tr>
+              <td>${new Date(r.date).toLocaleString()}</td>
+              <td><span class="badge" style="background: var(--bg-subtle); color: var(--text-main);">${r.mode}</span></td>
+              <td>${r.elapsedSeconds || r.duration || 60}s</td>
+              <td><strong class="text-primary font-mono">${r.netWpm}</strong></td>
+              <td class="font-mono">${r.grossWpm}</td>
+              <td class="font-mono">${r.accuracy}%</td>
+              <td class="font-mono">${r.errorCount}</td>
+            </tr>
+          `).join('');
+        }
+
+        // Render SVG Line Chart
+        renderSvgLineChart(data.slice(0, 15).reverse());
+      }
+
+      function renderSvgLineChart(recentTests) {
+        const svg = document.getElementById('progressSvgChart');
+        if (!svg) return;
+        svg.innerHTML = '';
+
+        if (recentTests.length < 2) {
+          svg.innerHTML = '<text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="var(--text-muted)">Take at least 2 tests to visualize your progress curve.</text>';
+          return;
+        }
+
+        const width = svg.clientWidth || 700;
+        const height = 200;
+        const pad = 40;
+
+        const maxWpm = Math.max(80, ...recentTests.map(t => t.netWpm)) + 10;
+        const points = recentTests.map((t, idx) => {
+          const x = pad + (idx / (recentTests.length - 1)) * (width - pad * 2);
+          const y = height - pad - (t.netWpm / maxWpm) * (height - pad * 2);
+          return { x, y, wpm: t.netWpm };
+        });
+
+        // Grid lines
+        let gridHtml = '';
+        [0, 25, 50, 75, 100].forEach(level => {
+          if (level <= maxWpm) {
+            const y = height - pad - (level / maxWpm) * (height - pad * 2);
+            gridHtml += `<line x1="${pad}" y1="${y}" x2="${width - pad}" y2="${y}" stroke="var(--border-color)" stroke-dasharray="4" />`;
+            gridHtml += `<text x="${pad - 10}" y="${y + 4}" font-size="10" text-anchor="end" fill="var(--text-muted)">${level}</text>`;
+          }
+        });
+
+        // Path polyline
+        const pathData = points.map((p, i) => `${i === 0 ? 'M' : 'L'} ${p.x} ${p.y}`).join(' ');
+        const pathHtml = `<path d="${pathData}" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round" />`;
+
+        // Points dots
+        const dotsHtml = points.map(p => `
+          <circle cx="${p.x}" cy="${p.y}" r="5" fill="#2563eb" stroke="#ffffff" stroke-width="2" />
+          <text x="${p.x}" y="${p.y - 10}" font-size="11" font-weight="bold" text-anchor="middle" fill="var(--text-main)">${p.wpm}</text>
+        `).join('');
+
+        svg.innerHTML = gridHtml + pathHtml + dotsHtml;
+      }
+    });
+  </script>
+</body>
+</html>

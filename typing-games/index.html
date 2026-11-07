@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Typing Games Online – Play Word Rain, Blitz &amp; Keyboard Challenge | EcrioX</title>
+  <meta name="description" content="Play free online typing games. Word Rain, Word Blitz 60s sprint, and Keyboard Challenge. Improve keyboard speed, reaction time, and touch typing skills while having fun.">
+  <link rel="canonical" href="https://ecriox.com/typing-games/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Typing Games Online – Play Free Typing Games | EcrioX">
+  <meta property="og:description" content="Fun and addictive typing games: Word Rain, Word Blitz, and Keyboard Reaction Challenge. Test your skills today!">
+  <meta property="og:url" content="https://ecriox.com/typing-games/">
+  <meta property="og:site_name" content="EcrioX">
+
+  <!-- Global Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i){
+  w[l]=w[l]||[];
+  w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),
+  dl=l!='dataLayer'?'&l='+l:'';
+  j.async=true;
+  j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+  f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PQFRBJ9F');
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/typing-arena.css">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6672302762343789"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner container">
+      <a href="../" class="brand-logo">
+        <span class="logo-icon">⚡</span>
+        <span class="logo-text">Ecrio<strong>X</strong></span>
+      </a>
+      <nav class="header-nav">
+        <a href="../tools/">All Tools</a>
+        <a href="../typing-speed-test/">Typing Arena</a>
+        <a href="../typing-games/" class="active">Typing Games</a>
+        <a href="../typing-race/">Typing Race</a>
+        <a href="../categories/">Categories</a>
+      </nav>
+      <div class="header-actions">
+        <button class="btn-icon theme-toggle-btn" aria-label="Toggle color theme">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-main container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../">Home</a>
+      <span class="sep">/</span>
+      <a href="../typing-speed-test/">Typing Arena</a>
+      <span class="sep">/</span>
+      <span class="current">Typing Games</span>
+    </nav>
+
+    <div class="arena-hero">
+      <div class="arena-hero-pill">
+        <span>🎮</span> Interactive Typing Arcade
+      </div>
+      <h1 class="arena-hero-title">
+        Free Online <span class="highlight">Typing Games</span>
+      </h1>
+      <p class="arena-hero-desc">
+        Make typing practice thrilling and addictive. Master touch-typing speed and reaction times with our browser arcade games.
+      </p>
+
+      <div class="arena-nav-bar">
+        <a href="../typing-speed-test/" class="arena-nav-link">⚡ Speed Test</a>
+        <a href="../typing-games/" class="arena-nav-link active">🎮 Typing Games</a>
+        <a href="../typing-race/" class="arena-nav-link">🏎️ Typing Race</a>
+        <a href="../typing-practice/" class="arena-nav-link">🎯 Weak Key Practice</a>
+        <a href="../typing-certificate/" class="arena-nav-link">📜 Certificate</a>
+      </div>
+    </div>
+
+    <!-- Active Game Stage Area -->
+    <div class="game-stage-container" id="gameStageArea">
+      <!-- Game Navigation Tabs -->
+      <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+        <div class="toolbar-group">
+          <button type="button" class="tool-pill-btn active" id="tabWordRain">🌧️ Word Rain</button>
+          <button type="button" class="tool-pill-btn" id="tabWordBlitz">⚡ Word Blitz (60s)</button>
+          <button type="button" class="tool-pill-btn" id="tabKeyboardChallenge">🎯 Key Reaction</button>
+        </div>
+        <div>
+          <button type="button" id="gameStartBtn" class="btn btn-sm btn-primary">
+            ▶️ Start Game
+          </button>
+        </div>
+      </div>
+
+      <!-- GAME 1: WORD RAIN CONTAINER -->
+      <div id="wordRainStage" class="game-view-panel">
+        <div class="d-flex justify-content-between mb-2 text-muted small">
+          <span>Score: <strong id="rainScore" class="text-primary font-mono" style="font-size: 1.1rem;">0</strong></span>
+          <span>Lives: <strong id="rainLives" style="color: #ef4444; font-size: 1.1rem;">❤️❤️❤️</strong></span>
+          <span>Level: <strong id="rainLevel" class="text-main font-mono">1</strong></span>
+          <span>Input: <kbd id="rainInput" style="font-size: 1rem; color: #10b981;">-</kbd></span>
+        </div>
+        <canvas id="wordRainCanvas" class="word-rain-canvas" width="800" height="380"></canvas>
+      </div>
+
+      <!-- GAME 2: WORD BLITZ CONTAINER -->
+      <div id="wordBlitzStage" class="game-view-panel" style="display: none; text-align: center; padding: 3rem 1rem;">
+        <div class="mb-3">
+          <span class="hud-stat-label">Time Remaining</span>
+          <div id="blitzTimer" style="font-size: 2.5rem; font-weight: 800; color: var(--color-primary);" class="font-mono">60s</div>
+        </div>
+        <div id="blitzWordTarget" style="font-size: 3rem; font-weight: 900; letter-spacing: 2px; margin-bottom: 1.5rem; color: var(--text-main);" class="font-mono">
+          READY
+        </div>
+        <input type="text" id="blitzInputField" class="control-input" placeholder="Type word and press Enter..." style="max-width: 360px; margin: 0 auto; font-size: 1.3rem; text-align: center;" autocomplete="off" disabled>
+        <div class="mt-3">
+          <span>Words Cleared: <strong id="blitzScore" class="text-primary" style="font-size: 1.4rem;">0</strong></span>
+        </div>
+      </div>
+
+      <!-- GAME 3: KEYBOARD CHALLENGE CONTAINER -->
+      <div id="keyChallengeStage" class="game-view-panel" style="display: none; text-align: center; padding: 3rem 1rem;">
+        <div class="mb-3">
+          <span class="hud-stat-label">Round: <span id="challengeRound">1</span>/25</span>
+          <div id="challengeKeyBox" style="width: 120px; height: 120px; border-radius: 50%; background: var(--color-primary-light); border: 3px solid var(--color-primary); color: var(--color-primary); font-size: 3.5rem; font-weight: 900; display: flex; align-items: center; justify-content: center; margin: 1.5rem auto;" class="font-mono">
+            ?
+          </div>
+          <p id="challengeFeedback" class="text-muted" style="min-height: 24px;">Press the key shown above as fast as possible!</p>
+          <div class="mt-2">
+            <span>Score: <strong id="challengeScore" class="text-primary" style="font-size: 1.3rem;">0</strong></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Games Feature Catalog Grid -->
+    <div class="games-catalog-grid">
+      <div class="game-feature-card">
+        <h3>🌧️ Word Rain</h3>
+        <p class="text-muted">Words cascade down from the sky. Destroy each word before it strikes the red ground line. Three lives per game!</p>
+      </div>
+      <div class="game-feature-card">
+        <h3>⚡ Word Blitz (60s)</h3>
+        <p class="text-muted">High-intensity 1-minute sprint. Rapidly type individual words to build combo streaks and achieve the highest word count.</p>
+      </div>
+      <div class="game-feature-card">
+        <h3>🎯 Keyboard Reaction</h3>
+        <p class="text-muted">Measures split-second reflex and key response times in milliseconds across the entire alphanumeric QWERTY matrix.</p>
+      </div>
+    </div>
+
+    <!-- AdSense Slot -->
+    <div class="ad-slot-container my-4">
+      <div class="ad-slot-card">
+        <span>Advertisement Placeholder</span>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="../" class="brand-logo">
+          <span class="logo-icon">⚡</span>
+          <span class="logo-text">Ecrio<strong>X</strong></span>
+        </a>
+        <p class="brand-tagline">One Platform. Endless Possibilities.</p>
+      </div>
+    </div>
+    <div class="footer-bottom container">
+      <p>&copy; 2026 EcrioX. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../js/app.js"></script>
+  <script src="../js/typing-games.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      let activeGame = 'rain';
+      let rainEngine = null;
+      let blitzEngine = null;
+      let challengeEngine = null;
+
+      const rainCanvas = document.getElementById('wordRainCanvas');
+      const startBtn = document.getElementById('gameStartBtn');
+
+      // 1. Initialize Word Rain
+      if (rainCanvas && window.ECRIOX_GAMES) {
+        rainEngine = new window.ECRIOX_GAMES.WordRainGame(
+          rainCanvas,
+          (score, lives, level, currentTyped) => {
+            document.getElementById('rainScore').textContent = score;
+            document.getElementById('rainLives').textContent = '❤️'.repeat(Math.max(0, lives));
+            document.getElementById('rainLevel').textContent = level;
+            document.getElementById('rainInput').textContent = currentTyped || '-';
+          },
+          (finalScore) => {
+            alert(`Game Over! Final Score: ${finalScore}`);
+            startBtn.textContent = '▶️ Play Again';
+          }
+        );
+      }
+
+      // 2. Initialize Word Blitz
+      if (window.ECRIOX_GAMES) {
+        blitzEngine = new window.ECRIOX_GAMES.WordBlitzGame(
+          (word, score, timeRemaining) => {
+            document.getElementById('blitzWordTarget').textContent = word.toUpperCase();
+            document.getElementById('blitzScore').textContent = score;
+            document.getElementById('blitzTimer').textContent = `${timeRemaining}s`;
+          },
+          (finalScore) => {
+            alert(`Time's up! Words Cleared: ${finalScore}`);
+            document.getElementById('blitzInputField').disabled = true;
+            startBtn.textContent = '▶️ Play Again';
+          }
+        );
+
+        const blitzInput = document.getElementById('blitzInputField');
+        if (blitzInput) {
+          blitzInput.addEventListener('input', (e) => {
+            const val = e.target.value.trim();
+            if (blitzEngine && blitzEngine.submitWord(val)) {
+              e.target.value = '';
+            }
+          });
+        }
+      }
+
+      // 3. Initialize Keyboard Challenge
+      if (window.ECRIOX_GAMES) {
+        challengeEngine = new window.ECRIOX_GAMES.KeyboardChallengeGame(
+          (key, round, score, latency) => {
+            document.getElementById('challengeKeyBox').textContent = key;
+            document.getElementById('challengeRound').textContent = round;
+            document.getElementById('challengeScore').textContent = score;
+            if (latency) {
+              document.getElementById('challengeFeedback').textContent = `Reaction: ${latency} ms (${latency < 350 ? 'Lightning Fast!' : 'Good!'})`;
+            }
+          },
+          (score, avgLatency) => {
+            alert(`Challenge Complete! Score: ${score}/25 | Avg Reaction: ${avgLatency} ms`);
+            startBtn.textContent = '▶️ Play Again';
+          }
+        );
+      }
+
+      // Tab switching
+      document.getElementById('tabWordRain').addEventListener('click', (e) => {
+        switchTab('rain', e.target);
+      });
+      document.getElementById('tabWordBlitz').addEventListener('click', (e) => {
+        switchTab('blitz', e.target);
+      });
+      document.getElementById('tabKeyboardChallenge').addEventListener('click', (e) => {
+        switchTab('challenge', e.target);
+      });
+
+      function switchTab(gameKey, btn) {
+        activeGame = gameKey;
+        document.querySelectorAll('#gameStageArea .tool-pill-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        document.getElementById('wordRainStage').style.display = gameKey === 'rain' ? 'block' : 'none';
+        document.getElementById('wordBlitzStage').style.display = gameKey === 'blitz' ? 'block' : 'none';
+        document.getElementById('keyChallengeStage').style.display = gameKey === 'challenge' ? 'block' : 'none';
+
+        if (rainEngine) rainEngine.stop();
+        startBtn.textContent = '▶️ Start Game';
+      }
+
+      // Start button
+      startBtn.addEventListener('click', () => {
+        if (activeGame === 'rain' && rainEngine) {
+          rainEngine.start();
+          startBtn.textContent = '🔄 Restart Rain';
+        } else if (activeGame === 'blitz' && blitzEngine) {
+          const input = document.getElementById('blitzInputField');
+          input.disabled = false;
+          input.value = '';
+          input.focus();
+          blitzEngine.start();
+          startBtn.textContent = '🔄 Restart Blitz';
+        } else if (activeGame === 'challenge' && challengeEngine) {
+          challengeEngine.start();
+          startBtn.textContent = '🔄 Restart Challenge';
+        }
+      });
+
+      // Global key listener for Word Rain and Keyboard Challenge
+      window.addEventListener('keydown', (e) => {
+        if (activeGame === 'rain' && rainEngine && rainEngine.isRunning) {
+          if (e.key === 'Backspace' || e.key.length === 1) {
+            e.preventDefault();
+            rainEngine.handleKey(e.key);
+          }
+        } else if (activeGame === 'challenge' && challengeEngine) {
+          if (e.key.length === 1) {
+            e.preventDefault();
+            challengeEngine.handleKey(e.key);
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>

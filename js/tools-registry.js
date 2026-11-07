@@ -628,6 +628,82 @@ const ECRIOX_TOOLS = [
     status: "available",
     popular: true,
     tags: ["diwali", "diwali wishes", "diwali card maker", "happy diwali", "deepavali", "diwali greeting", "whatsapp wishes", "diwali photo card", "tamil diwali", "hindi diwali"]
+  },
+
+  // ==========================================
+  // TYPING ARENA TOOLS
+  // ==========================================
+  {
+    id: "typing-speed-test",
+    name: "Typing Speed Test (Typing Arena)",
+    category: "productivity",
+    categoryName: "Productivity Tools",
+    description: "Benchmark your typing speed (WPM) and accuracy with clean, distraction-free tests, active word highlighting, and live error analysis.",
+    route: "/typing-speed-test/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><line x1="6" y1="8" x2="6.01" y2="8"></line><line x1="10" y1="8" x2="10.01" y2="8"></line><line x1="14" y1="8" x2="14.01" y2="8"></line><line x1="18" y1="8" x2="18.01" y2="8"></line><line x1="6" y1="12" x2="6.01" y2="12"></line><line x1="18" y1="12" x2="18.01" y2="12"></line><line x1="8" y1="16" x2="16" y2="16"></line></svg>`,
+    status: "available",
+    popular: true,
+    tags: ["typing speed test", "typing test", "wpm test", "typing speed", "typing practice", "keyboard test", "words per minute"]
+  },
+  {
+    id: "wpm-test",
+    name: "WPM Test (1-Minute Benchmark)",
+    category: "productivity",
+    categoryName: "Productivity Tools",
+    description: "Test your Words Per Minute in 60 seconds. Accurate Net and Gross WPM calculation with speed percentile ratings.",
+    route: "/wpm-test/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>`,
+    status: "available",
+    popular: true,
+    tags: ["wpm test", "words per minute", "1 minute typing test", "wpm calculator", "typing test 60 seconds"]
+  },
+  {
+    id: "typing-games",
+    name: "Typing Games Arcade",
+    category: "productivity",
+    categoryName: "Productivity Tools",
+    description: "Play addictive online typing games including Word Rain, Word Blitz 60s, and Keyboard Reaction Challenge.",
+    route: "/typing-games/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"></rect><circle cx="6" cy="12" r="1"></circle><circle cx="10" cy="12" r="1"></circle><line x1="15" y1="10" x2="15" y2="14"></line><line x1="13" y1="12" x2="17" y2="12"></line></svg>`,
+    status: "available",
+    popular: true,
+    tags: ["typing games", "word rain", "word blitz", "typing games for adults", "typing arcade", "free typing games"]
+  },
+  {
+    id: "typing-practice",
+    name: "Weak Key Detector & Practice",
+    category: "productivity",
+    categoryName: "Productivity Tools",
+    description: "Identify frequently mistyped keys with an interactive error heatmap and generate personalized drills focused on your problem keys.",
+    route: "/typing-practice/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>`,
+    status: "available",
+    popular: true,
+    tags: ["typing practice", "weak key detector", "keyboard heatmap", "improve typing accuracy", "touch typing practice"]
+  },
+  {
+    id: "typing-race",
+    name: "Typing Race Speedway",
+    category: "productivity",
+    categoryName: "Productivity Tools",
+    description: "Race your car on the typing speedway against calibrated pacer bots or challenge friends with private race rooms.",
+    route: "/typing-race/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 17h4V5H10z"></path><path d="M20 17h2v-3.34a4 4 0 0 0-1.17-2.83L19 9h-5v8h6z"></path><path d="M4 17h2V9H1a4 4 0 0 0 1.17 2.83L4 13.66V17z"></path></svg>`,
+    status: "available",
+    popular: true,
+    tags: ["typing race", "multiplayer typing", "type racer", "car typing game", "speed typing competition"]
+  },
+  {
+    id: "typing-certificate",
+    name: "Typing Speed Certificate",
+    category: "productivity",
+    categoryName: "Productivity Tools",
+    description: "Generate and download a high-resolution, verified typing speed certificate with your WPM score and accuracy for resumes and LinkedIn.",
+    route: "/typing-certificate/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><circle cx="12" cy="15" r="3"></circle></svg>`,
+    status: "available",
+    popular: true,
+    tags: ["typing certificate", "wpm certificate", "typing speed certificate", "verified typing test", "resume typing certificate"]
   }
 ];
 

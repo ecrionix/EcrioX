@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Typing Speed Certificate Generator – Download Verified Certificate | EcrioX</title>
+  <meta name="description" content="Generate a free, high-resolution typing speed certificate showing your Words Per Minute (WPM), accuracy, and date. Download as PNG or print for your resume and LinkedIn.">
+  <link rel="canonical" href="https://ecriox.com/typing-certificate/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Typing Speed Certificate Generator | EcrioX">
+  <meta property="og:description" content="Generate and download a high-res typing speed certificate with your WPM score and accuracy.">
+  <meta property="og:url" content="https://ecriox.com/typing-certificate/">
+  <meta property="og:site_name" content="EcrioX">
+
+  <!-- Global Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i){
+  w[l]=w[l]||[];
+  w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),
+  dl=l!='dataLayer'?'&l='+l:'';
+  j.async=true;
+  j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+  f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PQFRBJ9F');
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/typing-arena.css">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6672302762343789"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner container">
+      <a href="../" class="brand-logo">
+        <span class="logo-icon">⚡</span>
+        <span class="logo-text">Ecrio<strong>X</strong></span>
+      </a>
+      <nav class="header-nav">
+        <a href="../tools/">All Tools</a>
+        <a href="../typing-speed-test/">Typing Arena</a>
+        <a href="../typing-certificate/" class="active">Certificate</a>
+        <a href="../typing-progress/">My Progress</a>
+      </nav>
+      <div class="header-actions">
+        <button class="btn-icon theme-toggle-btn" aria-label="Toggle color theme">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-main container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../">Home</a>
+      <span class="sep">/</span>
+      <a href="../typing-speed-test/">Typing Arena</a>
+      <span class="sep">/</span>
+      <span class="current">Typing Certificate</span>
+    </nav>
+
+    <div class="arena-hero">
+      <div class="arena-hero-pill">
+        <span>📜</span> Professional Speed Achievement Credential
+      </div>
+      <h1 class="arena-hero-title">
+        Typing Speed <span class="highlight">Certificate</span>
+      </h1>
+      <p class="arena-hero-desc">
+        Personalize and download your official-looking typing certificate showing your verified WPM velocity, accuracy rate, and unique certificate ID.
+      </p>
+
+      <div class="arena-nav-bar">
+        <a href="../typing-speed-test/" class="arena-nav-link">⚡ Speed Test</a>
+        <a href="../wpm-test/" class="arena-nav-link">⏱️ WPM Test</a>
+        <a href="../typing-certificate/" class="arena-nav-link active">📜 Certificate</a>
+        <a href="../typing-progress/" class="arena-nav-link">📊 My Progress</a>
+      </div>
+    </div>
+
+    <!-- Certificate Generator Workspace -->
+    <div class="cert-designer-container">
+      <!-- Customization Form Controls -->
+      <div class="card p-3 mb-4 text-left" style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-xl); max-width: 800px; margin: 0 auto 2rem;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; align-items: end;">
+          <div>
+            <label for="candidateNameInput"><strong>Your Full Name:</strong></label>
+            <input type="text" id="candidateNameInput" class="control-input mt-1" value="Alexander Vance" placeholder="Enter your name...">
+          </div>
+          <div>
+            <label for="certWpmInput"><strong>Typing Speed (WPM):</strong></label>
+            <input type="number" id="certWpmInput" class="control-input mt-1" value="78" min="10" max="220">
+          </div>
+          <div>
+            <label for="certAccInput"><strong>Accuracy (%):</strong></label>
+            <input type="number" id="certAccInput" class="control-input mt-1" value="98" min="50" max="100">
+          </div>
+          <div>
+            <button type="button" id="updateCertBtn" class="btn btn-primary" style="width: 100%;">
+              Update Preview
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- High-Res Certificate Canvas -->
+      <div class="certificate-canvas-wrapper">
+        <canvas id="certificateCanvas" width="1200" height="850"></canvas>
+      </div>
+
+      <!-- Download & Action Buttons -->
+      <div class="d-flex justify-content-center gap-2 flex-wrap mb-4">
+        <button type="button" id="downloadCertPngBtn" class="btn btn-primary">
+          📥 Download Certificate (HD PNG)
+        </button>
+        <button type="button" id="printCertBtn" class="btn btn-secondary">
+          🖨️ Print / Save as PDF
+        </button>
+        <a href="../typing-speed-test/" class="btn btn-secondary">
+          🔄 Retake Typing Test
+        </a>
+      </div>
+
+      <p class="text-muted small" style="max-width: 650px; margin: 0 auto;">
+        * Notice: This self-generated certificate demonstrates achievement on EcrioX Typing Arena. It is intended for resumes, portfolios, and personal benchmarks, not as an accredited government credential.
+      </p>
+    </div>
+
+    <!-- AdSense Slot -->
+    <div class="ad-slot-container my-4">
+      <div class="ad-slot-card">
+        <span>Advertisement Placeholder</span>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="../" class="brand-logo">
+          <span class="logo-icon">⚡</span>
+          <span class="logo-text">Ecrio<strong>X</strong></span>
+        </a>
+        <p class="brand-tagline">One Platform. Endless Possibilities.</p>
+      </div>
+    </div>
+    <div class="footer-bottom container">
+      <p>&copy; 2026 EcrioX. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../js/app.js"></script>
+  <script src="../js/typing-engine.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const canvas = document.getElementById('certificateCanvas');
+      const ctx = canvas.getContext('2d');
+      const nameInput = document.getElementById('candidateNameInput');
+      const wpmInput = document.getElementById('certWpmInput');
+      const accInput = document.getElementById('certAccInput');
+
+      // Pre-fill from recent test if available
+      const history = window.ECRIOX_TYPING_ENGINE ? window.ECRIOX_TYPING_ENGINE.getHistory() : [];
+      if (history.length > 0) {
+        const latest = history[0];
+        if (latest.netWpm) wpmInput.value = latest.netWpm;
+        if (latest.accuracy) accInput.value = latest.accuracy;
+      }
+
+      function drawCertificate() {
+        const w = canvas.width;
+        const h = canvas.height;
+        const name = nameInput.value.trim() || 'Valued Typist';
+        const wpm = wpmInput.value || '70';
+        const acc = accInput.value || '98';
+        const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+        const certId = 'ECX-TYP-' + Math.abs(hashCode(name + wpm + acc)).toString(36).toUpperCase().padStart(8, '0');
+
+        ctx.clearRect(0, 0, w, h);
+
+        // 1. Parchment Background
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, w, h);
+
+        // Soft gradient inset
+        const grad = ctx.createRadialGradient(w/2, h/2, 100, w/2, h/2, w/1.5);
+        grad.addColorStop(0, '#ffffff');
+        grad.addColorStop(1, '#f8fafc');
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, w, h);
+
+        // 2. Ornate Double Gold Borders
+        ctx.strokeStyle = '#2563eb';
+        ctx.lineWidth = 14;
+        ctx.strokeRect(30, 30, w - 60, h - 60);
+
+        ctx.strokeStyle = '#d4af37';
+        ctx.lineWidth = 4;
+        ctx.strokeRect(44, 44, w - 88, h - 88);
+
+        ctx.strokeStyle = 'rgba(37, 99, 235, 0.4)';
+        ctx.lineWidth = 1.5;
+        ctx.strokeRect(52, 52, w - 104, h - 104);
+
+        // 3. Header Branding
+        ctx.fillStyle = '#0f172a';
+        ctx.font = 'bold 36px -apple-system, system-ui, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('ECRIOX TYPING ARENA', w / 2, 120);
+
+        ctx.fillStyle = '#d4af37';
+        ctx.font = '600 18px -apple-system, sans-serif';
+        ctx.letterSpacing = '3px';
+        ctx.fillText('• OFFICIAL SPEED RECOGNITION •', w / 2, 155);
+
+        // 4. Certificate Title
+        ctx.fillStyle = '#2563eb';
+        ctx.font = 'bold 44px Georgia, serif';
+        ctx.fillText('Certificate of Typing Proficiency', w / 2, 230);
+
+        ctx.fillStyle = '#64748b';
+        ctx.font = 'italic 20px Georgia, serif';
+        ctx.fillText('This document certifies that', w / 2, 290);
+
+        // 5. Candidate Name
+        ctx.fillStyle = '#0f172a';
+        ctx.font = 'bold 52px Georgia, serif';
+        ctx.fillText(name, w / 2, 360);
+
+        // Underline under name
+        ctx.strokeStyle = '#d4af37';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(w / 2 - 250, 385);
+        ctx.lineTo(w / 2 + 250, 385);
+        ctx.stroke();
+
+        ctx.fillStyle = '#475569';
+        ctx.font = '22px -apple-system, sans-serif';
+        ctx.fillText('has successfully achieved a certified benchmark speed of:', w / 2, 435);
+
+        // 6. Metrics Box
+        const boxW = 560;
+        const boxH = 110;
+        const boxX = w / 2 - boxW / 2;
+        const boxY = 475;
+
+        ctx.fillStyle = 'rgba(37, 99, 235, 0.05)';
+        ctx.strokeStyle = 'rgba(37, 99, 235, 0.3)';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.roundRect(boxX, boxY, boxW, boxH, 12);
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.fillStyle = '#2563eb';
+        ctx.font = 'bold 50px Consolas, monospace';
+        ctx.fillText(`${wpm} WPM`, w / 2 - 130, boxY + 68);
+
+        ctx.fillStyle = '#10b981';
+        ctx.fillText(`${acc}% ACC`, w / 2 + 130, boxY + 68);
+
+        ctx.fillStyle = '#64748b';
+        ctx.font = '600 13px -apple-system, sans-serif';
+        ctx.fillText('NET SPEED', w / 2 - 130, boxY + 95);
+        ctx.fillText('ACCURACY', w / 2 + 130, boxY + 95);
+
+        // 7. Verification Footer & Signatures
+        const footY = 680;
+
+        // Date
+        ctx.fillStyle = '#0f172a';
+        ctx.font = '600 18px -apple-system, sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText(`Issued: ${today}`, 120, footY);
+        ctx.fillStyle = '#64748b';
+        ctx.font = '14px monospace';
+        ctx.fillText(`ID: ${certId}`, 120, footY + 28);
+
+        // Gold Seal Badge
+        ctx.save();
+        ctx.translate(w / 2, footY);
+        ctx.beginPath();
+        ctx.arc(0, 0, 45, 0, Math.PI * 2);
+        ctx.fillStyle = '#d4af37';
+        ctx.fill();
+        ctx.strokeStyle = '#b8860b';
+        ctx.lineWidth = 3;
+        ctx.stroke();
+
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 13px -apple-system, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('VERIFIED', 0, -4);
+        ctx.fillText('ECRIOX', 0, 14);
+        ctx.restore();
+
+        // Signature Line
+        ctx.strokeStyle = '#94a3b8';
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.moveTo(w - 320, footY + 5);
+        ctx.lineTo(w - 120, footY + 5);
+        ctx.stroke();
+
+        ctx.fillStyle = '#0f172a';
+        ctx.font = 'italic 20px "Great Vibes", cursive, Georgia';
+        ctx.textAlign = 'center';
+        ctx.fillText('EcrioX Evaluation Authority', w - 220, footY - 5);
+        ctx.font = '13px -apple-system, sans-serif';
+        ctx.fillStyle = '#64748b';
+        ctx.fillText('Chief Academic Benchmarks', w - 220, footY + 26);
+
+        // Bottom Disclaimer
+        ctx.fillStyle = '#94a3b8';
+        ctx.font = '12px -apple-system, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('Self-administered benchmark evaluation conducted on ecriox.com • Verification ID: ' + certId, w / 2, h - 45);
+      }
+
+      function hashCode(str) {
+        let hash = 0;
+        for (let i = 0; i < str.length; i++) {
+          hash = (hash << 5) - hash + str.charCodeAt(i);
+          hash |= 0;
+        }
+        return hash;
+      }
+
+      drawCertificate();
+
+      document.getElementById('updateCertBtn').addEventListener('click', drawCertificate);
+      nameInput.addEventListener('input', drawCertificate);
+      wpmInput.addEventListener('input', drawCertificate);
+      accInput.addEventListener('input', drawCertificate);
+
+      document.getElementById('downloadCertPngBtn').addEventListener('click', () => {
+        const link = document.createElement('a');
+        link.download = `EcrioX-Typing-Certificate-${Date.now()}.png`;
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      });
+
+      document.getElementById('printCertBtn').addEventListener('click', () => {
+        window.print();
+      });
+    });
+  </script>
+</body>
+</html>

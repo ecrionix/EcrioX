@@ -1,0 +1,581 @@
+/**
+ * EcrioX Typing Arena - Core Stylesheet
+ * High-performance typing interface, responsive word display, blinking caret,
+ * live HUD metrics, race track, games, and certificate styles.
+ */
+
+:root {
+  --typing-font-mono: "Fira Code", Consolas, Monaco, "Courier New", monospace;
+  --typing-char-correct: #10b981;
+  --typing-char-incorrect: #ef4444;
+  --typing-char-pending: #94a3b8;
+  --typing-caret-color: #2563eb;
+  --typing-hud-bg: var(--bg-surface);
+  --typing-card-border: var(--border-color);
+}
+
+[data-theme="dark"] {
+  --typing-char-pending: #64748b;
+  --typing-caret-color: #60a5fa;
+}
+
+/* ==========================================================================
+   1. HERO & ARENA WRAPPER
+   ========================================================================== */
+.arena-hero {
+  text-align: center;
+  padding: 3.5rem 1rem 2rem;
+  background: radial-gradient(circle at 50% 10%, rgba(37, 99, 235, 0.08) 0%, transparent 60%);
+}
+.arena-hero-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--color-primary-light);
+  border: 1px solid var(--color-primary-border);
+  color: var(--color-primary);
+  padding: 0.4rem 1.1rem;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+}
+.arena-hero-title {
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+}
+.arena-hero-title .highlight {
+  color: var(--color-primary);
+}
+.arena-hero-desc {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: var(--text-muted);
+  max-width: 680px;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
+}
+
+/* Quick Navigation Links Bar */
+.arena-nav-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 2.5rem;
+}
+.arena-nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 1rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: var(--transition);
+}
+.arena-nav-link:hover, .arena-nav-link.active {
+  background: var(--color-primary);
+  color: #ffffff;
+  border-color: var(--color-primary);
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
+}
+
+/* ==========================================================================
+   2. TYPING TEST WORKSPACE
+   ========================================================================== */
+.typing-workspace-card {
+  max-width: 980px;
+  margin: 0 auto 3rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Top Mode & Duration Toolbar */
+.typing-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1.25rem;
+  margin-bottom: 1.75rem;
+}
+.toolbar-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+}
+.tool-pill-btn {
+  background: var(--bg-subtle);
+  border: 1px solid transparent;
+  color: var(--text-muted);
+  padding: 0.45rem 0.9rem;
+  border-radius: var(--radius-md);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.tool-pill-btn:hover {
+  background: var(--bg-subtle-hover);
+  color: var(--text-main);
+}
+.tool-pill-btn.active {
+  background: var(--color-primary);
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.3);
+}
+
+/* HUD Live Bar */
+.typing-hud-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 1rem;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1rem 1.5rem;
+  margin-bottom: 1.75rem;
+  align-items: center;
+}
+.hud-stat-item {
+  text-align: center;
+}
+.hud-stat-value {
+  font-size: 1.85rem;
+  font-weight: 800;
+  font-family: var(--font-mono);
+  color: var(--text-main);
+  line-height: 1;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+.hud-stat-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  font-weight: 700;
+}
+.hud-timer-val {
+  color: var(--color-primary);
+}
+
+/* Passage Display Box */
+.typing-passage-box {
+  min-height: 160px;
+  max-height: 220px;
+  overflow-y: hidden;
+  position: relative;
+  font-family: var(--typing-font-mono);
+  font-size: 1.35rem;
+  line-height: 1.8;
+  color: var(--typing-char-pending);
+  padding: 0.75rem 0.5rem;
+  user-select: none;
+  cursor: text;
+  transition: filter 0.2s ease;
+}
+
+.typing-passage-box:focus-within {
+  outline: none;
+}
+
+/* Hidden Key Input */
+.typing-hidden-input {
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: default;
+  z-index: 10;
+}
+
+/* Words & Characters */
+.type-word {
+  display: inline-block;
+  margin-right: 0.25rem;
+  white-space: pre;
+  border-radius: 4px;
+  padding: 0 2px;
+  transition: background 0.15s ease;
+}
+.type-word.active {
+  background: rgba(37, 99, 235, 0.08);
+}
+.type-char {
+  position: relative;
+  transition: color 0.1s ease;
+}
+.type-char.pending {
+  color: var(--typing-char-pending);
+}
+.type-char.correct {
+  color: var(--typing-char-correct);
+}
+.type-char.incorrect {
+  color: var(--typing-char-incorrect);
+  background: rgba(239, 68, 68, 0.15);
+  border-radius: 2px;
+  text-decoration: underline wavy var(--typing-char-incorrect);
+}
+
+/* Caret Cursor */
+.type-char.caret::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 2.5px;
+  height: 1.25em;
+  background: var(--typing-caret-color);
+  animation: caretPulse 1s infinite alternate ease-in-out;
+  border-radius: 2px;
+}
+@keyframes caretPulse {
+  0% { opacity: 1; }
+  100% { opacity: 0.2; }
+}
+
+/* Blur overlay when unfocused */
+.passage-focus-warning {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.15rem;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  z-index: 20;
+  display: none;
+}
+.passage-focus-warning.show {
+  display: flex;
+}
+
+/* Bottom Controls */
+.typing-footer-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border-color);
+}
+
+/* ==========================================================================
+   3. RESULT MODAL / OVERLAY
+   ========================================================================== */
+.typing-result-card {
+  display: none;
+  background: var(--bg-surface);
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-xl);
+  padding: 2.5rem 2rem;
+  box-shadow: 0 15px 45px rgba(37, 99, 235, 0.15);
+  text-align: center;
+  margin-top: 2rem;
+  animation: fadeInResult 0.3s ease-out;
+}
+.typing-result-card.show {
+  display: block;
+}
+@keyframes fadeInResult {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.result-main-wpm {
+  font-size: 4.5rem;
+  font-weight: 900;
+  font-family: var(--font-mono);
+  color: var(--color-primary);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+.result-rank-badge {
+  display: inline-block;
+  padding: 0.35rem 1rem;
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  border-radius: var(--radius-full);
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.result-breakdown-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 1rem;
+  max-width: 680px;
+  margin: 0 auto 2.5rem;
+}
+.result-stat-box {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1rem;
+}
+.result-stat-box .val {
+  font-size: 1.6rem;
+  font-weight: 800;
+  font-family: var(--font-mono);
+  color: var(--text-main);
+  display: block;
+}
+.result-stat-box .lbl {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.result-actions-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+/* ==========================================================================
+   4. RACE TRACK STYLES
+   ========================================================================== */
+.race-arena-container {
+  max-width: 980px;
+  margin: 0 auto 3rem;
+}
+.race-track-wrapper {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  box-shadow: var(--shadow-lg);
+  margin-bottom: 2rem;
+}
+.race-lane {
+  position: relative;
+  background: var(--bg-subtle);
+  border: 1px dashed var(--border-color);
+  border-radius: var(--radius-full);
+  height: 52px;
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+}
+.race-lane:last-child {
+  margin-bottom: 0;
+}
+.race-car {
+  position: absolute;
+  left: 10px;
+  font-size: 1.8rem;
+  transition: left 0.25s linear;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.race-driver-name {
+  font-size: 0.78rem;
+  font-weight: 700;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-full);
+  color: var(--text-main);
+  white-space: nowrap;
+}
+.race-finish-line {
+  position: absolute;
+  right: 15px;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: repeating-linear-gradient(0deg, #ffffff, #ffffff 8px, #000000 8px, #000000 16px);
+  border-radius: 2px;
+}
+
+/* ==========================================================================
+   5. GAMES GRID & CANVAS
+   ========================================================================== */
+.games-catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  max-width: 1080px;
+  margin: 2rem auto;
+}
+.game-feature-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition);
+}
+.game-feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--color-primary);
+}
+
+.game-stage-container {
+  max-width: 820px;
+  margin: 0 auto;
+  background: var(--bg-surface);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-xl);
+}
+.word-rain-canvas {
+  width: 100%;
+  height: 380px;
+  background: #0f172a;
+  border-radius: var(--radius-lg);
+  display: block;
+}
+
+/* ==========================================================================
+   6. WEAK KEY HEATMAP & PRACTICE
+   ========================================================================== */
+.keyboard-heatmap-wrapper {
+  max-width: 860px;
+  margin: 2rem auto;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  box-shadow: var(--shadow-lg);
+}
+.keyboard-rows-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+}
+.keyboard-row {
+  display: flex;
+  gap: 0.4rem;
+}
+.key-cap {
+  width: 48px;
+  height: 48px;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-main);
+  transition: all 0.2s ease;
+  position: relative;
+}
+.key-cap.heat-low {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: rgba(16, 185, 129, 0.4);
+  color: #059669;
+}
+.key-cap.heat-med {
+  background: rgba(245, 158, 11, 0.2);
+  border-color: rgba(245, 158, 11, 0.5);
+  color: #d97706;
+}
+.key-cap.heat-high {
+  background: rgba(239, 68, 68, 0.25);
+  border-color: rgba(239, 68, 68, 0.6);
+  color: #dc2626;
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.3);
+}
+.key-mistake-count {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   7. CERTIFICATE GENERATOR CANVAS
+   ========================================================================== */
+.cert-designer-container {
+  max-width: 960px;
+  margin: 2rem auto;
+  text-align: center;
+}
+.certificate-canvas-wrapper {
+  background: #ffffff;
+  border: 4px solid var(--color-primary);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  overflow: hidden;
+  max-width: 800px;
+  margin: 0 auto 1.5rem;
+}
+#certificateCanvas {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ==========================================================================
+   8. PROGRESS DASHBOARD & CHART
+   ========================================================================== */
+.dashboard-container {
+  max-width: 1040px;
+  margin: 2rem auto;
+}
+.chart-box-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-md);
+}
+.history-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+.history-table th, .history-table td {
+  padding: 0.85rem 1.1rem;
+  border-bottom: 1px solid var(--border-color);
+  text-align: left;
+}
+.history-table th {
+  background: var(--bg-subtle);
+  font-weight: 700;
+  color: var(--text-main);
+}
