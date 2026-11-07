@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>World Live Cameras – Explore Cities, Beaches &amp; Nature | EcrioX</title>
+  <meta name="description" content="Explore publicly available live cameras around the world. Discover city views, beaches, mountains, traffic cameras, space views, and famous destinations with EcrioX WorldView.">
+  <link rel="canonical" href="https://ecriox.com/world-live-cameras/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="World Live Cameras – Explore Cities, Beaches &amp; Nature | EcrioX">
+  <meta property="og:description" content="Explore the world live through an interactive 3D Earth globe and verified cameras across 7 continents. 100% free with cinema stream player.">
+  <meta property="og:url" content="https://ecriox.com/world-live-cameras/">
+  <meta property="og:site_name" content="EcrioX">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="World Live Cameras – EcrioX WorldView">
+  <meta name="twitter:description" content="Discover cities, beaches, mountains, and extraordinary places through live cameras around the world.">
+
+  <!-- Global Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i){
+  w[l]=w[l]||[];
+  w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),
+  dl=l!='dataLayer'?'&l='+l:'';
+  j.async=true;
+  j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+  f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PQFRBJ9F');
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Schema.org WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "EcrioX WorldView - Global Live Camera Explorer",
+    "url": "https://ecriox.com/world-live-cameras/",
+    "applicationCategory": "TravelApplication",
+    "operatingSystem": "All",
+    "description": "Interactive 3D Earth globe and live camera explorer discovering cities, oceans, mountains, landmarks, and wildlife worldwide with cinema stream playback.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <!-- Schema.org FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Are these world cameras real and live?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. EcrioX WorldView aggregates verified, publicly accessible live video streams and live image snapshot feeds from authorized broadcast partners, research observatories, and environmental agencies worldwide."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between a Live Video Stream and a Live Image Snapshot?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Live Video continuously transmits high-definition frames in real-time via video players. Live Image cameras capture high-resolution photographic snapshots refreshed at calibrated intervals (such as every 15 seconds) commonly utilized by weather stations and highway transport departments."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is EcrioX WorldView free to use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. EcrioX WorldView is completely free with no registration, subscription fees, or software installation required."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Leaflet CSS for 2D Map Mode -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+  <!-- Core Styles -->
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/worldview.css">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6672302762343789"
+     crossorigin="anonymous"></script>
+</head>
+<body class="worldview-page">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQFRBJ9F"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner container">
+      <a href="../" class="brand-logo">
+        <span class="logo-icon">⚡</span>
+        <span class="logo-text">Ecrio<strong>X</strong></span>
+      </a>
+      <nav class="header-nav">
+        <a href="../tools/">All Tools</a>
+        <a href="../world-live-cameras/" class="active">WorldView</a>
+        <a href="../resume-builder/">Career Studio</a>
+        <a href="../typing-speed-test/">Typing Arena</a>
+        <a href="../categories/">Categories</a>
+      </nav>
+      <div class="header-actions">
+        <button class="btn-icon theme-toggle-btn" aria-label="Toggle color theme">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-main container">
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../">Home</a>
+      <span class="sep">/</span>
+      <a href="../tools/">All Tools</a>
+      <span class="sep">/</span>
+      <span class="current">World Live Cameras</span>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="worldview-hero">
+      <div class="worldview-hero-pill">
+        <span class="live-pulse-dot"></span>
+        <span>EcrioX WorldView • Real Live Cameras Across 7 Continents</span>
+      </div>
+
+      <h1 class="worldview-hero-title">
+        Explore the World, <span class="highlight-globe">Live.</span>
+      </h1>
+
+      <p class="worldview-hero-desc">
+        Discover cities, beaches, mountains, and extraordinary places through publicly accessible live camera feeds from around the globe.
+      </p>
+
+      <!-- Search Input with Auto-Suggestions -->
+      <div class="worldview-search-box">
+        <span class="search-input-icon">🔍</span>
+        <input
+          type="search"
+          id="worldviewSearchInput"
+          class="search-input-field"
+          placeholder="Search a city, country, or destination (e.g., Tokyo, New York, Alps)..."
+          autocomplete="off"
+        >
+        <div id="searchSuggestionsBox" class="search-suggestions-dropdown"></div>
+      </div>
+
+      <!-- Action Mode Buttons -->
+      <div class="worldview-actions-bar">
+        <button type="button" id="btnViewGlobe" class="wv-btn-toggle active">
+          🌍 3D Earth Globe
+        </button>
+        <button type="button" id="btnViewMap" class="wv-btn-toggle">
+          🗺️ 2D World Map
+        </button>
+        <button type="button" id="btnRandomCamera" class="wv-btn-toggle" style="background:linear-gradient(135deg, #00f0ff, #2563eb); color:#fff; border:none;">
+          🎲 Discover Random Destination
+        </button>
+      </div>
+    </section>
+
+    <!-- 3D Interactive Globe Container -->
+    <div id="globeContainerWrapper" class="globe-viewport-container">
+      <div class="globe-hud-overlay">
+        <div class="globe-hud-pill">
+          <span>🖱️ Drag to Rotate Earth • Scroll to Zoom</span>
+        </div>
+        <div class="globe-hud-pill">
+          <span class="live-pulse-dot"></span>
+          <span>Click on any pulsing pin to stream</span>
+        </div>
+      </div>
+
+      <!-- Floating Tooltip for Hovered Pin -->
+      <div id="globeTooltip" class="globe-tooltip-card"></div>
+    </div>
+
+    <!-- 2D Leaflet Map Container -->
+    <div id="mapContainerWrapper" class="map-viewport-container">
+      <div id="leafletMapContainer" style="width:100%; height:100%;"></div>
+    </div>
+
+    <!-- World Explorer Section -->
+    <section class="worldview-explorer">
+      <!-- 10 Category Filter Pills -->
+      <div id="categoryFilterBar" class="category-filter-wrapper"></div>
+
+      <!-- Controls & Count Bar -->
+      <div class="explorer-controls-bar">
+        <div id="feedCountDisplay" class="feed-counter">Showing verified cameras</div>
+        <div style="display:flex; align-items:center; gap:0.5rem;">
+          <label for="sortSelect" style="font-size:0.8125rem; font-weight:700; color:var(--wv-text-muted);">Sort By:</label>
+          <select id="sortSelect" class="sort-select-input">
+            <option value="featured">Featured Destinations</option>
+            <option value="country">Country (A-Z)</option>
+            <option value="city">City (A-Z)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Camera Cards Grid -->
+      <div id="worldviewCamerasGrid" class="worldview-grid"></div>
+
+      <div id="gridEmptyNotice" style="display:none; text-align:center; padding:3rem; background:var(--wv-surface); border:1px solid var(--wv-border); border-radius:12px; margin-bottom:2rem;">
+        <h3>No cameras found matching your criteria</h3>
+        <p style="color:var(--wv-text-muted); margin-top:0.5rem;">Try selecting a different category or clearing your search term.</p>
+      </div>
+    </section>
+
+    <!-- Educational & SEO Content Section -->
+    <section class="educational-content" style="background:var(--wv-surface); border:1px solid var(--wv-border); border-radius:12px; padding:2rem; margin-bottom:2.5rem; color:var(--wv-text);">
+      <h2 style="font-size:1.5rem; font-weight:800; margin-bottom:1rem;">
+        About EcrioX WorldView: Global Camera Discovery
+      </h2>
+      <p style="color:var(--wv-text-muted); line-height:1.7; margin-bottom:1.25rem;">
+        EcrioX WorldView connects you to authentic perspectives of our living planet. From the pedestrian bustle of Times Square and Tokyo's Shibuya Crossing to the peaceful alpine peaks of Zermatt and the icy wilderness of Antarctica, our platform organizes authorized publicly available video streams and environmental imaging sensors into a unified interactive experience.
+      </p>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1.5rem; margin:1.5rem 0;">
+        <div style="background:var(--wv-surface-elevated); border:1px solid var(--wv-border); border-radius:8px; padding:1.25rem;">
+          <h3 style="font-size:1.125rem; font-weight:700; margin-bottom:0.5rem; color:var(--wv-accent);">
+            🔴 Continuous Live Video Feeds
+          </h3>
+          <p style="font-size:0.875rem; color:var(--wv-text-muted); line-height:1.6;">
+            Streams designated with the <strong>Live Video</strong> badge broadcast high-framerate video in real-time through official streaming CDNs and authorized embedded channels.
+          </p>
+        </div>
+
+        <div style="background:var(--wv-surface-elevated); border:1px solid var(--wv-border); border-radius:8px; padding:1.25rem;">
+          <h3 style="font-size:1.125rem; font-weight:700; margin-bottom:0.5rem; color:#38bdf8;">
+            📸 Periodic Live Image Snapshots
+          </h3>
+          <p style="font-size:0.875rem; color:var(--wv-text-muted); line-height:1.6;">
+            Cameras marked with <strong>Live Image</strong> represent high-resolution sensors deployed by departments of transportation and scientific observatories that refresh periodically with live countdowns.
+          </p>
+        </div>
+
+        <div style="background:var(--wv-surface-elevated); border:1px solid var(--wv-border); border-radius:8px; padding:1.25rem;">
+          <h3 style="font-size:1.125rem; font-weight:700; margin-bottom:0.5rem; color:#10b981;">
+            🔒 Full Transparency &amp; Attribution
+          </h3>
+          <p style="font-size:0.875rem; color:var(--wv-text-muted); line-height:1.6;">
+            We believe in honest broadcasting. Every camera card clearly identifies the host provider, verified broadcast license, and provides a direct link to the original stream source.
+          </p>
+        </div>
+      </div>
+
+      <!-- Designated AdSense Slot -->
+      <div class="ad-slot" style="margin:2rem 0; text-align:center; min-height:90px; background:var(--wv-surface-elevated); border:1px dashed var(--wv-border); border-radius:8px; display:flex; align-items:center; justify-content:center;">
+        <ins class="adsbygoogle"
+             style="display:block; text-align:center;"
+             data-ad-layout="in-article"
+             data-ad-format="fluid"
+             data-ad-client="ca-pub-6672302762343789"
+             data-ad-slot="worldview_content_ad"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+      </div>
+
+      <!-- FAQ Accordion -->
+      <h3 style="font-size:1.25rem; font-weight:700; margin:2rem 0 1rem;">
+        Frequently Asked Questions
+      </h3>
+      <div style="display:flex; flex-direction:column; gap:1rem;">
+        <details style="background:var(--wv-surface-elevated); border:1px solid var(--wv-border); border-radius:8px; padding:1rem;">
+          <summary style="font-weight:700; font-size:0.9375rem; cursor:pointer;">
+            Why does a camera sometimes show an offline notice?
+          </summary>
+          <p style="margin-top:0.5rem; font-size:0.875rem; color:var(--wv-text-muted); line-height:1.6;">
+            Public webcams operate under dynamic real-world weather, bandwidth constraints, and periodic server maintenance. When a camera's connection is interrupted, our player honestly informs you and offers a retry action or original source link.
+          </p>
+        </details>
+
+        <details style="background:var(--wv-surface-elevated); border:1px solid var(--wv-border); border-radius:8px; padding:1rem;">
+          <summary style="font-weight:700; font-size:0.9375rem; cursor:pointer;">
+            Can I view EcrioX WorldView on my smartphone?
+          </summary>
+          <p style="margin-top:0.5rem; font-size:0.875rem; color:var(--wv-text-muted); line-height:1.6;">
+            Yes! WorldView is completely responsive. On mobile devices, you can explore via touch controls on the 3D globe, toggle the 2D map, or scroll through the camera grid.
+          </p>
+        </details>
+
+        <details style="background:var(--wv-surface-elevated); border:1px solid var(--wv-border); border-radius:8px; padding:1rem;">
+          <summary style="font-weight:700; font-size:0.9375rem; cursor:pointer;">
+            Does this platform access my computer's webcam or microphone?
+          </summary>
+          <p style="margin-top:0.5rem; font-size:0.875rem; color:var(--wv-text-muted); line-height:1.6;">
+            No. EcrioX WorldView only receives public outdoor broadcast streams. We never request permission to access your private camera or microphone.
+          </p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <!-- Full-Screen Cinema Video Player Modal -->
+  <div id="worldviewPlayerModal" class="worldview-player-modal" role="dialog" aria-modal="true" aria-labelledby="playerTitle">
+    <div class="player-dialog-wrapper">
+      <!-- Modal Header -->
+      <div class="player-dialog-header">
+        <div>
+          <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.25rem;">
+            <span id="playerCategoryBadge" style="font-size:0.75rem; color:var(--wv-accent); font-weight:700; text-transform:uppercase;"></span>
+            <span id="playerStreamTypeBadge" class="stream-badge live-video">🔴 LIVE STREAM</span>
+          </div>
+          <h2 id="playerTitle" style="font-size:1.25rem; font-weight:800; color:var(--wv-text); margin:0;"></h2>
+          <div id="playerLocation" style="font-size:0.8125rem; color:var(--wv-text-muted);"></div>
+        </div>
+
+        <div style="display:flex; align-items:center; gap:0.5rem;">
+          <button type="button" id="btnPlayerFullscreen" class="wv-btn-toggle" style="padding:0.35rem 0.65rem;" title="Toggle Fullscreen">
+            ⛶
+          </button>
+          <button type="button" id="btnClosePlayerModal" class="wv-btn-toggle" style="padding:0.35rem 0.75rem; font-size:1rem;" title="Close Player">
+            ✕
+          </button>
+        </div>
+      </div>
+
+      <!-- Player Cinema Screen -->
+      <div class="player-screen-viewport">
+        <!-- Loader -->
+        <div id="playerLoader" class="player-loader-spinner">
+          <div class="spinner-ring"></div>
+          <div style="font-size:0.875rem; font-weight:600;">Connecting to live broadcast feed...</div>
+        </div>
+
+        <!-- Dynamic Media Container -->
+        <div id="playerScreenContainer" style="width:100%; height:100%;"></div>
+
+        <!-- Honest Error Screen -->
+        <div id="playerErrorScreen" class="player-error-overlay">
+          <div style="font-size:2.5rem; margin-bottom:0.5rem;">📡</div>
+          <h3 style="font-size:1.25rem; font-weight:800; margin:0 0 0.5rem 0;">Stream Temporarily Unavailable</h3>
+          <p id="playerErrorMessage" style="font-size:0.875rem; color:var(--wv-text-muted); max-width:480px; margin:0 auto 1.25rem auto;">
+            The remote camera feed may be experiencing intermittent maintenance or a scheduled broadcast interruption.
+          </p>
+          <div style="display:flex; gap:0.75rem; justify-content:center;">
+            <button type="button" id="btnRetryStream" class="wv-btn-toggle" style="background:var(--wv-primary); color:#fff; border:none;">
+              🔄 Retry Connection
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Metadata & Attribution Footer -->
+      <div class="player-dialog-details">
+        <p id="playerDescription" style="font-size:0.875rem; color:var(--wv-text-muted); line-height:1.6; margin:0 0 1rem 0;"></p>
+
+        <div class="player-source-bar">
+          <div>
+            <strong>Verified Source Attribution:</strong>
+            <span id="playerAttribution" style="color:var(--wv-text-muted); margin-left:0.35rem;"></span>
+          </div>
+          <a id="playerSourceLink" href="#" target="_blank" rel="noopener noreferrer" style="color:var(--wv-accent); font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:0.25rem;">
+            Visit Official Source ↗
+          </a>
+        </div>
+
+        <!-- Related Recommendations -->
+        <div class="related-carousel-title">More Cameras in this Region / Category:</div>
+        <div id="playerRelatedGrid" class="related-carousel-grid"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="../" class="brand-logo">
+          <span class="logo-icon">⚡</span>
+          <span class="logo-text">Ecrio<strong>X</strong></span>
+        </a>
+        <p class="brand-tagline">One Platform. Endless Possibilities.</p>
+        <p class="brand-desc">Free, fast, and privacy-conscious online utilities designed for everyday productivity and skill growth.</p>
+      </div>
+
+      <div class="footer-links-group">
+        <div class="footer-col">
+          <h5>WorldView Destinations</h5>
+          <ul>
+            <li><a href="../world-live-cameras/?cam=times-square-ny">Times Square 4K</a></li>
+            <li><a href="../world-live-cameras/?cam=shibuya-crossing-tokyo">Tokyo Shibuya Crossing</a></li>
+            <li><a href="../world-live-cameras/?cam=nasa-iss-live-earth">Earth from Space (NASA)</a></li>
+            <li><a href="../world-live-cameras/?cam=matterhorn-zermatt-alps">Swiss Alps Matterhorn</a></li>
+            <li><a href="../world-live-cameras/?cam=venice-grand-canal">Venice Grand Canal</a></li>
+            <li><a href="../world-live-cameras/?cam=tromso-aurora-borealis">Norway Northern Lights</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Productivity Suites</h5>
+          <ul>
+            <li><a href="../resume-builder/">ATS Resume Builder</a></li>
+            <li><a href="../ats-resume-checker/">ATS Resume Checker</a></li>
+            <li><a href="../typing-speed-test/">Typing Speed Arena</a></li>
+            <li><a href="../pdf-editor/">Online PDF Editor</a></li>
+            <li><a href="../internet-speed-test/">Internet Speed Test</a></li>
+            <li><a href="../diwali-wishes-maker/">Diwali Wishes Maker</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Company &amp; Legal</h5>
+          <ul>
+            <li><a href="../about/">About EcrioX</a></li>
+            <li><a href="../contact/">Contact Us</a></li>
+            <li><a href="../privacy/">Privacy Policy</a></li>
+            <li><a href="../terms/">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom container">
+      <p>&copy; 2026 EcrioX. All rights reserved. Platform built for speed and privacy.</p>
+    </div>
+  </footer>
+
+  <!-- Third-Party Libraries -->
+  <!-- Three.js for 3D Globe -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <!-- HLS.js for HLS video playback -->
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  <!-- Leaflet for 2D Map -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- WorldView Application Scripts -->
+  <script src="../js/app.js"></script>
+  <script src="../js/worldview-data.js"></script>
+  <script src="../js/worldview-player.js"></script>
+  <script src="../js/worldview-globe.js"></script>
+  <script src="../js/worldview-ui.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Initialize Globe
+      if (window.ECRIOX_WORLDVIEW_GLOBE) {
+        window.ECRIOX_WORLDVIEW_GLOBE.init('globeContainerWrapper');
+      }
+      // Initialize UI & Search
+      if (window.ECRIOX_WORLDVIEW_UI) {
+        window.ECRIOX_WORLDVIEW_UI.init();
+      }
+    });
+  </script>
+</body>
+</html>

@@ -522,4 +522,11 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <!-- EcrioX WorldView -->
+  <url>
+    <loc>https://ecriox.com/world-live-cameras/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
 </urlset>

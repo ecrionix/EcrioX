@@ -813,6 +813,22 @@ const ECRIOX_TOOLS = [
     status: "available",
     popular: false,
     tags: ["keyword optimizer", "resume keywords", "keyword density", "ats density scanner"]
+  },
+
+  // ==========================================
+  // WORLDVIEW GLOBAL LIVE CAMERAS
+  // ==========================================
+  {
+    id: "world-live-cameras",
+    name: "World Live Cameras",
+    category: "media",
+    categoryName: "Media Tools",
+    description: "Explore the world live through an interactive 3D Earth globe, 2D world map, and verified real-time camera feeds across 7 continents.",
+    route: "/world-live-cameras/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>`,
+    status: "available",
+    popular: true,
+    tags: ["world live cameras", "live webcams", "earth live cameras", "3d globe webcam", "city live camera", "beach webcam", "traffic camera", "nature live stream", "times square live"]
   }
 ];
 
