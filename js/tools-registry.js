@@ -152,6 +152,18 @@ const ECRIOX_TOOLS = [
     popular: true,
     tags: ["pdf", "jpg", "export", "extract image", "pdf to jpg", "pdf to jpeg", "convert pdf to jpg"]
   },
+  {
+    id: "pdf-to-word",
+    name: "PDF to Word Converter",
+    category: "pdf",
+    categoryName: "PDF Tools",
+    description: "Convert PDF documents to editable Microsoft Word (.docx) files online with paragraphs, headings, and formatting preserved.",
+    route: "/pdf-to-word/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>`,
+    status: "available",
+    popular: true,
+    tags: ["pdf", "word", "docx", "convert", "pdf to word", "pdf to docx", "editable"]
+  },
 
   // ==========================================
   // IMAGE TOOLS
@@ -179,6 +191,18 @@ const ECRIOX_TOOLS = [
     status: "available",
     popular: true,
     tags: ["image", "resize", "scale", "dimensions", "pixels", "image resizer online", "resize jpg", "resize png"]
+  },
+  {
+    id: "background-remover",
+    name: "AI Background Remover",
+    category: "image",
+    categoryName: "Image Tools",
+    description: "Remove image backgrounds automatically in seconds. 100% private in-browser AI processing with HD PNG export.",
+    route: "/background-remover/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>`,
+    status: "available",
+    popular: true,
+    tags: ["image", "background remover", "remove bg", "transparent background", "ai", "cutout", "png"]
   },
 
   // ==========================================
@@ -345,12 +369,12 @@ const ECRIOX_TOOLS = [
     name: "QR Code Generator",
     category: "productivity",
     categoryName: "Productivity Tools",
-    description: "Generate high-resolution QR codes for websites, text, and Wi-Fi credentials with PNG download.",
-    route: "/tools/productivity/qr-code/",
+    description: "Generate custom QR codes for URLs, Wi-Fi, WhatsApp, vCards, emails, and SMS with high-res PNG and SVG download.",
+    route: "/qr-code-generator/",
     icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>`,
     status: "available",
     popular: true,
-    tags: ["qr code", "generator", "barcode", "create qr code", "productivity"]
+    tags: ["qr code", "generator", "barcode", "wifi qr", "whatsapp qr", "vcard qr", "create qr code", "productivity", "svg qr"]
   },
   {
     id: "password-generator",

@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Code Generator – Create Free Custom QR Codes Online | EcrioX</title>
+  <meta name="description" content="Create free QR codes online for websites, Wi-Fi, WhatsApp, contacts, email and more. Customize colours, add logos, and download QR codes in PNG or SVG format with 100% private in-browser generation.">
+  <link rel="canonical" href="https://ecriox.com/qr-code-generator/">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="QR Code Generator – Create Free Custom QR Codes Online | EcrioX">
+  <meta property="og:description" content="Generate high-resolution custom QR codes for URLs, Wi-Fi, WhatsApp, vCards, and emails. Download PNG and SVG formats.">
+  <meta property="og:url" content="https://ecriox.com/qr-code-generator/">
+  <meta property="og:site_name" content="EcrioX">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="QR Code Generator – EcrioX">
+  <meta name="twitter:description" content="Create custom QR codes in PNG and SVG with logos and colors online for free.">
+
+  <!-- Global Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i){
+  w[l]=w[l]||[];
+  w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),
+  dl=l!='dataLayer'?'&l='+l:'';
+  j.async=true;
+  j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+  f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PQFRBJ9F');
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Schema.org SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "EcrioX QR Code Generator",
+    "url": "https://ecriox.com/qr-code-generator/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "description": "Professional in-browser QR code generator supporting URLs, Wi-Fi, WhatsApp, vCards, SMS, emails, and geo-locations with PNG and SVG download.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .qr-studio-layout {
+      display: grid;
+      grid-template-columns: 1.25fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .qr-studio-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+    .panel-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+    }
+    .type-button-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .qr-type-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.75rem 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border: 1px solid var(--border-color);
+      background: var(--bg-surface-alt);
+      border-radius: var(--radius-md);
+      color: var(--text-heading);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: center;
+    }
+    .qr-type-btn:hover {
+      border-color: var(--color-primary);
+      background: var(--bg-surface);
+    }
+    .qr-type-btn.active {
+      border-color: var(--color-primary);
+      background: rgba(37, 99, 235, 0.08);
+      color: var(--color-primary);
+    }
+    .qr-type-btn svg {
+      width: 18px;
+      height: 18px;
+    }
+    .qr-preview-card {
+      position: sticky;
+      top: 2rem;
+      text-align: center;
+    }
+    .qr-canvas-holder {
+      background: var(--bg-surface-alt);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      min-height: 320px;
+    }
+    #previewCanvas {
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-md);
+    }
+    .custom-row-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .color-swatch-input {
+      width: 100%;
+      height: 40px;
+      padding: 2px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+      background: transparent;
+      cursor: pointer;
+    }
+    .logo-upload-box {
+      border: 1px dashed var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      background: var(--bg-surface-alt);
+    }
+  </style>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript>
+  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQFRBJ9F" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- Global Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="brand-logo" aria-label="EcrioX Home">
+        <div class="logo-symbol">E</div>
+        <span>Ecrio<span class="accent-dot">X</span></span>
+      </a>
+
+      <nav class="nav-desktop">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/tools/" class="nav-link">All Tools</a>
+        <a href="/categories/" class="nav-link">Categories</a>
+        <a href="/about/" class="nav-link">About</a>
+        <a href="/contact/" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn-icon theme-toggle-btn" aria-label="Toggle color theme">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <button class="btn-icon mobile-toggle" aria-label="Open mobile menu" aria-expanded="false">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav">
+    <a href="/" class="nav-link">Home</a>
+    <a href="/tools/" class="nav-link">All Tools</a>
+    <a href="/categories/" class="nav-link">Categories</a>
+    <a href="/about/" class="nav-link">About</a>
+    <a href="/contact/" class="nav-link">Contact</a>
+  </div>
+
+  <main class="page-wrapper">
+    <div class="page-header">
+      <div class="container">
+        <!-- Breadcrumbs -->
+        <nav class="breadcrumbs" aria-label="Breadcrumb" style="justify-content: center;">
+          <a href="/">Home</a>
+          <span class="separator">/</span>
+          <a href="/tools/">Tools</a>
+          <span class="separator">/</span>
+          <a href="/tools/productivity/">Productivity</a>
+          <span class="separator">/</span>
+          <span>QR Code Generator</span>
+        </nav>
+        <span class="section-pill">Barcode & Scan</span>
+        <h1 class="page-title">Custom QR Code Generator</h1>
+        <p class="page-subtitle">Create high-resolution QR codes for websites, Wi-Fi networks, WhatsApp chats, vCard contacts, and email. Customize colors, add center logos, and download crisp PNG or SVG files.</p>
+      </div>
+    </div>
+
+    <div class="container" style="padding-bottom: 5rem;">
+      <div class="qr-studio-layout">
+        <!-- Left: Input & Customization Panel -->
+        <div class="panel-card">
+          <h2 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-heading);">1. Select Content Type</h2>
+
+          <!-- 9 QR Types -->
+          <div class="type-button-bar" role="tablist">
+            <button type="button" class="qr-type-btn active" data-type="url">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+              <span>Website</span>
+            </button>
+            <button type="button" class="qr-type-btn" data-type="text">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 7 4 4 20 4 20 7"></polyline><line x1="9" y1="20" x2="15" y2="20"></line><line x1="12" y1="4" x2="12" y2="20"></line></svg>
+              <span>Plain Text</span>
+            </button>
+            <button type="button" class="qr-type-btn" data-type="wifi">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"></path><path d="M1.42 9a16 16 0 0 1 21.16 0"></path><path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path><line x1="12" y1="20" x2="12.01" y2="20"></line></svg>
+              <span>Wi-Fi</span>
+            </button>
+            <button type="button" class="qr-type-btn" data-type="whatsapp">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+              <span>WhatsApp</span>
+            </button>
+            <button type="button" class="qr-type-btn" data-type="vcard">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+              <span>Contact (vCard)</span>
+            </button>
+            <button type="button" class="qr-type-btn" data-type="email">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              <span>Email</span>
+            </button>
+            <button type="button" class="qr-type-btn" data-type="phone">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              <span>Phone</span>
+            </button>
+            <button type="button" class="qr-type-btn" data-type="sms">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+              <span>SMS</span>
+            </button>
+            <button type="button" class="qr-type-btn" data-type="location">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <span>Location</span>
+            </button>
+          </div>
+
+          <!-- Forms -->
+          <div id="formSection" style="margin-bottom: 1.5rem;">
+            <!-- URL Form -->
+            <div id="formUrl" class="type-form">
+              <label for="inputUrl" style="display: block; font-weight: 600; font-size: 0.875rem; margin-bottom: 0.4rem;">Website URL</label>
+              <input type="url" id="inputUrl" class="control-input" value="https://ecriox.com/" placeholder="https://example.com">
+            </div>
+
+            <!-- Text Form -->
+            <div id="formText" class="type-form" style="display: none;">
+              <label for="inputText" style="display: block; font-weight: 600; font-size: 0.875rem; margin-bottom: 0.4rem;">Plain Text</label>
+              <textarea id="inputText" class="control-input" style="height: 100px; resize: vertical;" placeholder="Type your text or announcement here..."></textarea>
+            </div>
+
+            <!-- Wi-Fi Form -->
+            <div id="formWifi" class="type-form" style="display: none;">
+              <div style="margin-bottom: 0.75rem;">
+                <label for="inputWifiSsid" style="display: block; font-weight: 600; font-size: 0.875rem; margin-bottom: 0.35rem;">Network Name (SSID)</label>
+                <input type="text" id="inputWifiSsid" class="control-input" placeholder="e.g. Office_Guest_WiFi">
+              </div>
+              <div style="margin-bottom: 0.75rem;">
+                <label for="inputWifiPassword" style="display: block; font-weight: 600; font-size: 0.875rem; margin-bottom: 0.35rem;">Password</label>
+                <input type="text" id="inputWifiPassword" class="control-input" placeholder="Wi-Fi Password">
+              </div>
+              <div class="custom-row-grid">
+                <div>
+                  <label for="selWifiAuth" style="display: block; font-weight: 600; font-size: 0.875rem; margin-bottom: 0.35rem;">Encryption</label>
+                  <select id="selWifiAuth" class="control-input">
+                    <option value="WPA" selected>WPA/WPA2/WPA3</option>
+                    <option value="WEP">WEP</option>
+                    <option value="nopass">None (Open)</option>
+                  </select>
+                </div>
+                <div style="display: flex; align-items: center; padding-top: 1.25rem;">
+                  <label style="display: flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; cursor: pointer;">
+                    <input type="checkbox" id="chkWifiHidden">
+                    <span>Hidden SSID</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- WhatsApp Form -->
+            <div id="formWhatsapp" class="type-form" style="display: none;">
+              <div style="margin-bottom: 0.75rem;">
+                <label for="inputWaPhone" style="display: block; font-weight: 600; font-size: 0.875rem; margin-bottom: 0.35rem;">Phone Number (with Country Code)</label>
+                <input type="tel" id="inputWaPhone" class="control-input" placeholder="e.g. 15551234567">
+              </div>
+              <div>
+                <label for="inputWaMsg" style="display: block; font-weight: 600; font-size: 0.875rem; margin-bottom: 0.35rem;">Pre-filled Message (Optional)</label>
+                <textarea id="inputWaMsg" class="control-input" style="height: 70px; resize: vertical;" placeholder="Hi, I am interested in your services!"></textarea>
+              </div>
+            </div>
+
+            <!-- vCard Form -->
+            <div id="formVcard" class="type-form" style="display: none;">
+              <div class="custom-row-grid" style="margin-top: 0; margin-bottom: 0.75rem;">
+                <div>
+                  <label for="inputVcFirst" style="display: block; font-weight: 600; font-size: 0.85rem; margin-bottom: 0.3rem;">First Name</label>
+                  <input type="text" id="inputVcFirst" class="control-input" placeholder="John">
+                </div>
+                <div>
+                  <label for="inputVcLast" style="display: block; font-weight: 600; font-size: 0.85rem; margin-bottom: 0.3rem;">Last Name</label>
+                  <input type="text" id="inputVcLast" class="control-input" placeholder="Doe">
+                </div>
+              </div>
+              <div class="custom-row-grid" style="margin-top: 0; margin-bottom: 0.75rem;">
+                <div>
+                  <label for="inputVcPhone" style="display: block; font-weight: 600; font-size: 0.85rem; margin-bottom: 0.3rem;">Phone</label>
+                  <input type="tel" id="inputVcPhone" class="control-input" placeholder="+1 (555) 000-0000">
+                </div>
+                <div>
+                  <label for="inputVcEmail" style="display: block; font-weight: 600; font-size: 0.85rem; margin-bottom: 0.3rem;">Email</label>
+                  <input type="email" id="inputVcEmail" class="control-input" placeholder="john@example.com">
+                </div>
+              </div>
+              <div class="custom-row-grid" style="margin-top: 0;">
+                <div>
+                  <label for="inputVcOrg" style="display: block; font-weight: 600; font-size: 0.85rem; margin-bottom: 0.3rem;">Company / Organization</label>
+                  <input type="text" id="inputVcOrg" class="control-input" placeholder="EcrioX Technologies">
+                </div>
+                <div>
+                  <label for="inputVcTitle" style="display: block; font-weight: 600; font-size: 0.85rem; margin-bottom: 0.3rem;">Job Title</label>
+                  <input type="text" id="inputVcTitle" class="control-input" placeholder="Principal Architect">
+                </div>
+              </div>
+            </div>
+
+            <!-- Email Form -->
+            <div id="formEmail" class="type-form" style="display: none;">
+              <div style="margin-bottom: 0.75rem;">
+                <label for="inputEmailTo" style="display: block; font-weight: 600; font-size: 0.875rem; margin-bottom: 0.35rem;">Recipient Email</label>
+                <input type="email" id="inputEmailTo" class="control-input" placeholder="support@example.com">
+              </div>
+              <div style="margin-bottom: 0.75rem;">
+                <label for="inputEmailSub" style="display: block; font-weight: 600; font-size: 0.875rem; margin-bottom: 0.35rem;">Subject</label>
+                <input type="text" id="inputEmailSub" class="control-input" placeholder="Inquiry about services">
+              </div>
+              <div>
+                <label for="inputEmailBody" style="display: block; font-weight: 600; font-size: 0.875rem; margin-bottom: 0.35rem;">Message Body</label>
+                <textarea id="inputEmailBody" class="control-input" style="height: 70px; resize: vertical;" placeholder="Type your email body..."></textarea>
+              </div>
+            </div>
+
+            <!-- Phone Form -->
+            <div id="formPhone" class="type-form" style="display: none;">
+              <label for="inputPhoneNum" style="display: block; font-weight: 600; font-size: 0.875rem; margin-bottom: 0.4rem;">Phone Number</label>
+              <input type="tel" id="inputPhoneNum" class="control-input" placeholder="+1 (555) 234-5678">
+            </div>
+
+            <!-- SMS Form -->
+            <div id="formSms" class="type-form" style="display: none;">
+              <div style="margin-bottom: 0.75rem;">
+                <label for="inputSmsNum" style="display: block; font-weight: 600; font-size: 0.875rem; margin-bottom: 0.35rem;">Recipient Phone</label>
+                <input type="tel" id="inputSmsNum" class="control-input" placeholder="+15551234567">
+              </div>
+              <div>
+                <label for="inputSmsBody" style="display: block; font-weight: 600; font-size: 0.875rem; margin-bottom: 0.35rem;">SMS Message</label>
+                <textarea id="inputSmsBody" class="control-input" style="height: 70px; resize: vertical;" placeholder="Type SMS content..."></textarea>
+              </div>
+            </div>
+
+            <!-- Location Form -->
+            <div id="formLocation" class="type-form" style="display: none;">
+              <div class="custom-row-grid" style="margin-top: 0;">
+                <div>
+                  <label for="inputLocLat" style="display: block; font-weight: 600; font-size: 0.85rem; margin-bottom: 0.3rem;">Latitude</label>
+                  <input type="number" id="inputLocLat" step="0.000001" class="control-input" placeholder="e.g. 37.7749">
+                </div>
+                <div>
+                  <label for="inputLocLng" style="display: block; font-weight: 600; font-size: 0.85rem; margin-bottom: 0.3rem;">Longitude</label>
+                  <input type="number" id="inputLocLng" step="0.000001" class="control-input" placeholder="e.g. -122.4194">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Customization Accordion/Section -->
+          <div style="border-top: 1px solid var(--border-color); padding-top: 1.5rem;">
+            <h2 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-heading);">2. Appearance & Styling</h2>
+
+            <div class="custom-row-grid" style="margin-top: 0; margin-bottom: 1rem;">
+              <div>
+                <label for="colForeground" style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.35rem;">QR Foreground Color</label>
+                <input type="color" id="colForeground" value="#000000" class="color-swatch-input">
+              </div>
+              <div>
+                <label for="colBackground" style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.35rem;">Background Color</label>
+                <input type="color" id="colBackground" value="#ffffff" class="color-swatch-input">
+              </div>
+            </div>
+
+            <div class="custom-row-grid" style="margin-top: 0; margin-bottom: 1rem;">
+              <div>
+                <label for="selCorrection" style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.35rem;">Error Correction</label>
+                <select id="selCorrection" class="control-input">
+                  <option value="L">Level L (7% recovery)</option>
+                  <option value="M" selected>Level M (15% recovery)</option>
+                  <option value="Q">Level Q (25% recovery)</option>
+                  <option value="H">Level H (30% - Best for Logos)</option>
+                </select>
+              </div>
+              <div>
+                <label for="selSize" style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.35rem;">Export Resolution</label>
+                <select id="selSize" class="control-input">
+                  <option value="300">Standard (300 &times; 300 px)</option>
+                  <option value="600" selected>High-Res (600 &times; 600 px)</option>
+                  <option value="1200">Print Quality (1200 &times; 1200 px)</option>
+                  <option value="2400">Ultra Print (2400 &times; 2400 px)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Optional Center Logo -->
+            <div style="margin-top: 1rem;">
+              <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.4rem;">Center Logo (Optional)</label>
+              <div class="logo-upload-box">
+                <input type="file" id="inputLogoFile" accept="image/png,image/jpeg,image/svg+xml" style="font-size: 0.8rem;">
+                <button type="button" class="btn btn-sm btn-secondary" id="btnRemoveLogo" style="display: none; padding: 0.2rem 0.5rem; font-size: 0.75rem;">Remove</button>
+              </div>
+              <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.35rem;">Level H error correction is automatically applied when adding a center logo.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Live Preview & Downloads -->
+        <div class="panel-card qr-preview-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+            <h2 style="font-size: 1.15rem; font-weight: 700; color: var(--text-heading); margin: 0;">Live QR Preview</h2>
+            <button type="button" class="btn btn-sm btn-secondary" id="btnResetAll">Reset</button>
+          </div>
+
+          <div class="qr-canvas-holder">
+            <canvas id="previewCanvas" width="300" height="300"></canvas>
+          </div>
+
+          <!-- Download Action Bar -->
+          <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+              <button type="button" class="btn btn-primary" id="btnDownloadPng">Download PNG</button>
+              <button type="button" class="btn btn-secondary" id="btnDownloadSvg">Download SVG</button>
+            </div>
+            <button type="button" class="btn btn-secondary" id="btnCopyImage">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 0.4rem;"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              Copy QR Image
+            </button>
+          </div>
+
+          <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 1.25rem; line-height: 1.4;">
+            Static QR Code &bull; Permanent &bull; Never Expires &bull; 100% Client-Side Privacy
+          </div>
+        </div>
+      </div>
+
+      <!-- Designated AdSense Slot -->
+      <div class="ad-slot-container">
+        <div class="ad-slot-card">
+          <span>Advertisement Placement Area</span>
+        </div>
+      </div>
+
+      <!-- Educational Content & SEO -->
+      <article class="tool-content-section">
+        <h2>What is a QR Code?</h2>
+        <p>
+          A QR Code (Quick Response Code) is a two-dimensional matrix barcode originally developed in 1994 by the Japanese engineering firm Denso Wave. Unlike traditional one-dimensional barcodes that encode information only along a single horizontal axis, QR codes store data both vertically and horizontally in a matrix of square modules.
+        </p>
+        <p>
+          This two-dimensional architecture allows QR codes to store up to 7,089 numeric characters or 4,296 alphanumeric characters, compared to roughly 20 digits in a standard retail barcode.
+        </p>
+
+        <h2>How to Create a QR Code Online</h2>
+        <ol>
+          <li><strong>Select your content type:</strong> Choose from Website URL, Plain Text, Wi-Fi credentials, WhatsApp chat, vCard digital business card, Email, Phone number, SMS, or Geographical coordinates.</li>
+          <li><strong>Enter your parameters:</strong> Fill in the required fields. For Wi-Fi, provide the network SSID, password, and security protocol. For WhatsApp, input the international phone number.</li>
+          <li><strong>Customize your design:</strong> Select custom brand foreground and background colors, adjust error correction levels, and upload an optional center brand logo.</li>
+          <li><strong>Download in high resolution:</strong> Export a crisp, print-ready PNG image (up to 2400&times;2400 pixels) or a resolution-independent vector SVG file.</li>
+        </ol>
+
+        <h2>Static vs. Dynamic QR Codes</h2>
+        <p>
+          It is critical for business owners and developers to understand the distinction between static and dynamic QR codes:
+        </p>
+        <ul>
+          <li><strong>Static QR Codes (Generated by EcrioX):</strong> The destination URL or data payload is encoded directly into the pixel pattern itself. Static QR codes <em>never expire</em>, require zero subscriptions, have no scan limits, and function permanently without contacting any intermediary server. Because processing occurs entirely inside your browser, sensitive Wi-Fi passwords and personal contact details are never transmitted over the network.</li>
+          <li><strong>Dynamic QR Codes:</strong> The QR code encodes a short redirect link hosted on an external server, allowing the final destination to be modified later and tracking scan analytics. However, if the hosting service ceases operation or imposes a paywall, dynamic QR codes stop working immediately.</li>
+        </ul>
+
+        <h2>Types of QR Codes Supported by EcrioX</h2>
+        <ul>
+          <li><strong>Website URLs:</strong> Direct smartphone cameras straight to your homepage, landing page, or online portfolio.</li>
+          <li><strong>Wi-Fi Networks:</strong> Allow guests and customers to join your protected Wi-Fi network instantly without manually typing passwords.</li>
+          <li><strong>WhatsApp Links:</strong> Initiate direct one-click WhatsApp customer support conversations with pre-filled greeting text.</li>
+          <li><strong>vCard Digital Contact Cards:</strong> Allow clients to save your full name, telephone, email, company, and website directly into their smartphone address book with a single tap.</li>
+          <li><strong>Geographical Locations:</strong> Open exact GPS coordinates inside Google Maps or Apple Maps.</li>
+        </ul>
+
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-list" style="margin-top: 1.5rem;">
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Are these QR codes completely free for commercial use?</span>
+              <span class="faq-chevron">&#9662;</span>
+            </button>
+            <div class="faq-answer">
+              Yes. The QR codes you generate on EcrioX are 100% free for commercial packaging, brochures, billboards, restaurant menus, and business cards without royalties or attribution.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Do these QR codes have scan limits or expiration dates?</span>
+              <span class="faq-chevron">&#9662;</span>
+            </button>
+            <div class="faq-answer">
+              No. Because these are direct static QR codes, they never expire and can be scanned an unlimited number of times forever.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How does adding a center logo affect scannability?</span>
+              <span class="faq-chevron">&#9662;</span>
+            </button>
+            <div class="faq-answer">
+              When you upload a center logo, our generator automatically elevates the Reed-Solomon error correction to Level H (High), allowing up to 30% of the QR code area to be covered while remaining 100% readable by smartphone cameras.
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Related Tools -->
+      <section style="margin-top: 4rem;">
+        <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 1.5rem; text-align: center;">Related Online Utilities</h3>
+        <div class="grid-tools">
+          <div class="tool-card">
+            <div class="tool-card-header">
+              <div class="tool-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              </div>
+              <span class="badge badge-available">Available</span>
+            </div>
+            <div class="tool-card-body">
+              <h3 class="tool-card-title">Pomodoro Focus Timer</h3>
+              <p class="tool-card-desc">Boost productivity and manage deep work sessions with customizable focus intervals and break reminders.</p>
+            </div>
+            <div class="tool-card-footer">
+              <a href="/tools/productivity/pomodoro/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-card-header">
+              <div class="tool-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              </div>
+              <span class="badge badge-available">Available</span>
+            </div>
+            <div class="tool-card-body">
+              <h3 class="tool-card-title">Secure Password Generator</h3>
+              <p class="tool-card-desc">Generate cryptographically secure passwords with custom character sets and live entropy score meters.</p>
+            </div>
+            <div class="tool-card-footer">
+              <a href="/tools/productivity/password-generator/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-card-header">
+              <div class="tool-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+              </div>
+              <span class="badge badge-available">Available</span>
+            </div>
+            <div class="tool-card-body">
+              <h3 class="tool-card-title">Image Resizer</h3>
+              <p class="tool-card-desc">Resize photos and graphics by exact pixel dimensions or percentages with aspect ratio lock.</p>
+            </div>
+            <div class="tool-card-footer">
+              <a href="/image-resizer/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="/" class="brand-logo">
+            <div class="logo-symbol">E</div>
+            <span>Ecrio<span class="accent-dot">X</span></span>
+          </a>
+          <p>One Platform. Endless Possibilities. Free, fast, and privacy-conscious online utilities designed for everyday productivity.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Popular Tools</h4>
+          <ul class="footer-links">
+            <li><a href="/qr-code-generator/">QR Code Generator</a></li>
+            <li><a href="/image-resizer/">Image Resizer</a></li>
+            <li><a href="/pdf-compressor/">PDF Compressor</a></li>
+            <li><a href="/tools/developer/json-formatter/">JSON Formatter</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="/about/">About EcrioX</a></li>
+            <li><a href="/contact/">Contact Support</a></li>
+            <li><a href="/contact/">Feedback</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul class="footer-links">
+            <li><a href="/privacy/">Privacy Policy</a></li>
+            <li><a href="/terms/">Terms of Use</a></li>
+            <li><a href="/about/#privacy-architecture">Data Security</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 EcrioX. All rights reserved. Platform built for speed and privacy.</p>
+        <p>Canonical Domain: <a href="https://ecriox.com/" style="color: var(--color-primary);">ecriox.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- QR Code Generator Library -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+  <script src="../js/tools-registry.js"></script>
+  <script src="../js/analytics.js"></script>
+  <script src="../js/app.js"></script>
+  <script src="tool.js"></script>
+</body>
+</html>

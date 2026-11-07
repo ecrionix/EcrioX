@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Background Remover – Free AI Image Background Remover Online | EcrioX</title>
+  <meta name="description" content="Remove backgrounds from images instantly for free using state-of-the-art AI. 100% private in-browser processing with no signups, no watermarks, and no file uploads to external servers.">
+  <link rel="canonical" href="https://ecriox.com/background-remover/">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Background Remover – Free AI Image Background Remover Online | EcrioX">
+  <meta property="og:description" content="Erase image backgrounds automatically in seconds. 100% client-side AI processing with transparent PNG export and customizable backdrops.">
+  <meta property="og:url" content="https://ecriox.com/background-remover/">
+  <meta property="og:site_name" content="EcrioX">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Background Remover – Free AI Online | EcrioX">
+  <meta name="twitter:description" content="Remove image backgrounds online in your browser. Free, private, and high-resolution export.">
+
+  <!-- Global Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i){
+  w[l]=w[l]||[];
+  w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),
+  dl=l!='dataLayer'?'&l='+l:'';
+  j.async=true;
+  j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+  f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PQFRBJ9F');
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Schema.org SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "EcrioX Background Remover",
+    "url": "https://ecriox.com/background-remover/",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "All",
+    "description": "Browser-based AI background remover powered by machine learning running 100% locally in the user's browser. Generates high-resolution transparent cutouts with zero server uploads.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    /* Background Remover Studio Styles */
+    .bg-remover-container {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+    
+    .dropzone-card {
+      background: var(--bg-surface);
+      border: 2px dashed var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 3.5rem 2rem;
+      text-align: center;
+      cursor: pointer;
+      transition: var(--transition);
+      position: relative;
+    }
+    .dropzone-card:hover, .dropzone-card.dragover {
+      border-color: var(--color-primary);
+      background: var(--color-primary-light);
+    }
+    .dropzone-icon {
+      width: 68px;
+      height: 68px;
+      margin: 0 auto 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-primary-light);
+      color: var(--color-primary);
+      border-radius: var(--radius-full);
+      font-size: 2rem;
+    }
+
+    /* Progress Banner */
+    .progress-banner {
+      display: none;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      margin-top: 1.5rem;
+      text-align: center;
+    }
+    .progress-bar-track {
+      width: 100%;
+      height: 10px;
+      background: var(--bg-subtle);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+      margin: 1rem 0 0.5rem;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--color-primary), #6366f1);
+      border-radius: var(--radius-full);
+      transition: width 0.25s ease;
+    }
+
+    /* Comparison Studio */
+    .studio-card {
+      display: none;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      margin-top: 1.5rem;
+    }
+    
+    .studio-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    /* Slider Container */
+    .comparison-wrapper {
+      position: relative;
+      width: 100%;
+      max-height: 560px;
+      min-height: 320px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      user-select: none;
+      touch-action: pan-y;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f1f5f9;
+      box-shadow: inset 0 0 0 1px var(--border-color);
+    }
+
+    /* Checkerboard Pattern for Transparency */
+    .checkerboard-bg {
+      background-color: #ffffff;
+      background-image: 
+        linear-gradient(45deg, #e2e8f0 25%, transparent 25%), 
+        linear-gradient(-45deg, #e2e8f0 25%, transparent 25%), 
+        linear-gradient(45deg, transparent 75%, #e2e8f0 75%), 
+        linear-gradient(-45deg, transparent 75%, #e2e8f0 75%);
+      background-size: 20px 20px;
+      background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+    }
+
+    .slider-stage {
+      position: relative;
+      display: inline-block;
+      max-width: 100%;
+      max-height: 560px;
+      line-height: 0;
+    }
+
+    .slider-img {
+      display: block;
+      max-width: 100%;
+      max-height: 540px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .slider-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 50%;
+      overflow: hidden;
+      border-right: 2px solid #ffffff;
+      box-shadow: 2px 0 8px rgba(0,0,0,0.25);
+    }
+
+    .slider-overlay .slider-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      max-width: none;
+      height: 100%;
+    }
+
+    /* Slider Handle */
+    .slider-handle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-full);
+      background: #ffffff;
+      color: #0f172a;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: ew-resize;
+      z-index: 10;
+      pointer-events: none;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    /* Studio Controls */
+    .studio-controls {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1.5rem;
+      align-items: center;
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border-color);
+    }
+    @media (max-width: 768px) {
+      .studio-controls {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .bg-options-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .bg-opt-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-right: 0.25rem;
+    }
+
+    .bg-swatch {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-full);
+      border: 2px solid var(--border-color);
+      cursor: pointer;
+      transition: var(--transition);
+      position: relative;
+    }
+    .bg-swatch:hover, .bg-swatch.active {
+      transform: scale(1.15);
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 2px var(--color-primary-light);
+    }
+    .bg-swatch.transparent {
+      background-image: 
+        linear-gradient(45deg, #cbd5e1 25%, transparent 25%), 
+        linear-gradient(-45deg, #cbd5e1 25%, transparent 25%), 
+        linear-gradient(45deg, transparent 75%, #cbd5e1 75%), 
+        linear-gradient(-45deg, transparent 75%, #cbd5e1 75%);
+      background-size: 8px 8px;
+    }
+
+    .custom-color-input {
+      width: 32px;
+      height: 32px;
+      border: none;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      padding: 0;
+      background: transparent;
+    }
+
+    .action-btn-group {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    /* SEO Feature Badges */
+    .features-badge-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin: 3.5rem 0 2.5rem;
+    }
+    .badge-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .badge-card svg {
+      width: 24px;
+      height: 24px;
+      color: var(--color-primary);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .seo-section {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2rem;
+      margin: 3rem 0;
+    }
+    .seo-section h2 {
+      margin-bottom: 1rem;
+      color: var(--text-main);
+    }
+    .seo-section p, .seo-section li {
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+    .step-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin: 1.75rem 0;
+    }
+    .step-box {
+      background: var(--bg-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+    }
+    .step-number {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--color-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    /* FAQ accordion */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .faq-item {
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: var(--bg-surface);
+    }
+    .faq-question {
+      padding: 1.25rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--bg-surface);
+      border: none;
+      width: 100%;
+      text-align: left;
+      color: var(--text-main);
+    }
+    .faq-answer {
+      padding: 0 1.25rem 1.25rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      display: none;
+    }
+    .faq-item.open .faq-answer {
+      display: block;
+    }
+    .faq-item.open .faq-icon {
+      transform: rotate(180deg);
+    }
+    .faq-icon {
+      transition: transform 0.2s ease;
+    }
+  </style>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQFRBJ9F"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner container">
+      <a href="../" class="brand-logo" aria-label="EcrioX Home">
+        <span class="logo-mark">⚡</span>
+        <span class="logo-text">Ecrio<span class="logo-accent">X</span></span>
+      </a>
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="../tools/" class="nav-link active">All Tools</a>
+        <a href="../tools/pdf/" class="nav-link">PDF Tools</a>
+        <a href="../tools/image/" class="nav-link">Image Tools</a>
+        <a href="../tools/developer/" class="nav-link">Developer</a>
+        <a href="../categories/" class="nav-link">Categories</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light theme">
+          <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-main container" style="padding-top: 2rem; padding-bottom: 4rem;">
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb" style="margin-bottom: 1.5rem;">
+      <a href="../">Home</a>
+      <span class="bc-sep">/</span>
+      <a href="../tools/image/">Image Tools</a>
+      <span class="bc-sep">/</span>
+      <span class="bc-current">Background Remover</span>
+    </nav>
+
+    <div class="bg-remover-container">
+      <!-- Hero Intro -->
+      <div style="text-align: center; margin-bottom: 2.25rem;">
+        <span class="badge" style="background: var(--color-primary-light); color: var(--color-primary); font-weight: 700; margin-bottom: 0.75rem; display: inline-block;">AI-POWERED • 100% PRIVATE</span>
+        <h1 style="font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800; color: var(--text-main); margin-bottom: 0.75rem; letter-spacing: -0.02em;">Free AI Background Remover</h1>
+        <p style="color: var(--text-muted); font-size: 1.15rem; max-width: 680px; margin: 0 auto;">
+          Remove backgrounds from photos automatically in seconds. Powered by cutting-edge neural networks running 100% in your browser. Zero uploads, zero subscriptions, crisp edges.
+        </p>
+      </div>
+
+      <!-- Upload Dropzone -->
+      <div class="dropzone-card" id="dropzone" role="button" tabindex="0" aria-label="Upload image to remove background">
+        <input type="file" id="file-input" accept="image/jpeg, image/png, image/webp" style="display: none;">
+        <div class="dropzone-icon">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="17 8 12 3 7 8"></polyline>
+            <line x1="12" y1="3" x2="12" y2="15"></line>
+          </svg>
+        </div>
+        <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-main);">Drop your photo here, or <span style="color: var(--color-primary); text-decoration: underline;">browse files</span></h3>
+        <p style="color: var(--text-subtle); font-size: 0.9rem;">Supports JPG, PNG, and WebP up to 25MB • No server uploads</p>
+      </div>
+
+      <!-- Real-time Model & Inference Progress Banner -->
+      <div class="progress-banner" id="progress-banner">
+        <div style="display: flex; align-items: center; justify-content: center; gap: 0.75rem; margin-bottom: 0.5rem;">
+          <div class="spinner" style="width: 20px; height: 20px; border: 2px solid var(--border-color); border-top-color: var(--color-primary); border-radius: 50%; animation: spin 0.8s linear infinite;"></div>
+          <span id="progress-status" style="font-weight: 600; color: var(--text-main); font-size: 1rem;">Initializing AI engine...</span>
+        </div>
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill" id="progress-fill"></div>
+        </div>
+        <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-subtle);">
+          <span id="progress-details">Loading model weights (one-time browser download)</span>
+          <span id="progress-percent">0%</span>
+        </div>
+      </div>
+
+      <!-- Studio Comparison & Customization Interface -->
+      <div class="studio-card" id="studio-card">
+        <div class="studio-header">
+          <div>
+            <span style="font-weight: 700; color: var(--text-main); font-size: 1.05rem;" id="image-name">image.png</span>
+            <span style="color: var(--text-subtle); font-size: 0.85rem; margin-left: 0.75rem;" id="image-meta">1920 × 1080</span>
+          </div>
+          <div style="display: flex; gap: 0.5rem;">
+            <button class="btn btn-secondary" id="btn-reset" style="padding: 0.4rem 0.9rem; font-size: 0.85rem;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 4px; vertical-align: middle;"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path><path d="M21 3v5h-5"></path><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"></path><path d="M8 16H3v5"></path></svg>
+              Upload New Photo
+            </button>
+          </div>
+        </div>
+
+        <!-- Before / After Split Slider Stage -->
+        <div class="comparison-wrapper checkerboard-bg" id="comparison-wrapper">
+          <div class="slider-stage" id="slider-stage">
+            <!-- Cutout Canvas (Bottom Layer) -->
+            <canvas id="output-canvas" class="slider-img"></canvas>
+            
+            <!-- Original Image Overlay (Top Layer - Left Half) -->
+            <div class="slider-overlay" id="slider-overlay">
+              <img id="original-img" class="slider-img" alt="Original photo before background removal">
+            </div>
+
+            <!-- Draggable Center Handle -->
+            <div class="slider-handle" id="slider-handle" title="Drag to compare before and after">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline><polyline points="9 18 3 12 9 6" style="display:none;"></polyline><polyline points="19 18 13 12 19 6" style="display:none;"></polyline></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Controls: Background options & Download buttons -->
+        <div class="studio-controls">
+          <div class="bg-options-row">
+            <span class="bg-opt-label">Background:</span>
+            <!-- Transparent Swatch -->
+            <button type="button" class="bg-swatch transparent active" data-bg="transparent" title="Transparent Alpha"></button>
+            <!-- White Swatch -->
+            <button type="button" class="bg-swatch" data-bg="#ffffff" style="background: #ffffff;" title="Clean White"></button>
+            <!-- Black Swatch -->
+            <button type="button" class="bg-swatch" data-bg="#000000" style="background: #000000;" title="Deep Black"></button>
+            <!-- Slate Swatch -->
+            <button type="button" class="bg-swatch" data-bg="#64748b" style="background: #64748b;" title="Studio Slate"></button>
+            <!-- Soft Blue Swatch -->
+            <button type="button" class="bg-swatch" data-bg="#3b82f6" style="background: #3b82f6;" title="Electric Blue"></button>
+            <!-- Emerald Swatch -->
+            <button type="button" class="bg-swatch" data-bg="#10b981" style="background: #10b981;" title="Emerald Green"></button>
+            <!-- Rose Swatch -->
+            <button type="button" class="bg-swatch" data-bg="#f43f5e" style="background: #f43f5e;" title="Vibrant Rose"></button>
+            <!-- Custom Color Picker -->
+            <label title="Custom Background Color" style="display: flex; align-items: center; cursor: pointer;">
+              <input type="color" id="custom-color-picker" class="custom-color-input" value="#6366f1">
+            </label>
+            <!-- Custom Image Backdrop -->
+            <label class="btn btn-secondary" style="padding: 0.35rem 0.75rem; font-size: 0.8rem; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+              <span>Add Custom Backdrop</span>
+              <input type="file" id="backdrop-input" accept="image/*" style="display: none;">
+            </label>
+          </div>
+
+          <div class="action-btn-group">
+            <button class="btn btn-secondary" id="btn-copy" style="padding: 0.65rem 1.15rem;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px;"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              Copy Image
+            </button>
+            <button class="btn btn-primary" id="btn-download" style="padding: 0.65rem 1.5rem; font-weight: 700;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              Download HD PNG
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature Badges -->
+      <div class="features-badge-grid">
+        <div class="badge-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          <div>
+            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">100% In-Browser Privacy</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Photos never leave your device. The AI model executes entirely on your hardware via WebGPU / WebAssembly.</p>
+          </div>
+        </div>
+        <div class="badge-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          <div>
+            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">Instant AI Segmentation</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Powered by RMBG-1.4, state-of-the-art salient object detection that accurately handles hair, fur, and intricate edges.</p>
+          </div>
+        </div>
+        <div class="badge-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+          <div>
+            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">High-Resolution Cutouts</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Export full-resolution PNG files without artificial downscaling or forced compression.</p>
+          </div>
+        </div>
+        <div class="badge-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <div>
+            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">No Limits or Watermarks</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">No account required, no daily credit restrictions, and zero branding watermarks on your final downloads.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEO Informational Content -->
+      <section class="seo-section">
+        <h2>How to Remove Backgrounds from Images Online</h2>
+        <p>
+          Erasing an unwanted background from a photograph used to require hours of manual pen-tool tracing in expensive desktop software. EcrioX provides an intelligent, automated AI background remover that runs entirely inside your web browser. Follow these three simple steps to achieve professional studio-quality cutouts:
+        </p>
+
+        <div class="step-grid">
+          <div class="step-box">
+            <div class="step-number">1</div>
+            <h4 style="font-weight: 700; margin-bottom: 0.5rem; color: var(--text-main);">Upload Image</h4>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0;">Drag and drop any JPG, PNG, or WebP photo into the upload box or select a file from your device.</p>
+          </div>
+          <div class="step-box">
+            <div class="step-number">2</div>
+            <h4 style="font-weight: 700; margin-bottom: 0.5rem; color: var(--text-main);">Automatic AI Cutout</h4>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0;">The neural network detects the primary subject, separates foreground edges cleanly, and generates an alpha mask in seconds.</p>
+          </div>
+          <div class="step-box">
+            <div class="step-number">3</div>
+            <h4 style="font-weight: 700; margin-bottom: 0.5rem; color: var(--text-main);">Customize & Download</h4>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0;">Preview the split comparison slider, choose transparent or colored backdrops, and download the crisp high-resolution PNG.</p>
+          </div>
+        </div>
+
+        <h3 style="margin: 2rem 0 0.75rem; color: var(--text-main);">Why Browser-Based AI Guarantees 100% Privacy</h3>
+        <p>
+          Traditional online background removers require you to upload your personal photos, ID documents, or proprietary product photos to remote cloud servers. Those servers store, process, and occasionally retain user imagery.
+        </p>
+        <p>
+          EcrioX uses state-of-the-art WebAssembly (WASM) and WebGPU technologies via Transformers.js. The AI model weights are temporarily loaded into your browser's local cache. All mathematical matrix operations, pixel segmentation, and alpha blending happen locally on your device's GPU or CPU. <strong>Your images never leave your computer or smartphone.</strong>
+        </p>
+
+        <h3 style="margin: 2rem 0 0.75rem; color: var(--text-main);">Perfect Use Cases for Transparent Backgrounds</h3>
+        <ul style="padding-left: 1.25rem;">
+          <li><strong>E-commerce Product Photography:</strong> Meet Amazon, eBay, Shopify, and Google Shopping requirements with crisp pure white or transparent backgrounds.</li>
+          <li><strong>Portraits & Professional Headshots:</strong> Remove messy office or outdoor backgrounds from team avatars and LinkedIn profile pictures.</li>
+          <li><strong>Marketing & Social Media Graphics:</strong> Effortlessly isolate logos, stickers, and models to compose vibrant YouTube thumbnails, Instagram posts, and presentation decks.</li>
+          <li><strong>Signature & Document Extraction:</strong> Cleanly isolate handwritten signatures and stamp graphics for digital contract placement.</li>
+        </ul>
+
+        <!-- Frequently Asked Questions -->
+        <h3 style="margin: 2.5rem 0 1rem; color: var(--text-main);">Frequently Asked Questions (FAQ)</h3>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>Is this AI background remover completely free?</span>
+              <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              Yes! EcrioX Background Remover is 100% free with no monthly subscription, no signups, no credit limits, and no watermark stamps on your exported PNG files.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>Are my images uploaded to any servers?</span>
+              <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              No. Unlike almost all other online background removal services, EcrioX runs the AI segmentation model completely within your browser using WebAssembly. Your photos never touch any external server.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>Why does the first image take a few seconds to load?</span>
+              <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              On your very first use, your browser downloads the lightweight neural network weights. Once downloaded, your browser caches the model, making subsequent background removals significantly faster.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>What image file formats and sizes are supported?</span>
+              <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              We support standard image formats including JPEG, PNG, and WebP up to 25MB. High-resolution images are processed and exported at full fidelity.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>Can I replace the background with a solid color or custom image?</span>
+              <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              Yes. You can switch between transparent alpha cutout, solid white, studio black, vibrant brand color swatches, a custom color picker, or upload your own custom photo backdrop.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>How do I get the cleanest cutout edges?</span>
+              <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              For best results, use photos with good lighting, sharp focus on the main subject, and reasonable contrast between the foreground subject and background surroundings.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Related Image Tools -->
+      <section style="margin-top: 3rem;">
+        <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 1.25rem; color: var(--text-main);">More Free Image Utilities</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem;">
+          <a href="../image-resizer/" style="display: block; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; text-decoration: none; color: inherit; transition: var(--transition);">
+            <div style="font-weight: 700; color: var(--color-primary); margin-bottom: 0.25rem;">Image Resizer</div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Resize JPG, PNG, and WebP photos by dimensions or percentage with aspect ratio lock.</p>
+          </a>
+          <a href="../jpg-to-pdf/" style="display: block; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; text-decoration: none; color: inherit; transition: var(--transition);">
+            <div style="font-weight: 700; color: var(--color-primary); margin-bottom: 0.25rem;">JPG to PDF</div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Convert images into a single professional PDF document with custom margins.</p>
+          </a>
+          <a href="../pdf-to-jpg/" style="display: block; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; text-decoration: none; color: inherit; transition: var(--transition);">
+            <div style="font-weight: 700; color: var(--color-primary); margin-bottom: 0.25rem;">PDF to JPG</div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Extract every page of a PDF document into high-resolution JPG or PNG images.</p>
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner container">
+      <div class="footer-grid">
+        <div class="footer-col brand-col">
+          <div class="brand-logo footer-logo">
+            <span class="logo-mark">⚡</span>
+            <span class="logo-text">Ecrio<span class="logo-accent">X</span></span>
+          </div>
+          <p class="tagline">One Platform. Endless Possibilities.</p>
+          <p class="brand-desc">Fast, private, in-browser online utilities built for developers, designers, students, and professionals worldwide.</p>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Tools</h4>
+          <ul class="footer-links">
+            <li><a href="../tools/pdf/">PDF Tools</a></li>
+            <li><a href="../tools/image/">Image Tools</a></li>
+            <li><a href="../tools/developer/">Developer Tools</a></li>
+            <li><a href="../tools/text/">Text Tools</a></li>
+            <li><a href="../tools/productivity/">Productivity</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Flagship Utilities</h4>
+          <ul class="footer-links">
+            <li><a href="../qr-code-generator/">QR Code Generator</a></li>
+            <li><a href="../background-remover/">Background Remover</a></li>
+            <li><a href="../pdf-to-word/">PDF to Word</a></li>
+            <li><a href="../pdf-compressor/">PDF Compressor</a></li>
+            <li><a href="../image-resizer/">Image Resizer</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Company & Legal</h4>
+          <ul class="footer-links">
+            <li><a href="../about/">About Us</a></li>
+            <li><a href="../contact/">Contact</a></li>
+            <li><a href="../privacy/">Privacy Policy</a></li>
+            <li><a href="../terms/">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 EcrioX. All rights reserved. Zero file uploads — all conversions run in your browser.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/app.js"></script>
+  <script type="module" src="tool.js"></script>
+  <script>
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        item.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>

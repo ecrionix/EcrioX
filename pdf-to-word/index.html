@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PDF to Word Converter – Convert PDF to Editable DOCX Online | EcrioX</title>
+  <meta name="description" content="Convert PDF documents to editable Microsoft Word (.docx) files online for free. 100% private in-browser conversion with headings, text styling, and layout preservation without server uploads.">
+  <link rel="canonical" href="https://ecriox.com/pdf-to-word/">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="PDF to Word Converter – Convert PDF to Editable DOCX Online | EcrioX">
+  <meta property="og:description" content="Convert PDF documents to fully editable Microsoft Word (.docx) files directly in your browser. 100% free and private.">
+  <meta property="og:url" content="https://ecriox.com/pdf-to-word/">
+  <meta property="og:site_name" content="EcrioX">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PDF to Word Converter – EcrioX">
+  <meta name="twitter:description" content="Convert PDF to editable Word DOCX files online in your browser. Fast, free, and private.">
+
+  <!-- Global Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i){
+  w[l]=w[l]||[];
+  w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),
+  dl=l!='dataLayer'?'&l='+l:'';
+  j.async=true;
+  j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+  f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PQFRBJ9F');
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Schema.org SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "EcrioX PDF to Word Converter",
+    "url": "https://ecriox.com/pdf-to-word/",
+    "applicationCategory": "OfficeApplication",
+    "operatingSystem": "All",
+    "description": "Browser-based PDF to Microsoft Word (.docx) converter. Extracts structured text, headings, and font weights into genuine WordprocessingML documents with zero server uploads.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .converter-container {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .dropzone-card {
+      background: var(--bg-surface);
+      border: 2px dashed var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 3.5rem 2rem;
+      text-align: center;
+      cursor: pointer;
+      transition: var(--transition);
+      position: relative;
+    }
+    .dropzone-card:hover, .dropzone-card.dragover {
+      border-color: var(--color-primary);
+      background: var(--color-primary-light);
+    }
+    .dropzone-icon {
+      width: 68px;
+      height: 68px;
+      margin: 0 auto 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(37, 99, 235, 0.08);
+      color: var(--color-primary);
+      border-radius: var(--radius-full);
+      font-size: 2rem;
+    }
+
+    /* Progress & Step Banner */
+    .progress-card {
+      display: none;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem 2rem;
+      margin-top: 1.5rem;
+    }
+    .steps-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 1.75rem;
+    }
+    @media (max-width: 680px) {
+      .steps-list {
+        grid-template-columns: 1fr;
+      }
+    }
+    .step-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1rem;
+      background: var(--bg-subtle);
+      border-radius: var(--radius-md);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      border: 1px solid transparent;
+      transition: var(--transition);
+    }
+    .step-item.active {
+      background: var(--color-primary-light);
+      color: var(--color-primary);
+      border-color: var(--color-primary-border);
+    }
+    .step-item.done {
+      color: var(--color-success);
+    }
+    .step-dot {
+      width: 22px;
+      height: 22px;
+      border-radius: var(--radius-full);
+      background: var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      color: var(--text-main);
+      flex-shrink: 0;
+    }
+    .step-item.active .step-dot {
+      background: var(--color-primary);
+      color: #fff;
+    }
+    .step-item.done .step-dot {
+      background: var(--color-success);
+      color: #fff;
+    }
+
+    .progress-bar-track {
+      width: 100%;
+      height: 10px;
+      background: var(--bg-subtle);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+      margin-top: 1rem;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--color-primary), #2563eb);
+      border-radius: var(--radius-full);
+      transition: width 0.25s ease;
+    }
+
+    /* Completed Result Studio */
+    .result-card {
+      display: none;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem 2rem;
+      margin-top: 1.5rem;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .stat-box {
+      background: var(--bg-subtle);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      border: 1px solid var(--border-color);
+    }
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--text-subtle);
+      margin-bottom: 0.25rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .stat-value {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .doc-preview-pane {
+      background: var(--bg-page);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      max-height: 380px;
+      overflow-y: auto;
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin: 1.5rem 0;
+      color: var(--text-main);
+    }
+    .doc-preview-pane h1, .doc-preview-pane h2, .doc-preview-pane h3 {
+      color: var(--text-main);
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    .doc-preview-pane p {
+      margin-bottom: 0.85rem;
+      color: var(--text-muted);
+    }
+    .doc-page-marker {
+      display: block;
+      border-top: 1px dashed var(--border-color);
+      margin: 1.5rem 0 1rem;
+      padding-top: 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-subtle);
+      text-transform: uppercase;
+    }
+
+    /* Action bar */
+    .result-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border-color);
+    }
+
+    /* Warning box for scanned PDF */
+    .scanned-warning {
+      display: none;
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px solid var(--color-warning);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      margin: 1.25rem 0;
+      color: var(--text-main);
+    }
+
+    /* Features Grid */
+    .features-badge-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin: 3.5rem 0 2.5rem;
+    }
+    .badge-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .badge-card svg {
+      width: 24px;
+      height: 24px;
+      color: var(--color-primary);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* SEO Article */
+    .seo-section {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2rem;
+      margin: 3rem 0;
+    }
+    .seo-section h2 {
+      margin-bottom: 1rem;
+      color: var(--text-main);
+    }
+    .seo-section p, .seo-section li {
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    /* FAQ list */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .faq-item {
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: var(--bg-surface);
+    }
+    .faq-question {
+      padding: 1.25rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--bg-surface);
+      border: none;
+      width: 100%;
+      text-align: left;
+      color: var(--text-main);
+    }
+    .faq-answer {
+      padding: 0 1.25rem 1.25rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      display: none;
+    }
+    .faq-item.open .faq-answer {
+      display: block;
+    }
+    .faq-item.open .faq-icon {
+      transform: rotate(180deg);
+    }
+    .faq-icon {
+      transition: transform 0.2s ease;
+    }
+  </style>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQFRBJ9F"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner container">
+      <a href="../" class="brand-logo" aria-label="EcrioX Home">
+        <span class="logo-mark">⚡</span>
+        <span class="logo-text">Ecrio<span class="logo-accent">X</span></span>
+      </a>
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="../tools/" class="nav-link active">All Tools</a>
+        <a href="../tools/pdf/" class="nav-link">PDF Tools</a>
+        <a href="../tools/image/" class="nav-link">Image Tools</a>
+        <a href="../tools/developer/" class="nav-link">Developer</a>
+        <a href="../categories/" class="nav-link">Categories</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light theme">
+          <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-main container" style="padding-top: 2rem; padding-bottom: 4rem;">
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb" style="margin-bottom: 1.5rem;">
+      <a href="../">Home</a>
+      <span class="bc-sep">/</span>
+      <a href="../tools/pdf/">PDF Tools</a>
+      <span class="bc-sep">/</span>
+      <span class="bc-current">PDF to Word</span>
+    </nav>
+
+    <div class="converter-container">
+      <!-- Hero Intro -->
+      <div style="text-align: center; margin-bottom: 2.25rem;">
+        <span class="badge" style="background: var(--color-primary-light); color: var(--color-primary); font-weight: 700; margin-bottom: 0.75rem; display: inline-block;">100% PRIVATE • CLIENT-SIDE DOCX GENERATION</span>
+        <h1 style="font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800; color: var(--text-main); margin-bottom: 0.75rem; letter-spacing: -0.02em;">Free PDF to Word Converter</h1>
+        <p style="color: var(--text-muted); font-size: 1.15rem; max-width: 680px; margin: 0 auto;">
+          Convert PDF documents into fully editable Microsoft Word (.docx) files. Fast, secure in-browser conversion preserving paragraphs, headings, and formatting without uploading files to any server.
+        </p>
+      </div>
+
+      <!-- Upload Dropzone -->
+      <div class="dropzone-card" id="dropzone" role="button" tabindex="0" aria-label="Upload PDF document to convert to Word">
+        <input type="file" id="file-input" accept="application/pdf" style="display: none;">
+        <div class="dropzone-icon">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+            <polyline points="10 9 9 9 8 9"></polyline>
+          </svg>
+        </div>
+        <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-main);">Drop your PDF here, or <span style="color: var(--color-primary); text-decoration: underline;">browse documents</span></h3>
+        <p style="color: var(--text-subtle); font-size: 0.9rem;">Supports PDF documents up to 50MB • 100% private in-browser conversion</p>
+      </div>
+
+      <!-- Progress Banner -->
+      <div class="progress-card" id="progress-card">
+        <div class="steps-list">
+          <div class="step-item active" id="step-1">
+            <span class="step-dot">1</span>
+            <span>Parse PDF Pages</span>
+          </div>
+          <div class="step-item" id="step-2">
+            <span class="step-dot">2</span>
+            <span>Extract Text & Layout</span>
+          </div>
+          <div class="step-item" id="step-3">
+            <span class="step-dot">3</span>
+            <span>Compile .DOCX File</span>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+          <span id="progress-status" style="font-weight: 700; color: var(--text-main); font-size: 1.05rem;">Extracting document content...</span>
+          <span id="progress-percent" style="font-weight: 700; color: var(--color-primary);">0%</span>
+        </div>
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill" id="progress-fill"></div>
+        </div>
+        <p id="progress-details" style="font-size: 0.85rem; color: var(--text-subtle); margin-top: 0.75rem;">Initializing PDF.js engine...</p>
+      </div>
+
+      <!-- Result Card -->
+      <div class="result-card" id="result-card">
+        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem;">
+          <div style="width: 44px; height: 44px; background: rgba(16, 185, 129, 0.1); color: var(--color-success); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; font-size: 1.25rem; flex-shrink: 0;">
+            ✓
+          </div>
+          <div>
+            <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.2rem;">Conversion Completed Successfully!</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;" id="result-filename">document.docx ready for download</p>
+          </div>
+        </div>
+
+        <!-- Scanned PDF Notice (if few words detected) -->
+        <div class="scanned-warning" id="scanned-warning">
+          <strong>Notice: Low selectable text detected.</strong>
+          <p style="font-size: 0.85rem; margin-top: 0.25rem; margin-bottom: 0;">
+            This PDF appears to contain scanned pages or rasterized images rather than computer-encoded selectable text. Standard Word converters extract digital text streams; for scanned paper, an OCR (Optical Character Recognition) engine is recommended.
+          </p>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="stats-grid">
+          <div class="stat-box">
+            <div class="stat-label">Pages Converted</div>
+            <div class="stat-value" id="stat-pages">0</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Words Extracted</div>
+            <div class="stat-value" id="stat-words">0</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Headings Identified</div>
+            <div class="stat-value" id="stat-headings">0</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Output Format</div>
+            <div class="stat-value" style="color: var(--color-primary);">DOCX</div>
+          </div>
+        </div>
+
+        <!-- Document Structure Preview -->
+        <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--text-main); margin-top: 1.5rem;">Document Content Preview</h4>
+        <div class="doc-preview-pane" id="doc-preview">
+          <!-- Populated dynamically -->
+        </div>
+
+        <!-- Action Bar -->
+        <div class="result-actions">
+          <button class="btn btn-secondary" id="btn-convert-another">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 4px; vertical-align: middle;"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path><path d="M21 3v5h-5"></path><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"></path><path d="M8 16H3v5"></path></svg>
+            Convert Another PDF
+          </button>
+          <button class="btn btn-primary" id="btn-download-docx" style="padding: 0.75rem 1.75rem; font-weight: 700;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            Download Word Document (.docx)
+          </button>
+        </div>
+      </div>
+
+      <!-- Feature Badges -->
+      <div class="features-badge-grid">
+        <div class="badge-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          <div>
+            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">100% In-Browser Privacy</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Your confidential contracts, resumes, and reports never touch a remote server. Everything converts locally.</p>
+          </div>
+        </div>
+        <div class="badge-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+          <div>
+            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">Genuine DOCX Generation</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Generates real Microsoft Office Open XML documents with native Word paragraphs, headings, and bold/italic styles.</p>
+          </div>
+        </div>
+        <div class="badge-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          <div>
+            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">Instant Multi-Page Processing</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Multi-page documents are parsed with accurate page breaks so the output flows naturally into Microsoft Word or Google Docs.</p>
+          </div>
+        </div>
+        <div class="badge-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <div>
+            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem;">Free with No Restrictions</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">No subscription fees, no email registration, no page count quotas, and zero watermarks.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEO Informational Content -->
+      <section class="seo-section">
+        <h2>How to Convert PDF to Word Online for Free</h2>
+        <p>
+          Portable Document Format (PDF) was designed to preserve a fixed visual layout across all screens and printers. However, editing a PDF directly is notoriously difficult without expensive enterprise software. Converting your PDF into a Microsoft Word (.docx) document restores full editorial freedom—allowing you to update text, rewrite sections, fix typos, and reformat content in Microsoft Word, LibreOffice, or Google Docs.
+        </p>
+
+        <h3 style="margin: 2rem 0 0.75rem; color: var(--text-main);">Step-by-Step Instructions</h3>
+        <ol style="padding-left: 1.25rem; color: var(--text-muted); line-height: 1.8;">
+          <li><strong>Upload your PDF:</strong> Drag and drop your document into the conversion area, or click the box to browse files on your computer or mobile device.</li>
+          <li><strong>Automatic Layout Analysis:</strong> Our in-browser engine scans each page, extracting text runs, detecting relative font sizes, and grouping lines into paragraphs and headings.</li>
+          <li><strong>Download DOCX:</strong> Inspect the live preview of the extracted content and click <em>Download Word Document</em> to save your editable .docx file instantly.</li>
+        </ol>
+
+        <h3 style="margin: 2rem 0 0.75rem; color: var(--text-main);">What Formatting Is Preserved?</h3>
+        <p>
+          Unlike primitive tools that dump unformatted raw text or wrap every page in a static background screenshot, EcrioX reconstructs document flow into standard WordprocessingML elements:
+        </p>
+        <ul style="padding-left: 1.25rem;">
+          <li><strong>Document Headings:</strong> Major titles and section subheadings are automatically mapped to Heading 1 and Heading 2 styles based on relative font scale.</li>
+          <li><strong>Text Formatting:</strong> Bold, italic, and oblique font weights are extracted directly from PDF font metadata.</li>
+          <li><strong>Paragraph Boundaries:</strong> Line spacing geometry is analyzed to maintain natural paragraph breaks.</li>
+          <li><strong>Page Separations:</strong> Native Word page breaks are inserted between document pages to retain pagination.</li>
+          <li><strong>Cross-Platform Compatibility:</strong> Converted .docx files open seamlessly in Microsoft Word (Desktop & 365), Google Docs, Apple Pages, and LibreOffice Writer.</li>
+        </ul>
+
+        <h3 style="margin: 2rem 0 0.75rem; color: var(--text-main);">Native PDFs vs Scanned Image PDFs</h3>
+        <p>
+          It is important to understand the difference between <strong>native digital PDFs</strong> and <strong>scanned PDFs</strong>:
+        </p>
+        <p>
+          A <em>native digital PDF</em> is generated directly from software like Microsoft Word, Google Docs, InDesign, or an exported web page. It contains real character streams, coordinates, and embedded font metrics. Our converter achieves near-perfect text accuracy on native PDFs.
+        </p>
+        <p>
+          A <em>scanned PDF</em> is created by taking a physical sheet of paper and feeding it through a scanner or mobile camera. The PDF contains only pictures of words rather than digital letters. If you upload a scanned PDF, our tool will notify you if no selectable characters could be detected.
+        </p>
+
+        <!-- Frequently Asked Questions -->
+        <h3 style="margin: 2.5rem 0 1rem; color: var(--text-main);">Frequently Asked Questions (FAQ)</h3>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>Is this PDF to Word converter really 100% private?</span>
+              <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              Yes. Most online PDF tools send your files to their backend servers for conversion, exposing sensitive documents, legal papers, and personal data. EcrioX processes the PDF completely inside your browser using client-side JavaScript. Your documents are never uploaded.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>Can I edit the converted file in Microsoft Word or Google Docs?</span>
+              <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              Yes. The generated file is a standard Microsoft Office Open XML (.docx) file. You can open and edit it directly in Microsoft Word, upload it to Google Drive to open in Google Docs, or edit it in Apple Pages or LibreOffice.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>Are there any file size or page count limits?</span>
+              <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              Because the conversion runs on your computer's hardware rather than a throttled shared server, there are no artificial limits. You can convert documents of dozens or hundreds of pages without subscription fees.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>Why are some complex layouts or tables slightly rearranged?</span>
+              <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              PDFs do not store sentences or tables in a semantic flow; they place words at precise X and Y coordinates on a canvas. Our layout engine analyzes those spatial coordinates to group words into paragraphs and headers. Highly complex multi-column magazines or borderless financial tables may require minor spacing adjustments in Word.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>Can I convert password-protected PDFs?</span>
+              <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+              If a PDF is protected with an open password, you must enter the password to decrypt the contents before converting. PDFs with standard owner restrictions can be processed normally.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Related PDF Tools -->
+      <section style="margin-top: 3rem;">
+        <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 1.25rem; color: var(--text-main);">More Free PDF Utilities</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem;">
+          <a href="../pdf-compressor/" style="display: block; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; text-decoration: none; color: inherit; transition: var(--transition);">
+            <div style="font-weight: 700; color: var(--color-primary); margin-bottom: 0.25rem;">PDF Compressor</div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Reduce PDF file size while preserving text clarity and document quality.</p>
+          </a>
+          <a href="../merge-pdf/" style="display: block; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; text-decoration: none; color: inherit; transition: var(--transition);">
+            <div style="font-weight: 700; color: var(--color-primary); margin-bottom: 0.25rem;">Merge PDF</div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Combine multiple PDF documents into a single organized document.</p>
+          </a>
+          <a href="../split-pdf/" style="display: block; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; text-decoration: none; color: inherit; transition: var(--transition);">
+            <div style="font-weight: 700; color: var(--color-primary); margin-bottom: 0.25rem;">Split PDF</div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Extract specific pages or page ranges into separate PDF documents.</p>
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner container">
+      <div class="footer-grid">
+        <div class="footer-col brand-col">
+          <div class="brand-logo footer-logo">
+            <span class="logo-mark">⚡</span>
+            <span class="logo-text">Ecrio<span class="logo-accent">X</span></span>
+          </div>
+          <p class="tagline">One Platform. Endless Possibilities.</p>
+          <p class="brand-desc">Fast, private, in-browser online utilities built for developers, designers, students, and professionals worldwide.</p>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Tools</h4>
+          <ul class="footer-links">
+            <li><a href="../tools/pdf/">PDF Tools</a></li>
+            <li><a href="../tools/image/">Image Tools</a></li>
+            <li><a href="../tools/developer/">Developer Tools</a></li>
+            <li><a href="../tools/text/">Text Tools</a></li>
+            <li><a href="../tools/productivity/">Productivity</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Flagship Utilities</h4>
+          <ul class="footer-links">
+            <li><a href="../qr-code-generator/">QR Code Generator</a></li>
+            <li><a href="../background-remover/">Background Remover</a></li>
+            <li><a href="../pdf-to-word/">PDF to Word</a></li>
+            <li><a href="../pdf-compressor/">PDF Compressor</a></li>
+            <li><a href="../image-resizer/">Image Resizer</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Company & Legal</h4>
+          <ul class="footer-links">
+            <li><a href="../about/">About Us</a></li>
+            <li><a href="../contact/">Contact</a></li>
+            <li><a href="../privacy/">Privacy Policy</a></li>
+            <li><a href="../terms/">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 EcrioX. All rights reserved. Zero file uploads — all conversions run in your browser.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- External Libraries: PDF.js & DOCX -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docx@9/dist/index.iife.js"></script>
+
+  <script src="../js/app.js"></script>
+  <script src="tool.js"></script>
+  <script>
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        item.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>
