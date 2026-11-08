@@ -3,21 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>All Online Tools Directory – EcrioX</title>
-  <meta name="description" content="Explore all free online utilities on EcrioX. PDF tools, image compressors, developer utilities, text analyzers, calculators, and productivity apps.">
+  <title>All Online Tools &amp; Utilities Directory – EcrioX</title>
+  <meta name="description" content="Browse all free online tools on EcrioX. Image editors, career studio, typing speed tests, calculators, developer utilities, and converters with 100% browser privacy.">
   <link rel="canonical" href="https://ecriox.com/tools/">
   
   <!-- Open Graph / Social Sharing -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="All Online Tools Directory – EcrioX">
-  <meta property="og:description" content="Browse our complete suite of free, high-speed, and privacy-first online tools.">
+  <meta property="og:title" content="All Online Tools &amp; Utilities Directory – EcrioX">
+  <meta property="og:description" content="Browse our complete suite of free, high-speed, and privacy-first online tools for images, coding, calculations, career, and typing.">
   <meta property="og:url" content="https://ecriox.com/tools/">
   <meta property="og:site_name" content="EcrioX">
   
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="All Online Tools Directory – EcrioX">
-  <meta name="twitter:description" content="Explore all free online tools on EcrioX.">
+  <meta name="twitter:description" content="Explore all free online utilities on EcrioX with 100% private in-browser execution.">
 
   <!-- Global Google Tag Manager -->
   <script>
@@ -55,10 +55,9 @@
       </a>
 
       <nav class="nav-desktop">
-        <a href="/" class="nav-link">Home</a>
+        <a href="/" class="nav-link">PDF Tools</a>
         <a href="/tools/" class="nav-link active">All Tools</a>
-        <a href="/categories/" class="nav-link">Categories</a>
-        <a href="/about/" class="nav-link">About</a>
+        <a href="/about/" class="nav-link">About Us</a>
         <a href="/contact/" class="nav-link">Contact</a>
       </nav>
 
@@ -75,29 +74,40 @@
 
   <!-- Mobile Navigation Drawer -->
   <div class="mobile-nav">
-    <a href="/" class="nav-link">Home</a>
+    <a href="/" class="nav-link">PDF Tools</a>
     <a href="/tools/" class="nav-link active">All Tools</a>
-    <a href="/categories/" class="nav-link">Categories</a>
-    <a href="/about/" class="nav-link">About</a>
+    <a href="/about/" class="nav-link">About Us</a>
     <a href="/contact/" class="nav-link">Contact</a>
   </div>
 
   <main class="page-wrapper">
     <div class="page-header">
       <div class="container">
-        <span class="section-pill">Tools Directory</span>
-        <h1 class="page-title">Explore All EcrioX Tools</h1>
+        <span class="section-pill">Online Utilities Directory</span>
+        <h1 class="page-title">Explore All EcrioX Utilities</h1>
         <p class="page-subtitle">A growing ecosystem of fast, privacy-respecting online utilities. Find the exact tool you need to get work done.</p>
         
         <!-- Live Search Input -->
-        <div style="max-width: 520px; margin: 2rem auto 0;">
+        <div style="max-width: 540px; margin: 2rem auto 0;">
           <input
             type="search"
             id="toolsDirectorySearch"
-            placeholder="Search tools by name, keyword, or format..."
+            placeholder="Search tools by name, keyword, or format (e.g. OCR, speed test, resume)..."
             class="control-input"
             style="padding: 0.875rem 1.25rem; font-size: 1rem; border-radius: var(--radius-full); box-shadow: var(--shadow-sm);"
           >
+        </div>
+
+        <!-- Prominent PDF Callout Banner -->
+        <div style="background: linear-gradient(135deg, rgba(225, 29, 72, 0.08), rgba(244, 63, 94, 0.12)); border: 1px solid rgba(225, 29, 72, 0.25); border-radius: 16px; padding: 1.15rem 1.75rem; margin: 2rem auto 0; max-width: 780px; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; text-align: left;">
+          <div style="display: flex; align-items: center; gap: 0.85rem;">
+            <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(225, 29, 72, 0.15); color: #e11d48; display: flex; align-items: center; justify-content: center; font-size: 1.35rem; flex-shrink: 0;">📄</div>
+            <div>
+              <h3 style="font-size: 1rem; font-weight: 700; color: var(--text-main); margin: 0 0 0.15rem;">Looking for PDF Tools?</h3>
+              <p style="font-size: 0.84rem; color: var(--text-muted); margin: 0;">Merge, split, compress, edit, paginate, and convert PDF documents on our dedicated PDF homepage.</p>
+            </div>
+          </div>
+          <a href="/" class="btn btn-sm btn-primary" style="background: linear-gradient(135deg, #e11d48, #f43f5e); border: none; font-weight: 700; white-space: nowrap; padding: 0.6rem 1.25rem;">Go to PDF Tools &rarr;</a>
         </div>
       </div>
     </div>
@@ -105,19 +115,16 @@
     <div class="container" style="padding-bottom: 5rem;">
       <!-- Filter Category Buttons -->
       <div id="categoryFilterBar" style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2.5rem; justify-content: center;">
-        <button class="btn btn-sm btn-primary filter-btn" data-filter="all">All Tools</button>
-        <button class="btn btn-sm btn-secondary filter-btn" data-filter="available">Active & Available</button>
-        <button class="btn btn-sm btn-secondary filter-btn" data-filter="pdf">PDF Tools</button>
+        <button class="btn btn-sm btn-primary filter-btn" data-filter="all">All Utilities</button>
         <button class="btn btn-sm btn-secondary filter-btn" data-filter="image">Image Tools</button>
+        <button class="btn btn-sm btn-secondary filter-btn" data-filter="career">Career Studio</button>
+        <button class="btn btn-sm btn-secondary filter-btn" data-filter="productivity">Typing &amp; Productivity</button>
+        <button class="btn btn-sm btn-secondary filter-btn" data-filter="tech-lab">Tech &amp; Devices</button>
+        <button class="btn btn-sm btn-secondary filter-btn" data-filter="calculators">Calculators</button>
         <button class="btn btn-sm btn-secondary filter-btn" data-filter="developer">Developer</button>
         <button class="btn btn-sm btn-secondary filter-btn" data-filter="text">Text Tools</button>
-        <button class="btn btn-sm btn-secondary filter-btn" data-filter="calculators">Calculators</button>
-        <button class="btn btn-sm btn-secondary filter-btn" data-filter="productivity">Productivity</button>
         <button class="btn btn-sm btn-secondary filter-btn" data-filter="document">Document</button>
-        <button class="btn btn-sm btn-secondary filter-btn" data-filter="media">Media</button>
-        <button class="btn btn-sm btn-secondary filter-btn" data-filter="ai">AI Tools</button>
-        <button class="btn btn-sm btn-secondary filter-btn" data-filter="tech-lab">Tech Lab</button>
-        <button class="btn btn-sm btn-secondary filter-btn" data-filter="career">Career Studio</button>
+        <button class="btn btn-sm btn-secondary filter-btn" data-filter="pdf">PDF Tools</button>
       </div>
 
       <!-- Tools Grid (Dynamic from Registry) -->
@@ -146,60 +153,49 @@
             <div class="logo-symbol">E</div>
             <span>Ecrio<span class="accent-dot">X</span></span>
           </a>
-          <p>One Platform. Endless Possibilities. Free, fast, and privacy-conscious online utilities designed for everyday productivity.</p>
+          <p>EcrioX provides free online PDF tools to help you manage, convert, edit and optimize documents easily. 100% private in-browser processing.</p>
         </div>
 
         <div class="footer-col">
-          <h4>Product</h4>
+          <h4>PDF Tools</h4>
           <ul class="footer-links">
-            <li><a href="/tools/">All Tools</a></li>
-            <li><a href="/pdf-editor/">PDF Editor</a></li>
-            <li><a href="/heic-to-jpg/">HEIC to JPG</a></li>
-            <li><a href="/password-generator/">Password Generator</a></li>
-            <li><a href="/image-to-text/">Image to Text OCR</a></li>
-            <li><a href="/qr-code-generator/">QR Code Generator</a></li>
-            <li><a href="/background-remover/">Background Remover</a></li>
+            <li><a href="/">PDF Tools Home</a></li>
+            <li><a href="/merge-pdf/">Merge PDF</a></li>
+            <li><a href="/split-pdf/">Split PDF</a></li>
+            <li><a href="/pdf-compressor/">Compress PDF</a></li>
             <li><a href="/pdf-to-word/">PDF to Word</a></li>
-            <li><a href="/pdf-compressor/">PDF Compressor</a></li>
+            <li><a href="/pdf-to-jpg/">PDF to JPG</a></li>
+            <li><a href="/jpg-to-pdf/">JPG to PDF</a></li>
+            <li><a href="/pdf-editor/">Edit &amp; Sign PDF</a></li>
+            <li><a href="/add-page-numbers-to-pdf/">Add Page Numbers</a></li>
+            <li><a href="/crop-pdf/">Crop PDF</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Featured Utilities</h4>
+          <ul class="footer-links">
+            <li><a href="/tools/">All Tools Directory</a></li>
+            <li><a href="/background-remover/">Background Remover</a></li>
             <li><a href="/image-resizer/">Image Resizer</a></li>
-            <li><a href="/categories/">Categories</a></li>
-            <li><a href="/tools/image-compressor/">Image Compressor</a></li>
-            <li><a href="/tools/text-analyzer/">Text Analyzer</a></li>
-            <li><a href="/internet-speed-test/">Internet Speed Test</a></li>
-            <li><a href="/wifi-analyzer/">Wi-Fi Analyzer</a></li>
-            <li><a href="/5g-band-checker/">5G Band Checker</a></li>
-            <li><a href="/tools/tech-lab/">Technology &amp; Device Lab</a></li>
-            <li><a href="/diwali-wishes-maker/">Diwali Wishes Maker</a></li>
-            <li><a href="/typing-speed-test/">Typing Speed Test</a></li>
-            <li><a href="/wpm-test/">WPM Test</a></li>
-            <li><a href="/typing-games/">Typing Games</a></li>
-            <li><a href="/typing-race/">Typing Race</a></li>
-            <li><a href="/typing-certificate/">Typing Certificate</a></li>
+            <li><a href="/heic-to-jpg/">HEIC to JPG</a></li>
             <li><a href="/resume-builder/">ATS Resume Builder</a></li>
-            <li><a href="/ats-resume-checker/">ATS Resume Checker</a></li>
-            <li><a href="/resume-job-matcher/">Job Matcher</a></li>
-            <li><a href="/resume-templates/">Resume Templates</a></li>
-            <li><a href="/cover-letter-generator/">Cover Letter Generator</a></li>
-            <li><a href="/resume-bullet-improver/">Bullet Improver</a></li>
-            <li><a href="/world-live-cameras/">World Live Cameras</a></li>
+            <li><a href="/typing-speed-test/">Typing Arena</a></li>
+            <li><a href="/internet-speed-test/">Internet Speed Test</a></li>
+            <li><a href="/password-generator/">Password Generator</a></li>
+            <li><a href="/qr-code-generator/">QR Code Generator</a></li>
+            <li><a href="/world-live-cameras/">WorldView 3D Live</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
-          <h4>Company</h4>
+          <h4>Company &amp; Legal</h4>
           <ul class="footer-links">
-            <li><a href="/about/">About EcrioX</a></li>
+            <li><a href="/about/">About Us</a></li>
             <li><a href="/contact/">Contact Support</a></li>
-            <li><a href="/contact/">Feedback</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Legal</h4>
-          <ul class="footer-links">
             <li><a href="/privacy/">Privacy Policy</a></li>
-            <li><a href="/terms/">Terms of Use</a></li>
-            <li><a href="/about/#privacy-architecture">Data Security</a></li>
+            <li><a href="/terms/">Terms &amp; Conditions</a></li>
+            <li><a href="/about/#privacy-architecture">Data Security Guarantee</a></li>
           </ul>
         </div>
       </div>

@@ -251,6 +251,18 @@
     renderAllPages();
     renderThumbnails();
     selectTool('select');
+
+    // Handle deep-linked action from homepage (e.g. #sign, #watermark, #rotate, #text)
+    const targetAction = (window.location.hash.replace('#', '') || new URLSearchParams(window.location.search).get('action') || '').toLowerCase();
+    if (targetAction === 'sign') {
+      setTimeout(() => openSignatureModal(), 350);
+    } else if (targetAction === 'watermark') {
+      setTimeout(() => modalWatermark.classList.add('open'), 350);
+    } else if (targetAction === 'rotate') {
+      setTimeout(() => rotateAllPages(), 350);
+    } else if (targetAction === 'text') {
+      selectTool('text');
+    }
   }
 
   /**
