@@ -52,6 +52,77 @@
   }
   </script>
 
+  <!-- Schema.org BreadcrumbList -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://ecriox.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "PDF Tools",
+      "item": "https://ecriox.com/#pdf-tools"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Crop PDF",
+      "item": "https://ecriox.com/crop-pdf/"
+    }
+  ]
+}
+  </script>
+
+  <!-- Schema.org FAQPage -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can I crop all pages at once or just the active page?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can do either! Under \"Apply Crop To\", choose \"All pages in document\" to apply the identical crop percentage across every sheet, or select \"Current page only\" to trim a single slide or invoice."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will cropping decrease the resolution or clarity of my PDF text?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The EcrioX Crop PDF tool modifies the internal PDF boundary boxes directly using native PDFLib instructions. Text remains scalable vector curves, and photos preserve their original DPI."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this tool safe for sensitive financial and legal files?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, 100%. Processing takes place entirely within your browser's local sandbox memory. Neither your PDF nor its content is ever uploaded, stored, or sent across any network."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does cropping a PDF reduce its file size?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Cropping adjusts the visible viewable area (CropBox and MediaBox) of pages without discarding embedded vector content, ensuring zero loss of quality. To also reduce file size, use our complementary Free PDF Compressor."
+      }
+    }
+  ]
+}
+  </script>
+
+
   <link rel="stylesheet" href="../css/style.css">
   <style>
     .crop-workspace-layout {
@@ -439,6 +510,14 @@
 
     <!-- SEO Educational Guide -->
     <section class="seo-section">
+      <h2>How to Crop a PDF Online with EcrioX</h2>
+      <ol style="padding-left: 1.5rem; margin-bottom: 1.75rem; line-height: 1.7;">
+        <li><strong>Upload your PDF:</strong> Drag and drop your file or select it from your device.</li>
+        <li><strong>Adjust Crop Margins:</strong> Use the interactive visual crop box or enter exact margin values to trim unwanted borders, headers, or white space.</li>
+        <li><strong>Select Scope:</strong> Apply the crop box to the current page or uniformly across all pages in the document.</li>
+        <li><strong>Crop and Download:</strong> Click "Crop PDF &amp; Download" to rewrite the internal MediaBox/CropBox coordinates in milliseconds and download your trimmed file.</li>
+      </ol>
+
       <h2>How Does Cropping a PDF Work?</h2>
       <p>
         Unlike image cropping which permanently deletes surrounding pixels, standard PDF cropping adjusts the document's <strong>MediaBox</strong> and <strong>CropBox</strong> viewing parameters. This instructs PDF viewers (like Adobe Acrobat, Apple Preview, and web browsers) to display and print only the designated area.
@@ -481,7 +560,17 @@
             Yes, 100%. Processing takes place entirely within your browser's local sandbox memory. Neither your PDF nor its content is ever uploaded, stored, or sent across any network.
           </div>
         </div>
-      </div>
+      
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Does cropping a PDF reduce its file size?</span>
+              <span class="faq-chevron">&#9662;</span>
+            </button>
+            <div class="faq-answer">
+              Cropping adjusts the visible viewable area (CropBox and MediaBox) of pages without discarding embedded vector content, ensuring zero loss of quality. To also reduce file size, use our complementary Free PDF Compressor.
+            </div>
+          </div>
+        </div>
     </section>
 
     <!-- Related Tools -->

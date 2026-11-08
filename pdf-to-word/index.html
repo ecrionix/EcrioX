@@ -52,6 +52,85 @@
   }
   </script>
 
+  <!-- Schema.org BreadcrumbList -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://ecriox.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "PDF Tools",
+      "item": "https://ecriox.com/#pdf-tools"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "PDF to Word Converter",
+      "item": "https://ecriox.com/pdf-to-word/"
+    }
+  ]
+}
+  </script>
+
+  <!-- Schema.org FAQPage -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is this PDF to Word converter really 100% private?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Most online PDF tools send your files to their backend servers for conversion, exposing sensitive documents, legal papers, and personal data. EcrioX processes the PDF completely inside your browser using client-side JavaScript. Your documents are never uploaded."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I edit the converted file in Microsoft Word or Google Docs?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The generated file is a standard Microsoft Office Open XML (.docx) file. You can open and edit it directly in Microsoft Word, upload it to Google Drive to open in Google Docs, or edit it in Apple Pages or LibreOffice."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are there any file size or page count limits?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Because the conversion runs on your computer's hardware rather than a throttled shared server, there are no artificial limits. You can convert documents of dozens or hundreds of pages without subscription fees."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why are some complex layouts or tables slightly rearranged?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "PDFs do not store sentences or tables in a semantic flow; they place words at precise X and Y coordinates on a canvas. Our layout engine analyzes those spatial coordinates to group words into paragraphs and headers. Highly complex multi-column magazines or borderless financial tables may require minor spacing adjustments in Word."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I convert password-protected PDFs?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If a PDF is protected with an open password, you must enter the password to decrypt the contents before converting. PDFs with standard owner restrictions can be processed normally."
+      }
+    }
+  ]
+}
+  </script>
+
+
   <link rel="stylesheet" href="../css/style.css">
   <style>
     .converter-container {
