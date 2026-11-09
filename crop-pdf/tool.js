@@ -309,7 +309,12 @@
 
     try {
       const { PDFDocument } = window.PDFLib;
-      const pdfDoc = await PDFDocument.load(rawPdfBuffer.slice(0));
+      let pdfDoc;
+      try {
+        pdfDoc = await PDFDocument.load(rawPdfBuffer.slice(0), { ignoreEncryption: false });
+      } catch (e) {
+        pdfDoc = await PDFDocument.load(rawPdfBuffer.slice(0), { ignoreEncryption: true });
+      }
       const pages = pdfDoc.getPages();
 
       const scope = document.querySelector('input[name="crop-scope"]:checked').value;

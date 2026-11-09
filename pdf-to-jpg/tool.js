@@ -99,7 +99,7 @@
 
     try {
       const buffer = await file.arrayBuffer();
-      const loadingTask = pdfjsLib.getDocument({ data: buffer });
+      const loadingTask = pdfjsLib.getDocument({ data: buffer.slice(0) });
       pdfDoc = await loadingTask.promise;
       totalPages = pdfDoc.numPages;
 

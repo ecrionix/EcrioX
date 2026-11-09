@@ -1213,7 +1213,11 @@
       // Load original PDF to copy base pages if present
       let sourcePdf = null;
       if (originalPdfBytes) {
-        sourcePdf = await PDFDocument.load(originalPdfBytes);
+        try {
+          sourcePdf = await PDFDocument.load(originalPdfBytes, { ignoreEncryption: false });
+        } catch (e) {
+          sourcePdf = await PDFDocument.load(originalPdfBytes, { ignoreEncryption: true });
+        }
       }
 
       const helveticaFont = await exportPdf.embedFont(StandardFonts.Helvetica);

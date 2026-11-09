@@ -90,7 +90,8 @@
     for (const file of validPdfFiles) {
       try {
         const buffer = await file.arrayBuffer();
-        const loadingTask = pdfjsLib.getDocument({ data: buffer });
+        // Pass a slice to PDF.js worker so the main arrayBuffer is never detached
+        const loadingTask = pdfjsLib.getDocument({ data: buffer.slice(0) });
         const doc = await loadingTask.promise;
 
         pdfList.push({
@@ -234,9 +235,30 @@
         elements.progressText.textContent = `Merging file ${i + 1} of ${totalFiles}: ${currentItem.name}...`;
         elements.progressBar.style.width = `${Math.round(((i + 1) / totalFiles) * 85)}%`;
 
-        const srcDoc = await PDFLib.PDFDocument.load(currentItem.arrayBuffer, {
-          ignoreEncryption: false
-        });
+        // Ensure we always have an intact, non-detached ArrayBuffer
+        let rawBytes = currentItem.arrayBuffer;
+        if (!rawBytes || rawBytes.byteLength === 0) {
+          rawBytes = await currentItem.file.arrayBuffer();
+          currentItem.arrayBuffer = rawBytes;
+        }
+
+        let srcDoc;
+        try {
+          srcDoc = await PDFLib.PDFDocument.load(rawBytes, {
+            ignoreEncryption: false
+          });
+        } catch (loadErr) {
+          console.warn(`Initial load failed for ${currentItem.name}:`, loadErr);
+          try {
+            srcDoc = await PDFLib.PDFDocument.load(rawBytes, { ignoreEncryption: true });
+          } catch (secErr) {
+            if (loadErr.name === "EncryptedPDFError" || (loadErr.message && loadErr.message.toLowerCase().includes("encrypted"))) {
+              throw new Error(`"${currentItem.name}" is password-protected. Please unlock it before merging.`);
+            }
+            throw new Error(`Could not read "${currentItem.name}": ${loadErr.message || "corrupted or unsupported PDF structure"}`);
+          }
+        }
+
         const copiedPages = await mergedPdf.copyPages(srcDoc, srcDoc.getPageIndices());
 
         for (const page of copiedPages) {
@@ -277,8 +299,15 @@
       elements.mergeBtn.disabled = false;
       elements.clearAllBtn.disabled = false;
       elements.addMoreBtn.disabled = false;
+      
+      let userMsg = "An error occurred while merging your PDFs. Please check if any file is corrupted or password-protected.";
+      if (err && err.message) {
+        userMsg = err.message;
+      }
       if (window.EcrioXApp) {
-        window.EcrioXApp.showToast("An error occurred while merging your PDFs. Please check if any file is encrypted.");
+        window.EcrioXApp.showToast(userMsg);
+      } else {
+        alert(userMsg);
       }
     }
   }

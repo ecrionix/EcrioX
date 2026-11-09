@@ -263,8 +263,13 @@
 
     try {
       const { PDFDocument, rgb, StandardFonts } = window.PDFLib;
-      // Load raw buffer copy
-      const pdfDoc = await PDFDocument.load(rawPdfBuffer.slice(0));
+      // Load raw buffer copy with ignoreEncryption support
+      let pdfDoc;
+      try {
+        pdfDoc = await PDFDocument.load(rawPdfBuffer.slice(0), { ignoreEncryption: false });
+      } catch (e) {
+        pdfDoc = await PDFDocument.load(rawPdfBuffer.slice(0), { ignoreEncryption: true });
+      }
 
       // Font selection
       let font;

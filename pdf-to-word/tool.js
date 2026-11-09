@@ -110,7 +110,7 @@
       const arrayBuffer = await readFileAsArrayBuffer(file);
 
       // 1. Load document with PDF.js
-      const loadingTask = window.pdfjsLib.getDocument({ data: arrayBuffer });
+      const loadingTask = window.pdfjsLib.getDocument({ data: arrayBuffer.slice(0) });
       const pdf = await loadingTask.promise;
       const totalPages = pdf.numPages;
 

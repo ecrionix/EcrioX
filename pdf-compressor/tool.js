@@ -94,7 +94,7 @@
     // Inspect PDF
     try {
       const arrayBuffer = await file.arrayBuffer();
-      const loadingTask = pdfjsLib.getDocument({ data: arrayBuffer });
+      const loadingTask = pdfjsLib.getDocument({ data: arrayBuffer.slice(0) });
       const pdfDoc = await loadingTask.promise;
 
       elements.pdfNameText.textContent = sanitizeFilename(file.name);
@@ -137,7 +137,12 @@
       elements.progressBar.style.width = "30%";
       elements.progressText.textContent = "Optimizing PDF streams & objects...";
 
-      const pdfDoc = await PDFLib.PDFDocument.load(originalBytes, { ignoreEncryption: false });
+      let pdfDoc;
+      try {
+        pdfDoc = await PDFLib.PDFDocument.load(originalBytes, { ignoreEncryption: false });
+      } catch (e) {
+        pdfDoc = await PDFLib.PDFDocument.load(originalBytes, { ignoreEncryption: true });
+      }
 
       // Clean metadata if user chose recommended or high compression
       if (preset !== "lossless") {
@@ -166,7 +171,7 @@
         elements.progressText.textContent = "Scanning raster images for potential downsampling...";
 
         try {
-          const loadingTask = pdfjsLib.getDocument({ data: originalBytes });
+          const loadingTask = pdfjsLib.getDocument({ data: originalBytes.slice(0) });
           const renderedPdf = await loadingTask.promise;
           const pageCount = renderedPdf.numPages;
 

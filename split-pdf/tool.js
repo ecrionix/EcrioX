@@ -105,7 +105,8 @@
 
     try {
       pdfBuffer = await file.arrayBuffer();
-      const loadingTask = pdfjsLib.getDocument({ data: pdfBuffer });
+      // Clone buffer before passing to PDF.js worker to prevent detachment
+      const loadingTask = pdfjsLib.getDocument({ data: pdfBuffer.slice(0) });
       const doc = await loadingTask.promise;
       totalPages = doc.numPages;
 
@@ -282,7 +283,12 @@
     elements.progressText.textContent = "Loading original PDF...";
 
     try {
-      const srcDoc = await PDFLib.PDFDocument.load(pdfBuffer, { ignoreEncryption: false });
+      let rawBytes = pdfBuffer;
+      if (!rawBytes || rawBytes.byteLength === 0) {
+        rawBytes = await currentFile.arrayBuffer();
+        pdfBuffer = rawBytes;
+      }
+      const srcDoc = await PDFLib.PDFDocument.load(rawBytes, { ignoreEncryption: true });
 
       if (mode === "every") {
         // Split every page into separate PDF bundled into a ZIP file
