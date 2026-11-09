@@ -100,8 +100,10 @@
   let selectedObject = null;
 
   // Pages Array
-  // Each entry: { pageIndex, originalPageIndex, rotation: 0, width, height, domObjects: [] }
+  // Each entry: { pageIndex, originalPageIndex, rotation: 0, width, height, domObjects: [], overlayDataUrl: null }
   let pageModels = [];
+  let activePageIndex = 0;
+  let isScrollObserving = false;
 
   // Signature creation state
   let currentSigMode = 'draw';
@@ -132,6 +134,17 @@
   // LANDING & FILE LOADING
   // ==========================================
   function initLandingEvents() {
+    const hash = (window.location.hash || '').toLowerCase();
+    const action = (new URLSearchParams(window.location.search).get('action') || '').toLowerCase();
+    if (hash === '#sign' || action === 'sign') {
+      const heroTitle = document.querySelector('#landing-view h1');
+      if (heroTitle) heroTitle.textContent = 'Sign PDF Online Free';
+      const heroBadge = document.querySelector('#landing-view .badge');
+      if (heroBadge) heroBadge.textContent = 'ELECTRONIC SIGNATURE WORKSPACE • 100% PRIVATE';
+      const dropzonePrompt = document.querySelector('#dropzone h3');
+      if (dropzonePrompt) dropzonePrompt.innerHTML = 'Drop your PDF here to sign, or <span style="color: var(--color-primary); text-decoration: underline;">browse files</span>';
+    }
+
     dropzone.addEventListener('click', () => fileInput.click());
     dropzone.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
@@ -247,9 +260,12 @@
     totalPagesCounter.textContent = pageModels.length;
 
     zoomLevel = 1.0;
+    activePageIndex = 0;
     updateZoomDisplay();
     renderAllPages();
     renderThumbnails();
+    setActivePage(0);
+    initViewportScrollObserver();
     selectTool('select');
 
     // Handle deep-linked action from homepage (e.g. #sign, #watermark, #rotate, #text)
@@ -418,9 +434,86 @@
   }
 
   // ==========================================
+  // ACTIVE PAGE MANAGEMENT & SCROLL TRACKING
+  // ==========================================
+  function setActivePage(index) {
+    if (!pageModels || pageModels.length === 0) return;
+    const boundedIndex = Math.max(0, Math.min(index, pageModels.length - 1));
+    activePageIndex = boundedIndex;
+
+    // Highlight thumbnail in left sidebar
+    const thumbCards = thumbnailsContainer.querySelectorAll('.thumb-card');
+    thumbCards.forEach((card, idx) => {
+      if (idx === boundedIndex) {
+        card.classList.add('active');
+      } else {
+        card.classList.remove('active');
+      }
+    });
+
+    // Subtle emerald highlight on active page container
+    const stageContainers = studioViewport.querySelectorAll('.page-stage-container');
+    stageContainers.forEach((cont, idx) => {
+      if (idx === boundedIndex) {
+        cont.style.boxShadow = '0 0 0 2px var(--color-primary), 0 8px 30px rgba(0,0,0,0.25)';
+      } else {
+        cont.style.boxShadow = '0 8px 30px rgba(0,0,0,0.25)';
+      }
+    });
+  }
+
+  function initViewportScrollObserver() {
+    if (isScrollObserving) return;
+    isScrollObserving = true;
+
+    let scrollTimer = null;
+    studioViewport.addEventListener('scroll', () => {
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(() => {
+        if (!editorStudio.classList.contains('open') || pageModels.length === 0) return;
+        const vpRect = studioViewport.getBoundingClientRect();
+        const vpCenterY = vpRect.top + vpRect.height / 2;
+
+        let bestIndex = 0;
+        let minDiff = Infinity;
+
+        pageModels.forEach((_, idx) => {
+          const el = document.getElementById(`page-container-${idx}`);
+          if (el) {
+            const r = el.getBoundingClientRect();
+            const elCenterY = r.top + r.height / 2;
+            const diff = Math.abs(elCenterY - vpCenterY);
+            if (diff < minDiff) {
+              minDiff = diff;
+              bestIndex = idx;
+            }
+          }
+        });
+
+        if (bestIndex !== activePageIndex) {
+          setActivePage(bestIndex);
+        }
+      }, 80);
+    }, { passive: true });
+  }
+
+  // ==========================================
   // PAGE RENDERING & THUMBNAILS
   // ==========================================
   async function renderAllPages() {
+    // Preserve any user drawings across zooms
+    pageModels.forEach((model, pIdx) => {
+      const existingCanvas = document.querySelector(`#page-container-${pIdx} .page-overlay-canvas`);
+      if (existingCanvas) {
+        try {
+          const dUrl = existingCanvas.toDataURL('image/png');
+          if (dUrl && dUrl.length > 2500) {
+            model.overlayDataUrl = dUrl;
+          }
+        } catch (e) {}
+      }
+    });
+
     studioViewport.innerHTML = '';
 
     for (let pIdx = 0; pIdx < pageModels.length; pIdx++) {
@@ -436,6 +529,12 @@
 
       pageContainer.style.width = `${scaledW}px`;
       pageContainer.style.height = `${scaledH}px`;
+      if (pIdx === activePageIndex) {
+        pageContainer.style.boxShadow = '0 0 0 2px var(--color-primary), 0 8px 30px rgba(0,0,0,0.25)';
+      }
+
+      pageContainer.addEventListener('mousedown', () => setActivePage(pIdx));
+      pageContainer.addEventListener('click', () => setActivePage(pIdx));
 
       // 1. Base PDF Canvas
       const baseCanvas = document.createElement('canvas');
@@ -455,6 +554,16 @@
       overlayCanvas.style.width = `${scaledW}px`;
       overlayCanvas.style.height = `${scaledH}px`;
       pageContainer.appendChild(overlayCanvas);
+
+      // Restore drawing if existed
+      if (model.overlayDataUrl) {
+        const prevImg = new Image();
+        prevImg.onload = () => {
+          const oCtx = overlayCanvas.getContext('2d');
+          oCtx.drawImage(prevImg, 0, 0, scaledW, scaledH);
+        };
+        prevImg.src = model.overlayDataUrl;
+      }
 
       initOverlayDrawing(overlayCanvas, pIdx);
 
@@ -504,7 +613,7 @@
     for (let pIdx = 0; pIdx < pageModels.length; pIdx++) {
       const model = pageModels[pIdx];
       const card = document.createElement('div');
-      card.className = `thumb-card ${pIdx === 0 ? 'active' : ''}`;
+      card.className = `thumb-card ${pIdx === activePageIndex ? 'active' : ''}`;
       card.dataset.pageIndex = pIdx;
 
       const canvasBox = document.createElement('div');
@@ -535,9 +644,9 @@
       footer.innerHTML = `
         <span>Page ${pIdx + 1}</span>
         <div style="display:flex; gap:2px;">
-          <button class="thumb-mini-btn" title="Rotate 90°" onclick="window.rotatePage(${pIdx})">↻</button>
-          <button class="thumb-mini-btn" title="Duplicate" onclick="window.duplicatePage(${pIdx})">⧉</button>
-          <button class="thumb-mini-btn" title="Delete" onclick="window.deletePage(${pIdx})">🗑️</button>
+          <button class="thumb-mini-btn" title="Rotate 90°" onclick="event.stopPropagation(); window.rotatePage(${pIdx})">↻</button>
+          <button class="thumb-mini-btn" title="Duplicate" onclick="event.stopPropagation(); window.duplicatePage(${pIdx})">⧉</button>
+          <button class="thumb-mini-btn" title="Delete" onclick="event.stopPropagation(); window.deletePage(${pIdx})">🗑️</button>
         </div>
       `;
 
@@ -545,9 +654,8 @@
       card.appendChild(footer);
 
       card.addEventListener('click', () => {
-        document.querySelectorAll('.thumb-card').forEach(c => c.classList.remove('active'));
-        card.classList.add('active');
-        document.getElementById(`page-container-${pIdx}`)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        setActivePage(pIdx);
+        document.getElementById(`page-container-${pIdx}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
 
       thumbnailsContainer.appendChild(card);
@@ -659,37 +767,47 @@
     const domLayer = document.getElementById(`dom-layer-${pageIndex}`);
     if (!domLayer) return;
 
+    const pointX = Math.round(x / zoomLevel);
+    const pointY = Math.round(y / zoomLevel);
+
     const objData = {
       id: 'txt_' + Math.random().toString(36).substr(2, 9),
       type: 'text',
-      x: x,
-      y: y,
+      x: pointX,
+      y: pointY,
       text: 'Type text here...',
-      fontSize: parseInt(propFontSize.value, 10),
-      fontFamily: propFontFamily.value,
+      fontSize: parseInt(propFontSize.value, 10) || 16,
+      fontFamily: propFontFamily.value || 'Helvetica, Arial, sans-serif',
       color: currentColor,
       bgColor: propBgFill.value
     };
 
     pageModels[pageIndex].domObjects.push(objData);
     renderDomObject(objData, domLayer, pageIndex);
+    setActivePage(pageIndex);
   }
 
   function createRedactionBox(pageIndex, x, y, w, h) {
     const domLayer = document.getElementById(`dom-layer-${pageIndex}`);
     if (!domLayer || w < 5 || h < 5) return;
 
+    const pointX = Math.round(x / zoomLevel);
+    const pointY = Math.round(y / zoomLevel);
+    const pointW = Math.round(w / zoomLevel);
+    const pointH = Math.round(h / zoomLevel);
+
     const objData = {
       id: 'redact_' + Math.random().toString(36).substr(2, 9),
       type: 'redact',
-      x: x,
-      y: y,
-      width: w,
-      height: h
+      x: pointX,
+      y: pointY,
+      width: pointW,
+      height: pointH
     };
 
     pageModels[pageIndex].domObjects.push(objData);
     renderDomObject(objData, domLayer, pageIndex);
+    setActivePage(pageIndex);
   }
 
   function renderDomObject(objData, domLayer, pageIndex) {
@@ -699,9 +817,9 @@
       box.contentEditable = true;
       box.spellcheck = false;
       box.id = objData.id;
-      box.style.left = `${objData.x}px`;
-      box.style.top = `${objData.y}px`;
-      box.style.fontSize = `${objData.fontSize}px`;
+      box.style.left = `${Math.round(objData.x * zoomLevel)}px`;
+      box.style.top = `${Math.round(objData.y * zoomLevel)}px`;
+      box.style.fontSize = `${Math.round((objData.fontSize || 16) * zoomLevel)}px`;
       box.style.fontFamily = objData.fontFamily;
       box.style.color = objData.color;
       box.style.backgroundColor = objData.bgColor || 'transparent';
@@ -711,64 +829,80 @@
       const delBtn = document.createElement('div');
       delBtn.className = 'delete-obj-btn';
       delBtn.textContent = '✕';
+      delBtn.title = 'Remove';
       delBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         removeDomObject(box);
       });
       box.appendChild(delBtn);
 
-      box.addEventListener('focus', () => { selectedObject = box; });
+      box.addEventListener('focus', () => { selectedObject = box; setActivePage(pageIndex); });
       box.addEventListener('input', () => { objData.text = box.textContent; });
 
-      makeElementDraggable(box, objData);
+      makeElementDraggable(box, objData, pageIndex);
       domLayer.appendChild(box);
 
     } else if (objData.type === 'signature' || objData.type === 'image') {
       const box = document.createElement('div');
       box.className = 'placed-signature-box';
       box.id = objData.id;
-      box.style.left = `${objData.x}px`;
-      box.style.top = `${objData.y}px`;
-      box.style.width = `${objData.width}px`;
-      box.style.height = `${objData.height}px`;
+      box.style.left = `${Math.round(objData.x * zoomLevel)}px`;
+      box.style.top = `${Math.round(objData.y * zoomLevel)}px`;
+      box.style.width = `${Math.round((objData.width || 180) * zoomLevel)}px`;
+      box.style.height = `${Math.round((objData.height || 70) * zoomLevel)}px`;
 
       const img = document.createElement('img');
       img.src = objData.dataUrl;
+      img.draggable = false;
       box.appendChild(img);
 
       const delBtn = document.createElement('div');
       delBtn.className = 'delete-obj-btn';
       delBtn.textContent = '✕';
+      delBtn.title = 'Remove';
       delBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         removeDomObject(box);
       });
       box.appendChild(delBtn);
 
-      box.addEventListener('click', () => { selectedObject = box; });
-      makeElementDraggable(box, objData);
+      // Resizing handle for signatures & images
+      const resizeHandle = document.createElement('div');
+      resizeHandle.className = 'resize-obj-handle';
+      resizeHandle.title = 'Drag to resize signature';
+      box.appendChild(resizeHandle);
+
+      box.addEventListener('click', (e) => {
+        e.stopPropagation();
+        selectedObject = box;
+        setActivePage(pageIndex);
+      });
+
+      makeElementDraggable(box, objData, pageIndex);
+      makeElementResizable(box, resizeHandle, objData, pageIndex);
       domLayer.appendChild(box);
 
     } else if (objData.type === 'redact') {
       const box = document.createElement('div');
       box.className = 'placed-redaction-box';
       box.id = objData.id;
-      box.style.left = `${objData.x}px`;
-      box.style.top = `${objData.y}px`;
-      box.style.width = `${objData.width}px`;
-      box.style.height = `${objData.height}px`;
+      box.style.left = `${Math.round(objData.x * zoomLevel)}px`;
+      box.style.top = `${Math.round(objData.y * zoomLevel)}px`;
+      box.style.width = `${Math.round((objData.width || 100) * zoomLevel)}px`;
+      box.style.height = `${Math.round((objData.height || 30) * zoomLevel)}px`;
 
       const delBtn = document.createElement('div');
       delBtn.className = 'delete-obj-btn';
       delBtn.textContent = '✕';
+      delBtn.title = 'Remove';
       delBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         removeDomObject(box);
       });
       box.appendChild(delBtn);
 
-      box.addEventListener('click', () => { selectedObject = box; });
-      makeElementDraggable(box, objData);
+      box.addEventListener('click', () => { selectedObject = box; setActivePage(pageIndex); });
+      makeElementDraggable(box, objData, pageIndex);
       domLayer.appendChild(box);
     }
   }
@@ -789,13 +923,14 @@
   /**
    * Universal Dragging Helper for DOM annotation boxes
    */
-  function makeElementDraggable(el, objData) {
+  function makeElementDraggable(el, objData, pageIndex) {
     let isDragging = false;
     let startX = 0, startY = 0;
     let origLeft = 0, origTop = 0;
 
     el.addEventListener('mousedown', (e) => {
       if (e.target.classList.contains('delete-obj-btn')) return;
+      if (e.target.classList.contains('resize-obj-handle')) return;
       // If user is editing text inside, don't drag immediately
       if (document.activeElement === el && el.isContentEditable) return;
 
@@ -804,6 +939,7 @@
       startY = e.clientY;
       origLeft = parseInt(el.style.left || '0', 10);
       origTop = parseInt(el.style.top || '0', 10);
+      setActivePage(pageIndex);
       e.stopPropagation();
     });
 
@@ -813,14 +949,58 @@
       const dy = e.clientY - startY;
       const newX = origLeft + dx;
       const newY = origTop + dy;
-      el.style.left = `${newX}px`;
-      el.style.top = `${newY}px`;
-      objData.x = newX;
-      objData.y = newY;
+
+      const model = pageModels[pageIndex];
+      const maxW = (model ? model.width : 612) * zoomLevel;
+      const maxH = (model ? model.height : 792) * zoomLevel;
+      const clampedX = Math.max(0, Math.min(newX, maxW - 20));
+      const clampedY = Math.max(0, Math.min(newY, maxH - 20));
+
+      el.style.left = `${clampedX}px`;
+      el.style.top = `${clampedY}px`;
+      objData.x = Math.round(clampedX / zoomLevel);
+      objData.y = Math.round(clampedY / zoomLevel);
     });
 
     window.addEventListener('mouseup', () => {
       isDragging = false;
+    });
+  }
+
+  /**
+   * Resizing Helper with aspect ratio preservation
+   */
+  function makeElementResizable(el, handle, objData, pageIndex) {
+    let isResizing = false;
+    let startX = 0, startY = 0;
+    let origW = 0, origH = 0;
+
+    handle.addEventListener('mousedown', (e) => {
+      isResizing = true;
+      startX = e.clientX;
+      startY = e.clientY;
+      origW = parseInt(el.style.width || '180', 10);
+      origH = parseInt(el.style.height || '70', 10);
+      setActivePage(pageIndex);
+      e.stopPropagation();
+      e.preventDefault();
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isResizing) return;
+      const dx = e.clientX - startX;
+      const aspectRatio = origW / Math.max(1, origH);
+      const newW = Math.max(40, origW + dx);
+      const newH = Math.round(newW / aspectRatio);
+
+      el.style.width = `${newW}px`;
+      el.style.height = `${newH}px`;
+      objData.width = Math.round(newW / zoomLevel);
+      objData.height = Math.round(newH / zoomLevel);
+    });
+
+    window.addEventListener('mouseup', () => {
+      isResizing = false;
     });
   }
 
@@ -960,24 +1140,30 @@
     return new Promise((resolve) => {
       const img = new Image();
       img.onload = () => {
-        const c = document.createElement('canvas');
-        c.width = img.width;
-        c.height = img.height;
-        const ctx = c.getContext('2d');
-        ctx.drawImage(img, 0, 0);
-        const imgData = ctx.getImageData(0, 0, c.width, c.height);
-        const d = imgData.data;
+        try {
+          const c = document.createElement('canvas');
+          c.width = img.naturalWidth || img.width;
+          c.height = img.naturalHeight || img.height;
+          const ctx = c.getContext('2d');
+          ctx.drawImage(img, 0, 0);
+          const imgData = ctx.getImageData(0, 0, c.width, c.height);
+          const d = imgData.data;
 
-        // Key out light background pixels (RGB > 220)
-        for (let i = 0; i < d.length; i += 4) {
-          const brightness = (d[i] + d[i + 1] + d[i + 2]) / 3;
-          if (brightness > 215) {
-            d[i + 3] = 0; // Transparent
+          // Key out light background pixels (RGB > 215)
+          for (let i = 0; i < d.length; i += 4) {
+            const brightness = (d[i] + d[i + 1] + d[i + 2]) / 3;
+            if (brightness > 215) {
+              d[i + 3] = 0; // Transparent
+            }
           }
+          ctx.putImageData(imgData, 0, 0);
+          resolve(c.toDataURL('image/png'));
+        } catch (err) {
+          console.warn('Could not key out background:', err);
+          resolve(dataUrl);
         }
-        ctx.putImageData(imgData, 0, 0);
-        resolve(c.toDataURL('image/png'));
       };
+      img.onerror = () => resolve(dataUrl);
       img.src = dataUrl;
     });
   }
@@ -989,20 +1175,49 @@
     let signatureUrl = null;
 
     if (currentSigMode === 'draw') {
+      const ctx = sigDrawCanvas.getContext('2d');
+      const imgData = ctx.getImageData(0, 0, sigDrawCanvas.width, sigDrawCanvas.height);
+      let hasStrokes = false;
+      for (let i = 3; i < imgData.data.length; i += 4) {
+        if (imgData.data[i] > 15) {
+          hasStrokes = true;
+          break;
+        }
+      }
+      if (!hasStrokes) {
+        alert('Please draw your signature on the pad before applying.');
+        return;
+      }
       signatureUrl = sigDrawCanvas.toDataURL('image/png');
     } else if (currentSigMode === 'type') {
-      // Render cursive text to offscreen canvas
+      const text = (sigTypeInput.value || '').trim();
+      if (!text) {
+        alert('Please enter your name to generate a cursive signature.');
+        return;
+      }
+      const font = sigCursivePreview.style.fontFamily || "'Dancing Script', cursive";
+      const measureCanvas = document.createElement('canvas');
+      const measureCtx = measureCanvas.getContext('2d');
+      measureCtx.font = `56px ${font}`;
+      const textMetrics = measureCtx.measureText(text);
+      const measuredWidth = Math.max(340, Math.ceil(textMetrics.width) + 60);
+      const canvasHeight = 140;
+
       const c = document.createElement('canvas');
-      c.width = 480;
-      c.height = 140;
+      c.width = measuredWidth;
+      c.height = canvasHeight;
       const ctx = c.getContext('2d');
-      ctx.font = `54px ${sigCursivePreview.style.fontFamily || 'Dancing Script'}`;
-      ctx.fillStyle = currentSigColor;
+      ctx.font = `56px ${font}`;
+      ctx.fillStyle = currentSigColor || '#000000';
       ctx.textBaseline = 'middle';
-      ctx.fillText(sigTypeInput.value || 'Signature', 20, 70);
+      ctx.fillText(text, 30, canvasHeight / 2);
       signatureUrl = c.toDataURL('image/png');
     } else if (currentSigMode === 'upload') {
       signatureUrl = activeSignatureDataUrl;
+      if (!signatureUrl) {
+        alert('Please select or upload a signature image first.');
+        return;
+      }
     }
 
     if (!signatureUrl) {
@@ -1013,22 +1228,32 @@
     signatureStash = signatureUrl;
     modalSignature.classList.remove('open');
 
-    // Place signature in center of first page (or active page)
-    const activePageIdx = 0;
-    const domLayer = document.getElementById(`dom-layer-${activePageIdx}`);
-    if (domLayer) {
+    // Place signature in target active page
+    const targetIdx = (activePageIndex >= 0 && activePageIndex < pageModels.length) ? activePageIndex : 0;
+    const targetModel = pageModels[targetIdx];
+    const domLayer = document.getElementById(`dom-layer-${targetIdx}`);
+
+    if (domLayer && targetModel) {
+      const sigW = 180;
+      const sigH = 70;
+      // Position signature near bottom-right quadrant of the page
+      const posX = Math.round(Math.max(20, (targetModel.width - sigW) / 2));
+      const posY = Math.round(Math.max(20, (targetModel.height * 0.72) - (sigH / 2)));
+
       const objData = {
         id: 'sig_' + Math.random().toString(36).substr(2, 9),
         type: 'signature',
-        x: Math.round(pageModels[activePageIdx].width / 2 - 90),
-        y: Math.round(pageModels[activePageIdx].height / 2 - 35),
-        width: 180,
-        height: 70,
+        x: posX,
+        y: posY,
+        width: sigW,
+        height: sigH,
         dataUrl: signatureUrl
       };
 
-      pageModels[activePageIdx].domObjects.push(objData);
-      renderDomObject(objData, domLayer, activePageIdx);
+      targetModel.domObjects.push(objData);
+      renderDomObject(objData, domLayer, targetIdx);
+      setActivePage(targetIdx);
+      document.getElementById(`page-container-${targetIdx}`)?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 
     selectTool('select');
@@ -1042,25 +1267,51 @@
       const file = e.target.files[0];
       const reader = new FileReader();
       reader.onload = (ev) => {
-        const dataUrl = ev.target.result;
-        const activePageIdx = 0;
-        const domLayer = document.getElementById(`dom-layer-${activePageIdx}`);
-        if (domLayer) {
-          const objData = {
-            id: 'img_' + Math.random().toString(36).substr(2, 9),
-            type: 'image',
-            x: 50,
-            y: 50,
-            width: 160,
-            height: 120,
-            dataUrl: dataUrl
-          };
-          pageModels[activePageIdx].domObjects.push(objData);
-          renderDomObject(objData, domLayer, activePageIdx);
-        }
+        const rawDataUrl = ev.target.result;
+        ensureCompatibleImageDataUrl(rawDataUrl).then(cleanDataUrl => {
+          const targetIdx = (activePageIndex >= 0 && activePageIndex < pageModels.length) ? activePageIndex : 0;
+          const targetModel = pageModels[targetIdx];
+          const domLayer = document.getElementById(`dom-layer-${targetIdx}`);
+          if (domLayer && targetModel) {
+            const w = 180;
+            const h = 130;
+            const objData = {
+              id: 'img_' + Math.random().toString(36).substr(2, 9),
+              type: 'image',
+              x: Math.round((targetModel.width - w) / 2),
+              y: Math.round((targetModel.height - h) / 2),
+              width: w,
+              height: h,
+              dataUrl: cleanDataUrl
+            };
+            targetModel.domObjects.push(objData);
+            renderDomObject(objData, domLayer, targetIdx);
+            setActivePage(targetIdx);
+          }
+        });
       };
       reader.readAsDataURL(file);
+      e.target.value = '';
     }
+  }
+
+  function ensureCompatibleImageDataUrl(dataUrl) {
+    return new Promise((resolve) => {
+      if (dataUrl.startsWith('data:image/png') || dataUrl.startsWith('data:image/jpeg') || dataUrl.startsWith('data:image/jpg')) {
+        return resolve(dataUrl);
+      }
+      const img = new Image();
+      img.onload = () => {
+        const c = document.createElement('canvas');
+        c.width = img.naturalWidth || img.width;
+        c.height = img.naturalHeight || img.height;
+        const ctx = c.getContext('2d');
+        ctx.drawImage(img, 0, 0);
+        resolve(c.toDataURL('image/png'));
+      };
+      img.onerror = () => resolve(dataUrl);
+      img.src = dataUrl;
+    });
   }
 
   // ==========================================
@@ -1106,8 +1357,12 @@
   window.rotatePage = function (index) {
     if (pageModels[index]) {
       pageModels[index].rotation = (pageModels[index].rotation + 90) % 360;
+      const tmp = pageModels[index].width;
+      pageModels[index].width = pageModels[index].height;
+      pageModels[index].height = tmp;
       renderAllPages();
       renderThumbnails();
+      setActivePage(index);
     }
   };
 
@@ -1121,6 +1376,7 @@
       totalPagesCounter.textContent = pageModels.length;
       renderAllPages();
       renderThumbnails();
+      setActivePage(index + 1);
     }
   };
 
@@ -1131,9 +1387,13 @@
     }
     if (confirm(`Delete Page ${index + 1}?`)) {
       pageModels.splice(index, 1);
+      if (activePageIndex >= pageModels.length) {
+        activePageIndex = pageModels.length - 1;
+      }
       totalPagesCounter.textContent = pageModels.length;
       renderAllPages();
       renderThumbnails();
+      setActivePage(activePageIndex);
     }
   };
 
@@ -1148,14 +1408,19 @@
     totalPagesCounter.textContent = pageModels.length;
     renderAllPages();
     renderThumbnails();
+    setActivePage(pageModels.length - 1);
   }
 
   function rotateAllPages() {
     pageModels.forEach(m => {
       m.rotation = (m.rotation + 90) % 360;
+      const tmp = m.width;
+      m.width = m.height;
+      m.height = tmp;
     });
     renderAllPages();
     renderThumbnails();
+    setActivePage(activePageIndex);
   }
 
   // ==========================================
@@ -1201,10 +1466,20 @@
    * Complete PDF Generation & Export Engine
    */
   async function exportPdfDocument() {
-    if (pageModels.length === 0 || !window.PDFLib) return;
+    if (!pageModels || pageModels.length === 0 || !window.PDFLib) {
+      alert('No document is currently loaded or PDF engine is not ready.');
+      return;
+    }
 
     btnExportPdf.disabled = true;
-    btnExportPdf.textContent = 'Exporting PDF...';
+    const originalBtnText = btnExportPdf.innerHTML;
+    btnExportPdf.innerHTML = `
+      <svg style="width:16px;height:16px;display:inline-block;vertical-align:middle;animation:spin 1s linear infinite;margin-right:6px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="10" stroke-opacity="0.25"></circle>
+        <path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"></path>
+      </svg>
+      Exporting PDF...
+    `;
 
     try {
       const { PDFDocument, rgb, degrees, StandardFonts } = window.PDFLib;
@@ -1212,11 +1487,16 @@
 
       // Load original PDF to copy base pages if present
       let sourcePdf = null;
-      if (originalPdfBytes) {
+      if (originalPdfBytes && originalPdfBytes.length > 0) {
         try {
-          sourcePdf = await PDFDocument.load(originalPdfBytes, { ignoreEncryption: false });
-        } catch (e) {
-          sourcePdf = await PDFDocument.load(originalPdfBytes, { ignoreEncryption: true });
+          sourcePdf = await PDFDocument.load(originalPdfBytes.slice(), { ignoreEncryption: true });
+        } catch (e1) {
+          console.warn('PDF-Lib standard load with ignoreEncryption failed, trying permissive mode:', e1);
+          try {
+            sourcePdf = await PDFDocument.load(originalPdfBytes.slice(), { ignoreEncryption: true, throwOnInvalidObject: false });
+          } catch (e2) {
+            console.error('Failed to load source PDF in PDF-Lib:', e2);
+          }
         }
       }
 
@@ -1226,17 +1506,23 @@
       // Iterate across all configured pages
       for (let pIdx = 0; pIdx < pageModels.length; pIdx++) {
         const model = pageModels[pIdx];
-        let targetPage;
+        let targetPage = null;
 
-        if (sourcePdf && model.originalPageIndex !== undefined) {
-          const [copiedPage] = await exportPdf.copyPages(sourcePdf, [model.originalPageIndex]);
-          targetPage = exportPdf.addPage(copiedPage);
-        } else {
+        if (sourcePdf && model.originalPageIndex !== undefined && model.originalPageIndex < sourcePdf.getPageCount()) {
+          try {
+            const [copiedPage] = await exportPdf.copyPages(sourcePdf, [model.originalPageIndex]);
+            targetPage = exportPdf.addPage(copiedPage);
+          } catch (copyErr) {
+            console.warn(`Could not copy page ${model.originalPageIndex}:`, copyErr);
+          }
+        }
+
+        if (!targetPage) {
           targetPage = exportPdf.addPage([model.width, model.height]);
         }
 
         // Apply page rotation
-        if (model.rotation) {
+        if (model.rotation !== undefined) {
           targetPage.setRotation(degrees(model.rotation));
         }
 
@@ -1244,13 +1530,25 @@
         const pdfW = pageSize.width;
         const pdfH = pageSize.height;
 
+        // Scaling factors from model coordinates to PDF points
+        const scaleX = pdfW / model.width;
+        const scaleY = pdfH / model.height;
+
         // 1. Burn Overlay Canvas (Drawings, Highlights, Lines, Shapes)
+        let overlayDataUrl = model.overlayDataUrl;
         const overlayCanvas = document.querySelector(`#page-container-${pIdx} .page-overlay-canvas`);
         if (overlayCanvas) {
-          const overlayDataUrl = overlayCanvas.toDataURL('image/png');
-          // If overlay contains drawings
-          if (overlayDataUrl && overlayDataUrl.length > 2000) {
-            const overlayBytes = await fetch(overlayDataUrl).then(res => res.arrayBuffer());
+          try {
+            const currentUrl = overlayCanvas.toDataURL('image/png');
+            if (currentUrl && currentUrl.length > 2500) {
+              overlayDataUrl = currentUrl;
+            }
+          } catch (e) {}
+        }
+
+        if (overlayDataUrl && overlayDataUrl.length > 2500) {
+          try {
+            const overlayBytes = dataUrlToUint8Array(overlayDataUrl);
             const embeddedOverlay = await exportPdf.embedPng(overlayBytes);
             targetPage.drawImage(embeddedOverlay, {
               x: 0,
@@ -1258,67 +1556,72 @@
               width: pdfW,
               height: pdfH
             });
+          } catch (drawErr) {
+            console.warn('Error embedding overlay canvas:', drawErr);
           }
         }
 
         // 2. Burn DOM Objects (Text, Signatures, Redactions, Images)
         for (const obj of model.domObjects) {
-          // Convert screen coordinates to PDF points (origin at bottom-left)
-          // Screen Y is measured from top, PDF Y is measured from bottom
-          const scaleRatioX = pdfW / (model.width * zoomLevel);
-          const scaleRatioY = pdfH / (model.height * zoomLevel);
-
-          const pdfX = obj.x * scaleRatioX;
-          const pdfY = pdfH - ((obj.y + (obj.height || 20)) * scaleRatioY);
+          const objW = (obj.width || 180) * scaleX;
+          const objH = (obj.height || 70) * scaleY;
+          const pdfX = obj.x * scaleX;
+          const pdfY = pdfH - ((obj.y + (obj.height || 70)) * scaleY);
 
           if (obj.type === 'text') {
-            // If background whiteout fill is set, draw background rectangle first
+            const fontSizePt = Math.max(6, Math.round((obj.fontSize || 16) * 0.75 * scaleY));
+            const textY = pdfH - ((obj.y + (obj.fontSize || 16) * 0.9) * scaleY);
+
+            // If background whiteout fill is set
             if (obj.bgColor && obj.bgColor !== 'transparent') {
               const bgRgb = hexToRgb(obj.bgColor);
+              const textWidthEst = Math.max(60, ((obj.text || '').length * (fontSizePt * 0.6)));
               targetPage.drawRectangle({
                 x: pdfX,
                 y: pdfY,
-                width: Math.max(80, (obj.text.length * (obj.fontSize * 0.55))),
-                height: obj.fontSize * 1.3,
+                width: textWidthEst,
+                height: (obj.fontSize || 16) * scaleY * 1.3,
                 color: rgb(bgRgb.r, bgRgb.g, bgRgb.b)
               });
             }
 
             const textRgb = hexToRgb(obj.color || '#000000');
-            targetPage.drawText(obj.text, {
+            targetPage.drawText(obj.text || '', {
               x: pdfX,
-              y: pdfY + 2,
-              size: Math.round(obj.fontSize * 0.75), // Convert px to pt
+              y: textY,
+              size: fontSizePt,
               font: helveticaFont,
               color: rgb(textRgb.r, textRgb.g, textRgb.b)
             });
 
           } else if (obj.type === 'signature' || obj.type === 'image') {
-            const imgBytes = await fetch(obj.dataUrl).then(res => res.arrayBuffer());
-            let embeddedImg;
-            if (obj.dataUrl.startsWith('data:image/jpeg')) {
-              embeddedImg = await exportPdf.embedJpg(imgBytes);
-            } else {
-              embeddedImg = await exportPdf.embedPng(imgBytes);
+            if (obj.dataUrl) {
+              try {
+                const imgBytes = dataUrlToUint8Array(obj.dataUrl);
+                let embeddedImg;
+                if (obj.dataUrl.startsWith('data:image/jpeg') || obj.dataUrl.startsWith('data:image/jpg')) {
+                  embeddedImg = await exportPdf.embedJpg(imgBytes);
+                } else {
+                  embeddedImg = await exportPdf.embedPng(imgBytes);
+                }
+
+                targetPage.drawImage(embeddedImg, {
+                  x: pdfX,
+                  y: pdfY,
+                  width: objW,
+                  height: objH
+                });
+              } catch (imgErr) {
+                console.error('Error embedding signature/image:', imgErr);
+              }
             }
 
-            const imgW = obj.width * scaleRatioX;
-            const imgH = obj.height * scaleRatioY;
-
-            targetPage.drawImage(embeddedImg, {
-              x: pdfX,
-              y: pdfH - ((obj.y + obj.height) * scaleRatioY),
-              width: imgW,
-              height: imgH
-            });
-
           } else if (obj.type === 'redact') {
-            // Draw permanent opaque blackout rectangle
             targetPage.drawRectangle({
               x: pdfX,
-              y: pdfH - ((obj.y + obj.height) * scaleRatioY),
-              width: obj.width * scaleRatioX,
-              height: obj.height * scaleRatioY,
+              y: pdfY,
+              width: objW,
+              height: objH,
               color: rgb(0, 0, 0)
             });
           }
@@ -1361,26 +1664,53 @@
       }
 
       // 5. Save and trigger download
+      btnExportPdf.textContent = 'Saving PDF...';
       const exportedBytes = await exportPdf.save();
       const blob = new Blob([exportedBytes], { type: 'application/pdf' });
-      const url = URL.createObjectURL(blob);
 
-      const a = document.createElement('a');
-      const baseName = docFileName.replace(/\.[^/.]+$/, '');
-      a.download = `ecriox-edited-${baseName}.pdf`;
-      a.href = url;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
+      const baseName = docFileName.replace(/\.[^/.]+$/, '') || 'document';
+      const outputFilename = `ecriox-signed-${baseName}.pdf`;
+
+      downloadBlob(blob, outputFilename);
+
+      btnExportPdf.innerHTML = '✓ Download Started!';
+      setTimeout(() => {
+        btnExportPdf.disabled = false;
+        btnExportPdf.innerHTML = originalBtnText;
+      }, 2500);
 
     } catch (err) {
-      console.error('Export error:', err);
+      console.error('Export error caught:', err);
       alert('Could not export PDF: ' + err.message);
-    } finally {
       btnExportPdf.disabled = false;
-      btnExportPdf.textContent = '⬇️ Download PDF';
+      btnExportPdf.innerHTML = originalBtnText;
     }
+  }
+
+  function downloadBlob(blob, filename) {
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.style.display = 'none';
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(() => {
+      if (a.parentNode) a.parentNode.removeChild(a);
+      URL.revokeObjectURL(url);
+    }, 60000);
+  }
+
+  function dataUrlToUint8Array(dataUrl) {
+    const commaIdx = dataUrl.indexOf(',');
+    const base64 = commaIdx >= 0 ? dataUrl.slice(commaIdx + 1) : dataUrl;
+    const binary = atob(base64);
+    const len = binary.length;
+    const bytes = new Uint8Array(len);
+    for (let i = 0; i < len; i++) {
+      bytes[i] = binary.charCodeAt(i);
+    }
+    return bytes;
   }
 
   function hexToRgb(hex) {
