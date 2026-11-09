@@ -218,6 +218,18 @@ const ECRIOX_TOOLS = [
     popular: true,
     tags: ["pdf", "crop", "trim", "margins", "crop pdf", "trim margins", "resize pdf"]
   },
+  {
+    id: "ocr-pdf",
+    name: "OCR PDF",
+    category: "pdf",
+    categoryName: "PDF Tools",
+    description: "Make scanned PDFs and images searchable online free. Extract text with accurate client-side OCR and embed an invisible selectable text layer.",
+    route: "/tools/ocr-pdf/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><circle cx="11" cy="14" r="3"></circle><line x1="13.5" y1="16.5" x2="17" y2="20"></line></svg>`,
+    status: "available",
+    popular: true,
+    tags: ["ocr", "ocr pdf", "searchable pdf", "scanned pdf to searchable", "image to text", "extract text", "pdf ocr online free", "jpg to searchable pdf"]
+  },
 
   // ==========================================
   // IMAGE TOOLS

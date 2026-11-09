@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OCR PDF – Make Scanned PDFs Searchable Online Free | Ecriox</title>
+  <meta name="description" content="Make scanned PDFs and images (JPG, PNG) searchable online for free. Extract text with accurate client-side OCR, add an invisible searchable text layer, and download instantly.">
+  <link rel="canonical" href="https://ecriox.com/tools/ocr-pdf/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="OCR PDF – Make Scanned PDFs Searchable Online Free | Ecriox">
+  <meta property="og:description" content="Convert scanned PDFs, JPG and PNG images into genuine searchable PDFs with an invisible text layer. 100% private in-browser OCR.">
+  <meta property="og:url" content="https://ecriox.com/tools/ocr-pdf/">
+  <meta property="og:site_name" content="EcrioX">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="OCR PDF – Make Scanned PDFs Searchable Online Free | Ecriox">
+  <meta name="twitter:description" content="Free online OCR tool to convert scanned PDFs and images into searchable PDFs. Client-side, private, and secure.">
+
+  <!-- Global Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i){
+  w[l]=w[l]||[];
+  w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),
+  dl=l!='dataLayer'?'&l='+l:'';
+  j.async=true;
+  j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+  f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PQFRBJ9F');
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Schema.org WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "EcrioX OCR PDF – Scanned PDF to Searchable PDF",
+    "url": "https://ecriox.com/tools/ocr-pdf/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript.",
+    "description": "Free online client-side OCR tool to convert scanned PDFs and images into searchable PDFs with an invisible selectable text layer.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <!-- Schema.org BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://ecriox.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "PDF Tools",
+        "item": "https://ecriox.com/tools/pdf/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "OCR PDF",
+        "item": "https://ecriox.com/tools/ocr-pdf/"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Schema.org FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the difference between a scanned PDF and a searchable PDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A scanned PDF is merely a collection of static digital images embedded inside a PDF envelope. You cannot highlight sentences, search for keywords using Ctrl+F, or copy text into word processors. A searchable PDF overlays an invisible, coordinate-mapped text layer directly over the original visual scan so text can be searched and selected while retaining the exact original visual appearance."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does the invisible searchable text layer work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "EcrioX uses high-precision Optical Character Recognition to detect every word and its exact bounding-box coordinates on the page. We then render transparent text with zero opacity at those exact coordinates on top of your scanned document. When opened in Adobe Acrobat, Chrome, Preview, or Edge, you see the authentic scanned background while your cursor can select, highlight, and search words seamlessly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are my sensitive documents, bank statements, or contracts uploaded to any server?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. EcrioX OCR executes 100% locally inside your web browser using WebAssembly and Web Worker technology. Your files are processed entirely in your computer's RAM and never leave your device. Zero bytes are uploaded to remote servers."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which languages are supported by EcrioX OCR?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "EcrioX supports 12 major languages: English, Tamil, Hindi, Telugu, Kannada, Malayalam, Bengali, Marathi, Gujarati, Spanish, French, and German. The required neural language dictionary is lazy-loaded on demand when you initiate processing."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What should I do if my scanned document has faint or blurry text?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Enable our built-in 'Auto Contrast & Sharpness' pre-processing option before initiating OCR, and select 'High Accuracy (2x Oversampling)'. This binarizes the raster image and amplifies character stroke definition, significantly improving recognition accuracy on faint or aged documents."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I convert multiple JPG or PNG images into a single searchable PDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. You can drag and drop multiple image files simultaneously. EcrioX will perform OCR on each photo, compile them in your designated sequence, and produce a unified, multi-page searchable PDF document."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/pdf-platform.css">
+
+  <!-- Core Libraries: Tesseract.js v5, PDF.js, pdf-lib -->
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6672302762343789"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQFRBJ9F" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- Global Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="brand-logo" aria-label="EcrioX Home">
+        <div class="logo-symbol">E</div>
+        <span>Ecrio<span class="accent-dot">X</span></span>
+      </a>
+
+      <nav class="nav-desktop">
+        <a href="/" class="nav-link">PDF Tools</a>
+        <a href="/pdf-guides/" class="nav-link">PDF Guides</a>
+        <a href="/tools/" class="nav-link active">All Tools</a>
+        <a href="/about/" class="nav-link">About Us</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn-icon theme-toggle-btn" aria-label="Toggle color theme">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <button class="btn-icon mobile-toggle" aria-label="Open mobile menu" aria-expanded="false">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav">
+    <a href="/" class="nav-link">PDF Tools</a>
+    <a href="/pdf-guides/" class="nav-link">PDF Guides</a>
+    <a href="/tools/" class="nav-link active">All Tools</a>
+    <a href="/about/" class="nav-link">About Us</a>
+  </div>
+
+  <main class="page-wrapper" style="padding-top: 2rem;">
+    <div class="container">
+      <!-- Breadcrumbs -->
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="separator">/</span>
+        <a href="/tools/">Tools</a>
+        <span class="separator">/</span>
+        <a href="/tools/pdf/">PDF Tools</a>
+        <span class="separator">/</span>
+        <span>OCR PDF</span>
+      </nav>
+
+      <!-- Tool Header Block -->
+      <div class="tool-header-block" style="text-align: center; max-width: 820px; margin: 0 auto 2.5rem;">
+        <span class="badge badge-category" style="margin-bottom: 0.75rem; background: var(--color-primary-light); color: var(--color-primary); font-weight: 700; border: 1px solid rgba(22, 163, 106, 0.2);">
+          Optical Character Recognition
+        </span>
+        <h1 style="font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800; margin-bottom: 0.85rem; line-height: 1.25; color: var(--text-main);">
+          Make Scanned PDFs Searchable with Free Online OCR
+        </h1>
+        <p style="font-size: 1.1rem; color: var(--text-muted); line-height: 1.6;">
+          Transform scanned PDFs, contracts, paper receipts, and images into fully searchable, selectable documents. 
+          Extract text accurately, embed an invisible coordinate text layer, and download your searchable PDF in seconds.
+        </p>
+      </div>
+
+      <!-- Main Tool Workspace -->
+      <div class="tool-main-workspace" style="max-width: 960px; margin: 0 auto;">
+
+        <!-- STEP 1: Upload Dropzone -->
+        <div id="dropzone" class="dropzone-area" style="cursor: pointer; padding: 3.5rem 2rem; border: 2px dashed var(--border-color); border-radius: var(--radius-lg); background: var(--bg-card); text-align: center; transition: all 0.2s ease;">
+          <input type="file" id="fileInput" accept=".pdf,application/pdf,image/jpeg,image/png,image/jpg" multiple style="display: none;">
+          <div class="dropzone-icon" style="display: inline-flex; align-items: center; justify-content: center; width: 68px; height: 68px; border-radius: 50%; background: var(--color-primary-light); color: var(--color-primary); margin-bottom: 1.25rem;">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <circle cx="11" cy="14" r="3"></circle>
+              <line x1="13.5" y1="16.5" x2="17" y2="20"></line>
+            </svg>
+          </div>
+          <h2 class="dropzone-title" style="font-size: 1.35rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.5rem;">
+            Drop scanned PDF or images here, or browse
+          </h2>
+          <p class="dropzone-sub" style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+            Upload scanned PDFs (multi-page supported), JPG, JPEG, or PNG images. Fast &amp; 100% private in-browser OCR.
+          </p>
+          <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">
+            <button type="button" class="btn btn-primary" id="btnBrowseFiles" style="padding: 0.75rem 1.75rem; font-weight: 700;">
+              Select Scanned File(s)
+            </button>
+          </div>
+          <div style="margin-top: 1.5rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; font-size: 0.8rem; color: var(--text-muted);">
+            <span style="display: inline-flex; align-items: center; gap: 0.35rem;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Scanned PDF
+            </span>
+            <span style="display: inline-flex; align-items: center; gap: 0.35rem;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              JPG / PNG
+            </span>
+            <span style="display: inline-flex; align-items: center; gap: 0.35rem;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Multi-page Documents
+            </span>
+            <span style="display: inline-flex; align-items: center; gap: 0.35rem;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              100% Private (No Cloud Upload)
+            </span>
+          </div>
+        </div>
+
+        <!-- STEP 2: Configuration & Queue Studio (Visible after file selection) -->
+        <div id="workspaceControls" class="workspace-controls" style="display: none; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 1.75rem; margin-top: 1.5rem; box-shadow: var(--shadow-sm);">
+          
+          <!-- Summary Metrics -->
+          <div style="background-color: var(--bg-subtle); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1rem 1.25rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
+            <div>
+              <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em;">Selected Files</span>
+              <p id="totalDocCount" style="font-size: 1.15rem; font-weight: 700; color: var(--text-main); margin: 0.2rem 0 0;">0</p>
+            </div>
+            <div>
+              <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em;">Total Pages</span>
+              <p id="totalPageCount" style="font-size: 1.15rem; font-weight: 700; color: var(--color-primary); margin: 0.2rem 0 0;">0</p>
+            </div>
+            <div>
+              <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em;">Combined Size</span>
+              <p id="totalInputSize" style="font-size: 1.15rem; font-weight: 600; color: var(--text-main); margin: 0.2rem 0 0;">0 KB</p>
+            </div>
+            <div>
+              <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em;">Privacy Status</span>
+              <p style="font-size: 0.85rem; font-weight: 600; color: var(--color-primary); margin: 0.2rem 0 0; display: flex; align-items: center; gap: 0.35rem;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                Local Device Only
+              </p>
+            </div>
+          </div>
+
+          <!-- Document Queue List -->
+          <div style="margin-bottom: 1.75rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.85rem;">
+              <h3 style="font-size: 1rem; font-weight: 700; color: var(--text-main); margin: 0;">Uploaded Documents &amp; Images</h3>
+              <span style="font-size: 0.82rem; color: var(--text-muted);">Thumbnails and page count verified</span>
+            </div>
+            <div id="fileListContainer" style="display: flex; flex-direction: column; gap: 0.75rem;"></div>
+          </div>
+
+          <!-- OCR Settings Grid -->
+          <div style="background: var(--bg-subtle); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: 1.75rem;">
+            <h3 style="font-size: 0.95rem; font-weight: 700; color: var(--text-main); margin: 0 0 1rem; display: flex; align-items: center; gap: 0.5rem;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+              OCR Recognition &amp; Output Settings
+            </h3>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem;">
+              
+              <!-- 1. Language Selector (12 Languages) -->
+              <div>
+                <label for="ocrLanguage" style="display: block; font-size: 0.85rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.4rem;">
+                  OCR Recognition Language:
+                </label>
+                <select id="ocrLanguage" class="control-input" style="width: 100%; padding: 0.65rem 0.85rem; border: 1px solid var(--border-color); border-radius: var(--radius-md); background: var(--bg-card); color: var(--text-main); font-size: 0.92rem;">
+                  <option value="eng" selected>English (Default)</option>
+                  <option value="tam">Tamil (தமிழ்)</option>
+                  <option value="hin">Hindi (हिन्दी)</option>
+                  <option value="tel">Telugu (తెలుగు)</option>
+                  <option value="kan">Kannada (ಕನ್ನಡ)</option>
+                  <option value="mal">Malayalam (മലയാളം)</option>
+                  <option value="ben">Bengali (বাংলা)</option>
+                  <option value="mar">Marathi (मराठी)</option>
+                  <option value="guj">Gujarati (ગુજરાતી)</option>
+                  <option value="spa">Spanish (Español)</option>
+                  <option value="fra">French (Français)</option>
+                  <option value="deu">German (Deutsch)</option>
+                </select>
+                <small style="display: block; font-size: 0.75rem; color: var(--text-muted); margin-top: 0.35rem;">
+                  Language models load on-demand directly into the Web Worker.
+                </small>
+              </div>
+
+              <!-- 2. OCR Quality Preset -->
+              <div>
+                <label for="ocrQualityPreset" style="display: block; font-size: 0.85rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.4rem;">
+                  Scan Resolution &amp; Precision:
+                </label>
+                <select id="ocrQualityPreset" class="control-input" style="width: 100%; padding: 0.65rem 0.85rem; border: 1px solid var(--border-color); border-radius: var(--radius-md); background: var(--bg-card); color: var(--text-main); font-size: 0.92rem;">
+                  <option value="high" selected>High Accuracy (2.0x Oversampling - Recommended)</option>
+                  <option value="standard">Standard Speed (1.5x Scaling - Faster)</option>
+                </select>
+                <small style="display: block; font-size: 0.75rem; color: var(--text-muted); margin-top: 0.35rem;">
+                  Higher oversampling captures smaller font sizes and faint letterforms.
+                </small>
+              </div>
+
+              <!-- 3. Pre-Processing Options -->
+              <div style="grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 1.5rem; padding-top: 0.5rem; border-top: 1px dashed var(--border-color);">
+                <label style="display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--text-main); cursor: pointer;">
+                  <input type="checkbox" id="chkAutoContrast" checked style="accent-color: var(--color-primary); width: 16px; height: 16px;">
+                  <span><strong>Auto-Enhance Contrast:</strong> Optimize contrast and sharpen faded scan text before OCR</span>
+                </label>
+
+                <label style="display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--text-main); cursor: pointer;">
+                  <input type="checkbox" id="chkDeskew" checked style="accent-color: var(--color-primary); width: 16px; height: 16px;">
+                  <span><strong>Keep Clean Background:</strong> Preserve authentic visual document appearance without distortion</span>
+                </label>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Bottom Action Buttons -->
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+            <div style="display: flex; gap: 0.75rem;">
+              <button type="button" id="btnAddMoreFiles" class="btn btn-secondary btn-sm" style="font-weight: 600;">
+                + Add More Files
+              </button>
+              <button type="button" id="btnClearQueue" class="btn btn-secondary btn-sm" style="color: var(--color-danger); font-weight: 600;">
+                Clear Queue
+              </button>
+            </div>
+            
+            <button type="button" id="btnStartOcr" class="btn btn-primary" style="padding: 0.75rem 2rem; font-size: 1rem; font-weight: 700; box-shadow: 0 4px 14px rgba(22, 163, 106, 0.35);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 0.4rem; vertical-align: middle;">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+              Start OCR &amp; Generate Searchable PDF
+            </button>
+          </div>
+
+          <!-- STEP 3: Real-Time Processing Progress Box -->
+          <div id="progressSection" style="display: none; margin-top: 1.75rem; padding: 1.5rem; background: var(--bg-subtle); border: 1px solid rgba(22, 163, 106, 0.3); border-radius: var(--radius-md);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.65rem;">
+              <span id="progressStatus" style="font-size: 0.95rem; font-weight: 700; color: var(--text-main);">Initializing Web Worker OCR Engine...</span>
+              <span id="progressPercent" style="font-size: 1rem; font-weight: 800; color: var(--color-primary);">0%</span>
+            </div>
+            
+            <div style="width: 100%; height: 10px; background-color: var(--border-color); border-radius: var(--radius-full); overflow: hidden; margin-bottom: 0.75rem;">
+              <div id="progressBar" style="width: 0%; height: 100%; background: linear-gradient(90deg, #16A36A, #10B981); transition: width 0.25s ease;"></div>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+              <span id="progressDetail" style="font-size: 0.82rem; color: var(--text-muted);">Downloading language dictionary on demand...</span>
+              <button type="button" id="btnCancelOcr" class="btn btn-sm btn-secondary" style="font-size: 0.78rem; padding: 0.25rem 0.75rem; color: var(--color-danger); border-color: var(--color-danger);">
+                Cancel Processing
+              </button>
+            </div>
+
+            <div style="margin-top: 0.85rem; font-size: 0.78rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.4rem;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+              <span>100% in-browser processing via WebAssembly. Your documents remain strictly inside your device.</span>
+            </div>
+          </div>
+
+          <!-- STEP 4: Interactive Side-by-Side Preview & Inspector (Visible after OCR) -->
+          <div id="previewSection" style="display: none; margin-top: 2rem; border-top: 1px solid var(--border-color); padding-top: 1.75rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1rem;">
+              <div>
+                <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--text-main); margin: 0 0 0.2rem;">
+                  Document &amp; OCR Text Inspector
+                </h3>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">
+                  Inspect recognized text side-by-side with the original scanned page.
+                </p>
+              </div>
+              <div style="display: flex; align-items: center; gap: 0.75rem;">
+                <span id="confidenceBadge" style="background: var(--color-primary-light); color: var(--color-primary); border: 1px solid rgba(22, 163, 106, 0.3); padding: 0.35rem 0.75rem; border-radius: var(--radius-full); font-size: 0.82rem; font-weight: 700;">
+                  Confidence: --%
+                </span>
+                <button type="button" id="btnCopyExtracted" class="btn btn-secondary btn-sm" style="font-weight: 600;">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 0.3rem;"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                  Copy Text
+                </button>
+              </div>
+            </div>
+
+            <!-- Dual Viewport Grid -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem;">
+              
+              <!-- Left: Original Visual Document Preview -->
+              <div style="background: var(--bg-subtle); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1rem; display: flex; flex-direction: column;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                  <span style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">
+                    Original Visual Document
+                  </span>
+                  <!-- Page Selector Controls -->
+                  <div id="pageNavControls" style="display: inline-flex; align-items: center; gap: 0.4rem;">
+                    <button type="button" id="btnPrevPage" class="btn btn-icon btn-sm" style="padding: 0.2rem 0.5rem; font-size: 0.8rem;" aria-label="Previous Page">&larr;</button>
+                    <span id="previewPageIndicator" style="font-size: 0.82rem; font-weight: 600; color: var(--text-main);">Page 1 of 1</span>
+                    <button type="button" id="btnNextPage" class="btn btn-icon btn-sm" style="padding: 0.2rem 0.5rem; font-size: 0.8rem;" aria-label="Next Page">&rarr;</button>
+                  </div>
+                </div>
+                
+                <div style="position: relative; width: 100%; height: 380px; overflow: auto; background: #525659; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; padding: 0.5rem;">
+                  <canvas id="previewCanvas" style="max-width: 100%; max-height: 100%; object-fit: contain; box-shadow: 0 4px 12px rgba(0,0,0,0.3); background: #ffffff;"></canvas>
+                </div>
+                <small style="display: block; font-size: 0.75rem; color: var(--text-muted); text-align: center; margin-top: 0.5rem;">
+                  Preserved losslessly as the background layer of the searchable PDF.
+                </small>
+              </div>
+
+              <!-- Right: Recognized Text Inspector -->
+              <div style="background: var(--bg-subtle); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1rem; display: flex; flex-direction: column;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                  <span style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">
+                    Recognized Text Layer
+                  </span>
+                  <div style="font-size: 0.78rem; color: var(--text-muted);">
+                    <span id="statWords">0</span> words &bull; <span id="statChars">0</span> chars
+                  </div>
+                </div>
+
+                <textarea id="extractedTextInspector" class="control-input" style="width: 100%; height: 380px; resize: none; font-family: monospace, ui-monospace, sans-serif; font-size: 0.85rem; line-height: 1.5; padding: 0.85rem; border: 1px solid var(--border-color); border-radius: var(--radius-sm); background: var(--bg-card); color: var(--text-main);" placeholder="Recognized text will appear here..."></textarea>
+                
+                <small style="display: block; font-size: 0.75rem; color: var(--text-muted); text-align: center; margin-top: 0.5rem;">
+                  Embedded as invisible selectable text (`opacity: 0`) at exact word coordinates.
+                </small>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- STEP 5: Download & Export Hub -->
+          <div id="resultsBox" class="results-box" style="display: none; margin-top: 2rem; background: linear-gradient(135deg, rgba(22, 163, 106, 0.08), rgba(8, 127, 80, 0.12)); border: 1.5px solid var(--color-primary); border-radius: var(--radius-lg); padding: 1.75rem;">
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.25rem;">
+              <div>
+                <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem;">
+                  <span style="display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; background: var(--color-primary); color: #fff;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  </span>
+                  <strong style="font-size: 1.2rem; color: var(--text-main);">Searchable PDF Successfully Created!</strong>
+                </div>
+                <p style="font-size: 0.88rem; color: var(--text-muted); margin: 0 0 0 2rem;">
+                  Original image layers preserved with invisible selectable text. Ready for Ctrl+F searching.
+                  <span id="finalOutputStats" style="display: block; font-weight: 600; color: var(--color-primary); margin-top: 0.25rem;"></span>
+                </p>
+              </div>
+
+              <!-- Action Download Buttons -->
+              <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                <button type="button" id="btnDownloadSearchablePdf" class="btn btn-primary" style="padding: 0.75rem 1.5rem; font-weight: 700; box-shadow: 0 4px 12px rgba(22, 163, 106, 0.35);">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 0.4rem; vertical-align: middle;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                  Download Searchable PDF
+                </button>
+                <button type="button" id="btnDownloadTxt" class="btn btn-secondary" style="font-weight: 600;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 0.4rem; vertical-align: middle;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                  Download TXT
+                </button>
+                <button type="button" id="btnResetTool" class="btn btn-secondary" style="font-weight: 600;">
+                  Process Another Document
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Designated AdSense Slot -->
+      <div class="ad-slot-container" style="margin: 3.5rem auto; max-width: 960px;">
+        <div class="ad-slot-card" style="padding: 1.5rem; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); text-align: center;">
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-6672302762343789"
+               data-ad-slot="auto"
+               data-ad-format="auto"
+               data-full-width-responsive="true"></ins>
+          <script>
+               (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </div>
+
+      <!-- SEO Educational Content -->
+      <article class="tool-content-section" style="max-width: 960px; margin: 0 auto; line-height: 1.7; color: var(--text-main);">
+        
+        <h2>How Optical Character Recognition (OCR) Converts Scanned PDFs into Searchable Files</h2>
+        <p>
+          When you scan a paper contract, invoice, or receipt using a flatbed scanner or smartphone camera, the resulting PDF is not a text document. Instead, it is a digital wrapper containing a bitmap photograph made of millions of color pixels. Standard PDF viewers like Adobe Acrobat, Google Chrome, or Apple Preview cannot identify individual letters or words within an un-OCRed scan. Consequently, typing <kbd>Ctrl+F</kbd> (or <kbd>Cmd+F</kbd>) yields zero search results, and dragging your cursor across paragraphs selects nothing.
+        </p>
+        <p>
+          <strong>EcrioX OCR PDF</strong> bridges this gap. Powered by client-side WebAssembly neural optical character recognition, our engine analyzes pixel matrices, detects letter contours, clusters words into semantic lines, and computes precise bounding-box coordinates. We then synthesize an authentic <em>searchable PDF</em> containing an invisible, coordinate-mapped text layer positioned directly on top of the original raster scan.
+        </p>
+
+        <div style="background: var(--bg-subtle); border-left: 4px solid var(--color-primary); border-radius: 0 var(--radius-md) var(--radius-md) 0; padding: 1.25rem 1.5rem; margin: 2rem 0;">
+          <h3 style="margin-top: 0; font-size: 1.05rem; color: var(--color-primary); font-weight: 700;">
+            The Anatomy of a Searchable PDF: The Invisible Text Coordinate Layer
+          </h3>
+          <p style="margin-bottom: 0; font-size: 0.95rem; color: var(--text-muted);">
+            Unlike basic converters that discard the scan and generate plain text with broken spacing, EcrioX preserves 100% of your document's original visual layout, stamps, official letterheads, and ink signatures. Transparent text (<code style="background: var(--bg-card); padding: 0.15rem 0.4rem; border-radius: 4px;">opacity: 0</code>) is plotted at the exact geometric coordinate of each scanned word. When a user highlights a sentence, their selection snaps directly to the visual ink on the page.
+          </p>
+        </div>
+
+        <h2>Step-by-Step Guide: How to Make Scanned PDFs Searchable</h2>
+        <ol style="padding-left: 1.5rem; margin-bottom: 2rem;">
+          <li style="margin-bottom: 0.75rem;">
+            <strong>Upload Your Scanned Document or Images:</strong> Drag and drop your scanned PDF file or select multiple JPG/PNG images. EcrioX reads the file structure in local browser memory and generates page count metrics and visual thumbnails.
+          </li>
+          <li style="margin-bottom: 0.75rem;">
+            <strong>Select OCR Language &amp; Accuracy:</strong> Choose from 12 supported global and Indic languages (English, Tamil, Hindi, Telugu, Kannada, Malayalam, Bengali, Marathi, Gujarati, Spanish, French, and German). Select "High Accuracy (2x Oversampling)" for documents with small fonts, faint ink, or carbon copies.
+          </li>
+          <li style="margin-bottom: 0.75rem;">
+            <strong>Start Local Processing:</strong> Click <em>"Start OCR &amp; Generate Searchable PDF"</em>. A dedicated Web Worker loads the neural language dictionary on demand and transcribes character contours page by page without freezing your browser interface.
+          </li>
+          <li style="margin-bottom: 0.75rem;">
+            <strong>Inspect &amp; Verify Results:</strong> Review the side-by-side preview showing your original visual page alongside the live recognized text transcript, word count, and genuine OCR confidence percentage score.
+          </li>
+          <li style="margin-bottom: 0.75rem;">
+            <strong>Download Searchable PDF &amp; TXT:</strong> Download your unified, searchable PDF document or export the full raw Unicode transcript as a standalone <code>.txt</code> file for archiving or data extraction.
+          </li>
+        </ol>
+
+        <h2>Supported Input Formats &amp; 12 Neural Language Dictionaries</h2>
+        <p>
+          EcrioX OCR supports both single and multi-page documents across standard business formats:
+        </p>
+        <ul style="padding-left: 1.5rem; margin-bottom: 2rem;">
+          <li><strong>Scanned PDF Documents:</strong> Multi-page contracts, legal briefs, tax filings, books, and university thesis papers.</li>
+          <li><strong>Single &amp; Multiple Images:</strong> High-resolution photos, smartphone scans, and receipts in JPG, JPEG, and PNG formats. Multiple images are automatically compiled into a single multi-page searchable PDF in your specified sequence.</li>
+          <li><strong>12 Languages Supported:</strong> English (<kbd>eng</kbd>), Tamil (<kbd>tam</kbd>), Hindi (<kbd>hin</kbd>), Telugu (<kbd>tel</kbd>), Kannada (<kbd>kan</kbd>), Malayalam (<kbd>mal</kbd>), Bengali (<kbd>ben</kbd>), Marathi (<kbd>mar</kbd>), Gujarati (<kbd>guj</kbd>), Spanish (<kbd>spa</kbd>), French (<kbd>fra</kbd>), and German (<kbd>deu</kbd>).</li>
+        </ul>
+
+        <h2>5 Practical Tips to Maximize OCR Transcription Accuracy</h2>
+        <p>
+          While neural OCR engines are exceptionally robust, accuracy depends fundamentally on the physical quality of the input scan. Follow these recommendations for flawless results:
+        </p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin: 1.5rem 0 2rem;">
+          <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem;">
+            <strong style="color: var(--color-primary); display: block; margin-bottom: 0.35rem;">1. Target 300 DPI Resolution</strong>
+            <span style="font-size: 0.9rem; color: var(--text-muted);">Ensure paper documents are scanned at 300 DPI (dots per inch). Scans below 150 DPI produce pixelated character glyphs, confusing similar letters like 'c' and 'e'.</span>
+          </div>
+          <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem;">
+            <strong style="color: var(--color-primary); display: block; margin-bottom: 0.35rem;">2. Straighten Skewed Pages</strong>
+            <span style="font-size: 0.9rem; color: var(--text-muted);">Pages rotated or tilted beyond 10 degrees hinder horizontal line segmentation. Ensure documents are aligned squarely on scanner beds.</span>
+          </div>
+          <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem;">
+            <strong style="color: var(--color-primary); display: block; margin-bottom: 0.35rem;">3. High Foreground Contrast</strong>
+            <span style="font-size: 0.9rem; color: var(--text-muted);">Avoid dark background shadows, paper creases, or heavy bleeding from double-sided printing. Enable our 'Auto-Enhance Contrast' filter for faint pencil or aged ink.</span>
+          </div>
+          <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem;">
+            <strong style="color: var(--color-primary); display: block; margin-bottom: 0.35rem;">4. Even Ambient Lighting</strong>
+            <span style="font-size: 0.9rem; color: var(--text-muted);">When photographing documents with a mobile phone, avoid overhead harsh glare, flashlight hotspots, or casting hand shadows across text blocks.</span>
+          </div>
+        </div>
+
+        <h2>Strict Data Privacy: 100% In-Browser Local Processing</h2>
+        <p>
+          Many online PDF converters secretly transmit your files to cloud servers where documents are stored on third-party disks. For business agreements, personal medical records, NDAs, and financial statements, uploading private documents is an unacceptable security hazard.
+        </p>
+        <p>
+          EcrioX utilizes client-side WebAssembly (Wasm) and HTML5 Canvas architecture. <strong>All PDF rendering, neural character extraction, and searchable PDF compilation are executed directly inside your browser's local sandbox memory.</strong> No files, page images, or extracted text strings are ever transferred across the internet or stored on external databases.
+        </p>
+
+        <!-- FAQ Section -->
+        <h2>Frequently Asked Questions About OCR PDF</h2>
+        <div class="faq-list" style="margin-top: 1.5rem;">
+          
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>What is the difference between a scanned PDF and a searchable PDF?</span>
+              <span class="faq-chevron">&#9662;</span>
+            </button>
+            <div class="faq-answer">
+              A scanned PDF is simply a container holding static raster photos of paper pages. Computers treat the text as graphical pixels, meaning you cannot search using <kbd>Ctrl+F</kbd>, select sentences with your mouse, or copy passages. A searchable PDF overlays an invisible, coordinate-matched text layer on top of the original scan, allowing full text selection and keyword search without changing the document's visual appearance.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How does the invisible text layer work in Adobe Acrobat or Google Chrome?</span>
+              <span class="faq-chevron">&#9662;</span>
+            </button>
+            <div class="faq-answer">
+              Our engine identifies every recognized word along with its precise geometric bounding box (x, y, width, height). It then writes transparent characters (<code style="background: var(--bg-subtle); padding: 0.1rem 0.35rem; border-radius: 4px;">opacity: 0</code>) using vector PDF text instructions directly over the matching bitmap image. When opened in any standard viewer (Acrobat, Chrome, Edge, Preview), the visual scan remains visible to the eye while the underlying text stream is indexed for searching and copying.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Are my confidential files or invoices uploaded to any remote server?</span>
+              <span class="faq-chevron">&#9662;</span>
+            </button>
+            <div class="faq-answer">
+              No. 100% of the OCR extraction and PDF rebuilding occurs locally inside your web browser. Your confidential contracts, receipts, and personal papers are never sent over the internet or saved to cloud servers.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Which languages can I recognize with EcrioX OCR?</span>
+              <span class="faq-chevron">&#9662;</span>
+            </button>
+            <div class="faq-answer">
+              EcrioX provides comprehensive support for 12 languages: English, Tamil, Hindi, Telugu, Kannada, Malayalam, Bengali, Marathi, Gujarati, Spanish, French, and German. Simply choose your document's language from the dropdown menu before running the tool.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Why does OCR accuracy drop on low-resolution scans, and how can I fix it?</span>
+              <span class="faq-chevron">&#9662;</span>
+            </button>
+            <div class="faq-answer">
+              When documents are scanned at low DPI (such as 72 or 100 DPI), character contours blend together. To combat this, select our "High Accuracy (2.0x Oversampling)" setting and ensure "Auto-Enhance Contrast" is checked. This applies bicubic interpolation and adaptive thresholding to maximize character clarity before neural analysis.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Can I convert multiple JPG or PNG images into a single searchable PDF?</span>
+              <span class="faq-chevron">&#9662;</span>
+            </button>
+            <div class="faq-answer">
+              Yes. You can upload multiple image files simultaneously. EcrioX processes each image in order, adds invisible text layers to each page, and compiles them into a unified multi-page searchable PDF document.
+            </div>
+          </div>
+
+        </div>
+
+      </article>
+
+      <!-- Related PDF Tools Navigation -->
+      <section style="margin: 4rem auto 2rem; max-width: 960px;">
+        <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 1.25rem; color: var(--text-main);">
+          More Free Online PDF Utilities
+        </h3>
+        <div class="pdf-tools-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;">
+          
+          <a href="/merge-pdf/" class="pdf-tool-card" style="text-decoration: none; color: inherit; display: block; padding: 1.25rem; border: 1px solid var(--border-color); border-radius: var(--radius-md); background: var(--bg-card); transition: transform 0.2s, box-shadow 0.2s;">
+            <div class="pdf-tool-icon-box" style="width: 40px; height: 40px; border-radius: 8px; background: var(--color-primary-light); color: var(--color-primary); display: flex; align-items: center; justify-content: center; margin-bottom: 0.75rem;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"></rect><line x1="12" y1="9" x2="12" y2="15"></line><line x1="9" y1="12" x2="15" y2="12"></line></svg>
+            </div>
+            <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.35rem;">Merge PDF</h4>
+            <p style="font-size: 0.82rem; color: var(--text-muted); margin: 0;">Combine multiple PDF files into one continuous document in your chosen order.</p>
+          </a>
+
+          <a href="/split-pdf/" class="pdf-tool-card" style="text-decoration: none; color: inherit; display: block; padding: 1.25rem; border: 1px solid var(--border-color); border-radius: var(--radius-md); background: var(--bg-card); transition: transform 0.2s, box-shadow 0.2s;">
+            <div class="pdf-tool-icon-box" style="width: 40px; height: 40px; border-radius: 8px; background: var(--color-primary-light); color: var(--color-primary); display: flex; align-items: center; justify-content: center; margin-bottom: 0.75rem;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"></rect><line x1="2" y1="12" x2="22" y2="12"></line></svg>
+            </div>
+            <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.35rem;">Split PDF</h4>
+            <p style="font-size: 0.82rem; color: var(--text-muted); margin: 0;">Extract specific page ranges or split each page into standalone PDF files.</p>
+          </a>
+
+          <a href="/pdf-compressor/" class="pdf-tool-card" style="text-decoration: none; color: inherit; display: block; padding: 1.25rem; border: 1px solid var(--border-color); border-radius: var(--radius-md); background: var(--bg-card); transition: transform 0.2s, box-shadow 0.2s;">
+            <div class="pdf-tool-icon-box" style="width: 40px; height: 40px; border-radius: 8px; background: var(--color-primary-light); color: var(--color-primary); display: flex; align-items: center; justify-content: center; margin-bottom: 0.75rem;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="10 13 12 11 14 13"></polyline><line x1="12" y1="11" x2="12" y2="17"></line><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path></svg>
+            </div>
+            <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.35rem;">Compress PDF</h4>
+            <p style="font-size: 0.82rem; color: var(--text-muted); margin: 0;">Reduce oversized PDF files while preserving clear fonts and crisp graphics.</p>
+          </a>
+
+          <a href="/jpg-to-pdf/" class="pdf-tool-card" style="text-decoration: none; color: inherit; display: block; padding: 1.25rem; border: 1px solid var(--border-color); border-radius: var(--radius-md); background: var(--bg-card); transition: transform 0.2s, box-shadow 0.2s;">
+            <div class="pdf-tool-icon-box" style="width: 40px; height: 40px; border-radius: 8px; background: var(--color-primary-light); color: var(--color-primary); display: flex; align-items: center; justify-content: center; margin-bottom: 0.75rem;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+            </div>
+            <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.35rem;">JPG to PDF</h4>
+            <p style="font-size: 0.82rem; color: var(--text-muted); margin: 0;">Convert photos and image files into standardized PDF pages with custom margins.</p>
+          </a>
+
+          <a href="/pdf-to-word/" class="pdf-tool-card" style="text-decoration: none; color: inherit; display: block; padding: 1.25rem; border: 1px solid var(--border-color); border-radius: var(--radius-md); background: var(--bg-card); transition: transform 0.2s, box-shadow 0.2s;">
+            <div class="pdf-tool-icon-box" style="width: 40px; height: 40px; border-radius: 8px; background: var(--color-primary-light); color: var(--color-primary); display: flex; align-items: center; justify-content: center; margin-bottom: 0.75rem;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+            </div>
+            <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.35rem;">PDF to Word</h4>
+            <p style="font-size: 0.82rem; color: var(--text-muted); margin: 0;">Convert PDF documents into editable Microsoft Word (.docx) files.</p>
+          </a>
+
+          <a href="/crop-pdf/" class="pdf-tool-card" style="text-decoration: none; color: inherit; display: block; padding: 1.25rem; border: 1px solid var(--border-color); border-radius: var(--radius-md); background: var(--bg-card); transition: transform 0.2s, box-shadow 0.2s;">
+            <div class="pdf-tool-icon-box" style="width: 40px; height: 40px; border-radius: 8px; background: var(--color-primary-light); color: var(--color-primary); display: flex; align-items: center; justify-content: center; margin-bottom: 0.75rem;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2v14a2 2 0 0 0 2 2h14"></path><path d="M18 22V8a2 2 0 0 0-2-2H2"></path></svg>
+            </div>
+            <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.35rem;">Crop PDF</h4>
+            <p style="font-size: 0.82rem; color: var(--text-muted); margin: 0;">Trim unwanted white margins or crop custom regions across all PDF pages.</p>
+          </a>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="/" class="brand-logo">
+            <div class="logo-symbol">E</div>
+            <span>Ecrio<span class="accent-dot">X</span></span>
+          </a>
+          <p>One Platform. Endless Possibilities. Free, fast, and privacy-conscious online utilities designed for everyday productivity.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>PDF Tools</h4>
+          <ul class="footer-links">
+            <li><a href="/">PDF Tools Home</a></li>
+            <li><a href="/tools/ocr-pdf/">OCR PDF</a></li>
+            <li><a href="/merge-pdf/">Merge PDF</a></li>
+            <li><a href="/split-pdf/">Split PDF</a></li>
+            <li><a href="/pdf-compressor/">Compress PDF</a></li>
+            <li><a href="/pdf-to-word/">PDF to Word</a></li>
+            <li><a href="/pdf-to-jpg/">PDF to JPG</a></li>
+            <li><a href="/jpg-to-pdf/">JPG to PDF</a></li>
+            <li><a href="/pdf-editor/">Edit &amp; Sign PDF</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Product &amp; Guides</h4>
+          <ul class="footer-links">
+            <li><a href="/tools/">All Tools</a></li>
+            <li><a href="/categories/">Categories</a></li>
+            <li><a href="/pdf-guides/">PDF Learning Center</a></li>
+            <li><a href="/pdf-guides/how-to-compress-pdf-without-losing-quality/">Compress Without Loss</a></li>
+            <li><a href="/pdf-guides/how-to-merge-multiple-pdf-files/">Merge Multiple PDFs</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Legal &amp; Privacy</h4>
+          <ul class="footer-links">
+            <li><a href="/privacy/">Privacy Policy</a></li>
+            <li><a href="/terms/">Terms of Use</a></li>
+            <li><a href="/about/#privacy-architecture">Data Security</a></li>
+            <li><a href="/about/">About EcrioX</a></li>
+            <li><a href="/contact/">Contact Support</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 EcrioX. All rights reserved. Platform built for speed and privacy.</p>
+        <p>Canonical Domain: <a href="https://ecriox.com/" style="color: var(--color-primary);">ecriox.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../js/tools-registry.js"></script>
+  <script src="../../js/analytics.js"></script>
+  <script src="../../js/app.js"></script>
+  <script src="../../js/pdf-hero-transfer.js"></script>
+  <script src="tool.js"></script>
+</body>
+</html>
