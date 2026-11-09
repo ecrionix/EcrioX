@@ -230,6 +230,18 @@ const ECRIOX_TOOLS = [
     popular: true,
     tags: ["ocr", "ocr pdf", "searchable pdf", "scanned pdf to searchable", "image to text", "extract text", "pdf ocr online free", "jpg to searchable pdf"]
   },
+  {
+    id: "advanced-pdf-organizer",
+    name: "Advanced PDF Organizer",
+    category: "pdf",
+    categoryName: "PDF Tools",
+    description: "Visually organize, reorder, rotate, delete, duplicate, extract, and combine PDF pages online with interactive drag-and-drop.",
+    route: "/advanced-pdf-organizer/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1"></rect><rect x="14" y="3" width="7" height="5" rx="1"></rect><rect x="14" y="12" width="7" height="9" rx="1"></rect><rect x="3" y="16" width="7" height="5" rx="1"></rect></svg>`,
+    status: "available",
+    popular: true,
+    tags: ["pdf", "organize", "rearrange", "rotate", "delete", "duplicate", "extract", "organize pdf", "reorder pdf pages", "pdf organizer"]
+  },
 
   // ==========================================
   // IMAGE TOOLS

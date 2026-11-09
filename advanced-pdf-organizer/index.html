@@ -1,54 +1,574 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Advanced PDF Organizer Online Free – Rearrange, Rotate & Delete PDF Pages | EcrioX</title>
-  <meta name="description" content="Organize PDF pages online for free. Rearrange, rotate, delete, duplicate, extract and merge PDF pages using EcrioX. No software installation required." />
-  <link rel="canonical" href="https://ecriox.com/advanced-pdf-organizer/" />
-  <meta property="og:title" content="Advanced PDF Organizer Online Free – Rearrange, Rotate & Delete PDF Pages | EcrioX" />
-  <meta property="og:description" content="Organize PDF pages online for free. Rearrange, rotate, delete, duplicate, extract and merge PDF pages using EcrioX. No software installation required." />
-  <meta property="og:url" content="https://ecriox.com/advanced-pdf-organizer/" />
-  <meta property="og:type" content="website" />
-  <link rel="stylesheet" href="style.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js"></script>
+  <meta name="description" content="Organize PDF pages online for free. Rearrange, rotate, delete, duplicate, extract and merge PDF pages using EcrioX. No software installation required.">
+  <link rel="canonical" href="https://ecriox.com/advanced-pdf-organizer/">
+  
+  <!-- Favicon & Brand Icons -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#087F50">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Advanced PDF Organizer Online Free – Rearrange, Rotate & Delete PDF Pages | EcrioX">
+  <meta property="og:description" content="Organize PDF pages online for free. Rearrange, rotate, delete, duplicate, extract and merge PDF pages using EcrioX. No software installation required.">
+  <meta property="og:url" content="https://ecriox.com/advanced-pdf-organizer/">
+  <meta property="og:site_name" content="EcrioX">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Advanced PDF Organizer Online Free – Rearrange, Rotate & Delete PDF Pages | EcrioX">
+  <meta name="twitter:description" content="Organize PDF pages online for free with EcrioX. Visual page organizer with 100% private browser processing.">
+
+  <!-- Global Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i){
+  w[l]=w[l]||[];
+  w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),
+  dl=l!='dataLayer'?'&l='+l:'';
+  j.async=true;
+  j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+  f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PQFRBJ9F');
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Schema.org WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "EcrioX Advanced PDF Organizer",
+    "url": "https://ecriox.com/advanced-pdf-organizer/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript.",
+    "description": "Professional client-side PDF page organizer to reorder, rotate, delete, duplicate, extract, and combine PDF pages with drag-and-drop ease.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <!-- Schema.org BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://ecriox.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "PDF Tools",
+        "item": "https://ecriox.com/#pdf-tools"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Advanced PDF Organizer",
+        "item": "https://ecriox.com/advanced-pdf-organizer/"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Schema.org FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I rearrange pages in a PDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Simply drag and drop any page thumbnail to its desired new position. The page numbering automatically updates instantly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I combine and organize pages from multiple PDF files at once?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes! You can select multiple PDF files during initial upload or click '+ Insert PDF' at any time to merge and organize pages across different documents."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will my PDF files be uploaded to external servers?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. EcrioX executes 100% in your browser using WebAssembly and client-side JavaScript. Your documents never leave your device."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I rotate individual pages without rotating the whole document?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Each page thumbnail has individual clockwise and counter-clockwise rotate buttons, or you can select multiple pages and rotate them together."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does blank page detection work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The tool analyzes the underlying text and visual layers of each page. If blank or near-empty pages are detected, it prompts you with the exact count before removing them."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="style.css">
+  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
+  
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6672302762343789" crossorigin="anonymous"></script>
 </head>
 <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQFRBJ9F" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
+
+  <!-- Global Header -->
   <header class="site-header">
-    <div class="logo"><a href="/"><img src="/assets/logo.svg" alt="EcrioX" /></a></div>
-    <h1>Advanced PDF Organizer</h1>
-    <div class="header-actions">
-      <input type="file" id="fileInput" accept="application/pdf" multiple style="display:none;" />
-      <button id="uploadBtn" class="btn primary">Upload PDF</button>
-      <button id="themeToggle" class="btn">Toggle Theme</button>
+    <div class="container header-inner">
+      <a href="/" class="brand-logo" aria-label="EcrioX Home">
+        <div class="logo-symbol">E</div>
+        <span>Ecrio<span class="accent-dot">X</span></span>
+      </a>
+
+      <nav class="nav-desktop">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/tools/" class="nav-link active">All Tools</a>
+        <a href="/categories/" class="nav-link">Categories</a>
+        <a href="/about/" class="nav-link">About</a>
+        <a href="/contact/" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn-icon theme-toggle-btn" aria-label="Toggle color theme">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <button class="btn-icon mobile-toggle" aria-label="Open mobile menu" aria-expanded="false">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
     </div>
   </header>
-  <section class="toolbar" id="toolbar" style="display:none;">
-    <button id="selectAllBtn" class="btn">Select All</button>
-    <button id="deselectAllBtn" class="btn">Deselect All</button>
-    <button id="rotateLeftBtn" class="btn" disabled>↺ Rotate Left</button>
-    <button id="rotateRightBtn" class="btn" disabled>↻ Rotate Right</button>
-    <button id="duplicateBtn" class="btn" disabled>Duplicate</button>
-    <button id="deleteBtn" class="btn" disabled>Delete</button>
-    <button id="extractBtn" class="btn" disabled>Extract</button>
-    <button id="insertBtn" class="btn" disabled>Insert PDF</button>
-    <button id="undoBtn" class="btn" disabled>Undo</button>
-    <button id="redoBtn" class="btn" disabled>Redo</button>
-  </section>
-  <main class="workspace" id="workspace" style="display:none;">
-    <div id="thumbContainer" class="thumb-container"></div>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav">
+    <a href="/" class="nav-link">Home</a>
+    <a href="/tools/" class="nav-link active">All Tools</a>
+    <a href="/categories/" class="nav-link">Categories</a>
+    <a href="/about/" class="nav-link">About</a>
+    <a href="/contact/" class="nav-link">Contact</a>
+  </div>
+
+  <main class="page-wrapper" style="padding-top: 2rem;">
+    <div class="container">
+      <!-- Breadcrumbs -->
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="separator">/</span>
+        <a href="/tools/">Tools</a>
+        <span class="separator">/</span>
+        <a href="/categories/">PDF Tools</a>
+        <span class="separator">/</span>
+        <span>Advanced PDF Organizer</span>
+      </nav>
+
+      <!-- Tool Header -->
+      <div class="tool-header-block">
+        <span class="badge badge-category" style="margin-bottom: 0.75rem;">PDF Power Utility</span>
+        <h1 style="font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800; margin-bottom: 0.75rem;">Advanced PDF Organizer Online</h1>
+        <p style="font-size: 1.1rem; color: var(--text-muted); max-width: 820px; margin: 0 auto;">
+          Visually rearrange, rotate, delete, duplicate, extract, and combine PDF pages in a desktop-class interactive workspace. 100% private and processed locally in your browser.
+        </p>
+      </div>
+
+      <!-- Main Tool Container -->
+      <div class="organizer-app-container">
+        
+        <!-- Dropzone (Initial state) -->
+        <div id="dropzone" class="dropzone-area">
+          <input type="file" id="fileInput" accept="application/pdf,.pdf" multiple style="display: none;">
+          <div class="dropzone-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="9" rx="1"></rect><rect x="14" y="3" width="7" height="5" rx="1"></rect><rect x="14" y="12" width="7" height="9" rx="1"></rect><rect x="3" y="16" width="7" height="5" rx="1"></rect></svg>
+          </div>
+          <h3 class="dropzone-title">Drop PDF file(s) here, or browse</h3>
+          <p class="dropzone-sub">Select one or multiple PDFs to inspect, reorder, rotate, or merge pages</p>
+          <button type="button" id="browseBtn" class="btn btn-primary">Select PDF Files</button>
+        </div>
+
+        <!-- Hidden input for inserting additional PDFs -->
+        <input type="file" id="insertFileInput" accept="application/pdf,.pdf" multiple style="display: none;">
+
+        <!-- Active Organizer Workspace (Hidden initially) -->
+        <div id="organizerWorkspace" class="organizer-workspace" style="display: none;">
+          
+          <!-- Sticky Floating Toolbar -->
+          <div class="organizer-toolbar-card">
+            
+            <!-- Primary Action Bar -->
+            <div class="toolbar-row-top">
+              <div class="toolbar-group">
+                <button type="button" id="selectAllBtn" class="tool-btn" title="Select All (Ctrl+A)">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+                  <span>Select All</span>
+                </button>
+                <button type="button" id="deselectAllBtn" class="tool-btn" title="Deselect All">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+                  <span>Deselect</span>
+                </button>
+                <div class="toolbar-divider"></div>
+                <button type="button" id="rotateLeftBtn" class="tool-btn" disabled title="Rotate Left 90°">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
+                  <span>Rotate Left</span>
+                </button>
+                <button type="button" id="rotateRightBtn" class="tool-btn" disabled title="Rotate Right 90°">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
+                  <span>Rotate Right</span>
+                </button>
+                <button type="button" id="duplicateBtn" class="tool-btn" disabled title="Duplicate Selected Pages">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                  <span>Duplicate</span>
+                </button>
+                <button type="button" id="deleteBtn" class="tool-btn tool-btn-danger" disabled title="Delete Selected Pages (Del)">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                  <span>Delete</span>
+                </button>
+              </div>
+
+              <div class="toolbar-group">
+                <button type="button" id="extractBtn" class="tool-btn tool-btn-accent" disabled title="Export only selected pages into a new document">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="15" y2="15"></line></svg>
+                  <span>Extract Pages</span>
+                </button>
+                <button type="button" id="insertBtn" class="tool-btn" title="Add pages from another PDF file">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                  <span>+ Insert PDF</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Secondary Utility Bar -->
+            <div class="toolbar-row-bottom">
+              <div class="toolbar-group">
+                <button type="button" id="reverseBtn" class="tool-btn-sm" title="Reverse the entire page order">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="17 1 21 5 17 9"></polyline><path d="M3 11V9a4 4 0 0 1 4-4h14"></path><polyline points="7 23 3 19 7 15"></polyline><path d="M21 13v2a4 4 0 0 1-4 4H3"></path></svg>
+                  <span>Reverse All</span>
+                </button>
+                <button type="button" id="sortBtn" class="tool-btn-sm" title="Restore original document sequence">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5h10M11 9h7M11 13h4"></path><path d="M3 17l3 3 3-3M6 18V4"></path></svg>
+                  <span>Sort Original</span>
+                </button>
+                <button type="button" id="deleteBlankBtn" class="tool-btn-sm" title="Scan for and remove empty blank pages">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"></rect><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+                  <span>Delete Blank Pages</span>
+                </button>
+              </div>
+
+              <div class="toolbar-group">
+                <!-- Undo / Redo -->
+                <button type="button" id="undoBtn" class="tool-btn-icon" disabled title="Undo (Ctrl+Z)">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7v6h6"></path><path d="M21 17a9 9 0 0 0-9-9 9 9 0 0 0-6 2.3L3 13"></path></svg>
+                </button>
+                <button type="button" id="redoBtn" class="tool-btn-icon" disabled title="Redo (Ctrl+Y)">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 7v6h-6"></path><path d="M3 17a9 9 0 0 1 9-9 9 9 0 0 1 6 2.3l3 2.7"></path></svg>
+                </button>
+
+                <!-- Thumbnail Zoom Slider -->
+                <div class="zoom-control-group">
+                  <span class="zoom-label">Size:</span>
+                  <input type="range" id="zoomSlider" min="110" max="240" value="150" step="10" title="Adjust thumbnail scale">
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Loading Indicator overlay -->
+          <div id="loadingOverlay" class="organizer-loading-overlay" style="display: none;">
+            <div class="spinner"></div>
+            <p id="loadingStatusText" style="margin-top: 0.75rem; font-weight: 600; color: var(--text-main);">Rendering page thumbnails...</p>
+          </div>
+
+          <!-- Drag-and-Drop Page Grid -->
+          <div class="page-grid-wrapper">
+            <div id="thumbContainer" class="organizer-grid"></div>
+          </div>
+
+          <!-- Bottom Sticky Execution Dock -->
+          <div class="organizer-bottom-dock">
+            <div class="dock-meta-info">
+              <div class="dock-badge">
+                <span class="dock-badge-title">Total Pages:</span>
+                <span id="totalPagesInfo" class="dock-badge-val">0</span>
+              </div>
+              <div class="dock-badge">
+                <span class="dock-badge-title">Selected:</span>
+                <span id="selectedPagesInfo" class="dock-badge-val">0</span>
+              </div>
+            </div>
+
+            <div class="dock-actions">
+              <button type="button" id="resetBtn" class="btn btn-secondary btn-sm" disabled>Reset Changes</button>
+              <button type="button" id="downloadSelectedBtn" class="btn btn-secondary btn-sm" style="display: none;">Download Selected (0)</button>
+              <button type="button" id="downloadBtn" class="btn btn-primary" disabled>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                <span id="downloadBtnText">Download Organized PDF</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Notification Toast -->
+        <div id="toastNotification" class="ecriox-toast" style="display: none;"></div>
+
+      </div>
+
+      <!-- Designated AdSense Slot -->
+      <div class="ad-slot-container" style="margin: 3.5rem auto 2.5rem;">
+        <div class="ad-slot-card">
+          <span>Advertisement Placeholder</span>
+        </div>
+      </div>
+
+      <!-- SEO Educational Content -->
+      <article class="tool-content-section">
+        <h2>How to Organize PDF Pages Online with EcrioX</h2>
+        <ol>
+          <li><strong>Upload your PDF documents:</strong> Drag and drop single or multiple PDF files into the upload box. Your pages will instantly render as interactive high-resolution thumbnails.</li>
+          <li><strong>Rearrange pages freely:</strong> Click and drag any page thumbnail to move it to a new location. Multi-select pages using <code>Ctrl</code> / <code>Cmd</code> or <code>Shift</code> to reorder groups together.</li>
+          <li><strong>Rotate, Duplicate, or Delete:</strong> Use the hover controls on any thumbnail or the bulk toolbar at the top to rotate pages 90° clockwise/counter-clockwise, clone pages, or discard unwanted sheets.</li>
+          <li><strong>Insert Additional PDFs:</strong> Click <strong>+ Insert PDF</strong> at any time to append or interleave pages from secondary documents.</li>
+          <li><strong>Download your Organized PDF:</strong> Click <strong>Download Organized PDF</strong>. The updated document is compiled instantly in your browser with original vector fonts, crisp formatting, and correct orientations preserved.</li>
+        </ol>
+
+        <h2>Professional Features for Complete Document Control</h2>
+        <p>
+          Managing complex business contracts, university theses, or multi-chapter reports typically requires expensive software like Adobe Acrobat Pro. EcrioX delivers the same enterprise-grade page management directly in your browser:
+        </p>
+        <div class="feature-grid-columns" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin: 1.5rem 0;">
+          <div style="background: var(--bg-subtle); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem;">
+            <h4 style="font-weight: 700; color: var(--color-primary); margin-bottom: 0.5rem;">Interactive Drag-and-Drop</h4>
+            <p style="font-size: 0.95rem; color: var(--text-muted);">Reorder single pages or multi-page blocks effortlessly. Page numbering numbers adjust smoothly in real time.</p>
+          </div>
+          <div style="background: var(--bg-subtle); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem;">
+            <h4 style="font-weight: 700; color: var(--color-primary); margin-bottom: 0.5rem;">Independent Page Rotation</h4>
+            <p style="font-size: 0.95rem; color: var(--text-muted);">Fix scanned landscape tables, architectural charts, or sideways pages with 90° and 180° orientation adjustment.</p>
+          </div>
+          <div style="background: var(--bg-subtle); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem;">
+            <h4 style="font-weight: 700; color: var(--color-primary); margin-bottom: 0.5rem;">Selective Extraction</h4>
+            <p style="font-size: 0.95rem; color: var(--text-muted);">Select specific pages and export them into an isolated new PDF without modifying your master file.</p>
+          </div>
+          <div style="background: var(--bg-subtle); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem;">
+            <h4 style="font-weight: 700; color: var(--color-primary); margin-bottom: 0.5rem;">Automatic Blank Page Detection</h4>
+            <p style="font-size: 0.95rem; color: var(--text-muted);">Scan scanned and digital documents for blank pages and clean up your files before client distribution.</p>
+          </div>
+        </div>
+
+        <h2>Privacy & Security: Zero Remote Uploads</h2>
+        <p>
+          Unlike conventional online PDF tools that upload confidential contracts, bank statements, or medical files to third-party cloud servers, EcrioX executes 100% locally on your machine. Leveraging WebAssembly, HTML5 Canvas, and modern Web Standards, your data stays in your browser memory and never leaves your computer.
+        </p>
+
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-list" style="margin-top: 1.5rem;">
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How do I rearrange pages in a PDF?</span>
+              <span class="faq-chevron">&#9662;</span>
+            </button>
+            <div class="faq-answer">
+              Simply click and drag any page thumbnail to its desired new position. The page numbering automatically updates instantly.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Can I combine and organize pages from multiple PDF files at once?</span>
+              <span class="faq-chevron">&#9662;</span>
+            </button>
+            <div class="faq-answer">
+              Yes! You can select multiple PDF files during initial upload or click '+ Insert PDF' at any time to merge and organize pages across different documents.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Will my PDF files be uploaded to external servers?</span>
+              <span class="faq-chevron">&#9662;</span>
+            </button>
+            <div class="faq-answer">
+              No. EcrioX executes 100% in your browser using WebAssembly and client-side JavaScript. Your documents never leave your device.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Can I rotate individual pages without rotating the whole document?</span>
+              <span class="faq-chevron">&#9662;</span>
+            </button>
+            <div class="faq-answer">
+              Yes. Each page thumbnail has individual clockwise and counter-clockwise rotate buttons, or you can select multiple pages and rotate them together.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How does blank page detection work?</span>
+              <span class="faq-chevron">&#9662;</span>
+            </button>
+            <div class="faq-answer">
+              The tool analyzes the underlying text and visual layers of each page. If blank or near-empty pages are detected, it prompts you with the exact count before removing them.
+            </div>
+          </div>
+        </div>
+
+        <p style="margin-top: 1.5rem; background: var(--bg-subtle); padding: 1rem 1.25rem; border-radius: var(--radius-md); border-left: 4px solid var(--color-primary);"><strong>Pro Tip:</strong> Need to sign or annotate pages after organizing? Open our dedicated <a href="/pdf-editor/" style="color: var(--color-primary); font-weight: 600; text-decoration: underline;">EcrioX PDF Editor</a> to draw electronic signatures, add text notes, and highlight key paragraphs.</p>
+      </article>
+
+      <!-- Related PDF Tools -->
+      <section style="margin: 4rem 0 2rem;">
+        <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 1.5rem; text-align: center;">Related PDF & Document Tools</h3>
+        <div class="grid-tools">
+          <div class="tool-card">
+            <div class="tool-card-header">
+              <div class="tool-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+              </div>
+              <span class="badge badge-available">Available</span>
+            </div>
+            <div class="tool-card-body">
+              <h4 class="tool-card-title">PDF Editor</h4>
+              <p class="tool-card-desc">Add signatures, text notes, highlight sections, and annotate your PDF documents online.</p>
+            </div>
+            <div class="tool-card-footer">
+              <a href="/pdf-editor/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-card-header">
+              <div class="tool-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"></rect><line x1="12" y1="9" x2="12" y2="15"></line><line x1="9" y1="12" x2="15" y2="12"></line></svg>
+              </div>
+              <span class="badge badge-available">Available</span>
+            </div>
+            <div class="tool-card-body">
+              <h4 class="tool-card-title">Merge PDF</h4>
+              <p class="tool-card-desc">Combine multiple PDF files into one continuous document in seconds.</p>
+            </div>
+            <div class="tool-card-footer">
+              <a href="/merge-pdf/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <div class="tool-card-header">
+              <div class="tool-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><line x1="20" y1="4" x2="8.12" y2="15.88"></line><line x1="14.47" y1="14.48" x2="20" y2="20"></line><line x1="8.12" y1="8.12" x2="12" y2="12"></line></svg>
+              </div>
+              <span class="badge badge-available">Available</span>
+            </div>
+            <div class="tool-card-body">
+              <h4 class="tool-card-title">Split PDF</h4>
+              <p class="tool-card-desc">Extract specific pages or separate documents by custom page ranges.</p>
+            </div>
+            <div class="tool-card-footer">
+              <a href="/split-pdf/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
   </main>
-  <footer class="bottom-bar" id="bottomBar" style="display:none;">
-    <span id="totalPagesInfo">Total pages: 0</span>
-    <span id="selectedPagesInfo">Selected: 0</span>
-    <button id="resetBtn" class="btn" disabled>Reset Changes</button>
-    <button id="downloadBtn" class="btn primary" disabled>Download PDF</button>
+
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="/" class="brand-logo">
+            <div class="logo-symbol">E</div>
+            <span>Ecrio<span class="accent-dot">X</span></span>
+          </a>
+          <p>One Platform. Endless Possibilities. Free, fast, and privacy-conscious online utilities designed for everyday productivity.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Product</h4>
+          <ul class="footer-links">
+            <li><a href="/tools/">All Tools</a></li>
+            <li><a href="/categories/">Categories</a></li>
+            <li><a href="/advanced-pdf-organizer/">PDF Organizer</a></li>
+            <li><a href="/pdf-editor/">PDF Editor</a></li>
+            <li><a href="/merge-pdf/">Merge PDF</a></li>
+            <li><a href="/split-pdf/">Split PDF</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="/about/">About EcrioX</a></li>
+            <li><a href="/contact/">Contact Support</a></li>
+            <li><a href="/contact/">Feedback</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul class="footer-links">
+            <li><a href="/privacy/">Privacy Policy</a></li>
+            <li><a href="/terms/">Terms of Use</a></li>
+            <li><a href="/about/#privacy-architecture">Data Security</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 EcrioX. All rights reserved. Platform built for speed and privacy.</p>
+        <p>Canonical Domain: <a href="https://ecriox.com/" style="color: var(--color-primary);">ecriox.com</a></p>
+      </div>
+    </div>
   </footer>
 
+  <script src="../js/tools-registry.js"></script>
+  <script src="../js/analytics.js"></script>
+  <script src="../js/app.js"></script>
+  <script src="../js/pdf-hero-transfer.js"></script>
   <script src="tool.js"></script>
 </body>
 </html>
