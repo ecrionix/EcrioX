@@ -47,25 +47,54 @@
     }
 
     elements.dropzone.addEventListener("click", () => elements.fileInput.click());
-    elements.dropzone.addEventListener("dragover", (e) => {
-      e.preventDefault();
-      elements.dropzone.classList.add("dragover");
+    
+    // Drag and drop onto initial dropzone
+    ["dragenter", "dragover"].forEach(evt => {
+      elements.dropzone.addEventListener(evt, (e) => {
+        e.preventDefault();
+        elements.dropzone.classList.add("dragover");
+      });
     });
-    elements.dropzone.addEventListener("dragleave", () => {
-      elements.dropzone.classList.remove("dragover");
+    ["dragleave", "drop"].forEach(evt => {
+      elements.dropzone.addEventListener(evt, (e) => {
+        e.preventDefault();
+        elements.dropzone.classList.remove("dragover");
+      });
     });
     elements.dropzone.addEventListener("drop", (e) => {
-      e.preventDefault();
-      elements.dropzone.classList.remove("dragover");
       if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
         handleFiles(Array.from(e.dataTransfer.files));
       }
     });
 
+    // Drag and drop onto workspace controls to append more PDFs
+    if (elements.workspaceControls) {
+      ["dragenter", "dragover"].forEach(evt => {
+        elements.workspaceControls.addEventListener(evt, (e) => {
+          e.preventDefault();
+          elements.workspaceControls.style.outline = "2px dashed var(--color-primary)";
+          elements.workspaceControls.style.outlineOffset = "4px";
+        });
+      });
+      ["dragleave", "drop"].forEach(evt => {
+        elements.workspaceControls.addEventListener(evt, (e) => {
+          e.preventDefault();
+          elements.workspaceControls.style.outline = "";
+        });
+      });
+      elements.workspaceControls.addEventListener("drop", (e) => {
+        if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+          handleFiles(Array.from(e.dataTransfer.files));
+        }
+      });
+    }
+
     elements.fileInput.addEventListener("change", (e) => {
       if (e.target.files && e.target.files.length > 0) {
         handleFiles(Array.from(e.target.files));
       }
+      // Reset input value so user can add the same files again or reopen picker cleanly
+      elements.fileInput.value = "";
     });
 
     elements.addMoreBtn.addEventListener("click", () => elements.fileInput.click());
@@ -76,18 +105,51 @@
   }
 
   async function handleFiles(files) {
-    const validPdfFiles = files.filter(
-      (f) => f.type === "application/pdf" || f.name.toLowerCase().endsWith(".pdf")
-    );
+    if (!files || files.length === 0) return;
+
+    // Filter valid vs invalid files
+    const validPdfFiles = [];
+    const invalidFiles = [];
+
+    files.forEach(f => {
+      const isPdf = f.type === "application/pdf" || f.name.toLowerCase().endsWith(".pdf");
+      if (isPdf) {
+        validPdfFiles.push(f);
+      } else {
+        invalidFiles.push(f);
+      }
+    });
+
+    // Notify about invalid files without discarding valid files
+    if (invalidFiles.length > 0) {
+      const msg = `${invalidFiles.length} unsupported file(s) skipped (only PDF documents can be merged).`;
+      if (window.EcrioXApp) {
+        window.EcrioXApp.showToast(msg);
+      } else {
+        console.warn(msg);
+      }
+    }
 
     if (validPdfFiles.length === 0) {
-      if (window.EcrioXApp) {
-        window.EcrioXApp.showToast("Please upload valid PDF files.");
+      if (pdfList.length === 0) {
+        if (window.EcrioXApp) {
+          window.EcrioXApp.showToast("Please upload valid PDF files.");
+        }
       }
       return;
     }
 
+    let duplicateCount = 0;
     for (const file of validPdfFiles) {
+      // Prevent accidental duplicate file additions
+      const isDuplicate = pdfList.some(
+        item => item.name === file.name && item.size === file.size && item.file.lastModified === file.lastModified
+      );
+      if (isDuplicate) {
+        duplicateCount++;
+        continue;
+      }
+
       try {
         const buffer = await file.arrayBuffer();
         // Pass a slice to PDF.js worker so the main arrayBuffer is never detached
@@ -115,6 +177,10 @@
           window.EcrioXApp.showToast(msg);
         }
       }
+    }
+
+    if (duplicateCount > 0 && window.EcrioXApp) {
+      window.EcrioXApp.showToast(`${duplicateCount} duplicate file(s) were skipped.`);
     }
 
     renderFileList();

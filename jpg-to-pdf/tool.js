@@ -70,6 +70,7 @@
       if (e.target.files && e.target.files.length > 0) {
         handleFiles(Array.from(e.target.files));
       }
+      elements.fileInput.value = "";
     });
 
     elements.addMoreBtn.addEventListener("click", () => elements.fileInput.click());
@@ -77,19 +78,41 @@
     elements.convertBtn.addEventListener("click", processConversion);
     elements.downloadBtn.addEventListener("click", downloadPdf);
     elements.convertAnotherBtn.addEventListener("click", resetTool);
+
+    // Support drag and drop on workspace controls to add more images
+    if (elements.workspaceControls) {
+      elements.workspaceControls.addEventListener("dragover", (e) => {
+        e.preventDefault();
+      });
+      elements.workspaceControls.addEventListener("drop", (e) => {
+        e.preventDefault();
+        if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+          handleFiles(Array.from(e.dataTransfer.files));
+        }
+      });
+    }
   }
 
   async function handleFiles(files) {
-    const validImages = files.filter((f) => f.type.startsWith("image/") || /\.(jpe?g|png|webp|gif|bmp)$/i.test(f.name));
+    let invalidCount = 0;
+    let duplicateCount = 0;
 
-    if (validImages.length === 0) {
-      if (window.EcrioXApp) {
-        window.EcrioXApp.showToast("Please upload valid image files (JPG, PNG, or WebP).");
+    for (const file of files) {
+      const isValid = file.type.startsWith("image/") || /\.(jpe?g|png|webp|gif|bmp)$/i.test(file.name);
+      if (!isValid) {
+        invalidCount++;
+        continue;
       }
-      return;
-    }
 
-    for (const file of validImages) {
+      // Check duplicates
+      const isDuplicate = imageList.some(
+        (item) => item.name === file.name && item.size === file.size && item.file.lastModified === file.lastModified
+      );
+      if (isDuplicate) {
+        duplicateCount++;
+        continue;
+      }
+
       try {
         const dataUrl = await readFileAsDataUrl(file);
         const dimensions = await getImageDimensions(dataUrl);
@@ -98,6 +121,7 @@
           file: file,
           name: file.name,
           size: file.size,
+          lastModified: file.lastModified,
           dataUrl: dataUrl,
           width: dimensions.width,
           height: dimensions.height
@@ -109,6 +133,14 @@
       } catch (err) {
         console.error("Error loading image:", file.name, err);
       }
+    }
+
+    if (invalidCount > 0 && window.EcrioXApp) {
+      window.EcrioXApp.showToast(`${invalidCount} non-image file(s) were skipped.`);
+    }
+
+    if (duplicateCount > 0 && window.EcrioXApp) {
+      window.EcrioXApp.showToast(`${duplicateCount} duplicate image(s) were skipped.`);
     }
 
     renderImageList();

@@ -1,6 +1,6 @@
 /**
  * EcrioX PDF Hero File Transfer & Autoload Controller
- * Enables drag & drop on the homepage and seamless transfer to dedicated PDF tools.
+ * Enables multi-file drag & drop on the homepage and seamless batch transfer to dedicated PDF tools.
  * Uses client-side IndexedDB for zero-size-limit local file transfer.
  */
 
@@ -12,7 +12,7 @@
 
   function openDB() {
     return new Promise((resolve, reject) => {
-      const request = indexedDB.open(DB_NAME, 1);
+      const request = indexedDB.open(DB_NAME, 2);
       request.onupgradeneeded = (e) => {
         const db = e.target.result;
         if (!db.objectStoreNames.contains(STORE_NAME)) {
@@ -24,13 +24,15 @@
     });
   }
 
-  async function storeFile(file) {
+  async function storeFiles(files) {
     try {
       const db = await openDB();
       return new Promise((resolve, reject) => {
         const tx = db.transaction(STORE_NAME, 'readwrite');
         const store = tx.objectStore(STORE_NAME);
-        store.put(file, 'hero_uploaded_pdf');
+        const fileArr = Array.isArray(files) ? files : [files];
+        store.put(fileArr, 'hero_uploaded_pdfs');
+        store.put(fileArr[0], 'hero_uploaded_pdf'); // backwards compatibility
         tx.oncomplete = () => resolve(true);
         tx.onerror = () => reject(tx.error);
       });
@@ -40,28 +42,49 @@
     }
   }
 
-  async function getStoredFile() {
+  async function storeFile(file) {
+    return storeFiles([file]);
+  }
+
+  async function getStoredFiles() {
     try {
       const db = await openDB();
       return new Promise((resolve, reject) => {
         const tx = db.transaction(STORE_NAME, 'readonly');
         const store = tx.objectStore(STORE_NAME);
-        const req = store.get('hero_uploaded_pdf');
-        req.onsuccess = () => resolve(req.result || null);
+        const req = store.get('hero_uploaded_pdfs');
+        req.onsuccess = () => {
+          if (req.result && Array.isArray(req.result) && req.result.length > 0) {
+            resolve(req.result);
+          } else {
+            // fallback to single file key
+            const singleReq = store.get('hero_uploaded_pdf');
+            singleReq.onsuccess = () => {
+              resolve(singleReq.result ? [singleReq.result] : []);
+            };
+            singleReq.onerror = () => resolve([]);
+          }
+        };
         req.onerror = () => reject(req.error);
       });
     } catch (e) {
       console.warn('IndexedDB retrieve failed:', e);
-      return null;
+      return [];
     }
   }
 
-  async function clearStoredFile() {
+  async function getStoredFile() {
+    const list = await getStoredFiles();
+    return list.length > 0 ? list[0] : null;
+  }
+
+  async function clearStoredFiles() {
     try {
       const db = await openDB();
       return new Promise((resolve, reject) => {
         const tx = db.transaction(STORE_NAME, 'readwrite');
         const store = tx.objectStore(STORE_NAME);
+        store.delete('hero_uploaded_pdfs');
         store.delete('hero_uploaded_pdf');
         tx.oncomplete = () => resolve(true);
         tx.onerror = () => reject(tx.error);
@@ -72,9 +95,12 @@
   }
 
   window.EcrioXTransfer = {
+    storeFiles,
     storeFile,
+    getStoredFiles,
     getStoredFile,
-    clearStoredFile
+    clearStoredFile: clearStoredFiles,
+    clearStoredFiles
   };
 
   // 1. Homepage Dropzone & Quick Action Logic
@@ -89,7 +115,7 @@
     const changeFileBtn = document.getElementById('modalChangeFileBtn');
 
     if (dropzone && fileInput) {
-      let selectedFile = null;
+      let selectedFiles = [];
 
       if (selectBtn) {
         selectBtn.addEventListener('click', (e) => {
@@ -123,40 +149,55 @@
 
       dropzone.addEventListener('drop', (e) => {
         if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
-          handleIncomingFile(e.dataTransfer.files[0]);
+          handleIncomingFiles(Array.from(e.dataTransfer.files));
         }
       });
 
       fileInput.addEventListener('change', (e) => {
         if (e.target.files && e.target.files.length > 0) {
-          handleIncomingFile(e.target.files[0]);
+          handleIncomingFiles(Array.from(e.target.files));
         }
       });
 
-      function handleIncomingFile(file) {
-        if (!file) return;
+      function handleIncomingFiles(files) {
+        if (!files || files.length === 0) return;
 
-        const isPdf = file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf');
-        const isImg = file.type.startsWith('image/') || /\.(jpg|jpeg|png|webp)$/i.test(file.name);
+        const validFiles = files.filter(file => {
+          const isPdf = file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf');
+          const isImg = file.type.startsWith('image/') || /\.(jpg|jpeg|png|webp)$/i.test(file.name);
+          return isPdf || isImg;
+        });
 
-        if (!isPdf && !isImg) {
-          alert('Please select a valid PDF document or image file.');
+        if (validFiles.length === 0) {
+          alert('Please select valid PDF documents or image files.');
+          fileInput.value = '';
           return;
         }
 
-        selectedFile = file;
+        selectedFiles = validFiles;
+        fileInput.value = '';
 
-        // If user uploaded an image, route straight to JPG to PDF
-        if (isImg && !isPdf) {
-          storeFile(file).then(() => {
+        // If user uploaded only images, route straight to JPG to PDF
+        const allImages = validFiles.every(f => f.type.startsWith('image/') || /\.(jpg|jpeg|png|webp)$/i.test(f.name));
+        if (allImages) {
+          storeFiles(validFiles).then(() => {
             window.location.href = '/jpg-to-pdf/?transfer=1';
           });
           return;
         }
 
         // Display quick action modal
-        if (modalFilename) modalFilename.textContent = file.name;
-        if (modalFilesize) modalFilesize.textContent = formatBytes(file.size);
+        const totalBytes = validFiles.reduce((acc, f) => acc + f.size, 0);
+        if (modalFilename) {
+          if (validFiles.length === 1) {
+            modalFilename.textContent = validFiles[0].name;
+          } else {
+            modalFilename.textContent = `${validFiles.length} PDF Documents Selected`;
+          }
+        }
+        if (modalFilesize) {
+          modalFilesize.textContent = formatBytes(totalBytes);
+        }
         if (actionModal) {
           actionModal.classList.add('active');
           document.body.style.overflow = 'hidden';
@@ -171,8 +212,8 @@
           if (!route) return;
 
           card.classList.add('loading');
-          if (selectedFile) {
-            await storeFile(selectedFile);
+          if (selectedFiles && selectedFiles.length > 0) {
+            await storeFiles(selectedFiles);
           }
 
           const separator = route.includes('?') ? '&' : '?';
@@ -207,16 +248,17 @@
     const params = new URLSearchParams(window.location.search);
     if (params.get('transfer') === '1') {
       setTimeout(async () => {
-        const file = await getStoredFile();
-        if (file) {
+        const files = await getStoredFiles();
+        if (files && files.length > 0) {
           const targetInput = document.querySelector('input[type="file"]');
           if (targetInput && typeof DataTransfer !== 'undefined') {
             try {
               const dt = new DataTransfer();
-              dt.items.add(file);
+              files.forEach(f => dt.items.add(f));
               targetInput.files = dt.files;
               targetInput.dispatchEvent(new Event('change', { bubbles: true }));
-              console.log('Successfully autoloaded transferred file:', file.name);
+              console.log(`Successfully autoloaded ${files.length} transferred file(s)`);
+              clearStoredFiles();
             } catch (err) {
               console.warn('Could not populate file input automatically:', err);
             }

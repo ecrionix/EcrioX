@@ -116,6 +116,17 @@
     btnClearQueue.addEventListener('click', resetAll);
     btnResetTool.addEventListener('click', resetAll);
 
+    // Support drag and drop on configuration/queue container
+    if (stepConfig) {
+      stepConfig.addEventListener('dragover', (e) => e.preventDefault());
+      stepConfig.addEventListener('drop', (e) => {
+        e.preventDefault();
+        if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+          handleIncomingFiles(Array.from(e.dataTransfer.files));
+        }
+      });
+    }
+
     btnStartOcr.addEventListener('click', startOcrProcess);
     btnCancelOcr.addEventListener('click', cancelOcrProcess);
 
@@ -152,12 +163,39 @@
    */
   async function handleIncomingFiles(fileList) {
     const validExtensions = ['.pdf', '.jpg', '.jpeg', '.png'];
-    const candidates = fileList.filter(f => {
-      const ext = '.' + f.name.split('.').pop().toLowerCase();
-      return validExtensions.includes(ext) || f.type.startsWith('image/') || f.type === 'application/pdf';
-    });
+    let invalidCount = 0;
+    let duplicateCount = 0;
 
-    if (candidates.length === 0) {
+    const candidates = [];
+    for (const f of fileList) {
+      const ext = '.' + f.name.split('.').pop().toLowerCase();
+      const isValid = validExtensions.includes(ext) || f.type.startsWith('image/') || f.type === 'application/pdf';
+      if (!isValid) {
+        invalidCount++;
+        continue;
+      }
+
+      // Check duplicates
+      const isDuplicate = state.files.some(
+        (existing) => existing.name === f.name && existing.size === f.size && existing.file && existing.file.lastModified === f.lastModified
+      );
+      if (isDuplicate) {
+        duplicateCount++;
+        continue;
+      }
+
+      candidates.push(f);
+    }
+
+    if (invalidCount > 0 && window.EcrioXApp) {
+      window.EcrioXApp.showToast(`${invalidCount} unsupported file(s) were skipped.`);
+    }
+
+    if (duplicateCount > 0 && window.EcrioXApp) {
+      window.EcrioXApp.showToast(`${duplicateCount} duplicate file(s) were skipped.`);
+    }
+
+    if (candidates.length === 0 && state.files.length === 0) {
       alert('Please upload scanned PDF documents or image files (JPG, PNG).');
       return;
     }

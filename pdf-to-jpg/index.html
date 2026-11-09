@@ -207,13 +207,13 @@
       <!-- Main Tool Workspace -->
       <div class="tool-main-workspace" style="max-width: 960px;">
         <div id="dropzone" class="dropzone-area">
-          <input type="file" id="fileInput" accept="application/pdf,.pdf" style="display: none;">
+          <input type="file" id="fileInput" accept="application/pdf,.pdf" multiple style="display: none;">
           <div class="dropzone-icon">
             <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><polyline points="8 17 12 13 16 17"></polyline></svg>
           </div>
-          <h3 class="dropzone-title">Drop your PDF here, or browse</h3>
-          <p class="dropzone-sub">Upload a PDF to render high-resolution JPG images</p>
-          <button type="button" class="btn btn-primary btn-sm">Select PDF File</button>
+          <h3 class="dropzone-title">Drop PDF files here, or browse</h3>
+          <p class="dropzone-sub">Upload one or more PDFs to render high-resolution JPG images</p>
+          <button type="button" class="btn btn-primary btn-sm">Select PDF Files</button>
         </div>
 
         <!-- Controls (Visible after PDF selection) -->
@@ -221,7 +221,7 @@
           <!-- Summary Bar -->
           <div style="background-color: var(--bg-subtle); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1rem 1.25rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
             <div>
-              <span style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Document</span>
+              <span style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Documents</span>
               <p id="pdfInfoTitle" style="font-size: 1.05rem; font-weight: 700; color: var(--text-main);">-</p>
             </div>
             <div>
@@ -229,9 +229,18 @@
               <p id="pdfInfoPages" style="font-size: 1.05rem; font-weight: 700; color: var(--color-primary);">-</p>
             </div>
             <div>
-              <span style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">File Size</span>
+              <span style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Total Size</span>
               <p id="pdfInfoSize" style="font-size: 1.05rem; font-weight: 600;">-</p>
             </div>
+          </div>
+
+          <!-- Document Queue List -->
+          <div id="docListSection" style="margin-bottom: 1.5rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+              <h4 style="font-size: 1rem; font-weight: 700;">Uploaded Documents</h4>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">Ready to convert</span>
+            </div>
+            <div id="docListContainer" style="display: flex; flex-direction: column; gap: 0.6rem; max-height: 240px; overflow-y: auto; padding-right: 4px;"></div>
           </div>
 
           <!-- Conversion Settings -->
@@ -255,8 +264,8 @@
             </div>
           </div>
 
-          <!-- Page Selection Grid -->
-          <div style="margin-bottom: 2rem;">
+          <!-- Page Selection Grid (Visible for single PDF) -->
+          <div id="pageSelectionSection" style="margin-bottom: 2rem;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
               <div>
                 <span style="font-size: 0.95rem; font-weight: 700;">Select Pages to Convert</span>
@@ -271,9 +280,12 @@
           </div>
 
           <!-- Action Buttons -->
-          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+            <div style="display: flex; gap: 0.75rem;">
+              <button type="button" id="addMoreBtn" class="btn btn-secondary btn-sm">+ Add More PDFs</button>
+              <button type="button" id="clearAllBtn" class="btn btn-secondary btn-sm" style="color: var(--color-danger);">Clear All</button>
+            </div>
             <button type="button" id="convertBtn" class="btn btn-primary">Convert Pages to JPG</button>
-            <button type="button" id="resetBtn" class="btn btn-secondary">Choose Another PDF</button>
           </div>
 
           <!-- Progress Indicator -->
