@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Advanced PDF Organizer Online Free – Rearrange, Rotate & Delete PDF Pages | EcrioX</title>
+  <meta name="description" content="Organize PDF pages online for free. Rearrange, rotate, delete, duplicate, extract and merge PDF pages using EcrioX. No software installation required." />
+  <link rel="canonical" href="https://ecriox.com/advanced-pdf-organizer/" />
+  <meta property="og:title" content="Advanced PDF Organizer Online Free – Rearrange, Rotate & Delete PDF Pages | EcrioX" />
+  <meta property="og:description" content="Organize PDF pages online for free. Rearrange, rotate, delete, duplicate, extract and merge PDF pages using EcrioX. No software installation required." />
+  <meta property="og:url" content="https://ecriox.com/advanced-pdf-organizer/" />
+  <meta property="og:type" content="website" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="logo"><a href="/"><img src="/assets/logo.svg" alt="EcrioX" /></a></div>
+    <h1>Advanced PDF Organizer</h1>
+    <div class="header-actions">
+      <input type="file" id="fileInput" accept="application/pdf" multiple style="display:none;" />
+      <button id="uploadBtn" class="btn primary">Upload PDF</button>
+      <button id="themeToggle" class="btn">Toggle Theme</button>
+    </div>
+  </header>
+  <section class="toolbar" id="toolbar" style="display:none;">
+    <button id="selectAllBtn" class="btn">Select All</button>
+    <button id="deselectAllBtn" class="btn">Deselect All</button>
+    <button id="rotateLeftBtn" class="btn" disabled>↺ Rotate Left</button>
+    <button id="rotateRightBtn" class="btn" disabled>↻ Rotate Right</button>
+    <button id="duplicateBtn" class="btn" disabled>Duplicate</button>
+    <button id="deleteBtn" class="btn" disabled>Delete</button>
+    <button id="extractBtn" class="btn" disabled>Extract</button>
+    <button id="insertBtn" class="btn" disabled>Insert PDF</button>
+    <button id="undoBtn" class="btn" disabled>Undo</button>
+    <button id="redoBtn" class="btn" disabled>Redo</button>
+  </section>
+  <main class="workspace" id="workspace" style="display:none;">
+    <div id="thumbContainer" class="thumb-container"></div>
+  </main>
+  <footer class="bottom-bar" id="bottomBar" style="display:none;">
+    <span id="totalPagesInfo">Total pages: 0</span>
+    <span id="selectedPagesInfo">Selected: 0</span>
+    <button id="resetBtn" class="btn" disabled>Reset Changes</button>
+    <button id="downloadBtn" class="btn primary" disabled>Download PDF</button>
+  </footer>
+
+  <script src="tool.js"></script>
+</body>
+</html>

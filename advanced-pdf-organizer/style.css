@@ -1,0 +1,126 @@
+/*
+  Advanced PDF Organizer – EcrioX
+  Light / Dark theme variables – based on Emerald green branding
+*/
+:root {
+  --color-primary: #16A36A;
+  --color-primary-hover: #108653;
+  --color-bg: #FFFFFF;
+  --color-bg-dark: #101A17;
+  --color-surface: #F5F8F6;
+  --color-surface-dark: #17231E;
+  --color-text: #17231E;
+  --color-text-dark: #EAF6EF;
+  --color-border: #E1EAE4;
+  --color-border-dark: #2E3E38;
+}
+[data-theme="dark"] {
+  --color-bg: var(--color-bg-dark);
+  --color-surface: var(--color-surface-dark);
+  --color-text: var(--color-text-dark);
+  --color-border: var(--color-border-dark);
+}
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+.site-header .logo img { height: 32px; }
+.site-header h1 { margin: 0; font-size: 1.25rem; }
+.header-actions button {
+  margin-left: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.header-actions button:hover { background: var(--color-primary-hover); }
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding: 0.5rem 1rem;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+.toolbar .btn {
+  padding: 0.3rem 0.6rem;
+  background: #e0e0e0;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  cursor: pointer;
+}
+.toolbar .btn.primary { background: var(--color-primary); color: #fff; border: none; }
+.toolbar .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.workspace {
+  padding: 1rem;
+  overflow-y: auto;
+  min-height: 60vh;
+  background: var(--color-bg);
+}
+.thumb-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 0.8rem;
+}
+.thumb {
+  position: relative;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  overflow: hidden;
+  background: #fff;
+}
+.thumb canvas { width: 100%; height: auto; display: block; }
+.thumb .page-number {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  padding: 2px 4px;
+  font-size: 0.75rem;
+  border-radius: 2px;
+}
+.thumb .select-box {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+}
+.thumb.selected { border-color: var(--color-primary); }
+.bottom-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+}
+.bottom-bar button { padding: 0.4rem 0.8rem; }
+.toast {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  background: rgba(0,0,0,0.8);
+  color: #fff;
+  padding: 0.6rem 1rem;
+  border-radius: 4px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1000;
+}
+.toast.show { opacity: 1; }
+@media (max-width: 768px) {
+  .site-header, .toolbar, .bottom-bar { flex-direction: column; align-items: flex-start; }
+  .header-actions, .toolbar { width: 100%; }
+}
