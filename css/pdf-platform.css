@@ -1,40 +1,43 @@
 /**
  * EcrioX PDF Platform - Core Stylesheet
  * Premium, minimalist, conversion-focused styling inspired by modern PDF SaaS tools.
- * Clean coral/crimson brand accents with full Dark and Light mode support.
+ * Distinctive Emerald-Green visual identity communicating simplicity, speed and trust.
  */
 
 :root {
-  --pdf-accent: #e11d48;
-  --pdf-accent-hover: #be123c;
-  --pdf-accent-light: rgba(225, 29, 72, 0.08);
-  --pdf-accent-border: rgba(225, 29, 72, 0.22);
-  --pdf-accent-gradient: linear-gradient(135deg, #e11d48, #f43f5e);
+  --pdf-accent: #16A36A;
+  --pdf-accent-hover: #108653;
+  --pdf-accent-dark: #087F50;
+  --pdf-accent-light: #EAF6EF;
+  --pdf-accent-border: #C8DDD1;
+  --pdf-accent-gradient: linear-gradient(135deg, #16A36A, #087F50);
 
-  --pdf-cat-organize: #4f46e5;
-  --pdf-cat-organize-bg: rgba(79, 70, 229, 0.08);
-  --pdf-cat-optimize: #059669;
-  --pdf-cat-optimize-bg: rgba(5, 150, 105, 0.08);
-  --pdf-cat-convert: #d97706;
-  --pdf-cat-convert-bg: rgba(217, 119, 6, 0.08);
-  --pdf-cat-edit: #e11d48;
-  --pdf-cat-edit-bg: rgba(225, 29, 72, 0.08);
+  --pdf-cat-organize: #087F50;
+  --pdf-cat-organize-bg: #EAF6EF;
+  --pdf-cat-optimize: #16A36A;
+  --pdf-cat-optimize-bg: #EAF6EF;
+  --pdf-cat-convert: #0D9488;
+  --pdf-cat-convert-bg: rgba(13, 148, 136, 0.08);
+  --pdf-cat-edit: #16A36A;
+  --pdf-cat-edit-bg: #EAF6EF;
 }
 
 [data-theme="dark"] {
-  --pdf-accent: #f43f5e;
-  --pdf-accent-hover: #fb7185;
-  --pdf-accent-light: rgba(244, 63, 94, 0.15);
-  --pdf-accent-border: rgba(244, 63, 94, 0.35);
+  --pdf-accent: #10B981;
+  --pdf-accent-hover: #34D399;
+  --pdf-accent-dark: #087F50;
+  --pdf-accent-light: rgba(22, 163, 106, 0.16);
+  --pdf-accent-border: rgba(22, 163, 106, 0.35);
+  --pdf-accent-gradient: linear-gradient(135deg, #10B981, #087F50);
 
-  --pdf-cat-organize: #818cf8;
-  --pdf-cat-organize-bg: rgba(129, 140, 248, 0.12);
-  --pdf-cat-optimize: #34d399;
-  --pdf-cat-optimize-bg: rgba(52, 211, 153, 0.12);
-  --pdf-cat-convert: #fbbf24;
-  --pdf-cat-convert-bg: rgba(251, 191, 36, 0.12);
-  --pdf-cat-edit: #fb7185;
-  --pdf-cat-edit-bg: rgba(251, 113, 133, 0.12);
+  --pdf-cat-organize: #34D399;
+  --pdf-cat-organize-bg: rgba(52, 211, 153, 0.12);
+  --pdf-cat-optimize: #10B981;
+  --pdf-cat-optimize-bg: rgba(16, 185, 129, 0.12);
+  --pdf-cat-convert: #2DD4BF;
+  --pdf-cat-convert-bg: rgba(45, 212, 191, 0.12);
+  --pdf-cat-edit: #34D399;
+  --pdf-cat-edit-bg: rgba(52, 211, 153, 0.12);
 }
 
 /* ==========================================================================
@@ -73,7 +76,8 @@
   margin: 0 auto 1.25rem;
 }
 
-.pdf-hero-title .highlight-red {
+.pdf-hero-title .highlight-red,
+.pdf-hero-title .highlight-green {
   background: var(--pdf-accent-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -110,7 +114,7 @@
   border-color: var(--pdf-accent);
   background: var(--pdf-accent-light);
   transform: translateY(-2px);
-  box-shadow: 0 18px 40px -10px rgba(225, 29, 72, 0.15);
+  box-shadow: 0 18px 40px -10px rgba(22, 163, 106, 0.2);
 }
 
 .pdf-drop-icon {
@@ -142,14 +146,14 @@
   border-radius: var(--radius-full);
   border: none;
   cursor: pointer;
-  box-shadow: 0 10px 25px -5px rgba(225, 29, 72, 0.4);
+  box-shadow: 0 10px 25px -5px rgba(22, 163, 106, 0.35);
   transition: all 0.2s ease;
   margin-bottom: 0.85rem;
 }
 
 .pdf-select-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 14px 30px -5px rgba(225, 29, 72, 0.5);
+  box-shadow: 0 14px 30px -5px rgba(22, 163, 106, 0.45);
 }
 
 .pdf-drop-subtext {
@@ -204,7 +208,7 @@
   background: var(--pdf-accent);
   color: #ffffff;
   border-color: var(--pdf-accent);
-  box-shadow: 0 4px 12px rgba(225, 29, 72, 0.25);
+  box-shadow: 0 4px 12px rgba(22, 163, 106, 0.25);
 }
 
 /* ==========================================================================
@@ -279,13 +283,14 @@
 }
 
 .pdf-tool-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--pdf-accent-border);
-  box-shadow: 0 14px 30px -8px rgba(0, 0, 0, 0.09);
+  transform: translateY(-3px);
+  border-color: var(--pdf-accent);
+  box-shadow: 0 14px 28px -6px rgba(22, 163, 106, 0.14);
 }
 
 [data-theme="dark"] .pdf-tool-card:hover {
-  box-shadow: 0 14px 30px -8px rgba(0, 0, 0, 0.4);
+  border-color: var(--pdf-accent);
+  box-shadow: 0 14px 30px -8px rgba(0, 0, 0, 0.5);
 }
 
 .pdf-tool-icon-box {
@@ -514,7 +519,7 @@
    ========================================================================== */
 .all-tools-banner {
   margin: 4.5rem auto 1rem;
-  background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(225, 29, 72, 0.08));
+  background: linear-gradient(135deg, rgba(22, 163, 106, 0.05), rgba(8, 127, 80, 0.08));
   border: 1px solid var(--border-color);
   border-radius: 20px;
   padding: 2.75rem 2rem;
@@ -599,7 +604,7 @@
 }
 
 .guide-meta-badge {
-  background: rgba(225, 29, 72, 0.1);
+  background: rgba(22, 163, 106, 0.1);
   color: var(--pdf-accent);
   padding: 0.2rem 0.65rem;
   border-radius: var(--radius-full);
@@ -715,8 +720,8 @@
 }
 
 .guide-cta-box {
-  background: linear-gradient(135deg, rgba(225, 29, 72, 0.08) 0%, rgba(244, 63, 94, 0.04) 100%);
-  border: 2px dashed rgba(225, 29, 72, 0.35);
+  background: linear-gradient(135deg, rgba(22, 163, 106, 0.08) 0%, rgba(8, 127, 80, 0.04) 100%);
+  border: 2px dashed rgba(22, 163, 106, 0.35);
   border-radius: var(--radius-lg);
   padding: 2rem;
   text-align: center;
@@ -795,9 +800,9 @@
 }
 
 .guide-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-3px);
   border-color: var(--pdf-accent);
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 12px 28px -6px rgba(22, 163, 106, 0.12);
 }
 
 .guide-card-tag {
