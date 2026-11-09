@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="ecriox-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#16A36A"/>
+      <stop offset="100%" stop-color="#087F50"/>
+    </linearGradient>
+  </defs>
+  <!-- Background Squircle -->
+  <rect width="512" height="512" rx="112" fill="url(#ecriox-grad)"/>
+  <!-- Minimalist White Letter E -->
+  <path d="M 136 112
+           H 376
+           A 16 16 0 0 1 392 128
+           V 168
+           A 16 16 0 0 1 376 184
+           H 224
+           V 228
+           H 340
+           A 16 16 0 0 1 356 244
+           V 268
+           A 16 16 0 0 1 340 284
+           H 224
+           V 328
+           H 376
+           A 16 16 0 0 1 392 344
+           V 384
+           A 16 16 0 0 1 376 400
+           H 136
+           A 20 20 0 0 1 116 380
+           V 132
+           A 20 20 0 0 1 136 112
+           Z" fill="#FFFFFF"/>
+</svg>
