@@ -76,6 +76,7 @@
       if (e.target.files && e.target.files[0]) {
         handleFile(e.target.files[0]);
       }
+      elements.fileInput.value = "";
     });
 
     elements.splitModeSelect.addEventListener("change", onModeChange);
@@ -87,6 +88,20 @@
     elements.downloadBtn.addEventListener("click", downloadSplitResult);
     elements.resetBtn.addEventListener("click", resetTool);
     elements.splitAnotherBtn.addEventListener("click", resetTool);
+
+    // Check URL transfer parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get("transfer") === "1" && window.EcrioXHeroTransfer) {
+      window.EcrioXHeroTransfer.getStoredFiles().then((transferredFiles) => {
+        if (transferredFiles && transferredFiles.length > 0) {
+          handleFile(transferredFiles[0]);
+          try {
+            const cleanUrl = window.location.pathname;
+            window.history.replaceState({}, document.title, cleanUrl);
+          } catch (e) {}
+        }
+      });
+    }
   }
 
   async function handleFile(file) {

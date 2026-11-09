@@ -156,6 +156,20 @@
     extractedTextInspector.addEventListener('input', () => {
       updateWordCharCounts(extractedTextInspector.value);
     });
+
+    // Check URL transfer parameter from homepage hero
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('transfer') === '1' && window.EcrioXHeroTransfer) {
+      window.EcrioXHeroTransfer.getStoredFiles().then((transferredFiles) => {
+        if (transferredFiles && transferredFiles.length > 0) {
+          handleIncomingFiles(transferredFiles);
+          try {
+            const cleanUrl = window.location.pathname;
+            window.history.replaceState({}, document.title, cleanUrl);
+          } catch (e) {}
+        }
+      });
+    }
   }
 
   /**

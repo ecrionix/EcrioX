@@ -179,9 +179,24 @@
       if (e.target.files && e.target.files.length > 0) {
         loadPdfFile(e.target.files[0]);
       }
+      fileInput.value = '';
     });
 
     btnStartBlank.addEventListener('click', createBlankDocument);
+
+    // Check URL transfer parameter from homepage hero
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('transfer') === '1' && window.EcrioXHeroTransfer) {
+      window.EcrioXHeroTransfer.getStoredFiles().then((transferredFiles) => {
+        if (transferredFiles && transferredFiles.length > 0) {
+          loadPdfFile(transferredFiles[0]);
+          try {
+            const cleanUrl = window.location.pathname;
+            window.history.replaceState({}, document.title, cleanUrl);
+          } catch (e) {}
+        }
+      });
+    }
   }
 
   /**

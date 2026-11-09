@@ -131,7 +131,8 @@
 
   // --- FILE HANDLING ---
   async function handleFile(file) {
-    if (!file || file.type !== 'application/pdf') {
+    const isPdf = file && (file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf'));
+    if (!isPdf) {
       alert('Please select a valid PDF file.');
       return;
     }
@@ -161,10 +162,26 @@
 
   fileInput.addEventListener('change', (e) => {
     if (e.target.files && e.target.files[0]) handleFile(e.target.files[0]);
+    fileInput.value = '';
   });
   changeFileInput.addEventListener('change', (e) => {
     if (e.target.files && e.target.files[0]) handleFile(e.target.files[0]);
+    changeFileInput.value = '';
   });
+
+  // Check URL transfer parameter from homepage hero
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('transfer') === '1' && window.EcrioXHeroTransfer) {
+    window.EcrioXHeroTransfer.getStoredFiles().then((transferredFiles) => {
+      if (transferredFiles && transferredFiles.length > 0) {
+        handleFile(transferredFiles[0]);
+        try {
+          const cleanUrl = window.location.pathname;
+          window.history.replaceState({}, document.title, cleanUrl);
+        } catch (e) {}
+      }
+    });
+  }
 
   dropZone.addEventListener('dragover', (e) => {
     e.preventDefault();
@@ -345,7 +362,7 @@
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-      URL.revokeObjectURL(downloadUrl);
+      setTimeout(() => URL.revokeObjectURL(downloadUrl), 30000);
 
       btnLabel.textContent = 'Success! Downloaded';
       setTimeout(() => {
