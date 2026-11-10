@@ -140,6 +140,15 @@
     if (window.EcrioXApp) EcrioXApp.showToast(`Downloaded ${filename}`);
   });
 
+  document.querySelectorAll('.quick-lorem').forEach(btn => {
+    btn.addEventListener('click', () => {
+      numCount.value = btn.dataset.count;
+      selType.value = btn.dataset.type;
+      generate();
+      if (window.EcrioXApp) EcrioXApp.showToast(`Generated ${btn.textContent}!`);
+    });
+  });
+
   // Init
   generate();
 })();
