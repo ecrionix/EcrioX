@@ -116,8 +116,82 @@
       });
     }
 
-    // Check URL transfer parameter
+    // Wire up quick target preset buttons
+    const presetBtns = document.querySelectorAll(".target-preset-btn");
+    presetBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const val = btn.getAttribute("data-preset");
+        if (elements.presetSelect) {
+          elements.presetSelect.value = val;
+        }
+        presetBtns.forEach((b) => {
+          b.classList.remove("active");
+          b.style.backgroundColor = "";
+          b.style.color = "";
+          b.style.borderColor = "";
+        });
+        btn.classList.add("active");
+        btn.style.backgroundColor = "var(--color-primary)";
+        btn.style.color = "#ffffff";
+        btn.style.borderColor = "var(--color-primary)";
+      });
+    });
+
+    if (elements.presetSelect) {
+      elements.presetSelect.addEventListener("change", () => {
+        const currentVal = elements.presetSelect.value;
+        presetBtns.forEach((b) => {
+          if (b.getAttribute("data-preset") === currentVal) {
+            b.classList.add("active");
+            b.style.backgroundColor = "var(--color-primary)";
+            b.style.color = "#ffffff";
+            b.style.borderColor = "var(--color-primary)";
+          } else {
+            b.classList.remove("active");
+            b.style.backgroundColor = "";
+            b.style.color = "";
+            b.style.borderColor = "";
+          }
+        });
+      });
+    }
+
+    // Check URL transfer and target size parameters
     const urlParams = new URLSearchParams(window.location.search);
+    const targetParam = urlParams.get("target") || urlParams.get("preset");
+    const hash = window.location.hash.toLowerCase();
+    let initialPreset = null;
+    if (targetParam) {
+      const clean = targetParam.toLowerCase().replace(/[^a-z0-9]/g, "");
+      if (clean === "200kb" || clean === "target200kb") initialPreset = "target-200kb";
+      else if (clean === "100kb" || clean === "target100kb") initialPreset = "target-100kb";
+      else if (clean === "500kb" || clean === "target500kb") initialPreset = "target-500kb";
+      else if (clean === "1mb" || clean === "target1mb") initialPreset = "target-1mb";
+    } else if (hash.includes("200kb")) {
+      initialPreset = "target-200kb";
+    } else if (hash.includes("100kb")) {
+      initialPreset = "target-100kb";
+    } else if (hash.includes("500kb")) {
+      initialPreset = "target-500kb";
+    }
+
+    if (initialPreset && elements.presetSelect) {
+      elements.presetSelect.value = initialPreset;
+      presetBtns.forEach((b) => {
+        if (b.getAttribute("data-preset") === initialPreset) {
+          b.classList.add("active");
+          b.style.backgroundColor = "var(--color-primary)";
+          b.style.color = "#ffffff";
+          b.style.borderColor = "var(--color-primary)";
+        } else {
+          b.classList.remove("active");
+          b.style.backgroundColor = "";
+          b.style.color = "";
+          b.style.borderColor = "";
+        }
+      });
+    }
+
     if (urlParams.get("transfer") === "1" && window.EcrioXHeroTransfer) {
       window.EcrioXHeroTransfer.getStoredFiles().then((transferredFiles) => {
         if (transferredFiles && transferredFiles.length > 0) {
@@ -318,19 +392,51 @@
       updateFieldAppearances: false
     });
 
-    // If preset is 'high' or 'recommended' and the file contains heavy raster pages, test downsampling
-    if ((preset === "high" || preset === "recommended") && optimizedBytes.length >= item.size * 0.95) {
-      if (onProgress) onProgress(0.7, "Checking raster images...");
+    // Target budget determination
+    let targetMaxBytes = null;
+    if (preset === "target-100kb") targetMaxBytes = 100 * 1024;
+    else if (preset === "target-200kb") targetMaxBytes = 200 * 1024;
+    else if (preset === "target-500kb") targetMaxBytes = 500 * 1024;
+    else if (preset === "target-1mb") targetMaxBytes = 1024 * 1024;
+
+    const isTargetPreset = targetMaxBytes !== null;
+    const isStandardHeavy = (preset === "high" || preset === "recommended") && optimizedBytes.length >= item.size * 0.95;
+    const needsDownsampling = (isTargetPreset && optimizedBytes.length > targetMaxBytes) || isStandardHeavy;
+
+    if (needsDownsampling) {
+      if (onProgress) onProgress(0.7, isTargetPreset ? `Optimizing to meet target budget...` : "Checking raster images...");
 
       try {
         const loadingTask = pdfjsLib.getDocument({ data: originalBytes.slice(0) });
         const renderedPdf = await loadingTask.promise;
         const pageCount = renderedPdf.numPages;
 
-        if (pageCount <= 15) {
+        if (pageCount <= 25) {
           const newDoc = await PDFLib.PDFDocument.create();
-          const scale = preset === "high" ? 1.25 : 1.5;
-          const quality = preset === "high" ? 0.65 : 0.8;
+          
+          // Adaptive scale and quality based on page count and target
+          let scale = 1.5;
+          let quality = 0.8;
+
+          if (preset === "target-100kb") {
+            scale = pageCount <= 3 ? 1.0 : 0.82;
+            quality = pageCount <= 3 ? 0.52 : 0.42;
+          } else if (preset === "target-200kb") {
+            scale = pageCount <= 5 ? 1.25 : 1.0;
+            quality = pageCount <= 5 ? 0.68 : 0.55;
+          } else if (preset === "target-500kb") {
+            scale = pageCount <= 8 ? 1.4 : 1.15;
+            quality = pageCount <= 8 ? 0.78 : 0.65;
+          } else if (preset === "target-1mb") {
+            scale = 1.5;
+            quality = 0.80;
+          } else if (preset === "high") {
+            scale = 1.25;
+            quality = 0.65;
+          } else {
+            scale = 1.5;
+            quality = 0.8;
+          }
 
           for (let pageNum = 1; pageNum <= pageCount; pageNum++) {
             if (onProgress) {
@@ -360,7 +466,7 @@
           }
 
           const rasterOptimizedBytes = await newDoc.save({ useObjectStreams: true });
-          if (rasterOptimizedBytes.length < optimizedBytes.length) {
+          if (rasterOptimizedBytes.length < optimizedBytes.length || (isTargetPreset && rasterOptimizedBytes.length <= targetMaxBytes)) {
             optimizedBytes = rasterOptimizedBytes;
           }
         }
@@ -472,7 +578,18 @@
     const totalSavings = totalOrig - totalComp;
     const totalSavingsPct = Math.round((totalSavings / totalOrig) * 100);
 
-    if (totalSavings > 0) {
+    const activePreset = elements.presetSelect ? elements.presetSelect.value : "";
+    let targetLimit = null;
+    if (activePreset === "target-100kb") targetLimit = 100 * 1024;
+    else if (activePreset === "target-200kb") targetLimit = 200 * 1024;
+    else if (activePreset === "target-500kb") targetLimit = 500 * 1024;
+    else if (activePreset === "target-1mb") targetLimit = 1024 * 1024;
+
+    if (targetLimit && totalComp <= targetLimit) {
+      elements.savingsBadge.textContent = `🎯 Target Met (${formatBytes(totalComp)})`;
+      elements.savingsBadge.className = "badge badge-available";
+      elements.resultNotice.innerHTML = `Success! Your document is now <strong>${formatBytes(totalComp)}</strong>, well within the target threshold of <strong>${formatBytes(targetLimit)}</strong>.`;
+    } else if (totalSavings > 0) {
       elements.savingsBadge.textContent = `-${totalSavingsPct}% Smaller`;
       elements.savingsBadge.className = "badge badge-available";
       elements.resultNotice.innerHTML = `Total size reduced by <strong>${formatBytes(

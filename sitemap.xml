@@ -317,12 +317,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ecriox.com/tools/calculators/age/</loc>
-    <lastmod>2026-11-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://ecriox.com/tools/calculators/unit-converter/</loc>
     <lastmod>2026-11-07</lastmod>
     <changefreq>weekly</changefreq>
@@ -344,18 +338,6 @@
   </url>
   <url>
     <loc>https://ecriox.com/tools/productivity/pomodoro/</loc>
-    <lastmod>2026-11-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ecriox.com/tools/productivity/qr-code/</loc>
-    <lastmod>2026-11-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ecriox.com/tools/productivity/password-generator/</loc>
     <lastmod>2026-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
