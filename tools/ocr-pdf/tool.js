@@ -117,9 +117,9 @@
     btnResetTool.addEventListener('click', resetAll);
 
     // Support drag and drop on configuration/queue container
-    if (stepConfig) {
-      stepConfig.addEventListener('dragover', (e) => e.preventDefault());
-      stepConfig.addEventListener('drop', (e) => {
+    if (workspaceControls) {
+      workspaceControls.addEventListener('dragover', (e) => e.preventDefault());
+      workspaceControls.addEventListener('drop', (e) => {
         e.preventDefault();
         if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length > 0) {
           handleIncomingFiles(Array.from(e.dataTransfer.files));

@@ -489,11 +489,19 @@
   padding: 2rem;
   box-shadow: var(--shadow-lg);
 }
+.keyboard-heatmap-wrapper {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 0.5rem;
+}
 .keyboard-rows-container {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   align-items: center;
+  min-width: 580px;
 }
 .keyboard-row {
   display: flex;

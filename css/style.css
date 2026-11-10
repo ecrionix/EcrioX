@@ -1224,3 +1224,11 @@ button {
     padding: 1.5rem;
   }
 }
+
+/* Responsive Table Utility */
+.table-responsive {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}

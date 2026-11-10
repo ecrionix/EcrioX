@@ -166,6 +166,23 @@
       height: 10px;
       border-radius: 50%;
     }
+  
+    @media (max-width: 640px) {
+      .emi-layout {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1.25rem;
+      }
+      .emi-card {
+        padding: 1.25rem 1rem;
+        min-width: 0;
+      }
+      .val-input {
+        width: 110px;
+      }
+      .slider-input-wrapper {
+        gap: 0.5rem;
+      }
+    }
   </style>
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6672302762343789"
