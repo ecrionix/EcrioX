@@ -13,7 +13,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
-  <meta name="theme-color" content="#087F50">
+  <meta name="theme-color" content="#2563EB">
   
   <meta property="og:type" content="article">
   <meta property="og:title" content="How to Sign PDF Documents Online Free (Legally & Securely) | EcrioX">
@@ -115,6 +115,18 @@
 }
   </script>
 
+    <!-- Anti-FOUT Theme Initialization -->
+  <script>
+    (function(){
+      try {
+        var t = localStorage.getItem("ecriox_theme_preference");
+        if (!t) {
+          t = (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) ? "dark" : "light";
+        }
+        document.documentElement.setAttribute("data-theme", t);
+      } catch(e){}
+    })();
+  </script>
   <link rel="stylesheet" href="../../css/style.css">
   <link rel="stylesheet" href="../../css/pdf-platform.css">
   

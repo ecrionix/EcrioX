@@ -10,7 +10,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
-  <meta name="theme-color" content="#087F50">
+  <meta name="theme-color" content="#2563EB">
   <title>Page Not Found (404) – EcrioX</title>
   <meta name="description" content="The page you are looking for does not exist or has been moved. Explore all free online tools and utilities on EcrioX.">
   <meta name="robots" content="noindex, follow">
@@ -30,6 +30,18 @@
   </script>
   <!-- End Google Tag Manager -->
 
+    <!-- Anti-FOUT Theme Initialization -->
+  <script>
+    (function(){
+      try {
+        var t = localStorage.getItem("ecriox_theme_preference");
+        if (!t) {
+          t = (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) ? "dark" : "light";
+        }
+        document.documentElement.setAttribute("data-theme", t);
+      } catch(e){}
+    })();
+  </script>
   <link rel="stylesheet" href="/css/style.css">
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6672302762343789"

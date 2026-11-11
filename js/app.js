@@ -35,6 +35,15 @@
           this.applyTheme(next);
         });
       });
+
+      // Listen for system preference changes when no manual selection exists
+      if (window.matchMedia) {
+        window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
+          if (!localStorage.getItem(STORAGE_KEY_THEME)) {
+            this.applyTheme(e.matches ? "dark" : "light");
+          }
+        });
+      }
     },
 
     applyTheme: function (theme) {

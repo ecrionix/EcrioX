@@ -1,56 +1,71 @@
 /* ==========================================================================
-   EcrioX - Design System & Global Stylesheet
-   Brand: EcrioX | Tagline: One Platform. Endless Possibilities.
+   EcrioX - Modern SaaS Design System & Global Stylesheet
+   Brand: EcrioX | Identity: Premium Blue (#2563EB) + Violet (#7C3AED)
    ========================================================================== */
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
 :root {
-  /* Color Palette - Premium Emerald Green Identity */
-  --color-primary: #16A36A;
-  --color-primary-hover: #108653;
-  --color-primary-dark: #087F50;
-  --color-primary-light: #EAF6EF;
-  --color-primary-border: #C8DDD1;
+  /* Official Brand Colour Palette - Light Mode */
+  --color-primary: #2563EB;
+  --color-primary-hover: #1D4ED8;
+  --color-primary-dark: #1E40AF;
+  --color-primary-light: #EFF6FF;
+  --color-primary-border: #BFDBFE;
 
-  --color-accent: #16A36A;
-  --color-success: #16A36A;
-  --color-warning: #f59e0b;
-  --color-danger: #ef4444;
+  --color-secondary: #7C3AED;
+  --color-secondary-hover: #6D28D9;
+  --color-secondary-dark: #5B21B6;
+  --color-secondary-light: #F5F3FF;
+  --color-secondary-border: #DDD6FE;
 
-  /* Neutrals */
-  --bg-page: #F5F8F6;
+  --color-accent: #7C3AED;
+  --color-gradient: linear-gradient(135deg, #2563EB 0%, #7C3AED 100%);
+  --color-gradient-subtle: linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(124, 58, 237, 0.06) 100%);
+
+  --color-success: #16A34A;
+  --color-warning: #F59E0B;
+  --color-danger: #DC2626;
+  --color-error: #DC2626;
+
+  /* Neutrals - Light Mode */
+  --bg-page: #FFFFFF;
+  --bg-subtle: #F8FAFC;
   --bg-surface: #FFFFFF;
   --bg-surface-elevated: #FFFFFF;
-  --bg-subtle: #F5F8F6;
-  --bg-subtle-hover: #EAF6EF;
+  --bg-hover: #EFF6FF;
+  --bg-subtle-hover: #EFF6FF;
 
-  --border-color: #E1EAE4;
-  --border-color-hover: #C5D7CC;
+  --border-color: #E2E8F0;
+  --border-color-hover: #CBD5E1;
 
-  --text-main: #17231E;
-  --text-muted: #64756B;
-  --text-subtle: #8FA196;
+  --text-main: #172554;
+  --text-muted: #64748B;
+  --text-subtle: #94A3B8;
   --text-inverse: #FFFFFF;
 
   /* Badges */
-  --badge-avail-bg: #EAF6EF;
-  --badge-avail-text: #087F50;
+  --badge-avail-bg: #EFF6FF;
+  --badge-avail-text: #1D4ED8;
   --badge-soon-bg: rgba(245, 158, 11, 0.1);
-  --badge-soon-text: #d97706;
+  --badge-soon-text: #D97706;
 
   /* Typography */
-  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
-  /* Shadows - with subtle emerald ambient tint */
-  --shadow-sm: 0 1px 2px 0 rgba(23, 35, 30, 0.04);
-  --shadow-md: 0 4px 6px -1px rgba(23, 35, 30, 0.06), 0 2px 4px -2px rgba(23, 35, 30, 0.04);
-  --shadow-lg: 0 10px 15px -3px rgba(23, 35, 30, 0.08), 0 4px 6px -4px rgba(23, 35, 30, 0.04);
-  --shadow-xl: 0 20px 25px -5px rgba(23, 35, 30, 0.1), 0 8px 10px -6px rgba(23, 35, 30, 0.05);
+  /* Shadows - Modern SaaS Elevation */
+  --shadow-xs: 0 1px 2px 0 rgba(15, 23, 42, 0.04);
+  --shadow-sm: 0 1px 3px 0 rgba(15, 23, 42, 0.06), 0 1px 2px -1px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.07), 0 2px 4px -2px rgba(15, 23, 42, 0.04);
+  --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.03);
+  --shadow-xl: 0 20px 25px -5px rgba(15, 23, 42, 0.1), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
 
   /* Radius & Transitions */
   --radius-sm: 0.375rem;
-  --radius-md: 0.625rem;
-  --radius-lg: 1rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
   --radius-full: 9999px;
   --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -61,35 +76,54 @@
 
 /* Dark Mode Theme */
 [data-theme="dark"] {
-  --color-primary: #16A36A;
-  --color-primary-hover: #10B981;
-  --color-primary-dark: #087F50;
-  --color-primary-light: rgba(22, 163, 106, 0.15);
-  --color-primary-border: rgba(22, 163, 106, 0.35);
+  /* Official Brand Colour Palette - Dark Mode */
+  --color-primary: #3B82F6;
+  --color-primary-hover: #60A5FA;
+  --color-primary-dark: #2563EB;
+  --color-primary-light: rgba(59, 130, 246, 0.15);
+  --color-primary-border: rgba(59, 130, 246, 0.35);
 
-  --bg-page: #101A17;
-  --bg-surface: #17231E;
-  --bg-surface-elevated: #1F3029;
-  --bg-subtle: #13221C;
-  --bg-subtle-hover: #1F3029;
+  --color-secondary: #8B5CF6;
+  --color-secondary-hover: #A78BFA;
+  --color-secondary-dark: #7C3AED;
+  --color-secondary-light: rgba(139, 92, 246, 0.15);
+  --color-secondary-border: rgba(139, 92, 246, 0.35);
 
-  --border-color: #273D34;
-  --border-color-hover: #38554A;
+  --color-accent: #8B5CF6;
+  --color-gradient: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%);
+  --color-gradient-subtle: linear-gradient(135deg, rgba(59, 130, 246, 0.12) 0%, rgba(139, 92, 246, 0.08) 100%);
 
-  --text-main: #EAF6EF;
-  --text-muted: #9BB3A6;
-  --text-subtle: #6D8579;
-  --text-inverse: #101A17;
+  --color-success: #22C55E;
+  --color-warning: #FBBF24;
+  --color-danger: #F87171;
+  --color-error: #F87171;
 
-  --badge-avail-bg: rgba(22, 163, 106, 0.2);
-  --badge-avail-text: #34D399;
+  /* Neutrals - Dark Mode */
+  --bg-page: #0F172A;
+  --bg-subtle: #111827;
+  --bg-surface: #1E293B;
+  --bg-surface-elevated: #263449;
+  --bg-hover: #263449;
+  --bg-subtle-hover: #263449;
+
+  --border-color: #334155;
+  --border-color-hover: #475569;
+
+  --text-main: #F8FAFC;
+  --text-muted: #94A3B8;
+  --text-subtle: #64748B;
+  --text-inverse: #0F172A;
+
+  --badge-avail-bg: rgba(59, 130, 246, 0.15);
+  --badge-avail-text: #60A5FA;
   --badge-soon-bg: rgba(245, 158, 11, 0.15);
-  --badge-soon-text: #fbbf24;
+  --badge-soon-text: #FBBF24;
 
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6);
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.5), 0 1px 2px -1px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.6), 0 4px 6px -4px rgba(0, 0, 0, 0.4);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.7), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
 }
 
 /* ==========================================================================
@@ -161,7 +195,7 @@ button {
   position: sticky;
   top: 0;
   z-index: 100;
-  background-color: rgba(248, 250, 252, 0.85);
+  background-color: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-color);
@@ -170,7 +204,7 @@ button {
 }
 
 [data-theme="dark"] .site-header {
-  background-color: rgba(9, 13, 22, 0.85);
+  background-color: rgba(15, 23, 42, 0.88);
 }
 
 .header-inner {
@@ -195,18 +229,18 @@ button {
   width: 2.25rem;
   height: 2.25rem;
   border-radius: var(--radius-md);
-  background: linear-gradient(135deg, #16A36A, #087F50);
+  background: var(--color-gradient);
   color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 900;
-  font-size: 1.2rem;
-  box-shadow: 0 4px 10px rgba(22, 163, 106, 0.3);
+  font-weight: 800;
+  font-size: 1.15rem;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.28);
 }
 
 .brand-logo .accent-dot {
-  color: var(--color-primary);
+  color: var(--color-secondary);
 }
 
 .nav-desktop {
@@ -303,13 +337,13 @@ button {
 .btn-primary {
   background-color: var(--color-primary);
   color: #ffffff;
-  box-shadow: 0 4px 14px rgba(22, 163, 106, 0.28);
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25);
 }
 
 .btn-primary:hover {
   background-color: var(--color-primary-hover);
   transform: translateY(-1px);
-  box-shadow: 0 6px 18px rgba(22, 163, 106, 0.35);
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
 }
 
 .btn-secondary {
@@ -318,6 +352,16 @@ button {
   color: var(--text-main);
 }
 
+.btn-accent, .btn-violet {
+  background-color: var(--color-secondary);
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(124, 58, 237, 0.25);
+}
+.btn-accent:hover, .btn-violet:hover {
+  background-color: var(--color-secondary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(124, 58, 237, 0.35);
+}
 .btn-secondary:hover {
   background-color: var(--bg-subtle);
   border-color: var(--border-color-hover);
@@ -399,7 +443,7 @@ button {
 }
 
 .hero-title .highlight {
-  background: linear-gradient(135deg, #16A36A, #087F50);
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -432,7 +476,7 @@ button {
 
 .search-input-box:focus-within {
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 4px var(--color-primary-light), var(--shadow-lg);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2), var(--shadow-lg);
 }
 
 .search-icon {
@@ -975,9 +1019,10 @@ button {
   color: var(--text-main);
 }
 
-.control-input:focus {
+.control-input:focus, input:focus, select:focus, textarea:focus {
   outline: none;
   border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
 }
 
 .results-box {
@@ -1232,3 +1277,5 @@ button {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }
+
+:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
