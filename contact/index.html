@@ -62,6 +62,34 @@
   <meta property="og:image:height" content="630">
   <meta property="og:locale" content="en_US">
   <meta name="twitter:image" content="https://ecriox.com/og-banner.png">
+  <!-- Schema.org ContactPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact & Support – EcrioX",
+    "url": "https://ecriox.com/contact/",
+    "description": "Get in touch with the EcrioX team for technical support, feedback, and tool suggestions.",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "EcrioX",
+      "url": "https://ecriox.com/",
+      "email": "elango369elango@gmail.com",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "elango369elango@gmail.com",
+        "contactType": "customer support"
+      }
+    }
+  }
+  </script>
+  <style>
+    @media (max-width: 800px) {
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr) !important;
+      }
+    }
+  </style>
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
@@ -106,64 +134,143 @@
     <a href="/contact/" class="nav-link active">Contact</a>
   </div>
 
-  <main class="page-wrapper">
+    <main class="page-wrapper">
     <div class="page-header">
       <div class="container">
-        <span class="section-pill">Support & Inquiries</span>
-        <h1 class="page-title">We Value Your Feedback</h1>
-        <p class="page-subtitle">Have a tool suggestion, found a bug, or have a question regarding EcrioX? Send us a message and we will review it promptly.</p>
+        <span class="section-pill">Support &amp; Inquiries</span>
+        <h1 class="page-title">Get in Touch with EcrioX</h1>
+        <p class="page-subtitle">Have a tool suggestion, found a bug, or have a question regarding EcrioX? Reach out directly via email or submit your message below.</p>
       </div>
     </div>
 
     <div class="container" style="padding-bottom: 5rem;">
-      <div style="max-width: 680px; margin: 0 auto; background-color: var(--bg-surface); padding: 2.5rem; border-radius: var(--radius-lg); border: 1px solid var(--border-color); box-shadow: var(--shadow-sm);">
-        <form id="contactForm" onsubmit="event.preventDefault(); handleContactSubmit();">
-          <div class="control-group">
-            <label class="control-label" for="contactName">Your Name</label>
-            <input type="text" id="contactName" class="control-input" placeholder="e.g. Alex Morgan" required>
+      <div class="contact-grid" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: 2.5rem; align-items: start; max-width: 1040px; margin: 0 auto;">
+        
+        <!-- Left: Direct Contact Information Cards -->
+        <div class="contact-info-column" style="display: flex; flex-direction: column; gap: 1.5rem;">
+          
+          <!-- Primary Email Card -->
+          <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 2rem; box-shadow: var(--shadow-sm); position: relative; overflow: hidden;">
+            <div style="position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: linear-gradient(180deg, var(--color-primary), var(--color-secondary));"></div>
+            
+            <div style="display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1rem;">
+              <div style="width: 2.75rem; height: 2.75rem; border-radius: var(--radius-md); background: rgba(37, 99, 235, 0.1); color: var(--color-primary); display: flex; align-items: center; justify-content: center;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              </div>
+              <div>
+                <span style="font-size: 0.8rem; font-weight: 700; color: var(--color-primary); text-transform: uppercase; letter-spacing: 0.05em; display: block;">Official Mail ID</span>
+                <h3 style="font-size: 1.15rem; font-weight: 700; margin: 0; color: var(--text-main);">Direct Email</h3>
+              </div>
+            </div>
+
+            <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.25rem;">
+              For immediate technical assistance, platform inquiries, or partnership discussions, email us directly at:
+            </p>
+
+            <div style="background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 0.85rem 1rem; display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; flex-wrap: wrap;">
+              <a href="mailto:elango369elango@gmail.com" id="officialEmailLink" style="font-family: monospace; font-size: 0.95rem; font-weight: 600; color: var(--color-primary); text-decoration: none; word-break: break-all;">
+                elango369elango@gmail.com
+              </a>
+              <button type="button" id="copyEmailBtn" class="btn btn-secondary btn-sm" onclick="copyContactEmail()" style="padding: 0.35rem 0.75rem; font-size: 0.8rem;">
+                Copy Email
+              </button>
+            </div>
+
+            <div style="margin-top: 1.25rem; display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; color: var(--text-muted);">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              <span>Typical response time: Within 24&ndash;48 hours</span>
+            </div>
           </div>
 
-          <div class="control-group">
-            <label class="control-label" for="contactEmail">Email Address</label>
-            <input type="email" id="contactEmail" class="control-input" placeholder="name@example.com" required>
+          <!-- Guidance Card -->
+          <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 1.75rem; box-shadow: var(--shadow-sm);">
+            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.85rem; color: var(--text-main); display: flex; align-items: center; gap: 0.5rem;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+              How Can We Help?
+            </h4>
+            
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5;">
+              <li style="display: flex; gap: 0.6rem; align-items: flex-start;">
+                <span style="color: var(--color-primary); font-weight: 700;">&bull;</span>
+                <span><strong>Bug Reports:</strong> Found an issue in a tool? Please mention your device, browser, and what happened.</span>
+              </li>
+              <li style="display: flex; gap: 0.6rem; align-items: flex-start;">
+                <span style="color: var(--color-primary); font-weight: 700;">&bull;</span>
+                <span><strong>Feature Requests:</strong> Suggest new calculators, PDF manipulation options, or developer tools.</span>
+              </li>
+              <li style="display: flex; gap: 0.6rem; align-items: flex-start;">
+                <span style="color: var(--color-primary); font-weight: 700;">&bull;</span>
+                <span><strong>Privacy Inquiries:</strong> Questions about our 100% in-browser client-side execution model.</span>
+              </li>
+            </ul>
           </div>
-
-          <div class="control-group">
-            <label class="control-label" for="contactSubject">Inquiry Type</label>
-            <select id="contactSubject" class="control-input">
-              <option value="general">General Question</option>
-              <option value="bug">Report a Tool Bug / Issue</option>
-              <option value="feature">Request a New Tool</option>
-              <option value="privacy">Privacy or Data Question</option>
-            </select>
-          </div>
-
-          <div class="control-group">
-            <label class="control-label" for="contactMessage">Message</label>
-            <textarea id="contactMessage" rows="5" class="control-input" placeholder="Please describe your feedback or inquiry in detail..." required></textarea>
-          </div>
-
-          <div style="margin-top: 2rem;">
-            <button type="submit" id="submitBtn" class="btn btn-primary" style="width: 100%;">
-              Send Message
-            </button>
-          </div>
-
-          <p style="font-size: 0.8rem; color: var(--text-muted); text-align: center; margin-top: 1rem;">
-            Your email is used solely to respond to your inquiry and is never shared or used for promotional mailings.
-          </p>
-        </form>
-
-        <div id="contactSuccessNotice" style="display: none; text-align: center; padding: 2rem 1rem;">
-          <div style="width: 3.5rem; height: 3.5rem; border-radius: var(--radius-full); background-color: var(--badge-avail-bg); color: var(--badge-avail-text); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.5rem;">
-            &#10003;
-          </div>
-          <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 0.5rem;">Thank You!</h3>
-          <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
-            Your message has been received. Our team reviews all incoming community suggestions and tool bug reports.
-          </p>
-          <button type="button" class="btn btn-secondary btn-sm" style="margin-top: 1.5rem;" onclick="resetContactForm()">Send Another Message</button>
         </div>
+
+        <!-- Right: Interactive Feedback & Inquiry Form -->
+        <div style="background-color: var(--bg-card); padding: 2.25rem; border-radius: var(--radius-lg); border: 1px solid var(--border-color); box-shadow: var(--shadow-sm);">
+          <form id="contactForm" onsubmit="event.preventDefault(); handleContactSubmit();">
+            <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.5rem;">Send a Message</h3>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.5;">
+              Fill in the form to prepare your message directly to <strong style="color: var(--color-primary);">elango369elango@gmail.com</strong>.
+            </p>
+
+            <div class="control-group">
+              <label class="control-label" for="contactName">Your Name</label>
+              <input type="text" id="contactName" class="control-input" placeholder="e.g. Alex Morgan" required>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="contactEmail">Email Address</label>
+              <input type="email" id="contactEmail" class="control-input" placeholder="name@example.com" required>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="contactSubject">Inquiry Type</label>
+              <select id="contactSubject" class="control-input">
+                <option value="General Inquiry">General Inquiry</option>
+                <option value="Bug Report">Report a Tool Bug / Issue</option>
+                <option value="Tool Request">Request a New Tool</option>
+                <option value="Privacy Question">Privacy or Data Question</option>
+              </select>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="contactMessage">Message</label>
+              <textarea id="contactMessage" rows="5" class="control-input" placeholder="Please describe your feedback, bug report, or inquiry in detail..." required></textarea>
+            </div>
+
+            <div style="margin-top: 1.75rem; display: flex; flex-direction: column; gap: 0.75rem;">
+              <button type="submit" id="submitBtn" class="btn btn-primary" style="width: 100%;">
+                Submit Message
+              </button>
+              <button type="button" class="btn btn-secondary" onclick="openDirectEmailClient()" style="width: 100%; font-size: 0.85rem;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 0.35rem; vertical-align: -2px;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                Open in Email App
+              </button>
+            </div>
+
+            <p style="font-size: 0.8rem; color: var(--text-muted); text-align: center; margin-top: 1rem; margin-bottom: 0;">
+              Your details are used strictly to reply to your inquiry. We never send unsolicited spam.
+            </p>
+          </form>
+
+          <div id="contactSuccessNotice" style="display: none; text-align: center; padding: 2rem 1rem;">
+            <div style="width: 3.5rem; height: 3.5rem; border-radius: var(--radius-full); background-color: rgba(22, 163, 74, 0.15); color: var(--color-success); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.5rem; font-weight: 700;">
+              &#10003;
+            </div>
+            <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-main);">Thank You!</h3>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; max-width: 440px; margin: 0 auto 1.5rem;">
+              Your message has been composed for <strong style="color: var(--text-main);">elango369elango@gmail.com</strong>. You can also send it directly through your default mail client.
+            </p>
+            <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">
+              <a id="successMailtoBtn" href="mailto:elango369elango@gmail.com" class="btn btn-primary btn-sm">
+                Send via Email App
+              </a>
+              <button type="button" class="btn btn-secondary btn-sm" onclick="resetContactForm()">Send Another Message</button>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </main>
@@ -219,22 +326,91 @@
   <script src="../js/tools-registry.js"></script>
   <script src="../js/analytics.js"></script>
   <script src="../js/app.js"></script>
-  <script>
+    <script>
+    const OFFICIAL_EMAIL = "elango369elango@gmail.com";
+
+    function copyContactEmail() {
+      const btn = document.getElementById("copyEmailBtn");
+      function setSuccess() {
+        btn.textContent = "Copied!";
+        btn.style.color = "var(--color-success)";
+        setTimeout(() => {
+          btn.textContent = "Copy Email";
+          btn.style.color = "";
+        }, 2000);
+        if (window.EcrioXApp) {
+          window.EcrioXApp.showToast("Email address copied to clipboard!");
+        }
+      }
+
+      function fallbackCopy() {
+        try {
+          const temp = document.createElement("textarea");
+          temp.value = OFFICIAL_EMAIL;
+          temp.style.position = "fixed";
+          temp.style.opacity = "0";
+          document.body.appendChild(temp);
+          temp.focus();
+          temp.select();
+          document.execCommand("copy");
+          document.body.removeChild(temp);
+          setSuccess();
+        } catch (e) {
+          setSuccess();
+        }
+      }
+
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(OFFICIAL_EMAIL)
+          .then(setSuccess)
+          .catch(() => fallbackCopy());
+      } else {
+        fallbackCopy();
+      }
+    }
+
+    function buildMailtoUrl() {
+      const name = document.getElementById("contactName").value.trim() || "EcrioX User";
+      const userEmail = document.getElementById("contactEmail").value.trim() || "";
+      const subjectType = document.getElementById("contactSubject").value;
+      const message = document.getElementById("contactMessage").value.trim() || "";
+      
+      const emailSubject = encodeURIComponent(`[EcrioX ${subjectType}] from ${name}`);
+      const emailBody = encodeURIComponent(`From: ${name}
+Email: ${userEmail}
+Category: ${subjectType}
+
+Message:
+${message}`);
+      
+      return `mailto:${OFFICIAL_EMAIL}?subject=${emailSubject}&body=${emailBody}`;
+    }
+
+    function openDirectEmailClient() {
+      window.location.href = buildMailtoUrl();
+    }
+
     function handleContactSubmit() {
       const form = document.getElementById("contactForm");
       const notice = document.getElementById("contactSuccessNotice");
       const submitBtn = document.getElementById("submitBtn");
+      const mailtoBtn = document.getElementById("successMailtoBtn");
 
       submitBtn.disabled = true;
-      submitBtn.textContent = "Sending...";
+      submitBtn.textContent = "Processing...";
+
+      const mailtoUrl = buildMailtoUrl();
+      if (mailtoBtn) {
+        mailtoBtn.href = mailtoUrl;
+      }
 
       setTimeout(() => {
         form.style.display = "none";
         notice.style.display = "block";
         if (window.EcrioXApp) {
-          window.EcrioXApp.showToast("Message received successfully!");
+          window.EcrioXApp.showToast("Message prepared! Click Send via Email App to dispatch.");
         }
-      }, 500);
+      }, 400);
     }
 
     function resetContactForm() {
@@ -243,7 +419,7 @@
       const submitBtn = document.getElementById("submitBtn");
       form.reset();
       submitBtn.disabled = false;
-      submitBtn.textContent = "Send Message";
+      submitBtn.textContent = "Submit Message";
       notice.style.display = "none";
       form.style.display = "block";
     }
