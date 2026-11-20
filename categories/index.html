@@ -54,7 +54,7 @@
       } catch(e){}
     })();
   </script>
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="/css/style.css">
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6672302762343789"
      crossorigin="anonymous"></script>
@@ -63,6 +63,27 @@
   <meta property="og:image:height" content="630">
   <meta property="og:locale" content="en_US">
   <meta name="twitter:image" content="https://ecriox.com/og-banner.png">
+  <!-- Schema.org BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://ecriox.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Tool Categories",
+        "item": "https://ecriox.com/categories/"
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
@@ -108,6 +129,11 @@
   </div>
 
   <main class="page-wrapper">
+    <nav class="breadcrumb" aria-label="Breadcrumb" style="padding: 1rem 0; font-size: 0.85rem;">
+      <div class="container">
+        <a href="https://ecriox.com/" style="color: var(--color-primary); text-decoration: none;">Home</a><span class="sep" style="margin: 0 0.5rem; color: var(--border-color);">/</span><span class="current" style="color: var(--text-muted);">Tool Categories</span>
+      </div>
+    </nav>
     <div class="page-header">
       <div class="container">
         <span class="section-pill">Browse by Specialty</span>
@@ -117,7 +143,184 @@
     </div>
 
     <div class="container" style="padding-bottom: 5rem;">
-      <div id="categoriesGrid" class="grid-categories"></div>
+      <div id="categoriesGrid" class="grid-categories">
+
+        <div class="category-card" style="display: flex; flex-direction: column;">
+          <div class="category-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></div>
+          <h3 class="category-title">PDF Tools</h3>
+          <p class="category-desc">Compress, merge, split, and convert PDF documents quickly and securely with 100% private in-browser processing.</p>
+          
+        <div style="margin: 0.85rem 0; font-size: 0.82rem; display: flex; flex-wrap: wrap; gap: 0.4rem;">
+          <a href="/pdf-editor/" class="badge" style="background: var(--bg-secondary); color: var(--color-primary); text-decoration: none; border: 1px solid var(--border-color);">PDF Editor</a><a href="/pdf-compressor/" class="badge" style="background: var(--bg-secondary); color: var(--color-primary); text-decoration: none; border: 1px solid var(--border-color);">PDF Compressor</a><a href="/merge-pdf/" class="badge" style="background: var(--bg-secondary); color: var(--color-primary); text-decoration: none; border: 1px solid var(--border-color);">Merge PDF</a><a href="/split-pdf/" class="badge" style="background: var(--bg-secondary); color: var(--color-primary); text-decoration: none; border: 1px solid var(--border-color);">Split PDF</a>
+        </div>
+          <div style="margin-top: auto; width: 100%; display: flex; align-items: center; justify-content: space-between; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+            <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 500;">
+              11 active tools
+            </span>
+            <a href="/tools/pdf/" class="category-link">View PDF Tools &rarr;</a>
+          </div>
+        </div>
+
+        <div class="category-card" style="display: flex; flex-direction: column;">
+          <div class="category-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg></div>
+          <h3 class="category-title">Image Tools</h3>
+          <p class="category-desc">Optimize, resize, crop, and convert image formats right in your browser with zero remote uploads.</p>
+          
+        <div style="margin: 0.85rem 0; font-size: 0.82rem; display: flex; flex-wrap: wrap; gap: 0.4rem;">
+          <a href="/tools/image-compressor/" class="badge" style="background: var(--bg-secondary); color: var(--color-primary); text-decoration: none; border: 1px solid var(--border-color);">Image Compressor & Optimizer</a><a href="/image-resizer/" class="badge" style="background: var(--bg-secondary); color: var(--color-primary); text-decoration: none; border: 1px solid var(--border-color);">Image Resizer</a><a href="/background-remover/" class="badge" style="background: var(--bg-secondary); color: var(--color-primary); text-decoration: none; border: 1px solid var(--border-color);">AI Background Remover</a><a href="/heic-to-jpg/" class="badge" style="background: var(--bg-secondary); color: var(--color-primary); text-decoration: none; border: 1px solid var(--border-color);">HEIC to JPG Converter</a>
+        </div>
+          <div style="margin-top: auto; width: 100%; display: flex; align-items: center; justify-content: space-between; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+            <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 500;">
+              8 active tools
+            </span>
+            <a href="/tools/image/" class="category-link">View Image Tools &rarr;</a>
+          </div>
+        </div>
+
+        <div class="category-card" style="display: flex; flex-direction: column;">
+          <div class="category-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg></div>
+          <h3 class="category-title">Document Tools</h3>
+          <p class="category-desc">Convert Markdown to HTML, transform CSV to JSON, and inspect document statistics without software installation.</p>
+          
+        <div style="margin: 0.85rem 0; font-size: 0.82rem; display: flex; flex-wrap: wrap; gap: 0.4rem;">
+          <a href="/tools/document/markdown-to-html/" class="badge" style="background: var(--bg-secondary); color: var(--color-primary); text-decoration: none; border: 1px solid var(--border-color);">Markdown to HTML Converter</a><a href="/tools/document/csv-to-json/" class="badge" style="background: var(--bg-secondary); color: var(--color-primary); text-decoration: none; border: 1px solid var(--border-color);">CSV to JSON & JSON to CSV</a>
+        </div>
+          <div style="margin-top: auto; width: 100%; display: flex; align-items: center; justify-content: space-between; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+            <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 500;">
+              2 active tools
+            </span>
+            <a href="/tools/document/" class="category-link">View Document Tools &rarr;</a>
+          </div>
+        </div>
+
+        <div class="category-card" style="display: flex; flex-direction: column;">
+          <div class="category-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div>
+          <h3 class="category-title">Developer Tools</h3>
+          <p class="category-desc">Format JSON, encode Base64, generate cryptographic hashes, and inspect tokens with secure client-side code tools.</p>
+          
+        <div style="margin: 0.85rem 0; font-size: 0.82rem; display: flex; flex-wrap: wrap; gap: 0.4rem;">
+          <a href="/tools/developer/json-formatter/" class="badge" style="background: var(--bg-secondary); color: var(--color-primary); text-decoration: none; border: 1px solid var(--border-color);">JSON Formatter & Validator</a><a href="/tools/developer/base64/" class="badge" style="background: var(--bg-secondary); color: var(--color-primary); text-decoration: none; border: 1px solid var(--border-color);">Base64 Encoder & Decoder</a><a href="/tools/developer/hash-generator/" class="badge" style="background: var(--bg-secondary); color: var(--color-primary); text-decoration: none; border: 1px solid var(--border-color);">Hash Generator</a><a href="/tools/developer/uuid-generator/" class="badge" style="background: var(--bg-secondary); color: var(--color-primary); text-decoration: none; border: 1px solid var(--border-color);">UUID Generator</a>
+        </div>
+          <div style="margin-top: auto; width: 100%; display: flex; align-items: center; justify-content: space-between; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+            <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 500;">
+              4 active tools
+            </span>
+            <a href="/tools/developer/" class="category-link">View Developer Tools &rarr;</a>
+          </div>
+        </div>
+
+        <div class="category-card" style="display: flex; flex-direction: column;">
+          <div class="category-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 7 4 4 20 4 20 7"></polyline><line x1="9" y1="20" x2="15" y2="20"></line><line x1="12" y1="4" x2="12" y2="20"></line></svg></div>
+          <h3 class="category-title">Text Tools</h3>
+          <p class="category-desc">Count words, convert case, remove duplicate lines, generate lorem ipsum, and clean excess whitespace in real time.</p>
+          
+        <div style="margin: 0.85rem 0; font-size: 0.82rem; display: flex; flex-wrap: wrap; gap: 0.4rem;">
+          <a href="/tools/text-analyzer/" class="badge" style="background: var(--bg-secondary); color: var(--color-primary); text-decoration: none; border: 1px solid var(--border-color);">Text Analyzer & Case Converter</a><a href="/tools/text/remove-duplicate-lines/" class="badge" style="background: var(--bg-secondary); color: var(--color-primary); text-decoration: none; border: 1px solid var(--border-color);">Remove Duplicate Lines</a><a href="/tools/text/lorem-ipsum/" class="badge" style="background: var(--bg-secondary); color: var(--color-primary); text-decoration: none; border: 1px solid var(--border-color);">Lorem Ipsum Generator</a>
+        </div>
+          <div style="margin-top: auto; width: 100%; display: flex; align-items: center; justify-content: space-between; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+            <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 500;">
+              3 active tools
+            </span>
+            <a href="/tools/text/" class="category-link">View Text Tools &rarr;</a>
+          </div>
+        </div>
+
+        <div class="category-card" style="display: flex; flex-direction: column;">
+          <div class="category-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"></rect><line x1="8" y1="6" x2="16" y2="6"></line><line x1="16" y1="14" x2="16" y2="14.01"></line><line x1="12" y1="14" x2="12" y2="14.01"></line><line x1="8" y1="14" x2="8" y2="14.01"></line><line x1="16" y1="18" x2="16" y2="18.01"></line><line x1="12" y1="18" x2="12" y2="18.01"></line><line x1="8" y1="18" x2="8" y2="18.01"></line></svg></div>
+          <h3 class="category-title">Calculators</h3>
+          <p class="category-desc">Calculate percentages, loan EMIs, exact age differences, and convert physical measurement units accurately.</p>
+          
+        <div style="margin: 0.85rem 0; font-size: 0.82rem; display: flex; flex-wrap: wrap; gap: 0.4rem;">
+          <a href="/gst-calculator/" class="badge" style="background: var(--bg-secondary); color: var(--color-primary); text-decoration: none; border: 1px solid var(--border-color);">GST Calculator India</a><a href="/invoice-generator/" class="badge" style="background: var(--bg-secondary); color: var(--color-primary); text-decoration: none; border: 1px solid var(--border-color);">Invoice Generator</a><a href="/tools/calculators/percentage/" class="badge" style="background: var(--bg-secondary); color: var(--color-primary); text-decoration: none; border: 1px solid var(--border-color);">Percentage Calculator</a><a href="/tools/calculators/emi/" class="badge" style="background: var(--bg-secondary); color: var(--color-primary); text-decoration: none; border: 1px solid var(--border-color);">EMI & Loan Calculator</a>
+        </div>
+          <div style="margin-top: auto; width: 100%; display: flex; align-items: center; justify-content: space-between; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+            <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 500;">
+              6 active tools
+            </span>
+            <a href="/tools/calculators/" class="category-link">View Calculators &rarr;</a>
+          </div>
+        </div>
+
+        <div class="category-card" style="display: flex; flex-direction: column;">
+          <div class="category-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg></div>
+          <h3 class="category-title">Media Tools</h3>
+          <p class="category-desc">Inspect audio and video metadata, boost or normalize volume, and process media assets in your browser.</p>
+          
+        <div style="margin: 0.85rem 0; font-size: 0.82rem; display: flex; flex-wrap: wrap; gap: 0.4rem;">
+          <a href="/tools/media/audio-inspector/" class="badge" style="background: var(--bg-secondary); color: var(--color-primary); text-decoration: none; border: 1px solid var(--border-color);">Audio Inspector & Volume Adjuster</a><a href="/world-live-cameras/" class="badge" style="background: var(--bg-secondary); color: var(--color-primary); text-decoration: none; border: 1px solid var(--border-color);">World Live Cameras</a>
+        </div>
+          <div style="margin-top: auto; width: 100%; display: flex; align-items: center; justify-content: space-between; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+            <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 500;">
+              2 active tools
+            </span>
+            <a href="/tools/media/" class="category-link">View Media Tools &rarr;</a>
+          </div>
+        </div>
+
+        <div class="category-card" style="display: flex; flex-direction: column;">
+          <div class="category-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path></svg></div>
+          <h3 class="category-title">AI Tools</h3>
+          <p class="category-desc">Generate structured prompts, frameworks, and text ideas using modern generative AI architectures.</p>
+          
+        <div style="margin: 0.85rem 0; font-size: 0.82rem; display: flex; flex-wrap: wrap; gap: 0.4rem;">
+          <a href="/tools/ai/prompt-generator/" class="badge" style="background: var(--bg-secondary); color: var(--color-primary); text-decoration: none; border: 1px solid var(--border-color);">AI Prompt Studio & Generator</a>
+        </div>
+          <div style="margin-top: auto; width: 100%; display: flex; align-items: center; justify-content: space-between; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+            <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 500;">
+              1 active tool
+            </span>
+            <a href="/tools/ai/" class="category-link">View AI Tools &rarr;</a>
+          </div>
+        </div>
+
+        <div class="category-card" style="display: flex; flex-direction: column;">
+          <div class="category-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div>
+          <h3 class="category-title">Productivity Tools</h3>
+          <p class="category-desc">Pomodoro focus timers, QR code generators, secure password creators, and everyday task utilities.</p>
+          
+        <div style="margin: 0.85rem 0; font-size: 0.82rem; display: flex; flex-wrap: wrap; gap: 0.4rem;">
+          <a href="/tools/productivity/pomodoro/" class="badge" style="background: var(--bg-secondary); color: var(--color-primary); text-decoration: none; border: 1px solid var(--border-color);">Pomodoro Focus Timer</a><a href="/qr-code-generator/" class="badge" style="background: var(--bg-secondary); color: var(--color-primary); text-decoration: none; border: 1px solid var(--border-color);">QR Code Generator</a><a href="/password-generator/" class="badge" style="background: var(--bg-secondary); color: var(--color-primary); text-decoration: none; border: 1px solid var(--border-color);">Password Generator</a><a href="/diwali-wishes-maker/" class="badge" style="background: var(--bg-secondary); color: var(--color-primary); text-decoration: none; border: 1px solid var(--border-color);">Happy Diwali Wishes Maker</a>
+        </div>
+          <div style="margin-top: auto; width: 100%; display: flex; align-items: center; justify-content: space-between; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+            <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 500;">
+              10 active tools
+            </span>
+            <a href="/tools/productivity/" class="category-link">View Productivity Tools &rarr;</a>
+          </div>
+        </div>
+
+        <div class="category-card" style="display: flex; flex-direction: column;">
+          <div class="category-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"></path><path d="M1.42 9a16 16 0 0 1 21.16 0"></path><path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path><line x1="12" y1="20" x2="12.01" y2="20"></line></svg></div>
+          <h3 class="category-title">Technology & Device Lab</h3>
+          <p class="category-desc">Explore, test and understand the technology behind everyday devices. Measure internet speed, diagnose Wi-Fi signal quality, and check phone 5G band compatibility.</p>
+          
+        <div style="margin: 0.85rem 0; font-size: 0.82rem; display: flex; flex-wrap: wrap; gap: 0.4rem;">
+          <a href="/internet-speed-test/" class="badge" style="background: var(--bg-secondary); color: var(--color-primary); text-decoration: none; border: 1px solid var(--border-color);">Internet Speed Test</a><a href="/wifi-analyzer/" class="badge" style="background: var(--bg-secondary); color: var(--color-primary); text-decoration: none; border: 1px solid var(--border-color);">Wi-Fi Analyzer</a><a href="/5g-band-checker/" class="badge" style="background: var(--bg-secondary); color: var(--color-primary); text-decoration: none; border: 1px solid var(--border-color);">5G Band Checker</a>
+        </div>
+          <div style="margin-top: auto; width: 100%; display: flex; align-items: center; justify-content: space-between; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+            <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 500;">
+              3 active tools
+            </span>
+            <a href="/tools/tech-lab/" class="category-link">View Technology & Device Lab &rarr;</a>
+          </div>
+        </div>
+
+        <div class="category-card" style="display: flex; flex-direction: column;">
+          <div class="category-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></div>
+          <h3 class="category-title">Career Studio</h3>
+          <p class="category-desc">Create ATS-compliant resumes, check resume scores, match job descriptions, generate cover letters, and export print-ready PDFs.</p>
+          
+        <div style="margin: 0.85rem 0; font-size: 0.82rem; display: flex; flex-wrap: wrap; gap: 0.4rem;">
+          <a href="/resume-builder/" class="badge" style="background: var(--bg-secondary); color: var(--color-primary); text-decoration: none; border: 1px solid var(--border-color);">ATS Resume Builder</a><a href="/ats-resume-checker/" class="badge" style="background: var(--bg-secondary); color: var(--color-primary); text-decoration: none; border: 1px solid var(--border-color);">ATS Resume Checker</a><a href="/resume-job-matcher/" class="badge" style="background: var(--bg-secondary); color: var(--color-primary); text-decoration: none; border: 1px solid var(--border-color);">Job Description Matcher</a><a href="/cover-letter-generator/" class="badge" style="background: var(--bg-secondary); color: var(--color-primary); text-decoration: none; border: 1px solid var(--border-color);">Cover Letter Generator</a>
+        </div>
+          <div style="margin-top: auto; width: 100%; display: flex; align-items: center; justify-content: space-between; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+            <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 500;">
+              8 active tools
+            </span>
+            <a href="/resume-builder/" class="category-link">View Career Studio &rarr;</a>
+          </div>
+        </div>
+      </div>
 
       <!-- Designated AdSense Slot -->
       <div class="ad-slot-container">

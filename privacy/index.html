@@ -54,7 +54,7 @@
       } catch(e){}
     })();
   </script>
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="/css/style.css">
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6672302762343789"
      crossorigin="anonymous"></script>
@@ -63,6 +63,27 @@
   <meta property="og:image:height" content="630">
   <meta property="og:locale" content="en_US">
   <meta name="twitter:image" content="https://ecriox.com/og-banner.png">
+  <!-- Schema.org BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://ecriox.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Privacy Policy",
+        "item": "https://ecriox.com/privacy/"
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
@@ -108,6 +129,11 @@
   </div>
 
   <main class="page-wrapper">
+    <nav class="breadcrumb" aria-label="Breadcrumb" style="padding: 1rem 0; font-size: 0.85rem;">
+      <div class="container">
+        <a href="https://ecriox.com/" style="color: var(--color-primary); text-decoration: none;">Home</a><span class="sep" style="margin: 0 0.5rem; color: var(--border-color);">/</span><span class="current" style="color: var(--text-muted);">Privacy Policy</span>
+      </div>
+    </nav>
     <div class="page-header">
       <div class="container">
         <span class="section-pill">Legal & Compliance</span>

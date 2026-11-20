@@ -3,19 +3,19 @@
   <!-- Core Site Architecture -->
   <url>
     <loc>https://ecriox.com/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://ecriox.com/tools/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ecriox.com/categories/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -24,37 +24,37 @@
   <!-- PDF Guides & Topical Authority Hub -->
   <url>
     <loc>https://ecriox.com/pdf-guides/</loc>
-    <lastmod>2026-11-08</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://ecriox.com/pdf-guides/how-to-compress-pdf-without-losing-quality/</loc>
-    <lastmod>2026-11-08</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://ecriox.com/pdf-guides/how-to-merge-multiple-pdf-files/</loc>
-    <lastmod>2026-11-08</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://ecriox.com/pdf-guides/how-to-convert-pdf-to-word-docx/</loc>
-    <lastmod>2026-11-08</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://ecriox.com/pdf-guides/how-to-sign-pdf-documents-online/</loc>
-    <lastmod>2026-11-08</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://ecriox.com/pdf-guides/how-to-add-page-numbers-to-pdf/</loc>
-    <lastmod>2026-11-08</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
@@ -62,61 +62,61 @@
   <!-- Nine Category Hubs -->
   <url>
     <loc>https://ecriox.com/tools/pdf/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ecriox.com/tools/image/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ecriox.com/tools/developer/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ecriox.com/tools/text/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ecriox.com/tools/calculators/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ecriox.com/tools/productivity/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ecriox.com/tools/document/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ecriox.com/tools/media/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ecriox.com/tools/ai/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ecriox.com/tools/tech-lab/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -124,67 +124,67 @@
   <!-- PDF Tools -->
   <url>
     <loc>https://ecriox.com/pdf-editor/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://ecriox.com/pdf-compressor/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ecriox.com/merge-pdf/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ecriox.com/split-pdf/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ecriox.com/jpg-to-pdf/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ecriox.com/pdf-to-jpg/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ecriox.com/pdf-to-word/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ecriox.com/add-page-numbers-to-pdf/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ecriox.com/crop-pdf/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ecriox.com/tools/ocr-pdf/</loc>
-    <lastmod>2026-11-09</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ecriox.com/advanced-pdf-organizer/</loc>
-    <lastmod>2026-11-09</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
@@ -192,49 +192,49 @@
   <!-- Image Tools -->
   <url>
     <loc>https://ecriox.com/background-remover/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ecriox.com/heic-to-jpg/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ecriox.com/image-to-text/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ecriox.com/image-resizer/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ecriox.com/image-color-picker/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ecriox.com/png-to-webp/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ecriox.com/image-metadata-remover/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ecriox.com/tools/image-compressor/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -242,25 +242,25 @@
   <!-- Developer Tools -->
   <url>
     <loc>https://ecriox.com/tools/developer/json-formatter/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ecriox.com/tools/developer/base64/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ecriox.com/tools/developer/hash-generator/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ecriox.com/tools/developer/uuid-generator/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -268,19 +268,19 @@
   <!-- Text Tools -->
   <url>
     <loc>https://ecriox.com/tools/text-analyzer/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ecriox.com/tools/text/remove-duplicate-lines/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ecriox.com/tools/text/lorem-ipsum/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -288,37 +288,37 @@
   <!-- Calculators -->
   <url>
     <loc>https://ecriox.com/gst-calculator/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ecriox.com/age-calculator/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ecriox.com/invoice-generator/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ecriox.com/tools/calculators/percentage/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ecriox.com/tools/calculators/emi/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ecriox.com/tools/calculators/unit-converter/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -326,19 +326,19 @@
   <!-- Productivity Tools -->
   <url>
     <loc>https://ecriox.com/qr-code-generator/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ecriox.com/password-generator/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ecriox.com/tools/productivity/pomodoro/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -346,13 +346,13 @@
   <!-- Document Tools -->
   <url>
     <loc>https://ecriox.com/tools/document/markdown-to-html/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ecriox.com/tools/document/csv-to-json/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -360,7 +360,7 @@
   <!-- Media Tools -->
   <url>
     <loc>https://ecriox.com/tools/media/audio-inspector/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -368,7 +368,7 @@
   <!-- AI Tools -->
   <url>
     <loc>https://ecriox.com/tools/ai/prompt-generator/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -376,19 +376,19 @@
   <!-- Technology & Device Lab Tools -->
   <url>
     <loc>https://ecriox.com/internet-speed-test/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ecriox.com/wifi-analyzer/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ecriox.com/5g-band-checker/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -396,7 +396,7 @@
   <!-- Festive & Viral Utilities -->
   <url>
     <loc>https://ecriox.com/diwali-wishes-maker/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -404,67 +404,67 @@
   <!-- EcrioX Typing Arena -->
   <url>
     <loc>https://ecriox.com/typing-speed-test/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ecriox.com/wpm-test/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ecriox.com/english-typing-test/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ecriox.com/hindi-typing-test/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ecriox.com/typing-test-for-kids/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ecriox.com/programming-typing-test/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ecriox.com/typing-games/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ecriox.com/typing-practice/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ecriox.com/typing-race/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ecriox.com/typing-certificate/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ecriox.com/typing-progress/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -472,93 +472,93 @@
   <!-- Trust & Legal Pages -->
   <url>
     <loc>https://ecriox.com/about/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://ecriox.com/contact/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://ecriox.com/privacy/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://ecriox.com/terms/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <!-- Career Studio Tools -->
   <url>
     <loc>https://ecriox.com/resume-builder/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://ecriox.com/ats-resume-checker/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ecriox.com/resume-job-matcher/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ecriox.com/cover-letter-generator/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ecriox.com/resume-templates/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ecriox.com/resume-bullet-improver/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ecriox.com/professional-summary-generator/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ecriox.com/resume-keyword-optimizer/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ecriox.com/software-engineer-resume/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ecriox.com/fresh-graduate-resume/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <!-- EcrioX WorldView -->
   <url>
     <loc>https://ecriox.com/world-live-cameras/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>

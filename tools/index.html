@@ -54,7 +54,7 @@
       } catch(e){}
     })();
   </script>
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="/css/style.css">
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6672302762343789"
      crossorigin="anonymous"></script>
@@ -63,6 +63,68 @@
   <meta property="og:image:height" content="630">
   <meta property="og:locale" content="en_US">
   <meta name="twitter:image" content="https://ecriox.com/og-banner.png">
+  <!-- Schema.org BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://ecriox.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "All Utilities Directory",
+        "item": "https://ecriox.com/tools/"
+      }
+    ]
+  }
+  </script>
+  <!-- Schema.org FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Are all online tools on EcrioX completely free to use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, every digital tool and utility across EcrioX is 100% free with no subscription tiers, no credit card requirements, no paywalls, and no watermark stamps on your generated files."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need to create an account or install any software?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No account registration or login is required. All utilities run directly inside your web browser on desktop, tablet, and mobile devices without installing browser extensions or executable software."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does EcrioX protect my files and personal privacy?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "EcrioX utilizes client-side WebAssembly, JavaScript, and HTML5 Canvas to execute PDF processing, image optimization, and data calculations locally inside your browser memory. Your confidential files are never transmitted to or stored on remote cloud servers."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I suggest a new tool or report an issue with an existing utility?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. We actively expand our utility suite based on user requests. Visit our Contact & Support page or email elango369elango@gmail.com with your feedback or feature suggestions."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
@@ -108,6 +170,11 @@
   </div>
 
   <main class="page-wrapper">
+    <nav class="breadcrumb" aria-label="Breadcrumb" style="padding: 1rem 0; font-size: 0.85rem;">
+      <div class="container">
+        <a href="https://ecriox.com/" style="color: var(--color-primary); text-decoration: none;">Home</a><span class="sep" style="margin: 0 0.5rem; color: var(--border-color);">/</span><span class="current" style="color: var(--text-muted);">All Utilities Directory</span>
+      </div>
+    </nav>
     <div class="page-header">
       <div class="container">
         <span class="section-pill">Online Utilities Directory</span>
@@ -155,7 +222,878 @@
       </div>
 
       <!-- Tools Grid (Dynamic from Registry) -->
-      <div id="toolsGridContainer" class="grid-tools"></div>
+      <div id="toolsGridContainer" class="grid-tools">
+
+        <div class="tool-card " data-category="pdf" data-tool-id="pdf-editor">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">PDF Tools</span>
+            <h3 class="tool-card-title"><a href="/pdf-editor/" style="color: inherit; text-decoration: none;">PDF Editor</a></h3>
+            <p class="tool-card-desc">Professional online PDF editor. Add text, draw electronic signatures, annotate, insert images, organize pages, and redact securely.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/pdf-editor/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="pdf" data-tool-id="pdf-compressor">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><polyline points="10 13 12 11 14 13"></polyline><line x1="12" y1="11" x2="12" y2="17"></line></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">PDF Tools</span>
+            <h3 class="tool-card-title"><a href="/pdf-compressor/" style="color: inherit; text-decoration: none;">PDF Compressor</a></h3>
+            <p class="tool-card-desc">Reduce PDF document size while preserving readable text, crisp vector graphics and document quality.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/pdf-compressor/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="pdf" data-tool-id="merge-pdf">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"></rect><line x1="12" y1="9" x2="12" y2="15"></line><line x1="9" y1="12" x2="15" y2="12"></line></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">PDF Tools</span>
+            <h3 class="tool-card-title"><a href="/merge-pdf/" style="color: inherit; text-decoration: none;">Merge PDF</a></h3>
+            <p class="tool-card-desc">Combine multiple PDF files into one document online for free. Arrange file order, preview, and download.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/merge-pdf/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="pdf" data-tool-id="split-pdf">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><line x1="20" y1="4" x2="8.12" y2="15.88"></line><line x1="14.47" y1="14.48" x2="20" y2="20"></line><line x1="8.12" y1="8.12" x2="12" y2="12"></line></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">PDF Tools</span>
+            <h3 class="tool-card-title"><a href="/split-pdf/" style="color: inherit; text-decoration: none;">Split PDF</a></h3>
+            <p class="tool-card-desc">Extract selected pages, separate page ranges or create individual PDFs from your document.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/split-pdf/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="pdf" data-tool-id="jpg-to-pdf">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><circle cx="10" cy="13" r="1.5"></circle></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">PDF Tools</span>
+            <h3 class="tool-card-title"><a href="/jpg-to-pdf/" style="color: inherit; text-decoration: none;">JPG to PDF</a></h3>
+            <p class="tool-card-desc">Convert JPG and JPEG images into PDF files online. Arrange images, select page size, orientation, and margins.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/jpg-to-pdf/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="pdf" data-tool-id="pdf-to-jpg">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><polyline points="8 17 12 13 16 17"></polyline></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">PDF Tools</span>
+            <h3 class="tool-card-title"><a href="/pdf-to-jpg/" style="color: inherit; text-decoration: none;">PDF to JPG</a></h3>
+            <p class="tool-card-desc">Convert PDF pages into high-quality JPG images online. Choose resolution, preview, and download individually or as ZIP.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/pdf-to-jpg/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="pdf" data-tool-id="pdf-to-word">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">PDF Tools</span>
+            <h3 class="tool-card-title"><a href="/pdf-to-word/" style="color: inherit; text-decoration: none;">PDF to Word Converter</a></h3>
+            <p class="tool-card-desc">Convert PDF documents to editable Microsoft Word (.docx) files online with paragraphs, headings, and formatting preserved.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/pdf-to-word/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="pdf" data-tool-id="add-page-numbers-to-pdf">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="15" y2="15"></line></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">PDF Tools</span>
+            <h3 class="tool-card-title"><a href="/add-page-numbers-to-pdf/" style="color: inherit; text-decoration: none;">Add Page Numbers to PDF</a></h3>
+            <p class="tool-card-desc">Insert customizable page numbers, headers, and footers into PDF documents with position, font, and format options.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/add-page-numbers-to-pdf/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="pdf" data-tool-id="crop-pdf">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2v14a2 2 0 0 0 2 2h14"></path><path d="M18 22V8a2 2 0 0 0-2-2H2"></path></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">PDF Tools</span>
+            <h3 class="tool-card-title"><a href="/crop-pdf/" style="color: inherit; text-decoration: none;">Crop PDF</a></h3>
+            <p class="tool-card-desc">Trim empty white margins or crop PDF pages visually with an interactive marquee box and apply to all pages.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/crop-pdf/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="pdf" data-tool-id="ocr-pdf">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><circle cx="11" cy="14" r="3"></circle><line x1="13.5" y1="16.5" x2="17" y2="20"></line></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">PDF Tools</span>
+            <h3 class="tool-card-title"><a href="/tools/ocr-pdf/" style="color: inherit; text-decoration: none;">OCR PDF</a></h3>
+            <p class="tool-card-desc">Make scanned PDFs and images searchable online free. Extract text with accurate client-side OCR and embed an invisible selectable text layer.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/tools/ocr-pdf/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="pdf" data-tool-id="advanced-pdf-organizer">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1"></rect><rect x="14" y="3" width="7" height="5" rx="1"></rect><rect x="14" y="12" width="7" height="9" rx="1"></rect><rect x="3" y="16" width="7" height="5" rx="1"></rect></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">PDF Tools</span>
+            <h3 class="tool-card-title"><a href="/advanced-pdf-organizer/" style="color: inherit; text-decoration: none;">Advanced PDF Organizer</a></h3>
+            <p class="tool-card-desc">Visually organize, reorder, rotate, delete, duplicate, extract, and combine PDF pages online with interactive drag-and-drop.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/advanced-pdf-organizer/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="image" data-tool-id="image-compressor">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">Image Tools</span>
+            <h3 class="tool-card-title"><a href="/tools/image-compressor/" style="color: inherit; text-decoration: none;">Image Compressor & Optimizer</a></h3>
+            <p class="tool-card-desc">Compress JPEG, PNG, and WebP images client-side with zero data leaving your browser.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/tools/image-compressor/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="image" data-tool-id="image-resizer">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">Image Tools</span>
+            <h3 class="tool-card-title"><a href="/image-resizer/" style="color: inherit; text-decoration: none;">Image Resizer</a></h3>
+            <p class="tool-card-desc">Resize images online for free. Change pixel dimensions or percentages, maintain aspect ratio, and export JPG, PNG, or WebP.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/image-resizer/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="image" data-tool-id="background-remover">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">Image Tools</span>
+            <h3 class="tool-card-title"><a href="/background-remover/" style="color: inherit; text-decoration: none;">AI Background Remover</a></h3>
+            <p class="tool-card-desc">Remove image backgrounds automatically in seconds. 100% private in-browser AI processing with HD PNG export.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/background-remover/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="image" data-tool-id="heic-to-jpg">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">Image Tools</span>
+            <h3 class="tool-card-title"><a href="/heic-to-jpg/" style="color: inherit; text-decoration: none;">HEIC to JPG Converter</a></h3>
+            <p class="tool-card-desc">Convert Apple HEIC and HEIF iPhone photos into high-quality JPG or PNG images with batch ZIP download.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/heic-to-jpg/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="image" data-tool-id="image-to-text">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3"></path><path d="M9 20h6"></path><path d="M12 4v16"></path></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">Image Tools</span>
+            <h3 class="tool-card-title"><a href="/image-to-text/" style="color: inherit; text-decoration: none;">Image to Text OCR</a></h3>
+            <p class="tool-card-desc">Extract readable, editable text from photos, scans, and screenshots with 100% private in-browser OCR.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/image-to-text/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="image" data-tool-id="image-color-picker">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="12 8 8 12 12 16 16 12 12 8"></polygon></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">Image Tools</span>
+            <h3 class="tool-card-title"><a href="/image-color-picker/" style="color: inherit; text-decoration: none;">Image Color Picker</a></h3>
+            <p class="tool-card-desc">Sample pixel colors with 10x magnifier loupe, copy HEX, RGB, HSL, and CMYK codes, and extract palettes.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/image-color-picker/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="image" data-tool-id="png-to-webp">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><polyline points="10 10 14 14 18 10"></polyline></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">Image Tools</span>
+            <h3 class="tool-card-title"><a href="/png-to-webp/" style="color: inherit; text-decoration: none;">PNG to WebP Converter</a></h3>
+            <p class="tool-card-desc">Batch convert PNG images to lightweight WebP format with alpha transparency preservation and ZIP archive packaging.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/png-to-webp/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="image" data-tool-id="image-metadata-remover">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">Image Tools</span>
+            <h3 class="tool-card-title"><a href="/image-metadata-remover/" style="color: inherit; text-decoration: none;">Image Metadata Viewer & Remover</a></h3>
+            <p class="tool-card-desc">Inspect hidden EXIF, camera model, and GPS geolocation coordinates in photos, then wipe all metadata for privacy.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/image-metadata-remover/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="developer" data-tool-id="json-formatter">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">Developer Tools</span>
+            <h3 class="tool-card-title"><a href="/tools/developer/json-formatter/" style="color: inherit; text-decoration: none;">JSON Formatter & Validator</a></h3>
+            <p class="tool-card-desc">Beautify, validate, and minify JSON code with error line detection and one-click copy.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/tools/developer/json-formatter/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="developer" data-tool-id="base64-tool">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">Developer Tools</span>
+            <h3 class="tool-card-title"><a href="/tools/developer/base64/" style="color: inherit; text-decoration: none;">Base64 Encoder & Decoder</a></h3>
+            <p class="tool-card-desc">Encode and decode text to and from Base64 with URL-safe encoding and live character counting.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/tools/developer/base64/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="developer" data-tool-id="hash-generator">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">Developer Tools</span>
+            <h3 class="tool-card-title"><a href="/tools/developer/hash-generator/" style="color: inherit; text-decoration: none;">Hash Generator</a></h3>
+            <p class="tool-card-desc">Compute cryptographic hashes (SHA-256, SHA-512, SHA-384, SHA-1) client-side with Web Crypto API.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/tools/developer/hash-generator/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="developer" data-tool-id="uuid-generator">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><line x1="9" y1="9" x2="15" y2="15"></line><line x1="15" y1="9" x2="9" y2="15"></line></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">Developer Tools</span>
+            <h3 class="tool-card-title"><a href="/tools/developer/uuid-generator/" style="color: inherit; text-decoration: none;">UUID Generator</a></h3>
+            <p class="tool-card-desc">Generate cryptographically secure v4 UUIDs in bulk with uppercase, lowercase, and formatting options.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/tools/developer/uuid-generator/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="text" data-tool-id="text-analyzer">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 7 4 4 20 4 20 7"></polyline><line x1="9" y1="20" x2="15" y2="20"></line><line x1="12" y1="4" x2="12" y2="20"></line></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">Text Tools</span>
+            <h3 class="tool-card-title"><a href="/tools/text-analyzer/" style="color: inherit; text-decoration: none;">Text Analyzer & Case Converter</a></h3>
+            <p class="tool-card-desc">Count words, characters, sentences, reading time, and transform case formats instantly.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/tools/text-analyzer/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="text" data-tool-id="remove-duplicate-lines">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">Text Tools</span>
+            <h3 class="tool-card-title"><a href="/tools/text/remove-duplicate-lines/" style="color: inherit; text-decoration: none;">Remove Duplicate Lines</a></h3>
+            <p class="tool-card-desc">Clean lists and text files by removing duplicate lines, sorting alphabetically, and stripping empty spaces.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/tools/text/remove-duplicate-lines/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="text" data-tool-id="lorem-ipsum">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">Text Tools</span>
+            <h3 class="tool-card-title"><a href="/tools/text/lorem-ipsum/" style="color: inherit; text-decoration: none;">Lorem Ipsum Generator</a></h3>
+            <p class="tool-card-desc">Generate placeholder filler text by paragraphs, sentences, or words for mockups and designs.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/tools/text/lorem-ipsum/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="calculators" data-tool-id="gst-calculator">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">Calculators</span>
+            <h3 class="tool-card-title"><a href="/gst-calculator/" style="color: inherit; text-decoration: none;">GST Calculator India</a></h3>
+            <p class="tool-card-desc">Calculate GST inclusive and exclusive prices, reverse GST, CGST, SGST, and IGST for 5%, 12%, 18%, and 28% slabs.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/gst-calculator/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="calculators" data-tool-id="invoice-generator">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">Calculators</span>
+            <h3 class="tool-card-title"><a href="/invoice-generator/" style="color: inherit; text-decoration: none;">Invoice Generator</a></h3>
+            <p class="tool-card-desc">Create and download professional PDF invoices with custom line items, business logo, GST/VAT taxes, and discounts.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/invoice-generator/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="calculators" data-tool-id="percentage-calculator">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="5" x2="5" y2="19"></line><circle cx="6.5" cy="6.5" r="2.5"></circle><circle cx="17.5" cy="17.5" r="2.5"></circle></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">Calculators</span>
+            <h3 class="tool-card-title"><a href="/tools/calculators/percentage/" style="color: inherit; text-decoration: none;">Percentage Calculator</a></h3>
+            <p class="tool-card-desc">Calculate percentages, percentage increase or decrease, and proportions with step-by-step formulas.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/tools/calculators/percentage/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="calculators" data-tool-id="emi-calculator">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><line x1="12" y1="8" x2="12" y2="12"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">Calculators</span>
+            <h3 class="tool-card-title"><a href="/tools/calculators/emi/" style="color: inherit; text-decoration: none;">EMI & Loan Calculator</a></h3>
+            <p class="tool-card-desc">Calculate monthly loan EMIs, total interest payable, and repayment schedules with breakdown charts.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/tools/calculators/emi/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="calculators" data-tool-id="age-calculator">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">Calculators</span>
+            <h3 class="tool-card-title"><a href="/age-calculator/" style="color: inherit; text-decoration: none;">Age & Date Difference Calculator</a></h3>
+            <p class="tool-card-desc">Calculate exact age in years, months, days, total weeks, and track the countdown to your next birthday.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/age-calculator/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="calculators" data-tool-id="unit-converter">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">Calculators</span>
+            <h3 class="tool-card-title"><a href="/tools/calculators/unit-converter/" style="color: inherit; text-decoration: none;">Unit Converter</a></h3>
+            <p class="tool-card-desc">Convert units of length, weight, temperature, speed, and digital data storage with precision.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/tools/calculators/unit-converter/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="productivity" data-tool-id="pomodoro-timer">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">Productivity Tools</span>
+            <h3 class="tool-card-title"><a href="/tools/productivity/pomodoro/" style="color: inherit; text-decoration: none;">Pomodoro Focus Timer</a></h3>
+            <p class="tool-card-desc">Boost focus and track work intervals with customizable Pomodoro sessions, breaks, and audio chimes.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/tools/productivity/pomodoro/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="productivity" data-tool-id="qr-code-generator">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">Productivity Tools</span>
+            <h3 class="tool-card-title"><a href="/qr-code-generator/" style="color: inherit; text-decoration: none;">QR Code Generator</a></h3>
+            <p class="tool-card-desc">Generate custom QR codes for URLs, Wi-Fi, WhatsApp, vCards, emails, and SMS with high-res PNG and SVG download.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/qr-code-generator/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="productivity" data-tool-id="password-generator">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">Productivity Tools</span>
+            <h3 class="tool-card-title"><a href="/password-generator/" style="color: inherit; text-decoration: none;">Password Generator</a></h3>
+            <p class="tool-card-desc">Generate cryptographically secure passwords and memorable passphrases with custom character sets and live entropy meter.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/password-generator/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="document" data-tool-id="markdown-to-html">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 7 4 4 20 4 20 7"></polyline><line x1="9" y1="20" x2="15" y2="20"></line><line x1="12" y1="4" x2="12" y2="20"></line></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">Document Tools</span>
+            <h3 class="tool-card-title"><a href="/tools/document/markdown-to-html/" style="color: inherit; text-decoration: none;">Markdown to HTML Converter</a></h3>
+            <p class="tool-card-desc">Write or paste Markdown and instantly convert it into clean HTML code with live preview and download.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/tools/document/markdown-to-html/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="document" data-tool-id="csv-to-json">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">Document Tools</span>
+            <h3 class="tool-card-title"><a href="/tools/document/csv-to-json/" style="color: inherit; text-decoration: none;">CSV to JSON & JSON to CSV</a></h3>
+            <p class="tool-card-desc">Convert tabular CSV spreadsheets into JSON arrays and JSON objects into CSV files seamlessly.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/tools/document/csv-to-json/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="media" data-tool-id="audio-inspector">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">Media Tools</span>
+            <h3 class="tool-card-title"><a href="/tools/media/audio-inspector/" style="color: inherit; text-decoration: none;">Audio Inspector & Volume Adjuster</a></h3>
+            <p class="tool-card-desc">Inspect audio file metadata, analyze waveform dynamics, and amplify or attenuate volume in your browser.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/tools/media/audio-inspector/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="ai" data-tool-id="ai-prompt-generator">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">AI Tools</span>
+            <h3 class="tool-card-title"><a href="/tools/ai/prompt-generator/" style="color: inherit; text-decoration: none;">AI Prompt Studio & Generator</a></h3>
+            <p class="tool-card-desc">Craft structured, high-performing prompts for ChatGPT, Claude, and Gemini with standard architectural frameworks.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/tools/ai/prompt-generator/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="tech-lab" data-tool-id="internet-speed-test">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline><path d="M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0z"></path></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">Technology & Device Lab</span>
+            <h3 class="tool-card-title"><a href="/internet-speed-test/" style="color: inherit; text-decoration: none;">Internet Speed Test</a></h3>
+            <p class="tool-card-desc">Test real-time download speed, upload speed, latency ping, and jitter with an animated speedometer gauge. 100% genuine network transfers.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/internet-speed-test/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="tech-lab" data-tool-id="wifi-analyzer">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"></path><path d="M1.42 9a16 16 0 0 1 21.16 0"></path><path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path><line x1="12" y1="20" x2="12.01" y2="20"></line></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">Technology & Device Lab</span>
+            <h3 class="tool-card-title"><a href="/wifi-analyzer/" style="color: inherit; text-decoration: none;">Wi-Fi Analyzer</a></h3>
+            <p class="tool-card-desc">Analyze Wi-Fi signal strength in dBm, evaluate 2.4 GHz vs 5 GHz vs 6 GHz frequency bands, view channel overlap interference, and troubleshoot network dead zones.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/wifi-analyzer/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="tech-lab" data-tool-id="5g-band-checker">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">Technology & Device Lab</span>
+            <h3 class="tool-card-title"><a href="/5g-band-checker/" style="color: inherit; text-decoration: none;">5G Band Checker</a></h3>
+            <p class="tool-card-desc">Check your smartphone's supported 5G NR (Sub-6 & mmWave) and 4G LTE bands, verify carrier compatibility (Jio, Airtel, T-Mobile, Verizon), and compare phone models.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/5g-band-checker/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="productivity" data-tool-id="diwali-wishes-maker">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a5 5 0 0 0-5 5c0 3 5 9 5 9s5-6 5-9a5 5 0 0 0-5-5z"></path><circle cx="12" cy="7" r="1.5"></circle></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">Productivity Tools</span>
+            <h3 class="tool-card-title"><a href="/diwali-wishes-maker/" style="color: inherit; text-decoration: none;">Happy Diwali Wishes Maker</a></h3>
+            <p class="tool-card-desc">Create personalized Diwali greeting cards with custom names, photos, 20 royal templates, 10 Indian languages, and instant WhatsApp sharing.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/diwali-wishes-maker/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="productivity" data-tool-id="typing-speed-test">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><line x1="6" y1="8" x2="6.01" y2="8"></line><line x1="10" y1="8" x2="10.01" y2="8"></line><line x1="14" y1="8" x2="14.01" y2="8"></line><line x1="18" y1="8" x2="18.01" y2="8"></line><line x1="6" y1="12" x2="6.01" y2="12"></line><line x1="18" y1="12" x2="18.01" y2="12"></line><line x1="8" y1="16" x2="16" y2="16"></line></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">Productivity Tools</span>
+            <h3 class="tool-card-title"><a href="/typing-speed-test/" style="color: inherit; text-decoration: none;">Typing Speed Test (Typing Arena)</a></h3>
+            <p class="tool-card-desc">Benchmark your typing speed (WPM) and accuracy with clean, distraction-free tests, active word highlighting, and live error analysis.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/typing-speed-test/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="productivity" data-tool-id="wpm-test">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">Productivity Tools</span>
+            <h3 class="tool-card-title"><a href="/wpm-test/" style="color: inherit; text-decoration: none;">WPM Test (1-Minute Benchmark)</a></h3>
+            <p class="tool-card-desc">Test your Words Per Minute in 60 seconds. Accurate Net and Gross WPM calculation with speed percentile ratings.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/wpm-test/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="productivity" data-tool-id="typing-games">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"></rect><circle cx="6" cy="12" r="1"></circle><circle cx="10" cy="12" r="1"></circle><line x1="15" y1="10" x2="15" y2="14"></line><line x1="13" y1="12" x2="17" y2="12"></line></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">Productivity Tools</span>
+            <h3 class="tool-card-title"><a href="/typing-games/" style="color: inherit; text-decoration: none;">Typing Games Arcade</a></h3>
+            <p class="tool-card-desc">Play addictive online typing games including Word Rain, Word Blitz 60s, and Keyboard Reaction Challenge.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/typing-games/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="productivity" data-tool-id="typing-practice">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">Productivity Tools</span>
+            <h3 class="tool-card-title"><a href="/typing-practice/" style="color: inherit; text-decoration: none;">Weak Key Detector & Practice</a></h3>
+            <p class="tool-card-desc">Identify frequently mistyped keys with an interactive error heatmap and generate personalized drills focused on your problem keys.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/typing-practice/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="productivity" data-tool-id="typing-race">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 17h4V5H10z"></path><path d="M20 17h2v-3.34a4 4 0 0 0-1.17-2.83L19 9h-5v8h6z"></path><path d="M4 17h2V9H1a4 4 0 0 0 1.17 2.83L4 13.66V17z"></path></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">Productivity Tools</span>
+            <h3 class="tool-card-title"><a href="/typing-race/" style="color: inherit; text-decoration: none;">Typing Race Speedway</a></h3>
+            <p class="tool-card-desc">Race your car on the typing speedway against calibrated pacer bots or challenge friends with private race rooms.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/typing-race/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="productivity" data-tool-id="typing-certificate">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><circle cx="12" cy="15" r="3"></circle></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">Productivity Tools</span>
+            <h3 class="tool-card-title"><a href="/typing-certificate/" style="color: inherit; text-decoration: none;">Typing Speed Certificate</a></h3>
+            <p class="tool-card-desc">Generate and download a high-resolution, verified typing speed certificate with your WPM score and accuracy for resumes and LinkedIn.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/typing-certificate/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="career" data-tool-id="resume-builder">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">Career Studio</span>
+            <h3 class="tool-card-title"><a href="/resume-builder/" style="color: inherit; text-decoration: none;">ATS Resume Builder</a></h3>
+            <p class="tool-card-desc">Create professional ATS-compliant resumes with 20+ templates, multi-version management, live preview, and vector PDF export.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/resume-builder/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="career" data-tool-id="ats-resume-checker">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline><path d="M22 12h-4"></path><path d="M6 12H2"></path><path d="M12 6V2"></path><path d="M12 22v-4"></path></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">Career Studio</span>
+            <h3 class="tool-card-title"><a href="/ats-resume-checker/" style="color: inherit; text-decoration: none;">ATS Resume Checker</a></h3>
+            <p class="tool-card-desc">Audit resume structure, formatting, action verbs, and machine readability with an instant 0–100 score and actionable recommendations.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/ats-resume-checker/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="career" data-tool-id="resume-job-matcher">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">Career Studio</span>
+            <h3 class="tool-card-title"><a href="/resume-job-matcher/" style="color: inherit; text-decoration: none;">Job Description Matcher</a></h3>
+            <p class="tool-card-desc">Compare your resume against any job description to discover matched technical competencies, missing keywords, and match percentages.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/resume-job-matcher/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="career" data-tool-id="cover-letter-generator">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">Career Studio</span>
+            <h3 class="tool-card-title"><a href="/cover-letter-generator/" style="color: inherit; text-decoration: none;">Cover Letter Generator</a></h3>
+            <p class="tool-card-desc">Craft personalized cover letters tailored to your target company and role across formal, tech, and concise tones with printable letterheads.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/cover-letter-generator/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="career" data-tool-id="resume-bullet-improver">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">Career Studio</span>
+            <h3 class="tool-card-title"><a href="/resume-bullet-improver/" style="color: inherit; text-decoration: none;">Resume Bullet Improver</a></h3>
+            <p class="tool-card-desc">Transform weak, passive job descriptions into impactful, achievement-oriented bullets using proven action verb formulas.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/resume-bullet-improver/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="career" data-tool-id="professional-summary-generator">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">Career Studio</span>
+            <h3 class="tool-card-title"><a href="/professional-summary-generator/" style="color: inherit; text-decoration: none;">Summary Generator</a></h3>
+            <p class="tool-card-desc">Create tailored resume summaries and elevator pitches for experienced specialists, entry-level freshers, and career changers.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/professional-summary-generator/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="career" data-tool-id="resume-templates">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">Career Studio</span>
+            <h3 class="tool-card-title"><a href="/resume-templates/" style="color: inherit; text-decoration: none;">20+ Resume Templates</a></h3>
+            <p class="tool-card-desc">Browse 20+ professional resume templates optimized for ATS parsers and human hiring managers across tech, business, and creative fields.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/resume-templates/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="career" data-tool-id="resume-keyword-optimizer">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">Career Studio</span>
+            <h3 class="tool-card-title"><a href="/resume-keyword-optimizer/" style="color: inherit; text-decoration: none;">Keyword Optimizer</a></h3>
+            <p class="tool-card-desc">Analyze term frequency and keyword density across your resume and job postings to maximize search relevance.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/resume-keyword-optimizer/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+
+        <div class="tool-card " data-category="media" data-tool-id="world-live-cameras">
+          <div class="tool-card-header">
+            <div class="tool-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg></div>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <div class="tool-card-body">
+            <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); font-weight: 700; margin-bottom: 0.35rem; display: block;">Media Tools</span>
+            <h3 class="tool-card-title"><a href="/world-live-cameras/" style="color: inherit; text-decoration: none;">World Live Cameras</a></h3>
+            <p class="tool-card-desc">Explore the world live through an interactive 3D Earth globe, 2D world map, and verified real-time camera feeds across 7 continents.</p>
+          </div>
+          <div class="tool-card-footer" style="padding-top: 0.75rem; border-top: none;">
+            <a href="/world-live-cameras/" class="btn btn-sm btn-primary" style="width: 100%;">Use Tool &rarr;</a>
+          </div>
+        </div>
+      </div>
       
       <div id="noResultsNotice" style="display: none; text-align: center; padding: 4rem 1rem;">
         <h3>No tools found</h3>
@@ -169,6 +1107,30 @@
         </div>
       </div>
     </div>
+  
+      <!-- Directory FAQs -->
+      <section class="tool-faq-section" style="max-width: 900px; margin: 3.5rem auto 0 auto; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 2.5rem; box-shadow: var(--shadow-sm);">
+        <h2 style="font-size: 1.5rem; font-weight: 800; color: var(--text-main); margin-bottom: 1.25rem;">Frequently Asked Questions About EcrioX Tools</h2>
+        <div class="faq-list">
+          <div class="faq-item" style="border-bottom: 1px solid var(--border-color); padding: 1.25rem 0;">
+            <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--text-main); margin: 0 0 0.5rem 0;">Are all online tools on EcrioX completely free to use?</h3>
+            <p style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6; margin: 0;">Yes, every digital tool and utility across EcrioX is 100% free with no subscription tiers, no credit card requirements, no paywalls, and no watermark stamps on your generated files.</p>
+          </div>
+          <div class="faq-item" style="border-bottom: 1px solid var(--border-color); padding: 1.25rem 0;">
+            <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--text-main); margin: 0 0 0.5rem 0;">Do I need to create an account or install any software?</h3>
+            <p style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6; margin: 0;">No account registration or login is required. All utilities run directly inside your web browser on desktop, tablet, and mobile devices without installing browser extensions or executable software.</p>
+          </div>
+          <div class="faq-item" style="border-bottom: 1px solid var(--border-color); padding: 1.25rem 0;">
+            <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--text-main); margin: 0 0 0.5rem 0;">How does EcrioX protect my files and personal privacy?</h3>
+            <p style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6; margin: 0;">EcrioX utilizes client-side WebAssembly, JavaScript, and HTML5 Canvas to execute PDF processing, image optimization, and data calculations locally inside your browser memory. Your confidential files are never transmitted to or stored on remote cloud servers.</p>
+          </div>
+          <div class="faq-item" style="padding: 1.25rem 0 0 0;">
+            <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--text-main); margin: 0 0 0.5rem 0;">Can I suggest a new tool or report an issue with an existing utility?</h3>
+            <p style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6; margin: 0;">Yes. We actively expand our utility suite based on user requests. Visit our Contact &amp; Support page or email <a href="mailto:elango369elango@gmail.com" style="color: var(--color-primary); font-weight: 600;">elango369elango@gmail.com</a> with your feedback or feature suggestions.</p>
+          </div>
+        </div>
+      </section>
+
   </main>
 
   <!-- Global Footer -->

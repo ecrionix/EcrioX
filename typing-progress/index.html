@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Typing Progress Dashboard – Track Speed, Accuracy &amp; History | EcrioX</title>
-  <meta name="description" content="View your personal typing statistics, progress charts, average WPM, and test history. Track improvement over time with 100% private local storage.">
+  <title>Typing Progress Tracker – WPM History & Analytics Dashboard | EcrioX</title>
+  <meta name="description" content="Track your typing speed progression over time. View historical WPM charts, error breakdown analytics, personal best records, and milestone achievements.">
   <link rel="canonical" href="https://ecriox.com/typing-progress/">
   <!-- Favicon & Brand Icons -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -49,8 +49,8 @@
       } catch(e){}
     })();
   </script>
-  <link rel="stylesheet" href="../css/style.css">
-  <link rel="stylesheet" href="../css/typing-arena.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/typing-arena.css">
 
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6672302762343789"
@@ -60,20 +60,81 @@
   <meta property="og:image:height" content="630">
   <meta property="og:locale" content="en_US">
   <meta name="twitter:image" content="https://ecriox.com/og-banner.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- Schema.org BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://ecriox.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Typing Arena",
+        "item": "https://ecriox.com/typing-speed-test/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Typing Progress",
+        "item": "https://ecriox.com/typing-progress/"
+      }
+    ]
+  }
+  </script>
+  <!-- Schema.org FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Where is my typing speed test history stored?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "All historical test scores and metrics are saved locally inside your web browser's secure client-side storage. Your data remains entirely private and never leaves your computer."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will my progress history be lost if I close my browser tab?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Local storage persists across browser restarts and computer reboots. Your history will remain intact as long as you do not manually clear your browser's site data."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I reset my history to start fresh?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The dashboard includes a 'Reset History' button that allows you to clear past records and begin tracking from scratch whenever you wish."
+      }
+    }
+    ]
+  }
+  </script>
 </head>
 <body>
   <!-- Header -->
   <header class="site-header">
     <div class="header-inner container">
-      <a href="../" class="brand-logo">
+      <a href="/" class="brand-logo">
         <span class="logo-icon">⚡</span>
         <span class="logo-text">Ecrio<strong>X</strong></span>
       </a>
       <nav class="header-nav">
-        <a href="../tools/">All Tools</a>
-        <a href="../typing-speed-test/">Typing Arena</a>
-        <a href="../typing-progress/" class="active">My Progress</a>
-        <a href="../typing-certificate/">Certificate</a>
+        <a href="/tools/">All Tools</a>
+        <a href="/typing-speed-test/">Typing Arena</a>
+        <a href="/typing-progress/" class="active">My Progress</a>
+        <a href="/typing-certificate/">Certificate</a>
       </nav>
       <div class="header-actions">
         <button class="btn-icon theme-toggle-btn" aria-label="Toggle color theme">
@@ -85,9 +146,9 @@
 
   <main class="page-main container">
     <nav class="breadcrumb" aria-label="Breadcrumb">
-      <a href="../">Home</a>
+      <a href="/">Home</a>
       <span class="sep">/</span>
-      <a href="../typing-speed-test/">Typing Arena</a>
+      <a href="/typing-speed-test/">Typing Arena</a>
       <span class="sep">/</span>
       <span class="current">My Progress</span>
     </nav>
@@ -103,12 +164,18 @@
         Inspect your speed gains, accuracy consistency, and full historical log. Saved 100% locally on your browser.
       </p>
 
-      <div class="arena-nav-bar">
-        <a href="../typing-speed-test/" class="arena-nav-link">⚡ Speed Test</a>
-        <a href="../wpm-test/" class="arena-nav-link">⏱️ WPM Test</a>
-        <a href="../typing-progress/" class="arena-nav-link active">📊 My Progress</a>
-        <a href="../typing-practice/" class="arena-nav-link">🎯 Weak Keys</a>
-        <a href="../typing-certificate/" class="arena-nav-link">📜 Certificate</a>
+      <div class="arena-nav-bar" style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; margin: 1.5rem 0 2rem 0;">
+        <a href="/typing-speed-test/" class="arena-nav-link">⚡ Speed Test</a>
+        <a href="/wpm-test/" class="arena-nav-link">⏱️ 1-Min WPM</a>
+        <a href="/english-typing-test/" class="arena-nav-link">📖 English Test</a>
+        <a href="/hindi-typing-test/" class="arena-nav-link">🇮🇳 Hindi Typing</a>
+        <a href="/programming-typing-test/" class="arena-nav-link">💻 Code Typing</a>
+        <a href="/typing-test-for-kids/" class="arena-nav-link">🎈 Kids Typing</a>
+        <a href="/typing-games/" class="arena-nav-link">🎮 Typing Games</a>
+        <a href="/typing-race/" class="arena-nav-link">🏎️ Typing Race</a>
+        <a href="/typing-practice/" class="arena-nav-link">🎯 Weak Key Practice</a>
+        <a href="/typing-certificate/" class="arena-nav-link">📜 Certificate</a>
+        <a href="/typing-progress/" class="arena-nav-link active" style="background: var(--color-primary); color: #fff; font-weight: 700;">📊 Progress Analytics</a>
       </div>
     </div>
 
@@ -189,21 +256,100 @@
         <span>Advertisement Placeholder</span>
       </div>
     </div>
+  
+    <!-- Educational Guide & FAQ Section -->
+    <article class="tool-content-section" style="max-width: 900px; margin: 3.5rem auto 2rem auto; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 2.5rem; box-shadow: var(--shadow-sm);">
+      <h2 style="font-size: 1.65rem; font-weight: 800; color: var(--text-main); margin-bottom: 1.25rem;">Quantitative Typing Analytics & Performance Tracking</h2>
+        <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.25rem;">Tracking your typing metrics over time provides the motivation and objective feedback needed to break through performance plateaus. When practicing daily, day-to-day fluctuations in speed are normal due to fatigue, passage difficulty, and finger warmup. A longitudinal progress analytics dashboard smooths out daily noise, illustrating your true upward trajectory.</p>
+        <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.25rem;">Key metrics tracked in our analytics dashboard include Net Words Per Minute, Gross WPM, Accuracy Percentage, Total Keystrokes Logged, Practice Time, and Milestone Achievements (such as reaching 50 WPM, 75 WPM, or 100 WPM with 98% accuracy). Reviewing historical charts helps you identify optimal practice times and evaluate the effectiveness of different keyboard layouts.</p>
+        <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.25rem;">In strict accordance with EcrioX's privacy-first architecture, all typing test history, scores, and analytics are stored locally on your device using browser localStorage and IndexedDB. No performance records or personal metrics are ever transmitted to or stored on remote cloud databases.</p>
+        <section class="tool-faq-section" style="margin-top: 3rem;">
+          <h2 style="font-size: 1.5rem; font-weight: 800; color: var(--text-main); margin-bottom: 1rem;">Frequently Asked Questions</h2>
+          <div class="faq-list">
+          <div class="faq-item" style="border-bottom: 1px solid var(--border-color); padding: 1.25rem 0;">
+            <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--text-main); margin: 0 0 0.5rem 0;">Where is my typing speed test history stored?</h3>
+            <p style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6; margin: 0;">All historical test scores and metrics are saved locally inside your web browser's secure client-side storage. Your data remains entirely private and never leaves your computer.</p>
+          </div>
+          <div class="faq-item" style="border-bottom: 1px solid var(--border-color); padding: 1.25rem 0;">
+            <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--text-main); margin: 0 0 0.5rem 0;">Will my progress history be lost if I close my browser tab?</h3>
+            <p style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6; margin: 0;">No. Local storage persists across browser restarts and computer reboots. Your history will remain intact as long as you do not manually clear your browser's site data.</p>
+          </div>
+          <div class="faq-item" style="border-bottom: 1px solid var(--border-color); padding: 1.25rem 0;">
+            <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--text-main); margin: 0 0 0.5rem 0;">Can I reset my history to start fresh?</h3>
+            <p style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6; margin: 0;">Yes. The dashboard includes a 'Reset History' button that allows you to clear past records and begin tracking from scratch whenever you wish.</p>
+          </div>
+          </div>
+        </section>
+    </article>
+
   </main>
 
   <!-- Footer -->
+  <!-- Global Footer -->
   <footer class="site-footer">
-    <div class="container footer-inner">
-      <div class="footer-brand">
-        <a href="../" class="brand-logo">
-          <span class="logo-icon">⚡</span>
-          <span class="logo-text">Ecrio<strong>X</strong></span>
-        </a>
-        <p class="brand-tagline">One Platform. Endless Possibilities.</p>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="/" class="brand-logo">
+            <div class="logo-symbol">E</div>
+            <span>Ecrio<span class="accent-dot">X</span></span>
+          </a>
+          <p>One Platform. Endless Possibilities. Free, fast, and privacy-conscious online utilities designed for everyday productivity.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>PDF Tools</h4>
+          <ul class="footer-links">
+            <li><a href="/pdf-compressor/">PDF Compressor</a></li>
+            <li><a href="/merge-pdf/">Merge PDF</a></li>
+            <li><a href="/split-pdf/">Split PDF</a></li>
+            <li><a href="/pdf-editor/">Edit &amp; Sign PDF</a></li>
+            <li><a href="/tools/ocr-pdf/">OCR PDF</a></li>
+            <li><a href="/pdf-to-word/">PDF to Word</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Career &amp; Typing</h4>
+          <ul class="footer-links">
+            <li><a href="/resume-builder/">ATS Resume Builder</a></li>
+            <li><a href="/resume-templates/">Resume Templates</a></li>
+            <li><a href="/ats-resume-checker/">ATS Checker</a></li>
+            <li><a href="/typing-speed-test/">Typing Speed Test</a></li>
+            <li><a href="/wpm-test/">1-Min WPM Test</a></li>
+            <li><a href="/typing-certificate/">Typing Certificate</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Popular Utilities</h4>
+          <ul class="footer-links">
+            <li><a href="/image-resizer/">Image Resizer</a></li>
+            <li><a href="/background-remover/">Background Remover</a></li>
+            <li><a href="/qr-code-generator/">QR Code Generator</a></li>
+            <li><a href="/password-generator/">Password Generator</a></li>
+            <li><a href="/internet-speed-test/">Internet Speed Test</a></li>
+            <li><a href="/age-calculator/">Age Calculator</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company &amp; Legal</h4>
+          <ul class="footer-links">
+            <li><a href="/about/">About Us</a></li>
+            <li><a href="/contact/">Contact Support</a></li>
+            <li><a href="/privacy/">Privacy Policy</a></li>
+            <li><a href="/terms/">Terms of Use</a></li>
+            <li><a href="/tools/">All Tools Directory</a></li>
+            <li><a href="/categories/">Categories</a></li>
+          </ul>
+        </div>
       </div>
-    </div>
-    <div class="footer-bottom container">
-      <p>&copy; 2026 EcrioX. All rights reserved.</p>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 EcrioX. All rights reserved. Platform built for speed and privacy.</p>
+        <p>Canonical Domain: <a href="https://ecriox.com/" style="color: var(--color-primary);">ecriox.com</a></p>
+      </div>
     </div>
   </footer>
 

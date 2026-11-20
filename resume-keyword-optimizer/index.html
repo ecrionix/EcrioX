@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Free Resume Keyword Optimizer – ATS Keyword Density &amp; Scanner | EcrioX</title>
-  <meta name="description" content="Audit keyword density and technical skill frequency in your resume. Compare against job postings, eliminate keyword stuffing, and optimize for recruiter search algorithms.">
+  <title>Resume Keyword Optimizer – Match Resume to Job Descriptions | EcrioX</title>
+  <meta name="description" content="Optimize your resume keywords against target job descriptions. Identify missing technical skills, hard requirements, and industry keywords to pass ATS filters.">
   <link rel="canonical" href="https://ecriox.com/resume-keyword-optimizer/">
   <!-- Favicon & Brand Icons -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -73,8 +73,8 @@
       } catch(e){}
     })();
   </script>
-  <link rel="stylesheet" href="../css/style.css">
-  <link rel="stylesheet" href="../css/career-studio.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/career-studio.css">
 
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6672302762343789"
@@ -84,6 +84,74 @@
   <meta property="og:image:height" content="630">
   <meta property="og:locale" content="en_US">
   <meta name="twitter:image" content="https://ecriox.com/og-banner.png">
+  <!-- Schema.org BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://ecriox.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Career Studio",
+        "item": "https://ecriox.com/resume-builder/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Keyword Optimizer",
+        "item": "https://ecriox.com/resume-keyword-optimizer/"
+      }
+    ]
+  }
+  </script>
+  <!-- Schema.org FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the difference between hard keywords and soft keywords?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Hard keywords are specific technical skills, tools, certifications, and measurable qualifications (e.g., Python, AWS, PMP, Financial Modeling, SQL). Soft keywords describe work styles and traits (e.g., leadership, communication, problem-solving). ATS parsers prioritize hard keywords when ranking candidates."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many times should a keyword appear in a resume?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Keywords should appear naturally 2 to 3 times across different sections (e.g., once in your Skills section, and once or twice contextualized inside an Experience bullet point)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the keyword optimizer store or upload my resume?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. All text parsing, frequency analysis, and keyword matching take place 100% locally in your web browser. Your confidential employment details never touch an external server."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use this tool to optimize LinkedIn profiles as well?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. You can paste your LinkedIn profile 'About' and 'Experience' sections into the optimizer to ensure your profile ranks high in recruiter candidate searches."
+      }
+    }
+    ]
+  }
+  </script>
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
@@ -94,17 +162,17 @@
   <!-- Header -->
   <header class="site-header">
     <div class="header-inner container">
-      <a href="../" class="brand-logo">
+      <a href="/" class="brand-logo">
         <span class="logo-icon">⚡</span>
         <span class="logo-text">Ecrio<strong>X</strong></span>
       </a>
       <nav class="header-nav">
-        <a href="../tools/">All Tools</a>
-        <a href="../resume-builder/">Resume Builder</a>
-        <a href="../ats-resume-checker/">ATS Checker</a>
-        <a href="../resume-job-matcher/">Job Matcher</a>
-        <a href="../resume-keyword-optimizer/" class="active">Keyword Optimizer</a>
-        <a href="../categories/">Categories</a>
+        <a href="/tools/">All Tools</a>
+        <a href="/resume-builder/">Resume Builder</a>
+        <a href="/ats-resume-checker/">ATS Checker</a>
+        <a href="/resume-job-matcher/">Job Matcher</a>
+        <a href="/resume-keyword-optimizer/" class="active">Keyword Optimizer</a>
+        <a href="/categories/">Categories</a>
       </nav>
       <div class="header-actions">
         <button class="btn-icon theme-toggle-btn" aria-label="Toggle color theme">
@@ -117,9 +185,9 @@
   <main class="page-main container">
     <!-- Breadcrumb -->
     <nav class="breadcrumb" aria-label="Breadcrumb">
-      <a href="../">Home</a>
+      <a href="/">Home</a>
       <span class="sep">/</span>
-      <a href="../resume-builder/">Career Studio</a>
+      <a href="/resume-builder/">Career Studio</a>
       <span class="sep">/</span>
       <span class="current">Resume Keyword Optimizer</span>
     </nav>
@@ -137,14 +205,17 @@
       </p>
 
       <!-- Sub Navigation Pills -->
-      <div class="career-nav-bar">
-        <a href="../resume-builder/" class="career-nav-link">📝 Resume Builder</a>
-        <a href="../ats-resume-checker/" class="career-nav-link">🎯 ATS Checker</a>
-        <a href="../resume-job-matcher/" class="career-nav-link">🔍 Job Matcher</a>
-        <a href="../resume-bullet-improver/" class="career-nav-link">✨ Bullet Improver</a>
-        <a href="../professional-summary-generator/" class="career-nav-link">💡 Summary Generator</a>
-        <a href="../cover-letter-generator/" class="career-nav-link">✉️ Cover Letter</a>
-        <a href="../resume-templates/" class="career-nav-link">🎨 Templates</a>
+      <div class="career-nav-bar" style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; margin: 1.5rem 0 2rem 0;">
+        <a href="/resume-builder/" class="arena-nav-link">⚡ Resume Builder</a>
+        <a href="/resume-templates/" class="arena-nav-link">📄 ATS Templates</a>
+        <a href="/ats-resume-checker/" class="arena-nav-link">🔍 ATS Scanner</a>
+        <a href="/resume-job-matcher/" class="arena-nav-link">🎯 Job Matcher</a>
+        <a href="/cover-letter-generator/" class="arena-nav-link">✉️ Cover Letter</a>
+        <a href="/resume-bullet-improver/" class="arena-nav-link">✨ Bullet Improver</a>
+        <a href="/resume-keyword-optimizer/" class="arena-nav-link active" style="background: var(--color-primary); color: #fff; font-weight: 700;">🔑 Keyword Optimizer</a>
+        <a href="/professional-summary-generator/" class="arena-nav-link">📝 Summary Generator</a>
+        <a href="/software-engineer-resume/" class="arena-nav-link">💻 Software Engineer Guide</a>
+        <a href="/fresh-graduate-resume/" class="arena-nav-link">🎓 Graduate Resume Guide</a>
       </div>
     </div>
 
@@ -254,57 +325,104 @@
         </script>
       </div>
     </section>
+  
+    <!-- Educational Guide & FAQ Section -->
+    <article class="tool-content-section" style="max-width: 900px; margin: 3.5rem auto 2rem auto; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 2.5rem; box-shadow: var(--shadow-sm);">
+      <h2 style="font-size: 1.65rem; font-weight: 800; color: var(--text-main); margin-bottom: 1.25rem;">Strategic Keyword Optimization for ATS Resume Scoring</h2>
+        <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.25rem;">Modern recruitment platforms use semantic algorithms and natural language processing (NLP) to rank candidates against employer job descriptions. When a recruiter searches for candidates in their ATS, the system ranks applicants based on keyword match density, recency of skill usage, and context.</p>
+        <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.25rem;">Effective keyword optimization is not about 'keyword stuffing' (cramming lists of buzzwords into small white text, which ATS parsers easily detect and disqualify). Instead, strategic optimization involves identifying essential hard skills, software certifications, methodologies, and technical credentials mentioned in the job posting, and weaving them naturally into your professional summary and accomplishment bullets.</p>
+        <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.25rem;">The EcrioX Resume Keyword Optimizer compares your resume text against any job posting in real time. It highlights high-priority missing keywords, categorizes skills by frequency, and suggests phrasing improvements to elevate your application into the top tier of applicant pools.</p>
+        <section class="tool-faq-section" style="margin-top: 3rem;">
+          <h2 style="font-size: 1.5rem; font-weight: 800; color: var(--text-main); margin-bottom: 1rem;">Frequently Asked Questions</h2>
+          <div class="faq-list">
+          <div class="faq-item" style="border-bottom: 1px solid var(--border-color); padding: 1.25rem 0;">
+            <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--text-main); margin: 0 0 0.5rem 0;">What is the difference between hard keywords and soft keywords?</h3>
+            <p style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6; margin: 0;">Hard keywords are specific technical skills, tools, certifications, and measurable qualifications (e.g., Python, AWS, PMP, Financial Modeling, SQL). Soft keywords describe work styles and traits (e.g., leadership, communication, problem-solving). ATS parsers prioritize hard keywords when ranking candidates.</p>
+          </div>
+          <div class="faq-item" style="border-bottom: 1px solid var(--border-color); padding: 1.25rem 0;">
+            <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--text-main); margin: 0 0 0.5rem 0;">How many times should a keyword appear in a resume?</h3>
+            <p style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6; margin: 0;">Keywords should appear naturally 2 to 3 times across different sections (e.g., once in your Skills section, and once or twice contextualized inside an Experience bullet point).</p>
+          </div>
+          <div class="faq-item" style="border-bottom: 1px solid var(--border-color); padding: 1.25rem 0;">
+            <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--text-main); margin: 0 0 0.5rem 0;">Does the keyword optimizer store or upload my resume?</h3>
+            <p style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6; margin: 0;">No. All text parsing, frequency analysis, and keyword matching take place 100% locally in your web browser. Your confidential employment details never touch an external server.</p>
+          </div>
+          <div class="faq-item" style="border-bottom: 1px solid var(--border-color); padding: 1.25rem 0;">
+            <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--text-main); margin: 0 0 0.5rem 0;">Can I use this tool to optimize LinkedIn profiles as well?</h3>
+            <p style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6; margin: 0;">Yes. You can paste your LinkedIn profile 'About' and 'Experience' sections into the optimizer to ensure your profile ranks high in recruiter candidate searches.</p>
+          </div>
+          </div>
+        </section>
+    </article>
+
   </main>
 
   <!-- Footer -->
+  <!-- Global Footer -->
   <footer class="site-footer">
-    <div class="container footer-inner">
-      <div class="footer-brand">
-        <a href="../" class="brand-logo">
-          <span class="logo-icon">⚡</span>
-          <span class="logo-text">Ecrio<strong>X</strong></span>
-        </a>
-        <p class="brand-tagline">One Platform. Endless Possibilities.</p>
-        <p class="brand-desc">Free, fast, and privacy-conscious online utilities designed for everyday productivity and skill growth.</p>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="/" class="brand-logo">
+            <div class="logo-symbol">E</div>
+            <span>Ecrio<span class="accent-dot">X</span></span>
+          </a>
+          <p>One Platform. Endless Possibilities. Free, fast, and privacy-conscious online utilities designed for everyday productivity.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>PDF Tools</h4>
+          <ul class="footer-links">
+            <li><a href="/pdf-compressor/">PDF Compressor</a></li>
+            <li><a href="/merge-pdf/">Merge PDF</a></li>
+            <li><a href="/split-pdf/">Split PDF</a></li>
+            <li><a href="/pdf-editor/">Edit &amp; Sign PDF</a></li>
+            <li><a href="/tools/ocr-pdf/">OCR PDF</a></li>
+            <li><a href="/pdf-to-word/">PDF to Word</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Career &amp; Typing</h4>
+          <ul class="footer-links">
+            <li><a href="/resume-builder/">ATS Resume Builder</a></li>
+            <li><a href="/resume-templates/">Resume Templates</a></li>
+            <li><a href="/ats-resume-checker/">ATS Checker</a></li>
+            <li><a href="/typing-speed-test/">Typing Speed Test</a></li>
+            <li><a href="/wpm-test/">1-Min WPM Test</a></li>
+            <li><a href="/typing-certificate/">Typing Certificate</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Popular Utilities</h4>
+          <ul class="footer-links">
+            <li><a href="/image-resizer/">Image Resizer</a></li>
+            <li><a href="/background-remover/">Background Remover</a></li>
+            <li><a href="/qr-code-generator/">QR Code Generator</a></li>
+            <li><a href="/password-generator/">Password Generator</a></li>
+            <li><a href="/internet-speed-test/">Internet Speed Test</a></li>
+            <li><a href="/age-calculator/">Age Calculator</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company &amp; Legal</h4>
+          <ul class="footer-links">
+            <li><a href="/about/">About Us</a></li>
+            <li><a href="/contact/">Contact Support</a></li>
+            <li><a href="/privacy/">Privacy Policy</a></li>
+            <li><a href="/terms/">Terms of Use</a></li>
+            <li><a href="/tools/">All Tools Directory</a></li>
+            <li><a href="/categories/">Categories</a></li>
+          </ul>
+        </div>
       </div>
 
-      <div class="footer-links-group">
-        <div class="footer-col">
-          <h5>Career Studio</h5>
-          <ul>
-            <li><a href="../resume-builder/">Resume Builder</a></li>
-            <li><a href="../ats-resume-checker/">ATS Resume Checker</a></li>
-            <li><a href="../resume-job-matcher/">Job Matcher</a></li>
-            <li><a href="../resume-templates/">Resume Templates</a></li>
-            <li><a href="../cover-letter-generator/">Cover Letter Generator</a></li>
-            <li><a href="../resume-bullet-improver/">Bullet Improver</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h5>Career Guides</h5>
-          <ul>
-            <li><a href="../software-engineer-resume/">Software Engineer Resume</a></li>
-            <li><a href="../fresh-graduate-resume/">Graduate Resume Guide</a></li>
-            <li><a href="../professional-summary-generator/">Summary Generator</a></li>
-            <li><a href="../resume-keyword-optimizer/">Keyword Optimizer</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h5>Company &amp; Legal</h5>
-          <ul>
-            <li><a href="../about/">About EcrioX</a></li>
-            <li><a href="../contact/">Contact Us</a></li>
-            <li><a href="../privacy/">Privacy Policy</a></li>
-            <li><a href="../terms/">Terms of Service</a></li>
-          </ul>
-        </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 EcrioX. All rights reserved. Platform built for speed and privacy.</p>
+        <p>Canonical Domain: <a href="https://ecriox.com/" style="color: var(--color-primary);">ecriox.com</a></p>
       </div>
-    </div>
-
-    <div class="footer-bottom container">
-      <p>&copy; 2026 EcrioX. All rights reserved. Platform built for speed and privacy.</p>
     </div>
   </footer>
 
