@@ -1,0 +1,1085 @@
+
+  <!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2D Organic Molecule Builder & Valence Validator – Online Chemistry Virtual Lab | EcrioX</title>
+  <meta name="description" content="Build and sketch organic molecules online. Assemble carbon skeletons, add functional groups, validate valence rules, and calculate molecular formulas and mass.">
+  <link rel="canonical" href="https://ecriox.com/chemistry-labs/organic-molecule-builder/">
+  <!-- Favicon & Brand Icons -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#2563EB">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="2D Organic Molecule Builder & Valence Validator – Online Chemistry Virtual Lab | EcrioX">
+  <meta property="og:description" content="Build and sketch organic molecules online. Assemble carbon skeletons, add functional groups, validate valence rules, and calculate molecular formulas and mass.">
+  <meta property="og:url" content="https://ecriox.com/chemistry-labs/organic-molecule-builder/">
+  <meta property="og:site_name" content="EcrioX">
+  <meta property="og:image" content="https://ecriox.com/og-banner.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="2D Organic Molecule Builder & Valence Validator – Online Chemistry Virtual Lab | EcrioX">
+  <meta name="twitter:description" content="Build and sketch organic molecules online. Assemble carbon skeletons, add functional groups, validate valence rules, and calculate molecular formulas and mass.">
+  <meta name="twitter:image" content="https://ecriox.com/og-banner.png">
+
+  <!-- Global Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-NNT7J485');
+  </script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6486455437877685" crossorigin="anonymous"></script>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/chemistry-labs.css">
+
+  <!-- Anti-FOUT & Theme Sync -->
+  <script>
+    (function(){
+      try {
+        var savedTheme = localStorage.getItem('ecriox_theme_preference');
+        if (savedTheme) {
+          document.documentElement.setAttribute('data-theme', savedTheme);
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      } catch(e) {}
+    })();
+  </script>
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://ecriox.com/chemistry-labs/organic-molecule-builder/#app",
+      "url": "https://ecriox.com/chemistry-labs/organic-molecule-builder/",
+      "name": "2D Organic Molecule Builder & Valence Validator",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires HTML5 Canvas and JavaScript support",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Build and sketch organic molecules online. Assemble carbon skeletons, add functional groups, validate valence rules, and calculate molecular formulas and mass."
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://ecriox.com/chemistry-labs/organic-molecule-builder/#article",
+      "headline": "Organic Molecule Builder: 2D Chemical Sketcher & Valence Validation",
+      "description": "Build and sketch organic molecules online. Assemble carbon skeletons, add functional groups, validate valence rules, and calculate molecular formulas and mass.",
+      "author": {
+        "@type": "Organization",
+        "name": "EcrioX Science Team"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "EcrioX",
+        "url": "https://ecriox.com"
+      },
+      "datePublished": "2026-11-21",
+      "dateModified": "2026-11-21"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://ecriox.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Chemistry Virtual Labs",
+          "item": "https://ecriox.com/chemistry-labs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "2D Organic Molecule Builder & Valence Validator",
+          "item": "https://ecriox.com/chemistry-labs/organic-molecule-builder/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the difference between a molecular formula and a structural formula?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A molecular formula (e.g. C\u2082H\u2086O) states the total atom counts without showing connectivity. A structural formula illustrates how atoms are bonded, distinguishing isomers like ethanol (CH\u2083CH\u2082OH) from dimethyl ether (CH\u2083OCH\u2083)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does carbon form four bonds while nitrogen forms three?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Carbon has 4 valence electrons and requires 4 more to complete its octet (forming 4 covalent bonds). Nitrogen has 5 valence electrons and requires 3 more (forming 3 covalent bonds and retaining 1 lone pair)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does a degree of unsaturation signify?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "One degree of unsaturation (IHD = 1) signifies the absence of two hydrogen atoms relative to an open-chain saturated alkane, corresponding to either one ring or one double bond."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NNT7J485" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="brand-logo" aria-label="EcrioX Home">
+        <div class="logo-symbol">E</div>
+        <span>Ecrio<span class="accent-dot">X</span></span>
+      </a>
+
+      <nav class="nav-desktop">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/physics-labs/" class="nav-link">Physics Labs</a>
+        <a href="/chemistry-labs/" class="nav-link active">Chemistry Labs</a>
+        <a href="/chemistry-labs/calculators/" class="nav-link">Calculators</a>
+        <a href="/resume-builder/" class="nav-link">Career Studio</a>
+        <a href="/typing-speed-test/" class="nav-link">Typing Arena</a>
+        <a href="/tools/" class="nav-link">All Tools</a>
+        <a href="/about/" class="nav-link">About</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn-icon theme-toggle-btn" aria-label="Toggle color theme" id="themeToggleBtn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <button class="btn-icon mobile-toggle" aria-label="Open mobile menu" aria-expanded="false" id="mobileMenuToggle">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav-drawer" id="mobileNavDrawer">
+    <nav class="mobile-nav">
+      <a href="/" class="mobile-nav-link">Home</a>
+      <a href="/physics-labs/" class="mobile-nav-link">Physics Labs</a>
+      <a href="/chemistry-labs/" class="mobile-nav-link active">Chemistry Labs</a>
+      <a href="/chemistry-labs/calculators/" class="mobile-nav-link">Calculators</a>
+      <a href="/resume-builder/" class="mobile-nav-link">Career Studio</a>
+      <a href="/typing-speed-test/" class="mobile-nav-link">Typing Arena</a>
+      <a href="/tools/" class="mobile-nav-link">All Tools</a>
+      <a href="/about/" class="mobile-nav-link">About</a>
+    </nav>
+  </div>
+
+
+  <main id="main-content" class="container" style="padding-top:1.5rem; padding-bottom:3rem;">
+    <!-- Breadcrumbs -->
+    <nav class="chem-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="chem-breadcrumb-sep">/</span>
+      <a href="/chemistry-labs/">Chemistry Virtual Labs</a>
+      <span class="chem-breadcrumb-sep">/</span>
+      <span class="chem-breadcrumb-current">2D Organic Molecule Builder & Valence Validator</span>
+    </nav>
+
+    <!-- Lab Header -->
+    <div class="chem-lab-header">
+      <div class="chem-lab-header-left">
+        <div style="display:flex; gap:0.5rem; align-items:center; margin-bottom:0.5rem; flex-wrap:wrap;">
+          <span class="chem-badge chem-badge-primary">Organic Chemistry</span>
+          <span class="chem-badge chem-badge-secondary">Classes 10–12 / B.Sc / JEE / NEET Level</span>
+          <span class="chem-badge" style="background:#e0f2fe; color:#0369a1;">⏱ 15 mins</span>
+          <span class="chem-badge" style="background:#fef3c7; color:#92400e;">CBSE • JEE • NEET • College</span>
+        </div>
+        <h1 class="chem-lab-title">Organic Molecule Builder: 2D Chemical Sketcher & Valence Validation</h1>
+        <p class="chem-lab-intro">Draw and design organic chemical structures using an interactive 2D molecular sketcher. Connect carbon chains, add double/triple bonds, attach functional groups, and validate valence limits (tetravalent carbon, divalent oxygen, trivalent nitrogen) in real time.</p>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="chem-lab-actions">
+        <button id="btnFullscreen" class="chem-btn chem-btn-outline" title="Toggle Fullscreen Mode">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
+          Fullscreen
+        </button>
+        <button id="btnResetSimulation" class="chem-btn chem-btn-outline" title="Reset Experiment Parameters">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6"></path><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
+          Reset Lab
+        </button>
+        <button id="btnExportCSV" class="chem-btn chem-btn-outline" title="Download Data Worksheet (CSV)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Export CSV
+        </button>
+        <button id="btnPrintWorksheet" class="chem-btn chem-btn-primary" title="Print Laboratory Worksheet">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+          Print Lab Sheet
+        </button>
+      </div>
+    </div>
+
+    <!-- Interactive Simulation Wrapper -->
+    <div class="chem-lab-wrapper" id="labWrapper">
+      <!-- Live HUD Metrics Panel -->
+      <div class="chem-hud-bar" id="hudBar">
+        
+    <div class="hud-metric"><div class="hud-metric-label">Molecular Formula</div><div class="hud-metric-value" id="hudOrgFormula">C₂H₆O</div></div>
+    <div class="hud-metric"><div class="hud-metric-label">Molecular Mass</div><div class="hud-metric-value" id="hudOrgMass">46.07<span class="hud-metric-unit">g/mol</span></div></div>
+    <div class="hud-metric"><div class="hud-metric-label">Valence Check</div><div class="hud-metric-value" id="hudValenceStatus" style="color:#16a34a">All Valencies Satisfied</div></div>
+    <div class="hud-metric"><div class="hud-metric-label">Detected Functional Group</div><div class="hud-metric-value" id="hudFuncGroup">Alcohol (-OH)</div></div>
+  
+      </div>
+
+      <!-- Main Workspace Grid (Viewport + Controls) -->
+      <div class="chem-workspace-grid">
+        <!-- Simulation Viewport -->
+        <div class="chem-viewport-card">
+          <div class="chem-card-header-bar">
+            <span>🔬 Live Virtual Apparatus</span>
+            <span class="chem-status-dot">Interactive 60 FPS</span>
+          </div>
+          <div class="chem-viewport-inner">
+            
+    <canvas id="orgCanvas" style="width:100%; height:440px; display:block; border-radius:12px; background:#ffffff; border:1px solid #e2e8f0; cursor:crosshair;"></canvas>
+  
+          </div>
+        </div>
+
+        <!-- Controls Panel -->
+        <div class="chem-controls-card">
+          <div class="chem-card-header-bar">
+            <span>⚙️ Scientific Controls</span>
+            <span>Calibrated</span>
+          </div>
+          <div class="chem-controls-inner">
+            
+    <div class="chem-form-group">
+      <label class="chem-label">Select Active Element:</label>
+      <div style="display:flex; gap:0.4rem; flex-wrap:wrap;">
+        <button class="chem-btn chem-btn-primary org-elem-btn" data-elem="C" style="flex:1;">C (4)</button>
+        <button class="chem-btn chem-btn-outline org-elem-btn" data-elem="H" style="flex:1;">H (1)</button>
+        <button class="chem-btn chem-btn-outline org-elem-btn" data-elem="O" style="flex:1;">O (2)</button>
+        <button class="chem-btn chem-btn-outline org-elem-btn" data-elem="N" style="flex:1;">N (3)</button>
+        <button class="chem-btn chem-btn-outline org-elem-btn" data-elem="Cl" style="flex:1;">Cl (1)</button>
+      </div>
+    </div>
+    <div class="chem-form-group">
+      <label class="chem-label">Bond Type to Draw:</label>
+      <div style="display:flex; gap:0.4rem;">
+        <button class="chem-btn chem-btn-primary org-bond-btn" data-order="1" style="flex:1;">Single (―)</button>
+        <button class="chem-btn chem-btn-outline org-bond-btn" data-order="2" style="flex:1;">Double (═)</button>
+        <button class="chem-btn chem-btn-outline org-bond-btn" data-order="3" style="flex:1;">Triple (≡)</button>
+      </div>
+    </div>
+    <div class="chem-form-group">
+      <label class="chem-label">Load Preset Molecule:</label>
+      <select id="orgPresetSelect" class="chem-select">
+        <option value="ethanol" selected>Ethanol (CH₃CH₂OH) - Alcohol</option>
+        <option value="methane">Methane (CH₄) - Alkane</option>
+        <option value="ethene">Ethene (CH₂=CH₂) - Alkene</option>
+        <option value="ethyne">Ethyne (HC≡CH) - Alkyne</option>
+        <option value="acetic_acid">Acetic Acid (CH₃COOH) - Carboxylic Acid</option>
+        <option value="acetone">Acetone (CH₃COCH₃) - Ketone</option>
+        <option value="benzene">Benzene (C₆H₆) - Aromatic Ring</option>
+      </select>
+    </div>
+    <div class="chem-btn-group" style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem; margin-top:0.75rem;">
+      <button id="btnAutoHydrogen" class="chem-btn chem-btn-outline">Auto-Add Hydrogens</button>
+      <button id="btnClearCanvas" class="chem-btn chem-btn-secondary">Clear Canvas</button>
+    </div>
+  
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scientific Documentation Tabs -->
+    <section class="chem-doc-section">
+      <div class="chem-tabs-nav">
+        <button class="chem-tab-btn active" data-tab="tab-theory">1. Scientific Theory & Derivations</button>
+        <button class="chem-tab-btn" data-tab="tab-procedure">2. Lab Protocol & Objectives</button>
+        <button class="chem-tab-btn" data-tab="tab-example">3. Worked Calculation Example</button>
+        <button class="chem-tab-btn" data-tab="tab-applications">4. Applications & Misconceptions</button>
+        <button class="chem-tab-btn" data-tab="tab-faqs">5. FAQs (3)</button>
+      </div>
+
+      <!-- Tab 1: Theory -->
+      <div class="chem-tab-pane active" id="tab-theory">
+        <div class="chem-doc-content">
+          <h2>Degrees of Unsaturation (IHD) & Valence Rules</h2>
+          <div class="chem-formula-hero">
+            <code>\text{IHD} = C - \frac{H}{2} + \frac{N}{2} + 1, \quad \text{Valency: } C=4, N=3, O=2, H=1</code>
+          </div>
+          <p class="chem-formula-desc">Index of Hydrogen Deficiency (IHD) calculates the total number of rings plus pi bonds from the molecular formula. Common organic heteroatoms follow standard Lewis octet valencies.</p>
+          <div class="chem-text-block">
+            Organic chemistry is centered on the unique ability of carbon to form four strong covalent bonds (catenation), creating stable chains, rings, and complex three-dimensional architectures. Kekulé structural formulas illustrate the connectivity of atoms (constitution) using lines for electron-pair bonds. Because atoms seek stable valence octets, carbon reliably forms four bonds (sp³, sp², or sp hybridized), nitrogen forms three bonds with one lone pair, oxygen forms two bonds with two lone pairs, and hydrogen forms exactly one single bond.
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 2: Procedure -->
+      <div class="chem-tab-pane" id="tab-procedure">
+        <div class="chem-doc-content">
+          <h2>Experimental Objectives</h2>
+          <ul class="chem-bullet-list">
+            <li>Construct linear, branched, and cyclic carbon backbone structures.</li><li>Verify structural valence rules to eliminate chemically impossible bonding configurations.</li><li>Identify common organic functional groups: alcohols, aldehydes, ketones, carboxylic acids, amines.</li><li>Determine molecular formulas, molecular weights, and degrees of unsaturation.</li>
+          </ul>
+          <h2 style="margin-top:2rem;">Step-by-Step Laboratory Procedure</h2>
+          <ol class="chem-step-list">
+            
+            <li class="chem-step-item">
+              <strong>Step 1:</strong>
+              <p>Select an atom tool from the palette: Carbon (C), Hydrogen (H), Oxygen (O), Nitrogen (N), Chlorine (Cl).</p>
+            </li>
+            
+            <li class="chem-step-item">
+              <strong>Step 2:</strong>
+              <p>Click on the canvas grid to place atoms.</p>
+            </li>
+            
+            <li class="chem-step-item">
+              <strong>Step 3:</strong>
+              <p>Select a bond tool (Single, Double, Triple) and drag between two atoms to form bonds.</p>
+            </li>
+            
+            <li class="chem-step-item">
+              <strong>Step 4:</strong>
+              <p>Observe the real-time valence status indicator highlighting satisfied vs unsatisfied valencies.</p>
+            </li>
+            
+            <li class="chem-step-item">
+              <strong>Step 5:</strong>
+              <p>Inspect the live molecular formula, exact molar mass, and functional group detection panel.</p>
+            </li>
+            
+          </ol>
+        </div>
+      </div>
+
+      <!-- Tab 3: Worked Example -->
+      <div class="chem-tab-pane" id="tab-example">
+        <div class="chem-doc-content">
+          <h2>Worked Example & Step-by-Step Calculation</h2>
+          <div class="chem-example-box">
+            <h3 style="color:var(--chem-primary); font-size:1.15rem; margin-bottom:0.75rem;">Problem Statement:</h3>
+            <p style="font-size:1.05rem; font-weight:600; color:var(--text-main); margin-bottom:1.5rem;">Calculate the Index of Hydrogen Deficiency (IHD / degrees of unsaturation) for benzoic acid: C₇H₆O₂.</p>
+            <h3 style="color:var(--chem-secondary); font-size:1.15rem; margin-bottom:0.75rem;">Mathematical Solution & Derivation:</h3>
+            <div class="chem-example-solution" style="white-space:pre-line; line-height:1.7;">
+              1. Standard IHD formula: IHD = C - (H/2) + (N/2) + 1.
+2. For C₇H₆O₂: C = 7, H = 6, N = 0, O is ignored in IHD formula.
+3. Calculate: IHD = 7 - (6/2) + 0 + 1 = 7 - 3 + 1 = 5.
+4. Structural interpretation: Benzoic acid contains 5 degrees of unsaturation:
+   - 1 benzene ring (1 degree)
+   - 3 aromatic carbon-carbon double bonds (3 degrees)
+   - 1 carbonyl (C=O) double bond in the carboxylic acid group (1 degree).
+   Total = 1 + 3 + 1 = 5.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 4: Applications & Misconceptions -->
+      <div class="chem-tab-pane" id="tab-applications">
+        <div class="chem-doc-content">
+          <h2>Industrial, Engineering & Everyday Applications</h2>
+          <div class="chem-apps-grid">
+            
+            <div class="chem-app-item">
+              <strong>Drug Discovery</strong>
+              <p>Designing small-molecule enzyme inhibitors and pharmacophores with target receptor binding affinities.</p>
+            </div>
+            
+            <div class="chem-app-item">
+              <strong>Polymer Synthesis</strong>
+              <p>Designing vinyl monomers (ethylene, styrene, methyl methacrylate) for industrial polymer chains.</p>
+            </div>
+            
+            <div class="chem-app-item">
+              <strong>Agrochemicals</strong>
+              <p>Formulating selective herbicides and insect pheromone mimics.</p>
+            </div>
+            
+            <div class="chem-app-item">
+              <strong>Petroleum Refining</strong>
+              <p>Cracking heavy hydrocarbons into branched alkanes for high-octane gasoline.</p>
+            </div>
+            
+          </div>
+          <h2 style="margin-top:2.5rem;">Common Student Misconceptions & Scientific Reality</h2>
+          <div class="chem-misc-list">
+            
+        <div class="chem-misc-card">
+          <div class="chem-misc-fact">💡 <strong>Critical Conceptual Insight:</strong> A frequent error among beginner chemistry students is drawing 'pentavalent carbon' (a carbon atom with five bonds, nicknamed the 'Texas Carbon'). Carbon only has four valence orbitals (2s and three 2p) and can never exceed eight valence electrons.</div>
+        </div>
+        
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 5: FAQs -->
+      <div class="chem-tab-pane" id="tab-faqs">
+        <div class="chem-doc-content">
+          <h2>Frequently Asked Questions on 2D Organic Molecule Builder & Valence Validator</h2>
+          <div class="chem-faq-list" style="margin-top:1.5rem;">
+            
+            <div class="chem-faq-item">
+              <button class="chem-faq-trigger">
+                <span>What is the difference between a molecular formula and a structural formula?</span>
+                <svg class="chem-faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="chem-faq-content">
+                <p>A molecular formula (e.g. C₂H₆O) states the total atom counts without showing connectivity. A structural formula illustrates how atoms are bonded, distinguishing isomers like ethanol (CH₃CH₂OH) from dimethyl ether (CH₃OCH₃).</p>
+              </div>
+            </div>
+            
+            <div class="chem-faq-item">
+              <button class="chem-faq-trigger">
+                <span>Why does carbon form four bonds while nitrogen forms three?</span>
+                <svg class="chem-faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="chem-faq-content">
+                <p>Carbon has 4 valence electrons and requires 4 more to complete its octet (forming 4 covalent bonds). Nitrogen has 5 valence electrons and requires 3 more (forming 3 covalent bonds and retaining 1 lone pair).</p>
+              </div>
+            </div>
+            
+            <div class="chem-faq-item">
+              <button class="chem-faq-trigger">
+                <span>What does a degree of unsaturation signify?</span>
+                <svg class="chem-faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="chem-faq-content">
+                <p>One degree of unsaturation (IHD = 1) signifies the absence of two hydrogen atoms relative to an open-chain saturated alkane, corresponding to either one ring or one double bond.</p>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Experiments Section -->
+    <section class="chem-related-section">
+      <div class="chem-section-header">
+        <h2 class="chem-section-title">Related Chemistry Virtual Labs</h2>
+        <p class="chem-section-desc">Continue your exploration with these interconnected chemical experiments and simulations.</p>
+      </div>
+      <div class="chem-grid">
+        
+            <article class="chem-card" data-category="molecular">
+              <div class="chem-card-badge-wrap">
+                <span class="chem-badge chem-badge-primary">Molecular Chemistry</span>
+                <span class="chem-badge chem-badge-secondary">Classes 10–12 / College Chemistry</span>
+              </div>
+              <div class="chem-card-icon">
+      <svg viewBox="0 0 100 100" fill="none" stroke="currentColor">
+        <circle cx="50" cy="50" r="14" fill="#ef4444"/>
+        <text x="50" y="54" font-size="10" font-weight="bold" fill="#ffffff" text-anchor="middle">O</text>
+        <line x1="40" y1="58" x2="25" y2="72" stroke="#64748b" stroke-width="4"/>
+        <line x1="60" y1="58" x2="75" y2="72" stroke="#64748b" stroke-width="4"/>
+        <circle cx="22" cy="74" r="9" fill="#94a3b8"/>
+        <text x="22" y="77" font-size="8" font-weight="bold" fill="#ffffff" text-anchor="middle">H</text>
+        <circle cx="78" cy="74" r="9" fill="#94a3b8"/>
+        <text x="78" y="77" font-size="8" font-weight="bold" fill="#ffffff" text-anchor="middle">H</text>
+        <path d="M35 30 A 25 25 0 0 1 70 30" stroke="var(--chem-primary)" stroke-width="2" stroke-dasharray="3 3"/>
+      </svg>
+    </div>
+              <h3 class="chem-card-title"><a href="/chemistry-labs/3d-molecular-viewer/">3D Molecular Structure & VSEPR Geometry Viewer</a></h3>
+              <p class="chem-card-desc">Interact with authentic three-dimensional molecular geometries. Rotate, zoom, and inspect ball-and-stick and space-filli...</p>
+              <a href="/chemistry-labs/3d-molecular-viewer/" class="chem-card-btn">Open Lab →</a>
+            </article>
+            
+            <article class="chem-card" data-category="organic">
+              <div class="chem-card-badge-wrap">
+                <span class="chem-badge chem-badge-primary">Organic Chemistry</span>
+                <span class="chem-badge chem-badge-secondary">Classes 11–12 / B.Sc / JEE / NEET</span>
+              </div>
+              <div class="chem-card-icon">
+      <svg viewBox="0 0 100 100" fill="none" stroke="currentColor">
+        <line x1="50" y1="15" x2="50" y2="85" stroke="var(--border-color)" stroke-width="2" stroke-dasharray="4 4"/>
+        <text x="28" y="25" font-size="8" font-weight="bold" fill="var(--chem-primary)" text-anchor="middle">CIS</text>
+        <text x="72" y="25" font-size="8" font-weight="bold" fill="var(--chem-secondary)" text-anchor="middle">TRANS</text>
+        <line x1="20" y1="50" x2="36" y2="50" stroke="#334155" stroke-width="3"/>
+        <circle cx="16" cy="38" r="5" fill="#10b981"/>
+        <circle cx="40" cy="38" r="5" fill="#10b981"/>
+        <line x1="64" y1="50" x2="80" y2="50" stroke="#334155" stroke-width="3"/>
+        <circle cx="60" cy="38" r="5" fill="#10b981"/>
+        <circle cx="84" cy="62" r="5" fill="#10b981"/>
+      </svg>
+    </div>
+              <h3 class="chem-card-title"><a href="/chemistry-labs/isomerism-explorer/">Isomerism & Stereochemistry Explorer</a></h3>
+              <p class="chem-card-desc">Discover the fascinating world of chemical isomerism. Compare molecules that share identical molecular formulas but poss...</p>
+              <a href="/chemistry-labs/isomerism-explorer/" class="chem-card-btn">Open Lab →</a>
+            </article>
+            
+            <article class="chem-card" data-category="physical">
+              <div class="chem-card-badge-wrap">
+                <span class="chem-badge chem-badge-primary">Physical Chemistry</span>
+                <span class="chem-badge chem-badge-secondary">Classes 11–12 / B.Sc / JEE / NEET</span>
+              </div>
+              <div class="chem-card-icon">
+      <svg viewBox="0 0 100 100" fill="none" stroke="currentColor">
+        <path d="M15 15 V85 H85" stroke="var(--border-color)" stroke-width="2.5"/>
+        <path d="M15 25 Q 35 70, 85 80" stroke="#ef4444" stroke-width="3"/>
+        <path d="M15 80 Q 35 30, 85 25" stroke="#3b82f6" stroke-width="3"/>
+        <text x="55" y="42" font-size="7" font-weight="bold" fill="#ef4444">[A] Reactant</text>
+        <text x="55" y="60" font-size="7" font-weight="bold" fill="#3b82f6">[B] Product</text>
+      </svg>
+    </div>
+              <h3 class="chem-card-title"><a href="/chemistry-labs/chemical-kinetics-simulator/">Chemical Kinetics & Reaction Rates Simulator</a></h3>
+              <p class="chem-card-desc">Investigate how chemical reaction speeds are governed by reactant concentrations, temperature, and activation energy. To...</p>
+              <a href="/chemistry-labs/chemical-kinetics-simulator/" class="chem-card-btn">Open Lab →</a>
+            </article>
+            
+      </div>
+    </section>
+  </main>
+
+  
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="/" class="brand-logo">
+            <div class="logo-symbol">E</div>
+            <span>Ecrio<span class="accent-dot">X</span></span>
+          </a>
+          <p>One Platform. Endless Possibilities. Free, scientifically accurate browser-based virtual laboratories and digital productivity utilities.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Chemistry Labs</h4>
+          <ul class="footer-links">
+            <li><a href="/chemistry-labs/">All Chemistry Labs</a></li>
+            <li><a href="/chemistry-labs/interactive-periodic-table/">Periodic Table Explorer</a></li>
+            <li><a href="/chemistry-labs/chemical-equation-balancer/">Equation Balancer</a></li>
+            <li><a href="/chemistry-labs/acid-base-titration/">Acid-Base Titration</a></li>
+            <li><a href="/chemistry-labs/3d-molecular-viewer/">3D Molecular Viewer</a></li>
+            <li><a href="/chemistry-labs/calculators/">Chemistry Calculators</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Physics Labs</h4>
+          <ul class="footer-links">
+            <li><a href="/physics-labs/">All Physics Labs</a></li>
+            <li><a href="/physics-labs/projectile-motion-simulator/">Projectile Motion</a></li>
+            <li><a href="/physics-labs/electric-circuit-simulator/">Circuit Simulator</a></li>
+            <li><a href="/physics-labs/ray-optics-simulator/">Ray Optics Lab</a></li>
+            <li><a href="/physics-labs/simple-pendulum-experiment/">Simple Pendulum</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Product Suite</h4>
+          <ul class="footer-links">
+            <li><a href="/tools/">All Tools Directory</a></li>
+            <li><a href="/categories/">Tool Categories</a></li>
+            <li><a href="/pdf-compressor/">PDF Compressor</a></li>
+            <li><a href="/resume-builder/">ATS Resume Builder</a></li>
+            <li><a href="/typing-speed-test/">Typing Arena</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company & Legal</h4>
+          <ul class="footer-links">
+            <li><a href="/about/">About EcrioX</a></li>
+            <li><a href="/contact/">Contact Support</a></li>
+            <li><a href="/privacy/">Privacy Policy</a></li>
+            <li><a href="/terms/">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 EcrioX. All rights reserved. Zero client downloads required — 100% private in-browser scientific simulations.</p>
+        <p>Canonical Domain: <a href="https://ecriox.com/" style="color: var(--chem-primary);">ecriox.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Chemistry Engine Script Loaded Globally -->
+  <script src="/js/chemistry-engine.js"></script>
+  <script>
+    // Theme toggle listener
+    const themeBtn = document.getElementById('themeToggleBtn');
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => {
+        const cur = document.documentElement.getAttribute('data-theme') || 'light';
+        const nxt = cur === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', nxt);
+        try { localStorage.setItem('ecriox_theme_preference', nxt); } catch(e){}
+        window.dispatchEvent(new Event('themechange'));
+      });
+    }
+    // Mobile navigation drawer toggle
+    const mobToggle = document.getElementById('mobileMenuToggle');
+    const mobNav = document.getElementById('mobileNavDrawer');
+    if (mobToggle && mobNav) {
+      mobToggle.addEventListener('click', () => {
+        const isOpen = mobNav.classList.toggle('open');
+        mobToggle.setAttribute('aria-expanded', isOpen);
+      });
+    }
+    // FAQ Accordion listener
+    document.querySelectorAll('.chem-faq-trigger').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.parentElement.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>
+
+
+  <!-- Tab Switcher & Lab Actions Script -->
+  <script>
+    (function(){
+      // Tab switcher
+      const tabBtns = document.querySelectorAll('.chem-tab-btn');
+      const tabPanes = document.querySelectorAll('.chem-tab-pane');
+
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          tabBtns.forEach(b => b.classList.remove('active'));
+          tabPanes.forEach(p => p.classList.remove('active'));
+
+          btn.classList.add('active');
+          const target = btn.getAttribute('data-tab');
+          const pane = document.getElementById(target);
+          if (pane) pane.classList.add('active');
+        });
+      });
+
+      // Fullscreen mode toggle
+      const fsBtn = document.getElementById('btnFullscreen');
+      const labWrap = document.getElementById('labWrapper');
+      if (fsBtn && labWrap) {
+        fsBtn.addEventListener('click', () => {
+          if (!document.fullscreenElement) {
+            labWrap.requestFullscreen?.() || labWrap.webkitRequestFullscreen?.();
+            fsBtn.innerHTML = 'Exit Fullscreen';
+          } else {
+            document.exitFullscreen?.() || document.webkitExitFullscreen?.();
+            fsBtn.innerHTML = 'Fullscreen';
+          }
+        });
+      }
+
+      // Print Lab Worksheet
+      const printBtn = document.getElementById('btnPrintWorksheet');
+      if (printBtn) {
+        printBtn.addEventListener('click', () => window.print());
+      }
+
+      // Export CSV Data
+      const csvBtn = document.getElementById('btnExportCSV');
+      if (csvBtn) {
+        csvBtn.addEventListener('click', () => {
+          const metrics = Array.from(document.querySelectorAll('#hudBar .hud-metric')).map(m => {
+            const lbl = m.querySelector('.hud-metric-label')?.textContent.trim() || 'Metric';
+            const val = m.querySelector('.hud-metric-value')?.textContent.trim() || '0';
+            return `"${lbl}","${val}"`;
+          });
+          const csvContent = "data:text/csv;charset=utf-8,Parameter,Value\n" +
+            `"Experiment","2D Organic Molecule Builder & Valence Validator"\n` +
+            `"Timestamp","${new Date().toISOString()}"\n` +
+            metrics.join("\n");
+          const encodedUri = encodeURI(csvContent);
+          const link = document.createElement("a");
+          link.setAttribute("href", encodedUri);
+          link.setAttribute("download", "organic-molecule-builder-lab-data.csv");
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        });
+      }
+    })();
+  </script>
+
+  <!-- Interactive Simulation Engine Execution -->
+  <script>
+    
+    (function(){
+      const canvas = document.getElementById('orgCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+
+      const VALENCIES = { C: 4, H: 1, O: 2, N: 3, Cl: 1 };
+      const COLORS = { C: '#334155', H: '#94a3b8', O: '#ef4444', N: '#3b82f6', Cl: '#10b981' };
+
+      let atoms = [];
+      let bonds = [];
+      let activeElem = 'C';
+      let activeBondOrder = 1;
+      let selectedAtom = null;
+      let hoverAtom = null;
+
+      function resize() {
+        const r = canvas.getBoundingClientRect();
+        canvas.width = r.width * (window.devicePixelRatio || 1);
+        canvas.height = r.height * (window.devicePixelRatio || 1);
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      function loadPreset(name) {
+        atoms = [];
+        bonds = [];
+        const cx = canvas.width / (2 * (window.devicePixelRatio || 1));
+        const cy = canvas.height / (2 * (window.devicePixelRatio || 1));
+
+        if (name === 'ethanol') {
+          // C - C - O - H + H's
+          atoms.push({ id: 0, elem: 'C', x: cx - 60, y: cy });
+          atoms.push({ id: 1, elem: 'C', x: cx, y: cy });
+          atoms.push({ id: 2, elem: 'O', x: cx + 60, y: cy });
+          atoms.push({ id: 3, elem: 'H', x: cx + 95, y: cy });
+          atoms.push({ id: 4, elem: 'H', x: cx - 60, y: cy - 40 });
+          atoms.push({ id: 5, elem: 'H', x: cx - 60, y: cy + 40 });
+          atoms.push({ id: 6, elem: 'H', x: cx - 95, y: cy });
+          atoms.push({ id: 7, elem: 'H', x: cx, y: cy - 40 });
+          atoms.push({ id: 8, elem: 'H', x: cx, y: cy + 40 });
+
+          bonds.push({ a: 0, b: 1, order: 1 });
+          bonds.push({ a: 1, b: 2, order: 1 });
+          bonds.push({ a: 2, b: 3, order: 1 });
+          bonds.push({ a: 0, b: 4, order: 1 });
+          bonds.push({ a: 0, b: 5, order: 1 });
+          bonds.push({ a: 0, b: 6, order: 1 });
+          bonds.push({ a: 1, b: 7, order: 1 });
+          bonds.push({ a: 1, b: 8, order: 1 });
+        } else if (name === 'methane') {
+          atoms.push({ id: 0, elem: 'C', x: cx, y: cy });
+          atoms.push({ id: 1, elem: 'H', x: cx, y: cy - 45 });
+          atoms.push({ id: 2, elem: 'H', x: cx + 45, y: cy });
+          atoms.push({ id: 3, elem: 'H', x: cx, y: cy + 45 });
+          atoms.push({ id: 4, elem: 'H', x: cx - 45, y: cy });
+          bonds.push({ a: 0, b: 1, order: 1 }, { a: 0, b: 2, order: 1 }, { a: 0, b: 3, order: 1 }, { a: 0, b: 4, order: 1 });
+        } else if (name === 'ethene') {
+          atoms.push({ id: 0, elem: 'C', x: cx - 35, y: cy });
+          atoms.push({ id: 1, elem: 'C', x: cx + 35, y: cy });
+          atoms.push({ id: 2, elem: 'H', x: cx - 65, y: cy - 35 });
+          atoms.push({ id: 3, elem: 'H', x: cx - 65, y: cy + 35 });
+          atoms.push({ id: 4, elem: 'H', x: cx + 65, y: cy - 35 });
+          atoms.push({ id: 5, elem: 'H', x: cx + 65, y: cy + 35 });
+          bonds.push({ a: 0, b: 1, order: 2 }, { a: 0, b: 2, order: 1 }, { a: 0, b: 3, order: 1 }, { a: 1, b: 4, order: 1 }, { a: 1, b: 5, order: 1 });
+        } else if (name === 'ethyne') {
+          atoms.push({ id: 0, elem: 'C', x: cx - 30, y: cy });
+          atoms.push({ id: 1, elem: 'C', x: cx + 30, y: cy });
+          atoms.push({ id: 2, elem: 'H', x: cx - 75, y: cy });
+          atoms.push({ id: 3, elem: 'H', x: cx + 75, y: cy });
+          bonds.push({ a: 0, b: 1, order: 3 }, { a: 0, b: 2, order: 1 }, { a: 1, b: 3, order: 1 });
+        } else if (name === 'acetic_acid') {
+          atoms.push({ id: 0, elem: 'C', x: cx - 40, y: cy });
+          atoms.push({ id: 1, elem: 'C', x: cx + 25, y: cy });
+          atoms.push({ id: 2, elem: 'O', x: cx + 25, y: cy - 50 });
+          atoms.push({ id: 3, elem: 'O', x: cx + 70, y: cy + 25 });
+          atoms.push({ id: 4, elem: 'H', x: cx + 105, y: cy + 25 });
+          atoms.push({ id: 5, elem: 'H', x: cx - 75, y: cy });
+          atoms.push({ id: 6, elem: 'H', x: cx - 40, y: cy - 40 });
+          atoms.push({ id: 7, elem: 'H', x: cx - 40, y: cy + 40 });
+          bonds.push({ a: 0, b: 1, order: 1 }, { a: 1, b: 2, order: 2 }, { a: 1, b: 3, order: 1 }, { a: 3, b: 4, order: 1 }, { a: 0, b: 5, order: 1 }, { a: 0, b: 6, order: 1 }, { a: 0, b: 7, order: 1 });
+        } else if (name === 'benzene') {
+          for (let i = 0; i < 6; i++) {
+            const angle = (i * Math.PI) / 3 - Math.PI / 2;
+            const x = cx + 50 * Math.cos(angle);
+            const y = cy + 50 * Math.sin(angle);
+            atoms.push({ id: i, elem: 'C', x, y });
+            const hx = cx + 85 * Math.cos(angle);
+            const hy = cy + 85 * Math.sin(angle);
+            atoms.push({ id: i + 6, elem: 'H', x: hx, y: hy });
+          }
+          for (let i = 0; i < 6; i++) {
+            const next = (i + 1) % 6;
+            const ord = (i % 2 === 0) ? 2 : 1;
+            bonds.push({ a: i, b: next, order: ord });
+            bonds.push({ a: i, b: i + 6, order: 1 });
+          }
+        } else {
+          // Acetone
+          atoms.push({ id: 0, elem: 'C', x: cx, y: cy });
+          atoms.push({ id: 1, elem: 'O', x: cx, y: cy - 50 });
+          atoms.push({ id: 2, elem: 'C', x: cx - 55, y: cy + 25 });
+          atoms.push({ id: 3, elem: 'C', x: cx + 55, y: cy + 25 });
+          bonds.push({ a: 0, b: 1, order: 2 }, { a: 0, b: 2, order: 1 }, { a: 0, b: 3, order: 1 });
+        }
+        updateHUD();
+      }
+
+      function updateHUD() {
+        const counts = {};
+        atoms.forEach(a => counts[a.elem] = (counts[a.elem] || 0) + 1);
+
+        // Hill system formula (C first, then H, then alphabetical)
+        let formula = '';
+        if (counts.C) { formula += 'C' + (counts.C > 1 ? counts.C : ''); delete counts.C; }
+        if (counts.H) { formula += 'H' + (counts.H > 1 ? counts.H : ''); delete counts.H; }
+        Object.keys(counts).sort().forEach(e => {
+          formula += e + (counts[e] > 1 ? counts[e] : '');
+        });
+        if (!formula) formula = 'Empty';
+
+        // Calculate Molecular Mass
+        const atomicMasses = { C: 12.011, H: 1.008, O: 15.999, N: 14.007, Cl: 35.45 };
+        let mass = 0;
+        atoms.forEach(a => mass += (atomicMasses[a.elem] || 0));
+
+        // Valence check
+        let allSatisfied = true;
+        atoms.forEach(a => {
+          let bondSum = 0;
+          bonds.forEach(b => {
+            if (b.a === a.id || b.b === a.id) bondSum += b.order;
+          });
+          if (bondSum !== VALENCIES[a.elem]) allSatisfied = false;
+        });
+
+        // Detect Functional Groups
+        let fg = 'Hydrocarbon';
+        const hasDouble = bonds.some(b => b.order === 2);
+        const hasTriple = bonds.some(b => b.order === 3);
+        const hasO = atoms.some(a => a.elem === 'O');
+
+        if (hasO) {
+          if (bonds.some(b => b.order === 2 && (atoms[b.a].elem === 'O' || atoms[b.b].elem === 'O'))) {
+            fg = bonds.some(b => b.order === 1 && (atoms[b.a].elem === 'O' || atoms[b.b].elem === 'O')) ? 'Carboxylic Acid (-COOH)' : 'Carbonyl (Ketone/Aldehyde)';
+          } else {
+            fg = 'Alcohol / Ether (-OH)';
+          }
+        } else if (hasTriple) {
+          fg = 'Alkyne (C≡C)';
+        } else if (hasDouble) {
+          fg = 'Alkene (C=C)';
+        } else if (atoms.length > 0) {
+          fg = 'Alkane (Saturated)';
+        }
+
+        document.getElementById('hudOrgFormula').textContent = formula;
+        document.getElementById('hudOrgMass').innerHTML = mass.toFixed(2) + '<span class="hud-metric-unit">g/mol</span>';
+
+        const valEl = document.getElementById('hudValenceStatus');
+        if (atoms.length === 0) {
+          valEl.textContent = 'Canvas Empty'; valEl.style.color = '#64748b';
+        } else if (allSatisfied) {
+          valEl.textContent = 'All Valencies Satisfied'; valEl.style.color = '#16a34a';
+        } else {
+          valEl.textContent = 'Unsatisfied Valency Detected'; valEl.style.color = '#ef4444';
+        }
+
+        document.getElementById('hudFuncGroup').textContent = fg;
+      }
+
+      function draw() {
+        const dpr = window.devicePixelRatio || 1;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.save();
+        ctx.scale(dpr, dpr);
+
+        // Draw Bonds
+        bonds.forEach(b => {
+          const a1 = atoms.find(a => a.id === b.a);
+          const a2 = atoms.find(a => a.id === b.b);
+          if (!a1 || !a2) return;
+
+          ctx.strokeStyle = '#475569';
+          ctx.lineWidth = 3;
+
+          if (b.order === 1) {
+            ctx.beginPath();
+            ctx.moveTo(a1.x, a1.y);
+            ctx.lineTo(a2.x, a2.y);
+            ctx.stroke();
+          } else if (b.order === 2) {
+            const dx = a2.x - a1.x;
+            const dy = a2.y - a1.y;
+            const len = Math.hypot(dx, dy) || 1;
+            const ox = (-dy / len) * 4;
+            const oy = (dx / len) * 4;
+            ctx.beginPath();
+            ctx.moveTo(a1.x + ox, a1.y + oy);
+            ctx.lineTo(a2.x + ox, a2.y + oy);
+            ctx.moveTo(a1.x - ox, a1.y - oy);
+            ctx.lineTo(a2.x - ox, a2.y - oy);
+            ctx.stroke();
+          } else { // order 3
+            const dx = a2.x - a1.x;
+            const dy = a2.y - a1.y;
+            const len = Math.hypot(dx, dy) || 1;
+            const ox = (-dy / len) * 6;
+            const oy = (dx / len) * 6;
+            ctx.beginPath();
+            ctx.moveTo(a1.x, a1.y);
+            ctx.lineTo(a2.x, a2.y);
+            ctx.moveTo(a1.x + ox, a1.y + oy);
+            ctx.lineTo(a2.x + ox, a2.y + oy);
+            ctx.moveTo(a1.x - ox, a1.y - oy);
+            ctx.lineTo(a2.x - ox, a2.y - oy);
+            ctx.stroke();
+          }
+        });
+
+        // Draw Atoms
+        atoms.forEach(a => {
+          const r = a.elem === 'H' ? 12 : 18;
+          ctx.beginPath();
+          ctx.arc(a.x, a.y, r, 0, Math.PI * 2);
+          ctx.fillStyle = COLORS[a.elem] || '#64748b';
+          ctx.fill();
+
+          if (selectedAtom === a.id) {
+            ctx.strokeStyle = '#2563eb';
+            ctx.lineWidth = 3;
+            ctx.stroke();
+          } else {
+            ctx.strokeStyle = '#ffffff';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+          }
+
+          ctx.fillStyle = '#ffffff';
+          ctx.font = 'bold ' + (a.elem === 'H' ? '10px' : '13px') + ' Inter, sans-serif';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText(a.elem, a.x, a.y);
+        });
+
+        ctx.restore();
+      }
+
+      function loop() {
+        draw();
+        requestAnimationFrame(loop);
+      }
+      requestAnimationFrame(loop);
+
+      // Canvas interactions: Click to place or connect
+      canvas.addEventListener('click', (e) => {
+        const r = canvas.getBoundingClientRect();
+        const x = e.clientX - r.left;
+        const y = e.clientY - r.top;
+
+        // Check if clicked near existing atom
+        const clicked = atoms.find(a => Math.hypot(a.x - x, a.y - y) < 22);
+
+        if (clicked) {
+          if (selectedAtom === null) {
+            selectedAtom = clicked.id;
+          } else if (selectedAtom !== clicked.id) {
+            // Check if bond exists
+            const existing = bonds.find(b => (b.a === selectedAtom && b.b === clicked.id) || (b.a === clicked.id && b.b === selectedAtom));
+            if (existing) {
+              existing.order = (existing.order % 3) + 1;
+            } else {
+              bonds.push({ a: selectedAtom, b: clicked.id, order: activeBondOrder });
+            }
+            selectedAtom = null;
+            updateHUD();
+          } else {
+            selectedAtom = null;
+          }
+        } else {
+          // Place new atom
+          const newId = atoms.length > 0 ? Math.max(...atoms.map(a => a.id)) + 1 : 0;
+          atoms.push({ id: newId, elem: activeElem, x, y });
+          if (selectedAtom !== null) {
+            bonds.push({ a: selectedAtom, b: newId, order: activeBondOrder });
+            selectedAtom = null;
+          }
+          updateHUD();
+        }
+      });
+
+      // Element tool buttons
+      document.querySelectorAll('.org-elem-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.org-elem-btn').forEach(b => {
+            b.classList.remove('chem-btn-primary');
+            b.classList.add('chem-btn-outline');
+          });
+          btn.classList.add('chem-btn-primary');
+          btn.classList.remove('chem-btn-outline');
+          activeElem = btn.getAttribute('data-elem');
+        });
+      });
+
+      // Bond tool buttons
+      document.querySelectorAll('.org-bond-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.org-bond-btn').forEach(b => {
+            b.classList.remove('chem-btn-primary');
+            b.classList.add('chem-btn-outline');
+          });
+          btn.classList.add('chem-btn-primary');
+          btn.classList.remove('chem-btn-outline');
+          activeBondOrder = parseInt(btn.getAttribute('data-order'));
+        });
+      });
+
+      document.getElementById('orgPresetSelect').addEventListener('change', (e) => {
+        loadPreset(e.target.value);
+      });
+
+      document.getElementById('btnClearCanvas').addEventListener('click', () => {
+        atoms = [];
+        bonds = [];
+        selectedAtom = null;
+        updateHUD();
+      });
+
+      document.getElementById('btnAutoHydrogen').addEventListener('click', () => {
+        // Find atoms with missing valence and add H around them
+        const toAdd = [];
+        atoms.forEach(a => {
+          if (a.elem === 'H') return;
+          let sum = 0;
+          bonds.forEach(b => { if (b.a === a.id || b.b === a.id) sum += b.order; });
+          const deficit = VALENCIES[a.elem] - sum;
+          for (let d = 0; d < deficit; d++) {
+            const angle = (d * (Math.PI * 2 / deficit)) + Math.random();
+            const hx = a.x + 35 * Math.cos(angle);
+            const hy = a.y + 35 * Math.sin(angle);
+            const nextId = atoms.length + toAdd.length;
+            toAdd.push({ id: nextId, elem: 'H', x: hx, y: hy, parent: a.id });
+          }
+        });
+        toAdd.forEach(h => {
+          atoms.push({ id: h.id, elem: 'H', x: h.x, y: h.y });
+          bonds.push({ a: h.parent, b: h.id, order: 1 });
+        });
+        updateHUD();
+      });
+
+      loadPreset('ethanol');
+    })();
+  
+  </script>
+        

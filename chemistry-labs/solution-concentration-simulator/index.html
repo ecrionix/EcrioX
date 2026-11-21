@@ -1,0 +1,934 @@
+
+  <!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solution Concentration & Dilution Simulator – Online Chemistry Virtual Lab | EcrioX</title>
+  <meta name="description" content="Simulate chemical solution preparation and dilutions online. Calculate molarity, molality, mass percentage, and observe solute solubility saturation limits.">
+  <link rel="canonical" href="https://ecriox.com/chemistry-labs/solution-concentration-simulator/">
+  <!-- Favicon & Brand Icons -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#2563EB">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Solution Concentration & Dilution Simulator – Online Chemistry Virtual Lab | EcrioX">
+  <meta property="og:description" content="Simulate chemical solution preparation and dilutions online. Calculate molarity, molality, mass percentage, and observe solute solubility saturation limits.">
+  <meta property="og:url" content="https://ecriox.com/chemistry-labs/solution-concentration-simulator/">
+  <meta property="og:site_name" content="EcrioX">
+  <meta property="og:image" content="https://ecriox.com/og-banner.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Solution Concentration & Dilution Simulator – Online Chemistry Virtual Lab | EcrioX">
+  <meta name="twitter:description" content="Simulate chemical solution preparation and dilutions online. Calculate molarity, molality, mass percentage, and observe solute solubility saturation limits.">
+  <meta name="twitter:image" content="https://ecriox.com/og-banner.png">
+
+  <!-- Global Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-NNT7J485');
+  </script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6486455437877685" crossorigin="anonymous"></script>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/chemistry-labs.css">
+
+  <!-- Anti-FOUT & Theme Sync -->
+  <script>
+    (function(){
+      try {
+        var savedTheme = localStorage.getItem('ecriox_theme_preference');
+        if (savedTheme) {
+          document.documentElement.setAttribute('data-theme', savedTheme);
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      } catch(e) {}
+    })();
+  </script>
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://ecriox.com/chemistry-labs/solution-concentration-simulator/#app",
+      "url": "https://ecriox.com/chemistry-labs/solution-concentration-simulator/",
+      "name": "Solution Concentration & Dilution Simulator",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires HTML5 Canvas and JavaScript support",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Simulate chemical solution preparation and dilutions online. Calculate molarity, molality, mass percentage, and observe solute solubility saturation limits."
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://ecriox.com/chemistry-labs/solution-concentration-simulator/#article",
+      "headline": "Solution Concentration Simulator: Molarity, Molality & Dilution (C\u2081V\u2081 = C\u2082V\u2082)",
+      "description": "Simulate chemical solution preparation and dilutions online. Calculate molarity, molality, mass percentage, and observe solute solubility saturation limits.",
+      "author": {
+        "@type": "Organization",
+        "name": "EcrioX Science Team"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "EcrioX",
+        "url": "https://ecriox.com"
+      },
+      "datePublished": "2026-11-21",
+      "dateModified": "2026-11-21"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://ecriox.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Chemistry Virtual Labs",
+          "item": "https://ecriox.com/chemistry-labs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Solution Concentration & Dilution Simulator",
+          "item": "https://ecriox.com/chemistry-labs/solution-concentration-simulator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why is molality preferred over molarity for colligative properties?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Molality relies on solvent mass (kg), which is completely unaffected by temperature fluctuations. Molarity relies on volume, which expands and contracts with temperature changes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens when a solution exceeds its solubility limit?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The solution becomes saturated. Any additional solute added will not dissolve and settles at the bottom of the container as solid precipitate."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the safety rule when diluting concentrated acids?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Always add acid to water ('AAA' rule), never water to acid. Concentrated acid hydration is intensely exothermic; adding water to acid causes localized boiling and dangerous corrosive acid spattering."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NNT7J485" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="brand-logo" aria-label="EcrioX Home">
+        <div class="logo-symbol">E</div>
+        <span>Ecrio<span class="accent-dot">X</span></span>
+      </a>
+
+      <nav class="nav-desktop">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/physics-labs/" class="nav-link">Physics Labs</a>
+        <a href="/chemistry-labs/" class="nav-link active">Chemistry Labs</a>
+        <a href="/chemistry-labs/calculators/" class="nav-link">Calculators</a>
+        <a href="/resume-builder/" class="nav-link">Career Studio</a>
+        <a href="/typing-speed-test/" class="nav-link">Typing Arena</a>
+        <a href="/tools/" class="nav-link">All Tools</a>
+        <a href="/about/" class="nav-link">About</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn-icon theme-toggle-btn" aria-label="Toggle color theme" id="themeToggleBtn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <button class="btn-icon mobile-toggle" aria-label="Open mobile menu" aria-expanded="false" id="mobileMenuToggle">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav-drawer" id="mobileNavDrawer">
+    <nav class="mobile-nav">
+      <a href="/" class="mobile-nav-link">Home</a>
+      <a href="/physics-labs/" class="mobile-nav-link">Physics Labs</a>
+      <a href="/chemistry-labs/" class="mobile-nav-link active">Chemistry Labs</a>
+      <a href="/chemistry-labs/calculators/" class="mobile-nav-link">Calculators</a>
+      <a href="/resume-builder/" class="mobile-nav-link">Career Studio</a>
+      <a href="/typing-speed-test/" class="mobile-nav-link">Typing Arena</a>
+      <a href="/tools/" class="mobile-nav-link">All Tools</a>
+      <a href="/about/" class="mobile-nav-link">About</a>
+    </nav>
+  </div>
+
+
+  <main id="main-content" class="container" style="padding-top:1.5rem; padding-bottom:3rem;">
+    <!-- Breadcrumbs -->
+    <nav class="chem-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="chem-breadcrumb-sep">/</span>
+      <a href="/chemistry-labs/">Chemistry Virtual Labs</a>
+      <span class="chem-breadcrumb-sep">/</span>
+      <span class="chem-breadcrumb-current">Solution Concentration & Dilution Simulator</span>
+    </nav>
+
+    <!-- Lab Header -->
+    <div class="chem-lab-header">
+      <div class="chem-lab-header-left">
+        <div style="display:flex; gap:0.5rem; align-items:center; margin-bottom:0.5rem; flex-wrap:wrap;">
+          <span class="chem-badge chem-badge-primary">Acids, Bases & Solutions</span>
+          <span class="chem-badge chem-badge-secondary">Classes 9–12 / B.Sc Chemistry Level</span>
+          <span class="chem-badge" style="background:#e0f2fe; color:#0369a1;">⏱ 12 mins</span>
+          <span class="chem-badge" style="background:#fef3c7; color:#92400e;">CBSE • JEE • NEET • College</span>
+        </div>
+        <h1 class="chem-lab-title">Solution Concentration Simulator: Molarity, Molality & Dilution (C₁V₁ = C₂V₂)</h1>
+        <p class="chem-lab-intro">Prepare chemical solutions of precise concentrations. Dissolve salts like NaCl, CuSO₄, and KMnO₄ into aqueous solvents, track molarity and molality, visualize saturation precipitation limits, and simulate volumetric dilutions governed by C₁V₁ = C₂V₂.</p>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="chem-lab-actions">
+        <button id="btnFullscreen" class="chem-btn chem-btn-outline" title="Toggle Fullscreen Mode">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
+          Fullscreen
+        </button>
+        <button id="btnResetSimulation" class="chem-btn chem-btn-outline" title="Reset Experiment Parameters">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6"></path><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
+          Reset Lab
+        </button>
+        <button id="btnExportCSV" class="chem-btn chem-btn-outline" title="Download Data Worksheet (CSV)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Export CSV
+        </button>
+        <button id="btnPrintWorksheet" class="chem-btn chem-btn-primary" title="Print Laboratory Worksheet">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+          Print Lab Sheet
+        </button>
+      </div>
+    </div>
+
+    <!-- Interactive Simulation Wrapper -->
+    <div class="chem-lab-wrapper" id="labWrapper">
+      <!-- Live HUD Metrics Panel -->
+      <div class="chem-hud-bar" id="hudBar">
+        
+    <div class="hud-metric"><div class="hud-metric-label">Solute</div><div class="hud-metric-value" id="hudSolute">CuSO₄</div></div>
+    <div class="hud-metric"><div class="hud-metric-label">Concentration (M)</div><div class="hud-metric-value" id="hudConc">0.63<span class="hud-metric-unit">mol/L</span></div></div>
+    <div class="hud-metric"><div class="hud-metric-label">Dissolved Mass</div><div class="hud-metric-value" id="hudDissolvedMass">50.0<span class="hud-metric-unit">g</span></div></div>
+    <div class="hud-metric"><div class="hud-metric-label">Precipitate Mass</div><div class="hud-metric-value" id="hudPrecipMass">0.0<span class="hud-metric-unit">g</span></div></div>
+    <div class="hud-metric"><div class="hud-metric-label">Saturation Status</div><div class="hud-metric-value" id="hudSatStatus" style="color:#16a34a">Unsaturated</div></div>
+  
+      </div>
+
+      <!-- Main Workspace Grid (Viewport + Controls) -->
+      <div class="chem-workspace-grid">
+        <!-- Simulation Viewport -->
+        <div class="chem-viewport-card">
+          <div class="chem-card-header-bar">
+            <span>🔬 Live Virtual Apparatus</span>
+            <span class="chem-status-dot">Interactive 60 FPS</span>
+          </div>
+          <div class="chem-viewport-inner">
+            
+    <canvas id="concentrationCanvas" style="width:100%; height:440px; display:block; border-radius:12px; background:linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);"></canvas>
+  
+          </div>
+        </div>
+
+        <!-- Controls Panel -->
+        <div class="chem-controls-card">
+          <div class="chem-card-header-bar">
+            <span>⚙️ Scientific Controls</span>
+            <span>Calibrated</span>
+          </div>
+          <div class="chem-controls-inner">
+            
+    <div class="chem-form-group">
+      <label class="chem-label">Select Solute Chemical:</label>
+      <select id="soluteSelect" class="chem-select">
+        <option value="CuSO4" selected>Copper(II) Sulfate (CuSO₄) - Vibrant Blue</option>
+        <option value="KMnO4">Potassium Permanganate (KMnO₄) - Deep Violet</option>
+        <option value="K2Cr2O7">Potassium Dichromate (K₂Cr₂O₇) - Bright Orange</option>
+        <option value="NiCl2">Nickel(II) Chloride (NiCl₂) - Emerald Green</option>
+        <option value="NaCl">Sodium Chloride (NaCl) - Colorless Solution</option>
+        <option value="CoNO32">Cobalt(II) Nitrate [Co(NO₃)₂] - Crimson Red</option>
+      </select>
+    </div>
+    <div class="chem-form-group">
+      <div style="display:flex; justify-content:space-between;">
+        <label class="chem-label">Solute Mass Added (g):</label>
+        <span id="massValDisplay" style="font-weight:700; color:var(--chem-primary)">50 g</span>
+      </div>
+      <input type="range" id="massSlider" min="0" max="250" step="5" value="50" class="chem-slider" />
+    </div>
+    <div class="chem-form-group">
+      <div style="display:flex; justify-content:space-between;">
+        <label class="chem-label">Water Volume (L):</label>
+        <span id="volLDisplay" style="font-weight:700; color:var(--chem-secondary)">0.50 L</span>
+      </div>
+      <input type="range" id="volLSlider" min="0.2" max="1.0" step="0.05" value="0.5" class="chem-slider" />
+    </div>
+    <div class="chem-btn-group" style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem; margin-top:0.75rem;">
+      <button id="btnEvapWater" class="chem-btn chem-btn-outline">Evaporate 0.1 L</button>
+      <button id="btnAddWater" class="chem-btn chem-btn-outline">+0.1 L Water</button>
+      <button id="btnShakeSolute" class="chem-btn chem-btn-outline">+20 g Solute Shaker</button>
+      <button id="btnResetSol" class="chem-btn chem-btn-primary">Reset Beaker</button>
+    </div>
+  
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scientific Documentation Tabs -->
+    <section class="chem-doc-section">
+      <div class="chem-tabs-nav">
+        <button class="chem-tab-btn active" data-tab="tab-theory">1. Scientific Theory & Derivations</button>
+        <button class="chem-tab-btn" data-tab="tab-procedure">2. Lab Protocol & Objectives</button>
+        <button class="chem-tab-btn" data-tab="tab-example">3. Worked Calculation Example</button>
+        <button class="chem-tab-btn" data-tab="tab-applications">4. Applications & Misconceptions</button>
+        <button class="chem-tab-btn" data-tab="tab-faqs">5. FAQs (3)</button>
+      </div>
+
+      <!-- Tab 1: Theory -->
+      <div class="chem-tab-pane active" id="tab-theory">
+        <div class="chem-doc-content">
+          <h2>Solution Concentration & Dilution Formulas</h2>
+          <div class="chem-formula-hero">
+            <code>M = \frac{n_{\text{solute}}}{V_{\text{solution}} (\text{L})}, \quad m = \frac{n_{\text{solute}}}{m_{\text{solvent}} (\text{kg})}, \quad C_1 V_1 = C_2 V_2</code>
+          </div>
+          <p class="chem-formula-desc">Molarity (M) expresses solute moles per liter of solution. Molality (m) expresses solute moles per kilogram of solvent. Adding solvent preserves total solute moles during dilution.</p>
+          <div class="chem-text-block">
+            A solution is a homogeneous mixture of two or more substances. The substance present in the smaller amount is the solute, while the dispersing medium is the solvent. Molarity (M) is temperature-dependent because liquid volume expands with temperature. Molality (m) depends only on masses of solute and solvent, making it independent of temperature and ideal for colligative property measurements (freezing point depression, boiling point elevation).
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 2: Procedure -->
+      <div class="chem-tab-pane" id="tab-procedure">
+        <div class="chem-doc-content">
+          <h2>Experimental Objectives</h2>
+          <ul class="chem-bullet-list">
+            <li>Calculate molarity, molality, and mass percentage across common laboratory salts.</li><li>Demonstrate that solution color depth correlates directly with molar concentration.</li><li>Simulate saturation thresholds where excess solute precipitates out of solution.</li><li>Execute volumetric dilutions using the conservation law C₁V₁ = C₂V₂.</li>
+          </ul>
+          <h2 style="margin-top:2rem;">Step-by-Step Laboratory Procedure</h2>
+          <ol class="chem-step-list">
+            
+            <li class="chem-step-item">
+              <strong>Step 1:</strong>
+              <p>Select a solute from the chemical rack: NaCl, CuSO₄, KMnO₄, Sucrose, or NaOH.</p>
+            </li>
+            
+            <li class="chem-step-item">
+              <strong>Step 2:</strong>
+              <p>Adjust the Solute Mass slider (grams) and Solution Volume slider (liters).</p>
+            </li>
+            
+            <li class="chem-step-item">
+              <strong>Step 3:</strong>
+              <p>Inspect the live HUD displaying Molarity (mol/L), Molality, and mass percentage.</p>
+            </li>
+            
+            <li class="chem-step-item">
+              <strong>Step 4:</strong>
+              <p>Use the 'Add Solvent' dilution slider to observe concentration drop while total solute moles remain constant.</p>
+            </li>
+            
+          </ol>
+        </div>
+      </div>
+
+      <!-- Tab 3: Worked Example -->
+      <div class="chem-tab-pane" id="tab-example">
+        <div class="chem-doc-content">
+          <h2>Worked Example & Step-by-Step Calculation</h2>
+          <div class="chem-example-box">
+            <h3 style="color:var(--chem-primary); font-size:1.15rem; margin-bottom:0.75rem;">Problem Statement:</h3>
+            <p style="font-size:1.05rem; font-weight:600; color:var(--text-main); margin-bottom:1.5rem;">How many milliliters of 6.00 M stock hydrochloric acid (HCl) are required to prepare 500 mL of 0.250 M dilute HCl solution?</p>
+            <h3 style="color:var(--chem-secondary); font-size:1.15rem; margin-bottom:0.75rem;">Mathematical Solution & Derivation:</h3>
+            <div class="chem-example-solution" style="white-space:pre-line; line-height:1.7;">
+              1. Use the dilution formula: C₁V₁ = C₂V₂.
+2. Identify known parameters:
+   - Stock concentration C₁ = 6.00 M.
+   - Dilute concentration C₂ = 0.250 M.
+   - Dilute volume V₂ = 500 mL.
+3. Rearrange for required stock volume V₁:
+   V₁ = (C₂ × V₂) / C₁ = (0.250 M × 500 mL) / 6.00 M = 125 / 6.00 = 20.83 mL.
+4. Procedure: Carefully measure 20.83 mL of 6.00 M HCl and add to ~300 mL of water, then dilute to 500 mL.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 4: Applications & Misconceptions -->
+      <div class="chem-tab-pane" id="tab-applications">
+        <div class="chem-doc-content">
+          <h2>Industrial, Engineering & Everyday Applications</h2>
+          <div class="chem-apps-grid">
+            
+            <div class="chem-app-item">
+              <strong>Clinical Chemistry</strong>
+              <p>Preparing 0.9% w/v isotonic saline (0.154 M NaCl) for intravenous fluid administration.</p>
+            </div>
+            
+            <div class="chem-app-item">
+              <strong>Analytical Standard Preparation</strong>
+              <p>Diluting concentrated stock solutions to prepare calibration curves for UV-Vis spectrophotometry.</p>
+            </div>
+            
+            <div class="chem-app-item">
+              <strong>Agriculture</strong>
+              <p>Formulating liquid NPK fertilizers of defined molar concentrations for hydroponic farming.</p>
+            </div>
+            
+            <div class="chem-app-item">
+              <strong>Microbiology</strong>
+              <p>Preparing antibiotic stock solutions for minimum inhibitory concentration (MIC) assays.</p>
+            </div>
+            
+          </div>
+          <h2 style="margin-top:2.5rem;">Common Student Misconceptions & Scientific Reality</h2>
+          <div class="chem-misc-list">
+            
+        <div class="chem-misc-card">
+          <div class="chem-misc-fact">💡 <strong>Critical Conceptual Insight:</strong> Students frequently confuse solution volume with solvent volume when calculating molarity. 1 liter of solution is the total volume of solute PLUS solvent combined, not 1 liter of pure water added to the solute.</div>
+        </div>
+        
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 5: FAQs -->
+      <div class="chem-tab-pane" id="tab-faqs">
+        <div class="chem-doc-content">
+          <h2>Frequently Asked Questions on Solution Concentration & Dilution Simulator</h2>
+          <div class="chem-faq-list" style="margin-top:1.5rem;">
+            
+            <div class="chem-faq-item">
+              <button class="chem-faq-trigger">
+                <span>Why is molality preferred over molarity for colligative properties?</span>
+                <svg class="chem-faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="chem-faq-content">
+                <p>Molality relies on solvent mass (kg), which is completely unaffected by temperature fluctuations. Molarity relies on volume, which expands and contracts with temperature changes.</p>
+              </div>
+            </div>
+            
+            <div class="chem-faq-item">
+              <button class="chem-faq-trigger">
+                <span>What happens when a solution exceeds its solubility limit?</span>
+                <svg class="chem-faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="chem-faq-content">
+                <p>The solution becomes saturated. Any additional solute added will not dissolve and settles at the bottom of the container as solid precipitate.</p>
+              </div>
+            </div>
+            
+            <div class="chem-faq-item">
+              <button class="chem-faq-trigger">
+                <span>What is the safety rule when diluting concentrated acids?</span>
+                <svg class="chem-faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="chem-faq-content">
+                <p>Always add acid to water ('AAA' rule), never water to acid. Concentrated acid hydration is intensely exothermic; adding water to acid causes localized boiling and dangerous corrosive acid spattering.</p>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Experiments Section -->
+    <section class="chem-related-section">
+      <div class="chem-section-header">
+        <h2 class="chem-section-title">Related Chemistry Virtual Labs</h2>
+        <p class="chem-section-desc">Continue your exploration with these interconnected chemical experiments and simulations.</p>
+      </div>
+      <div class="chem-grid">
+        
+            <article class="chem-card" data-category="organic">
+              <div class="chem-card-badge-wrap">
+                <span class="chem-badge chem-badge-primary">Organic Chemistry</span>
+                <span class="chem-badge chem-badge-secondary">Classes 10–12 / B.Sc / JEE / NEET</span>
+              </div>
+              <div class="chem-card-icon">
+      <svg viewBox="0 0 100 100" fill="none" stroke="currentColor">
+        <circle cx="35" cy="50" r="10" fill="#334155"/>
+        <text x="35" y="54" font-size="10" font-weight="bold" fill="#ffffff" text-anchor="middle">C</text>
+        <circle cx="65" cy="50" r="10" fill="#334155"/>
+        <text x="65" y="54" font-size="10" font-weight="bold" fill="#ffffff" text-anchor="middle">C</text>
+        <line x1="45" y1="47" x2="55" y2="47" stroke="#475569" stroke-width="2"/>
+        <line x1="45" y1="53" x2="55" y2="53" stroke="#475569" stroke-width="2"/>
+        <circle cx="20" cy="30" r="7" fill="#94a3b8"/>
+        <text x="20" y="33" font-size="8" fill="#ffffff" text-anchor="middle">H</text>
+        <line x1="29" y1="42" x2="23" y2="34" stroke="#94a3b8" stroke-width="2"/>
+      </svg>
+    </div>
+              <h3 class="chem-card-title"><a href="/chemistry-labs/organic-molecule-builder/">2D Organic Molecule Builder & Valence Validator</a></h3>
+              <p class="chem-card-desc">Draw and design organic chemical structures using an interactive 2D molecular sketcher. Connect carbon chains, add doubl...</p>
+              <a href="/chemistry-labs/organic-molecule-builder/" class="chem-card-btn">Open Lab →</a>
+            </article>
+            
+            <article class="chem-card" data-category="molecular">
+              <div class="chem-card-badge-wrap">
+                <span class="chem-badge chem-badge-primary">Molecular Chemistry</span>
+                <span class="chem-badge chem-badge-secondary">Classes 10–12 / College Chemistry</span>
+              </div>
+              <div class="chem-card-icon">
+      <svg viewBox="0 0 100 100" fill="none" stroke="currentColor">
+        <circle cx="50" cy="50" r="14" fill="#ef4444"/>
+        <text x="50" y="54" font-size="10" font-weight="bold" fill="#ffffff" text-anchor="middle">O</text>
+        <line x1="40" y1="58" x2="25" y2="72" stroke="#64748b" stroke-width="4"/>
+        <line x1="60" y1="58" x2="75" y2="72" stroke="#64748b" stroke-width="4"/>
+        <circle cx="22" cy="74" r="9" fill="#94a3b8"/>
+        <text x="22" y="77" font-size="8" font-weight="bold" fill="#ffffff" text-anchor="middle">H</text>
+        <circle cx="78" cy="74" r="9" fill="#94a3b8"/>
+        <text x="78" y="77" font-size="8" font-weight="bold" fill="#ffffff" text-anchor="middle">H</text>
+        <path d="M35 30 A 25 25 0 0 1 70 30" stroke="var(--chem-primary)" stroke-width="2" stroke-dasharray="3 3"/>
+      </svg>
+    </div>
+              <h3 class="chem-card-title"><a href="/chemistry-labs/3d-molecular-viewer/">3D Molecular Structure & VSEPR Geometry Viewer</a></h3>
+              <p class="chem-card-desc">Interact with authentic three-dimensional molecular geometries. Rotate, zoom, and inspect ball-and-stick and space-filli...</p>
+              <a href="/chemistry-labs/3d-molecular-viewer/" class="chem-card-btn">Open Lab →</a>
+            </article>
+            
+            <article class="chem-card" data-category="organic">
+              <div class="chem-card-badge-wrap">
+                <span class="chem-badge chem-badge-primary">Organic Chemistry</span>
+                <span class="chem-badge chem-badge-secondary">Classes 11–12 / B.Sc / JEE / NEET</span>
+              </div>
+              <div class="chem-card-icon">
+      <svg viewBox="0 0 100 100" fill="none" stroke="currentColor">
+        <line x1="50" y1="15" x2="50" y2="85" stroke="var(--border-color)" stroke-width="2" stroke-dasharray="4 4"/>
+        <text x="28" y="25" font-size="8" font-weight="bold" fill="var(--chem-primary)" text-anchor="middle">CIS</text>
+        <text x="72" y="25" font-size="8" font-weight="bold" fill="var(--chem-secondary)" text-anchor="middle">TRANS</text>
+        <line x1="20" y1="50" x2="36" y2="50" stroke="#334155" stroke-width="3"/>
+        <circle cx="16" cy="38" r="5" fill="#10b981"/>
+        <circle cx="40" cy="38" r="5" fill="#10b981"/>
+        <line x1="64" y1="50" x2="80" y2="50" stroke="#334155" stroke-width="3"/>
+        <circle cx="60" cy="38" r="5" fill="#10b981"/>
+        <circle cx="84" cy="62" r="5" fill="#10b981"/>
+      </svg>
+    </div>
+              <h3 class="chem-card-title"><a href="/chemistry-labs/isomerism-explorer/">Isomerism & Stereochemistry Explorer</a></h3>
+              <p class="chem-card-desc">Discover the fascinating world of chemical isomerism. Compare molecules that share identical molecular formulas but poss...</p>
+              <a href="/chemistry-labs/isomerism-explorer/" class="chem-card-btn">Open Lab →</a>
+            </article>
+            
+      </div>
+    </section>
+  </main>
+
+  
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="/" class="brand-logo">
+            <div class="logo-symbol">E</div>
+            <span>Ecrio<span class="accent-dot">X</span></span>
+          </a>
+          <p>One Platform. Endless Possibilities. Free, scientifically accurate browser-based virtual laboratories and digital productivity utilities.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Chemistry Labs</h4>
+          <ul class="footer-links">
+            <li><a href="/chemistry-labs/">All Chemistry Labs</a></li>
+            <li><a href="/chemistry-labs/interactive-periodic-table/">Periodic Table Explorer</a></li>
+            <li><a href="/chemistry-labs/chemical-equation-balancer/">Equation Balancer</a></li>
+            <li><a href="/chemistry-labs/acid-base-titration/">Acid-Base Titration</a></li>
+            <li><a href="/chemistry-labs/3d-molecular-viewer/">3D Molecular Viewer</a></li>
+            <li><a href="/chemistry-labs/calculators/">Chemistry Calculators</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Physics Labs</h4>
+          <ul class="footer-links">
+            <li><a href="/physics-labs/">All Physics Labs</a></li>
+            <li><a href="/physics-labs/projectile-motion-simulator/">Projectile Motion</a></li>
+            <li><a href="/physics-labs/electric-circuit-simulator/">Circuit Simulator</a></li>
+            <li><a href="/physics-labs/ray-optics-simulator/">Ray Optics Lab</a></li>
+            <li><a href="/physics-labs/simple-pendulum-experiment/">Simple Pendulum</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Product Suite</h4>
+          <ul class="footer-links">
+            <li><a href="/tools/">All Tools Directory</a></li>
+            <li><a href="/categories/">Tool Categories</a></li>
+            <li><a href="/pdf-compressor/">PDF Compressor</a></li>
+            <li><a href="/resume-builder/">ATS Resume Builder</a></li>
+            <li><a href="/typing-speed-test/">Typing Arena</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company & Legal</h4>
+          <ul class="footer-links">
+            <li><a href="/about/">About EcrioX</a></li>
+            <li><a href="/contact/">Contact Support</a></li>
+            <li><a href="/privacy/">Privacy Policy</a></li>
+            <li><a href="/terms/">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 EcrioX. All rights reserved. Zero client downloads required — 100% private in-browser scientific simulations.</p>
+        <p>Canonical Domain: <a href="https://ecriox.com/" style="color: var(--chem-primary);">ecriox.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Chemistry Engine Script Loaded Globally -->
+  <script src="/js/chemistry-engine.js"></script>
+  <script>
+    // Theme toggle listener
+    const themeBtn = document.getElementById('themeToggleBtn');
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => {
+        const cur = document.documentElement.getAttribute('data-theme') || 'light';
+        const nxt = cur === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', nxt);
+        try { localStorage.setItem('ecriox_theme_preference', nxt); } catch(e){}
+        window.dispatchEvent(new Event('themechange'));
+      });
+    }
+    // Mobile navigation drawer toggle
+    const mobToggle = document.getElementById('mobileMenuToggle');
+    const mobNav = document.getElementById('mobileNavDrawer');
+    if (mobToggle && mobNav) {
+      mobToggle.addEventListener('click', () => {
+        const isOpen = mobNav.classList.toggle('open');
+        mobToggle.setAttribute('aria-expanded', isOpen);
+      });
+    }
+    // FAQ Accordion listener
+    document.querySelectorAll('.chem-faq-trigger').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.parentElement.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>
+
+
+  <!-- Tab Switcher & Lab Actions Script -->
+  <script>
+    (function(){
+      // Tab switcher
+      const tabBtns = document.querySelectorAll('.chem-tab-btn');
+      const tabPanes = document.querySelectorAll('.chem-tab-pane');
+
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          tabBtns.forEach(b => b.classList.remove('active'));
+          tabPanes.forEach(p => p.classList.remove('active'));
+
+          btn.classList.add('active');
+          const target = btn.getAttribute('data-tab');
+          const pane = document.getElementById(target);
+          if (pane) pane.classList.add('active');
+        });
+      });
+
+      // Fullscreen mode toggle
+      const fsBtn = document.getElementById('btnFullscreen');
+      const labWrap = document.getElementById('labWrapper');
+      if (fsBtn && labWrap) {
+        fsBtn.addEventListener('click', () => {
+          if (!document.fullscreenElement) {
+            labWrap.requestFullscreen?.() || labWrap.webkitRequestFullscreen?.();
+            fsBtn.innerHTML = 'Exit Fullscreen';
+          } else {
+            document.exitFullscreen?.() || document.webkitExitFullscreen?.();
+            fsBtn.innerHTML = 'Fullscreen';
+          }
+        });
+      }
+
+      // Print Lab Worksheet
+      const printBtn = document.getElementById('btnPrintWorksheet');
+      if (printBtn) {
+        printBtn.addEventListener('click', () => window.print());
+      }
+
+      // Export CSV Data
+      const csvBtn = document.getElementById('btnExportCSV');
+      if (csvBtn) {
+        csvBtn.addEventListener('click', () => {
+          const metrics = Array.from(document.querySelectorAll('#hudBar .hud-metric')).map(m => {
+            const lbl = m.querySelector('.hud-metric-label')?.textContent.trim() || 'Metric';
+            const val = m.querySelector('.hud-metric-value')?.textContent.trim() || '0';
+            return `"${lbl}","${val}"`;
+          });
+          const csvContent = "data:text/csv;charset=utf-8,Parameter,Value\n" +
+            `"Experiment","Solution Concentration & Dilution Simulator"\n` +
+            `"Timestamp","${new Date().toISOString()}"\n` +
+            metrics.join("\n");
+          const encodedUri = encodeURI(csvContent);
+          const link = document.createElement("a");
+          link.setAttribute("href", encodedUri);
+          link.setAttribute("download", "solution-concentration-simulator-lab-data.csv");
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        });
+      }
+    })();
+  </script>
+
+  <!-- Interactive Simulation Engine Execution -->
+  <script>
+    
+    (function(){
+      const canvas = document.getElementById('concentrationCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+
+      const SOLUTES = {
+        CuSO4: { name: 'Copper(II) Sulfate', formula: 'CuSO₄', molarMass: 159.6, satMolarity: 1.38, color: [37, 99, 235] },
+        KMnO4: { name: 'Potassium Permanganate', formula: 'KMnO₄', molarMass: 158.0, satMolarity: 0.41, color: [147, 51, 234] },
+        K2Cr2O7: { name: 'Potassium Dichromate', formula: 'K₂Cr₂O₇', molarMass: 294.2, satMolarity: 0.44, color: [249, 115, 22] },
+        NiCl2: { name: 'Nickel(II) Chloride', formula: 'NiCl₂', molarMass: 129.6, satMolarity: 4.93, color: [16, 185, 129] },
+        NaCl: { name: 'Sodium Chloride', formula: 'NaCl', molarMass: 58.44, satMolarity: 6.14, color: [203, 213, 225] },
+        CoNO32: { name: 'Cobalt(II) Nitrate', formula: 'Co(NO₃)₂', molarMass: 182.9, satMolarity: 5.47, color: [225, 29, 72] }
+      };
+
+      let currentKey = 'CuSO4';
+      let addedMass = 50.0; // grams
+      let volumeL = 0.50;   // Liters
+      let precipParticles = [];
+
+      function updateHUD() {
+        const s = SOLUTES[currentKey];
+        const molesAdded = addedMass / s.molarMass;
+        const maxMolesSoluble = s.satMolarity * volumeL;
+        const dissolvedMoles = Math.min(molesAdded, maxMolesSoluble);
+        const concentration = dissolvedMoles / volumeL;
+        const dissolvedMass = dissolvedMoles * s.molarMass;
+        const precipMass = Math.max(0, addedMass - dissolvedMass);
+
+        document.getElementById('hudSolute').textContent = s.formula;
+        document.getElementById('hudConc').innerHTML = concentration.toFixed(2) + '<span class="hud-metric-unit">mol/L</span>';
+        document.getElementById('hudDissolvedMass').innerHTML = dissolvedMass.toFixed(1) + '<span class="hud-metric-unit">g</span>';
+        document.getElementById('hudPrecipMass').innerHTML = precipMass.toFixed(1) + '<span class="hud-metric-unit">g</span>';
+
+        const satEl = document.getElementById('hudSatStatus');
+        if (precipMass > 0.05) {
+          satEl.textContent = 'Saturated (Precipitate Present)';
+          satEl.style.color = '#ef4444';
+        } else if (concentration >= s.satMolarity * 0.95) {
+          satEl.textContent = 'Near Saturation';
+          satEl.style.color = '#f59e0b';
+        } else {
+          satEl.textContent = 'Unsaturated';
+          satEl.style.color = '#16a34a';
+        }
+
+        document.getElementById('massValDisplay').textContent = addedMass.toFixed(0) + ' g';
+        document.getElementById('volLDisplay').textContent = volumeL.toFixed(2) + ' L';
+        document.getElementById('massSlider').value = addedMass;
+        document.getElementById('volLSlider').value = volumeL;
+      }
+
+      function resize() {
+        const r = canvas.getBoundingClientRect();
+        canvas.width = r.width * (window.devicePixelRatio || 1);
+        canvas.height = r.height * (window.devicePixelRatio || 1);
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      function draw() {
+        const w = canvas.width;
+        const h = canvas.height;
+        ctx.clearRect(0, 0, w, h);
+
+        const s = SOLUTES[currentKey];
+        const molesAdded = addedMass / s.molarMass;
+        const maxMolesSoluble = s.satMolarity * volumeL;
+        const dissolvedMoles = Math.min(molesAdded, maxMolesSoluble);
+        const concentration = dissolvedMoles / volumeL;
+        const dissolvedMass = dissolvedMoles * s.molarMass;
+        const precipMass = Math.max(0, addedMass - dissolvedMass);
+
+        // Beaker dimensions
+        const bx = w * 0.22;
+        const by = h * 0.20;
+        const bw = w * 0.56;
+        const bh = h * 0.72;
+
+        // Liquid height based on volumeL (0.2L to 1.0L)
+        const fillFraction = volumeL / 1.0;
+        const liquidH = bh * fillFraction;
+        const liquidTopY = by + bh - liquidH;
+
+        // Color intensity scales with concentration / saturation limit (Beer-Lambert law)
+        const intensity = Math.min(0.92, 0.15 + 0.75 * (concentration / s.satMolarity));
+        const rgb = s.color;
+
+        ctx.fillStyle = `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${intensity})`;
+        ctx.fillRect(bx + 4, liquidTopY, bw - 8, liquidH - 4);
+
+        // Meniscus
+        ctx.fillStyle = `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${Math.min(1.0, intensity + 0.2)})`;
+        ctx.beginPath();
+        ctx.ellipse(bx + bw / 2, liquidTopY, (bw - 8) / 2, 8, 0, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Draw Precipitate at the bottom if saturated
+        if (precipMass > 0.05) {
+          const crystalCount = Math.min(120, Math.round(precipMass * 1.5));
+          ctx.fillStyle = `rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]})`;
+          for (let i = 0; i < crystalCount; i++) {
+            const seed = (i * 9301 + 49297) % 233280;
+            const rndX = (seed / 233280.0) * (bw - 20) + bx + 10;
+            const rndY = by + bh - 6 - ((seed % 17) / 17.0) * 16;
+            ctx.beginPath();
+            ctx.rect(rndX, rndY, 4, 3);
+            ctx.fill();
+          }
+        }
+
+        // Beaker glass outline
+        ctx.strokeStyle = '#94a3b8';
+        ctx.lineWidth = 4;
+        ctx.beginPath();
+        ctx.moveTo(bx - 12, by);
+        ctx.lineTo(bx, by);
+        ctx.lineTo(bx, by + bh);
+        ctx.lineTo(bx + bw, by + bh);
+        ctx.lineTo(bx + bw, by);
+        ctx.lineTo(bx + bw + 12, by);
+        ctx.stroke();
+
+        // Tick marks
+        ctx.fillStyle = '#64748b';
+        ctx.font = '12px Inter, sans-serif';
+        for (let v = 0.2; v <= 1.0; v += 0.2) {
+          const ty = by + bh - (bh * (v / 1.0));
+          ctx.beginPath();
+          ctx.moveTo(bx + 4, ty);
+          ctx.lineTo(bx + 24, ty);
+          ctx.stroke();
+          ctx.fillText(v.toFixed(1) + ' L', bx + 28, ty + 4);
+        }
+
+        // Submerged optical probe display
+        const probeX = bx + bw * 0.75;
+        const probeY = by - 30;
+        ctx.fillStyle = '#334155';
+        ctx.fillRect(probeX - 8, probeY, 16, liquidTopY - probeY + 60);
+
+        // Digital Concentration Meter
+        const mbX = w * 0.70;
+        const mbY = 20;
+        const mbW = w * 0.26;
+        const mbH = 65;
+        ctx.fillStyle = '#1e293b';
+        ctx.fillRect(mbX, mbY, mbW, mbH);
+        ctx.strokeStyle = '#2563eb';
+        ctx.strokeRect(mbX, mbY, mbW, mbH);
+
+        ctx.fillStyle = '#38bdf8';
+        ctx.font = 'bold 11px Inter, sans-serif';
+        ctx.fillText('CONCENTRATION PROBE', mbX + 8, mbY + 20);
+        ctx.fillStyle = '#f8fafc';
+        ctx.font = 'bold 22px monospace';
+        ctx.fillText(concentration.toFixed(2) + ' M', mbX + 8, mbY + 52);
+      }
+
+      function loop() {
+        draw();
+        requestAnimationFrame(loop);
+      }
+      requestAnimationFrame(loop);
+
+      document.getElementById('soluteSelect').addEventListener('change', (e) => {
+        currentKey = e.target.value;
+        updateHUD();
+      });
+
+      document.getElementById('massSlider').addEventListener('input', (e) => {
+        addedMass = parseFloat(e.target.value);
+        updateHUD();
+      });
+
+      document.getElementById('volLSlider').addEventListener('input', (e) => {
+        volumeL = parseFloat(e.target.value);
+        updateHUD();
+      });
+
+      document.getElementById('btnEvapWater').addEventListener('click', () => {
+        volumeL = Math.max(0.2, volumeL - 0.1);
+        updateHUD();
+      });
+
+      document.getElementById('btnAddWater').addEventListener('click', () => {
+        volumeL = Math.min(1.0, volumeL + 0.1);
+        updateHUD();
+      });
+
+      document.getElementById('btnShakeSolute').addEventListener('click', () => {
+        addedMass = Math.min(250, addedMass + 20);
+        updateHUD();
+      });
+
+      document.getElementById('btnResetSol').addEventListener('click', () => {
+        addedMass = 50.0;
+        volumeL = 0.50;
+        currentKey = 'CuSO4';
+        document.getElementById('soluteSelect').value = 'CuSO4';
+        updateHUD();
+      });
+
+      updateHUD();
+    })();
+  
+  </script>
+        

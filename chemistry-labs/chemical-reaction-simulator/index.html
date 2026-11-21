@@ -1,0 +1,899 @@
+
+  <!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chemical Reaction Types & Energy Simulator – Online Chemistry Virtual Lab | EcrioX</title>
+  <meta name="description" content="Simulate chemical reaction types online. Observe color changes, gas evolution, precipitate formation, balanced equations, and thermodynamic energy diagrams.">
+  <link rel="canonical" href="https://ecriox.com/chemistry-labs/chemical-reaction-simulator/">
+  <!-- Favicon & Brand Icons -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#2563EB">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Chemical Reaction Types & Energy Simulator – Online Chemistry Virtual Lab | EcrioX">
+  <meta property="og:description" content="Simulate chemical reaction types online. Observe color changes, gas evolution, precipitate formation, balanced equations, and thermodynamic energy diagrams.">
+  <meta property="og:url" content="https://ecriox.com/chemistry-labs/chemical-reaction-simulator/">
+  <meta property="og:site_name" content="EcrioX">
+  <meta property="og:image" content="https://ecriox.com/og-banner.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Chemical Reaction Types & Energy Simulator – Online Chemistry Virtual Lab | EcrioX">
+  <meta name="twitter:description" content="Simulate chemical reaction types online. Observe color changes, gas evolution, precipitate formation, balanced equations, and thermodynamic energy diagrams.">
+  <meta name="twitter:image" content="https://ecriox.com/og-banner.png">
+
+  <!-- Global Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-NNT7J485');
+  </script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6486455437877685" crossorigin="anonymous"></script>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/chemistry-labs.css">
+
+  <!-- Anti-FOUT & Theme Sync -->
+  <script>
+    (function(){
+      try {
+        var savedTheme = localStorage.getItem('ecriox_theme_preference');
+        if (savedTheme) {
+          document.documentElement.setAttribute('data-theme', savedTheme);
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      } catch(e) {}
+    })();
+  </script>
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://ecriox.com/chemistry-labs/chemical-reaction-simulator/#app",
+      "url": "https://ecriox.com/chemistry-labs/chemical-reaction-simulator/",
+      "name": "Chemical Reaction Types & Energy Simulator",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires HTML5 Canvas and JavaScript support",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Simulate chemical reaction types online. Observe color changes, gas evolution, precipitate formation, balanced equations, and thermodynamic energy diagrams."
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://ecriox.com/chemistry-labs/chemical-reaction-simulator/#article",
+      "headline": "Chemical Reaction Simulator: Synthesis, Decomposition, Displacement & Redox",
+      "description": "Simulate chemical reaction types online. Observe color changes, gas evolution, precipitate formation, balanced equations, and thermodynamic energy diagrams.",
+      "author": {
+        "@type": "Organization",
+        "name": "EcrioX Science Team"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "EcrioX",
+        "url": "https://ecriox.com"
+      },
+      "datePublished": "2026-11-21",
+      "dateModified": "2026-11-21"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://ecriox.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Chemistry Virtual Labs",
+          "item": "https://ecriox.com/chemistry-labs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Chemical Reaction Types & Energy Simulator",
+          "item": "https://ecriox.com/chemistry-labs/chemical-reaction-simulator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What are spectator ions?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Spectator ions are ions that exist in the same state on both the reactant and product sides of a chemical equation without participating in the actual chemical change."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can you tell if a single displacement reaction will occur?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "By referencing the electrochemical activity series: an element can only displace another element from a compound if it is located higher in the activity series."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between exothermic and endothermic reactions?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Exothermic reactions release thermal energy to the surroundings (\u0394H is negative, temperature rises), while endothermic reactions absorb heat (\u0394H is positive, temperature drops)."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NNT7J485" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="brand-logo" aria-label="EcrioX Home">
+        <div class="logo-symbol">E</div>
+        <span>Ecrio<span class="accent-dot">X</span></span>
+      </a>
+
+      <nav class="nav-desktop">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/physics-labs/" class="nav-link">Physics Labs</a>
+        <a href="/chemistry-labs/" class="nav-link active">Chemistry Labs</a>
+        <a href="/chemistry-labs/calculators/" class="nav-link">Calculators</a>
+        <a href="/resume-builder/" class="nav-link">Career Studio</a>
+        <a href="/typing-speed-test/" class="nav-link">Typing Arena</a>
+        <a href="/tools/" class="nav-link">All Tools</a>
+        <a href="/about/" class="nav-link">About</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn-icon theme-toggle-btn" aria-label="Toggle color theme" id="themeToggleBtn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <button class="btn-icon mobile-toggle" aria-label="Open mobile menu" aria-expanded="false" id="mobileMenuToggle">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav-drawer" id="mobileNavDrawer">
+    <nav class="mobile-nav">
+      <a href="/" class="mobile-nav-link">Home</a>
+      <a href="/physics-labs/" class="mobile-nav-link">Physics Labs</a>
+      <a href="/chemistry-labs/" class="mobile-nav-link active">Chemistry Labs</a>
+      <a href="/chemistry-labs/calculators/" class="mobile-nav-link">Calculators</a>
+      <a href="/resume-builder/" class="mobile-nav-link">Career Studio</a>
+      <a href="/typing-speed-test/" class="mobile-nav-link">Typing Arena</a>
+      <a href="/tools/" class="mobile-nav-link">All Tools</a>
+      <a href="/about/" class="mobile-nav-link">About</a>
+    </nav>
+  </div>
+
+
+  <main id="main-content" class="container" style="padding-top:1.5rem; padding-bottom:3rem;">
+    <!-- Breadcrumbs -->
+    <nav class="chem-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="chem-breadcrumb-sep">/</span>
+      <a href="/chemistry-labs/">Chemistry Virtual Labs</a>
+      <span class="chem-breadcrumb-sep">/</span>
+      <span class="chem-breadcrumb-current">Chemical Reaction Types & Energy Simulator</span>
+    </nav>
+
+    <!-- Lab Header -->
+    <div class="chem-lab-header">
+      <div class="chem-lab-header-left">
+        <div style="display:flex; gap:0.5rem; align-items:center; margin-bottom:0.5rem; flex-wrap:wrap;">
+          <span class="chem-badge chem-badge-primary">Chemical Reactions</span>
+          <span class="chem-badge chem-badge-secondary">Classes 9–12 / CBSE / ICSE Level</span>
+          <span class="chem-badge" style="background:#e0f2fe; color:#0369a1;">⏱ 15 mins</span>
+          <span class="chem-badge" style="background:#fef3c7; color:#92400e;">CBSE • JEE • NEET • College</span>
+        </div>
+        <h1 class="chem-lab-title">Chemical Reaction Simulator: Synthesis, Decomposition, Displacement & Redox</h1>
+        <p class="chem-lab-intro">Explore major classes of chemical reactions: synthesis, decomposition, single displacement, double displacement (precipitation), neutralization, and combustion. Observe macroscopic visual changes (color, effervescence, precipitation, thermal change) paired with potential energy diagrams.</p>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="chem-lab-actions">
+        <button id="btnFullscreen" class="chem-btn chem-btn-outline" title="Toggle Fullscreen Mode">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
+          Fullscreen
+        </button>
+        <button id="btnResetSimulation" class="chem-btn chem-btn-outline" title="Reset Experiment Parameters">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6"></path><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
+          Reset Lab
+        </button>
+        <button id="btnExportCSV" class="chem-btn chem-btn-outline" title="Download Data Worksheet (CSV)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Export CSV
+        </button>
+        <button id="btnPrintWorksheet" class="chem-btn chem-btn-primary" title="Print Laboratory Worksheet">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+          Print Lab Sheet
+        </button>
+      </div>
+    </div>
+
+    <!-- Interactive Simulation Wrapper -->
+    <div class="chem-lab-wrapper" id="labWrapper">
+      <!-- Live HUD Metrics Panel -->
+      <div class="chem-hud-bar" id="hudBar">
+        
+    <div class="hud-metric"><div class="hud-metric-label">Reaction Type</div><div class="hud-metric-value" id="hudRxnType" style="font-size:0.95rem;">Single Displacement</div></div>
+    <div class="hud-metric"><div class="hud-metric-label">Reaction Enthalpy</div><div class="hud-metric-value" id="hudRxnH">-153.9<span class="hud-metric-unit">kJ/mol</span></div></div>
+    <div class="hud-metric"><div class="hud-metric-label">Thermal Nature</div><div class="hud-metric-value" id="hudRxnTherm" style="color:var(--color-danger); font-size:0.95rem;">Exothermic (ΔH &lt; 0)</div></div>
+    <div class="hud-metric"><div class="hud-metric-label">Temperature</div><div class="hud-metric-value" id="hudRxnTemp">25.0<span class="hud-metric-unit">&deg;C</span></div></div>
+    <div class="hud-metric"><div class="hud-metric-label">Visual Cue</div><div class="hud-metric-value" id="hudRxnCue" style="font-size:0.9rem;">H₂ Gas Effervescence</div></div>
+    <div class="hud-metric"><div class="hud-metric-label">Activation Energy</div><div class="hud-metric-value" id="hudRxnEa">45.0<span class="hud-metric-unit">kJ/mol</span></div></div>
+  
+      </div>
+
+      <!-- Main Workspace Grid (Viewport + Controls) -->
+      <div class="chem-workspace-grid">
+        <!-- Simulation Viewport -->
+        <div class="chem-viewport-card">
+          <div class="chem-card-header-bar">
+            <span>🔬 Live Virtual Apparatus</span>
+            <span class="chem-status-dot">Interactive 60 FPS</span>
+          </div>
+          <div class="chem-viewport-inner">
+            
+    <canvas id="simCanvas" style="width:100%; height:440px; display:block; border-radius:12px; background:linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);"></canvas>
+  
+          </div>
+        </div>
+
+        <!-- Controls Panel -->
+        <div class="chem-controls-card">
+          <div class="chem-card-header-bar">
+            <span>⚙️ Scientific Controls</span>
+            <span>Calibrated</span>
+          </div>
+          <div class="chem-controls-inner">
+            
+    <div class="control-group">
+      <div class="control-label-row"><span class="control-label">Select Chemical Reaction</span></div>
+      <select class="chem-select-input" id="rxnSelect">
+        <option value="zn_hcl" selected>Zn(s) + 2HCl(aq) → ZnCl₂(aq) + H₂(g)↑ (Single Displacement)</option>
+        <option value="mg_o2">2Mg(s) + O₂(g) → 2MgO(s) (Synthesis / Combustion)</option>
+        <option value="agno3_nacl">AgNO₃(aq) + NaCl(aq) → AgCl(s)↓ + NaNO₃(aq) (Precipitation)</option>
+        <option value="hcl_naoh">HCl(aq) + NaOH(aq) → NaCl(aq) + H₂O(l) (Neutralization)</option>
+        <option value="h2o2_cat">2H₂O₂(aq) → 2H₂O(l) + O₂(g)↑ (Catalytic Decomposition)</option>
+      </select>
+    </div>
+    <div class="control-group">
+      <div class="control-label-row"><span class="control-label">Reactant Concentration / Quantity</span><span class="control-value-badge" id="valRxnConc">1.0 M</span></div>
+      <input type="range" class="chem-range-input" id="inRxnConc" min="0.2" max="3.0" step="0.2" value="1.0">
+    </div>
+    <div class="chem-btn-group">
+      <button type="button" class="chem-btn chem-btn-primary" id="btnTriggerRxn">&#9654; Initiate Reaction</button>
+      <button type="button" class="chem-btn chem-btn-secondary" id="btnResetRxn">&#8635; Reset Flask</button>
+    </div>
+  
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scientific Documentation Tabs -->
+    <section class="chem-doc-section">
+      <div class="chem-tabs-nav">
+        <button class="chem-tab-btn active" data-tab="tab-theory">1. Scientific Theory & Derivations</button>
+        <button class="chem-tab-btn" data-tab="tab-procedure">2. Lab Protocol & Objectives</button>
+        <button class="chem-tab-btn" data-tab="tab-example">3. Worked Calculation Example</button>
+        <button class="chem-tab-btn" data-tab="tab-applications">4. Applications & Misconceptions</button>
+        <button class="chem-tab-btn" data-tab="tab-faqs">5. FAQs (3)</button>
+      </div>
+
+      <!-- Tab 1: Theory -->
+      <div class="chem-tab-pane active" id="tab-theory">
+        <div class="chem-doc-content">
+          <h2>Reaction Enthalpy & Activation Energy</h2>
+          <div class="chem-formula-hero">
+            <code>\Delta H = \sum H_{\text{products}} - \sum H_{\text{reactants}}, \quad E_a = E_{\text{transition}} - E_{\text{reactants}}</code>
+          </div>
+          <p class="chem-formula-desc">Exothermic reactions release heat (ΔH < 0), whereas endothermic reactions absorb heat (ΔH > 0). Activation energy E_a represents the kinetic threshold required to reach the transition state.</p>
+          <div class="chem-text-block">
+            Chemical reactions occur when reactant particles collide with sufficient kinetic energy (greater than or equal to activation energy E_a) and correct steric orientation to break chemical bonds and form new products. Synthesis combines simpler substances into a compound (A + B → AB). Decomposition breaks a compound into simpler constituents (AB → A + B). Single displacement involves an active element replacing a less active element (A + BC → AC + B), governed by the electrochemical activity series. Double displacement involves mutual exchange of ions (AB + CD → AD + CB).
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 2: Procedure -->
+      <div class="chem-tab-pane" id="tab-procedure">
+        <div class="chem-doc-content">
+          <h2>Experimental Objectives</h2>
+          <ul class="chem-bullet-list">
+            <li>Classify reactions into synthesis, decomposition, displacement, and neutralization.</li><li>Predict precipitate formation using standard solubility rules.</li><li>Correlate macroscopic observable cues with atomic bond rearrangements.</li><li>Interpret potential energy reaction coordinate diagrams (exothermic vs endothermic).</li>
+          </ul>
+          <h2 style="margin-top:2rem;">Step-by-Step Laboratory Procedure</h2>
+          <ol class="chem-step-list">
+            
+            <li class="chem-step-item">
+              <strong>Step 1:</strong>
+              <p>Select a reaction category from the library (Synthesis, Decomposition, Single Replacement, Double Replacement, Combustion).</p>
+            </li>
+            
+            <li class="chem-step-item">
+              <strong>Step 2:</strong>
+              <p>Click 'Initiate Reaction' to observe animated test tube transformations (color change, precipitate, bubbles).</p>
+            </li>
+            
+            <li class="chem-step-item">
+              <strong>Step 3:</strong>
+              <p>Inspect the balanced equation, state symbols (s, l, g, aq), and net ionic equations.</p>
+            </li>
+            
+            <li class="chem-step-item">
+              <strong>Step 4:</strong>
+              <p>Analyze the live thermodynamic energy profile showing activation energy and enthalpy change ΔH.</p>
+            </li>
+            
+          </ol>
+        </div>
+      </div>
+
+      <!-- Tab 3: Worked Example -->
+      <div class="chem-tab-pane" id="tab-example">
+        <div class="chem-doc-content">
+          <h2>Worked Example & Step-by-Step Calculation</h2>
+          <div class="chem-example-box">
+            <h3 style="color:var(--chem-primary); font-size:1.15rem; margin-bottom:0.75rem;">Problem Statement:</h3>
+            <p style="font-size:1.05rem; font-weight:600; color:var(--text-main); margin-bottom:1.5rem;">When aqueous barium chloride (BaCl₂) is mixed with aqueous sodium sulfate (Na₂SO₄), a white precipitate forms. Write the molecular, complete ionic, and net ionic equations.</p>
+            <h3 style="color:var(--chem-secondary); font-size:1.15rem; margin-bottom:0.75rem;">Mathematical Solution & Derivation:</h3>
+            <div class="chem-example-solution" style="white-space:pre-line; line-height:1.7;">
+              1. Molecular equation:
+   BaCl₂(aq) + Na₂SO₄(aq) → BaSO₄(s)↓ + 2 NaCl(aq).
+2. Complete ionic equation:
+   Ba²⁺(aq) + 2 Cl⁻(aq) + 2 Na⁺(aq) + SO₄²⁻(aq) → BaSO₄(s) + 2 Na⁺(aq) + 2 Cl⁻(aq).
+3. Cancel spectator ions (Na⁺ and Cl⁻):
+   Net ionic equation: Ba²⁺(aq) + SO₄²⁻(aq) → BaSO₄(s)↓.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 4: Applications & Misconceptions -->
+      <div class="chem-tab-pane" id="tab-applications">
+        <div class="chem-doc-content">
+          <h2>Industrial, Engineering & Everyday Applications</h2>
+          <div class="chem-apps-grid">
+            
+            <div class="chem-app-item">
+              <strong>Metallurgical Extraction</strong>
+              <p>Thermite reaction (Fe2O3 + 2Al -> Al2O3 + 2Fe) for on-site railway welding.</p>
+            </div>
+            
+            <div class="chem-app-item">
+              <strong>Effluent Treatment</strong>
+              <p>Heavy metal precipitation by adding sodium hydroxide to industrial wastewater.</p>
+            </div>
+            
+            <div class="chem-app-item">
+              <strong>Aerospace Propulsion</strong>
+              <p>Liquid hydrogen and oxygen combustion powering rocket rocket engines.</p>
+            </div>
+            
+            <div class="chem-app-item">
+              <strong>Forensic Science</strong>
+              <p>Luminol chemiluminescent oxidation catalyzed by iron in blood hemoglobin.</p>
+            </div>
+            
+          </div>
+          <h2 style="margin-top:2.5rem;">Common Student Misconceptions & Scientific Reality</h2>
+          <div class="chem-misc-list">
+            
+        <div class="chem-misc-card">
+          <div class="chem-misc-fact">💡 <strong>Critical Conceptual Insight:</strong> Students often assume all double displacement reactions form precipitates. Double displacement reactions also occur when an un-ionized weak electrolyte (such as water in acid-base neutralization) or an insoluble gas (such as CO₂ or H₂S) is produced.</div>
+        </div>
+        
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 5: FAQs -->
+      <div class="chem-tab-pane" id="tab-faqs">
+        <div class="chem-doc-content">
+          <h2>Frequently Asked Questions on Chemical Reaction Types & Energy Simulator</h2>
+          <div class="chem-faq-list" style="margin-top:1.5rem;">
+            
+            <div class="chem-faq-item">
+              <button class="chem-faq-trigger">
+                <span>What are spectator ions?</span>
+                <svg class="chem-faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="chem-faq-content">
+                <p>Spectator ions are ions that exist in the same state on both the reactant and product sides of a chemical equation without participating in the actual chemical change.</p>
+              </div>
+            </div>
+            
+            <div class="chem-faq-item">
+              <button class="chem-faq-trigger">
+                <span>How can you tell if a single displacement reaction will occur?</span>
+                <svg class="chem-faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="chem-faq-content">
+                <p>By referencing the electrochemical activity series: an element can only displace another element from a compound if it is located higher in the activity series.</p>
+              </div>
+            </div>
+            
+            <div class="chem-faq-item">
+              <button class="chem-faq-trigger">
+                <span>What is the difference between exothermic and endothermic reactions?</span>
+                <svg class="chem-faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="chem-faq-content">
+                <p>Exothermic reactions release thermal energy to the surroundings (ΔH is negative, temperature rises), while endothermic reactions absorb heat (ΔH is positive, temperature drops).</p>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Experiments Section -->
+    <section class="chem-related-section">
+      <div class="chem-section-header">
+        <h2 class="chem-section-title">Related Chemistry Virtual Labs</h2>
+        <p class="chem-section-desc">Continue your exploration with these interconnected chemical experiments and simulations.</p>
+      </div>
+      <div class="chem-grid">
+        
+            <article class="chem-card" data-category="acids-bases">
+              <div class="chem-card-badge-wrap">
+                <span class="chem-badge chem-badge-primary">Acids, Bases & Solutions</span>
+                <span class="chem-badge chem-badge-secondary">Classes 9–12 / NEET / JEE</span>
+              </div>
+              <div class="chem-card-icon">
+      <svg viewBox="0 0 100 100" fill="none" stroke="currentColor">
+        <rect x="25" y="30" width="50" height="55" rx="4" stroke="var(--border-color)" stroke-width="2.5" fill="none"/>
+        <rect x="27" y="45" width="46" height="38" rx="2" fill="rgba(16,185,129,0.3)"/>
+        <line x1="60" y1="15" x2="60" y2="60" stroke="#334155" stroke-width="4"/>
+        <circle cx="60" cy="62" r="5" fill="#38bdf8"/>
+        <rect x="15" y="10" width="35" height="18" rx="3" fill="#1e293b"/>
+        <text x="32" y="23" font-size="8" font-weight="bold" fill="#38bdf8" text-anchor="middle">pH 7.0</text>
+      </svg>
+    </div>
+              <h3 class="chem-card-title"><a href="/chemistry-labs/ph-scale-simulator/">pH Scale & Hydrogen Ion Concentration Simulator</a></h3>
+              <p class="chem-card-desc">Visualize the logarithmic pH scale from 0 to 14. Adjust hydronium [H⁺] and hydroxide [OH⁻] concentrations, observe unive...</p>
+              <a href="/chemistry-labs/ph-scale-simulator/" class="chem-card-btn">Open Lab →</a>
+            </article>
+            
+            <article class="chem-card" data-category="analytical">
+              <div class="chem-card-badge-wrap">
+                <span class="chem-badge chem-badge-primary">Analytical Chemistry</span>
+                <span class="chem-badge chem-badge-secondary">Classes 11–12 / B.Sc Chemistry / JEE</span>
+              </div>
+              <div class="chem-card-icon">
+      <svg viewBox="0 0 100 100" fill="none" stroke="currentColor">
+        <rect x="44" y="10" width="12" height="45" stroke="#334155" stroke-width="2" fill="rgba(59,130,246,0.2)"/>
+        <rect x="42" y="55" width="16" height="6" fill="#0f172a"/>
+        <line x1="50" y1="61" x2="50" y2="66" stroke="#334155" stroke-width="2"/>
+        <circle cx="50" cy="70" r="2" fill="#3b82f6"/>
+        <path d="M42 74 H58 L72 92 H28 Z" stroke="#334155" stroke-width="2" fill="rgba(236,72,153,0.3)"/>
+      </svg>
+    </div>
+              <h3 class="chem-card-title"><a href="/chemistry-labs/acid-base-titration/">Acid-Base Titration Virtual Laboratory</a></h3>
+              <p class="chem-card-desc">Operate a complete analytical titration workstation with a graduated burette, Erlenmeyer flask, and magnetic stirrer. Ti...</p>
+              <a href="/chemistry-labs/acid-base-titration/" class="chem-card-btn">Open Lab →</a>
+            </article>
+            
+            <article class="chem-card" data-category="acids-bases">
+              <div class="chem-card-badge-wrap">
+                <span class="chem-badge chem-badge-primary">Acids, Bases & Solutions</span>
+                <span class="chem-badge chem-badge-secondary">Classes 9–12 / B.Sc Chemistry</span>
+              </div>
+              <div class="chem-card-icon">
+      <svg viewBox="0 0 100 100" fill="none" stroke="currentColor">
+        <rect x="22" y="25" width="56" height="65" rx="3" stroke="#94a3b8" stroke-width="2.5" fill="none"/>
+        <rect x="24" y="45" width="52" height="43" fill="rgba(37,99,235,0.4)"/>
+        <ellipse cx="50" cy="45" rx="26" ry="5" fill="rgba(37,99,235,0.6)"/>
+        <rect x="35" y="82" width="6" height="4" fill="#2563eb"/>
+        <rect x="52" y="83" width="5" height="4" fill="#2563eb"/>
+        <rect x="62" y="81" width="6" height="5" fill="#2563eb"/>
+      </svg>
+    </div>
+              <h3 class="chem-card-title"><a href="/chemistry-labs/solution-concentration-simulator/">Solution Concentration & Dilution Simulator</a></h3>
+              <p class="chem-card-desc">Prepare chemical solutions of precise concentrations. Dissolve salts like NaCl, CuSO₄, and KMnO₄ into aqueous solvents, ...</p>
+              <a href="/chemistry-labs/solution-concentration-simulator/" class="chem-card-btn">Open Lab →</a>
+            </article>
+            
+      </div>
+    </section>
+  </main>
+
+  
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="/" class="brand-logo">
+            <div class="logo-symbol">E</div>
+            <span>Ecrio<span class="accent-dot">X</span></span>
+          </a>
+          <p>One Platform. Endless Possibilities. Free, scientifically accurate browser-based virtual laboratories and digital productivity utilities.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Chemistry Labs</h4>
+          <ul class="footer-links">
+            <li><a href="/chemistry-labs/">All Chemistry Labs</a></li>
+            <li><a href="/chemistry-labs/interactive-periodic-table/">Periodic Table Explorer</a></li>
+            <li><a href="/chemistry-labs/chemical-equation-balancer/">Equation Balancer</a></li>
+            <li><a href="/chemistry-labs/acid-base-titration/">Acid-Base Titration</a></li>
+            <li><a href="/chemistry-labs/3d-molecular-viewer/">3D Molecular Viewer</a></li>
+            <li><a href="/chemistry-labs/calculators/">Chemistry Calculators</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Physics Labs</h4>
+          <ul class="footer-links">
+            <li><a href="/physics-labs/">All Physics Labs</a></li>
+            <li><a href="/physics-labs/projectile-motion-simulator/">Projectile Motion</a></li>
+            <li><a href="/physics-labs/electric-circuit-simulator/">Circuit Simulator</a></li>
+            <li><a href="/physics-labs/ray-optics-simulator/">Ray Optics Lab</a></li>
+            <li><a href="/physics-labs/simple-pendulum-experiment/">Simple Pendulum</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Product Suite</h4>
+          <ul class="footer-links">
+            <li><a href="/tools/">All Tools Directory</a></li>
+            <li><a href="/categories/">Tool Categories</a></li>
+            <li><a href="/pdf-compressor/">PDF Compressor</a></li>
+            <li><a href="/resume-builder/">ATS Resume Builder</a></li>
+            <li><a href="/typing-speed-test/">Typing Arena</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company & Legal</h4>
+          <ul class="footer-links">
+            <li><a href="/about/">About EcrioX</a></li>
+            <li><a href="/contact/">Contact Support</a></li>
+            <li><a href="/privacy/">Privacy Policy</a></li>
+            <li><a href="/terms/">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 EcrioX. All rights reserved. Zero client downloads required — 100% private in-browser scientific simulations.</p>
+        <p>Canonical Domain: <a href="https://ecriox.com/" style="color: var(--chem-primary);">ecriox.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Chemistry Engine Script Loaded Globally -->
+  <script src="/js/chemistry-engine.js"></script>
+  <script>
+    // Theme toggle listener
+    const themeBtn = document.getElementById('themeToggleBtn');
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => {
+        const cur = document.documentElement.getAttribute('data-theme') || 'light';
+        const nxt = cur === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', nxt);
+        try { localStorage.setItem('ecriox_theme_preference', nxt); } catch(e){}
+        window.dispatchEvent(new Event('themechange'));
+      });
+    }
+    // Mobile navigation drawer toggle
+    const mobToggle = document.getElementById('mobileMenuToggle');
+    const mobNav = document.getElementById('mobileNavDrawer');
+    if (mobToggle && mobNav) {
+      mobToggle.addEventListener('click', () => {
+        const isOpen = mobNav.classList.toggle('open');
+        mobToggle.setAttribute('aria-expanded', isOpen);
+      });
+    }
+    // FAQ Accordion listener
+    document.querySelectorAll('.chem-faq-trigger').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.parentElement.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>
+
+
+  <!-- Tab Switcher & Lab Actions Script -->
+  <script>
+    (function(){
+      // Tab switcher
+      const tabBtns = document.querySelectorAll('.chem-tab-btn');
+      const tabPanes = document.querySelectorAll('.chem-tab-pane');
+
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          tabBtns.forEach(b => b.classList.remove('active'));
+          tabPanes.forEach(p => p.classList.remove('active'));
+
+          btn.classList.add('active');
+          const target = btn.getAttribute('data-tab');
+          const pane = document.getElementById(target);
+          if (pane) pane.classList.add('active');
+        });
+      });
+
+      // Fullscreen mode toggle
+      const fsBtn = document.getElementById('btnFullscreen');
+      const labWrap = document.getElementById('labWrapper');
+      if (fsBtn && labWrap) {
+        fsBtn.addEventListener('click', () => {
+          if (!document.fullscreenElement) {
+            labWrap.requestFullscreen?.() || labWrap.webkitRequestFullscreen?.();
+            fsBtn.innerHTML = 'Exit Fullscreen';
+          } else {
+            document.exitFullscreen?.() || document.webkitExitFullscreen?.();
+            fsBtn.innerHTML = 'Fullscreen';
+          }
+        });
+      }
+
+      // Print Lab Worksheet
+      const printBtn = document.getElementById('btnPrintWorksheet');
+      if (printBtn) {
+        printBtn.addEventListener('click', () => window.print());
+      }
+
+      // Export CSV Data
+      const csvBtn = document.getElementById('btnExportCSV');
+      if (csvBtn) {
+        csvBtn.addEventListener('click', () => {
+          const metrics = Array.from(document.querySelectorAll('#hudBar .hud-metric')).map(m => {
+            const lbl = m.querySelector('.hud-metric-label')?.textContent.trim() || 'Metric';
+            const val = m.querySelector('.hud-metric-value')?.textContent.trim() || '0';
+            return `"${lbl}","${val}"`;
+          });
+          const csvContent = "data:text/csv;charset=utf-8,Parameter,Value\n" +
+            `"Experiment","Chemical Reaction Types & Energy Simulator"\n` +
+            `"Timestamp","${new Date().toISOString()}"\n` +
+            metrics.join("\n");
+          const encodedUri = encodeURI(csvContent);
+          const link = document.createElement("a");
+          link.setAttribute("href", encodedUri);
+          link.setAttribute("download", "chemical-reaction-simulator-lab-data.csv");
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        });
+      }
+    })();
+  </script>
+
+  <!-- Interactive Simulation Engine Execution -->
+  <script>
+    
+    (function() {
+      const canvas = document.getElementById('simCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+
+      const RXNS = {
+        "zn_hcl": {
+          type: "Single Displacement", equation: "Zn(s) + 2HCl(aq) → ZnCl₂(aq) + H₂(g)↑",
+          dH: -153.9, Ea: 45.0, cue: "H₂ Gas Effervescence", color: "rgba(226, 232, 240, 0.4)",
+          bubbles: true, precip: false, tempRise: 14.5
+        },
+        "mg_o2": {
+          type: "Synthesis / Combustion", equation: "2Mg(s) + O₂(g) → 2MgO(s)",
+          dH: -601.7, Ea: 85.0, cue: "Intense White Flare", color: "rgba(254, 243, 199, 0.8)",
+          bubbles: false, precip: false, flash: true, tempRise: 45.0
+        },
+        "agno3_nacl": {
+          type: "Double Displacement", equation: "AgNO₃(aq) + NaCl(aq) → AgCl(s)↓ + NaNO₃(aq)",
+          dH: -65.7, Ea: 15.0, cue: "White AgCl Precipitate", color: "rgba(255, 255, 255, 0.85)",
+          bubbles: false, precip: true, tempRise: 3.2
+        },
+        "hcl_naoh": {
+          type: "Neutralization", equation: "HCl(aq) + NaOH(aq) → NaCl(aq) + H₂O(l)",
+          dH: -57.1, Ea: 20.0, cue: "Temperature Rise", color: "rgba(224, 242, 254, 0.4)",
+          bubbles: false, precip: false, tempRise: 8.5
+        },
+        "h2o2_cat": {
+          type: "Decomposition", equation: "2H₂O₂(aq) → 2H₂O(l) + O₂(g)↑",
+          dH: -98.2, Ea: 49.0, cue: "Rapid O₂ Foam / Bubbles", color: "rgba(240, 253, 250, 0.6)",
+          bubbles: true, precip: false, tempRise: 12.0
+        }
+      };
+
+      let currentKey = "zn_hcl";
+      let isReacting = false;
+      let rxnProgress = 0;
+      let particles = [];
+      let temp = 25.0;
+
+      function updateHUD() {
+        const r = RXNS[currentKey];
+        document.getElementById('hudRxnType').textContent = r.type;
+        document.getElementById('hudRxnH').innerHTML = r.dH + '<span class="hud-metric-unit">kJ/mol</span>';
+        document.getElementById('hudRxnTherm').textContent = r.dH < 0 ? 'Exothermic (ΔH < 0)' : 'Endothermic (ΔH > 0)';
+        document.getElementById('hudRxnTemp').innerHTML = temp.toFixed(1) + '<span class="hud-metric-unit">&deg;C</span>';
+        document.getElementById('hudRxnCue').textContent = r.cue;
+        document.getElementById('hudRxnEa').innerHTML = r.Ea + '<span class="hud-metric-unit">kJ/mol</span>';
+      }
+
+      function draw() {
+        const dpr = window.devicePixelRatio || 1;
+        const rect = canvas.getBoundingClientRect();
+        canvas.width = rect.width * dpr;
+        canvas.height = rect.height * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        const w = rect.width;
+        const h = rect.height;
+        const cx = w / 2;
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+
+        ctx.clearRect(0, 0, w, h);
+        const r = RXNS[currentKey];
+
+        // Draw Beaker Apparatus
+        const bx = cx - 110;
+        const by = 80;
+        const bw = 220;
+        const bh = 280;
+
+        ctx.strokeStyle = isDark ? '#94A3B8' : '#64748B';
+        ctx.lineWidth = 4;
+        ctx.beginPath();
+        ctx.moveTo(bx - 10, by);
+        ctx.lineTo(bx, by);
+        ctx.lineTo(bx, by + bh);
+        ctx.lineTo(bx + bw, by + bh);
+        ctx.lineTo(bx + bw, by);
+        ctx.lineTo(bx + bw + 10, by);
+        ctx.stroke();
+
+        // Liquid in Beaker
+        const fluidH = 180;
+        const fy = by + bh - fluidH;
+        ctx.fillStyle = r.color;
+        ctx.fillRect(bx + 4, fy, bw - 8, fluidH - 4);
+
+        // Precipitate layer if double replacement
+        if (r.precip && rxnProgress > 0) {
+          ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
+          const ph = Math.min(25, rxnProgress * 25);
+          ctx.fillRect(bx + 4, by + bh - ph, bw - 8, ph);
+        }
+
+        // Bubbles if gas evolution
+        if (r.bubbles && isReacting) {
+          particles.forEach(p => {
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(255,255,255,0.7)';
+            ctx.fill();
+            ctx.strokeStyle = isDark ? '#38BDF8' : '#0284C7';
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          });
+        }
+
+        // Thermometer on the side
+        const tx = bx + bw + 30;
+        const ty = by + 20;
+        const tw = 14;
+        const th = 240;
+
+        ctx.fillStyle = isDark ? '#1E293B' : '#F1F5F9';
+        ctx.fillRect(tx, ty, tw, th);
+        ctx.strokeStyle = isDark ? '#475569' : '#CBD5E1';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(tx, ty, tw, th);
+
+        // Mercury column
+        const mercuryH = Math.min(th, ((temp - 15) / 60) * th);
+        ctx.fillStyle = '#DC2626';
+        ctx.fillRect(tx + 2, ty + th - mercuryH, tw - 4, mercuryH);
+
+        // Bulb
+        ctx.beginPath();
+        ctx.arc(tx + tw / 2, ty + th + 6, 12, 0, Math.PI * 2);
+        ctx.fillStyle = '#DC2626';
+        ctx.fill();
+
+        ctx.fillStyle = isDark ? '#F8FAFC' : '#0F172A';
+        ctx.font = '11px sans-serif';
+        ctx.fillText(temp.toFixed(1) + '°C', tx - 10, ty - 6);
+      }
+
+      function loop() {
+        if (isReacting) {
+          rxnProgress = Math.min(1.0, rxnProgress + 0.015);
+          const r = RXNS[currentKey];
+          temp = 25.0 + r.tempRise * rxnProgress;
+
+          // Spawn bubbles
+          if (r.bubbles && Math.random() < 0.4) {
+            const bx = canvas.width / (2 * (window.devicePixelRatio||1)) - 100;
+            particles.push({
+              x: bx + Math.random() * 180,
+              y: 80 + 280 - 10,
+              vy: 2 + Math.random() * 3,
+              r: 2 + Math.random() * 4
+            });
+          }
+
+          particles.forEach(p => { p.y -= p.vy; });
+          particles = particles.filter(p => p.y > 180);
+
+          if (rxnProgress >= 1.0) {
+            isReacting = false;
+          }
+          updateHUD();
+        }
+        draw();
+        requestAnimationFrame(loop);
+      }
+      requestAnimationFrame(loop);
+
+      const sel = document.getElementById('rxnSelect');
+      const btnTrig = document.getElementById('btnTriggerRxn');
+      const btnRes = document.getElementById('btnResetRxn');
+
+      sel.addEventListener('change', () => {
+        currentKey = sel.value;
+        rxnProgress = 0;
+        isReacting = false;
+        particles = [];
+        temp = 25.0;
+        updateHUD();
+      });
+
+      btnTrig.addEventListener('click', () => {
+        isReacting = true;
+        rxnProgress = 0;
+      });
+
+      btnRes.addEventListener('click', () => {
+        rxnProgress = 0;
+        isReacting = false;
+        particles = [];
+        temp = 25.0;
+        updateHUD();
+      });
+
+      updateHUD();
+    })();
+  
+  </script>
+        

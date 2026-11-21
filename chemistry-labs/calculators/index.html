@@ -1,0 +1,855 @@
+
+  <!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Master Chemistry Calculators Suite – 15 Online Chemical Equation & Property Solvers | EcrioX</title>
+  <meta name="description" content="Free online chemistry calculators suite. Solve molarity, molality, formula weight, dilution (M1V1=M2V2), pH/pOH, empirical formula, stoichiometry, limiting reagent, ideal gas law, and Faraday's law with step-by-step derivations.">
+  <link rel="canonical" href="https://ecriox.com/chemistry-labs/calculators/">
+  <!-- Favicon & Brand Icons -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#2563EB">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Master Chemistry Calculators Suite – 15 Online Chemical Equation & Property Solvers | EcrioX">
+  <meta property="og:description" content="Free online chemistry calculators suite. Solve molarity, molality, formula weight, dilution (M1V1=M2V2), pH/pOH, empirical formula, stoichiometry, limiting reagent, ideal gas law, and Faraday's law with step-by-step derivations.">
+  <meta property="og:url" content="https://ecriox.com/chemistry-labs/calculators/">
+  <meta property="og:site_name" content="EcrioX">
+  <meta property="og:image" content="https://ecriox.com/og-banner.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Master Chemistry Calculators Suite – 15 Online Chemical Equation & Property Solvers | EcrioX">
+  <meta name="twitter:description" content="Free online chemistry calculators suite. Solve molarity, molality, formula weight, dilution (M1V1=M2V2), pH/pOH, empirical formula, stoichiometry, limiting reagent, ideal gas law, and Faraday's law with step-by-step derivations.">
+  <meta name="twitter:image" content="https://ecriox.com/og-banner.png">
+
+  <!-- Global Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-NNT7J485');
+  </script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6486455437877685" crossorigin="anonymous"></script>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/chemistry-labs.css">
+
+  <!-- Anti-FOUT & Theme Sync -->
+  <script>
+    (function(){
+      try {
+        var savedTheme = localStorage.getItem('ecriox_theme_preference');
+        if (savedTheme) {
+          document.documentElement.setAttribute('data-theme', savedTheme);
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      } catch(e) {}
+    })();
+  </script>
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://ecriox.com/chemistry-labs/calculators/#app",
+      "url": "https://ecriox.com/chemistry-labs/calculators/",
+      "name": "EcrioX Master Chemistry Calculators Suite",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Free online chemistry calculators suite. Solve molarity, molality, formula weight, dilution (M1V1=M2V2), pH/pOH, empirical formula, stoichiometry, limiting reagent, ideal gas law, and Faraday's law with step-by-step derivations."
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://ecriox.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Chemistry Virtual Labs",
+          "item": "https://ecriox.com/chemistry-labs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Chemistry Calculators",
+          "item": "https://ecriox.com/chemistry-labs/calculators/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How does the dilution calculator solve for missing parameters?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The dilution calculator uses the conservation of moles equation M1\u00b7V1 = M2\u00b7V2. You leave whichever variable you want to solve blank, and the calculator isolates that variable and computes the exact volume or molarity required."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can the molecular mass calculator parse complex hydrates and brackets?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The algorithm handles nested parentheses like Ca3(PO4)2, coordination complexes like [Fe(CN)6]4-, and dot-hydrates like CuSO4\u00b75H2O, breaking down each element's mass and percent composition."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are these calculators free and accessible on mobile?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, 100% free with no registration or limits. The responsive interface adapts smoothly across smartphones, tablets, and desktop browsers."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NNT7J485" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="brand-logo" aria-label="EcrioX Home">
+        <div class="logo-symbol">E</div>
+        <span>Ecrio<span class="accent-dot">X</span></span>
+      </a>
+
+      <nav class="nav-desktop">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/physics-labs/" class="nav-link">Physics Labs</a>
+        <a href="/chemistry-labs/" class="nav-link active">Chemistry Labs</a>
+        <a href="/chemistry-labs/calculators/" class="nav-link">Calculators</a>
+        <a href="/resume-builder/" class="nav-link">Career Studio</a>
+        <a href="/typing-speed-test/" class="nav-link">Typing Arena</a>
+        <a href="/tools/" class="nav-link">All Tools</a>
+        <a href="/about/" class="nav-link">About</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn-icon theme-toggle-btn" aria-label="Toggle color theme" id="themeToggleBtn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <button class="btn-icon mobile-toggle" aria-label="Open mobile menu" aria-expanded="false" id="mobileMenuToggle">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav-drawer" id="mobileNavDrawer">
+    <nav class="mobile-nav">
+      <a href="/" class="mobile-nav-link">Home</a>
+      <a href="/physics-labs/" class="mobile-nav-link">Physics Labs</a>
+      <a href="/chemistry-labs/" class="mobile-nav-link active">Chemistry Labs</a>
+      <a href="/chemistry-labs/calculators/" class="mobile-nav-link">Calculators</a>
+      <a href="/resume-builder/" class="mobile-nav-link">Career Studio</a>
+      <a href="/typing-speed-test/" class="mobile-nav-link">Typing Arena</a>
+      <a href="/tools/" class="mobile-nav-link">All Tools</a>
+      <a href="/about/" class="mobile-nav-link">About</a>
+    </nav>
+  </div>
+
+
+  <main id="main-content" class="container" style="padding-top:1.5rem; padding-bottom:3rem;">
+    <!-- Breadcrumbs -->
+    <nav class="chem-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="chem-breadcrumb-sep">/</span>
+      <a href="/chemistry-labs/">Chemistry Virtual Labs</a>
+      <span class="chem-breadcrumb-sep">/</span>
+      <span class="chem-breadcrumb-current">Calculators Suite</span>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="chem-lab-header" style="border-bottom:none; margin-bottom:1.5rem;">
+      <div class="chem-lab-header-left">
+        <span class="chem-badge chem-badge-primary">Master Chemical Suite</span>
+        <h1 class="chem-lab-title">15 Interactive Chemistry Calculators</h1>
+        <p class="chem-lab-intro">
+          Comprehensive, mathematically verified chemistry solvers for high school, college, and engineering students. Calculate solution molarities, empirical formulas, titration end points, gas law parameters, and Faraday yields with step-by-step mathematical proofs.
+        </p>
+      </div>
+    </div>
+
+    <!-- Quick Navigation Pills -->
+    <div class="chem-filter-pills" style="margin-bottom:2rem;">
+      <a href="#calc-molarity" class="chem-filter-pill">Molarity</a>
+      <a href="#calc-molality" class="chem-filter-pill">Molality</a>
+      <a href="#calc-mass" class="chem-filter-pill">Molecular Mass</a>
+      <a href="#calc-percent" class="chem-filter-pill">Percent Composition</a>
+      <a href="#calc-dilution" class="chem-filter-pill">Dilution (M₁V₁=M₂V₂)</a>
+      <a href="#calc-ph" class="chem-filter-pill">pH & pOH</a>
+      <a href="#calc-empirical" class="chem-filter-pill">Empirical Formula</a>
+      <a href="#calc-molformula" class="chem-filter-pill">Molecular Formula</a>
+      <a href="#calc-stoich" class="chem-filter-pill">Stoichiometry</a>
+      <a href="#calc-limiting" class="chem-filter-pill">Limiting Reagent</a>
+      <a href="#calc-yield" class="chem-filter-pill">Percent Yield</a>
+      <a href="#calc-gas" class="chem-filter-pill">Ideal Gas Law</a>
+      <a href="#calc-halflife" class="chem-filter-pill">Half-Life</a>
+      <a href="#calc-faraday" class="chem-filter-pill">Faraday's Law</a>
+    </div>
+
+    <!-- Calculators Grid -->
+    <div style="display:grid; grid-template-columns:1fr; gap:2rem;">
+
+      <!-- 1. Molarity Calculator -->
+      <section class="chem-viewport-card" id="calc-molarity">
+        <div class="chem-card-header-bar">
+          <span style="font-weight:700; color:var(--text-main);">1. Molarity Calculator (M = n / V)</span>
+          <span class="chem-badge chem-badge-primary">Concentration</span>
+        </div>
+        <div style="padding:1.5rem;">
+          <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:1rem;">
+            Calculates the molar concentration of a chemical solution given solute mass, molar mass, and solution volume.
+          </p>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:1rem; margin-bottom:1rem;">
+            <div>
+              <label class="chem-label">Solute Mass (g):</label>
+              <input type="number" id="molMassInp" class="chem-input" value="58.44" step="0.1">
+            </div>
+            <div>
+              <label class="chem-label">Molar Mass (g/mol):</label>
+              <input type="number" id="molMolarMassInp" class="chem-input" value="58.44" step="0.01">
+            </div>
+            <div>
+              <label class="chem-label">Solution Volume (L):</label>
+              <input type="number" id="molVolInp" class="chem-input" value="1.0" step="0.1">
+            </div>
+          </div>
+          <button id="btnCalcMolarity" class="chem-btn chem-btn-primary">Calculate Molarity</button>
+          <div id="resMolarity" class="chem-doc-content" style="margin-top:1rem; display:none;"></div>
+        </div>
+      </section>
+
+      <!-- 2. Molality Calculator -->
+      <section class="chem-viewport-card" id="calc-molality">
+        <div class="chem-card-header-bar">
+          <span style="font-weight:700; color:var(--text-main);">2. Molality Calculator (m = n / kg solvent)</span>
+          <span class="chem-badge chem-badge-primary">Colligative</span>
+        </div>
+        <div style="padding:1.5rem;">
+          <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:1rem;">
+            Determines molal concentration, independent of temperature expansions.
+          </p>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1rem;">
+            <div>
+              <label class="chem-label">Moles of Solute (mol):</label>
+              <input type="number" id="molalMolesInp" class="chem-input" value="0.5" step="0.1">
+            </div>
+            <div>
+              <label class="chem-label">Solvent Mass (kg):</label>
+              <input type="number" id="molalKgInp" class="chem-input" value="1.0" step="0.1">
+            </div>
+          </div>
+          <button id="btnCalcMolality" class="chem-btn chem-btn-primary">Calculate Molality</button>
+          <div id="resMolality" class="chem-doc-content" style="margin-top:1rem; display:none;"></div>
+        </div>
+      </section>
+
+      <!-- 3. Molecular Mass & Molar Mass Calculator -->
+      <section class="chem-viewport-card" id="calc-mass">
+        <div class="chem-card-header-bar">
+          <span style="font-weight:700; color:var(--text-main);">3. Molecular Mass & Molar Mass Calculator</span>
+          <span class="chem-badge chem-badge-secondary">Formula Parser</span>
+        </div>
+        <div style="padding:1.5rem;">
+          <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:1rem;">
+            Parses chemical formulas with brackets and hydrates (e.g. <code>Ca3(PO4)2</code>, <code>CuSO4*5H2O</code>, <code>C6H12O6</code>).
+          </p>
+          <div style="margin-bottom:1rem;">
+            <label class="chem-label">Chemical Formula:</label>
+            <input type="text" id="formulaInp" class="chem-input" value="Ca3(PO4)2" placeholder="e.g. CuSO4*5H2O">
+          </div>
+          <button id="btnCalcMass" class="chem-btn chem-btn-primary">Calculate Molecular Mass</button>
+          <div id="resMass" class="chem-doc-content" style="margin-top:1rem; display:none;"></div>
+        </div>
+      </section>
+
+      <!-- 4. Percent Composition Calculator -->
+      <section class="chem-viewport-card" id="calc-percent">
+        <div class="chem-card-header-bar">
+          <span style="font-weight:700; color:var(--text-main);">4. Percent Composition Calculator (% by Mass)</span>
+          <span class="chem-badge chem-badge-secondary">Stoichiometry</span>
+        </div>
+        <div style="padding:1.5rem;">
+          <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:1rem;">
+            Calculates the percentage mass contribution of each constituent element.
+          </p>
+          <div style="margin-bottom:1rem;">
+            <label class="chem-label">Chemical Formula:</label>
+            <input type="text" id="pctFormulaInp" class="chem-input" value="C6H12O6">
+          </div>
+          <button id="btnCalcPct" class="chem-btn chem-btn-primary">Compute Percentages</button>
+          <div id="resPct" class="chem-doc-content" style="margin-top:1rem; display:none;"></div>
+        </div>
+      </section>
+
+      <!-- 5. Solution Dilution Calculator -->
+      <section class="chem-viewport-card" id="calc-dilution">
+        <div class="chem-card-header-bar">
+          <span style="font-weight:700; color:var(--text-main);">5. Dilution Calculator (C₁V₁ = C₂V₂)</span>
+          <span class="chem-badge chem-badge-primary">Lab Preparation</span>
+        </div>
+        <div style="padding:1.5rem;">
+          <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:1rem;">
+            Leave exactly <strong>ONE</strong> field empty to solve for that missing variable.
+          </p>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:1rem; margin-bottom:1rem;">
+            <div>
+              <label class="chem-label">Initial Conc (C₁):</label>
+              <input type="number" id="dilC1" class="chem-input" value="12.0" placeholder="e.g. 12.0">
+            </div>
+            <div>
+              <label class="chem-label">Initial Volume (V₁):</label>
+              <input type="number" id="dilV1" class="chem-input" value="25.0" placeholder="e.g. 25.0">
+            </div>
+            <div>
+              <label class="chem-label">Final Conc (C₂):</label>
+              <input type="number" id="dilC2" class="chem-input" value="1.0" placeholder="e.g. 1.0">
+            </div>
+            <div>
+              <label class="chem-label">Final Volume (V₂):</label>
+              <input type="number" id="dilV2" class="chem-input" placeholder="Leave blank to solve">
+            </div>
+          </div>
+          <button id="btnCalcDilution" class="chem-btn chem-btn-primary">Solve Dilution</button>
+          <div id="resDilution" class="chem-doc-content" style="margin-top:1rem; display:none;"></div>
+        </div>
+      </section>
+
+      <!-- 6. pH & pOH Calculator -->
+      <section class="chem-viewport-card" id="calc-ph">
+        <div class="chem-card-header-bar">
+          <span style="font-weight:700; color:var(--text-main);">6. pH & pOH Calculator</span>
+          <span class="chem-badge chem-badge-secondary">Acids & Bases</span>
+        </div>
+        <div style="padding:1.5rem;">
+          <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:1rem;">
+            Calculates pH, pOH, and complementary ion concentrations from [H⁺] or [OH⁻].
+          </p>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1rem;">
+            <div>
+              <label class="chem-label">[H⁺] Concentration (mol/L):</label>
+              <input type="text" id="phHInp" class="chem-input" value="1e-3" placeholder="e.g. 0.001 or 1e-3">
+            </div>
+            <div>
+              <label class="chem-label">[OH⁻] Concentration (mol/L):</label>
+              <input type="text" id="phOHInp" class="chem-input" placeholder="Optional: solve from OH-">
+            </div>
+          </div>
+          <button id="btnCalcPH" class="chem-btn chem-btn-primary">Compute pH & pOH</button>
+          <div id="resPH" class="chem-doc-content" style="margin-top:1rem; display:none;"></div>
+        </div>
+      </section>
+
+      <!-- 7. Empirical Formula Calculator -->
+      <section class="chem-viewport-card" id="calc-empirical">
+        <div class="chem-card-header-bar">
+          <span style="font-weight:700; color:var(--text-main);">7. Empirical Formula Calculator</span>
+          <span class="chem-badge chem-badge-primary">Composition</span>
+        </div>
+        <div style="padding:1.5rem;">
+          <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:1rem;">
+            Finds the simplest integer atom ratio from mass or percentage compositions.
+          </p>
+          <div style="margin-bottom:1rem;">
+            <label class="chem-label">Elemental Percentages or Masses (e.g. C:40, H:6.7, O:53.3):</label>
+            <input type="text" id="empInp" class="chem-input" value="C:40.0, H:6.71, O:53.29">
+          </div>
+          <button id="btnCalcEmpirical" class="chem-btn chem-btn-primary">Calculate Empirical Formula</button>
+          <div id="resEmpirical" class="chem-doc-content" style="margin-top:1rem; display:none;"></div>
+        </div>
+      </section>
+
+      <!-- 8. Molecular Formula Calculator -->
+      <section class="chem-viewport-card" id="calc-molformula">
+        <div class="chem-card-header-bar">
+          <span style="font-weight:700; color:var(--text-main);">8. Molecular Formula Calculator</span>
+          <span class="chem-badge chem-badge-secondary">Structure</span>
+        </div>
+        <div style="padding:1.5rem;">
+          <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:1rem;">
+            Scales the empirical formula by molar mass: (Empirical)<sub>n</sub> = Molecular Formula.
+          </p>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1rem;">
+            <div>
+              <label class="chem-label">Empirical Formula:</label>
+              <input type="text" id="mfEmpInp" class="chem-input" value="CH2O">
+            </div>
+            <div>
+              <label class="chem-label">Actual Molar Mass (g/mol):</label>
+              <input type="number" id="mfMassInp" class="chem-input" value="180.16" step="0.1">
+            </div>
+          </div>
+          <button id="btnCalcMolFormula" class="chem-btn chem-btn-primary">Compute Molecular Formula</button>
+          <div id="resMolFormula" class="chem-doc-content" style="margin-top:1rem; display:none;"></div>
+        </div>
+      </section>
+
+      <!-- 9. Stoichiometry Calculator -->
+      <section class="chem-viewport-card" id="calc-stoich">
+        <div class="chem-card-header-bar">
+          <span style="font-weight:700; color:var(--text-main);">9. Reaction Stoichiometry Calculator</span>
+          <span class="chem-badge chem-badge-primary">Reactions</span>
+        </div>
+        <div style="padding:1.5rem;">
+          <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:1rem;">
+            Converts moles and masses between reactants and products using stoichiometric coefficients.
+          </p>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:1rem; margin-bottom:1rem;">
+            <div>
+              <label class="chem-label">Moles of Substance A:</label>
+              <input type="number" id="stMolesA" class="chem-input" value="2.0" step="0.1">
+            </div>
+            <div>
+              <label class="chem-label">Stoichiometric Coeff A:</label>
+              <input type="number" id="stCoeffA" class="chem-input" value="2" step="1">
+            </div>
+            <div>
+              <label class="chem-label">Stoichiometric Coeff B:</label>
+              <input type="number" id="stCoeffB" class="chem-input" value="1" step="1">
+            </div>
+            <div>
+              <label class="chem-label">Molar Mass of B (g/mol):</label>
+              <input type="number" id="stMassB" class="chem-input" value="32.0" step="0.1">
+            </div>
+          </div>
+          <button id="btnCalcStoich" class="chem-btn chem-btn-primary">Calculate Stoichiometry</button>
+          <div id="resStoich" class="chem-doc-content" style="margin-top:1rem; display:none;"></div>
+        </div>
+      </section>
+
+      <!-- 10. Limiting Reagent Calculator -->
+      <section class="chem-viewport-card" id="calc-limiting">
+        <div class="chem-card-header-bar">
+          <span style="font-weight:700; color:var(--text-main);">10. Limiting Reagent Calculator</span>
+          <span class="chem-badge chem-badge-secondary">Yield</span>
+        </div>
+        <div style="padding:1.5rem;">
+          <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:1rem;">
+            Identifies the reactant consumed first and computes theoretical product limits.
+          </p>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:1rem; margin-bottom:1rem;">
+            <div>
+              <label class="chem-label">Moles Reactant A:</label>
+              <input type="number" id="limMolA" class="chem-input" value="3.0" step="0.1">
+            </div>
+            <div>
+              <label class="chem-label">Coeff A:</label>
+              <input type="number" id="limCoeffA" class="chem-input" value="1" step="1">
+            </div>
+            <div>
+              <label class="chem-label">Moles Reactant B:</label>
+              <input type="number" id="limMolB" class="chem-input" value="5.0" step="0.1">
+            </div>
+            <div>
+              <label class="chem-label">Coeff B:</label>
+              <input type="number" id="limCoeffB" class="chem-input" value="3" step="1">
+            </div>
+          </div>
+          <button id="btnCalcLimiting" class="chem-btn chem-btn-primary">Find Limiting Reagent</button>
+          <div id="resLimiting" class="chem-doc-content" style="margin-top:1rem; display:none;"></div>
+        </div>
+      </section>
+
+      <!-- 11. Percent Yield Calculator -->
+      <section class="chem-viewport-card" id="calc-yield">
+        <div class="chem-card-header-bar">
+          <span style="font-weight:700; color:var(--text-main);">11. Percent Yield Calculator</span>
+          <span class="chem-badge chem-badge-primary">Efficiency</span>
+        </div>
+        <div style="padding:1.5rem;">
+          <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:1rem;">
+            Calculates synthetic efficiency: % Yield = (Actual Yield / Theoretical Yield) × 100%.
+          </p>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1rem;">
+            <div>
+              <label class="chem-label">Actual Measured Yield (g):</label>
+              <input type="number" id="ydActual" class="chem-input" value="18.5" step="0.1">
+            </div>
+            <div>
+              <label class="chem-label">Theoretical Calculated Yield (g):</label>
+              <input type="number" id="ydTheo" class="chem-input" value="20.0" step="0.1">
+            </div>
+          </div>
+          <button id="btnCalcYield" class="chem-btn chem-btn-primary">Calculate Percent Yield</button>
+          <div id="resYield" class="chem-doc-content" style="margin-top:1rem; display:none;"></div>
+        </div>
+      </section>
+
+      <!-- 12. Ideal Gas Law Calculator -->
+      <section class="chem-viewport-card" id="calc-gas">
+        <div class="chem-card-header-bar">
+          <span style="font-weight:700; color:var(--text-main);">12. Ideal Gas Law Calculator (PV = nRT)</span>
+          <span class="chem-badge chem-badge-secondary">Thermodynamics</span>
+        </div>
+        <div style="padding:1.5rem;">
+          <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:1rem;">
+            Solves for Pressure, Volume, Moles, or Temperature. Leave exactly <strong>ONE</strong> field empty.
+          </p>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:1rem; margin-bottom:1rem;">
+            <div>
+              <label class="chem-label">Pressure (atm):</label>
+              <input type="number" id="gasP" class="chem-input" placeholder="Leave blank to solve">
+            </div>
+            <div>
+              <label class="chem-label">Volume (L):</label>
+              <input type="number" id="gasV" class="chem-input" value="22.4" step="0.1">
+            </div>
+            <div>
+              <label class="chem-label">Amount (mol):</label>
+              <input type="number" id="gasN" class="chem-input" value="1.0" step="0.1">
+            </div>
+            <div>
+              <label class="chem-label">Temperature (K):</label>
+              <input type="number" id="gasT" class="chem-input" value="273.15" step="0.1">
+            </div>
+          </div>
+          <button id="btnCalcGas" class="chem-btn chem-btn-primary">Solve Gas Variable</button>
+          <div id="resGas" class="chem-doc-content" style="margin-top:1rem; display:none;"></div>
+        </div>
+      </section>
+
+      <!-- 13. Half-Life & Kinetics Calculator -->
+      <section class="chem-viewport-card" id="calc-halflife">
+        <div class="chem-card-header-bar">
+          <span style="font-weight:700; color:var(--text-main);">13. Radioactive Half-Life & Nuclear Kinetics Calculator</span>
+          <span class="chem-badge chem-badge-primary">Kinetics</span>
+        </div>
+        <div style="padding:1.5rem;">
+          <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:1rem;">
+            Computes radioactive decay: N(t) = N₀ · (1/2)<sup>t / t½</sup>.
+          </p>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:1rem; margin-bottom:1rem;">
+            <div>
+              <label class="chem-label">Initial Quantity (N₀, grams/atoms):</label>
+              <input type="number" id="hlN0" class="chem-input" value="100.0" step="1">
+            </div>
+            <div>
+              <label class="chem-label">Half-Life Period (t½, years/days/s):</label>
+              <input type="number" id="hlTHalf" class="chem-input" value="5.73" step="0.01">
+            </div>
+            <div>
+              <label class="chem-label">Total Elapsed Time (t):</label>
+              <input type="number" id="hlTTotal" class="chem-input" value="11.46" step="0.1">
+            </div>
+          </div>
+          <button id="btnCalcHalfLife" class="chem-btn chem-btn-primary">Compute Remaining Mass</button>
+          <div id="resHalfLife" class="chem-doc-content" style="margin-top:1rem; display:none;"></div>
+        </div>
+      </section>
+
+      <!-- 14. Faraday's Law of Electrolysis Calculator -->
+      <section class="chem-viewport-card" id="calc-faraday">
+        <div class="chem-card-header-bar">
+          <span style="font-weight:700; color:var(--text-main);">14. Faraday's Law of Electrolysis Calculator</span>
+          <span class="chem-badge chem-badge-secondary">Electrochemistry</span>
+        </div>
+        <div style="padding:1.5rem;">
+          <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:1rem;">
+            Calculates electrodeposited mass: m = (M · I · t) / (n · F), where F = 96,485 C/mol.
+          </p>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:1rem; margin-bottom:1rem;">
+            <div>
+              <label class="chem-label">Molar Mass M (g/mol):</label>
+              <input type="number" id="farM" class="chem-input" value="63.55" step="0.01">
+            </div>
+            <div>
+              <label class="chem-label">Current I (Amperes):</label>
+              <input type="number" id="farI" class="chem-input" value="2.0" step="0.1">
+            </div>
+            <div>
+              <label class="chem-label">Time t (seconds):</label>
+              <input type="number" id="farT" class="chem-input" value="1800" step="60">
+            </div>
+            <div>
+              <label class="chem-label">Electrons Transferred n:</label>
+              <input type="number" id="farN" class="chem-input" value="2" step="1">
+            </div>
+          </div>
+          <button id="btnCalcFaraday" class="chem-btn chem-btn-primary">Calculate Electrodeposited Mass</button>
+          <div id="resFaraday" class="chem-doc-content" style="margin-top:1rem; display:none;"></div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="/" class="brand-logo">
+            <div class="logo-symbol">E</div>
+            <span>Ecrio<span class="accent-dot">X</span></span>
+          </a>
+          <p>One Platform. Endless Possibilities. Free, scientifically accurate browser-based virtual laboratories and digital productivity utilities.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Chemistry Labs</h4>
+          <ul class="footer-links">
+            <li><a href="/chemistry-labs/">All Chemistry Labs</a></li>
+            <li><a href="/chemistry-labs/interactive-periodic-table/">Periodic Table Explorer</a></li>
+            <li><a href="/chemistry-labs/chemical-equation-balancer/">Equation Balancer</a></li>
+            <li><a href="/chemistry-labs/acid-base-titration/">Acid-Base Titration</a></li>
+            <li><a href="/chemistry-labs/3d-molecular-viewer/">3D Molecular Viewer</a></li>
+            <li><a href="/chemistry-labs/calculators/">Chemistry Calculators</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Physics Labs</h4>
+          <ul class="footer-links">
+            <li><a href="/physics-labs/">All Physics Labs</a></li>
+            <li><a href="/physics-labs/projectile-motion-simulator/">Projectile Motion</a></li>
+            <li><a href="/physics-labs/electric-circuit-simulator/">Circuit Simulator</a></li>
+            <li><a href="/physics-labs/ray-optics-simulator/">Ray Optics Lab</a></li>
+            <li><a href="/physics-labs/simple-pendulum-experiment/">Simple Pendulum</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Product Suite</h4>
+          <ul class="footer-links">
+            <li><a href="/tools/">All Tools Directory</a></li>
+            <li><a href="/categories/">Tool Categories</a></li>
+            <li><a href="/pdf-compressor/">PDF Compressor</a></li>
+            <li><a href="/resume-builder/">ATS Resume Builder</a></li>
+            <li><a href="/typing-speed-test/">Typing Arena</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company & Legal</h4>
+          <ul class="footer-links">
+            <li><a href="/about/">About EcrioX</a></li>
+            <li><a href="/contact/">Contact Support</a></li>
+            <li><a href="/privacy/">Privacy Policy</a></li>
+            <li><a href="/terms/">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 EcrioX. All rights reserved. Zero client downloads required — 100% private in-browser scientific simulations.</p>
+        <p>Canonical Domain: <a href="https://ecriox.com/" style="color: var(--chem-primary);">ecriox.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Chemistry Engine Script Loaded Globally -->
+  <script src="/js/chemistry-engine.js"></script>
+  <script>
+    // Theme toggle listener
+    const themeBtn = document.getElementById('themeToggleBtn');
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => {
+        const cur = document.documentElement.getAttribute('data-theme') || 'light';
+        const nxt = cur === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', nxt);
+        try { localStorage.setItem('ecriox_theme_preference', nxt); } catch(e){}
+        window.dispatchEvent(new Event('themechange'));
+      });
+    }
+    // Mobile navigation drawer toggle
+    const mobToggle = document.getElementById('mobileMenuToggle');
+    const mobNav = document.getElementById('mobileNavDrawer');
+    if (mobToggle && mobNav) {
+      mobToggle.addEventListener('click', () => {
+        const isOpen = mobNav.classList.toggle('open');
+        mobToggle.setAttribute('aria-expanded', isOpen);
+      });
+    }
+    // FAQ Accordion listener
+    document.querySelectorAll('.chem-faq-trigger').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.parentElement.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>
+
+
+  <!-- Interactive Calculators Hook Script -->
+  <script>
+    (function(){
+      const c = window.ChemistryEngine ? window.ChemistryEngine.calculators : null;
+      if (!c) return;
+
+      function renderSteps(el, res, extra) {
+        if (!res) {
+          el.style.display = 'block';
+          el.innerHTML = '<p style="color:#ef4444; font-weight:600;">⚠️ Invalid inputs or missing parameters. Please review your numbers.</p>';
+          return;
+        }
+        el.style.display = 'block';
+        let html = '<div class="chem-example-box">';
+        if (extra) html += `<div style="font-size:1.15rem; font-weight:700; color:var(--chem-primary); margin-bottom:0.75rem;">Result: ${extra}</div>`;
+        html += '<h4 style="color:var(--chem-secondary); font-size:1rem; margin-bottom:0.5rem;">Step-by-Step Mathematical Derivation:</h4><ol style="padding-left:1.25rem; line-height:1.6;">';
+        res.steps.forEach(s => html += `<li>${s}</li>`);
+        html += '</ol></div>';
+        el.innerHTML = html;
+      }
+
+      // 1. Molarity
+      document.getElementById('btnCalcMolarity')?.addEventListener('click', () => {
+        const m = parseFloat(document.getElementById('molMassInp').value);
+        const mm = parseFloat(document.getElementById('molMolarMassInp').value);
+        const v = parseFloat(document.getElementById('molVolInp').value);
+        const res = c.molarity(m, mm, v);
+        renderSteps(document.getElementById('resMolarity'), res, res ? `${res.molarity.toFixed(4)} M (mol/L)` : '');
+      });
+
+      // 2. Molality
+      document.getElementById('btnCalcMolality')?.addEventListener('click', () => {
+        const moles = parseFloat(document.getElementById('molalMolesInp').value);
+        const kg = parseFloat(document.getElementById('molalKgInp').value);
+        const res = c.molality(moles, kg);
+        renderSteps(document.getElementById('resMolality'), res, res ? `${res.molality.toFixed(4)} m (mol/kg)` : '');
+      });
+
+      // 3. Molecular Mass
+      document.getElementById('btnCalcMass')?.addEventListener('click', () => {
+        const f = document.getElementById('formulaInp').value.trim();
+        const res = c.molecularMass(f);
+        renderSteps(document.getElementById('resMass'), res, res ? `${res.molarMass.toFixed(3)} g/mol` : '');
+      });
+
+      // 4. Percent Composition
+      document.getElementById('btnCalcPct')?.addEventListener('click', () => {
+        const f = document.getElementById('pctFormulaInp').value.trim();
+        const res = c.percentComposition(f);
+        renderSteps(document.getElementById('resPct'), res, res ? 'Composition Calculated' : '');
+      });
+
+      // 5. Dilution
+      document.getElementById('btnCalcDilution')?.addEventListener('click', () => {
+        const c1 = parseFloat(document.getElementById('dilC1').value) || null;
+        const v1 = parseFloat(document.getElementById('dilV1').value) || null;
+        const c2 = parseFloat(document.getElementById('dilC2').value) || null;
+        const v2 = parseFloat(document.getElementById('dilV2').value) || null;
+        const res = c.dilution(c1, v1, c2, v2);
+        renderSteps(document.getElementById('resDilution'), res, res ? `${res.missing} = ${res.result.toFixed(4)}` : '');
+      });
+
+      // 6. pH & pOH
+      document.getElementById('btnCalcPH')?.addEventListener('click', () => {
+        const h = parseFloat(document.getElementById('phHInp').value);
+        const res = c.ph(h);
+        renderSteps(document.getElementById('resPH'), res, res ? `pH = ${res.ph.toFixed(3)}, pOH = ${res.poh.toFixed(3)}` : '');
+      });
+
+      // 7. Empirical Formula
+      document.getElementById('btnCalcEmpirical')?.addEventListener('click', () => {
+        const str = document.getElementById('empInp').value;
+        const pairs = str.split(',').map(s => s.trim().split(':'));
+        const obj = {};
+        pairs.forEach(([e, val]) => { if (e && val) obj[e.trim()] = parseFloat(val); });
+        const res = c.empiricalFormula(obj);
+        renderSteps(document.getElementById('resEmpirical'), res, res ? `Empirical Formula: ${res.formula}` : '');
+      });
+
+      // 8. Molecular Formula
+      document.getElementById('btnCalcMolFormula')?.addEventListener('click', () => {
+        const emp = document.getElementById('mfEmpInp').value.trim();
+        const mm = parseFloat(document.getElementById('mfMassInp').value);
+        const res = c.molecularFormula(emp, mm);
+        renderSteps(document.getElementById('resMolFormula'), res, res ? `Molecular Formula: ${res.molecularFormula}` : '');
+      });
+
+      // 9. Stoichiometry
+      document.getElementById('btnCalcStoich')?.addEventListener('click', () => {
+        const mA = parseFloat(document.getElementById('stMolesA').value);
+        const cA = parseFloat(document.getElementById('stCoeffA').value);
+        const cB = parseFloat(document.getElementById('stCoeffB').value);
+        const mmB = parseFloat(document.getElementById('stMassB').value);
+        const res = c.stoichiometry(mA, cA, cB, mmB);
+        renderSteps(document.getElementById('resStoich'), res, res ? `${res.molesB.toFixed(3)} mol B (${res.massB.toFixed(2)} g)` : '');
+      });
+
+      // 10. Limiting Reagent
+      document.getElementById('btnCalcLimiting')?.addEventListener('click', () => {
+        const mA = parseFloat(document.getElementById('limMolA').value);
+        const cA = parseFloat(document.getElementById('limCoeffA').value);
+        const mB = parseFloat(document.getElementById('limMolB').value);
+        const cB = parseFloat(document.getElementById('limCoeffB').value);
+        const res = c.limitingReagent(mA, cA, mB, cB);
+        renderSteps(document.getElementById('resLimiting'), res, res ? `Limiting Reagent: ${res.limiting}` : '');
+      });
+
+      // 11. Percent Yield
+      document.getElementById('btnCalcYield')?.addEventListener('click', () => {
+        const act = parseFloat(document.getElementById('ydActual').value);
+        const theo = parseFloat(document.getElementById('ydTheo').value);
+        const res = c.percentYield(act, theo);
+        renderSteps(document.getElementById('resYield'), res, res ? `${res.yieldPercent.toFixed(2)}% Yield` : '');
+      });
+
+      // 12. Ideal Gas
+      document.getElementById('btnCalcGas')?.addEventListener('click', () => {
+        const p = parseFloat(document.getElementById('gasP').value) || null;
+        const v = parseFloat(document.getElementById('gasV').value) || null;
+        const n = parseFloat(document.getElementById('gasN').value) || null;
+        const t = parseFloat(document.getElementById('gasT').value) || null;
+        const res = c.idealGas(p, v, n, t);
+        renderSteps(document.getElementById('resGas'), res, res ? `${res.missing} = ${res.result.toFixed(3)}` : '');
+      });
+
+      // 13. Half Life
+      document.getElementById('btnCalcHalfLife')?.addEventListener('click', () => {
+        const n0 = parseFloat(document.getElementById('hlN0').value);
+        const th = parseFloat(document.getElementById('hlTHalf').value);
+        const tt = parseFloat(document.getElementById('hlTTotal').value);
+        const res = c.halfLife(n0, th, tt);
+        renderSteps(document.getElementById('resHalfLife'), res, res ? `Remaining: ${res.remaining.toFixed(3)}` : '');
+      });
+
+      // 14. Faraday
+      document.getElementById('btnCalcFaraday')?.addEventListener('click', () => {
+        const mm = parseFloat(document.getElementById('farM').value);
+        const i = parseFloat(document.getElementById('farI').value);
+        const t = parseFloat(document.getElementById('farT').value);
+        const n = parseFloat(document.getElementById('farN').value);
+        const res = c.faraday(mm, i, t, n);
+        renderSteps(document.getElementById('resFaraday'), res, res ? `${res.massGrams.toFixed(4)} g deposited` : '');
+      });
+    })();
+  </script>
+    

@@ -1,0 +1,842 @@
+
+  <!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Periodic Table of Elements Explorer – Online Chemistry Virtual Lab | EcrioX</title>
+  <meta name="description" content="Explore all 118 elements on an interactive periodic table online. Inspect atomic masses, electron configurations, oxidation states, electronegativity, melting points, and group trends.">
+  <link rel="canonical" href="https://ecriox.com/chemistry-labs/interactive-periodic-table/">
+  <!-- Favicon & Brand Icons -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#2563EB">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Interactive Periodic Table of Elements Explorer – Online Chemistry Virtual Lab | EcrioX">
+  <meta property="og:description" content="Explore all 118 elements on an interactive periodic table online. Inspect atomic masses, electron configurations, oxidation states, electronegativity, melting points, and group trends.">
+  <meta property="og:url" content="https://ecriox.com/chemistry-labs/interactive-periodic-table/">
+  <meta property="og:site_name" content="EcrioX">
+  <meta property="og:image" content="https://ecriox.com/og-banner.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Interactive Periodic Table of Elements Explorer – Online Chemistry Virtual Lab | EcrioX">
+  <meta name="twitter:description" content="Explore all 118 elements on an interactive periodic table online. Inspect atomic masses, electron configurations, oxidation states, electronegativity, melting points, and group trends.">
+  <meta name="twitter:image" content="https://ecriox.com/og-banner.png">
+
+  <!-- Global Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-NNT7J485');
+  </script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6486455437877685" crossorigin="anonymous"></script>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/chemistry-labs.css">
+
+  <!-- Anti-FOUT & Theme Sync -->
+  <script>
+    (function(){
+      try {
+        var savedTheme = localStorage.getItem('ecriox_theme_preference');
+        if (savedTheme) {
+          document.documentElement.setAttribute('data-theme', savedTheme);
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      } catch(e) {}
+    })();
+  </script>
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://ecriox.com/chemistry-labs/interactive-periodic-table/#app",
+      "url": "https://ecriox.com/chemistry-labs/interactive-periodic-table/",
+      "name": "Interactive Periodic Table of Elements Explorer",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires HTML5 Canvas and JavaScript support",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Explore all 118 elements on an interactive periodic table online. Inspect atomic masses, electron configurations, oxidation states, electronegativity, melting points, and group trends."
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://ecriox.com/chemistry-labs/interactive-periodic-table/#article",
+      "headline": "Interactive Periodic Table of Elements: Properties, Trends & Orbitals",
+      "description": "Explore all 118 elements on an interactive periodic table online. Inspect atomic masses, electron configurations, oxidation states, electronegativity, melting points, and group trends.",
+      "author": {
+        "@type": "Organization",
+        "name": "EcrioX Science Team"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "EcrioX",
+        "url": "https://ecriox.com"
+      },
+      "datePublished": "2026-11-21",
+      "dateModified": "2026-11-21"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://ecriox.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Chemistry Virtual Labs",
+          "item": "https://ecriox.com/chemistry-labs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Interactive Periodic Table of Elements Explorer",
+          "item": "https://ecriox.com/chemistry-labs/interactive-periodic-table/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Are all 118 elements on this interactive periodic table officially recognized?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, all 118 elements from Hydrogen (1) through Oganesson (118) are officially recognized and named by IUPAC (International Union of Pure and Applied Chemistry)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between atomic mass and mass number?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Mass number (A) is the integer count of protons plus neutrons in a specific nucleus. Standard atomic mass is the weighted average mass of all naturally occurring isotopes relative to Carbon-12."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why are the Lanthanides and Actinides separated at the bottom?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Separating the f-block elements (lanthanides and actinides) prevents the periodic table from becoming unmanageably wide (32 columns) while preserving vertical group alignments."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I search for elements by oxidation states or electron configurations?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, our search and filtering engine permits instantaneous lookups by symbol, name, atomic number, and periodic category."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NNT7J485" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="brand-logo" aria-label="EcrioX Home">
+        <div class="logo-symbol">E</div>
+        <span>Ecrio<span class="accent-dot">X</span></span>
+      </a>
+
+      <nav class="nav-desktop">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/physics-labs/" class="nav-link">Physics Labs</a>
+        <a href="/chemistry-labs/" class="nav-link active">Chemistry Labs</a>
+        <a href="/chemistry-labs/calculators/" class="nav-link">Calculators</a>
+        <a href="/resume-builder/" class="nav-link">Career Studio</a>
+        <a href="/typing-speed-test/" class="nav-link">Typing Arena</a>
+        <a href="/tools/" class="nav-link">All Tools</a>
+        <a href="/about/" class="nav-link">About</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn-icon theme-toggle-btn" aria-label="Toggle color theme" id="themeToggleBtn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <button class="btn-icon mobile-toggle" aria-label="Open mobile menu" aria-expanded="false" id="mobileMenuToggle">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav-drawer" id="mobileNavDrawer">
+    <nav class="mobile-nav">
+      <a href="/" class="mobile-nav-link">Home</a>
+      <a href="/physics-labs/" class="mobile-nav-link">Physics Labs</a>
+      <a href="/chemistry-labs/" class="mobile-nav-link active">Chemistry Labs</a>
+      <a href="/chemistry-labs/calculators/" class="mobile-nav-link">Calculators</a>
+      <a href="/resume-builder/" class="mobile-nav-link">Career Studio</a>
+      <a href="/typing-speed-test/" class="mobile-nav-link">Typing Arena</a>
+      <a href="/tools/" class="mobile-nav-link">All Tools</a>
+      <a href="/about/" class="mobile-nav-link">About</a>
+    </nav>
+  </div>
+
+
+  <main id="main-content" class="container" style="padding-top:1.5rem; padding-bottom:3rem;">
+    <!-- Breadcrumbs -->
+    <nav class="chem-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="chem-breadcrumb-sep">/</span>
+      <a href="/chemistry-labs/">Chemistry Virtual Labs</a>
+      <span class="chem-breadcrumb-sep">/</span>
+      <span class="chem-breadcrumb-current">Interactive Periodic Table of Elements Explorer</span>
+    </nav>
+
+    <!-- Lab Header -->
+    <div class="chem-lab-header">
+      <div class="chem-lab-header-left">
+        <div style="display:flex; gap:0.5rem; align-items:center; margin-bottom:0.5rem; flex-wrap:wrap;">
+          <span class="chem-badge chem-badge-primary">General Chemistry</span>
+          <span class="chem-badge chem-badge-secondary">Classes 8–12 / College Chemistry Level</span>
+          <span class="chem-badge" style="background:#e0f2fe; color:#0369a1;">⏱ 15 mins</span>
+          <span class="chem-badge" style="background:#fef3c7; color:#92400e;">CBSE • JEE • NEET • College</span>
+        </div>
+        <h1 class="chem-lab-title">Interactive Periodic Table of Elements: Properties, Trends & Orbitals</h1>
+        <p class="chem-lab-intro">The modern periodic table organizes all 118 known chemical elements according to increasing atomic number and recurring periodic chemical trends. Explore element blocks, electron configurations, physical states, electronegativity, and compare elemental properties interactively.</p>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="chem-lab-actions">
+        <button id="btnFullscreen" class="chem-btn chem-btn-outline" title="Toggle Fullscreen Mode">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
+          Fullscreen
+        </button>
+        <button id="btnResetSimulation" class="chem-btn chem-btn-outline" title="Reset Experiment Parameters">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6"></path><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
+          Reset Lab
+        </button>
+        <button id="btnExportCSV" class="chem-btn chem-btn-outline" title="Download Data Worksheet (CSV)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Export CSV
+        </button>
+        <button id="btnPrintWorksheet" class="chem-btn chem-btn-primary" title="Print Laboratory Worksheet">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+          Print Lab Sheet
+        </button>
+      </div>
+    </div>
+
+    <!-- Interactive Simulation Wrapper -->
+    <div class="chem-lab-wrapper" id="labWrapper">
+      <!-- Live HUD Metrics Panel -->
+      <div class="chem-hud-bar" id="hudBar">
+        
+    <div class="hud-metric"><div class="hud-metric-label">Selected Element</div><div class="hud-metric-value" id="hudElement">H (Hydrogen)</div></div>
+    <div class="hud-metric"><div class="hud-metric-label">Atomic Number (Z)</div><div class="hud-metric-value" id="hudZ">1</div></div>
+    <div class="hud-metric"><div class="hud-metric-label">Atomic Mass</div><div class="hud-metric-value" id="hudMass">1.008<span class="hud-metric-unit">u</span></div></div>
+    <div class="hud-metric"><div class="hud-metric-label">Category</div><div class="hud-metric-value" id="hudCat" style="font-size:0.95rem;">Reactive Nonmetal</div></div>
+    <div class="hud-metric"><div class="hud-metric-label">Electron Config</div><div class="hud-metric-value" id="hudEc" style="font-size:0.95rem;">1s¹</div></div>
+    <div class="hud-metric"><div class="hud-metric-label">Standard State</div><div class="hud-metric-value" id="hudState">Gas (298K)</div></div>
+  
+      </div>
+
+      <!-- Main Workspace Grid (Viewport + Controls) -->
+      <div class="chem-workspace-grid">
+        <!-- Simulation Viewport -->
+        <div class="chem-viewport-card">
+          <div class="chem-card-header-bar">
+            <span>🔬 Live Virtual Apparatus</span>
+            <span class="chem-status-dot">Interactive 60 FPS</span>
+          </div>
+          <div class="chem-viewport-inner">
+            
+    <div id="periodicTableGrid" class="pt-grid-container" style="overflow-x:auto; padding:0.5rem; min-height:440px;"></div>
+    <div id="ptDetailBox" style="margin-top:1rem; padding:1.25rem; border-radius:10px; background:var(--bg-card); border:1px solid var(--border-color); display:none;"></div>
+  
+          </div>
+        </div>
+
+        <!-- Controls Panel -->
+        <div class="chem-controls-card">
+          <div class="chem-card-header-bar">
+            <span>⚙️ Scientific Controls</span>
+            <span>Calibrated</span>
+          </div>
+          <div class="chem-controls-inner">
+            
+    <div class="control-group">
+      <div class="control-label-row"><span class="control-label">Search Elements</span></div>
+      <input type="search" class="chem-text-input" id="ptSearchInput" placeholder="Search by name, symbol, or Z (e.g. Fe, Gold, 26)...">
+    </div>
+    <div class="control-group">
+      <div class="control-label-row"><span class="control-label">Filter by Chemical Family</span></div>
+      <select class="chem-select-input" id="ptCategoryFilter">
+        <option value="all" selected>All Elements (118)</option>
+        <option value="alkali">Alkali Metals</option>
+        <option value="alkaline-earth">Alkaline Earth Metals</option>
+        <option value="transition">Transition Metals</option>
+        <option value="post-transition">Post-Transition Metals</option>
+        <option value="metalloid">Metalloids</option>
+        <option value="nonmetal">Reactive Nonmetals</option>
+        <option value="halogen">Halogens</option>
+        <option value="noble">Noble Gases</option>
+        <option value="lanthanide">Lanthanides</option>
+        <option value="actinide">Actinides</option>
+      </select>
+    </div>
+    <div class="control-group">
+      <div class="control-label-row"><span class="control-label">State of Matter at 298 K</span></div>
+      <select class="chem-select-input" id="ptStateFilter">
+        <option value="all" selected>All Physical States</option>
+        <option value="solid">Solids (93)</option>
+        <option value="liquid">Liquids (2: Br, Hg)</option>
+        <option value="gas">Gases (11: H, He, N, O, F, Ne, Cl, Ar, Kr, Xe, Rn)</option>
+        <option value="synthetic">Synthetic / Superheavy (12)</option>
+      </select>
+    </div>
+    <div class="chem-btn-group">
+      <button type="button" class="chem-btn chem-btn-secondary" id="ptBtnReset">Reset Filters</button>
+    </div>
+  
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scientific Documentation Tabs -->
+    <section class="chem-doc-section">
+      <div class="chem-tabs-nav">
+        <button class="chem-tab-btn active" data-tab="tab-theory">1. Scientific Theory & Derivations</button>
+        <button class="chem-tab-btn" data-tab="tab-procedure">2. Lab Protocol & Objectives</button>
+        <button class="chem-tab-btn" data-tab="tab-example">3. Worked Calculation Example</button>
+        <button class="chem-tab-btn" data-tab="tab-applications">4. Applications & Misconceptions</button>
+        <button class="chem-tab-btn" data-tab="tab-faqs">5. FAQs (4)</button>
+      </div>
+
+      <!-- Tab 1: Theory -->
+      <div class="chem-tab-pane active" id="tab-theory">
+        <div class="chem-doc-content">
+          <h2>Periodic Law & Effective Nuclear Charge</h2>
+          <div class="chem-formula-hero">
+            <code>Z_{\text{eff}} = Z - S, \quad \chi = \frac{I + E_{\text{ea}}}{2}</code>
+          </div>
+          <p class="chem-formula-desc">Moseley's Periodic Law states that elemental properties are periodic functions of atomic number Z. Slater's rules calculate effective nuclear charge Z_eff by subtracting shielding constant S.</p>
+          <div class="chem-text-block">
+            In 1869, Dmitri Mendeleev arranged 63 known elements by atomic mass and predicted the properties of undiscovered elements. Henry Moseley in 1913 proved that atomic number (the number of nuclear protons) governs elemental periodicity. The modern periodic table arranges 118 elements across 7 periods and 18 groups. Elements in the same group possess identical valence electron configurations, creating analogous chemical reactivity (such as the univalent alkali metals or inert noble gas octets). Periodic trends arise from the balance between nuclear charge attraction and electron-electron shielding.
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 2: Procedure -->
+      <div class="chem-tab-pane" id="tab-procedure">
+        <div class="chem-doc-content">
+          <h2>Experimental Objectives</h2>
+          <ul class="chem-bullet-list">
+            <li>Navigate all 118 IUPAC elements across s, p, d, and f electron configuration blocks.</li><li>Analyze elemental periodic trends including atomic radius, first ionization energy, and Pauling electronegativity.</li><li>Identify metals, metalloids, halogens, noble gases, lanthanides, and actinides.</li><li>Compare physical constants including melting point, boiling point, density, and standard oxidation states.</li>
+          </ul>
+          <h2 style="margin-top:2rem;">Step-by-Step Laboratory Procedure</h2>
+          <ol class="chem-step-list">
+            
+            <li class="chem-step-item">
+              <strong>Step 1:</strong>
+              <p>Select an element from the interactive 18-column grid to open its comprehensive data profile.</p>
+            </li>
+            
+            <li class="chem-step-item">
+              <strong>Step 2:</strong>
+              <p>Filter elements by chemical category (Alkali, Alkaline Earth, Transition, Halogen, Noble Gas) or physical state.</p>
+            </li>
+            
+            <li class="chem-step-item">
+              <strong>Step 3:</strong>
+              <p>Use the search box to find elements by chemical symbol (e.g., Fe, Au, U), atomic number, or IUPAC name.</p>
+            </li>
+            
+            <li class="chem-step-item">
+              <strong>Step 4:</strong>
+              <p>Switch to the Comparison Mode to evaluate periodic trends between any two selected elements side by side.</p>
+            </li>
+            
+          </ol>
+        </div>
+      </div>
+
+      <!-- Tab 3: Worked Example -->
+      <div class="chem-tab-pane" id="tab-example">
+        <div class="chem-doc-content">
+          <h2>Worked Example & Step-by-Step Calculation</h2>
+          <div class="chem-example-box">
+            <h3 style="color:var(--chem-primary); font-size:1.15rem; margin-bottom:0.75rem;">Problem Statement:</h3>
+            <p style="font-size:1.05rem; font-weight:600; color:var(--text-main); margin-bottom:1.5rem;">Calculate the effective nuclear charge (Z_eff) experienced by a 4s valence electron in neutral Potassium (K, Z = 19) using Slater's Rules.</p>
+            <h3 style="color:var(--chem-secondary); font-size:1.15rem; margin-bottom:0.75rem;">Mathematical Solution & Derivation:</h3>
+            <div class="chem-example-solution" style="white-space:pre-line; line-height:1.7;">
+              1. Electron configuration of Potassium (Z = 19): (1s)² (2s, 2p)⁸ (3s, 3p)⁸ (4s)¹.
+2. Identify shielding groups for a 4s electron:
+   - Electrons in the same (4s) group: 0 (the test electron is excluded).
+   - Electrons in the (n-1) shell (3s, 3p): 8 electrons, each contributing 0.85.
+     Shielding S1 = 8 × 0.85 = 6.80.
+   - Electrons in (n-2) and deeper shells (1s, 2s, 2p): 10 electrons, each contributing 1.00.
+     Shielding S2 = 10 × 1.00 = 10.00.
+3. Total shielding constant S = 6.80 + 10.00 = 16.80.
+4. Effective nuclear charge: Z_eff = Z - S = 19 - 16.80 = +2.20.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 4: Applications & Misconceptions -->
+      <div class="chem-tab-pane" id="tab-applications">
+        <div class="chem-doc-content">
+          <h2>Industrial, Engineering & Everyday Applications</h2>
+          <div class="chem-apps-grid">
+            
+            <div class="chem-app-item">
+              <strong>Materials Engineering</strong>
+              <p>Designing high-entropy alloys, semiconductor silicon doping, and superconducting ceramics.</p>
+            </div>
+            
+            <div class="chem-app-item">
+              <strong>Pharmaceutical Chemistry</strong>
+              <p>Bioisosteric replacement of hydrogen with fluorine to modulate metabolic stability.</p>
+            </div>
+            
+            <div class="chem-app-item">
+              <strong>Catalysis & Synthesis</strong>
+              <p>Utilizing platinum-group metals (Ru, Rh, Pd, Pt) in catalytic converters and industrial hydrogenations.</p>
+            </div>
+            
+            <div class="chem-app-item">
+              <strong>Nuclear Energy</strong>
+              <p>Managing actinide fuel cycles, neutron absorption cross-sections, and transuranic isotopes.</p>
+            </div>
+            
+          </div>
+          <h2 style="margin-top:2.5rem;">Common Student Misconceptions & Scientific Reality</h2>
+          <div class="chem-misc-list">
+            
+        <div class="chem-misc-card">
+          <div class="chem-misc-fact">💡 <strong>Critical Conceptual Insight:</strong> A frequent misconception is that atomic radius always increases with atomic number. In reality, moving left-to-right across a period increases nuclear charge without adding new shells, pulling valence electrons tighter and causing atomic radius to decrease.</div>
+        </div>
+        
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 5: FAQs -->
+      <div class="chem-tab-pane" id="tab-faqs">
+        <div class="chem-doc-content">
+          <h2>Frequently Asked Questions on Interactive Periodic Table of Elements Explorer</h2>
+          <div class="chem-faq-list" style="margin-top:1.5rem;">
+            
+            <div class="chem-faq-item">
+              <button class="chem-faq-trigger">
+                <span>Are all 118 elements on this interactive periodic table officially recognized?</span>
+                <svg class="chem-faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="chem-faq-content">
+                <p>Yes, all 118 elements from Hydrogen (1) through Oganesson (118) are officially recognized and named by IUPAC (International Union of Pure and Applied Chemistry).</p>
+              </div>
+            </div>
+            
+            <div class="chem-faq-item">
+              <button class="chem-faq-trigger">
+                <span>What is the difference between atomic mass and mass number?</span>
+                <svg class="chem-faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="chem-faq-content">
+                <p>Mass number (A) is the integer count of protons plus neutrons in a specific nucleus. Standard atomic mass is the weighted average mass of all naturally occurring isotopes relative to Carbon-12.</p>
+              </div>
+            </div>
+            
+            <div class="chem-faq-item">
+              <button class="chem-faq-trigger">
+                <span>Why are the Lanthanides and Actinides separated at the bottom?</span>
+                <svg class="chem-faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="chem-faq-content">
+                <p>Separating the f-block elements (lanthanides and actinides) prevents the periodic table from becoming unmanageably wide (32 columns) while preserving vertical group alignments.</p>
+              </div>
+            </div>
+            
+            <div class="chem-faq-item">
+              <button class="chem-faq-trigger">
+                <span>Can I search for elements by oxidation states or electron configurations?</span>
+                <svg class="chem-faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="chem-faq-content">
+                <p>Yes, our search and filtering engine permits instantaneous lookups by symbol, name, atomic number, and periodic category.</p>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Experiments Section -->
+    <section class="chem-related-section">
+      <div class="chem-section-header">
+        <h2 class="chem-section-title">Related Chemistry Virtual Labs</h2>
+        <p class="chem-section-desc">Continue your exploration with these interconnected chemical experiments and simulations.</p>
+      </div>
+      <div class="chem-grid">
+        
+            <article class="chem-card" data-category="atomic">
+              <div class="chem-card-badge-wrap">
+                <span class="chem-badge chem-badge-primary">Atomic Structure</span>
+                <span class="chem-badge chem-badge-secondary">Classes 8–11 / CBSE / ICSE</span>
+              </div>
+              <div class="chem-card-icon">
+      <svg viewBox="0 0 100 100" fill="none" stroke="currentColor">
+        <circle cx="50" cy="50" r="12" fill="var(--chem-primary)" stroke="var(--chem-primary)" stroke-width="2"/>
+        <text x="50" y="54" font-size="9" font-weight="bold" fill="#ffffff" text-anchor="middle">+6</text>
+        <ellipse cx="50" cy="50" rx="35" ry="14" stroke="var(--chem-secondary)" stroke-width="1.5" stroke-dasharray="4 3"/>
+        <ellipse cx="50" cy="50" rx="14" ry="35" stroke="var(--chem-secondary)" stroke-width="1.5" stroke-dasharray="4 3"/>
+        <circle cx="85" cy="50" r="4" fill="#38bdf8"/>
+        <circle cx="15" cy="50" r="4" fill="#38bdf8"/>
+        <circle cx="50" cy="15" r="4" fill="#38bdf8"/>
+      </svg>
+    </div>
+              <h3 class="chem-card-title"><a href="/chemistry-labs/atomic-structure-simulator/">Atomic Structure & Electron Shells Simulator</a></h3>
+              <p class="chem-card-desc">Construct atoms from fundamental subatomic particles. Add or remove protons, neutrons, and electrons to observe changes ...</p>
+              <a href="/chemistry-labs/atomic-structure-simulator/" class="chem-card-btn">Open Lab →</a>
+            </article>
+            
+            <article class="chem-card" data-category="reactions">
+              <div class="chem-card-badge-wrap">
+                <span class="chem-badge chem-badge-primary">Chemical Reactions</span>
+                <span class="chem-badge chem-badge-secondary">Classes 9–12 / JEE / NEET</span>
+              </div>
+              <div class="chem-card-icon">
+      <svg viewBox="0 0 100 100" fill="none" stroke="currentColor">
+        <path d="M50 20 V80" stroke="var(--border-color)" stroke-width="3"/>
+        <circle cx="50" cy="20" r="6" fill="var(--chem-primary)"/>
+        <line x1="20" y1="35" x2="80" y2="35" stroke="var(--chem-primary)" stroke-width="3"/>
+        <path d="M20 35 L12 60 H28 Z" fill="rgba(37,99,235,0.15)" stroke="var(--chem-primary)" stroke-width="2"/>
+        <path d="M80 35 L72 60 H88 Z" fill="rgba(124,58,237,0.15)" stroke="var(--chem-secondary)" stroke-width="2"/>
+        <text x="20" y="53" font-size="8" font-weight="bold" fill="var(--chem-primary)" text-anchor="middle">React</text>
+        <text x="80" y="53" font-size="8" font-weight="bold" fill="var(--chem-secondary)" text-anchor="middle">Prod</text>
+      </svg>
+    </div>
+              <h3 class="chem-card-title"><a href="/chemistry-labs/chemical-equation-balancer/">Chemical Equation Balancer & Stoichiometric Solver</a></h3>
+              <p class="chem-card-desc">Balance any chemical equation instantly using a rigorous mathematical Gaussian elimination algorithm. Input unbalanced r...</p>
+              <a href="/chemistry-labs/chemical-equation-balancer/" class="chem-card-btn">Open Lab →</a>
+            </article>
+            
+            <article class="chem-card" data-category="reactions">
+              <div class="chem-card-badge-wrap">
+                <span class="chem-badge chem-badge-primary">Chemical Reactions</span>
+                <span class="chem-badge chem-badge-secondary">Classes 9–12 / CBSE / ICSE</span>
+              </div>
+              <div class="chem-card-icon">
+      <svg viewBox="0 0 100 100" fill="none" stroke="currentColor">
+        <path d="M35 25 H65 V45 L80 80 H20 L35 45 Z" stroke="var(--chem-primary)" stroke-width="2.5" fill="none"/>
+        <path d="M26 68 L35 45 H65 L74 68 Z" fill="rgba(239,68,68,0.2)"/>
+        <circle cx="45" cy="65" r="4" fill="#ef4444"/>
+        <circle cx="58" cy="60" r="3" fill="#f97316"/>
+        <circle cx="50" cy="40" r="2.5" fill="#eab308"/>
+        <path d="M42 20 Q48 10 44 5" stroke="#ef4444" stroke-width="1.5"/>
+        <path d="M54 22 Q60 12 56 7" stroke="#f97316" stroke-width="1.5"/>
+      </svg>
+    </div>
+              <h3 class="chem-card-title"><a href="/chemistry-labs/chemical-reaction-simulator/">Chemical Reaction Types & Energy Simulator</a></h3>
+              <p class="chem-card-desc">Explore major classes of chemical reactions: synthesis, decomposition, single displacement, double displacement (precipi...</p>
+              <a href="/chemistry-labs/chemical-reaction-simulator/" class="chem-card-btn">Open Lab →</a>
+            </article>
+            
+      </div>
+    </section>
+  </main>
+
+  
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="/" class="brand-logo">
+            <div class="logo-symbol">E</div>
+            <span>Ecrio<span class="accent-dot">X</span></span>
+          </a>
+          <p>One Platform. Endless Possibilities. Free, scientifically accurate browser-based virtual laboratories and digital productivity utilities.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Chemistry Labs</h4>
+          <ul class="footer-links">
+            <li><a href="/chemistry-labs/">All Chemistry Labs</a></li>
+            <li><a href="/chemistry-labs/interactive-periodic-table/">Periodic Table Explorer</a></li>
+            <li><a href="/chemistry-labs/chemical-equation-balancer/">Equation Balancer</a></li>
+            <li><a href="/chemistry-labs/acid-base-titration/">Acid-Base Titration</a></li>
+            <li><a href="/chemistry-labs/3d-molecular-viewer/">3D Molecular Viewer</a></li>
+            <li><a href="/chemistry-labs/calculators/">Chemistry Calculators</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Physics Labs</h4>
+          <ul class="footer-links">
+            <li><a href="/physics-labs/">All Physics Labs</a></li>
+            <li><a href="/physics-labs/projectile-motion-simulator/">Projectile Motion</a></li>
+            <li><a href="/physics-labs/electric-circuit-simulator/">Circuit Simulator</a></li>
+            <li><a href="/physics-labs/ray-optics-simulator/">Ray Optics Lab</a></li>
+            <li><a href="/physics-labs/simple-pendulum-experiment/">Simple Pendulum</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Product Suite</h4>
+          <ul class="footer-links">
+            <li><a href="/tools/">All Tools Directory</a></li>
+            <li><a href="/categories/">Tool Categories</a></li>
+            <li><a href="/pdf-compressor/">PDF Compressor</a></li>
+            <li><a href="/resume-builder/">ATS Resume Builder</a></li>
+            <li><a href="/typing-speed-test/">Typing Arena</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company & Legal</h4>
+          <ul class="footer-links">
+            <li><a href="/about/">About EcrioX</a></li>
+            <li><a href="/contact/">Contact Support</a></li>
+            <li><a href="/privacy/">Privacy Policy</a></li>
+            <li><a href="/terms/">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 EcrioX. All rights reserved. Zero client downloads required — 100% private in-browser scientific simulations.</p>
+        <p>Canonical Domain: <a href="https://ecriox.com/" style="color: var(--chem-primary);">ecriox.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Chemistry Engine Script Loaded Globally -->
+  <script src="/js/chemistry-engine.js"></script>
+  <script>
+    // Theme toggle listener
+    const themeBtn = document.getElementById('themeToggleBtn');
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => {
+        const cur = document.documentElement.getAttribute('data-theme') || 'light';
+        const nxt = cur === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', nxt);
+        try { localStorage.setItem('ecriox_theme_preference', nxt); } catch(e){}
+        window.dispatchEvent(new Event('themechange'));
+      });
+    }
+    // Mobile navigation drawer toggle
+    const mobToggle = document.getElementById('mobileMenuToggle');
+    const mobNav = document.getElementById('mobileNavDrawer');
+    if (mobToggle && mobNav) {
+      mobToggle.addEventListener('click', () => {
+        const isOpen = mobNav.classList.toggle('open');
+        mobToggle.setAttribute('aria-expanded', isOpen);
+      });
+    }
+    // FAQ Accordion listener
+    document.querySelectorAll('.chem-faq-trigger').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.parentElement.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>
+
+
+  <!-- Tab Switcher & Lab Actions Script -->
+  <script>
+    (function(){
+      // Tab switcher
+      const tabBtns = document.querySelectorAll('.chem-tab-btn');
+      const tabPanes = document.querySelectorAll('.chem-tab-pane');
+
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          tabBtns.forEach(b => b.classList.remove('active'));
+          tabPanes.forEach(p => p.classList.remove('active'));
+
+          btn.classList.add('active');
+          const target = btn.getAttribute('data-tab');
+          const pane = document.getElementById(target);
+          if (pane) pane.classList.add('active');
+        });
+      });
+
+      // Fullscreen mode toggle
+      const fsBtn = document.getElementById('btnFullscreen');
+      const labWrap = document.getElementById('labWrapper');
+      if (fsBtn && labWrap) {
+        fsBtn.addEventListener('click', () => {
+          if (!document.fullscreenElement) {
+            labWrap.requestFullscreen?.() || labWrap.webkitRequestFullscreen?.();
+            fsBtn.innerHTML = 'Exit Fullscreen';
+          } else {
+            document.exitFullscreen?.() || document.webkitExitFullscreen?.();
+            fsBtn.innerHTML = 'Fullscreen';
+          }
+        });
+      }
+
+      // Print Lab Worksheet
+      const printBtn = document.getElementById('btnPrintWorksheet');
+      if (printBtn) {
+        printBtn.addEventListener('click', () => window.print());
+      }
+
+      // Export CSV Data
+      const csvBtn = document.getElementById('btnExportCSV');
+      if (csvBtn) {
+        csvBtn.addEventListener('click', () => {
+          const metrics = Array.from(document.querySelectorAll('#hudBar .hud-metric')).map(m => {
+            const lbl = m.querySelector('.hud-metric-label')?.textContent.trim() || 'Metric';
+            const val = m.querySelector('.hud-metric-value')?.textContent.trim() || '0';
+            return `"${lbl}","${val}"`;
+          });
+          const csvContent = "data:text/csv;charset=utf-8,Parameter,Value\n" +
+            `"Experiment","Interactive Periodic Table of Elements Explorer"\n` +
+            `"Timestamp","${new Date().toISOString()}"\n` +
+            metrics.join("\n");
+          const encodedUri = encodeURI(csvContent);
+          const link = document.createElement("a");
+          link.setAttribute("href", encodedUri);
+          link.setAttribute("download", "interactive-periodic-table-lab-data.csv");
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        });
+      }
+    })();
+  </script>
+
+  <!-- Interactive Simulation Engine Execution -->
+  <script>
+    
+    (function() {
+      const container = document.getElementById('periodicTableGrid');
+      if (!container || !window.ChemistryEngine) return;
+      const elements = ChemistryEngine.ELEMENTS;
+
+      // Render 18x7 Periodic Table Grid + Lanthanides/Actinides
+      function renderGrid(filterCat, filterState, searchQuery) {
+        container.innerHTML = '';
+        const q = (searchQuery || '').toLowerCase().trim();
+
+        // 18 columns x 7 periods = 126 cells + f-block (2x15 = 30 cells)
+        // Group and Period coordinates for standard display
+        elements.forEach(el => {
+          let visible = true;
+          if (filterCat && filterCat !== 'all' && el.cat !== filterCat) visible = false;
+          if (filterState && filterState !== 'all' && el.state !== filterState) visible = false;
+          if (q) {
+            const mSymbol = el.s.toLowerCase().includes(q);
+            const mName = el.n.toLowerCase().includes(q);
+            const mZ = String(el.z) === q;
+            if (!mSymbol && !mName && !mZ) visible = false;
+          }
+
+          const cell = document.createElement('div');
+          cell.className = `pt-cell pt-${el.cat}` + (visible ? '' : ' pt-dimmed');
+          cell.style.gridColumn = el.g;
+          cell.style.gridRow = el.p;
+          cell.setAttribute('data-z', el.z);
+          cell.innerHTML = `
+            <span class="pt-num">${el.z}</span>
+            <span class="pt-symbol">${el.s}</span>
+            <span class="pt-name">${el.n}</span>
+          `;
+
+          cell.addEventListener('click', () => selectElement(el));
+          container.appendChild(cell);
+        });
+      }
+
+      function selectElement(el) {
+        document.getElementById('hudElement').textContent = `${el.s} (${el.n})`;
+        document.getElementById('hudZ').textContent = el.z;
+        document.getElementById('hudMass').innerHTML = el.m.toFixed(el.m > 100 ? 2 : 3) + '<span class="hud-metric-unit">u</span>';
+        document.getElementById('hudCat').textContent = el.cat.replace('-', ' ').toUpperCase();
+        document.getElementById('hudEc').textContent = el.ec;
+        document.getElementById('hudState').textContent = el.state.toUpperCase() + ' (298K)';
+
+        // Update detail panel if present
+        const detailEl = document.getElementById('ptDetailBox');
+        if (detailEl) {
+          detailEl.innerHTML = `
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:0.75rem; margin-bottom:1rem;">
+              <div>
+                <h3 style="margin:0; font-size:1.35rem; color:var(--text-main);">${el.n} (${el.s})</h3>
+                <span style="font-size:0.85rem; color:var(--text-muted);">${el.cat.toUpperCase()} • Group ${el.g}, Period ${el.p}</span>
+              </div>
+              <div style="font-size:2rem; font-weight:800; color:var(--color-primary);">${el.s}</div>
+            </div>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:0.75rem; font-size:0.9rem;">
+              <div><strong>Atomic Number:</strong> ${el.z}</div>
+              <div><strong>Atomic Mass:</strong> ${el.m} u</div>
+              <div><strong>Block:</strong> ${el.blk}-block</div>
+              <div><strong>Electron Config:</strong> ${el.ec}</div>
+              <div><strong>Electronegativity:</strong> ${el.en !== null ? el.en : 'N/A'}</div>
+              <div><strong>Oxidation States:</strong> ${el.ox.join(', ')}</div>
+              <div><strong>Melting Point:</strong> ${el.mp !== null ? el.mp + ' K' : 'N/A'}</div>
+              <div><strong>Boiling Point:</strong> ${el.bp !== null ? el.bp + ' K' : 'N/A'}</div>
+              <div><strong>Density (g/cm³):</strong> ${el.d !== null ? el.d : 'N/A'}</div>
+            </div>
+          `;
+        }
+      }
+
+      const searchIn = document.getElementById('ptSearchInput');
+      const catFilter = document.getElementById('ptCategoryFilter');
+      const stateFilter = document.getElementById('ptStateFilter');
+      const btnReset = document.getElementById('ptBtnReset');
+
+      function update() {
+        renderGrid(catFilter.value, stateFilter.value, searchIn.value);
+      }
+
+      searchIn.addEventListener('input', update);
+      catFilter.addEventListener('change', update);
+      stateFilter.addEventListener('change', update);
+      btnReset.addEventListener('click', () => {
+        searchIn.value = '';
+        catFilter.value = 'all';
+        stateFilter.value = 'all';
+        update();
+      });
+
+      renderGrid('all', 'all', '');
+      selectElement(elements[0]);
+    })();
+  
+  </script>
+        

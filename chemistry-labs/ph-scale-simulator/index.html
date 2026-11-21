@@ -1,0 +1,976 @@
+
+  <!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>pH Scale & Hydrogen Ion Concentration Simulator – Online Chemistry Virtual Lab | EcrioX</title>
+  <meta name="description" content="Interactive pH scale simulator online. Explore hydrogen and hydroxide ion concentrations, pH and pOH calculations, strong vs weak acids, and real-world substances.">
+  <link rel="canonical" href="https://ecriox.com/chemistry-labs/ph-scale-simulator/">
+  <!-- Favicon & Brand Icons -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#2563EB">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="pH Scale & Hydrogen Ion Concentration Simulator – Online Chemistry Virtual Lab | EcrioX">
+  <meta property="og:description" content="Interactive pH scale simulator online. Explore hydrogen and hydroxide ion concentrations, pH and pOH calculations, strong vs weak acids, and real-world substances.">
+  <meta property="og:url" content="https://ecriox.com/chemistry-labs/ph-scale-simulator/">
+  <meta property="og:site_name" content="EcrioX">
+  <meta property="og:image" content="https://ecriox.com/og-banner.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="pH Scale & Hydrogen Ion Concentration Simulator – Online Chemistry Virtual Lab | EcrioX">
+  <meta name="twitter:description" content="Interactive pH scale simulator online. Explore hydrogen and hydroxide ion concentrations, pH and pOH calculations, strong vs weak acids, and real-world substances.">
+  <meta name="twitter:image" content="https://ecriox.com/og-banner.png">
+
+  <!-- Global Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-NNT7J485');
+  </script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6486455437877685" crossorigin="anonymous"></script>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/chemistry-labs.css">
+
+  <!-- Anti-FOUT & Theme Sync -->
+  <script>
+    (function(){
+      try {
+        var savedTheme = localStorage.getItem('ecriox_theme_preference');
+        if (savedTheme) {
+          document.documentElement.setAttribute('data-theme', savedTheme);
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      } catch(e) {}
+    })();
+  </script>
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://ecriox.com/chemistry-labs/ph-scale-simulator/#app",
+      "url": "https://ecriox.com/chemistry-labs/ph-scale-simulator/",
+      "name": "pH Scale & Hydrogen Ion Concentration Simulator",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires HTML5 Canvas and JavaScript support",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Interactive pH scale simulator online. Explore hydrogen and hydroxide ion concentrations, pH and pOH calculations, strong vs weak acids, and real-world substances."
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://ecriox.com/chemistry-labs/ph-scale-simulator/#article",
+      "headline": "pH Scale Simulator: [H\u207a], [OH\u207b], pOH & Universal Indicator Spectrum",
+      "description": "Interactive pH scale simulator online. Explore hydrogen and hydroxide ion concentrations, pH and pOH calculations, strong vs weak acids, and real-world substances.",
+      "author": {
+        "@type": "Organization",
+        "name": "EcrioX Science Team"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "EcrioX",
+        "url": "https://ecriox.com"
+      },
+      "datePublished": "2026-11-21",
+      "dateModified": "2026-11-21"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://ecriox.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Chemistry Virtual Labs",
+          "item": "https://ecriox.com/chemistry-labs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "pH Scale & Hydrogen Ion Concentration Simulator",
+          "item": "https://ecriox.com/chemistry-labs/ph-scale-simulator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can pH ever be negative?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. In concentrated acids with [H\u207a] > 1.0 M, pH values fall below zero. For example, concentrated 10 M HCl has a theoretical pH of -1.0."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does pure water have a pH of 7 at 25\u00b0C?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Water undergoes self-ionization: 2H\u2082O \u21cc H\u2083O\u207a + OH\u207b with Kw = 1.0 \u00d7 10\u207b\u00b9\u2074 at 25\u00b0C. In pure water, [H\u207a] = [OH\u207b] = \u221a(10\u207b\u00b9\u2074) = 10\u207b\u2077 M, giving pH = -log\u2081\u2080(10\u207b\u2077) = 7.0."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does temperature affect the pH of pure water?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Water autoionization is endothermic. As temperature rises, Kw increases (at 50\u00b0C, Kw \u2248 5.5 \u00d7 10\u207b\u00b9\u2074, pH \u2248 6.63), yet the water remains strictly neutral because [H\u207a] = [OH\u207b]."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NNT7J485" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="brand-logo" aria-label="EcrioX Home">
+        <div class="logo-symbol">E</div>
+        <span>Ecrio<span class="accent-dot">X</span></span>
+      </a>
+
+      <nav class="nav-desktop">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/physics-labs/" class="nav-link">Physics Labs</a>
+        <a href="/chemistry-labs/" class="nav-link active">Chemistry Labs</a>
+        <a href="/chemistry-labs/calculators/" class="nav-link">Calculators</a>
+        <a href="/resume-builder/" class="nav-link">Career Studio</a>
+        <a href="/typing-speed-test/" class="nav-link">Typing Arena</a>
+        <a href="/tools/" class="nav-link">All Tools</a>
+        <a href="/about/" class="nav-link">About</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn-icon theme-toggle-btn" aria-label="Toggle color theme" id="themeToggleBtn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <button class="btn-icon mobile-toggle" aria-label="Open mobile menu" aria-expanded="false" id="mobileMenuToggle">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav-drawer" id="mobileNavDrawer">
+    <nav class="mobile-nav">
+      <a href="/" class="mobile-nav-link">Home</a>
+      <a href="/physics-labs/" class="mobile-nav-link">Physics Labs</a>
+      <a href="/chemistry-labs/" class="mobile-nav-link active">Chemistry Labs</a>
+      <a href="/chemistry-labs/calculators/" class="mobile-nav-link">Calculators</a>
+      <a href="/resume-builder/" class="mobile-nav-link">Career Studio</a>
+      <a href="/typing-speed-test/" class="mobile-nav-link">Typing Arena</a>
+      <a href="/tools/" class="mobile-nav-link">All Tools</a>
+      <a href="/about/" class="mobile-nav-link">About</a>
+    </nav>
+  </div>
+
+
+  <main id="main-content" class="container" style="padding-top:1.5rem; padding-bottom:3rem;">
+    <!-- Breadcrumbs -->
+    <nav class="chem-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="chem-breadcrumb-sep">/</span>
+      <a href="/chemistry-labs/">Chemistry Virtual Labs</a>
+      <span class="chem-breadcrumb-sep">/</span>
+      <span class="chem-breadcrumb-current">pH Scale & Hydrogen Ion Concentration Simulator</span>
+    </nav>
+
+    <!-- Lab Header -->
+    <div class="chem-lab-header">
+      <div class="chem-lab-header-left">
+        <div style="display:flex; gap:0.5rem; align-items:center; margin-bottom:0.5rem; flex-wrap:wrap;">
+          <span class="chem-badge chem-badge-primary">Acids, Bases & Solutions</span>
+          <span class="chem-badge chem-badge-secondary">Classes 9–12 / NEET / JEE Level</span>
+          <span class="chem-badge" style="background:#e0f2fe; color:#0369a1;">⏱ 10 mins</span>
+          <span class="chem-badge" style="background:#fef3c7; color:#92400e;">CBSE • JEE • NEET • College</span>
+        </div>
+        <h1 class="chem-lab-title">pH Scale Simulator: [H⁺], [OH⁻], pOH & Universal Indicator Spectrum</h1>
+        <p class="chem-lab-intro">Visualize the logarithmic pH scale from 0 to 14. Adjust hydronium [H⁺] and hydroxide [OH⁻] concentrations, observe universal indicator color transitions, and test real-world fluids from stomach acid (pH 1.5) to household bleach (pH 12.5).</p>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="chem-lab-actions">
+        <button id="btnFullscreen" class="chem-btn chem-btn-outline" title="Toggle Fullscreen Mode">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
+          Fullscreen
+        </button>
+        <button id="btnResetSimulation" class="chem-btn chem-btn-outline" title="Reset Experiment Parameters">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6"></path><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
+          Reset Lab
+        </button>
+        <button id="btnExportCSV" class="chem-btn chem-btn-outline" title="Download Data Worksheet (CSV)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Export CSV
+        </button>
+        <button id="btnPrintWorksheet" class="chem-btn chem-btn-primary" title="Print Laboratory Worksheet">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+          Print Lab Sheet
+        </button>
+      </div>
+    </div>
+
+    <!-- Interactive Simulation Wrapper -->
+    <div class="chem-lab-wrapper" id="labWrapper">
+      <!-- Live HUD Metrics Panel -->
+      <div class="chem-hud-bar" id="hudBar">
+        
+    <div class="hud-metric"><div class="hud-metric-label">Solution pH</div><div class="hud-metric-value" id="hudPH">7.00</div></div>
+    <div class="hud-metric"><div class="hud-metric-label">pOH Value</div><div class="hud-metric-value" id="hudPOH">7.00</div></div>
+    <div class="hud-metric"><div class="hud-metric-label">[H₃O⁺] Concentration</div><div class="hud-metric-value" id="hudHConc">1.00 × 10⁻⁷<span class="hud-metric-unit">M</span></div></div>
+    <div class="hud-metric"><div class="hud-metric-label">[OH⁻] Concentration</div><div class="hud-metric-value" id="hudOHConc">1.00 × 10⁻⁷<span class="hud-metric-unit">M</span></div></div>
+    <div class="hud-metric"><div class="hud-metric-label">Nature</div><div class="hud-metric-value" id="hudNature" style="color:var(--chem-emerald)">Neutral</div></div>
+  
+      </div>
+
+      <!-- Main Workspace Grid (Viewport + Controls) -->
+      <div class="chem-workspace-grid">
+        <!-- Simulation Viewport -->
+        <div class="chem-viewport-card">
+          <div class="chem-card-header-bar">
+            <span>🔬 Live Virtual Apparatus</span>
+            <span class="chem-status-dot">Interactive 60 FPS</span>
+          </div>
+          <div class="chem-viewport-inner">
+            
+    <canvas id="phCanvas" style="width:100%; height:440px; display:block; border-radius:12px; background:linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);"></canvas>
+  
+          </div>
+        </div>
+
+        <!-- Controls Panel -->
+        <div class="chem-controls-card">
+          <div class="chem-card-header-bar">
+            <span>⚙️ Scientific Controls</span>
+            <span>Calibrated</span>
+          </div>
+          <div class="chem-controls-inner">
+            
+    <div class="chem-form-group">
+      <label class="chem-label">Select Common Solution:</label>
+      <select id="phPreset" class="chem-select">
+        <option value="custom">Custom Adjustment</option>
+        <option value="1.0">0.1 M Hydrochloric Acid (HCl) - pH 1.0</option>
+        <option value="2.0">Gastric Acid / Lemon Juice - pH 2.0</option>
+        <option value="2.9">Vinegar (Acetic Acid) - pH 2.9</option>
+        <option value="4.5">Tomato Juice / Acid Rain - pH 4.5</option>
+        <option value="5.0">Black Coffee - pH 5.0</option>
+        <option value="6.5">Cow's Milk - pH 6.5</option>
+        <option value="7.0" selected>Pure Distilled Water - pH 7.0 (Neutral)</option>
+        <option value="7.4">Human Blood Plasma - pH 7.4</option>
+        <option value="8.4">Baking Soda Solution (NaHCO₃) - pH 8.4</option>
+        <option value="10.5">Milk of Magnesia [Mg(OH)₂] - pH 10.5</option>
+        <option value="11.5">Household Ammonia Solution - pH 11.5</option>
+        <option value="12.5">Bleach (Sodium Hypochlorite) - pH 12.5</option>
+        <option value="13.0">0.1 M Sodium Hydroxide (NaOH) - pH 13.0</option>
+      </select>
+    </div>
+    <div class="chem-form-group">
+      <div style="display:flex; justify-content:space-between;">
+        <label class="chem-label">Adjust pH (0 to 14):</label>
+        <span id="phValDisplay" style="font-weight:700; color:var(--chem-primary)">7.00</span>
+      </div>
+      <input type="range" id="phSlider" min="0" max="14" step="0.1" value="7.0" class="chem-slider" />
+    </div>
+    <div class="chem-form-group">
+      <div style="display:flex; justify-content:space-between;">
+        <label class="chem-label">Liquid Volume (mL):</label>
+        <span id="volValDisplay" style="font-weight:700; color:var(--chem-secondary)">500 mL</span>
+      </div>
+      <input type="range" id="volSlider" min="100" max="1000" step="50" value="500" class="chem-slider" />
+    </div>
+    <div class="chem-btn-group" style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem; margin-top:0.75rem;">
+      <button id="btnAddAcid" class="chem-btn chem-btn-outline" style="border-color:#ef4444; color:#ef4444;">+50mL Acid (HCl)</button>
+      <button id="btnAddBase" class="chem-btn chem-btn-outline" style="border-color:#3b82f6; color:#3b82f6;">+50mL Base (NaOH)</button>
+      <button id="btnDilute" class="chem-btn chem-btn-outline">+100mL Water</button>
+      <button id="btnResetPH" class="chem-btn chem-btn-primary">Reset pH 7.0</button>
+    </div>
+  
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scientific Documentation Tabs -->
+    <section class="chem-doc-section">
+      <div class="chem-tabs-nav">
+        <button class="chem-tab-btn active" data-tab="tab-theory">1. Scientific Theory & Derivations</button>
+        <button class="chem-tab-btn" data-tab="tab-procedure">2. Lab Protocol & Objectives</button>
+        <button class="chem-tab-btn" data-tab="tab-example">3. Worked Calculation Example</button>
+        <button class="chem-tab-btn" data-tab="tab-applications">4. Applications & Misconceptions</button>
+        <button class="chem-tab-btn" data-tab="tab-faqs">5. FAQs (3)</button>
+      </div>
+
+      <!-- Tab 1: Theory -->
+      <div class="chem-tab-pane active" id="tab-theory">
+        <div class="chem-doc-content">
+          <h2>Water Autoionization & pH Definition</h2>
+          <div class="chem-formula-hero">
+            <code>\text{pH} = -\log_{10}[\text{H}^+], \quad K_w = [\text{H}^+][\text{OH}^-] = 1.0 \times 10^{-14}, \quad \text{pH} + \text{pOH} = 14</code>
+          </div>
+          <p class="chem-formula-desc">In pure water at 25°C, autoionization yields equal concentrations [H+] = [OH-] = 10⁻⁷ M (pH = 7). Each unit change in pH represents a ten-fold (10×) change in hydrogen ion concentration.</p>
+          <div class="chem-text-block">
+            Søren Sørensen introduced the pH scale in 1909 to quantify acidity. Because hydrogen ion concentrations in aqueous solutions span many orders of magnitude (from over 1 M down to 10⁻¹⁴ M), a logarithmic scale is employed. Because pH = -log₁₀[H⁺], a solution with pH 3 has 10 times more [H⁺] than a solution with pH 4, and 100 times more than pH 5. In any aqueous solution at 25°C, the product of [H⁺] and [OH⁻] is constrained by the water autoionization constant Kw = 1.0 × 10⁻¹⁴.
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 2: Procedure -->
+      <div class="chem-tab-pane" id="tab-procedure">
+        <div class="chem-doc-content">
+          <h2>Experimental Objectives</h2>
+          <ul class="chem-bullet-list">
+            <li>Demonstrate the inverse logarithmic relationship between pH and hydronium concentration [H⁺].</li><li>Verify the ion product of water Kw = [H⁺][OH⁻] = 1.0 × 10⁻¹⁴ at 25°C.</li><li>Classify substances as strongly acidic (0-3), weakly acidic (3-7), neutral (7), weakly basic (7-11), or strongly basic (11-14).</li><li>Interpret color shifts using universal indicator and digital pH electrodes.</li>
+          </ul>
+          <h2 style="margin-top:2rem;">Step-by-Step Laboratory Procedure</h2>
+          <ol class="chem-step-list">
+            
+            <li class="chem-step-item">
+              <strong>Step 1:</strong>
+              <p>Drag the [H⁺] slider across 14 orders of magnitude from 1.0 M (pH 0) to 1.0 × 10⁻¹⁴ M (pH 14).</p>
+            </li>
+            
+            <li class="chem-step-item">
+              <strong>Step 2:</strong>
+              <p>Observe the real-time calculated values of pH, pOH, and [OH⁻].</p>
+            </li>
+            
+            <li class="chem-step-item">
+              <strong>Step 3:</strong>
+              <p>Select common substances from the dropdown (lemon juice, coffee, blood, bleach) to inspect their benchmark pH.</p>
+            </li>
+            
+            <li class="chem-step-item">
+              <strong>Step 4:</strong>
+              <p>Watch the universal indicator color shift smoothly from red to orange, green, blue, and purple.</p>
+            </li>
+            
+          </ol>
+        </div>
+      </div>
+
+      <!-- Tab 3: Worked Example -->
+      <div class="chem-tab-pane" id="tab-example">
+        <div class="chem-doc-content">
+          <h2>Worked Example & Step-by-Step Calculation</h2>
+          <div class="chem-example-box">
+            <h3 style="color:var(--chem-primary); font-size:1.15rem; margin-bottom:0.75rem;">Problem Statement:</h3>
+            <p style="font-size:1.05rem; font-weight:600; color:var(--text-main); margin-bottom:1.5rem;">Calculate the pH, pOH, and [OH⁻] of a 0.0025 M hydrochloric acid (HCl) solution at 25°C.</p>
+            <h3 style="color:var(--chem-secondary); font-size:1.15rem; margin-bottom:0.75rem;">Mathematical Solution & Derivation:</h3>
+            <div class="chem-example-solution" style="white-space:pre-line; line-height:1.7;">
+              1. Hydrochloric acid is a strong monoprotic acid that dissociates completely:
+   [H⁺] = 0.0025 M = 2.5 × 10⁻³ M.
+2. Calculate pH: pH = -log₁₀(2.5 × 10⁻³) = -(-2.602) = 2.60.
+3. Calculate pOH: pOH = 14 - pH = 14 - 2.60 = 11.40.
+4. Calculate [OH⁻]: [OH⁻] = 10^(-11.40) = 3.98 × 10⁻¹² M.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 4: Applications & Misconceptions -->
+      <div class="chem-tab-pane" id="tab-applications">
+        <div class="chem-doc-content">
+          <h2>Industrial, Engineering & Everyday Applications</h2>
+          <div class="chem-apps-grid">
+            
+            <div class="chem-app-item">
+              <strong>Clinical Diagnostics</strong>
+              <p>Maintaining human arterial blood pH within the narrow survival window of 7.35 to 7.45.</p>
+            </div>
+            
+            <div class="chem-app-item">
+              <strong>Agriculture & Soil Science</strong>
+              <p>Adjusting soil pH (adding lime for acidic soil, sulfur for alkaline soil) for crop nutrient uptake.</p>
+            </div>
+            
+            <div class="chem-app-item">
+              <strong>Water Treatment</strong>
+              <p>Controlling municipal drinking water pH to prevent pipeline lead leaching and corrosion.</p>
+            </div>
+            
+            <div class="chem-app-item">
+              <strong>Cosmetics Chemistry</strong>
+              <p>Formulating pH-balanced skin cleansers (pH 5.5) to protect the skin's natural acid mantle.</p>
+            </div>
+            
+          </div>
+          <h2 style="margin-top:2.5rem;">Common Student Misconceptions & Scientific Reality</h2>
+          <div class="chem-misc-list">
+            
+        <div class="chem-misc-card">
+          <div class="chem-misc-fact">💡 <strong>Critical Conceptual Insight:</strong> A common misconception is that pH cannot be negative or greater than 14. Concentrated acids (such as 12 M HCl) have [H⁺] > 1 M, yielding negative pH values (pH ≈ -1.08). The 0-14 boundary applies primarily to dilute aqueous systems.</div>
+        </div>
+        
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 5: FAQs -->
+      <div class="chem-tab-pane" id="tab-faqs">
+        <div class="chem-doc-content">
+          <h2>Frequently Asked Questions on pH Scale & Hydrogen Ion Concentration Simulator</h2>
+          <div class="chem-faq-list" style="margin-top:1.5rem;">
+            
+            <div class="chem-faq-item">
+              <button class="chem-faq-trigger">
+                <span>Can pH ever be negative?</span>
+                <svg class="chem-faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="chem-faq-content">
+                <p>Yes. In concentrated acids with [H⁺] > 1.0 M, pH values fall below zero. For example, concentrated 10 M HCl has a theoretical pH of -1.0.</p>
+              </div>
+            </div>
+            
+            <div class="chem-faq-item">
+              <button class="chem-faq-trigger">
+                <span>Why does pure water have a pH of 7 at 25°C?</span>
+                <svg class="chem-faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="chem-faq-content">
+                <p>Water undergoes self-ionization: 2H₂O ⇌ H₃O⁺ + OH⁻ with Kw = 1.0 × 10⁻¹⁴ at 25°C. In pure water, [H⁺] = [OH⁻] = √(10⁻¹⁴) = 10⁻⁷ M, giving pH = -log₁₀(10⁻⁷) = 7.0.</p>
+              </div>
+            </div>
+            
+            <div class="chem-faq-item">
+              <button class="chem-faq-trigger">
+                <span>Does temperature affect the pH of pure water?</span>
+                <svg class="chem-faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="chem-faq-content">
+                <p>Yes. Water autoionization is endothermic. As temperature rises, Kw increases (at 50°C, Kw ≈ 5.5 × 10⁻¹⁴, pH ≈ 6.63), yet the water remains strictly neutral because [H⁺] = [OH⁻].</p>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Experiments Section -->
+    <section class="chem-related-section">
+      <div class="chem-section-header">
+        <h2 class="chem-section-title">Related Chemistry Virtual Labs</h2>
+        <p class="chem-section-desc">Continue your exploration with these interconnected chemical experiments and simulations.</p>
+      </div>
+      <div class="chem-grid">
+        
+            <article class="chem-card" data-category="analytical">
+              <div class="chem-card-badge-wrap">
+                <span class="chem-badge chem-badge-primary">Analytical Chemistry</span>
+                <span class="chem-badge chem-badge-secondary">Classes 11–12 / B.Sc Chemistry / JEE</span>
+              </div>
+              <div class="chem-card-icon">
+      <svg viewBox="0 0 100 100" fill="none" stroke="currentColor">
+        <rect x="44" y="10" width="12" height="45" stroke="#334155" stroke-width="2" fill="rgba(59,130,246,0.2)"/>
+        <rect x="42" y="55" width="16" height="6" fill="#0f172a"/>
+        <line x1="50" y1="61" x2="50" y2="66" stroke="#334155" stroke-width="2"/>
+        <circle cx="50" cy="70" r="2" fill="#3b82f6"/>
+        <path d="M42 74 H58 L72 92 H28 Z" stroke="#334155" stroke-width="2" fill="rgba(236,72,153,0.3)"/>
+      </svg>
+    </div>
+              <h3 class="chem-card-title"><a href="/chemistry-labs/acid-base-titration/">Acid-Base Titration Virtual Laboratory</a></h3>
+              <p class="chem-card-desc">Operate a complete analytical titration workstation with a graduated burette, Erlenmeyer flask, and magnetic stirrer. Ti...</p>
+              <a href="/chemistry-labs/acid-base-titration/" class="chem-card-btn">Open Lab →</a>
+            </article>
+            
+            <article class="chem-card" data-category="acids-bases">
+              <div class="chem-card-badge-wrap">
+                <span class="chem-badge chem-badge-primary">Acids, Bases & Solutions</span>
+                <span class="chem-badge chem-badge-secondary">Classes 9–12 / B.Sc Chemistry</span>
+              </div>
+              <div class="chem-card-icon">
+      <svg viewBox="0 0 100 100" fill="none" stroke="currentColor">
+        <rect x="22" y="25" width="56" height="65" rx="3" stroke="#94a3b8" stroke-width="2.5" fill="none"/>
+        <rect x="24" y="45" width="52" height="43" fill="rgba(37,99,235,0.4)"/>
+        <ellipse cx="50" cy="45" rx="26" ry="5" fill="rgba(37,99,235,0.6)"/>
+        <rect x="35" y="82" width="6" height="4" fill="#2563eb"/>
+        <rect x="52" y="83" width="5" height="4" fill="#2563eb"/>
+        <rect x="62" y="81" width="6" height="5" fill="#2563eb"/>
+      </svg>
+    </div>
+              <h3 class="chem-card-title"><a href="/chemistry-labs/solution-concentration-simulator/">Solution Concentration & Dilution Simulator</a></h3>
+              <p class="chem-card-desc">Prepare chemical solutions of precise concentrations. Dissolve salts like NaCl, CuSO₄, and KMnO₄ into aqueous solvents, ...</p>
+              <a href="/chemistry-labs/solution-concentration-simulator/" class="chem-card-btn">Open Lab →</a>
+            </article>
+            
+            <article class="chem-card" data-category="organic">
+              <div class="chem-card-badge-wrap">
+                <span class="chem-badge chem-badge-primary">Organic Chemistry</span>
+                <span class="chem-badge chem-badge-secondary">Classes 10–12 / B.Sc / JEE / NEET</span>
+              </div>
+              <div class="chem-card-icon">
+      <svg viewBox="0 0 100 100" fill="none" stroke="currentColor">
+        <circle cx="35" cy="50" r="10" fill="#334155"/>
+        <text x="35" y="54" font-size="10" font-weight="bold" fill="#ffffff" text-anchor="middle">C</text>
+        <circle cx="65" cy="50" r="10" fill="#334155"/>
+        <text x="65" y="54" font-size="10" font-weight="bold" fill="#ffffff" text-anchor="middle">C</text>
+        <line x1="45" y1="47" x2="55" y2="47" stroke="#475569" stroke-width="2"/>
+        <line x1="45" y1="53" x2="55" y2="53" stroke="#475569" stroke-width="2"/>
+        <circle cx="20" cy="30" r="7" fill="#94a3b8"/>
+        <text x="20" y="33" font-size="8" fill="#ffffff" text-anchor="middle">H</text>
+        <line x1="29" y1="42" x2="23" y2="34" stroke="#94a3b8" stroke-width="2"/>
+      </svg>
+    </div>
+              <h3 class="chem-card-title"><a href="/chemistry-labs/organic-molecule-builder/">2D Organic Molecule Builder & Valence Validator</a></h3>
+              <p class="chem-card-desc">Draw and design organic chemical structures using an interactive 2D molecular sketcher. Connect carbon chains, add doubl...</p>
+              <a href="/chemistry-labs/organic-molecule-builder/" class="chem-card-btn">Open Lab →</a>
+            </article>
+            
+      </div>
+    </section>
+  </main>
+
+  
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="/" class="brand-logo">
+            <div class="logo-symbol">E</div>
+            <span>Ecrio<span class="accent-dot">X</span></span>
+          </a>
+          <p>One Platform. Endless Possibilities. Free, scientifically accurate browser-based virtual laboratories and digital productivity utilities.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Chemistry Labs</h4>
+          <ul class="footer-links">
+            <li><a href="/chemistry-labs/">All Chemistry Labs</a></li>
+            <li><a href="/chemistry-labs/interactive-periodic-table/">Periodic Table Explorer</a></li>
+            <li><a href="/chemistry-labs/chemical-equation-balancer/">Equation Balancer</a></li>
+            <li><a href="/chemistry-labs/acid-base-titration/">Acid-Base Titration</a></li>
+            <li><a href="/chemistry-labs/3d-molecular-viewer/">3D Molecular Viewer</a></li>
+            <li><a href="/chemistry-labs/calculators/">Chemistry Calculators</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Physics Labs</h4>
+          <ul class="footer-links">
+            <li><a href="/physics-labs/">All Physics Labs</a></li>
+            <li><a href="/physics-labs/projectile-motion-simulator/">Projectile Motion</a></li>
+            <li><a href="/physics-labs/electric-circuit-simulator/">Circuit Simulator</a></li>
+            <li><a href="/physics-labs/ray-optics-simulator/">Ray Optics Lab</a></li>
+            <li><a href="/physics-labs/simple-pendulum-experiment/">Simple Pendulum</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Product Suite</h4>
+          <ul class="footer-links">
+            <li><a href="/tools/">All Tools Directory</a></li>
+            <li><a href="/categories/">Tool Categories</a></li>
+            <li><a href="/pdf-compressor/">PDF Compressor</a></li>
+            <li><a href="/resume-builder/">ATS Resume Builder</a></li>
+            <li><a href="/typing-speed-test/">Typing Arena</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company & Legal</h4>
+          <ul class="footer-links">
+            <li><a href="/about/">About EcrioX</a></li>
+            <li><a href="/contact/">Contact Support</a></li>
+            <li><a href="/privacy/">Privacy Policy</a></li>
+            <li><a href="/terms/">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 EcrioX. All rights reserved. Zero client downloads required — 100% private in-browser scientific simulations.</p>
+        <p>Canonical Domain: <a href="https://ecriox.com/" style="color: var(--chem-primary);">ecriox.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Chemistry Engine Script Loaded Globally -->
+  <script src="/js/chemistry-engine.js"></script>
+  <script>
+    // Theme toggle listener
+    const themeBtn = document.getElementById('themeToggleBtn');
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => {
+        const cur = document.documentElement.getAttribute('data-theme') || 'light';
+        const nxt = cur === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', nxt);
+        try { localStorage.setItem('ecriox_theme_preference', nxt); } catch(e){}
+        window.dispatchEvent(new Event('themechange'));
+      });
+    }
+    // Mobile navigation drawer toggle
+    const mobToggle = document.getElementById('mobileMenuToggle');
+    const mobNav = document.getElementById('mobileNavDrawer');
+    if (mobToggle && mobNav) {
+      mobToggle.addEventListener('click', () => {
+        const isOpen = mobNav.classList.toggle('open');
+        mobToggle.setAttribute('aria-expanded', isOpen);
+      });
+    }
+    // FAQ Accordion listener
+    document.querySelectorAll('.chem-faq-trigger').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.parentElement.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>
+
+
+  <!-- Tab Switcher & Lab Actions Script -->
+  <script>
+    (function(){
+      // Tab switcher
+      const tabBtns = document.querySelectorAll('.chem-tab-btn');
+      const tabPanes = document.querySelectorAll('.chem-tab-pane');
+
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          tabBtns.forEach(b => b.classList.remove('active'));
+          tabPanes.forEach(p => p.classList.remove('active'));
+
+          btn.classList.add('active');
+          const target = btn.getAttribute('data-tab');
+          const pane = document.getElementById(target);
+          if (pane) pane.classList.add('active');
+        });
+      });
+
+      // Fullscreen mode toggle
+      const fsBtn = document.getElementById('btnFullscreen');
+      const labWrap = document.getElementById('labWrapper');
+      if (fsBtn && labWrap) {
+        fsBtn.addEventListener('click', () => {
+          if (!document.fullscreenElement) {
+            labWrap.requestFullscreen?.() || labWrap.webkitRequestFullscreen?.();
+            fsBtn.innerHTML = 'Exit Fullscreen';
+          } else {
+            document.exitFullscreen?.() || document.webkitExitFullscreen?.();
+            fsBtn.innerHTML = 'Fullscreen';
+          }
+        });
+      }
+
+      // Print Lab Worksheet
+      const printBtn = document.getElementById('btnPrintWorksheet');
+      if (printBtn) {
+        printBtn.addEventListener('click', () => window.print());
+      }
+
+      // Export CSV Data
+      const csvBtn = document.getElementById('btnExportCSV');
+      if (csvBtn) {
+        csvBtn.addEventListener('click', () => {
+          const metrics = Array.from(document.querySelectorAll('#hudBar .hud-metric')).map(m => {
+            const lbl = m.querySelector('.hud-metric-label')?.textContent.trim() || 'Metric';
+            const val = m.querySelector('.hud-metric-value')?.textContent.trim() || '0';
+            return `"${lbl}","${val}"`;
+          });
+          const csvContent = "data:text/csv;charset=utf-8,Parameter,Value\n" +
+            `"Experiment","pH Scale & Hydrogen Ion Concentration Simulator"\n` +
+            `"Timestamp","${new Date().toISOString()}"\n` +
+            metrics.join("\n");
+          const encodedUri = encodeURI(csvContent);
+          const link = document.createElement("a");
+          link.setAttribute("href", encodedUri);
+          link.setAttribute("download", "ph-scale-simulator-lab-data.csv");
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        });
+      }
+    })();
+  </script>
+
+  <!-- Interactive Simulation Engine Execution -->
+  <script>
+    
+    (function(){
+      const canvas = document.getElementById('phCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+
+      let pH = 7.0;
+      let volume = 500; // mL
+      let particles = [];
+
+      // Universal indicator color palette
+      function getPHColor(val) {
+        if (val < 2) return { r: 239, g: 68, b: 68, name: "Vivid Red" };      // #ef4444
+        if (val < 4) return { r: 249, g: 115, b: 22, name: "Orange" };        // #f97316
+        if (val < 6) return { r: 234, g: 179, b: 8, name: "Yellow-Orange" };  // #eab308
+        if (val < 8) return { r: 34, g: 197, b: 94, name: "Neutral Green" };  // #22c55e
+        if (val < 10) return { r: 6, g: 182, b: 212, name: "Teal-Cyan" };     // #06b6d4
+        if (val < 12) return { r: 37, g: 99, b: 235, name: "Deep Blue" };     // #2563eb
+        return { r: 124, g: 58, b: 237, name: "Deep Purple / Violet" };       // #7c3aed
+      }
+
+      function updateHUD() {
+        const pOH = 14.0 - pH;
+        const hConc = Math.pow(10, -pH);
+        const ohConc = Math.pow(10, -pOH);
+
+        document.getElementById('hudPH').textContent = pH.toFixed(2);
+        document.getElementById('hudPOH').textContent = pOH.toFixed(2);
+        document.getElementById('hudHConc').innerHTML = hConc.toExponential(2) + '<span class="hud-metric-unit">M</span>';
+        document.getElementById('hudOHConc').innerHTML = ohConc.toExponential(2) + '<span class="hud-metric-unit">M</span>';
+
+        const natureEl = document.getElementById('hudNature');
+        if (pH < 3.0) {
+          natureEl.textContent = 'Strongly Acidic'; natureEl.style.color = '#ef4444';
+        } else if (pH < 6.8) {
+          natureEl.textContent = 'Weakly Acidic'; natureEl.style.color = '#f97316';
+        } else if (pH <= 7.2) {
+          natureEl.textContent = 'Neutral'; natureEl.style.color = '#22c55e';
+        } else if (pH <= 11.0) {
+          natureEl.textContent = 'Weakly Basic'; natureEl.style.color = '#2563eb';
+        } else {
+          natureEl.textContent = 'Strongly Basic'; natureEl.style.color = '#7c3aed';
+        }
+
+        document.getElementById('phValDisplay').textContent = pH.toFixed(2);
+        document.getElementById('volValDisplay').textContent = volume + ' mL';
+        document.getElementById('phSlider').value = pH.toFixed(1);
+        document.getElementById('volSlider').value = volume;
+      }
+
+      function initParticles() {
+        particles = [];
+        // H+ count proportional to acidity, OH- count proportional to basicity
+        let hCount = Math.round(Math.max(2, Math.min(60, (14 - pH) * 4)));
+        let ohCount = Math.round(Math.max(2, Math.min(60, pH * 4)));
+        for (let i = 0; i < hCount; i++) {
+          particles.push({ type: 'H+', x: Math.random(), y: Math.random(), vx: (Math.random()-0.5)*0.8, vy: (Math.random()-0.5)*0.8 });
+        }
+        for (let i = 0; i < ohCount; i++) {
+          particles.push({ type: 'OH-', x: Math.random(), y: Math.random(), vx: (Math.random()-0.5)*0.8, vy: (Math.random()-0.5)*0.8 });
+        }
+      }
+
+      function resize() {
+        const rect = canvas.getBoundingClientRect();
+        canvas.width = rect.width * (window.devicePixelRatio || 1);
+        canvas.height = rect.height * (window.devicePixelRatio || 1);
+      }
+      resize();
+      window.addEventListener('resize', resize);
+      initParticles();
+
+      function draw() {
+        const w = canvas.width;
+        const h = canvas.height;
+        ctx.clearRect(0, 0, w, h);
+
+        // Draw Beaker
+        const bx = w * 0.25;
+        const by = h * 0.22;
+        const bw = w * 0.50;
+        const bh = h * 0.70;
+
+        // Beaker liquid fill
+        const col = getPHColor(pH);
+        const fillFraction = Math.min(1.0, Math.max(0.15, volume / 1000));
+        const liquidH = bh * fillFraction;
+        const liquidTopY = by + bh - liquidH;
+
+        ctx.fillStyle = `rgba(${col.r}, ${col.g}, ${col.b}, 0.75)`;
+        ctx.beginPath();
+        ctx.rect(bx + 4, liquidTopY, bw - 8, liquidH - 4);
+        ctx.fill();
+
+        // Draw meniscus curve
+        ctx.fillStyle = `rgba(${col.r}, ${col.g}, ${col.b}, 0.95)`;
+        ctx.beginPath();
+        ctx.ellipse(bx + bw / 2, liquidTopY, (bw - 8) / 2, 8, 0, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Draw floating ions inside beaker
+        particles.forEach(p => {
+          p.x += p.vx * 0.005;
+          p.y += p.vy * 0.005;
+          if (p.x < 0.05) { p.x = 0.05; p.vx *= -1; }
+          if (p.x > 0.95) { p.x = 0.95; p.vx *= -1; }
+          if (p.y < 0.1) { p.y = 0.1; p.vy *= -1; }
+          if (p.y > 0.95) { p.y = 0.95; p.vy *= -1; }
+
+          const px = bx + 10 + p.x * (bw - 20);
+          const py = liquidTopY + 12 + p.y * (liquidH - 24);
+
+          ctx.beginPath();
+          ctx.arc(px, py, 4, 0, Math.PI * 2);
+          if (p.type === 'H+') {
+            ctx.fillStyle = '#ef4444'; // Red H+
+          } else {
+            ctx.fillStyle = '#3b82f6'; // Blue OH-
+          }
+          ctx.fill();
+        });
+
+        // Beaker glass outline & tick marks
+        ctx.strokeStyle = '#94a3b8';
+        ctx.lineWidth = 4;
+        ctx.beginPath();
+        ctx.moveTo(bx - 10, by); // Left lip
+        ctx.lineTo(bx, by);
+        ctx.lineTo(bx, by + bh);
+        ctx.lineTo(bx + bw, by + bh);
+        ctx.lineTo(bx + bw, by);
+        ctx.lineTo(bx + bw + 10, by); // Right lip
+        ctx.stroke();
+
+        // Tick marks
+        ctx.fillStyle = '#64748b';
+        ctx.font = '12px Inter, sans-serif';
+        for (let vol = 200; vol <= 1000; vol += 200) {
+          const ty = by + bh - (bh * (vol / 1000));
+          ctx.beginPath();
+          ctx.moveTo(bx + 4, ty);
+          ctx.lineTo(bx + 20, ty);
+          ctx.stroke();
+          ctx.fillText(vol + ' mL', bx + 24, ty + 4);
+        }
+
+        // Draw pH Dip Probe
+        const probeX = bx + bw * 0.72;
+        const probeY = by - 40;
+        ctx.fillStyle = '#334155';
+        ctx.fillRect(probeX - 8, probeY, 16, liquidTopY - probeY + 50);
+        // Glass tip sensing bulb
+        ctx.fillStyle = '#38bdf8';
+        ctx.beginPath();
+        ctx.arc(probeX, liquidTopY + 50, 9, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Meter box top right
+        const mbX = w * 0.72;
+        const mbY = 20;
+        const mbW = w * 0.24;
+        const mbH = 65;
+        ctx.fillStyle = '#1e293b';
+        ctx.fillRect(mbX, mbY, mbW, mbH);
+        ctx.strokeStyle = '#3b82f6';
+        ctx.strokeRect(mbX, mbY, mbW, mbH);
+
+        ctx.fillStyle = '#38bdf8';
+        ctx.font = 'bold 11px Inter, sans-serif';
+        ctx.fillText('DIGITAL pH METER', mbX + 10, mbY + 20);
+        ctx.fillStyle = '#f8fafc';
+        ctx.font = 'bold 24px monospace';
+        ctx.fillText('pH: ' + pH.toFixed(2), mbX + 10, mbY + 52);
+
+        // Connecting probe cable
+        ctx.strokeStyle = '#475569';
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.moveTo(probeX, probeY);
+        ctx.bezierCurveTo(probeX, probeY - 20, mbX + mbW/2, mbY + mbH + 30, mbX + mbW/2, mbY + mbH);
+        ctx.stroke();
+      }
+
+      function loop() {
+        draw();
+        requestAnimationFrame(loop);
+      }
+      requestAnimationFrame(loop);
+
+      // Event handlers
+      const preset = document.getElementById('phPreset');
+      const slider = document.getElementById('phSlider');
+      const volSlide = document.getElementById('volSlider');
+
+      preset.addEventListener('change', () => {
+        if (preset.value !== 'custom') {
+          pH = parseFloat(preset.value);
+          initParticles();
+          updateHUD();
+        }
+      });
+
+      slider.addEventListener('input', () => {
+        pH = parseFloat(slider.value);
+        preset.value = 'custom';
+        initParticles();
+        updateHUD();
+      });
+
+      volSlide.addEventListener('input', () => {
+        volume = parseInt(volSlide.value);
+        updateHUD();
+      });
+
+      document.getElementById('btnAddAcid').addEventListener('click', () => {
+        volume = Math.min(1000, volume + 50);
+        // Lower pH logarithmically
+        pH = Math.max(0.0, pH - 1.2);
+        initParticles();
+        updateHUD();
+      });
+
+      document.getElementById('btnAddBase').addEventListener('click', () => {
+        volume = Math.min(1000, volume + 50);
+        // Raise pH logarithmically
+        pH = Math.min(14.0, pH + 1.2);
+        initParticles();
+        updateHUD();
+      });
+
+      document.getElementById('btnDilute').addEventListener('click', () => {
+        volume = Math.min(1000, volume + 100);
+        // Dilution pulls pH towards 7.0
+        if (pH < 7.0) pH = Math.min(7.0, pH + 0.3);
+        else if (pH > 7.0) pH = Math.max(7.0, pH - 0.3);
+        initParticles();
+        updateHUD();
+      });
+
+      document.getElementById('btnResetPH').addEventListener('click', () => {
+        pH = 7.0;
+        volume = 500;
+        preset.value = '7.0';
+        initParticles();
+        updateHUD();
+      });
+
+      updateHUD();
+    })();
+  
+  </script>
+        

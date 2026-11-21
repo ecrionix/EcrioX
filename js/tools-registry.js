@@ -6,6 +6,15 @@
 
 const ECRIOX_CATEGORIES = [
   {
+    id: "chemistry-labs",
+    name: "Chemistry Virtual Labs",
+    slug: "chemistry-labs",
+    route: "/chemistry-labs/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31L4.1 19.3A2 2 0 0 0 5.9 22h12.2a2 2 0 0 0 1.8-2.7L14 9.31V2"></path></svg>`,
+    title: "Chemistry Virtual Labs – Interactive Science Simulations Online | EcrioX",
+    description: "Conduct safe online chemistry experiments, 3D molecular structures, acid-base titrations, periodic trends, and reaction kinetics simulations."
+  },
+  {
     id: "pdf",
     name: "PDF Tools",
     slug: "pdf",
@@ -116,6 +125,202 @@ const ECRIOX_CATEGORIES = [
 ];
 
 const ECRIOX_TOOLS = [
+
+  // ==========================================
+  // CHEMISTRY VIRTUAL LABS & CALCULATORS
+  // ==========================================
+  {
+    id: "chemistry-calculators",
+    name: "Master Chemistry Calculators Section",
+    category: "chemistry-labs",
+    categoryName: "Chemistry Virtual Labs",
+    description: "15 interactive chemistry calculators: molarity, molality, formula mass, dilutions, pH/pOH, stoichiometry, limiting reagent, and gas laws.",
+    route: "/chemistry-labs/calculators/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"></rect><line x1="8" y1="6" x2="16" y2="6"></line><line x1="16" y1="14" x2="16" y2="18"></line><path d="M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M8 18h.01M12 18h.01"></path></svg>`,
+    status: "available",
+    popular: true,
+    tags: ["chemistry", "calculator", "molarity", "ph", "stoichiometry", "gas laws"]
+  },
+  {
+    id: "interactive-periodic-table",
+    name: "Interactive Periodic Table of Elements Explorer",
+    category: "chemistry-labs",
+    categoryName: "Chemistry Virtual Labs",
+    description: "The modern periodic table organizes all 118 known chemical elements according to increasing atomic number and recurring periodic chemical trends. Explore element blocks, electron c",
+    route: "/chemistry-labs/interactive-periodic-table/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31L4.1 19.3A2 2 0 0 0 5.9 22h12.2a2 2 0 0 0 1.8-2.7L14 9.31V2"></path></svg>`,
+    status: "available",
+    popular: true,
+    tags: ["chemistry", "virtual lab", "simulator", "interactive-periodic-table", "general", "classes 8\u201312 / college chemistry"]
+  },
+  {
+    id: "atomic-structure-simulator",
+    name: "Atomic Structure & Electron Shells Simulator",
+    category: "chemistry-labs",
+    categoryName: "Chemistry Virtual Labs",
+    description: "Construct atoms from fundamental subatomic particles. Add or remove protons, neutrons, and electrons to observe changes in atomic identity, isotopic mass, ionic charge, and planeta",
+    route: "/chemistry-labs/atomic-structure-simulator/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31L4.1 19.3A2 2 0 0 0 5.9 22h12.2a2 2 0 0 0 1.8-2.7L14 9.31V2"></path></svg>`,
+    status: "available",
+    popular: false,
+    tags: ["chemistry", "virtual lab", "simulator", "atomic-structure-simulator", "atomic", "classes 8\u201311 / cbse / icse"]
+  },
+  {
+    id: "chemical-equation-balancer",
+    name: "Chemical Equation Balancer & Stoichiometric Solver",
+    category: "chemistry-labs",
+    categoryName: "Chemistry Virtual Labs",
+    description: "Balance any chemical equation instantly using a rigorous mathematical Gaussian elimination algorithm. Input unbalanced reactants and products to verify the Law of Conservation of M",
+    route: "/chemistry-labs/chemical-equation-balancer/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31L4.1 19.3A2 2 0 0 0 5.9 22h12.2a2 2 0 0 0 1.8-2.7L14 9.31V2"></path></svg>`,
+    status: "available",
+    popular: true,
+    tags: ["chemistry", "virtual lab", "simulator", "chemical-equation-balancer", "reactions", "classes 9\u201312 / jee / neet"]
+  },
+  {
+    id: "chemical-reaction-simulator",
+    name: "Chemical Reaction Types & Energy Simulator",
+    category: "chemistry-labs",
+    categoryName: "Chemistry Virtual Labs",
+    description: "Explore major classes of chemical reactions: synthesis, decomposition, single displacement, double displacement (precipitation), neutralization, and combustion. Observe macroscopic",
+    route: "/chemistry-labs/chemical-reaction-simulator/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31L4.1 19.3A2 2 0 0 0 5.9 22h12.2a2 2 0 0 0 1.8-2.7L14 9.31V2"></path></svg>`,
+    status: "available",
+    popular: false,
+    tags: ["chemistry", "virtual lab", "simulator", "chemical-reaction-simulator", "reactions", "classes 9\u201312 / cbse / icse"]
+  },
+  {
+    id: "ph-scale-simulator",
+    name: "pH Scale & Hydrogen Ion Concentration Simulator",
+    category: "chemistry-labs",
+    categoryName: "Chemistry Virtual Labs",
+    description: "Visualize the logarithmic pH scale from 0 to 14. Adjust hydronium [H⁺] and hydroxide [OH⁻] concentrations, observe universal indicator color transitions, and test real-world fluids",
+    route: "/chemistry-labs/ph-scale-simulator/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31L4.1 19.3A2 2 0 0 0 5.9 22h12.2a2 2 0 0 0 1.8-2.7L14 9.31V2"></path></svg>`,
+    status: "available",
+    popular: false,
+    tags: ["chemistry", "virtual lab", "simulator", "ph-scale-simulator", "acids-bases", "classes 9\u201312 / neet / jee"]
+  },
+  {
+    id: "acid-base-titration",
+    name: "Acid-Base Titration Virtual Laboratory",
+    category: "chemistry-labs",
+    categoryName: "Chemistry Virtual Labs",
+    description: "Operate a complete analytical titration workstation with a graduated burette, Erlenmeyer flask, and magnetic stirrer. Titrate strong and weak acids with sodium hydroxide, visualize",
+    route: "/chemistry-labs/acid-base-titration/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31L4.1 19.3A2 2 0 0 0 5.9 22h12.2a2 2 0 0 0 1.8-2.7L14 9.31V2"></path></svg>`,
+    status: "available",
+    popular: true,
+    tags: ["chemistry", "virtual lab", "simulator", "acid-base-titration", "analytical", "classes 11\u201312 / b.sc chemistry / jee"]
+  },
+  {
+    id: "solution-concentration-simulator",
+    name: "Solution Concentration & Dilution Simulator",
+    category: "chemistry-labs",
+    categoryName: "Chemistry Virtual Labs",
+    description: "Prepare chemical solutions of precise concentrations. Dissolve salts like NaCl, CuSO₄, and KMnO₄ into aqueous solvents, track molarity and molality, visualize saturation precipitat",
+    route: "/chemistry-labs/solution-concentration-simulator/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31L4.1 19.3A2 2 0 0 0 5.9 22h12.2a2 2 0 0 0 1.8-2.7L14 9.31V2"></path></svg>`,
+    status: "available",
+    popular: false,
+    tags: ["chemistry", "virtual lab", "simulator", "solution-concentration-simulator", "acids-bases", "classes 9\u201312 / b.sc chemistry"]
+  },
+  {
+    id: "organic-molecule-builder",
+    name: "2D Organic Molecule Builder & Valence Validator",
+    category: "chemistry-labs",
+    categoryName: "Chemistry Virtual Labs",
+    description: "Draw and design organic chemical structures using an interactive 2D molecular sketcher. Connect carbon chains, add double/triple bonds, attach functional groups, and validate valen",
+    route: "/chemistry-labs/organic-molecule-builder/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31L4.1 19.3A2 2 0 0 0 5.9 22h12.2a2 2 0 0 0 1.8-2.7L14 9.31V2"></path></svg>`,
+    status: "available",
+    popular: false,
+    tags: ["chemistry", "virtual lab", "simulator", "organic-molecule-builder", "organic", "classes 10\u201312 / b.sc / jee / neet"]
+  },
+  {
+    id: "3d-molecular-viewer",
+    name: "3D Molecular Structure & VSEPR Geometry Viewer",
+    category: "chemistry-labs",
+    categoryName: "Chemistry Virtual Labs",
+    description: "Interact with authentic three-dimensional molecular geometries. Rotate, zoom, and inspect ball-and-stick and space-filling CPK models for essential compounds including Water, Metha",
+    route: "/chemistry-labs/3d-molecular-viewer/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31L4.1 19.3A2 2 0 0 0 5.9 22h12.2a2 2 0 0 0 1.8-2.7L14 9.31V2"></path></svg>`,
+    status: "available",
+    popular: true,
+    tags: ["chemistry", "virtual lab", "simulator", "3d-molecular-viewer", "molecular", "classes 10\u201312 / college chemistry"]
+  },
+  {
+    id: "isomerism-explorer",
+    name: "Isomerism & Stereochemistry Explorer",
+    category: "chemistry-labs",
+    categoryName: "Chemistry Virtual Labs",
+    description: "Discover the fascinating world of chemical isomerism. Compare molecules that share identical molecular formulas but possess different structural connectivities (chain, position, fu",
+    route: "/chemistry-labs/isomerism-explorer/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31L4.1 19.3A2 2 0 0 0 5.9 22h12.2a2 2 0 0 0 1.8-2.7L14 9.31V2"></path></svg>`,
+    status: "available",
+    popular: false,
+    tags: ["chemistry", "virtual lab", "simulator", "isomerism-explorer", "organic", "classes 11\u201312 / b.sc / jee / neet"]
+  },
+  {
+    id: "chemical-kinetics-simulator",
+    name: "Chemical Kinetics & Reaction Rates Simulator",
+    category: "chemistry-labs",
+    categoryName: "Chemistry Virtual Labs",
+    description: "Investigate how chemical reaction speeds are governed by reactant concentrations, temperature, and activation energy. Toggle between Zero-order, First-order, and Second-order kinet",
+    route: "/chemistry-labs/chemical-kinetics-simulator/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31L4.1 19.3A2 2 0 0 0 5.9 22h12.2a2 2 0 0 0 1.8-2.7L14 9.31V2"></path></svg>`,
+    status: "available",
+    popular: false,
+    tags: ["chemistry", "virtual lab", "simulator", "chemical-kinetics-simulator", "physical", "classes 11\u201312 / b.sc / jee / neet"]
+  },
+  {
+    id: "chemical-equilibrium-simulator",
+    name: "Chemical Equilibrium & Le Chatelier's Principle Simulator",
+    category: "chemistry-labs",
+    categoryName: "Chemistry Virtual Labs",
+    description: "Experiment with dynamic chemical equilibrium and Le Chatelier's Principle. Simulate the Haber ammonia synthesis and NO₂/N₂O₄ dimerization, calculate equilibrium constant Kc, observ",
+    route: "/chemistry-labs/chemical-equilibrium-simulator/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31L4.1 19.3A2 2 0 0 0 5.9 22h12.2a2 2 0 0 0 1.8-2.7L14 9.31V2"></path></svg>`,
+    status: "available",
+    popular: false,
+    tags: ["chemistry", "virtual lab", "simulator", "chemical-equilibrium-simulator", "physical", "classes 11\u201312 / b.sc / jee / neet"]
+  },
+  {
+    id: "gas-laws-simulator",
+    name: "Gas Laws & Ideal Gas Simulator",
+    category: "chemistry-labs",
+    categoryName: "Chemistry Virtual Labs",
+    description: "Explore the microscopic behavior of gases. Manipulate container volume with an adjustable piston, change temperature with a thermal bath, inject gas moles, and observe real-time pr",
+    route: "/chemistry-labs/gas-laws-simulator/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31L4.1 19.3A2 2 0 0 0 5.9 22h12.2a2 2 0 0 0 1.8-2.7L14 9.31V2"></path></svg>`,
+    status: "available",
+    popular: false,
+    tags: ["chemistry", "virtual lab", "simulator", "gas-laws-simulator", "physical", "classes 9\u201312 / neet / jee"]
+  },
+  {
+    id: "electrochemical-cell-simulator",
+    name: "Galvanic & Electrochemical Cell Simulator",
+    category: "chemistry-labs",
+    categoryName: "Chemistry Virtual Labs",
+    description: "Construct functional Voltaic and Galvanic cells in a digital laboratory. Pair zinc, copper, silver, and magnesium half-cells, observe electron flow through an external voltmeter ci",
+    route: "/chemistry-labs/electrochemical-cell-simulator/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31L4.1 19.3A2 2 0 0 0 5.9 22h12.2a2 2 0 0 0 1.8-2.7L14 9.31V2"></path></svg>`,
+    status: "available",
+    popular: false,
+    tags: ["chemistry", "virtual lab", "simulator", "electrochemical-cell-simulator", "electrochemistry", "classes 11\u201312 / b.sc / jee / neet"]
+  },
+  {
+    id: "electrolysis-simulator",
+    name: "Electrolysis & Faraday's Laws Simulator",
+    category: "chemistry-labs",
+    categoryName: "Chemistry Virtual Labs",
+    description: "Use electrical energy to drive non-spontaneous chemical reactions. Simulate water splitting (producing H₂ and O₂ gases in a 2:1 ratio), copper electrorefining, and molten NaCl elec",
+    route: "/chemistry-labs/electrolysis-simulator/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31L4.1 19.3A2 2 0 0 0 5.9 22h12.2a2 2 0 0 0 1.8-2.7L14 9.31V2"></path></svg>`,
+    status: "available",
+    popular: false,
+    tags: ["chemistry", "virtual lab", "simulator", "electrolysis-simulator", "electrochemistry", "classes 11\u201312 / b.sc / chemical engineering"]
+  },
   // ==========================================
   // PDF TOOLS
   // ==========================================

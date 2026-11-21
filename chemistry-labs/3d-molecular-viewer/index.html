@@ -1,0 +1,854 @@
+
+  <!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Molecular Structure & VSEPR Geometry Viewer – Online Chemistry Virtual Lab | EcrioX</title>
+  <meta name="description" content="Explore 3D chemical structures online. Rotate and zoom ball-and-stick and space-filling molecular models, inspect bond angles, VSEPR geometries, and polarities.">
+  <link rel="canonical" href="https://ecriox.com/chemistry-labs/3d-molecular-viewer/">
+  <!-- Favicon & Brand Icons -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#2563EB">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="3D Molecular Structure & VSEPR Geometry Viewer – Online Chemistry Virtual Lab | EcrioX">
+  <meta property="og:description" content="Explore 3D chemical structures online. Rotate and zoom ball-and-stick and space-filling molecular models, inspect bond angles, VSEPR geometries, and polarities.">
+  <meta property="og:url" content="https://ecriox.com/chemistry-labs/3d-molecular-viewer/">
+  <meta property="og:site_name" content="EcrioX">
+  <meta property="og:image" content="https://ecriox.com/og-banner.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="3D Molecular Structure & VSEPR Geometry Viewer – Online Chemistry Virtual Lab | EcrioX">
+  <meta name="twitter:description" content="Explore 3D chemical structures online. Rotate and zoom ball-and-stick and space-filling molecular models, inspect bond angles, VSEPR geometries, and polarities.">
+  <meta name="twitter:image" content="https://ecriox.com/og-banner.png">
+
+  <!-- Global Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-NNT7J485');
+  </script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6486455437877685" crossorigin="anonymous"></script>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/chemistry-labs.css">
+
+  <!-- Anti-FOUT & Theme Sync -->
+  <script>
+    (function(){
+      try {
+        var savedTheme = localStorage.getItem('ecriox_theme_preference');
+        if (savedTheme) {
+          document.documentElement.setAttribute('data-theme', savedTheme);
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      } catch(e) {}
+    })();
+  </script>
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://ecriox.com/chemistry-labs/3d-molecular-viewer/#app",
+      "url": "https://ecriox.com/chemistry-labs/3d-molecular-viewer/",
+      "name": "3D Molecular Structure & VSEPR Geometry Viewer",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires HTML5 Canvas and JavaScript support",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Explore 3D chemical structures online. Rotate and zoom ball-and-stick and space-filling molecular models, inspect bond angles, VSEPR geometries, and polarities."
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://ecriox.com/chemistry-labs/3d-molecular-viewer/#article",
+      "headline": "3D Molecular Structure Viewer: Ball-and-Stick, Space-Filling & VSEPR",
+      "description": "Explore 3D chemical structures online. Rotate and zoom ball-and-stick and space-filling molecular models, inspect bond angles, VSEPR geometries, and polarities.",
+      "author": {
+        "@type": "Organization",
+        "name": "EcrioX Science Team"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "EcrioX",
+        "url": "https://ecriox.com"
+      },
+      "datePublished": "2026-11-21",
+      "dateModified": "2026-11-21"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://ecriox.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Chemistry Virtual Labs",
+          "item": "https://ecriox.com/chemistry-labs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "3D Molecular Structure & VSEPR Geometry Viewer",
+          "item": "https://ecriox.com/chemistry-labs/3d-molecular-viewer/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What do the CPK colors represent in molecular models?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "CPK (Corey-Pauling-Koltun) is the international standard color convention: Hydrogen is white, Carbon is gray/black, Oxygen is red, Nitrogen is blue, Chlorine/Fluorine is green, Sulfur is yellow, and Phosphorus is orange."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is Carbon Dioxide linear while Water is bent?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In CO\u2082, the central carbon has two double bonds and zero lone pairs (steric number 2), creating a linear 180\u00b0 geometry. In H\u2082O, the central oxygen has two bonds and two lone pairs (steric number 4), creating a bent 104.5\u00b0 geometry."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does this 3D viewer require WebGL or plugins?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No plugins are needed. The EcrioX 3D engine uses optimized 2D Canvas vector perspective projection, ensuring 60fps performance on all standard school laptops and smartphones."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NNT7J485" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="brand-logo" aria-label="EcrioX Home">
+        <div class="logo-symbol">E</div>
+        <span>Ecrio<span class="accent-dot">X</span></span>
+      </a>
+
+      <nav class="nav-desktop">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/physics-labs/" class="nav-link">Physics Labs</a>
+        <a href="/chemistry-labs/" class="nav-link active">Chemistry Labs</a>
+        <a href="/chemistry-labs/calculators/" class="nav-link">Calculators</a>
+        <a href="/resume-builder/" class="nav-link">Career Studio</a>
+        <a href="/typing-speed-test/" class="nav-link">Typing Arena</a>
+        <a href="/tools/" class="nav-link">All Tools</a>
+        <a href="/about/" class="nav-link">About</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn-icon theme-toggle-btn" aria-label="Toggle color theme" id="themeToggleBtn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <button class="btn-icon mobile-toggle" aria-label="Open mobile menu" aria-expanded="false" id="mobileMenuToggle">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav-drawer" id="mobileNavDrawer">
+    <nav class="mobile-nav">
+      <a href="/" class="mobile-nav-link">Home</a>
+      <a href="/physics-labs/" class="mobile-nav-link">Physics Labs</a>
+      <a href="/chemistry-labs/" class="mobile-nav-link active">Chemistry Labs</a>
+      <a href="/chemistry-labs/calculators/" class="mobile-nav-link">Calculators</a>
+      <a href="/resume-builder/" class="mobile-nav-link">Career Studio</a>
+      <a href="/typing-speed-test/" class="mobile-nav-link">Typing Arena</a>
+      <a href="/tools/" class="mobile-nav-link">All Tools</a>
+      <a href="/about/" class="mobile-nav-link">About</a>
+    </nav>
+  </div>
+
+
+  <main id="main-content" class="container" style="padding-top:1.5rem; padding-bottom:3rem;">
+    <!-- Breadcrumbs -->
+    <nav class="chem-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="chem-breadcrumb-sep">/</span>
+      <a href="/chemistry-labs/">Chemistry Virtual Labs</a>
+      <span class="chem-breadcrumb-sep">/</span>
+      <span class="chem-breadcrumb-current">3D Molecular Structure & VSEPR Geometry Viewer</span>
+    </nav>
+
+    <!-- Lab Header -->
+    <div class="chem-lab-header">
+      <div class="chem-lab-header-left">
+        <div style="display:flex; gap:0.5rem; align-items:center; margin-bottom:0.5rem; flex-wrap:wrap;">
+          <span class="chem-badge chem-badge-primary">Molecular Chemistry</span>
+          <span class="chem-badge chem-badge-secondary">Classes 10–12 / College Chemistry Level</span>
+          <span class="chem-badge" style="background:#e0f2fe; color:#0369a1;">⏱ 15 mins</span>
+          <span class="chem-badge" style="background:#fef3c7; color:#92400e;">CBSE • JEE • NEET • College</span>
+        </div>
+        <h1 class="chem-lab-title">3D Molecular Structure Viewer: Ball-and-Stick, Space-Filling & VSEPR</h1>
+        <p class="chem-lab-intro">Interact with authentic three-dimensional molecular geometries. Rotate, zoom, and inspect ball-and-stick and space-filling CPK models for essential compounds including Water, Methane, Benzene, and Glucose. Analyze bond angles, electron pair geometry, and molecular polarity.</p>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="chem-lab-actions">
+        <button id="btnFullscreen" class="chem-btn chem-btn-outline" title="Toggle Fullscreen Mode">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
+          Fullscreen
+        </button>
+        <button id="btnResetSimulation" class="chem-btn chem-btn-outline" title="Reset Experiment Parameters">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6"></path><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
+          Reset Lab
+        </button>
+        <button id="btnExportCSV" class="chem-btn chem-btn-outline" title="Download Data Worksheet (CSV)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Export CSV
+        </button>
+        <button id="btnPrintWorksheet" class="chem-btn chem-btn-primary" title="Print Laboratory Worksheet">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+          Print Lab Sheet
+        </button>
+      </div>
+    </div>
+
+    <!-- Interactive Simulation Wrapper -->
+    <div class="chem-lab-wrapper" id="labWrapper">
+      <!-- Live HUD Metrics Panel -->
+      <div class="chem-hud-bar" id="hudBar">
+        
+    <div class="hud-metric"><div class="hud-metric-label">Molecule</div><div class="hud-metric-value" id="hud3DName">Water (H₂O)</div></div>
+    <div class="hud-metric"><div class="hud-metric-label">Molecular Geometry</div><div class="hud-metric-value" id="hud3DGeometry">Bent / Angular</div></div>
+    <div class="hud-metric"><div class="hud-metric-label">Bond Angle</div><div class="hud-metric-value" id="hud3DAngle">104.5°</div></div>
+    <div class="hud-metric"><div class="hud-metric-label">Polarity</div><div class="hud-metric-value" id="hud3DPolarity" style="color:#2563eb">Polar (μ = 1.85 D)</div></div>
+  
+      </div>
+
+      <!-- Main Workspace Grid (Viewport + Controls) -->
+      <div class="chem-workspace-grid">
+        <!-- Simulation Viewport -->
+        <div class="chem-viewport-card">
+          <div class="chem-card-header-bar">
+            <span>🔬 Live Virtual Apparatus</span>
+            <span class="chem-status-dot">Interactive 60 FPS</span>
+          </div>
+          <div class="chem-viewport-inner">
+            
+    <canvas id="viewer3DCanvas" style="width:100%; height:440px; display:block; border-radius:12px; background:radial-gradient(circle at center, #1e293b 0%, #0f172a 100%); cursor:grab;"></canvas>
+  
+          </div>
+        </div>
+
+        <!-- Controls Panel -->
+        <div class="chem-controls-card">
+          <div class="chem-card-header-bar">
+            <span>⚙️ Scientific Controls</span>
+            <span>Calibrated</span>
+          </div>
+          <div class="chem-controls-inner">
+            
+    <div class="chem-form-group">
+      <label class="chem-label">Select 3D Molecule Structure:</label>
+      <select id="mol3DSelect" class="chem-select">
+        <option value="H2O" selected>Water (H₂O) - Bent (104.5°)</option>
+        <option value="CO2">Carbon Dioxide (CO₂) - Linear (180°)</option>
+        <option value="CH4">Methane (CH₄) - Tetrahedral (109.5°)</option>
+        <option value="NH3">Ammonia (NH₃) - Trigonal Pyramidal (107°)</option>
+        <option value="C2H5OH">Ethanol (C₂H₅OH) - Asymmetric Organic</option>
+        <option value="C6H6">Benzene (C₆H₆) - Planar Aromatic Ring</option>
+        <option value="C6H12O6">D-Glucose (C₆H₁₂O₆) - Hexose Monosaccharide</option>
+        <option value="SF6">Sulfur Hexafluoride (SF₆) - Octahedral (90°)</option>
+        <option value="PCl5">Phosphorus Pentachloride (PCl₅) - Trigonal Bipyramidal</option>
+        <option value="O2">Oxygen Gas (O₂) - Diatomic Double Bond</option>
+        <option value="N2">Nitrogen Gas (N₂) - Diatomic Triple Bond</option>
+        <option value="H2">Hydrogen Gas (H₂) - Diatomic Single Bond</option>
+      </select>
+    </div>
+    <div class="chem-form-group">
+      <label class="chem-label">Display Style:</label>
+      <div style="display:flex; gap:0.4rem;">
+        <button class="chem-btn chem-btn-primary mol-style-btn" data-style="ball_and_stick" style="flex:1;">Ball & Stick</button>
+        <button class="chem-btn chem-btn-outline mol-style-btn" data-style="space_filling" style="flex:1;">Space Filling</button>
+        <button class="chem-btn chem-btn-outline mol-style-btn" data-style="wireframe" style="flex:1;">Wireframe</button>
+      </div>
+    </div>
+    <div class="chem-form-group">
+      <div style="display:flex; justify-content:space-between;">
+        <label class="chem-label">Auto-Rotation Speed:</label>
+        <span id="rotSpeedDisplay" style="font-weight:700; color:var(--chem-primary)">1.0x</span>
+      </div>
+      <input type="range" id="rotSpeedSlider" min="0" max="3" step="0.2" value="1.0" class="chem-slider" />
+    </div>
+    <div class="chem-btn-group" style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem; margin-top:0.75rem;">
+      <button id="btnToggleRotate" class="chem-btn chem-btn-outline">Pause Rotation</button>
+      <button id="btnReset3DView" class="chem-btn chem-btn-secondary">Reset Orientation</button>
+    </div>
+  
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scientific Documentation Tabs -->
+    <section class="chem-doc-section">
+      <div class="chem-tabs-nav">
+        <button class="chem-tab-btn active" data-tab="tab-theory">1. Scientific Theory & Derivations</button>
+        <button class="chem-tab-btn" data-tab="tab-procedure">2. Lab Protocol & Objectives</button>
+        <button class="chem-tab-btn" data-tab="tab-example">3. Worked Calculation Example</button>
+        <button class="chem-tab-btn" data-tab="tab-applications">4. Applications & Misconceptions</button>
+        <button class="chem-tab-btn" data-tab="tab-faqs">5. FAQs (3)</button>
+      </div>
+
+      <!-- Tab 1: Theory -->
+      <div class="chem-tab-pane active" id="tab-theory">
+        <div class="chem-doc-content">
+          <h2>VSEPR Theory & Bond Angle Predictions</h2>
+          <div class="chem-formula-hero">
+            <code>\text{Steric Number} = \text{Lone Pairs} + \text{Bonded Atoms}, \quad \theta_{\text{tetrahedral}} = 109.47^\circ</code>
+          </div>
+          <p class="chem-formula-desc">Valence Shell Electron Pair Repulsion (VSEPR) predicts molecular geometry by minimizing electrostatic repulsion between valence electron pairs around a central atom.</p>
+          <div class="chem-text-block">
+            Molecules are three-dimensional physical objects whose chemical and biological functions are dictated by spatial conformation. The Valence Shell Electron Pair Repulsion (VSEPR) model predicts geometry based on the principle that valence electron pairs surrounding a central atom repel each other. Repulsion strength follows the order: Lone Pair-Lone Pair > Lone Pair-Bonding Pair > Bonding Pair-Bonding Pair. For example, in water (H₂O), the oxygen atom has steric number 4 (two bonding pairs and two lone pairs). The two bulky lone pairs compress the ideal tetrahedral angle (109.5°) down to 104.5°.
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 2: Procedure -->
+      <div class="chem-tab-pane" id="tab-procedure">
+        <div class="chem-doc-content">
+          <h2>Experimental Objectives</h2>
+          <ul class="chem-bullet-list">
+            <li>Rotate and inspect 3D structures of 12 representative inorganic and organic molecules.</li><li>Switch between Ball-and-Stick bonding models and Space-Filling van der Waals representations.</li><li>Correlate steric numbers with molecular geometry: linear, trigonal planar, tetrahedral, bent, octahedral.</li><li>Explain how lone pair repulsions compress ideal bond angles (e.g. 109.5° in CH₄ down to 104.5° in H₂O).</li>
+          </ul>
+          <h2 style="margin-top:2rem;">Step-by-Step Laboratory Procedure</h2>
+          <ol class="chem-step-list">
+            
+            <li class="chem-step-item">
+              <strong>Step 1:</strong>
+              <p>Select a target molecule from the gallery (Water, Carbon Dioxide, Methane, Ammonia, Ethanol, Benzene, Glucose, SF6).</p>
+            </li>
+            
+            <li class="chem-step-item">
+              <strong>Step 2:</strong>
+              <p>Click and drag on the Canvas viewport to rotate the molecule smoothly in 3D space.</p>
+            </li>
+            
+            <li class="chem-step-item">
+              <strong>Step 3:</strong>
+              <p>Use the mouse wheel or pinch gesture to zoom in and examine individual bonds and atom centers.</p>
+            </li>
+            
+            <li class="chem-step-item">
+              <strong>Step 4:</strong>
+              <p>Toggle between 'Ball-and-Stick' and 'Space-Filling' visualization modes.</p>
+            </li>
+            
+            <li class="chem-step-item">
+              <strong>Step 5:</strong>
+              <p>Inspect the live sidebar detailing molecular geometry, bond angles, hybridization, and polarity.</p>
+            </li>
+            
+          </ol>
+        </div>
+      </div>
+
+      <!-- Tab 3: Worked Example -->
+      <div class="chem-tab-pane" id="tab-example">
+        <div class="chem-doc-content">
+          <h2>Worked Example & Step-by-Step Calculation</h2>
+          <div class="chem-example-box">
+            <h3 style="color:var(--chem-primary); font-size:1.15rem; margin-bottom:0.75rem;">Problem Statement:</h3>
+            <p style="font-size:1.05rem; font-weight:600; color:var(--text-main); margin-bottom:1.5rem;">Predict the electron-pair geometry, molecular geometry, and bond angle of Ammonia (NH₃) using VSEPR theory.</p>
+            <h3 style="color:var(--chem-secondary); font-size:1.15rem; margin-bottom:0.75rem;">Mathematical Solution & Derivation:</h3>
+            <div class="chem-example-solution" style="white-space:pre-line; line-height:1.7;">
+              1. Draw Lewis structure: Central Nitrogen has 5 valence electrons + 3 from Hydrogens = 8 electrons.
+2. Count electron domains around Nitrogen:
+   - 3 single N-H covalent bonds.
+   - 1 non-bonding lone pair.
+3. Steric Number = 3 + 1 = 4.
+4. Electron-pair geometry: Tetrahedral (steric number 4).
+5. Molecular geometry: Trigonal Pyramidal (accounting for atoms only).
+6. Bond angle: The lone pair exerts greater repulsive force than bonding pairs, compressing the ideal 109.5° tetrahedral angle down to 107.3°.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 4: Applications & Misconceptions -->
+      <div class="chem-tab-pane" id="tab-applications">
+        <div class="chem-doc-content">
+          <h2>Industrial, Engineering & Everyday Applications</h2>
+          <div class="chem-apps-grid">
+            
+            <div class="chem-app-item">
+              <strong>Structural Biology & Drug Design</strong>
+              <p>Mapping lock-and-key enzyme active site docking for HIV protease inhibitors.</p>
+            </div>
+            
+            <div class="chem-app-item">
+              <strong>Olfactory Chemistry</strong>
+              <p>Recognizing how odorant molecular shape and chirality trigger specific human olfactory receptors.</p>
+            </div>
+            
+            <div class="chem-app-item">
+              <strong>Greenhouse Gas Spectroscopy</strong>
+              <p>Explaining why greenhouse gases (CO₂, CH₄, H₂O) absorb infrared radiation via vibrational dipoles.</p>
+            </div>
+            
+            <div class="chem-app-item">
+              <strong>Material Science</strong>
+              <p>Analyzing planar aromatic stacking in graphene and carbon nanotubes.</p>
+            </div>
+            
+          </div>
+          <h2 style="margin-top:2.5rem;">Common Student Misconceptions & Scientific Reality</h2>
+          <div class="chem-misc-list">
+            
+        <div class="chem-misc-card">
+          <div class="chem-misc-fact">💡 <strong>Critical Conceptual Insight:</strong> A widespread error is confusing electron-pair geometry with molecular geometry. Electron-pair geometry describes the spatial arrangement of ALL electron domains (including lone pairs). Molecular geometry describes ONLY the positions of bonded atoms.</div>
+        </div>
+        
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 5: FAQs -->
+      <div class="chem-tab-pane" id="tab-faqs">
+        <div class="chem-doc-content">
+          <h2>Frequently Asked Questions on 3D Molecular Structure & VSEPR Geometry Viewer</h2>
+          <div class="chem-faq-list" style="margin-top:1.5rem;">
+            
+            <div class="chem-faq-item">
+              <button class="chem-faq-trigger">
+                <span>What do the CPK colors represent in molecular models?</span>
+                <svg class="chem-faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="chem-faq-content">
+                <p>CPK (Corey-Pauling-Koltun) is the international standard color convention: Hydrogen is white, Carbon is gray/black, Oxygen is red, Nitrogen is blue, Chlorine/Fluorine is green, Sulfur is yellow, and Phosphorus is orange.</p>
+              </div>
+            </div>
+            
+            <div class="chem-faq-item">
+              <button class="chem-faq-trigger">
+                <span>Why is Carbon Dioxide linear while Water is bent?</span>
+                <svg class="chem-faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="chem-faq-content">
+                <p>In CO₂, the central carbon has two double bonds and zero lone pairs (steric number 2), creating a linear 180° geometry. In H₂O, the central oxygen has two bonds and two lone pairs (steric number 4), creating a bent 104.5° geometry.</p>
+              </div>
+            </div>
+            
+            <div class="chem-faq-item">
+              <button class="chem-faq-trigger">
+                <span>Does this 3D viewer require WebGL or plugins?</span>
+                <svg class="chem-faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="chem-faq-content">
+                <p>No plugins are needed. The EcrioX 3D engine uses optimized 2D Canvas vector perspective projection, ensuring 60fps performance on all standard school laptops and smartphones.</p>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Experiments Section -->
+    <section class="chem-related-section">
+      <div class="chem-section-header">
+        <h2 class="chem-section-title">Related Chemistry Virtual Labs</h2>
+        <p class="chem-section-desc">Continue your exploration with these interconnected chemical experiments and simulations.</p>
+      </div>
+      <div class="chem-grid">
+        
+            <article class="chem-card" data-category="organic">
+              <div class="chem-card-badge-wrap">
+                <span class="chem-badge chem-badge-primary">Organic Chemistry</span>
+                <span class="chem-badge chem-badge-secondary">Classes 11–12 / B.Sc / JEE / NEET</span>
+              </div>
+              <div class="chem-card-icon">
+      <svg viewBox="0 0 100 100" fill="none" stroke="currentColor">
+        <line x1="50" y1="15" x2="50" y2="85" stroke="var(--border-color)" stroke-width="2" stroke-dasharray="4 4"/>
+        <text x="28" y="25" font-size="8" font-weight="bold" fill="var(--chem-primary)" text-anchor="middle">CIS</text>
+        <text x="72" y="25" font-size="8" font-weight="bold" fill="var(--chem-secondary)" text-anchor="middle">TRANS</text>
+        <line x1="20" y1="50" x2="36" y2="50" stroke="#334155" stroke-width="3"/>
+        <circle cx="16" cy="38" r="5" fill="#10b981"/>
+        <circle cx="40" cy="38" r="5" fill="#10b981"/>
+        <line x1="64" y1="50" x2="80" y2="50" stroke="#334155" stroke-width="3"/>
+        <circle cx="60" cy="38" r="5" fill="#10b981"/>
+        <circle cx="84" cy="62" r="5" fill="#10b981"/>
+      </svg>
+    </div>
+              <h3 class="chem-card-title"><a href="/chemistry-labs/isomerism-explorer/">Isomerism & Stereochemistry Explorer</a></h3>
+              <p class="chem-card-desc">Discover the fascinating world of chemical isomerism. Compare molecules that share identical molecular formulas but poss...</p>
+              <a href="/chemistry-labs/isomerism-explorer/" class="chem-card-btn">Open Lab →</a>
+            </article>
+            
+            <article class="chem-card" data-category="physical">
+              <div class="chem-card-badge-wrap">
+                <span class="chem-badge chem-badge-primary">Physical Chemistry</span>
+                <span class="chem-badge chem-badge-secondary">Classes 11–12 / B.Sc / JEE / NEET</span>
+              </div>
+              <div class="chem-card-icon">
+      <svg viewBox="0 0 100 100" fill="none" stroke="currentColor">
+        <path d="M15 15 V85 H85" stroke="var(--border-color)" stroke-width="2.5"/>
+        <path d="M15 25 Q 35 70, 85 80" stroke="#ef4444" stroke-width="3"/>
+        <path d="M15 80 Q 35 30, 85 25" stroke="#3b82f6" stroke-width="3"/>
+        <text x="55" y="42" font-size="7" font-weight="bold" fill="#ef4444">[A] Reactant</text>
+        <text x="55" y="60" font-size="7" font-weight="bold" fill="#3b82f6">[B] Product</text>
+      </svg>
+    </div>
+              <h3 class="chem-card-title"><a href="/chemistry-labs/chemical-kinetics-simulator/">Chemical Kinetics & Reaction Rates Simulator</a></h3>
+              <p class="chem-card-desc">Investigate how chemical reaction speeds are governed by reactant concentrations, temperature, and activation energy. To...</p>
+              <a href="/chemistry-labs/chemical-kinetics-simulator/" class="chem-card-btn">Open Lab →</a>
+            </article>
+            
+            <article class="chem-card" data-category="physical">
+              <div class="chem-card-badge-wrap">
+                <span class="chem-badge chem-badge-primary">Physical Chemistry</span>
+                <span class="chem-badge chem-badge-secondary">Classes 11–12 / B.Sc / JEE / NEET</span>
+              </div>
+              <div class="chem-card-icon">
+      <svg viewBox="0 0 100 100" fill="none" stroke="currentColor">
+        <line x1="20" y1="42" x2="80" y2="42" stroke="var(--chem-primary)" stroke-width="3"/>
+        <polyline points="72,36 80,42 72,48" stroke="var(--chem-primary)" stroke-width="3"/>
+        <line x1="80" y1="58" x2="20" y2="58" stroke="var(--chem-secondary)" stroke-width="3"/>
+        <polyline points="28,52 20,58 28,64" stroke="var(--chem-secondary)" stroke-width="3"/>
+        <text x="50" y="32" font-size="9" font-weight="bold" fill="var(--chem-primary)" text-anchor="middle">Forward Rate</text>
+        <text x="50" y="76" font-size="9" font-weight="bold" fill="var(--chem-secondary)" text-anchor="middle">Reverse Rate</text>
+      </svg>
+    </div>
+              <h3 class="chem-card-title"><a href="/chemistry-labs/chemical-equilibrium-simulator/">Chemical Equilibrium & Le Chatelier's Principle Simulator</a></h3>
+              <p class="chem-card-desc">Experiment with dynamic chemical equilibrium and Le Chatelier's Principle. Simulate the Haber ammonia synthesis and NO₂/...</p>
+              <a href="/chemistry-labs/chemical-equilibrium-simulator/" class="chem-card-btn">Open Lab →</a>
+            </article>
+            
+      </div>
+    </section>
+  </main>
+
+  
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="/" class="brand-logo">
+            <div class="logo-symbol">E</div>
+            <span>Ecrio<span class="accent-dot">X</span></span>
+          </a>
+          <p>One Platform. Endless Possibilities. Free, scientifically accurate browser-based virtual laboratories and digital productivity utilities.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Chemistry Labs</h4>
+          <ul class="footer-links">
+            <li><a href="/chemistry-labs/">All Chemistry Labs</a></li>
+            <li><a href="/chemistry-labs/interactive-periodic-table/">Periodic Table Explorer</a></li>
+            <li><a href="/chemistry-labs/chemical-equation-balancer/">Equation Balancer</a></li>
+            <li><a href="/chemistry-labs/acid-base-titration/">Acid-Base Titration</a></li>
+            <li><a href="/chemistry-labs/3d-molecular-viewer/">3D Molecular Viewer</a></li>
+            <li><a href="/chemistry-labs/calculators/">Chemistry Calculators</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Physics Labs</h4>
+          <ul class="footer-links">
+            <li><a href="/physics-labs/">All Physics Labs</a></li>
+            <li><a href="/physics-labs/projectile-motion-simulator/">Projectile Motion</a></li>
+            <li><a href="/physics-labs/electric-circuit-simulator/">Circuit Simulator</a></li>
+            <li><a href="/physics-labs/ray-optics-simulator/">Ray Optics Lab</a></li>
+            <li><a href="/physics-labs/simple-pendulum-experiment/">Simple Pendulum</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Product Suite</h4>
+          <ul class="footer-links">
+            <li><a href="/tools/">All Tools Directory</a></li>
+            <li><a href="/categories/">Tool Categories</a></li>
+            <li><a href="/pdf-compressor/">PDF Compressor</a></li>
+            <li><a href="/resume-builder/">ATS Resume Builder</a></li>
+            <li><a href="/typing-speed-test/">Typing Arena</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company & Legal</h4>
+          <ul class="footer-links">
+            <li><a href="/about/">About EcrioX</a></li>
+            <li><a href="/contact/">Contact Support</a></li>
+            <li><a href="/privacy/">Privacy Policy</a></li>
+            <li><a href="/terms/">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 EcrioX. All rights reserved. Zero client downloads required — 100% private in-browser scientific simulations.</p>
+        <p>Canonical Domain: <a href="https://ecriox.com/" style="color: var(--chem-primary);">ecriox.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Chemistry Engine Script Loaded Globally -->
+  <script src="/js/chemistry-engine.js"></script>
+  <script>
+    // Theme toggle listener
+    const themeBtn = document.getElementById('themeToggleBtn');
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => {
+        const cur = document.documentElement.getAttribute('data-theme') || 'light';
+        const nxt = cur === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', nxt);
+        try { localStorage.setItem('ecriox_theme_preference', nxt); } catch(e){}
+        window.dispatchEvent(new Event('themechange'));
+      });
+    }
+    // Mobile navigation drawer toggle
+    const mobToggle = document.getElementById('mobileMenuToggle');
+    const mobNav = document.getElementById('mobileNavDrawer');
+    if (mobToggle && mobNav) {
+      mobToggle.addEventListener('click', () => {
+        const isOpen = mobNav.classList.toggle('open');
+        mobToggle.setAttribute('aria-expanded', isOpen);
+      });
+    }
+    // FAQ Accordion listener
+    document.querySelectorAll('.chem-faq-trigger').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.parentElement.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>
+
+
+  <!-- Tab Switcher & Lab Actions Script -->
+  <script>
+    (function(){
+      // Tab switcher
+      const tabBtns = document.querySelectorAll('.chem-tab-btn');
+      const tabPanes = document.querySelectorAll('.chem-tab-pane');
+
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          tabBtns.forEach(b => b.classList.remove('active'));
+          tabPanes.forEach(p => p.classList.remove('active'));
+
+          btn.classList.add('active');
+          const target = btn.getAttribute('data-tab');
+          const pane = document.getElementById(target);
+          if (pane) pane.classList.add('active');
+        });
+      });
+
+      // Fullscreen mode toggle
+      const fsBtn = document.getElementById('btnFullscreen');
+      const labWrap = document.getElementById('labWrapper');
+      if (fsBtn && labWrap) {
+        fsBtn.addEventListener('click', () => {
+          if (!document.fullscreenElement) {
+            labWrap.requestFullscreen?.() || labWrap.webkitRequestFullscreen?.();
+            fsBtn.innerHTML = 'Exit Fullscreen';
+          } else {
+            document.exitFullscreen?.() || document.webkitExitFullscreen?.();
+            fsBtn.innerHTML = 'Fullscreen';
+          }
+        });
+      }
+
+      // Print Lab Worksheet
+      const printBtn = document.getElementById('btnPrintWorksheet');
+      if (printBtn) {
+        printBtn.addEventListener('click', () => window.print());
+      }
+
+      // Export CSV Data
+      const csvBtn = document.getElementById('btnExportCSV');
+      if (csvBtn) {
+        csvBtn.addEventListener('click', () => {
+          const metrics = Array.from(document.querySelectorAll('#hudBar .hud-metric')).map(m => {
+            const lbl = m.querySelector('.hud-metric-label')?.textContent.trim() || 'Metric';
+            const val = m.querySelector('.hud-metric-value')?.textContent.trim() || '0';
+            return `"${lbl}","${val}"`;
+          });
+          const csvContent = "data:text/csv;charset=utf-8,Parameter,Value\n" +
+            `"Experiment","3D Molecular Structure & VSEPR Geometry Viewer"\n` +
+            `"Timestamp","${new Date().toISOString()}"\n` +
+            metrics.join("\n");
+          const encodedUri = encodeURI(csvContent);
+          const link = document.createElement("a");
+          link.setAttribute("href", encodedUri);
+          link.setAttribute("download", "3d-molecular-viewer-lab-data.csv");
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        });
+      }
+    })();
+  </script>
+
+  <!-- Interactive Simulation Engine Execution -->
+  <script>
+    
+    (function(){
+      const canvas = document.getElementById('viewer3DCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+
+      let currentKey = 'H2O';
+      let style = 'ball_and_stick';
+      let rotX = 0.3;
+      let rotY = 0.5;
+      let rotSpeed = 1.0;
+      let isRotating = true;
+      let isDragging = false;
+      let lastMouseX = 0;
+      let lastMouseY = 0;
+
+      const META = {
+        H2O: { name: 'Water (H₂O)', geom: 'Bent / Angular', angle: '104.5°', pol: 'Polar (μ = 1.85 D)' },
+        CO2: { name: 'Carbon Dioxide (CO₂)', geom: 'Linear', angle: '180.0°', pol: 'Non-polar (μ = 0 D)' },
+        CH4: { name: 'Methane (CH₄)', geom: 'Tetrahedral', angle: '109.5°', pol: 'Non-polar (μ = 0 D)' },
+        NH3: { name: 'Ammonia (NH₃)', geom: 'Trigonal Pyramidal', angle: '107.0°', pol: 'Polar (μ = 1.47 D)' },
+        C2H5OH: { name: 'Ethanol (C₂H₅OH)', geom: 'Tetrahedral / Bent Centers', angle: '109.5° & 104.5°', pol: 'Polar (μ = 1.69 D)' },
+        C6H6: { name: 'Benzene (C₆H₆)', geom: 'Planar Hexagonal Ring', angle: '120.0°', pol: 'Non-polar (μ = 0 D)' },
+        C6H12O6: { name: 'D-Glucose', geom: 'Pyranose Ring (Chair)', angle: '109.5°', pol: 'Highly Polar' },
+        SF6: { name: 'Sulfur Hexafluoride', geom: 'Octahedral', angle: '90.0°', pol: 'Non-polar (Octahedral Symmetry)' },
+        PCl5: { name: 'Phosphorus Pentachloride', geom: 'Trigonal Bipyramidal', angle: '120° (eq) / 90° (ax)', pol: 'Non-polar (Symmetrical)' },
+        O2: { name: 'Oxygen (O₂)', geom: 'Linear Diatomic', angle: '180.0°', pol: 'Non-polar (μ = 0 D)' },
+        N2: { name: 'Nitrogen (N₂)', geom: 'Linear Diatomic', angle: '180.0°', pol: 'Non-polar (μ = 0 D)' },
+        H2: { name: 'Hydrogen (H₂)', geom: 'Linear Diatomic', angle: '180.0°', pol: 'Non-polar (μ = 0 D)' }
+      };
+
+      function updateHUD() {
+        const m = META[currentKey];
+        document.getElementById('hud3DName').textContent = m.name;
+        document.getElementById('hud3DGeometry').textContent = m.geom;
+        document.getElementById('hud3DAngle').textContent = m.angle;
+        document.getElementById('hud3DPolarity').textContent = m.pol;
+      }
+
+      function resize() {
+        const r = canvas.getBoundingClientRect();
+        canvas.width = r.width * (window.devicePixelRatio || 1);
+        canvas.height = r.height * (window.devicePixelRatio || 1);
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      function loop() {
+        if (isRotating && !isDragging) {
+          rotY += 0.012 * rotSpeed;
+          rotX += 0.004 * rotSpeed;
+        }
+
+        const mol = window.ChemistryEngine ? window.ChemistryEngine.MOLECULES_3D[currentKey] : null;
+        if (mol && window.ChemistryEngine) {
+          window.ChemistryEngine.render3DMolecule(canvas, mol, {
+            rotationX: rotX,
+            rotationY: rotY,
+            zoom: 1.0,
+            style: style
+          });
+        }
+        requestAnimationFrame(loop);
+      }
+      requestAnimationFrame(loop);
+
+      canvas.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        lastMouseX = e.clientX;
+        lastMouseY = e.clientY;
+        canvas.style.cursor = 'grabbing';
+      });
+
+      window.addEventListener('mouseup', () => {
+        isDragging = false;
+        canvas.style.cursor = 'grab';
+      });
+
+      canvas.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        const dx = e.clientX - lastMouseX;
+        const dy = e.clientY - lastMouseY;
+        rotY += dx * 0.008;
+        rotX += dy * 0.008;
+        lastMouseX = e.clientX;
+        lastMouseY = e.clientY;
+      });
+
+      document.getElementById('mol3DSelect').addEventListener('change', (e) => {
+        currentKey = e.target.value;
+        updateHUD();
+      });
+
+      document.querySelectorAll('.mol-style-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.mol-style-btn').forEach(b => {
+            b.classList.remove('chem-btn-primary');
+            b.classList.add('chem-btn-outline');
+          });
+          btn.classList.add('chem-btn-primary');
+          btn.classList.remove('chem-btn-outline');
+          style = btn.getAttribute('data-style');
+        });
+      });
+
+      const rotBtn = document.getElementById('btnToggleRotate');
+      rotBtn.addEventListener('click', () => {
+        isRotating = !isRotating;
+        rotBtn.textContent = isRotating ? 'Pause Rotation' : 'Resume Rotation';
+      });
+
+      document.getElementById('rotSpeedSlider').addEventListener('input', (e) => {
+        rotSpeed = parseFloat(e.target.value);
+        document.getElementById('rotSpeedDisplay').textContent = rotSpeed.toFixed(1) + 'x';
+      });
+
+      document.getElementById('btnReset3DView').addEventListener('click', () => {
+        rotX = 0.3;
+        rotY = 0.5;
+      });
+
+      updateHUD();
+    })();
+  
+  </script>
+        

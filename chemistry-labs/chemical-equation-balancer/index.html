@@ -1,0 +1,791 @@
+
+  <!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chemical Equation Balancer & Stoichiometric Solver – Online Chemistry Virtual Lab | EcrioX</title>
+  <meta name="description" content="Balance any chemical equation online with step-by-step matrix stoichiometric solvers. Verifies conservation of mass, atom counts, and polyatomic ion balances.">
+  <link rel="canonical" href="https://ecriox.com/chemistry-labs/chemical-equation-balancer/">
+  <!-- Favicon & Brand Icons -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#2563EB">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Chemical Equation Balancer & Stoichiometric Solver – Online Chemistry Virtual Lab | EcrioX">
+  <meta property="og:description" content="Balance any chemical equation online with step-by-step matrix stoichiometric solvers. Verifies conservation of mass, atom counts, and polyatomic ion balances.">
+  <meta property="og:url" content="https://ecriox.com/chemistry-labs/chemical-equation-balancer/">
+  <meta property="og:site_name" content="EcrioX">
+  <meta property="og:image" content="https://ecriox.com/og-banner.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Chemical Equation Balancer & Stoichiometric Solver – Online Chemistry Virtual Lab | EcrioX">
+  <meta name="twitter:description" content="Balance any chemical equation online with step-by-step matrix stoichiometric solvers. Verifies conservation of mass, atom counts, and polyatomic ion balances.">
+  <meta name="twitter:image" content="https://ecriox.com/og-banner.png">
+
+  <!-- Global Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-NNT7J485');
+  </script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6486455437877685" crossorigin="anonymous"></script>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/chemistry-labs.css">
+
+  <!-- Anti-FOUT & Theme Sync -->
+  <script>
+    (function(){
+      try {
+        var savedTheme = localStorage.getItem('ecriox_theme_preference');
+        if (savedTheme) {
+          document.documentElement.setAttribute('data-theme', savedTheme);
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      } catch(e) {}
+    })();
+  </script>
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://ecriox.com/chemistry-labs/chemical-equation-balancer/#app",
+      "url": "https://ecriox.com/chemistry-labs/chemical-equation-balancer/",
+      "name": "Chemical Equation Balancer & Stoichiometric Solver",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires HTML5 Canvas and JavaScript support",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Balance any chemical equation online with step-by-step matrix stoichiometric solvers. Verifies conservation of mass, atom counts, and polyatomic ion balances."
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://ecriox.com/chemistry-labs/chemical-equation-balancer/#article",
+      "headline": "Chemical Equation Balancer: Matrix Stoichiometry & Atom Conservation",
+      "description": "Balance any chemical equation online with step-by-step matrix stoichiometric solvers. Verifies conservation of mass, atom counts, and polyatomic ion balances.",
+      "author": {
+        "@type": "Organization",
+        "name": "EcrioX Science Team"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "EcrioX",
+        "url": "https://ecriox.com"
+      },
+      "datePublished": "2026-11-21",
+      "dateModified": "2026-11-21"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://ecriox.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Chemistry Virtual Labs",
+          "item": "https://ecriox.com/chemistry-labs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Chemical Equation Balancer & Stoichiometric Solver",
+          "item": "https://ecriox.com/chemistry-labs/chemical-equation-balancer/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can this balancer handle equations with parentheses and hydrates?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, our parser recognizes polyatomic ions inside parentheses (e.g., Ca(OH)2, (NH4)2SO4) and crystal hydrates (e.g., CuSO4*5H2O)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What algorithm does this balancer use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It uses Gaussian elimination with partial pivoting on the stoichiometric elemental composition matrix to find the integer basis vector of the nullspace."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why must coefficients be the smallest integers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "By international convention, stoichiometric equations are reported using the lowest common whole-number ratio of molecules or moles."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NNT7J485" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="brand-logo" aria-label="EcrioX Home">
+        <div class="logo-symbol">E</div>
+        <span>Ecrio<span class="accent-dot">X</span></span>
+      </a>
+
+      <nav class="nav-desktop">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/physics-labs/" class="nav-link">Physics Labs</a>
+        <a href="/chemistry-labs/" class="nav-link active">Chemistry Labs</a>
+        <a href="/chemistry-labs/calculators/" class="nav-link">Calculators</a>
+        <a href="/resume-builder/" class="nav-link">Career Studio</a>
+        <a href="/typing-speed-test/" class="nav-link">Typing Arena</a>
+        <a href="/tools/" class="nav-link">All Tools</a>
+        <a href="/about/" class="nav-link">About</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn-icon theme-toggle-btn" aria-label="Toggle color theme" id="themeToggleBtn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <button class="btn-icon mobile-toggle" aria-label="Open mobile menu" aria-expanded="false" id="mobileMenuToggle">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav-drawer" id="mobileNavDrawer">
+    <nav class="mobile-nav">
+      <a href="/" class="mobile-nav-link">Home</a>
+      <a href="/physics-labs/" class="mobile-nav-link">Physics Labs</a>
+      <a href="/chemistry-labs/" class="mobile-nav-link active">Chemistry Labs</a>
+      <a href="/chemistry-labs/calculators/" class="mobile-nav-link">Calculators</a>
+      <a href="/resume-builder/" class="mobile-nav-link">Career Studio</a>
+      <a href="/typing-speed-test/" class="mobile-nav-link">Typing Arena</a>
+      <a href="/tools/" class="mobile-nav-link">All Tools</a>
+      <a href="/about/" class="mobile-nav-link">About</a>
+    </nav>
+  </div>
+
+
+  <main id="main-content" class="container" style="padding-top:1.5rem; padding-bottom:3rem;">
+    <!-- Breadcrumbs -->
+    <nav class="chem-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="chem-breadcrumb-sep">/</span>
+      <a href="/chemistry-labs/">Chemistry Virtual Labs</a>
+      <span class="chem-breadcrumb-sep">/</span>
+      <span class="chem-breadcrumb-current">Chemical Equation Balancer & Stoichiometric Solver</span>
+    </nav>
+
+    <!-- Lab Header -->
+    <div class="chem-lab-header">
+      <div class="chem-lab-header-left">
+        <div style="display:flex; gap:0.5rem; align-items:center; margin-bottom:0.5rem; flex-wrap:wrap;">
+          <span class="chem-badge chem-badge-primary">Chemical Reactions</span>
+          <span class="chem-badge chem-badge-secondary">Classes 9–12 / JEE / NEET Level</span>
+          <span class="chem-badge" style="background:#e0f2fe; color:#0369a1;">⏱ 10 mins</span>
+          <span class="chem-badge" style="background:#fef3c7; color:#92400e;">CBSE • JEE • NEET • College</span>
+        </div>
+        <h1 class="chem-lab-title">Chemical Equation Balancer: Matrix Stoichiometry & Atom Conservation</h1>
+        <p class="chem-lab-intro">Balance any chemical equation instantly using a rigorous mathematical Gaussian elimination algorithm. Input unbalanced reactants and products to verify the Law of Conservation of Mass, inspect atom count equality, and review step-by-step algebraic solutions.</p>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="chem-lab-actions">
+        <button id="btnFullscreen" class="chem-btn chem-btn-outline" title="Toggle Fullscreen Mode">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
+          Fullscreen
+        </button>
+        <button id="btnResetSimulation" class="chem-btn chem-btn-outline" title="Reset Experiment Parameters">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6"></path><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
+          Reset Lab
+        </button>
+        <button id="btnExportCSV" class="chem-btn chem-btn-outline" title="Download Data Worksheet (CSV)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Export CSV
+        </button>
+        <button id="btnPrintWorksheet" class="chem-btn chem-btn-primary" title="Print Laboratory Worksheet">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+          Print Lab Sheet
+        </button>
+      </div>
+    </div>
+
+    <!-- Interactive Simulation Wrapper -->
+    <div class="chem-lab-wrapper" id="labWrapper">
+      <!-- Live HUD Metrics Panel -->
+      <div class="chem-hud-bar" id="hudBar">
+        
+    <div class="hud-metric"><div class="hud-metric-label">Balancing Status</div><div class="hud-metric-value" id="hudBalStatus" style="color:var(--color-success); font-size:0.95rem;">Balanced</div></div>
+    <div class="hud-metric"><div class="hud-metric-label">Reactants Count</div><div class="hud-metric-value" id="hudBalReactants">2 Species</div></div>
+    <div class="hud-metric"><div class="hud-metric-label">Products Count</div><div class="hud-metric-value" id="hudBalProducts">2 Species</div></div>
+    <div class="hud-metric"><div class="hud-metric-label">Total Elements</div><div class="hud-metric-value" id="hudBalElements">3 Elements</div></div>
+    <div class="hud-metric"><div class="hud-metric-label">Atom Conservation</div><div class="hud-metric-value" id="hudBalConserve">100% Conserved</div></div>
+    <div class="hud-metric"><div class="hud-metric-label">Method</div><div class="hud-metric-value" id="hudBalMethod" style="font-size:0.95rem;">Matrix Stoichiometry</div></div>
+  
+      </div>
+
+      <!-- Main Workspace Grid (Viewport + Controls) -->
+      <div class="chem-workspace-grid">
+        <!-- Simulation Viewport -->
+        <div class="chem-viewport-card">
+          <div class="chem-card-header-bar">
+            <span>🔬 Live Virtual Apparatus</span>
+            <span class="chem-status-dot">Interactive 60 FPS</span>
+          </div>
+          <div class="chem-viewport-inner">
+            
+    <div id="balancerOutputCard" style="min-height:440px; padding:2rem; display:flex; flex-direction:column; justify-content:center; align-items:center; background:#ffffff; border-radius:12px; border:1px solid #e2e8f0;">
+      <div style="font-size:1.6rem; font-weight:800; color:var(--chem-primary); margin-bottom:1rem; text-align:center;">Enter or Select an Equation to Balance</div>
+      <p style="color:var(--text-muted); text-align:center; max-width:520px; font-size:1rem; line-height:1.6;">
+        Our linear algebraic Gauss-Jordan solver formulates mass-balance conservation matrices to determine exact integer stoichiometric coefficients without guessing.
+      </p>
+    </div>
+  
+          </div>
+        </div>
+
+        <!-- Controls Panel -->
+        <div class="chem-controls-card">
+          <div class="chem-card-header-bar">
+            <span>⚙️ Scientific Controls</span>
+            <span>Calibrated</span>
+          </div>
+          <div class="chem-controls-inner">
+            
+    <div class="control-group">
+      <div class="control-label-row"><span class="control-label">Enter Chemical Equation</span></div>
+      <input type="text" class="chem-text-input" id="inEquation" value="C3H8 + O2 -> CO2 + H2O" style="font-size:1.05rem; font-weight:700;">
+    </div>
+    <div class="control-group">
+      <div class="control-label-row"><span class="control-label">Quick Preset Reactions</span></div>
+      <select class="chem-select-input" id="eqPresetSelect">
+        <option value="C3H8 + O2 -> CO2 + H2O" selected>Propane Combustion: C3H8 + O2 -> CO2 + H2O</option>
+        <option value="Fe + H2O -> Fe3O4 + H2">Iron Steam Oxidation: Fe + H2O -> Fe3O4 + H2</option>
+        <option value="Al + CuSO4 -> Al2(SO4)3 + Cu">Single Displacement: Al + CuSO4 -> Al2(SO4)3 + Cu</option>
+        <option value="KMnO4 + HCl -> KCl + MnCl2 + H2O + Cl2">Redox Permanganate: KMnO4 + HCl -> KCl + MnCl2 + H2O + Cl2</option>
+        <option value="H3PO4 + Ca(OH)2 -> Ca3(PO4)2 + H2O">Neutralization: H3PO4 + Ca(OH)2 -> Ca3(PO4)2 + H2O</option>
+        <option value="KClO3 -> KCl + O2">Decomposition: KClO3 -> KCl + O2</option>
+      </select>
+    </div>
+    <div class="chem-btn-group">
+      <button type="button" class="chem-btn chem-btn-primary" id="btnSolveEq">&#9874; Balance Equation</button>
+      <button type="button" class="chem-btn chem-btn-secondary" id="btnResetEq">Reset</button>
+    </div>
+  
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scientific Documentation Tabs -->
+    <section class="chem-doc-section">
+      <div class="chem-tabs-nav">
+        <button class="chem-tab-btn active" data-tab="tab-theory">1. Scientific Theory & Derivations</button>
+        <button class="chem-tab-btn" data-tab="tab-procedure">2. Lab Protocol & Objectives</button>
+        <button class="chem-tab-btn" data-tab="tab-example">3. Worked Calculation Example</button>
+        <button class="chem-tab-btn" data-tab="tab-applications">4. Applications & Misconceptions</button>
+        <button class="chem-tab-btn" data-tab="tab-faqs">5. FAQs (3)</button>
+      </div>
+
+      <!-- Tab 1: Theory -->
+      <div class="chem-tab-pane active" id="tab-theory">
+        <div class="chem-doc-content">
+          <h2>Law of Conservation of Mass</h2>
+          <div class="chem-formula-hero">
+            <code>\sum \text{Atoms}_{\text{Reactants}} = \sum \text{Atoms}_{\text{Products}}, \quad \mathbf{A} \cdot \vec{x} = \vec{0}</code>
+          </div>
+          <p class="chem-formula-desc">Matter can neither be created nor destroyed in a chemical reaction. Stoichiometric balancing constructs a homogeneous matrix system where coefficients x represent the integer nullspace.</p>
+          <div class="chem-text-block">
+            Chemical equations symbolize the atomic rearrangements that occur during chemical transformations. Antoine Lavoisier formulated the Law of Conservation of Mass in 1789, proving that mass remains constant in closed chemical systems. Subscripts within a chemical formula represent chemical bonding and must never be altered when balancing. Instead, integer stoichiometric coefficients are placed before formulas to balance the equation.
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 2: Procedure -->
+      <div class="chem-tab-pane" id="tab-procedure">
+        <div class="chem-doc-content">
+          <h2>Experimental Objectives</h2>
+          <ul class="chem-bullet-list">
+            <li>Balance complex inorganic, organic combustion, and polyatomic ionic reactions.</li><li>Verify that the total count of each element is identical on reactant and product sides.</li><li>Understand matrix stoichiometric techniques vs inspection methods for high-coefficient reactions.</li><li>Calculate stoichiometric mole ratios for laboratory yield calculations.</li>
+          </ul>
+          <h2 style="margin-top:2rem;">Step-by-Step Laboratory Procedure</h2>
+          <ol class="chem-step-list">
+            
+            <li class="chem-step-item">
+              <strong>Step 1:</strong>
+              <p>Type an unbalanced chemical equation into the input field (e.g., C3H8 + O2 -> CO2 + H2O).</p>
+            </li>
+            
+            <li class="chem-step-item">
+              <strong>Step 2:</strong>
+              <p>Click 'Balance Equation' or choose from verified preset reaction templates.</p>
+            </li>
+            
+            <li class="chem-step-item">
+              <strong>Step 3:</strong>
+              <p>Inspect the balanced output displaying the lowest common integer stoichiometric coefficients.</p>
+            </li>
+            
+            <li class="chem-step-item">
+              <strong>Step 4:</strong>
+              <p>Review the element-by-element atom audit table confirming mass conservation.</p>
+            </li>
+            
+          </ol>
+        </div>
+      </div>
+
+      <!-- Tab 3: Worked Example -->
+      <div class="chem-tab-pane" id="tab-example">
+        <div class="chem-doc-content">
+          <h2>Worked Example & Step-by-Step Calculation</h2>
+          <div class="chem-example-box">
+            <h3 style="color:var(--chem-primary); font-size:1.15rem; margin-bottom:0.75rem;">Problem Statement:</h3>
+            <p style="font-size:1.05rem; font-weight:600; color:var(--text-main); margin-bottom:1.5rem;">Balance the redox combustion equation: C₄H₁₀ + O₂ → CO₂ + H₂O.</p>
+            <h3 style="color:var(--chem-secondary); font-size:1.15rem; margin-bottom:0.75rem;">Mathematical Solution & Derivation:</h3>
+            <div class="chem-example-solution" style="white-space:pre-line; line-height:1.7;">
+              1. Count carbon atoms: 4 carbons on left → place coefficient 4 before CO₂:
+   C₄H₁₀ + O₂ → 4 CO₂ + H₂O.
+2. Count hydrogen atoms: 10 hydrogens on left → place coefficient 5 before H₂O:
+   C₄H₁₀ + O₂ → 4 CO₂ + 5 H₂O.
+3. Count oxygen atoms on right: (4 × 2) + (5 × 1) = 13 oxygen atoms.
+4. Required O₂ on left is 13/2 = 6.5:
+   C₄H₁₀ + 13/2 O₂ → 4 CO₂ + 5 H₂O.
+5. Multiply all coefficients by 2 to obtain lowest integers:
+   2 C₄H₁₀ + 13 O₂ → 8 CO₂ + 10 H₂O.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 4: Applications & Misconceptions -->
+      <div class="chem-tab-pane" id="tab-applications">
+        <div class="chem-doc-content">
+          <h2>Industrial, Engineering & Everyday Applications</h2>
+          <div class="chem-apps-grid">
+            
+            <div class="chem-app-item">
+              <strong>Chemical Manufacturing</strong>
+              <p>Calculating exact stoichiometric reagent quantities for Haber-Bosch ammonia production.</p>
+            </div>
+            
+            <div class="chem-app-item">
+              <strong>Automotive Engineering</strong>
+              <p>Optimizing fuel-to-air equivalence ratios in internal combustion engines to minimize CO and NOx.</p>
+            </div>
+            
+            <div class="chem-app-item">
+              <strong>Environmental Engineering</strong>
+              <p>Balancing flue gas desulfurization equations (SO2 + CaCO3 -> CaSO3 + CO2).</p>
+            </div>
+            
+            <div class="chem-app-item">
+              <strong>Pharmacology</strong>
+              <p>Synthesizing active pharmaceutical ingredients with minimal unreacted byproduct waste.</p>
+            </div>
+            
+          </div>
+          <h2 style="margin-top:2.5rem;">Common Student Misconceptions & Scientific Reality</h2>
+          <div class="chem-misc-list">
+            
+        <div class="chem-misc-card">
+          <div class="chem-misc-fact">💡 <strong>Critical Conceptual Insight:</strong> A major error is changing chemical subscripts to balance equations (e.g., writing H₂ + O₂ → H₂O₂ instead of 2H₂ + O₂ → 2H₂O). Changing subscripts alters the chemical identity of the substance.</div>
+        </div>
+        
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 5: FAQs -->
+      <div class="chem-tab-pane" id="tab-faqs">
+        <div class="chem-doc-content">
+          <h2>Frequently Asked Questions on Chemical Equation Balancer & Stoichiometric Solver</h2>
+          <div class="chem-faq-list" style="margin-top:1.5rem;">
+            
+            <div class="chem-faq-item">
+              <button class="chem-faq-trigger">
+                <span>Can this balancer handle equations with parentheses and hydrates?</span>
+                <svg class="chem-faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="chem-faq-content">
+                <p>Yes, our parser recognizes polyatomic ions inside parentheses (e.g., Ca(OH)2, (NH4)2SO4) and crystal hydrates (e.g., CuSO4*5H2O).</p>
+              </div>
+            </div>
+            
+            <div class="chem-faq-item">
+              <button class="chem-faq-trigger">
+                <span>What algorithm does this balancer use?</span>
+                <svg class="chem-faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="chem-faq-content">
+                <p>It uses Gaussian elimination with partial pivoting on the stoichiometric elemental composition matrix to find the integer basis vector of the nullspace.</p>
+              </div>
+            </div>
+            
+            <div class="chem-faq-item">
+              <button class="chem-faq-trigger">
+                <span>Why must coefficients be the smallest integers?</span>
+                <svg class="chem-faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="chem-faq-content">
+                <p>By international convention, stoichiometric equations are reported using the lowest common whole-number ratio of molecules or moles.</p>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Experiments Section -->
+    <section class="chem-related-section">
+      <div class="chem-section-header">
+        <h2 class="chem-section-title">Related Chemistry Virtual Labs</h2>
+        <p class="chem-section-desc">Continue your exploration with these interconnected chemical experiments and simulations.</p>
+      </div>
+      <div class="chem-grid">
+        
+            <article class="chem-card" data-category="reactions">
+              <div class="chem-card-badge-wrap">
+                <span class="chem-badge chem-badge-primary">Chemical Reactions</span>
+                <span class="chem-badge chem-badge-secondary">Classes 9–12 / CBSE / ICSE</span>
+              </div>
+              <div class="chem-card-icon">
+      <svg viewBox="0 0 100 100" fill="none" stroke="currentColor">
+        <path d="M35 25 H65 V45 L80 80 H20 L35 45 Z" stroke="var(--chem-primary)" stroke-width="2.5" fill="none"/>
+        <path d="M26 68 L35 45 H65 L74 68 Z" fill="rgba(239,68,68,0.2)"/>
+        <circle cx="45" cy="65" r="4" fill="#ef4444"/>
+        <circle cx="58" cy="60" r="3" fill="#f97316"/>
+        <circle cx="50" cy="40" r="2.5" fill="#eab308"/>
+        <path d="M42 20 Q48 10 44 5" stroke="#ef4444" stroke-width="1.5"/>
+        <path d="M54 22 Q60 12 56 7" stroke="#f97316" stroke-width="1.5"/>
+      </svg>
+    </div>
+              <h3 class="chem-card-title"><a href="/chemistry-labs/chemical-reaction-simulator/">Chemical Reaction Types & Energy Simulator</a></h3>
+              <p class="chem-card-desc">Explore major classes of chemical reactions: synthesis, decomposition, single displacement, double displacement (precipi...</p>
+              <a href="/chemistry-labs/chemical-reaction-simulator/" class="chem-card-btn">Open Lab →</a>
+            </article>
+            
+            <article class="chem-card" data-category="acids-bases">
+              <div class="chem-card-badge-wrap">
+                <span class="chem-badge chem-badge-primary">Acids, Bases & Solutions</span>
+                <span class="chem-badge chem-badge-secondary">Classes 9–12 / NEET / JEE</span>
+              </div>
+              <div class="chem-card-icon">
+      <svg viewBox="0 0 100 100" fill="none" stroke="currentColor">
+        <rect x="25" y="30" width="50" height="55" rx="4" stroke="var(--border-color)" stroke-width="2.5" fill="none"/>
+        <rect x="27" y="45" width="46" height="38" rx="2" fill="rgba(16,185,129,0.3)"/>
+        <line x1="60" y1="15" x2="60" y2="60" stroke="#334155" stroke-width="4"/>
+        <circle cx="60" cy="62" r="5" fill="#38bdf8"/>
+        <rect x="15" y="10" width="35" height="18" rx="3" fill="#1e293b"/>
+        <text x="32" y="23" font-size="8" font-weight="bold" fill="#38bdf8" text-anchor="middle">pH 7.0</text>
+      </svg>
+    </div>
+              <h3 class="chem-card-title"><a href="/chemistry-labs/ph-scale-simulator/">pH Scale & Hydrogen Ion Concentration Simulator</a></h3>
+              <p class="chem-card-desc">Visualize the logarithmic pH scale from 0 to 14. Adjust hydronium [H⁺] and hydroxide [OH⁻] concentrations, observe unive...</p>
+              <a href="/chemistry-labs/ph-scale-simulator/" class="chem-card-btn">Open Lab →</a>
+            </article>
+            
+            <article class="chem-card" data-category="analytical">
+              <div class="chem-card-badge-wrap">
+                <span class="chem-badge chem-badge-primary">Analytical Chemistry</span>
+                <span class="chem-badge chem-badge-secondary">Classes 11–12 / B.Sc Chemistry / JEE</span>
+              </div>
+              <div class="chem-card-icon">
+      <svg viewBox="0 0 100 100" fill="none" stroke="currentColor">
+        <rect x="44" y="10" width="12" height="45" stroke="#334155" stroke-width="2" fill="rgba(59,130,246,0.2)"/>
+        <rect x="42" y="55" width="16" height="6" fill="#0f172a"/>
+        <line x1="50" y1="61" x2="50" y2="66" stroke="#334155" stroke-width="2"/>
+        <circle cx="50" cy="70" r="2" fill="#3b82f6"/>
+        <path d="M42 74 H58 L72 92 H28 Z" stroke="#334155" stroke-width="2" fill="rgba(236,72,153,0.3)"/>
+      </svg>
+    </div>
+              <h3 class="chem-card-title"><a href="/chemistry-labs/acid-base-titration/">Acid-Base Titration Virtual Laboratory</a></h3>
+              <p class="chem-card-desc">Operate a complete analytical titration workstation with a graduated burette, Erlenmeyer flask, and magnetic stirrer. Ti...</p>
+              <a href="/chemistry-labs/acid-base-titration/" class="chem-card-btn">Open Lab →</a>
+            </article>
+            
+      </div>
+    </section>
+  </main>
+
+  
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="/" class="brand-logo">
+            <div class="logo-symbol">E</div>
+            <span>Ecrio<span class="accent-dot">X</span></span>
+          </a>
+          <p>One Platform. Endless Possibilities. Free, scientifically accurate browser-based virtual laboratories and digital productivity utilities.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Chemistry Labs</h4>
+          <ul class="footer-links">
+            <li><a href="/chemistry-labs/">All Chemistry Labs</a></li>
+            <li><a href="/chemistry-labs/interactive-periodic-table/">Periodic Table Explorer</a></li>
+            <li><a href="/chemistry-labs/chemical-equation-balancer/">Equation Balancer</a></li>
+            <li><a href="/chemistry-labs/acid-base-titration/">Acid-Base Titration</a></li>
+            <li><a href="/chemistry-labs/3d-molecular-viewer/">3D Molecular Viewer</a></li>
+            <li><a href="/chemistry-labs/calculators/">Chemistry Calculators</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Physics Labs</h4>
+          <ul class="footer-links">
+            <li><a href="/physics-labs/">All Physics Labs</a></li>
+            <li><a href="/physics-labs/projectile-motion-simulator/">Projectile Motion</a></li>
+            <li><a href="/physics-labs/electric-circuit-simulator/">Circuit Simulator</a></li>
+            <li><a href="/physics-labs/ray-optics-simulator/">Ray Optics Lab</a></li>
+            <li><a href="/physics-labs/simple-pendulum-experiment/">Simple Pendulum</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Product Suite</h4>
+          <ul class="footer-links">
+            <li><a href="/tools/">All Tools Directory</a></li>
+            <li><a href="/categories/">Tool Categories</a></li>
+            <li><a href="/pdf-compressor/">PDF Compressor</a></li>
+            <li><a href="/resume-builder/">ATS Resume Builder</a></li>
+            <li><a href="/typing-speed-test/">Typing Arena</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company & Legal</h4>
+          <ul class="footer-links">
+            <li><a href="/about/">About EcrioX</a></li>
+            <li><a href="/contact/">Contact Support</a></li>
+            <li><a href="/privacy/">Privacy Policy</a></li>
+            <li><a href="/terms/">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 EcrioX. All rights reserved. Zero client downloads required — 100% private in-browser scientific simulations.</p>
+        <p>Canonical Domain: <a href="https://ecriox.com/" style="color: var(--chem-primary);">ecriox.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Chemistry Engine Script Loaded Globally -->
+  <script src="/js/chemistry-engine.js"></script>
+  <script>
+    // Theme toggle listener
+    const themeBtn = document.getElementById('themeToggleBtn');
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => {
+        const cur = document.documentElement.getAttribute('data-theme') || 'light';
+        const nxt = cur === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', nxt);
+        try { localStorage.setItem('ecriox_theme_preference', nxt); } catch(e){}
+        window.dispatchEvent(new Event('themechange'));
+      });
+    }
+    // Mobile navigation drawer toggle
+    const mobToggle = document.getElementById('mobileMenuToggle');
+    const mobNav = document.getElementById('mobileNavDrawer');
+    if (mobToggle && mobNav) {
+      mobToggle.addEventListener('click', () => {
+        const isOpen = mobNav.classList.toggle('open');
+        mobToggle.setAttribute('aria-expanded', isOpen);
+      });
+    }
+    // FAQ Accordion listener
+    document.querySelectorAll('.chem-faq-trigger').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.parentElement.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>
+
+
+  <!-- Tab Switcher & Lab Actions Script -->
+  <script>
+    (function(){
+      // Tab switcher
+      const tabBtns = document.querySelectorAll('.chem-tab-btn');
+      const tabPanes = document.querySelectorAll('.chem-tab-pane');
+
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          tabBtns.forEach(b => b.classList.remove('active'));
+          tabPanes.forEach(p => p.classList.remove('active'));
+
+          btn.classList.add('active');
+          const target = btn.getAttribute('data-tab');
+          const pane = document.getElementById(target);
+          if (pane) pane.classList.add('active');
+        });
+      });
+
+      // Fullscreen mode toggle
+      const fsBtn = document.getElementById('btnFullscreen');
+      const labWrap = document.getElementById('labWrapper');
+      if (fsBtn && labWrap) {
+        fsBtn.addEventListener('click', () => {
+          if (!document.fullscreenElement) {
+            labWrap.requestFullscreen?.() || labWrap.webkitRequestFullscreen?.();
+            fsBtn.innerHTML = 'Exit Fullscreen';
+          } else {
+            document.exitFullscreen?.() || document.webkitExitFullscreen?.();
+            fsBtn.innerHTML = 'Fullscreen';
+          }
+        });
+      }
+
+      // Print Lab Worksheet
+      const printBtn = document.getElementById('btnPrintWorksheet');
+      if (printBtn) {
+        printBtn.addEventListener('click', () => window.print());
+      }
+
+      // Export CSV Data
+      const csvBtn = document.getElementById('btnExportCSV');
+      if (csvBtn) {
+        csvBtn.addEventListener('click', () => {
+          const metrics = Array.from(document.querySelectorAll('#hudBar .hud-metric')).map(m => {
+            const lbl = m.querySelector('.hud-metric-label')?.textContent.trim() || 'Metric';
+            const val = m.querySelector('.hud-metric-value')?.textContent.trim() || '0';
+            return `"${lbl}","${val}"`;
+          });
+          const csvContent = "data:text/csv;charset=utf-8,Parameter,Value\n" +
+            `"Experiment","Chemical Equation Balancer & Stoichiometric Solver"\n` +
+            `"Timestamp","${new Date().toISOString()}"\n` +
+            metrics.join("\n");
+          const encodedUri = encodeURI(csvContent);
+          const link = document.createElement("a");
+          link.setAttribute("href", encodedUri);
+          link.setAttribute("download", "chemical-equation-balancer-lab-data.csv");
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        });
+      }
+    })();
+  </script>
+
+  <!-- Interactive Simulation Engine Execution -->
+  <script>
+    
+    (function() {
+      const inEq = document.getElementById('inEquation');
+      const btnSolve = document.getElementById('btnSolveEq');
+      const btnReset = document.getElementById('btnResetEq');
+      const selPreset = document.getElementById('eqPresetSelect');
+      const outCard = document.getElementById('balancerOutputCard');
+
+      if (!inEq || !window.ChemistryEngine) return;
+
+      function solve() {
+        const eqStr = inEq.value;
+        const res = ChemistryEngine.balanceEquation(eqStr);
+
+        if (!res.success) {
+          document.getElementById('hudBalStatus').textContent = 'Invalid / Error';
+          document.getElementById('hudBalStatus').style.color = 'var(--color-danger)';
+          if (outCard) {
+            outCard.innerHTML = `<div style="padding:1.5rem; background:rgba(220,38,38,0.08); border:1px solid var(--color-danger); border-radius:var(--radius-md); color:var(--color-danger); font-weight:600;">⚠ ${res.error}</div>`;
+          }
+          return;
+        }
+
+        document.getElementById('hudBalStatus').textContent = 'Balanced';
+        document.getElementById('hudBalStatus').style.color = 'var(--color-success)';
+        document.getElementById('hudBalReactants').textContent = res.reactantCoeffs.length + ' Species';
+        document.getElementById('hudBalProducts').textContent = res.productCoeffs.length + ' Species';
+        document.getElementById('hudBalElements').textContent = res.atomAudit.length + ' Elements';
+
+        if (outCard) {
+          const auditRows = res.atomAudit.map(a => `
+            <tr>
+              <td style="padding:0.6rem; border-bottom:1px solid var(--border-color); font-weight:700;">${a.element} (${a.name})</td>
+              <td style="padding:0.6rem; border-bottom:1px solid var(--border-color); text-align:center;">${a.reactants}</td>
+              <td style="padding:0.6rem; border-bottom:1px solid var(--border-color); text-align:center;">${a.products}</td>
+              <td style="padding:0.6rem; border-bottom:1px solid var(--border-color); text-align:center; color:var(--color-success); font-weight:700;">✓ Balanced</td>
+            </tr>
+          `).join('');
+
+          outCard.innerHTML = `
+            <div style="background:var(--bg-surface); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:2rem; box-shadow:var(--shadow-sm);">
+              <span class="lab-badge">✓ Stoichiometrically Balanced</span>
+              <div style="font-size:clamp(1.2rem, 3.5vw, 1.75rem); font-family:var(--font-mono); font-weight:800; color:var(--color-primary); margin:1rem 0; word-break:break-word;">
+                ${res.balanced}
+              </div>
+              <h4 style="margin:1.5rem 0 0.75rem; color:var(--text-main);">Atom Conservation Audit</h4>
+              <div style="overflow-x:auto;">
+                <table style="width:100%; border-collapse:collapse; font-size:0.92rem;">
+                  <thead>
+                    <tr style="background:var(--bg-subtle);">
+                      <th style="padding:0.6rem; text-align:left; border-bottom:2px solid var(--border-color);">Element</th>
+                      <th style="padding:0.6rem; text-align:center; border-bottom:2px solid var(--border-color);">Reactants Side</th>
+                      <th style="padding:0.6rem; text-align:center; border-bottom:2px solid var(--border-color);">Products Side</th>
+                      <th style="padding:0.6rem; text-align:center; border-bottom:2px solid var(--border-color);">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>${auditRows}</tbody>
+                </table>
+              </div>
+            </div>
+          `;
+        }
+      }
+
+      btnSolve.addEventListener('click', solve);
+      selPreset.addEventListener('change', () => {
+        inEq.value = selPreset.value;
+        solve();
+      });
+      btnReset.addEventListener('click', () => {
+        inEq.value = 'C3H8 + O2 -> CO2 + H2O';
+        solve();
+      });
+
+      solve();
+    })();
+  
+  </script>
+        

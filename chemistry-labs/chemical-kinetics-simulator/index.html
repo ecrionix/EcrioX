@@ -1,0 +1,958 @@
+
+  <!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chemical Kinetics & Reaction Rates Simulator – Online Chemistry Virtual Lab | EcrioX</title>
+  <meta name="description" content="Simulate chemical reaction kinetics online. Explore zero-, first-, and second-order integrated rate laws, calculate half-life, and analyze Arrhenius activation energy.">
+  <link rel="canonical" href="https://ecriox.com/chemistry-labs/chemical-kinetics-simulator/">
+  <!-- Favicon & Brand Icons -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#2563EB">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Chemical Kinetics & Reaction Rates Simulator – Online Chemistry Virtual Lab | EcrioX">
+  <meta property="og:description" content="Simulate chemical reaction kinetics online. Explore zero-, first-, and second-order integrated rate laws, calculate half-life, and analyze Arrhenius activation energy.">
+  <meta property="og:url" content="https://ecriox.com/chemistry-labs/chemical-kinetics-simulator/">
+  <meta property="og:site_name" content="EcrioX">
+  <meta property="og:image" content="https://ecriox.com/og-banner.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Chemical Kinetics & Reaction Rates Simulator – Online Chemistry Virtual Lab | EcrioX">
+  <meta name="twitter:description" content="Simulate chemical reaction kinetics online. Explore zero-, first-, and second-order integrated rate laws, calculate half-life, and analyze Arrhenius activation energy.">
+  <meta name="twitter:image" content="https://ecriox.com/og-banner.png">
+
+  <!-- Global Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-NNT7J485');
+  </script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6486455437877685" crossorigin="anonymous"></script>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/chemistry-labs.css">
+
+  <!-- Anti-FOUT & Theme Sync -->
+  <script>
+    (function(){
+      try {
+        var savedTheme = localStorage.getItem('ecriox_theme_preference');
+        if (savedTheme) {
+          document.documentElement.setAttribute('data-theme', savedTheme);
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      } catch(e) {}
+    })();
+  </script>
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://ecriox.com/chemistry-labs/chemical-kinetics-simulator/#app",
+      "url": "https://ecriox.com/chemistry-labs/chemical-kinetics-simulator/",
+      "name": "Chemical Kinetics & Reaction Rates Simulator",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires HTML5 Canvas and JavaScript support",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Simulate chemical reaction kinetics online. Explore zero-, first-, and second-order integrated rate laws, calculate half-life, and analyze Arrhenius activation energy."
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://ecriox.com/chemistry-labs/chemical-kinetics-simulator/#article",
+      "headline": "Chemical Kinetics Simulator: Rate Laws, Reaction Orders & Arrhenius Equation",
+      "description": "Simulate chemical reaction kinetics online. Explore zero-, first-, and second-order integrated rate laws, calculate half-life, and analyze Arrhenius activation energy.",
+      "author": {
+        "@type": "Organization",
+        "name": "EcrioX Science Team"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "EcrioX",
+        "url": "https://ecriox.com"
+      },
+      "datePublished": "2026-11-21",
+      "dateModified": "2026-11-21"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://ecriox.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Chemistry Virtual Labs",
+          "item": "https://ecriox.com/chemistry-labs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Chemical Kinetics & Reaction Rates Simulator",
+          "item": "https://ecriox.com/chemistry-labs/chemical-kinetics-simulator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why is the half-life of a first-order reaction constant?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In a first-order integrated rate law, t\u2081/\u2082 = ln(2) / k. The initial concentration term [A]\u2080 cancels out entirely, meaning it takes the exact same duration to decay from 1.0 M to 0.5 M as it does from 0.001 M to 0.0005 M."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does a catalyst increase reaction rate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A catalyst provides an alternative reaction pathway with a lower activation energy (E_a). By the Arrhenius equation, lowering E_a exponentially increases the rate constant k without consuming the catalyst."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the units of rate constants for different reaction orders?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Zero order: mol/(L\u00b7s); First order: s\u207b\u00b9; Second order: L/(mol\u00b7s). In general: (mol/L)^(1-n) \u00b7 s\u207b\u00b9 where n is reaction order."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NNT7J485" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="brand-logo" aria-label="EcrioX Home">
+        <div class="logo-symbol">E</div>
+        <span>Ecrio<span class="accent-dot">X</span></span>
+      </a>
+
+      <nav class="nav-desktop">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/physics-labs/" class="nav-link">Physics Labs</a>
+        <a href="/chemistry-labs/" class="nav-link active">Chemistry Labs</a>
+        <a href="/chemistry-labs/calculators/" class="nav-link">Calculators</a>
+        <a href="/resume-builder/" class="nav-link">Career Studio</a>
+        <a href="/typing-speed-test/" class="nav-link">Typing Arena</a>
+        <a href="/tools/" class="nav-link">All Tools</a>
+        <a href="/about/" class="nav-link">About</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn-icon theme-toggle-btn" aria-label="Toggle color theme" id="themeToggleBtn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <button class="btn-icon mobile-toggle" aria-label="Open mobile menu" aria-expanded="false" id="mobileMenuToggle">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav-drawer" id="mobileNavDrawer">
+    <nav class="mobile-nav">
+      <a href="/" class="mobile-nav-link">Home</a>
+      <a href="/physics-labs/" class="mobile-nav-link">Physics Labs</a>
+      <a href="/chemistry-labs/" class="mobile-nav-link active">Chemistry Labs</a>
+      <a href="/chemistry-labs/calculators/" class="mobile-nav-link">Calculators</a>
+      <a href="/resume-builder/" class="mobile-nav-link">Career Studio</a>
+      <a href="/typing-speed-test/" class="mobile-nav-link">Typing Arena</a>
+      <a href="/tools/" class="mobile-nav-link">All Tools</a>
+      <a href="/about/" class="mobile-nav-link">About</a>
+    </nav>
+  </div>
+
+
+  <main id="main-content" class="container" style="padding-top:1.5rem; padding-bottom:3rem;">
+    <!-- Breadcrumbs -->
+    <nav class="chem-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="chem-breadcrumb-sep">/</span>
+      <a href="/chemistry-labs/">Chemistry Virtual Labs</a>
+      <span class="chem-breadcrumb-sep">/</span>
+      <span class="chem-breadcrumb-current">Chemical Kinetics & Reaction Rates Simulator</span>
+    </nav>
+
+    <!-- Lab Header -->
+    <div class="chem-lab-header">
+      <div class="chem-lab-header-left">
+        <div style="display:flex; gap:0.5rem; align-items:center; margin-bottom:0.5rem; flex-wrap:wrap;">
+          <span class="chem-badge chem-badge-primary">Physical Chemistry</span>
+          <span class="chem-badge chem-badge-secondary">Classes 11–12 / B.Sc / JEE / NEET Level</span>
+          <span class="chem-badge" style="background:#e0f2fe; color:#0369a1;">⏱ 16 mins</span>
+          <span class="chem-badge" style="background:#fef3c7; color:#92400e;">CBSE • JEE • NEET • College</span>
+        </div>
+        <h1 class="chem-lab-title">Chemical Kinetics Simulator: Rate Laws, Reaction Orders & Arrhenius Equation</h1>
+        <p class="chem-lab-intro">Investigate how chemical reaction speeds are governed by reactant concentrations, temperature, and activation energy. Toggle between Zero-order, First-order, and Second-order kinetics, inspect integrated rate equations, calculate half-lives, and model Arrhenius temperature dependence.</p>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="chem-lab-actions">
+        <button id="btnFullscreen" class="chem-btn chem-btn-outline" title="Toggle Fullscreen Mode">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
+          Fullscreen
+        </button>
+        <button id="btnResetSimulation" class="chem-btn chem-btn-outline" title="Reset Experiment Parameters">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6"></path><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
+          Reset Lab
+        </button>
+        <button id="btnExportCSV" class="chem-btn chem-btn-outline" title="Download Data Worksheet (CSV)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Export CSV
+        </button>
+        <button id="btnPrintWorksheet" class="chem-btn chem-btn-primary" title="Print Laboratory Worksheet">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+          Print Lab Sheet
+        </button>
+      </div>
+    </div>
+
+    <!-- Interactive Simulation Wrapper -->
+    <div class="chem-lab-wrapper" id="labWrapper">
+      <!-- Live HUD Metrics Panel -->
+      <div class="chem-hud-bar" id="hudBar">
+        
+    <div class="hud-metric"><div class="hud-metric-label">Rate Constant (k)</div><div class="hud-metric-value" id="hudKinK">0.052<span class="hud-metric-unit">s⁻¹</span></div></div>
+    <div class="hud-metric"><div class="hud-metric-label">Reactant [A]</div><div class="hud-metric-value" id="hudKinA">1.00<span class="hud-metric-unit">M</span></div></div>
+    <div class="hud-metric"><div class="hud-metric-label">Product [B]</div><div class="hud-metric-value" id="hudKinB">0.00<span class="hud-metric-unit">M</span></div></div>
+    <div class="hud-metric"><div class="hud-metric-label">Reaction Rate</div><div class="hud-metric-value" id="hudKinRate">0.052<span class="hud-metric-unit">M/s</span></div></div>
+    <div class="hud-metric"><div class="hud-metric-label">Half-Life (t₁/₂)</div><div class="hud-metric-value" id="hudKinHalfLife">13.3<span class="hud-metric-unit">s</span></div></div>
+  
+      </div>
+
+      <!-- Main Workspace Grid (Viewport + Controls) -->
+      <div class="chem-workspace-grid">
+        <!-- Simulation Viewport -->
+        <div class="chem-viewport-card">
+          <div class="chem-card-header-bar">
+            <span>🔬 Live Virtual Apparatus</span>
+            <span class="chem-status-dot">Interactive 60 FPS</span>
+          </div>
+          <div class="chem-viewport-inner">
+            
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; height:440px;" class="chem-kin-viewport">
+      <canvas id="kinParticleCanvas" style="width:100%; height:100%; display:block; border-radius:12px; background:#0f172a;"></canvas>
+      <canvas id="kinGraphCanvas" style="width:100%; height:100%; display:block; border-radius:12px; background:#ffffff; border:1px solid #e2e8f0;"></canvas>
+    </div>
+  
+          </div>
+        </div>
+
+        <!-- Controls Panel -->
+        <div class="chem-controls-card">
+          <div class="chem-card-header-bar">
+            <span>⚙️ Scientific Controls</span>
+            <span>Calibrated</span>
+          </div>
+          <div class="chem-controls-inner">
+            
+    <div class="chem-form-group">
+      <label class="chem-label">Reaction Order:</label>
+      <select id="kinOrderSelect" class="chem-select">
+        <option value="1" selected>First Order (A → B, Rate = k[A])</option>
+        <option value="0">Zero Order (A → B, Rate = k)</option>
+        <option value="2">Second Order (2A → B, Rate = k[A]²)</option>
+      </select>
+    </div>
+    <div class="chem-form-group">
+      <div style="display:flex; justify-content:space-between;">
+        <label class="chem-label">Initial Concentration [A]₀:</label>
+        <span id="a0Display" style="font-weight:700; color:var(--chem-primary)">1.00 M</span>
+      </div>
+      <input type="range" id="a0Slider" min="0.2" max="2.0" step="0.1" value="1.0" class="chem-slider" />
+    </div>
+    <div class="chem-form-group">
+      <div style="display:flex; justify-content:space-between;">
+        <label class="chem-label">Temperature (T):</label>
+        <span id="tempKDisplay" style="font-weight:700; color:var(--chem-secondary)">298 K (25°C)</span>
+      </div>
+      <input type="range" id="tempKSlider" min="273" max="373" step="5" value="298" class="chem-slider" />
+    </div>
+    <div class="chem-form-group">
+      <label style="display:flex; align-items:center; gap:0.5rem; font-weight:600; cursor:pointer;">
+        <input type="checkbox" id="catalystCheck" />
+        Add Catalyst (Lowers Activation Energy Ea by 25 kJ/mol)
+      </label>
+    </div>
+    <div class="chem-btn-group" style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.5rem; margin-top:0.75rem;">
+      <button id="btnRunKinetics" class="chem-btn chem-btn-primary">Start</button>
+      <button id="btnPauseKinetics" class="chem-btn chem-btn-outline">Pause</button>
+      <button id="btnResetKinetics" class="chem-btn chem-btn-secondary">Reset</button>
+    </div>
+  
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scientific Documentation Tabs -->
+    <section class="chem-doc-section">
+      <div class="chem-tabs-nav">
+        <button class="chem-tab-btn active" data-tab="tab-theory">1. Scientific Theory & Derivations</button>
+        <button class="chem-tab-btn" data-tab="tab-procedure">2. Lab Protocol & Objectives</button>
+        <button class="chem-tab-btn" data-tab="tab-example">3. Worked Calculation Example</button>
+        <button class="chem-tab-btn" data-tab="tab-applications">4. Applications & Misconceptions</button>
+        <button class="chem-tab-btn" data-tab="tab-faqs">5. FAQs (3)</button>
+      </div>
+
+      <!-- Tab 1: Theory -->
+      <div class="chem-tab-pane active" id="tab-theory">
+        <div class="chem-doc-content">
+          <h2>Integrated Rate Laws & Arrhenius Equation</h2>
+          <div class="chem-formula-hero">
+            <code>\ln[A]_t = -kt + \ln[A]_0, \quad t_{1/2} = \frac{\ln 2}{k}, \quad k = A e^{-\frac{E_a}{RT}}</code>
+          </div>
+          <p class="chem-formula-desc">First-order reactions exhibit exponential decay with constant half-life independent of initial concentration. The Arrhenius equation models exponential rate constant sensitivity to absolute temperature.</p>
+          <div class="chem-text-block">
+            Chemical kinetics investigates the rates of chemical reactions and the molecular pathways (mechanisms) by which they occur. Collision Theory states that for a reaction to occur, reactant particles must collide with energy greater than or equal to the activation energy (E_a) and with appropriate molecular orientation. The reaction order describes the mathematical dependency of rate on reactant concentration. For a first-order process, rate = k[A], and the half-life t₁/₂ = ln(2)/k is uniquely independent of initial concentration.
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 2: Procedure -->
+      <div class="chem-tab-pane" id="tab-procedure">
+        <div class="chem-doc-content">
+          <h2>Experimental Objectives</h2>
+          <ul class="chem-bullet-list">
+            <li>Compare mathematical models of Zero-order, First-order, and Second-order reaction kinetics.</li><li>Calculate reaction half-life (t_1/2) and rate constants from concentration-time curves.</li><li>Demonstrate Collision Theory: how temperature increases collision frequency and fraction of energetic particles.</li><li>Apply the Arrhenius equation to calculate activation energy E_a.</li>
+          </ul>
+          <h2 style="margin-top:2rem;">Step-by-Step Laboratory Procedure</h2>
+          <ol class="chem-step-list">
+            
+            <li class="chem-step-item">
+              <strong>Step 1:</strong>
+              <p>Select reaction order: Zero-order ([A] vs t linear), First-order (ln[A] vs t linear), or Second-order (1/[A] vs t linear).</p>
+            </li>
+            
+            <li class="chem-step-item">
+              <strong>Step 2:</strong>
+              <p>Adjust the Initial Concentration [A]₀ (mol/L) and Rate Constant k sliders.</p>
+            </li>
+            
+            <li class="chem-step-item">
+              <strong>Step 3:</strong>
+              <p>Adjust Temperature (Kelvin) to observe Arrhenius acceleration of reaction velocity.</p>
+            </li>
+            
+            <li class="chem-step-item">
+              <strong>Step 4:</strong>
+              <p>Click 'Start Reaction' to observe particle collision animations and real-time graph plotting.</p>
+            </li>
+            
+          </ol>
+        </div>
+      </div>
+
+      <!-- Tab 3: Worked Example -->
+      <div class="chem-tab-pane" id="tab-example">
+        <div class="chem-doc-content">
+          <h2>Worked Example & Step-by-Step Calculation</h2>
+          <div class="chem-example-box">
+            <h3 style="color:var(--chem-primary); font-size:1.15rem; margin-bottom:0.75rem;">Problem Statement:</h3>
+            <p style="font-size:1.05rem; font-weight:600; color:var(--text-main); margin-bottom:1.5rem;">The first-order decomposition of dinitrogen pentoxide (N₂O₅) has a rate constant k = 6.2 × 10⁻⁴ s⁻¹ at 45°C. Calculate: (a) The reaction half-life, (b) The time required for the concentration to fall to 12.5% of its initial value.</p>
+            <h3 style="color:var(--chem-secondary); font-size:1.15rem; margin-bottom:0.75rem;">Mathematical Solution & Derivation:</h3>
+            <div class="chem-example-solution" style="white-space:pre-line; line-height:1.7;">
+              1. Half-life formula for first-order reaction:
+   t₁/₂ = ln(2) / k = 0.69315 / (6.2 × 10⁻⁴ s⁻¹) = 1118 seconds (≈ 18.6 minutes).
+2. Calculate elapsed half-lives to reach 12.5%:
+   100% → 50% (1 half-life) → 25% (2 half-lives) → 12.5% (3 half-lives).
+   n = 3 half-lives.
+3. Total time required:
+   t = 3 × t₁/₂ = 3 × 1118 s = 3354 seconds (≈ 55.9 minutes).
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 4: Applications & Misconceptions -->
+      <div class="chem-tab-pane" id="tab-applications">
+        <div class="chem-doc-content">
+          <h2>Industrial, Engineering & Everyday Applications</h2>
+          <div class="chem-apps-grid">
+            
+            <div class="chem-app-item">
+              <strong>Pharmacokinetics</strong>
+              <p>Calculating drug half-lives to determine medical dosing frequency and prevent therapeutic toxicity.</p>
+            </div>
+            
+            <div class="chem-app-item">
+              <strong>Food Preservation</strong>
+              <p>Lowering temperature in refrigeration to exponentially retard bacterial spoilage kinetics.</p>
+            </div>
+            
+            <div class="chem-app-item">
+              <strong>Chemical Reactor Design</strong>
+              <p>Sizing continuous stirred-tank reactors (CSTR) for optimal industrial product yield.</p>
+            </div>
+            
+            <div class="chem-app-item">
+              <strong>Atmospheric Chemistry</strong>
+              <p>Modeling ozone layer depletion kinetics by chlorofluorocarbon (CFC) catalytic cycles.</p>
+            </div>
+            
+          </div>
+          <h2 style="margin-top:2.5rem;">Common Student Misconceptions & Scientific Reality</h2>
+          <div class="chem-misc-list">
+            
+        <div class="chem-misc-card">
+          <div class="chem-misc-fact">💡 <strong>Critical Conceptual Insight:</strong> Students often assume that reaction order can be determined directly from the stoichiometric coefficients of an overall balanced equation. Reaction order is an experimentally determined quantity that depends on the slowest elementary step (rate-determining step), not overall stoichiometry.</div>
+        </div>
+        
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 5: FAQs -->
+      <div class="chem-tab-pane" id="tab-faqs">
+        <div class="chem-doc-content">
+          <h2>Frequently Asked Questions on Chemical Kinetics & Reaction Rates Simulator</h2>
+          <div class="chem-faq-list" style="margin-top:1.5rem;">
+            
+            <div class="chem-faq-item">
+              <button class="chem-faq-trigger">
+                <span>Why is the half-life of a first-order reaction constant?</span>
+                <svg class="chem-faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="chem-faq-content">
+                <p>In a first-order integrated rate law, t₁/₂ = ln(2) / k. The initial concentration term [A]₀ cancels out entirely, meaning it takes the exact same duration to decay from 1.0 M to 0.5 M as it does from 0.001 M to 0.0005 M.</p>
+              </div>
+            </div>
+            
+            <div class="chem-faq-item">
+              <button class="chem-faq-trigger">
+                <span>How does a catalyst increase reaction rate?</span>
+                <svg class="chem-faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="chem-faq-content">
+                <p>A catalyst provides an alternative reaction pathway with a lower activation energy (E_a). By the Arrhenius equation, lowering E_a exponentially increases the rate constant k without consuming the catalyst.</p>
+              </div>
+            </div>
+            
+            <div class="chem-faq-item">
+              <button class="chem-faq-trigger">
+                <span>What are the units of rate constants for different reaction orders?</span>
+                <svg class="chem-faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="chem-faq-content">
+                <p>Zero order: mol/(L·s); First order: s⁻¹; Second order: L/(mol·s). In general: (mol/L)^(1-n) · s⁻¹ where n is reaction order.</p>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Experiments Section -->
+    <section class="chem-related-section">
+      <div class="chem-section-header">
+        <h2 class="chem-section-title">Related Chemistry Virtual Labs</h2>
+        <p class="chem-section-desc">Continue your exploration with these interconnected chemical experiments and simulations.</p>
+      </div>
+      <div class="chem-grid">
+        
+            <article class="chem-card" data-category="physical">
+              <div class="chem-card-badge-wrap">
+                <span class="chem-badge chem-badge-primary">Physical Chemistry</span>
+                <span class="chem-badge chem-badge-secondary">Classes 11–12 / B.Sc / JEE / NEET</span>
+              </div>
+              <div class="chem-card-icon">
+      <svg viewBox="0 0 100 100" fill="none" stroke="currentColor">
+        <line x1="20" y1="42" x2="80" y2="42" stroke="var(--chem-primary)" stroke-width="3"/>
+        <polyline points="72,36 80,42 72,48" stroke="var(--chem-primary)" stroke-width="3"/>
+        <line x1="80" y1="58" x2="20" y2="58" stroke="var(--chem-secondary)" stroke-width="3"/>
+        <polyline points="28,52 20,58 28,64" stroke="var(--chem-secondary)" stroke-width="3"/>
+        <text x="50" y="32" font-size="9" font-weight="bold" fill="var(--chem-primary)" text-anchor="middle">Forward Rate</text>
+        <text x="50" y="76" font-size="9" font-weight="bold" fill="var(--chem-secondary)" text-anchor="middle">Reverse Rate</text>
+      </svg>
+    </div>
+              <h3 class="chem-card-title"><a href="/chemistry-labs/chemical-equilibrium-simulator/">Chemical Equilibrium & Le Chatelier's Principle Simulator</a></h3>
+              <p class="chem-card-desc">Experiment with dynamic chemical equilibrium and Le Chatelier's Principle. Simulate the Haber ammonia synthesis and NO₂/...</p>
+              <a href="/chemistry-labs/chemical-equilibrium-simulator/" class="chem-card-btn">Open Lab →</a>
+            </article>
+            
+            <article class="chem-card" data-category="physical">
+              <div class="chem-card-badge-wrap">
+                <span class="chem-badge chem-badge-primary">Physical Chemistry</span>
+                <span class="chem-badge chem-badge-secondary">Classes 9–12 / NEET / JEE</span>
+              </div>
+              <div class="chem-card-icon">
+      <svg viewBox="0 0 100 100" fill="none" stroke="currentColor">
+        <rect x="25" y="20" width="50" height="65" stroke="#334155" stroke-width="2.5" fill="none"/>
+        <rect x="27" y="40" width="46" height="10" fill="#64748b"/>
+        <line x1="50" y1="40" x2="50" y2="15" stroke="#64748b" stroke-width="4"/>
+        <rect x="42" y="8" width="16" height="8" fill="#1e293b"/>
+        <circle cx="38" cy="60" r="3" fill="#3b82f6"/>
+        <circle cx="62" cy="70" r="3" fill="#3b82f6"/>
+        <circle cx="48" cy="76" r="3" fill="#3b82f6"/>
+      </svg>
+    </div>
+              <h3 class="chem-card-title"><a href="/chemistry-labs/gas-laws-simulator/">Gas Laws & Ideal Gas Simulator</a></h3>
+              <p class="chem-card-desc">Explore the microscopic behavior of gases. Manipulate container volume with an adjustable piston, change temperature wit...</p>
+              <a href="/chemistry-labs/gas-laws-simulator/" class="chem-card-btn">Open Lab →</a>
+            </article>
+            
+            <article class="chem-card" data-category="electrochemistry">
+              <div class="chem-card-badge-wrap">
+                <span class="chem-badge chem-badge-primary">Electrochemistry</span>
+                <span class="chem-badge chem-badge-secondary">Classes 11–12 / B.Sc / JEE / NEET</span>
+              </div>
+              <div class="chem-card-icon">
+      <svg viewBox="0 0 100 100" fill="none" stroke="currentColor">
+        <rect x="15" y="45" width="30" height="40" stroke="#94a3b8" stroke-width="2" fill="rgba(203,213,225,0.4)"/>
+        <rect x="55" y="45" width="30" height="40" stroke="#94a3b8" stroke-width="2" fill="rgba(59,130,246,0.3)"/>
+        <rect x="25" y="35" width="8" height="45" fill="#94a3b8"/>
+        <rect x="67" y="35" width="8" height="45" fill="#b45309"/>
+        <path d="M40 50 V35 H60 V50" stroke="#475569" stroke-width="4" fill="none"/>
+        <line x1="29" y1="35" x2="29" y2="20" stroke="#334155" stroke-width="2"/>
+        <line x1="29" y1="20" x2="71" y2="20" stroke="#334155" stroke-width="2"/>
+        <line x1="71" y1="20" x2="71" y2="35" stroke="#334155" stroke-width="2"/>
+        <circle cx="50" cy="20" r="6" fill="#1e293b"/>
+      </svg>
+    </div>
+              <h3 class="chem-card-title"><a href="/chemistry-labs/electrochemical-cell-simulator/">Galvanic & Electrochemical Cell Simulator</a></h3>
+              <p class="chem-card-desc">Construct functional Voltaic and Galvanic cells in a digital laboratory. Pair zinc, copper, silver, and magnesium half-c...</p>
+              <a href="/chemistry-labs/electrochemical-cell-simulator/" class="chem-card-btn">Open Lab →</a>
+            </article>
+            
+      </div>
+    </section>
+  </main>
+
+  
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="/" class="brand-logo">
+            <div class="logo-symbol">E</div>
+            <span>Ecrio<span class="accent-dot">X</span></span>
+          </a>
+          <p>One Platform. Endless Possibilities. Free, scientifically accurate browser-based virtual laboratories and digital productivity utilities.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Chemistry Labs</h4>
+          <ul class="footer-links">
+            <li><a href="/chemistry-labs/">All Chemistry Labs</a></li>
+            <li><a href="/chemistry-labs/interactive-periodic-table/">Periodic Table Explorer</a></li>
+            <li><a href="/chemistry-labs/chemical-equation-balancer/">Equation Balancer</a></li>
+            <li><a href="/chemistry-labs/acid-base-titration/">Acid-Base Titration</a></li>
+            <li><a href="/chemistry-labs/3d-molecular-viewer/">3D Molecular Viewer</a></li>
+            <li><a href="/chemistry-labs/calculators/">Chemistry Calculators</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Physics Labs</h4>
+          <ul class="footer-links">
+            <li><a href="/physics-labs/">All Physics Labs</a></li>
+            <li><a href="/physics-labs/projectile-motion-simulator/">Projectile Motion</a></li>
+            <li><a href="/physics-labs/electric-circuit-simulator/">Circuit Simulator</a></li>
+            <li><a href="/physics-labs/ray-optics-simulator/">Ray Optics Lab</a></li>
+            <li><a href="/physics-labs/simple-pendulum-experiment/">Simple Pendulum</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Product Suite</h4>
+          <ul class="footer-links">
+            <li><a href="/tools/">All Tools Directory</a></li>
+            <li><a href="/categories/">Tool Categories</a></li>
+            <li><a href="/pdf-compressor/">PDF Compressor</a></li>
+            <li><a href="/resume-builder/">ATS Resume Builder</a></li>
+            <li><a href="/typing-speed-test/">Typing Arena</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company & Legal</h4>
+          <ul class="footer-links">
+            <li><a href="/about/">About EcrioX</a></li>
+            <li><a href="/contact/">Contact Support</a></li>
+            <li><a href="/privacy/">Privacy Policy</a></li>
+            <li><a href="/terms/">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 EcrioX. All rights reserved. Zero client downloads required — 100% private in-browser scientific simulations.</p>
+        <p>Canonical Domain: <a href="https://ecriox.com/" style="color: var(--chem-primary);">ecriox.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Chemistry Engine Script Loaded Globally -->
+  <script src="/js/chemistry-engine.js"></script>
+  <script>
+    // Theme toggle listener
+    const themeBtn = document.getElementById('themeToggleBtn');
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => {
+        const cur = document.documentElement.getAttribute('data-theme') || 'light';
+        const nxt = cur === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', nxt);
+        try { localStorage.setItem('ecriox_theme_preference', nxt); } catch(e){}
+        window.dispatchEvent(new Event('themechange'));
+      });
+    }
+    // Mobile navigation drawer toggle
+    const mobToggle = document.getElementById('mobileMenuToggle');
+    const mobNav = document.getElementById('mobileNavDrawer');
+    if (mobToggle && mobNav) {
+      mobToggle.addEventListener('click', () => {
+        const isOpen = mobNav.classList.toggle('open');
+        mobToggle.setAttribute('aria-expanded', isOpen);
+      });
+    }
+    // FAQ Accordion listener
+    document.querySelectorAll('.chem-faq-trigger').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.parentElement.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>
+
+
+  <!-- Tab Switcher & Lab Actions Script -->
+  <script>
+    (function(){
+      // Tab switcher
+      const tabBtns = document.querySelectorAll('.chem-tab-btn');
+      const tabPanes = document.querySelectorAll('.chem-tab-pane');
+
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          tabBtns.forEach(b => b.classList.remove('active'));
+          tabPanes.forEach(p => p.classList.remove('active'));
+
+          btn.classList.add('active');
+          const target = btn.getAttribute('data-tab');
+          const pane = document.getElementById(target);
+          if (pane) pane.classList.add('active');
+        });
+      });
+
+      // Fullscreen mode toggle
+      const fsBtn = document.getElementById('btnFullscreen');
+      const labWrap = document.getElementById('labWrapper');
+      if (fsBtn && labWrap) {
+        fsBtn.addEventListener('click', () => {
+          if (!document.fullscreenElement) {
+            labWrap.requestFullscreen?.() || labWrap.webkitRequestFullscreen?.();
+            fsBtn.innerHTML = 'Exit Fullscreen';
+          } else {
+            document.exitFullscreen?.() || document.webkitExitFullscreen?.();
+            fsBtn.innerHTML = 'Fullscreen';
+          }
+        });
+      }
+
+      // Print Lab Worksheet
+      const printBtn = document.getElementById('btnPrintWorksheet');
+      if (printBtn) {
+        printBtn.addEventListener('click', () => window.print());
+      }
+
+      // Export CSV Data
+      const csvBtn = document.getElementById('btnExportCSV');
+      if (csvBtn) {
+        csvBtn.addEventListener('click', () => {
+          const metrics = Array.from(document.querySelectorAll('#hudBar .hud-metric')).map(m => {
+            const lbl = m.querySelector('.hud-metric-label')?.textContent.trim() || 'Metric';
+            const val = m.querySelector('.hud-metric-value')?.textContent.trim() || '0';
+            return `"${lbl}","${val}"`;
+          });
+          const csvContent = "data:text/csv;charset=utf-8,Parameter,Value\n" +
+            `"Experiment","Chemical Kinetics & Reaction Rates Simulator"\n` +
+            `"Timestamp","${new Date().toISOString()}"\n` +
+            metrics.join("\n");
+          const encodedUri = encodeURI(csvContent);
+          const link = document.createElement("a");
+          link.setAttribute("href", encodedUri);
+          link.setAttribute("download", "chemical-kinetics-simulator-lab-data.csv");
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        });
+      }
+    })();
+  </script>
+
+  <!-- Interactive Simulation Engine Execution -->
+  <script>
+    
+    (function(){
+      const partCanvas = document.getElementById('kinParticleCanvas');
+      const graphCanvas = document.getElementById('kinGraphCanvas');
+      if (!partCanvas || !graphCanvas) return;
+      const pCtx = partCanvas.getContext('2d');
+      const gCtx = graphCanvas.getContext('2d');
+
+      let order = 1;
+      let A0 = 1.0;
+      let tempK = 298;
+      let hasCatalyst = false;
+      let isRunning = false;
+      let timeSec = 0.0;
+      let curA = 1.0;
+      let history = []; // array of {t, a, b}
+
+      let particles = [];
+      const TOTAL_P = 50;
+
+      function calcK() {
+        const R = 8.314;
+        const A_preexp = 1e7;
+        const Ea = hasCatalyst ? 40000 : 65000; // J/mol
+        return A_preexp * Math.exp(-Ea / (R * tempK));
+      }
+
+      function initParticles() {
+        particles = [];
+        for (let i = 0; i < TOTAL_P; i++) {
+          particles.push({
+            type: 'A',
+            x: Math.random() * partCanvas.width,
+            y: Math.random() * partCanvas.height,
+            vx: (Math.random() - 0.5) * 3,
+            vy: (Math.random() - 0.5) * 3
+          });
+        }
+      }
+
+      function updateHUD() {
+        const k = calcK();
+        let rate = 0;
+        let tHalf = 0;
+
+        if (order === 0) {
+          rate = k;
+          tHalf = A0 / (2 * k);
+        } else if (order === 1) {
+          rate = k * curA;
+          tHalf = 0.693 / k;
+        } else {
+          rate = k * curA * curA;
+          tHalf = 1 / (k * A0);
+        }
+
+        const curB = Math.max(0, A0 - curA);
+
+        document.getElementById('hudKinK').innerHTML = k.toFixed(3) + '<span class="hud-metric-unit">s⁻¹</span>';
+        document.getElementById('hudKinA').innerHTML = curA.toFixed(2) + '<span class="hud-metric-unit">M</span>';
+        document.getElementById('hudKinB').innerHTML = curB.toFixed(2) + '<span class="hud-metric-unit">M</span>';
+        document.getElementById('hudKinRate').innerHTML = rate.toFixed(4) + '<span class="hud-metric-unit">M/s</span>';
+        document.getElementById('hudKinHalfLife').innerHTML = tHalf.toFixed(1) + '<span class="hud-metric-unit">s</span>';
+
+        document.getElementById('a0Display').textContent = A0.toFixed(2) + ' M';
+        document.getElementById('tempKDisplay').textContent = tempK + ' K (' + (tempK - 273) + '°C)';
+      }
+
+      function resize() {
+        [partCanvas, graphCanvas].forEach(c => {
+          const r = c.getBoundingClientRect();
+          c.width = r.width * (window.devicePixelRatio || 1);
+          c.height = r.height * (window.devicePixelRatio || 1);
+        });
+        initParticles();
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      history.push({ t: 0, a: A0, b: 0 });
+
+      function drawParticles() {
+        pCtx.clearRect(0, 0, partCanvas.width, partCanvas.height);
+
+        // Header Title
+        pCtx.fillStyle = '#38bdf8';
+        pCtx.font = 'bold 12px Inter, sans-serif';
+        pCtx.fillText('Particle Collision Chamber (Red = A, Blue = B)', 15, 25);
+
+        particles.forEach(p => {
+          if (isRunning) {
+            p.x += p.vx;
+            p.y += p.vy;
+            if (p.x < 10 || p.x > partCanvas.width - 10) p.vx *= -1;
+            if (p.y < 35 || p.y > partCanvas.height - 10) p.vy *= -1;
+          }
+
+          pCtx.beginPath();
+          pCtx.arc(p.x, p.y, 6, 0, Math.PI * 2);
+          pCtx.fillStyle = p.type === 'A' ? '#ef4444' : '#3b82f6';
+          pCtx.fill();
+        });
+      }
+
+      function drawGraph() {
+        const w = graphCanvas.width;
+        const h = graphCanvas.height;
+        gCtx.clearRect(0, 0, w, h);
+
+        const padL = 45;
+        const padR = 25;
+        const padT = 30;
+        const padB = 40;
+        const gw = w - padL - padR;
+        const gh = h - padT - padB;
+
+        // Axes & grid
+        gCtx.strokeStyle = '#e2e8f0';
+        for (let c = 0; c <= 2.0; c += 0.5) {
+          const y = padT + gh - (c / 2.0) * gh;
+          gCtx.beginPath(); gCtx.moveTo(padL, y); gCtx.lineTo(padL + gw, y); gCtx.stroke();
+          gCtx.fillStyle = '#64748b'; gCtx.font = '10px Inter, sans-serif';
+          gCtx.fillText(c.toFixed(1) + 'M', padL - 32, y + 4);
+        }
+
+        // Title
+        gCtx.fillStyle = '#1e293b';
+        gCtx.font = 'bold 12px Inter, sans-serif';
+        gCtx.fillText('Concentration vs Time (Red: [A], Blue: [B])', padL, padT - 12);
+
+        // Plot curves
+        const maxT = Math.max(30, timeSec);
+
+        // Draw [A] curve
+        gCtx.strokeStyle = '#ef4444';
+        gCtx.lineWidth = 2.5;
+        gCtx.beginPath();
+        history.forEach((pt, i) => {
+          const x = padL + (pt.t / maxT) * gw;
+          const y = padT + gh - (pt.a / 2.0) * gh;
+          if (i === 0) gCtx.moveTo(x, y); else gCtx.lineTo(x, y);
+        });
+        gCtx.stroke();
+
+        // Draw [B] curve
+        gCtx.strokeStyle = '#3b82f6';
+        gCtx.lineWidth = 2.5;
+        gCtx.beginPath();
+        history.forEach((pt, i) => {
+          const x = padL + (pt.t / maxT) * gw;
+          const y = padT + gh - (pt.b / 2.0) * gh;
+          if (i === 0) gCtx.moveTo(x, y); else gCtx.lineTo(x, y);
+        });
+        gCtx.stroke();
+      }
+
+      function loop() {
+        if (isRunning) {
+          const dt = 0.05;
+          timeSec += dt;
+          const k = calcK();
+
+          if (order === 0) {
+            curA = Math.max(0, curA - k * dt);
+          } else if (order === 1) {
+            curA = Math.max(0, curA - k * curA * dt);
+          } else {
+            curA = Math.max(0, curA - k * curA * curA * dt);
+          }
+
+          const curB = Math.max(0, A0 - curA);
+          history.push({ t: timeSec, a: curA, b: curB });
+
+          // Convert particles proportional to reaction progress
+          const bTargetCount = Math.round((curB / A0) * TOTAL_P);
+          let bCount = particles.filter(p => p.type === 'B').length;
+          if (bCount < bTargetCount) {
+            for (let i = 0; i < particles.length && bCount < bTargetCount; i++) {
+              if (particles[i].type === 'A') {
+                particles[i].type = 'B';
+                bCount++;
+              }
+            }
+          }
+
+          updateHUD();
+        }
+
+        drawParticles();
+        drawGraph();
+        requestAnimationFrame(loop);
+      }
+      requestAnimationFrame(loop);
+
+      document.getElementById('btnRunKinetics').addEventListener('click', () => isRunning = true);
+      document.getElementById('btnPauseKinetics').addEventListener('click', () => isRunning = false);
+      document.getElementById('btnResetKinetics').addEventListener('click', () => {
+        isRunning = false;
+        timeSec = 0;
+        curA = A0;
+        history = [{ t: 0, a: A0, b: 0 }];
+        initParticles();
+        updateHUD();
+      });
+
+      document.getElementById('kinOrderSelect').addEventListener('change', (e) => {
+        order = parseInt(e.target.value);
+        updateHUD();
+      });
+
+      document.getElementById('a0Slider').addEventListener('input', (e) => {
+        A0 = parseFloat(e.target.value);
+        curA = A0;
+        history = [{ t: 0, a: A0, b: 0 }];
+        initParticles();
+        updateHUD();
+      });
+
+      document.getElementById('tempKSlider').addEventListener('input', (e) => {
+        tempK = parseInt(e.target.value);
+        updateHUD();
+      });
+
+      document.getElementById('catalystCheck').addEventListener('change', (e) => {
+        hasCatalyst = e.target.checked;
+        updateHUD();
+      });
+
+      updateHUD();
+    })();
+  
+  </script>
+        

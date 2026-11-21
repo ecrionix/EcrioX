@@ -1,0 +1,886 @@
+
+  <!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atomic Structure & Electron Shells Simulator – Online Chemistry Virtual Lab | EcrioX</title>
+  <meta name="description" content="Build and visualize atoms online. Adjust proton, neutron, and electron counts to observe atomic number, mass number, net charge, isotopes, and Bohr electron shell filling.">
+  <link rel="canonical" href="https://ecriox.com/chemistry-labs/atomic-structure-simulator/">
+  <!-- Favicon & Brand Icons -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#2563EB">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Atomic Structure & Electron Shells Simulator – Online Chemistry Virtual Lab | EcrioX">
+  <meta property="og:description" content="Build and visualize atoms online. Adjust proton, neutron, and electron counts to observe atomic number, mass number, net charge, isotopes, and Bohr electron shell filling.">
+  <meta property="og:url" content="https://ecriox.com/chemistry-labs/atomic-structure-simulator/">
+  <meta property="og:site_name" content="EcrioX">
+  <meta property="og:image" content="https://ecriox.com/og-banner.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Atomic Structure & Electron Shells Simulator – Online Chemistry Virtual Lab | EcrioX">
+  <meta name="twitter:description" content="Build and visualize atoms online. Adjust proton, neutron, and electron counts to observe atomic number, mass number, net charge, isotopes, and Bohr electron shell filling.">
+  <meta name="twitter:image" content="https://ecriox.com/og-banner.png">
+
+  <!-- Global Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-NNT7J485');
+  </script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6486455437877685" crossorigin="anonymous"></script>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/chemistry-labs.css">
+
+  <!-- Anti-FOUT & Theme Sync -->
+  <script>
+    (function(){
+      try {
+        var savedTheme = localStorage.getItem('ecriox_theme_preference');
+        if (savedTheme) {
+          document.documentElement.setAttribute('data-theme', savedTheme);
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      } catch(e) {}
+    })();
+  </script>
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://ecriox.com/chemistry-labs/atomic-structure-simulator/#app",
+      "url": "https://ecriox.com/chemistry-labs/atomic-structure-simulator/",
+      "name": "Atomic Structure & Electron Shells Simulator",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires HTML5 Canvas and JavaScript support",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Build and visualize atoms online. Adjust proton, neutron, and electron counts to observe atomic number, mass number, net charge, isotopes, and Bohr electron shell filling."
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://ecriox.com/chemistry-labs/atomic-structure-simulator/#article",
+      "headline": "Atomic Structure Simulator: Protons, Neutrons, Electrons & Orbitals",
+      "description": "Build and visualize atoms online. Adjust proton, neutron, and electron counts to observe atomic number, mass number, net charge, isotopes, and Bohr electron shell filling.",
+      "author": {
+        "@type": "Organization",
+        "name": "EcrioX Science Team"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "EcrioX",
+        "url": "https://ecriox.com"
+      },
+      "datePublished": "2026-11-21",
+      "dateModified": "2026-11-21"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://ecriox.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Chemistry Virtual Labs",
+          "item": "https://ecriox.com/chemistry-labs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Atomic Structure & Electron Shells Simulator",
+          "item": "https://ecriox.com/chemistry-labs/atomic-structure-simulator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does the Bohr model depict the true physical shape of an atom?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The Bohr model is an educational simplification. Quantum mechanics describes electrons not as fixed circular orbits, but as three-dimensional probability density clouds (atomic orbitals) governed by Schr\u00f6dinger's equation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What makes an isotope radioactive or unstable?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nuclear stability is governed by the neutron-to-proton (N/Z) ratio. For light elements, stable nuclei have N/Z \u2248 1. Nuclei with excess neutrons or protons undergo radioactive decay (alpha, beta, or gamma emission)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is an isoelectronic species?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Isoelectronic species are chemical atoms or ions having identical numbers of electrons and electron configurations, such as O\u00b2\u207b, F\u207b, Ne, Na\u207a, and Mg\u00b2\u207a (all with 10 electrons)."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NNT7J485" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="brand-logo" aria-label="EcrioX Home">
+        <div class="logo-symbol">E</div>
+        <span>Ecrio<span class="accent-dot">X</span></span>
+      </a>
+
+      <nav class="nav-desktop">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/physics-labs/" class="nav-link">Physics Labs</a>
+        <a href="/chemistry-labs/" class="nav-link active">Chemistry Labs</a>
+        <a href="/chemistry-labs/calculators/" class="nav-link">Calculators</a>
+        <a href="/resume-builder/" class="nav-link">Career Studio</a>
+        <a href="/typing-speed-test/" class="nav-link">Typing Arena</a>
+        <a href="/tools/" class="nav-link">All Tools</a>
+        <a href="/about/" class="nav-link">About</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn-icon theme-toggle-btn" aria-label="Toggle color theme" id="themeToggleBtn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <button class="btn-icon mobile-toggle" aria-label="Open mobile menu" aria-expanded="false" id="mobileMenuToggle">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav-drawer" id="mobileNavDrawer">
+    <nav class="mobile-nav">
+      <a href="/" class="mobile-nav-link">Home</a>
+      <a href="/physics-labs/" class="mobile-nav-link">Physics Labs</a>
+      <a href="/chemistry-labs/" class="mobile-nav-link active">Chemistry Labs</a>
+      <a href="/chemistry-labs/calculators/" class="mobile-nav-link">Calculators</a>
+      <a href="/resume-builder/" class="mobile-nav-link">Career Studio</a>
+      <a href="/typing-speed-test/" class="mobile-nav-link">Typing Arena</a>
+      <a href="/tools/" class="mobile-nav-link">All Tools</a>
+      <a href="/about/" class="mobile-nav-link">About</a>
+    </nav>
+  </div>
+
+
+  <main id="main-content" class="container" style="padding-top:1.5rem; padding-bottom:3rem;">
+    <!-- Breadcrumbs -->
+    <nav class="chem-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="chem-breadcrumb-sep">/</span>
+      <a href="/chemistry-labs/">Chemistry Virtual Labs</a>
+      <span class="chem-breadcrumb-sep">/</span>
+      <span class="chem-breadcrumb-current">Atomic Structure & Electron Shells Simulator</span>
+    </nav>
+
+    <!-- Lab Header -->
+    <div class="chem-lab-header">
+      <div class="chem-lab-header-left">
+        <div style="display:flex; gap:0.5rem; align-items:center; margin-bottom:0.5rem; flex-wrap:wrap;">
+          <span class="chem-badge chem-badge-primary">Atomic Structure</span>
+          <span class="chem-badge chem-badge-secondary">Classes 8–11 / CBSE / ICSE Level</span>
+          <span class="chem-badge" style="background:#e0f2fe; color:#0369a1;">⏱ 12 mins</span>
+          <span class="chem-badge" style="background:#fef3c7; color:#92400e;">CBSE • JEE • NEET • College</span>
+        </div>
+        <h1 class="chem-lab-title">Atomic Structure Simulator: Protons, Neutrons, Electrons & Orbitals</h1>
+        <p class="chem-lab-intro">Construct atoms from fundamental subatomic particles. Add or remove protons, neutrons, and electrons to observe changes in atomic identity, isotopic mass, ionic charge, and planetary electron shell distributions governed by the 2n² capacity rule.</p>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="chem-lab-actions">
+        <button id="btnFullscreen" class="chem-btn chem-btn-outline" title="Toggle Fullscreen Mode">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
+          Fullscreen
+        </button>
+        <button id="btnResetSimulation" class="chem-btn chem-btn-outline" title="Reset Experiment Parameters">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6"></path><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
+          Reset Lab
+        </button>
+        <button id="btnExportCSV" class="chem-btn chem-btn-outline" title="Download Data Worksheet (CSV)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Export CSV
+        </button>
+        <button id="btnPrintWorksheet" class="chem-btn chem-btn-primary" title="Print Laboratory Worksheet">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+          Print Lab Sheet
+        </button>
+      </div>
+    </div>
+
+    <!-- Interactive Simulation Wrapper -->
+    <div class="chem-lab-wrapper" id="labWrapper">
+      <!-- Live HUD Metrics Panel -->
+      <div class="chem-hud-bar" id="hudBar">
+        
+    <div class="hud-metric"><div class="hud-metric-label">Element Identity</div><div class="hud-metric-value" id="hudAtomElement">C (Carbon)</div></div>
+    <div class="hud-metric"><div class="hud-metric-label">Atomic Number (Z)</div><div class="hud-metric-value" id="hudAtomZ">6</div></div>
+    <div class="hud-metric"><div class="hud-metric-label">Mass Number (A)</div><div class="hud-metric-value" id="hudAtomA">12</div></div>
+    <div class="hud-metric"><div class="hud-metric-label">Net Charge (Q)</div><div class="hud-metric-value" id="hudAtomQ">0 (Neutral)</div></div>
+    <div class="hud-metric"><div class="hud-metric-label">Bohr Shells (2n²)</div><div class="hud-metric-value" id="hudAtomShells" style="font-size:0.95rem;">2, 4</div></div>
+    <div class="hud-metric"><div class="hud-metric-label">Nuclear State</div><div class="hud-metric-value" id="hudAtomStability" style="color:var(--color-success); font-size:0.95rem;">Stable Isotope</div></div>
+  
+      </div>
+
+      <!-- Main Workspace Grid (Viewport + Controls) -->
+      <div class="chem-workspace-grid">
+        <!-- Simulation Viewport -->
+        <div class="chem-viewport-card">
+          <div class="chem-card-header-bar">
+            <span>🔬 Live Virtual Apparatus</span>
+            <span class="chem-status-dot">Interactive 60 FPS</span>
+          </div>
+          <div class="chem-viewport-inner">
+            
+    <canvas id="simCanvas" style="width:100%; height:440px; display:block; border-radius:12px; background:radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);"></canvas>
+  
+          </div>
+        </div>
+
+        <!-- Controls Panel -->
+        <div class="chem-controls-card">
+          <div class="chem-card-header-bar">
+            <span>⚙️ Scientific Controls</span>
+            <span>Calibrated</span>
+          </div>
+          <div class="chem-controls-inner">
+            
+    <div class="control-group">
+      <div class="control-label-row"><span class="control-label">Protons (p⁺, Atomic Number Z)</span><span class="control-value-badge" id="valProtons">6</span></div>
+      <input type="range" class="chem-range-input" id="inProtons" min="1" max="20" step="1" value="6">
+    </div>
+    <div class="control-group">
+      <div class="control-label-row"><span class="control-label">Neutrons (n⁰)</span><span class="control-value-badge" id="valNeutrons">6</span></div>
+      <input type="range" class="chem-range-input" id="inNeutrons" min="0" max="25" step="1" value="6">
+    </div>
+    <div class="control-group">
+      <div class="control-label-row"><span class="control-label">Electrons (e⁻)</span><span class="control-value-badge" id="valElectrons">6</span></div>
+      <input type="range" class="chem-range-input" id="inElectrons" min="0" max="20" step="1" value="6">
+    </div>
+    <div class="chem-btn-group">
+      <button type="button" class="chem-btn chem-btn-primary" id="btnNeutralize">Neutral Atom (e = p)</button>
+      <button type="button" class="chem-btn chem-btn-secondary" id="btnResetAtom">Reset (C-12)</button>
+    </div>
+  
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scientific Documentation Tabs -->
+    <section class="chem-doc-section">
+      <div class="chem-tabs-nav">
+        <button class="chem-tab-btn active" data-tab="tab-theory">1. Scientific Theory & Derivations</button>
+        <button class="chem-tab-btn" data-tab="tab-procedure">2. Lab Protocol & Objectives</button>
+        <button class="chem-tab-btn" data-tab="tab-example">3. Worked Calculation Example</button>
+        <button class="chem-tab-btn" data-tab="tab-applications">4. Applications & Misconceptions</button>
+        <button class="chem-tab-btn" data-tab="tab-faqs">5. FAQs (3)</button>
+      </div>
+
+      <!-- Tab 1: Theory -->
+      <div class="chem-tab-pane active" id="tab-theory">
+        <div class="chem-doc-content">
+          <h2>Atomic Mass & Subatomic Relationships</h2>
+          <div class="chem-formula-hero">
+            <code>A = Z + N, \quad Q = Z - e, \quad \text{Capacity} = 2n^2</code>
+          </div>
+          <p class="chem-formula-desc">Atomic number Z equals the proton count and defines the chemical element. Mass number A is protons plus neutrons. Electron shell n holds a maximum of 2n² electrons (K=2, L=8, M=18, N=32).</p>
+          <div class="chem-text-block">
+            Atoms consist of a dense, positively charged nucleus surrounded by a cloud of negative electrons. Protons carry a +1 elementary charge (1.602 × 10⁻¹⁹ C) and mass ~1.0073 u. Neutrons are uncharged with mass ~1.0087 u. Electrons possess a -1 charge with 1/1836 the mass of a proton. While the Bohr model simplifies electron motion into circular planar orbits with capacities 2, 8, 18, it provides a strong foundation for understanding valence electrons and Lewis octets before advancing to quantum mechanical wavefunctions (s, p, d, f orbitals).
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 2: Procedure -->
+      <div class="chem-tab-pane" id="tab-procedure">
+        <div class="chem-doc-content">
+          <h2>Experimental Objectives</h2>
+          <ul class="chem-bullet-list">
+            <li>Demonstrate that proton number uniquely establishes elemental identity.</li><li>Synthesize isotopes by altering neutron counts and determine nuclear stability.</li><li>Model cations (positive ions) and anions (negative ions) by adjusting electron numbers.</li><li>Visualize Bohr electron shell filling order for elements Z = 1 to 20.</li>
+          </ul>
+          <h2 style="margin-top:2rem;">Step-by-Step Laboratory Procedure</h2>
+          <ol class="chem-step-list">
+            
+            <li class="chem-step-item">
+              <strong>Step 1:</strong>
+              <p>Use the Proton slider to select an atomic number (1 to 20) and observe the corresponding element.</p>
+            </li>
+            
+            <li class="chem-step-item">
+              <strong>Step 2:</strong>
+              <p>Adjust the Neutron slider to create stable or unstable isotopes (e.g. Carbon-12 vs Carbon-14).</p>
+            </li>
+            
+            <li class="chem-step-item">
+              <strong>Step 3:</strong>
+              <p>Adjust the Electron slider to form neutral atoms, cations (e lost), or anions (e gained).</p>
+            </li>
+            
+            <li class="chem-step-item">
+              <strong>Step 4:</strong>
+              <p>Observe the real-time Canvas rendering of the nucleus and quantized concentric electron orbits.</p>
+            </li>
+            
+          </ol>
+        </div>
+      </div>
+
+      <!-- Tab 3: Worked Example -->
+      <div class="chem-tab-pane" id="tab-example">
+        <div class="chem-doc-content">
+          <h2>Worked Example & Step-by-Step Calculation</h2>
+          <div class="chem-example-box">
+            <h3 style="color:var(--chem-primary); font-size:1.15rem; margin-bottom:0.75rem;">Problem Statement:</h3>
+            <p style="font-size:1.05rem; font-weight:600; color:var(--text-main); margin-bottom:1.5rem;">Determine the number of protons, neutrons, and electrons in an aluminum ion: ²⁷₁₃Al³⁺.</p>
+            <h3 style="color:var(--chem-secondary); font-size:1.15rem; margin-bottom:0.75rem;">Mathematical Solution & Derivation:</h3>
+            <div class="chem-example-solution" style="white-space:pre-line; line-height:1.7;">
+              1. Atomic number Z = 13, therefore the nucleus contains 13 protons.
+2. Mass number A = 27. Number of neutrons N = A - Z = 27 - 13 = 14 neutrons.
+3. Net charge Q = +3. Number of electrons e = Z - Q = 13 - 3 = 10 electrons.
+4. Electron configuration of Al³⁺: 2, 8 (isoelectronic with Neon).
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 4: Applications & Misconceptions -->
+      <div class="chem-tab-pane" id="tab-applications">
+        <div class="chem-doc-content">
+          <h2>Industrial, Engineering & Everyday Applications</h2>
+          <div class="chem-apps-grid">
+            
+            <div class="chem-app-item">
+              <strong>Nuclear Medicine</strong>
+              <p>Positron emission tomography (PET) utilizing Carbon-11 and Fluorine-18 isotopes.</p>
+            </div>
+            
+            <div class="chem-app-item">
+              <strong>Radiocarbon Dating</strong>
+              <p>Measuring Carbon-14 decay relative to Carbon-12 to date organic archaeological artifacts.</p>
+            </div>
+            
+            <div class="chem-app-item">
+              <strong>Semiconductor Fabrication</strong>
+              <p>Ion implantation of phosphorus (donor) or boron (acceptor) into silicon.</p>
+            </div>
+            
+            <div class="chem-app-item">
+              <strong>Mass Spectrometry</strong>
+              <p>Identifying molecular fragment isotopes in forensic and proteomics analysis.</p>
+            </div>
+            
+          </div>
+          <h2 style="margin-top:2.5rem;">Common Student Misconceptions & Scientific Reality</h2>
+          <div class="chem-misc-list">
+            
+        <div class="chem-misc-card">
+          <div class="chem-misc-fact">💡 <strong>Critical Conceptual Insight:</strong> Students frequently assume that changing the number of electrons changes the element. Only changing the number of nuclear protons changes the element's identity. Gaining or losing electrons creates ions of the same element.</div>
+        </div>
+        
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 5: FAQs -->
+      <div class="chem-tab-pane" id="tab-faqs">
+        <div class="chem-doc-content">
+          <h2>Frequently Asked Questions on Atomic Structure & Electron Shells Simulator</h2>
+          <div class="chem-faq-list" style="margin-top:1.5rem;">
+            
+            <div class="chem-faq-item">
+              <button class="chem-faq-trigger">
+                <span>Does the Bohr model depict the true physical shape of an atom?</span>
+                <svg class="chem-faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="chem-faq-content">
+                <p>No. The Bohr model is an educational simplification. Quantum mechanics describes electrons not as fixed circular orbits, but as three-dimensional probability density clouds (atomic orbitals) governed by Schrödinger's equation.</p>
+              </div>
+            </div>
+            
+            <div class="chem-faq-item">
+              <button class="chem-faq-trigger">
+                <span>What makes an isotope radioactive or unstable?</span>
+                <svg class="chem-faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="chem-faq-content">
+                <p>Nuclear stability is governed by the neutron-to-proton (N/Z) ratio. For light elements, stable nuclei have N/Z ≈ 1. Nuclei with excess neutrons or protons undergo radioactive decay (alpha, beta, or gamma emission).</p>
+              </div>
+            </div>
+            
+            <div class="chem-faq-item">
+              <button class="chem-faq-trigger">
+                <span>What is an isoelectronic species?</span>
+                <svg class="chem-faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="chem-faq-content">
+                <p>Isoelectronic species are chemical atoms or ions having identical numbers of electrons and electron configurations, such as O²⁻, F⁻, Ne, Na⁺, and Mg²⁺ (all with 10 electrons).</p>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Experiments Section -->
+    <section class="chem-related-section">
+      <div class="chem-section-header">
+        <h2 class="chem-section-title">Related Chemistry Virtual Labs</h2>
+        <p class="chem-section-desc">Continue your exploration with these interconnected chemical experiments and simulations.</p>
+      </div>
+      <div class="chem-grid">
+        
+            <article class="chem-card" data-category="reactions">
+              <div class="chem-card-badge-wrap">
+                <span class="chem-badge chem-badge-primary">Chemical Reactions</span>
+                <span class="chem-badge chem-badge-secondary">Classes 9–12 / JEE / NEET</span>
+              </div>
+              <div class="chem-card-icon">
+      <svg viewBox="0 0 100 100" fill="none" stroke="currentColor">
+        <path d="M50 20 V80" stroke="var(--border-color)" stroke-width="3"/>
+        <circle cx="50" cy="20" r="6" fill="var(--chem-primary)"/>
+        <line x1="20" y1="35" x2="80" y2="35" stroke="var(--chem-primary)" stroke-width="3"/>
+        <path d="M20 35 L12 60 H28 Z" fill="rgba(37,99,235,0.15)" stroke="var(--chem-primary)" stroke-width="2"/>
+        <path d="M80 35 L72 60 H88 Z" fill="rgba(124,58,237,0.15)" stroke="var(--chem-secondary)" stroke-width="2"/>
+        <text x="20" y="53" font-size="8" font-weight="bold" fill="var(--chem-primary)" text-anchor="middle">React</text>
+        <text x="80" y="53" font-size="8" font-weight="bold" fill="var(--chem-secondary)" text-anchor="middle">Prod</text>
+      </svg>
+    </div>
+              <h3 class="chem-card-title"><a href="/chemistry-labs/chemical-equation-balancer/">Chemical Equation Balancer & Stoichiometric Solver</a></h3>
+              <p class="chem-card-desc">Balance any chemical equation instantly using a rigorous mathematical Gaussian elimination algorithm. Input unbalanced r...</p>
+              <a href="/chemistry-labs/chemical-equation-balancer/" class="chem-card-btn">Open Lab →</a>
+            </article>
+            
+            <article class="chem-card" data-category="reactions">
+              <div class="chem-card-badge-wrap">
+                <span class="chem-badge chem-badge-primary">Chemical Reactions</span>
+                <span class="chem-badge chem-badge-secondary">Classes 9–12 / CBSE / ICSE</span>
+              </div>
+              <div class="chem-card-icon">
+      <svg viewBox="0 0 100 100" fill="none" stroke="currentColor">
+        <path d="M35 25 H65 V45 L80 80 H20 L35 45 Z" stroke="var(--chem-primary)" stroke-width="2.5" fill="none"/>
+        <path d="M26 68 L35 45 H65 L74 68 Z" fill="rgba(239,68,68,0.2)"/>
+        <circle cx="45" cy="65" r="4" fill="#ef4444"/>
+        <circle cx="58" cy="60" r="3" fill="#f97316"/>
+        <circle cx="50" cy="40" r="2.5" fill="#eab308"/>
+        <path d="M42 20 Q48 10 44 5" stroke="#ef4444" stroke-width="1.5"/>
+        <path d="M54 22 Q60 12 56 7" stroke="#f97316" stroke-width="1.5"/>
+      </svg>
+    </div>
+              <h3 class="chem-card-title"><a href="/chemistry-labs/chemical-reaction-simulator/">Chemical Reaction Types & Energy Simulator</a></h3>
+              <p class="chem-card-desc">Explore major classes of chemical reactions: synthesis, decomposition, single displacement, double displacement (precipi...</p>
+              <a href="/chemistry-labs/chemical-reaction-simulator/" class="chem-card-btn">Open Lab →</a>
+            </article>
+            
+            <article class="chem-card" data-category="acids-bases">
+              <div class="chem-card-badge-wrap">
+                <span class="chem-badge chem-badge-primary">Acids, Bases & Solutions</span>
+                <span class="chem-badge chem-badge-secondary">Classes 9–12 / NEET / JEE</span>
+              </div>
+              <div class="chem-card-icon">
+      <svg viewBox="0 0 100 100" fill="none" stroke="currentColor">
+        <rect x="25" y="30" width="50" height="55" rx="4" stroke="var(--border-color)" stroke-width="2.5" fill="none"/>
+        <rect x="27" y="45" width="46" height="38" rx="2" fill="rgba(16,185,129,0.3)"/>
+        <line x1="60" y1="15" x2="60" y2="60" stroke="#334155" stroke-width="4"/>
+        <circle cx="60" cy="62" r="5" fill="#38bdf8"/>
+        <rect x="15" y="10" width="35" height="18" rx="3" fill="#1e293b"/>
+        <text x="32" y="23" font-size="8" font-weight="bold" fill="#38bdf8" text-anchor="middle">pH 7.0</text>
+      </svg>
+    </div>
+              <h3 class="chem-card-title"><a href="/chemistry-labs/ph-scale-simulator/">pH Scale & Hydrogen Ion Concentration Simulator</a></h3>
+              <p class="chem-card-desc">Visualize the logarithmic pH scale from 0 to 14. Adjust hydronium [H⁺] and hydroxide [OH⁻] concentrations, observe unive...</p>
+              <a href="/chemistry-labs/ph-scale-simulator/" class="chem-card-btn">Open Lab →</a>
+            </article>
+            
+      </div>
+    </section>
+  </main>
+
+  
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="/" class="brand-logo">
+            <div class="logo-symbol">E</div>
+            <span>Ecrio<span class="accent-dot">X</span></span>
+          </a>
+          <p>One Platform. Endless Possibilities. Free, scientifically accurate browser-based virtual laboratories and digital productivity utilities.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Chemistry Labs</h4>
+          <ul class="footer-links">
+            <li><a href="/chemistry-labs/">All Chemistry Labs</a></li>
+            <li><a href="/chemistry-labs/interactive-periodic-table/">Periodic Table Explorer</a></li>
+            <li><a href="/chemistry-labs/chemical-equation-balancer/">Equation Balancer</a></li>
+            <li><a href="/chemistry-labs/acid-base-titration/">Acid-Base Titration</a></li>
+            <li><a href="/chemistry-labs/3d-molecular-viewer/">3D Molecular Viewer</a></li>
+            <li><a href="/chemistry-labs/calculators/">Chemistry Calculators</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Physics Labs</h4>
+          <ul class="footer-links">
+            <li><a href="/physics-labs/">All Physics Labs</a></li>
+            <li><a href="/physics-labs/projectile-motion-simulator/">Projectile Motion</a></li>
+            <li><a href="/physics-labs/electric-circuit-simulator/">Circuit Simulator</a></li>
+            <li><a href="/physics-labs/ray-optics-simulator/">Ray Optics Lab</a></li>
+            <li><a href="/physics-labs/simple-pendulum-experiment/">Simple Pendulum</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Product Suite</h4>
+          <ul class="footer-links">
+            <li><a href="/tools/">All Tools Directory</a></li>
+            <li><a href="/categories/">Tool Categories</a></li>
+            <li><a href="/pdf-compressor/">PDF Compressor</a></li>
+            <li><a href="/resume-builder/">ATS Resume Builder</a></li>
+            <li><a href="/typing-speed-test/">Typing Arena</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company & Legal</h4>
+          <ul class="footer-links">
+            <li><a href="/about/">About EcrioX</a></li>
+            <li><a href="/contact/">Contact Support</a></li>
+            <li><a href="/privacy/">Privacy Policy</a></li>
+            <li><a href="/terms/">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 EcrioX. All rights reserved. Zero client downloads required — 100% private in-browser scientific simulations.</p>
+        <p>Canonical Domain: <a href="https://ecriox.com/" style="color: var(--chem-primary);">ecriox.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Chemistry Engine Script Loaded Globally -->
+  <script src="/js/chemistry-engine.js"></script>
+  <script>
+    // Theme toggle listener
+    const themeBtn = document.getElementById('themeToggleBtn');
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => {
+        const cur = document.documentElement.getAttribute('data-theme') || 'light';
+        const nxt = cur === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', nxt);
+        try { localStorage.setItem('ecriox_theme_preference', nxt); } catch(e){}
+        window.dispatchEvent(new Event('themechange'));
+      });
+    }
+    // Mobile navigation drawer toggle
+    const mobToggle = document.getElementById('mobileMenuToggle');
+    const mobNav = document.getElementById('mobileNavDrawer');
+    if (mobToggle && mobNav) {
+      mobToggle.addEventListener('click', () => {
+        const isOpen = mobNav.classList.toggle('open');
+        mobToggle.setAttribute('aria-expanded', isOpen);
+      });
+    }
+    // FAQ Accordion listener
+    document.querySelectorAll('.chem-faq-trigger').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.parentElement.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>
+
+
+  <!-- Tab Switcher & Lab Actions Script -->
+  <script>
+    (function(){
+      // Tab switcher
+      const tabBtns = document.querySelectorAll('.chem-tab-btn');
+      const tabPanes = document.querySelectorAll('.chem-tab-pane');
+
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          tabBtns.forEach(b => b.classList.remove('active'));
+          tabPanes.forEach(p => p.classList.remove('active'));
+
+          btn.classList.add('active');
+          const target = btn.getAttribute('data-tab');
+          const pane = document.getElementById(target);
+          if (pane) pane.classList.add('active');
+        });
+      });
+
+      // Fullscreen mode toggle
+      const fsBtn = document.getElementById('btnFullscreen');
+      const labWrap = document.getElementById('labWrapper');
+      if (fsBtn && labWrap) {
+        fsBtn.addEventListener('click', () => {
+          if (!document.fullscreenElement) {
+            labWrap.requestFullscreen?.() || labWrap.webkitRequestFullscreen?.();
+            fsBtn.innerHTML = 'Exit Fullscreen';
+          } else {
+            document.exitFullscreen?.() || document.webkitExitFullscreen?.();
+            fsBtn.innerHTML = 'Fullscreen';
+          }
+        });
+      }
+
+      // Print Lab Worksheet
+      const printBtn = document.getElementById('btnPrintWorksheet');
+      if (printBtn) {
+        printBtn.addEventListener('click', () => window.print());
+      }
+
+      // Export CSV Data
+      const csvBtn = document.getElementById('btnExportCSV');
+      if (csvBtn) {
+        csvBtn.addEventListener('click', () => {
+          const metrics = Array.from(document.querySelectorAll('#hudBar .hud-metric')).map(m => {
+            const lbl = m.querySelector('.hud-metric-label')?.textContent.trim() || 'Metric';
+            const val = m.querySelector('.hud-metric-value')?.textContent.trim() || '0';
+            return `"${lbl}","${val}"`;
+          });
+          const csvContent = "data:text/csv;charset=utf-8,Parameter,Value\n" +
+            `"Experiment","Atomic Structure & Electron Shells Simulator"\n` +
+            `"Timestamp","${new Date().toISOString()}"\n` +
+            metrics.join("\n");
+          const encodedUri = encodeURI(csvContent);
+          const link = document.createElement("a");
+          link.setAttribute("href", encodedUri);
+          link.setAttribute("download", "atomic-structure-simulator-lab-data.csv");
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        });
+      }
+    })();
+  </script>
+
+  <!-- Interactive Simulation Engine Execution -->
+  <script>
+    
+    (function() {
+      const canvas = document.getElementById('simCanvas');
+      if (!canvas || !window.ChemistryEngine) return;
+      const ctx = canvas.getContext('2d');
+
+      let protons = 6;
+      let neutrons = 6;
+      let electrons = 6;
+      let angle = 0;
+
+      function updateCalculations() {
+        const Z = protons;
+        const A = protons + neutrons;
+        const Q = protons - electrons;
+        const el = ChemistryEngine.ELEMENT_BY_Z[Z] || { s: 'X', n: 'Unknown' };
+
+        document.getElementById('valProtons').textContent = protons;
+        document.getElementById('valNeutrons').textContent = neutrons;
+        document.getElementById('valElectrons').textContent = electrons;
+
+        document.getElementById('hudAtomElement').textContent = `${el.s} (${el.n})`;
+        document.getElementById('hudAtomZ').textContent = Z;
+        document.getElementById('hudAtomA').textContent = A;
+
+        let chargeStr = '0 (Neutral)';
+        if (Q > 0) chargeStr = `+${Q} (Cation)`;
+        else if (Q < 0) chargeStr = `${Q} (Anion)`;
+        document.getElementById('hudAtomQ').textContent = chargeStr;
+
+        // Shell filling (K=2, L=8, M=8/18, N=2 up to Z=20)
+        let remE = electrons;
+        const shells = [];
+        const capacities = [2, 8, 8, 2];
+        for (let cap of capacities) {
+          if (remE <= 0) break;
+          const take = Math.min(remE, cap);
+          shells.push(take);
+          remE -= take;
+        }
+        document.getElementById('hudAtomShells').textContent = shells.length > 0 ? shells.join(', ') : '0';
+
+        // Stability check: N/Z ratio
+        const ratio = neutrons / protons;
+        const stable = (Z === 1 && neutrons <= 1) || (ratio >= 0.8 && ratio <= 1.5);
+        const stabEl = document.getElementById('hudAtomStability');
+        if (stable) {
+          stabEl.textContent = 'Stable Isotope';
+          stabEl.style.color = 'var(--color-success)';
+        } else {
+          stabEl.textContent = 'Radioactive / Unstable';
+          stabEl.style.color = 'var(--color-danger)';
+        }
+      }
+
+      function draw() {
+        const dpr = window.devicePixelRatio || 1;
+        const rect = canvas.getBoundingClientRect();
+        canvas.width = rect.width * dpr;
+        canvas.height = rect.height * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        const w = rect.width;
+        const h = rect.height;
+        const cx = w / 2;
+        const cy = h / 2;
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+
+        ctx.clearRect(0, 0, w, h);
+
+        // Draw Electron Shell Orbits
+        const shellRadii = [60, 100, 140, 175];
+        let remE = electrons;
+        const capacities = [2, 8, 8, 2];
+
+        capacities.forEach((cap, sIdx) => {
+          const r = shellRadii[sIdx];
+          ctx.beginPath();
+          ctx.arc(cx, cy, r, 0, Math.PI * 2);
+          ctx.strokeStyle = isDark ? 'rgba(148, 163, 184, 0.25)' : 'rgba(100, 116, 139, 0.25)';
+          ctx.lineWidth = 1.5;
+          ctx.setLineDash([4, 4]);
+          ctx.stroke();
+          ctx.setLineDash([]);
+
+          // Shell label
+          ctx.fillStyle = isDark ? '#64748B' : '#94A3B8';
+          ctx.font = '10px sans-serif';
+          ctx.fillText(`n=${sIdx+1}`, cx + r + 5, cy + 4);
+
+          // Draw electrons on this shell
+          const eCount = Math.min(remE, cap);
+          remE -= eCount;
+
+          for (let i = 0; i < eCount; i++) {
+            const theta = angle * (sIdx % 2 === 0 ? 1 : -1) * (1 / (sIdx + 1)) + (i * Math.PI * 2 / eCount);
+            const ex = cx + r * Math.cos(theta);
+            const ey = cy + r * Math.sin(theta);
+
+            ctx.beginPath();
+            ctx.arc(ex, ey, 6, 0, Math.PI * 2);
+            ctx.fillStyle = '#2563EB';
+            ctx.fill();
+            ctx.strokeStyle = '#FFFFFF';
+            ctx.lineWidth = 1.5;
+            ctx.stroke();
+          }
+        });
+
+        // Draw Nucleus
+        const nucR = 30;
+        ctx.beginPath();
+        ctx.arc(cx, cy, nucR, 0, Math.PI * 2);
+        ctx.fillStyle = isDark ? 'rgba(30, 41, 59, 0.8)' : 'rgba(241, 245, 249, 0.9)';
+        ctx.fill();
+        ctx.strokeStyle = isDark ? '#475569' : '#CBD5E1';
+        ctx.stroke();
+
+        // Draw Protons and Neutrons particles in nucleus
+        const totalNuc = protons + neutrons;
+        const maxDraw = Math.min(totalNuc, 30);
+        for (let i = 0; i < maxDraw; i++) {
+          const isP = (i < protons);
+          const pr = 18 * Math.sqrt((i + 1) / maxDraw);
+          const pAngle = i * 2.39996; // Golden angle
+          const px = cx + pr * Math.cos(pAngle);
+          const py = cy + pr * Math.sin(pAngle);
+
+          ctx.beginPath();
+          ctx.arc(px, py, 4.5, 0, Math.PI * 2);
+          ctx.fillStyle = isP ? '#DC2626' : '#64748B'; // Red for protons, slate for neutrons
+          ctx.fill();
+        }
+
+        // Center element symbol in nucleus
+        const el = ChemistryEngine.ELEMENT_BY_Z[protons] || { s: 'X' };
+        ctx.fillStyle = isDark ? '#FFFFFF' : '#0F172A';
+        ctx.font = 'bold 14px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(el.s, cx, cy);
+      }
+
+      function loop() {
+        angle += 0.02;
+        draw();
+        requestAnimationFrame(loop);
+      }
+      requestAnimationFrame(loop);
+
+      const inP = document.getElementById('inProtons');
+      const inN = document.getElementById('inNeutrons');
+      const inE = document.getElementById('inElectrons');
+      const btnNeut = document.getElementById('btnNeutralize');
+      const btnReset = document.getElementById('btnResetAtom');
+
+      inP.addEventListener('input', (e) => {
+        protons = parseInt(e.target.value, 10);
+        updateCalculations();
+      });
+      inN.addEventListener('input', (e) => {
+        neutrons = parseInt(e.target.value, 10);
+        updateCalculations();
+      });
+      inE.addEventListener('input', (e) => {
+        electrons = parseInt(e.target.value, 10);
+        updateCalculations();
+      });
+
+      btnNeut.addEventListener('click', () => {
+        electrons = protons;
+        inE.value = electrons;
+        updateCalculations();
+      });
+      btnReset.addEventListener('click', () => {
+        protons = 6; neutrons = 6; electrons = 6;
+        inP.value = 6; inN.value = 6; inE.value = 6;
+        updateCalculations();
+      });
+
+      updateCalculations();
+    })();
+  
+  </script>
+        

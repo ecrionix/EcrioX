@@ -1,0 +1,946 @@
+
+  <!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gas Laws & Ideal Gas Simulator – Online Chemistry Virtual Lab | EcrioX</title>
+  <meta name="description" content="Simulate ideal gas laws online. Adjust pressure, volume, temperature, and moles in an animated particle container with live Boyle's, Charles's, and PV = nRT graphs.">
+  <link rel="canonical" href="https://ecriox.com/chemistry-labs/gas-laws-simulator/">
+  <!-- Favicon & Brand Icons -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#2563EB">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Gas Laws & Ideal Gas Simulator – Online Chemistry Virtual Lab | EcrioX">
+  <meta property="og:description" content="Simulate ideal gas laws online. Adjust pressure, volume, temperature, and moles in an animated particle container with live Boyle's, Charles's, and PV = nRT graphs.">
+  <meta property="og:url" content="https://ecriox.com/chemistry-labs/gas-laws-simulator/">
+  <meta property="og:site_name" content="EcrioX">
+  <meta property="og:image" content="https://ecriox.com/og-banner.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Gas Laws & Ideal Gas Simulator – Online Chemistry Virtual Lab | EcrioX">
+  <meta name="twitter:description" content="Simulate ideal gas laws online. Adjust pressure, volume, temperature, and moles in an animated particle container with live Boyle's, Charles's, and PV = nRT graphs.">
+  <meta name="twitter:image" content="https://ecriox.com/og-banner.png">
+
+  <!-- Global Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-NNT7J485');
+  </script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6486455437877685" crossorigin="anonymous"></script>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/chemistry-labs.css">
+
+  <!-- Anti-FOUT & Theme Sync -->
+  <script>
+    (function(){
+      try {
+        var savedTheme = localStorage.getItem('ecriox_theme_preference');
+        if (savedTheme) {
+          document.documentElement.setAttribute('data-theme', savedTheme);
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      } catch(e) {}
+    })();
+  </script>
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://ecriox.com/chemistry-labs/gas-laws-simulator/#app",
+      "url": "https://ecriox.com/chemistry-labs/gas-laws-simulator/",
+      "name": "Gas Laws & Ideal Gas Simulator",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires HTML5 Canvas and JavaScript support",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Simulate ideal gas laws online. Adjust pressure, volume, temperature, and moles in an animated particle container with live Boyle's, Charles's, and PV = nRT graphs."
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://ecriox.com/chemistry-labs/gas-laws-simulator/#article",
+      "headline": "Gas Laws Simulator: Boyle's, Charles's, Gay-Lussac's & PV = nRT",
+      "description": "Simulate ideal gas laws online. Adjust pressure, volume, temperature, and moles in an animated particle container with live Boyle's, Charles's, and PV = nRT graphs.",
+      "author": {
+        "@type": "Organization",
+        "name": "EcrioX Science Team"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "EcrioX",
+        "url": "https://ecriox.com"
+      },
+      "datePublished": "2026-11-21",
+      "dateModified": "2026-11-21"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://ecriox.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Chemistry Virtual Labs",
+          "item": "https://ecriox.com/chemistry-labs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Gas Laws & Ideal Gas Simulator",
+          "item": "https://ecriox.com/chemistry-labs/gas-laws-simulator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "When do real gases deviate from ideal gas behavior?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Real gases deviate from ideal behavior at high pressures (particle volume becomes significant) and low temperatures (intermolecular van der Waals attractions become significant), modeled by the van der Waals equation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is absolute zero?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolute zero (0 Kelvin or -273.15\u00b0C) is the theoretical temperature where all classical molecular kinetic motion ceases and an ideal gas volume extrapolates to zero."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the molar volume of an ideal gas at STP?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "At standard temperature and pressure (STP: 0\u00b0C or 273.15 K and 1 atm), one mole of any ideal gas occupies precisely 22.414 liters."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NNT7J485" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="brand-logo" aria-label="EcrioX Home">
+        <div class="logo-symbol">E</div>
+        <span>Ecrio<span class="accent-dot">X</span></span>
+      </a>
+
+      <nav class="nav-desktop">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/physics-labs/" class="nav-link">Physics Labs</a>
+        <a href="/chemistry-labs/" class="nav-link active">Chemistry Labs</a>
+        <a href="/chemistry-labs/calculators/" class="nav-link">Calculators</a>
+        <a href="/resume-builder/" class="nav-link">Career Studio</a>
+        <a href="/typing-speed-test/" class="nav-link">Typing Arena</a>
+        <a href="/tools/" class="nav-link">All Tools</a>
+        <a href="/about/" class="nav-link">About</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn-icon theme-toggle-btn" aria-label="Toggle color theme" id="themeToggleBtn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <button class="btn-icon mobile-toggle" aria-label="Open mobile menu" aria-expanded="false" id="mobileMenuToggle">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav-drawer" id="mobileNavDrawer">
+    <nav class="mobile-nav">
+      <a href="/" class="mobile-nav-link">Home</a>
+      <a href="/physics-labs/" class="mobile-nav-link">Physics Labs</a>
+      <a href="/chemistry-labs/" class="mobile-nav-link active">Chemistry Labs</a>
+      <a href="/chemistry-labs/calculators/" class="mobile-nav-link">Calculators</a>
+      <a href="/resume-builder/" class="mobile-nav-link">Career Studio</a>
+      <a href="/typing-speed-test/" class="mobile-nav-link">Typing Arena</a>
+      <a href="/tools/" class="mobile-nav-link">All Tools</a>
+      <a href="/about/" class="mobile-nav-link">About</a>
+    </nav>
+  </div>
+
+
+  <main id="main-content" class="container" style="padding-top:1.5rem; padding-bottom:3rem;">
+    <!-- Breadcrumbs -->
+    <nav class="chem-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="chem-breadcrumb-sep">/</span>
+      <a href="/chemistry-labs/">Chemistry Virtual Labs</a>
+      <span class="chem-breadcrumb-sep">/</span>
+      <span class="chem-breadcrumb-current">Gas Laws & Ideal Gas Simulator</span>
+    </nav>
+
+    <!-- Lab Header -->
+    <div class="chem-lab-header">
+      <div class="chem-lab-header-left">
+        <div style="display:flex; gap:0.5rem; align-items:center; margin-bottom:0.5rem; flex-wrap:wrap;">
+          <span class="chem-badge chem-badge-primary">Physical Chemistry</span>
+          <span class="chem-badge chem-badge-secondary">Classes 9–12 / NEET / JEE Level</span>
+          <span class="chem-badge" style="background:#e0f2fe; color:#0369a1;">⏱ 14 mins</span>
+          <span class="chem-badge" style="background:#fef3c7; color:#92400e;">CBSE • JEE • NEET • College</span>
+        </div>
+        <h1 class="chem-lab-title">Gas Laws Simulator: Boyle's, Charles's, Gay-Lussac's & PV = nRT</h1>
+        <p class="chem-lab-intro">Explore the microscopic behavior of gases. Manipulate container volume with an adjustable piston, change temperature with a thermal bath, inject gas moles, and observe real-time pressure changes validating Boyle's, Charles's, Gay-Lussac's, and the Ideal Gas Law (PV = nRT).</p>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="chem-lab-actions">
+        <button id="btnFullscreen" class="chem-btn chem-btn-outline" title="Toggle Fullscreen Mode">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
+          Fullscreen
+        </button>
+        <button id="btnResetSimulation" class="chem-btn chem-btn-outline" title="Reset Experiment Parameters">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6"></path><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
+          Reset Lab
+        </button>
+        <button id="btnExportCSV" class="chem-btn chem-btn-outline" title="Download Data Worksheet (CSV)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Export CSV
+        </button>
+        <button id="btnPrintWorksheet" class="chem-btn chem-btn-primary" title="Print Laboratory Worksheet">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+          Print Lab Sheet
+        </button>
+      </div>
+    </div>
+
+    <!-- Interactive Simulation Wrapper -->
+    <div class="chem-lab-wrapper" id="labWrapper">
+      <!-- Live HUD Metrics Panel -->
+      <div class="chem-hud-bar" id="hudBar">
+        
+    <div class="hud-metric"><div class="hud-metric-label">Pressure (P)</div><div class="hud-metric-value" id="hudGasP">1.00<span class="hud-metric-unit">atm</span></div></div>
+    <div class="hud-metric"><div class="hud-metric-label">Volume (V)</div><div class="hud-metric-value" id="hudGasV">22.4<span class="hud-metric-unit">L</span></div></div>
+    <div class="hud-metric"><div class="hud-metric-label">Temperature (T)</div><div class="hud-metric-value" id="hudGasT">273<span class="hud-metric-unit">K</span></div></div>
+    <div class="hud-metric"><div class="hud-metric-label">Gas Moles (n)</div><div class="hud-metric-value" id="hudGasN">1.00<span class="hud-metric-unit">mol</span></div></div>
+    <div class="hud-metric"><div class="hud-metric-label">PV / nRT Check</div><div class="hud-metric-value" id="hudGasRatio" style="color:#16a34a">1.000 (Ideal)</div></div>
+  
+      </div>
+
+      <!-- Main Workspace Grid (Viewport + Controls) -->
+      <div class="chem-workspace-grid">
+        <!-- Simulation Viewport -->
+        <div class="chem-viewport-card">
+          <div class="chem-card-header-bar">
+            <span>🔬 Live Virtual Apparatus</span>
+            <span class="chem-status-dot">Interactive 60 FPS</span>
+          </div>
+          <div class="chem-viewport-inner">
+            
+    <canvas id="gasPistonCanvas" style="width:100%; height:440px; display:block; border-radius:12px; background:linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);"></canvas>
+  
+          </div>
+        </div>
+
+        <!-- Controls Panel -->
+        <div class="chem-controls-card">
+          <div class="chem-card-header-bar">
+            <span>⚙️ Scientific Controls</span>
+            <span>Calibrated</span>
+          </div>
+          <div class="chem-controls-inner">
+            
+    <div class="chem-form-group">
+      <label class="chem-label">Gas Law Mode:</label>
+      <select id="gasModeSelect" class="chem-select">
+        <option value="ideal" selected>Ideal Gas Law (PV = nRT)</option>
+        <option value="boyle">Boyle's Law (P ∝ 1/V, Constant T)</option>
+        <option value="charles">Charles's Law (V ∝ T, Constant P)</option>
+        <option value="gay_lussac">Gay-Lussac's Law (P ∝ T, Constant V)</option>
+        <option value="avogadro">Avogadro's Law (V ∝ n, Constant P & T)</option>
+      </select>
+    </div>
+    <div class="chem-form-group">
+      <div style="display:flex; justify-content:space-between;">
+        <label class="chem-label">Pressure (atm):</label>
+        <span id="pDisplay" style="font-weight:700; color:var(--chem-primary)">1.00 atm</span>
+      </div>
+      <input type="range" id="pSlider" min="0.5" max="5.0" step="0.1" value="1.0" class="chem-slider" />
+    </div>
+    <div class="chem-form-group">
+      <div style="display:flex; justify-content:space-between;">
+        <label class="chem-label">Temperature (K):</label>
+        <span id="tDisplay" style="font-weight:700; color:var(--chem-secondary)">273 K (0°C)</span>
+      </div>
+      <input type="range" id="tSlider" min="150" max="600" step="10" value="273" class="chem-slider" />
+    </div>
+    <div class="chem-form-group">
+      <div style="display:flex; justify-content:space-between;">
+        <label class="chem-label">Molar Amount (mol):</label>
+        <span id="nDisplay" style="font-weight:700; color:#10b981">1.00 mol</span>
+      </div>
+      <input type="range" id="nSlider" min="0.2" max="3.0" step="0.1" value="1.0" class="chem-slider" />
+    </div>
+    <div class="chem-btn-group" style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem; margin-top:0.75rem;">
+      <button id="btnHeatGas" class="chem-btn chem-btn-outline">Heat Gas (+25 K)</button>
+      <button id="btnCoolGas" class="chem-btn chem-btn-outline">Cool Gas (-25 K)</button>
+      <button id="btnPumpGas" class="chem-btn chem-btn-outline">+0.2 mol Gas</button>
+      <button id="btnResetGas" class="chem-btn chem-btn-primary">Reset STP (1 atm, 273K)</button>
+    </div>
+  
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scientific Documentation Tabs -->
+    <section class="chem-doc-section">
+      <div class="chem-tabs-nav">
+        <button class="chem-tab-btn active" data-tab="tab-theory">1. Scientific Theory & Derivations</button>
+        <button class="chem-tab-btn" data-tab="tab-procedure">2. Lab Protocol & Objectives</button>
+        <button class="chem-tab-btn" data-tab="tab-example">3. Worked Calculation Example</button>
+        <button class="chem-tab-btn" data-tab="tab-applications">4. Applications & Misconceptions</button>
+        <button class="chem-tab-btn" data-tab="tab-faqs">5. FAQs (3)</button>
+      </div>
+
+      <!-- Tab 1: Theory -->
+      <div class="chem-tab-pane active" id="tab-theory">
+        <div class="chem-doc-content">
+          <h2>Ideal Gas Law & Empirical Gas Relationships</h2>
+          <div class="chem-formula-hero">
+            <code>PV = nRT, \quad \frac{P_1 V_1}{T_1} = \frac{P_2 V_2}{T_2}, \quad R = 0.08206 \text{ L}\cdot\text{atm}/(\text{mol}\cdot\text{K})</code>
+          </div>
+          <p class="chem-formula-desc">Boyle's Law: P ∝ 1/V (T, n const). Charles's Law: V ∝ T (P, n const). Gay-Lussac's Law: P ∝ T (V, n const). Avogadro's Law: V ∝ n (P, T const).</p>
+          <div class="chem-text-block">
+            The Kinetic Molecular Theory of Gases describes an ideal gas as a collection of point-mass particles in continuous, random, straight-line motion. Collisions between gas particles and container walls are perfectly elastic, and particles exert no intermolecular attractive or repulsive forces. Pressure is the cumulative force exerted by these wall collisions per unit area. Increasing temperature increases average kinetic energy (KE_avg = 3/2 kT), accelerating particle speeds and increasing both collision frequency and momentum transfer.
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 2: Procedure -->
+      <div class="chem-tab-pane" id="tab-procedure">
+        <div class="chem-doc-content">
+          <h2>Experimental Objectives</h2>
+          <ul class="chem-bullet-list">
+            <li>Verify Boyle's Law: inverse proportionality between pressure and volume at constant temperature.</li><li>Verify Charles's Law: direct proportionality between gas volume and absolute temperature (Kelvin).</li><li>Model kinetic molecular theory: particle collision frequency and velocity scaling with temperature.</li><li>Calculate unknown thermodynamic variables using the Ideal Gas Equation (PV = nRT).</li>
+          </ul>
+          <h2 style="margin-top:2rem;">Step-by-Step Laboratory Procedure</h2>
+          <ol class="chem-step-list">
+            
+            <li class="chem-step-item">
+              <strong>Step 1:</strong>
+              <p>Select a gas law preset: Boyle's Law (const T), Charles's Law (const P), Gay-Lussac's Law (const V), or General Ideal Gas.</p>
+            </li>
+            
+            <li class="chem-step-item">
+              <strong>Step 2:</strong>
+              <p>Drag the Piston Volume slider to compress or expand the gas container.</p>
+            </li>
+            
+            <li class="chem-step-item">
+              <strong>Step 3:</strong>
+              <p>Adjust the Temperature slider from 100 K to 600 K and observe particle velocities.</p>
+            </li>
+            
+            <li class="chem-step-item">
+              <strong>Step 4:</strong>
+              <p>Watch the pressure gauge respond and inspect the live P-V or V-T coordinate curves.</p>
+            </li>
+            
+          </ol>
+        </div>
+      </div>
+
+      <!-- Tab 3: Worked Example -->
+      <div class="chem-tab-pane" id="tab-example">
+        <div class="chem-doc-content">
+          <h2>Worked Example & Step-by-Step Calculation</h2>
+          <div class="chem-example-box">
+            <h3 style="color:var(--chem-primary); font-size:1.15rem; margin-bottom:0.75rem;">Problem Statement:</h3>
+            <p style="font-size:1.05rem; font-weight:600; color:var(--text-main); margin-bottom:1.5rem;">A sample of neon gas occupies a volume of 4.50 L at a pressure of 1.20 atm and a temperature of 25.0°C (298.15 K). Calculate the volume the gas will occupy if the pressure is increased to 3.60 atm while temperature rises to 75.0°C (348.15 K).</p>
+            <h3 style="color:var(--chem-secondary); font-size:1.15rem; margin-bottom:0.75rem;">Mathematical Solution & Derivation:</h3>
+            <div class="chem-example-solution" style="white-space:pre-line; line-height:1.7;">
+              1. Convert temperatures to absolute Kelvin:
+   T₁ = 25.0 + 273.15 = 298.15 K.
+   T₂ = 75.0 + 273.15 = 348.15 K.
+2. State the combined gas law: (P₁ × V₁) / T₁ = (P₂ × V₂) / T₂.
+3. Rearrange for V₂:
+   V₂ = (P₁ × V₁ × T₂) / (P₂ × T₁).
+4. Substitute values:
+   V₂ = (1.20 atm × 4.50 L × 348.15 K) / (3.60 atm × 298.15 K).
+   V₂ = 1880.01 / 1073.34 = 1.75 L.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 4: Applications & Misconceptions -->
+      <div class="chem-tab-pane" id="tab-applications">
+        <div class="chem-doc-content">
+          <h2>Industrial, Engineering & Everyday Applications</h2>
+          <div class="chem-apps-grid">
+            
+            <div class="chem-app-item">
+              <strong>Scuba Diving Physiology</strong>
+              <p>Preventing decompression sickness ('the bends') and lung barotrauma via Boyle's Law during ascent.</p>
+            </div>
+            
+            <div class="chem-app-item">
+              <strong>Meteorological Weather Balloons</strong>
+              <p>Calculating balloon envelope expansion in the stratosphere via Charles's and Boyle's Laws.</p>
+            </div>
+            
+            <div class="chem-app-item">
+              <strong>Pneumatics & Automotive Safety</strong>
+              <p>Rapid azide-catalyzed nitrogen gas expansion deploying vehicle airbags in under 40 milliseconds.</p>
+            </div>
+            
+            <div class="chem-app-item">
+              <strong>Liquefied Gas Storage</strong>
+              <p>Managing cryogenic pressure vessels (LNG, liquid oxygen) under ambient heat transfer.</p>
+            </div>
+            
+          </div>
+          <h2 style="margin-top:2.5rem;">Common Student Misconceptions & Scientific Reality</h2>
+          <div class="chem-misc-list">
+            
+        <div class="chem-misc-card">
+          <div class="chem-misc-fact">💡 <strong>Critical Conceptual Insight:</strong> Students frequently insert temperatures in degrees Celsius into gas law equations. Gas law equations MUST ALWAYS use absolute temperature in Kelvin (K = °C + 273.15) because the Celsius scale has an arbitrary zero point that produces invalid negative and zero ratios.</div>
+        </div>
+        
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 5: FAQs -->
+      <div class="chem-tab-pane" id="tab-faqs">
+        <div class="chem-doc-content">
+          <h2>Frequently Asked Questions on Gas Laws & Ideal Gas Simulator</h2>
+          <div class="chem-faq-list" style="margin-top:1.5rem;">
+            
+            <div class="chem-faq-item">
+              <button class="chem-faq-trigger">
+                <span>When do real gases deviate from ideal gas behavior?</span>
+                <svg class="chem-faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="chem-faq-content">
+                <p>Real gases deviate from ideal behavior at high pressures (particle volume becomes significant) and low temperatures (intermolecular van der Waals attractions become significant), modeled by the van der Waals equation.</p>
+              </div>
+            </div>
+            
+            <div class="chem-faq-item">
+              <button class="chem-faq-trigger">
+                <span>What is absolute zero?</span>
+                <svg class="chem-faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="chem-faq-content">
+                <p>Absolute zero (0 Kelvin or -273.15°C) is the theoretical temperature where all classical molecular kinetic motion ceases and an ideal gas volume extrapolates to zero.</p>
+              </div>
+            </div>
+            
+            <div class="chem-faq-item">
+              <button class="chem-faq-trigger">
+                <span>What is the molar volume of an ideal gas at STP?</span>
+                <svg class="chem-faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="chem-faq-content">
+                <p>At standard temperature and pressure (STP: 0°C or 273.15 K and 1 atm), one mole of any ideal gas occupies precisely 22.414 liters.</p>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Experiments Section -->
+    <section class="chem-related-section">
+      <div class="chem-section-header">
+        <h2 class="chem-section-title">Related Chemistry Virtual Labs</h2>
+        <p class="chem-section-desc">Continue your exploration with these interconnected chemical experiments and simulations.</p>
+      </div>
+      <div class="chem-grid">
+        
+            <article class="chem-card" data-category="electrochemistry">
+              <div class="chem-card-badge-wrap">
+                <span class="chem-badge chem-badge-primary">Electrochemistry</span>
+                <span class="chem-badge chem-badge-secondary">Classes 11–12 / B.Sc / JEE / NEET</span>
+              </div>
+              <div class="chem-card-icon">
+      <svg viewBox="0 0 100 100" fill="none" stroke="currentColor">
+        <rect x="15" y="45" width="30" height="40" stroke="#94a3b8" stroke-width="2" fill="rgba(203,213,225,0.4)"/>
+        <rect x="55" y="45" width="30" height="40" stroke="#94a3b8" stroke-width="2" fill="rgba(59,130,246,0.3)"/>
+        <rect x="25" y="35" width="8" height="45" fill="#94a3b8"/>
+        <rect x="67" y="35" width="8" height="45" fill="#b45309"/>
+        <path d="M40 50 V35 H60 V50" stroke="#475569" stroke-width="4" fill="none"/>
+        <line x1="29" y1="35" x2="29" y2="20" stroke="#334155" stroke-width="2"/>
+        <line x1="29" y1="20" x2="71" y2="20" stroke="#334155" stroke-width="2"/>
+        <line x1="71" y1="20" x2="71" y2="35" stroke="#334155" stroke-width="2"/>
+        <circle cx="50" cy="20" r="6" fill="#1e293b"/>
+      </svg>
+    </div>
+              <h3 class="chem-card-title"><a href="/chemistry-labs/electrochemical-cell-simulator/">Galvanic & Electrochemical Cell Simulator</a></h3>
+              <p class="chem-card-desc">Construct functional Voltaic and Galvanic cells in a digital laboratory. Pair zinc, copper, silver, and magnesium half-c...</p>
+              <a href="/chemistry-labs/electrochemical-cell-simulator/" class="chem-card-btn">Open Lab →</a>
+            </article>
+            
+            <article class="chem-card" data-category="electrochemistry">
+              <div class="chem-card-badge-wrap">
+                <span class="chem-badge chem-badge-primary">Electrochemistry</span>
+                <span class="chem-badge chem-badge-secondary">Classes 11–12 / B.Sc / Chemical Engineering</span>
+              </div>
+              <div class="chem-card-icon">
+      <svg viewBox="0 0 100 100" fill="none" stroke="currentColor">
+        <rect x="20" y="35" width="60" height="50" rx="3" stroke="#334155" stroke-width="2.5" fill="rgba(203,213,225,0.3)"/>
+        <line x1="38" y1="40" x2="38" y2="75" stroke="#ef4444" stroke-width="4"/>
+        <line x1="62" y1="40" x2="62" y2="75" stroke="#3b82f6" stroke-width="4"/>
+        <circle cx="38" cy="55" r="2" fill="#ffffff" stroke="#94a3b8"/>
+        <circle cx="38" cy="65" r="2.5" fill="#ffffff" stroke="#94a3b8"/>
+        <circle cx="62" cy="50" r="2" fill="#ffffff" stroke="#94a3b8"/>
+        <circle cx="62" cy="60" r="2.5" fill="#ffffff" stroke="#94a3b8"/>
+        <circle cx="62" cy="70" r="2" fill="#ffffff" stroke="#94a3b8"/>
+        <rect x="35" y="12" width="30" height="15" rx="2" fill="#1e293b"/>
+        <text x="50" y="23" font-size="7" font-weight="bold" fill="#38bdf8" text-anchor="middle">DC BATTERY</text>
+      </svg>
+    </div>
+              <h3 class="chem-card-title"><a href="/chemistry-labs/electrolysis-simulator/">Electrolysis & Faraday's Laws Simulator</a></h3>
+              <p class="chem-card-desc">Use electrical energy to drive non-spontaneous chemical reactions. Simulate water splitting (producing H₂ and O₂ gases i...</p>
+              <a href="/chemistry-labs/electrolysis-simulator/" class="chem-card-btn">Open Lab →</a>
+            </article>
+            
+            <article class="chem-card" data-category="general">
+              <div class="chem-card-badge-wrap">
+                <span class="chem-badge chem-badge-primary">General Chemistry</span>
+                <span class="chem-badge chem-badge-secondary">Classes 8–12 / College Chemistry</span>
+              </div>
+              <div class="chem-card-icon">
+      <svg viewBox="0 0 100 100" fill="none" stroke="currentColor">
+        <rect x="15" y="15" width="22" height="22" rx="4" stroke="var(--chem-primary)" stroke-width="2" fill="rgba(37,99,235,0.1)"/>
+        <text x="26" y="29" font-size="9" font-weight="bold" fill="var(--chem-primary)" text-anchor="middle">H</text>
+        <rect x="63" y="15" width="22" height="22" rx="4" stroke="#eab308" stroke-width="2" fill="rgba(234,179,8,0.1)"/>
+        <text x="74" y="29" font-size="9" font-weight="bold" fill="#eab308" text-anchor="middle">He</text>
+        <rect x="15" y="42" width="22" height="22" rx="4" stroke="#ec4899" stroke-width="2" fill="rgba(236,72,153,0.1)"/>
+        <text x="26" y="56" font-size="9" font-weight="bold" fill="#ec4899" text-anchor="middle">Li</text>
+        <rect x="39" y="42" width="22" height="22" rx="4" stroke="#10b981" stroke-width="2" fill="rgba(16,185,129,0.1)"/>
+        <text x="50" y="56" font-size="9" font-weight="bold" fill="#10b981" text-anchor="middle">C</text>
+        <rect x="63" y="42" width="22" height="22" rx="4" stroke="#06b6d4" stroke-width="2" fill="rgba(6,182,212,0.1)"/>
+        <text x="74" y="56" font-size="9" font-weight="bold" fill="#06b6d4" text-anchor="middle">Ne</text>
+        <rect x="15" y="69" width="70" height="16" rx="3" stroke="var(--border-color)" stroke-width="1.5" stroke-dasharray="3 3"/>
+        <text x="50" y="81" font-size="8" fill="var(--text-muted)" text-anchor="middle">118 Elements</text>
+      </svg>
+    </div>
+              <h3 class="chem-card-title"><a href="/chemistry-labs/interactive-periodic-table/">Interactive Periodic Table of Elements Explorer</a></h3>
+              <p class="chem-card-desc">The modern periodic table organizes all 118 known chemical elements according to increasing atomic number and recurring ...</p>
+              <a href="/chemistry-labs/interactive-periodic-table/" class="chem-card-btn">Open Lab →</a>
+            </article>
+            
+      </div>
+    </section>
+  </main>
+
+  
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="/" class="brand-logo">
+            <div class="logo-symbol">E</div>
+            <span>Ecrio<span class="accent-dot">X</span></span>
+          </a>
+          <p>One Platform. Endless Possibilities. Free, scientifically accurate browser-based virtual laboratories and digital productivity utilities.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Chemistry Labs</h4>
+          <ul class="footer-links">
+            <li><a href="/chemistry-labs/">All Chemistry Labs</a></li>
+            <li><a href="/chemistry-labs/interactive-periodic-table/">Periodic Table Explorer</a></li>
+            <li><a href="/chemistry-labs/chemical-equation-balancer/">Equation Balancer</a></li>
+            <li><a href="/chemistry-labs/acid-base-titration/">Acid-Base Titration</a></li>
+            <li><a href="/chemistry-labs/3d-molecular-viewer/">3D Molecular Viewer</a></li>
+            <li><a href="/chemistry-labs/calculators/">Chemistry Calculators</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Physics Labs</h4>
+          <ul class="footer-links">
+            <li><a href="/physics-labs/">All Physics Labs</a></li>
+            <li><a href="/physics-labs/projectile-motion-simulator/">Projectile Motion</a></li>
+            <li><a href="/physics-labs/electric-circuit-simulator/">Circuit Simulator</a></li>
+            <li><a href="/physics-labs/ray-optics-simulator/">Ray Optics Lab</a></li>
+            <li><a href="/physics-labs/simple-pendulum-experiment/">Simple Pendulum</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Product Suite</h4>
+          <ul class="footer-links">
+            <li><a href="/tools/">All Tools Directory</a></li>
+            <li><a href="/categories/">Tool Categories</a></li>
+            <li><a href="/pdf-compressor/">PDF Compressor</a></li>
+            <li><a href="/resume-builder/">ATS Resume Builder</a></li>
+            <li><a href="/typing-speed-test/">Typing Arena</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company & Legal</h4>
+          <ul class="footer-links">
+            <li><a href="/about/">About EcrioX</a></li>
+            <li><a href="/contact/">Contact Support</a></li>
+            <li><a href="/privacy/">Privacy Policy</a></li>
+            <li><a href="/terms/">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 EcrioX. All rights reserved. Zero client downloads required — 100% private in-browser scientific simulations.</p>
+        <p>Canonical Domain: <a href="https://ecriox.com/" style="color: var(--chem-primary);">ecriox.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Chemistry Engine Script Loaded Globally -->
+  <script src="/js/chemistry-engine.js"></script>
+  <script>
+    // Theme toggle listener
+    const themeBtn = document.getElementById('themeToggleBtn');
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => {
+        const cur = document.documentElement.getAttribute('data-theme') || 'light';
+        const nxt = cur === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', nxt);
+        try { localStorage.setItem('ecriox_theme_preference', nxt); } catch(e){}
+        window.dispatchEvent(new Event('themechange'));
+      });
+    }
+    // Mobile navigation drawer toggle
+    const mobToggle = document.getElementById('mobileMenuToggle');
+    const mobNav = document.getElementById('mobileNavDrawer');
+    if (mobToggle && mobNav) {
+      mobToggle.addEventListener('click', () => {
+        const isOpen = mobNav.classList.toggle('open');
+        mobToggle.setAttribute('aria-expanded', isOpen);
+      });
+    }
+    // FAQ Accordion listener
+    document.querySelectorAll('.chem-faq-trigger').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.parentElement.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>
+
+
+  <!-- Tab Switcher & Lab Actions Script -->
+  <script>
+    (function(){
+      // Tab switcher
+      const tabBtns = document.querySelectorAll('.chem-tab-btn');
+      const tabPanes = document.querySelectorAll('.chem-tab-pane');
+
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          tabBtns.forEach(b => b.classList.remove('active'));
+          tabPanes.forEach(p => p.classList.remove('active'));
+
+          btn.classList.add('active');
+          const target = btn.getAttribute('data-tab');
+          const pane = document.getElementById(target);
+          if (pane) pane.classList.add('active');
+        });
+      });
+
+      // Fullscreen mode toggle
+      const fsBtn = document.getElementById('btnFullscreen');
+      const labWrap = document.getElementById('labWrapper');
+      if (fsBtn && labWrap) {
+        fsBtn.addEventListener('click', () => {
+          if (!document.fullscreenElement) {
+            labWrap.requestFullscreen?.() || labWrap.webkitRequestFullscreen?.();
+            fsBtn.innerHTML = 'Exit Fullscreen';
+          } else {
+            document.exitFullscreen?.() || document.webkitExitFullscreen?.();
+            fsBtn.innerHTML = 'Fullscreen';
+          }
+        });
+      }
+
+      // Print Lab Worksheet
+      const printBtn = document.getElementById('btnPrintWorksheet');
+      if (printBtn) {
+        printBtn.addEventListener('click', () => window.print());
+      }
+
+      // Export CSV Data
+      const csvBtn = document.getElementById('btnExportCSV');
+      if (csvBtn) {
+        csvBtn.addEventListener('click', () => {
+          const metrics = Array.from(document.querySelectorAll('#hudBar .hud-metric')).map(m => {
+            const lbl = m.querySelector('.hud-metric-label')?.textContent.trim() || 'Metric';
+            const val = m.querySelector('.hud-metric-value')?.textContent.trim() || '0';
+            return `"${lbl}","${val}"`;
+          });
+          const csvContent = "data:text/csv;charset=utf-8,Parameter,Value\n" +
+            `"Experiment","Gas Laws & Ideal Gas Simulator"\n` +
+            `"Timestamp","${new Date().toISOString()}"\n` +
+            metrics.join("\n");
+          const encodedUri = encodeURI(csvContent);
+          const link = document.createElement("a");
+          link.setAttribute("href", encodedUri);
+          link.setAttribute("download", "gas-laws-simulator-lab-data.csv");
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        });
+      }
+    })();
+  </script>
+
+  <!-- Interactive Simulation Engine Execution -->
+  <script>
+    
+    (function(){
+      const canvas = document.getElementById('gasPistonCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+
+      const R = 0.08206; // L*atm/(mol*K)
+      let P = 1.0; // atm
+      let T = 273; // K
+      let n = 1.0; // mol
+      let V = 22.4; // L
+      let mode = 'ideal';
+
+      let particles = [];
+      const MAX_PARTICLES = 60;
+
+      function calcV() {
+        return (n * R * T) / P;
+      }
+
+      function updateHUD() {
+        V = calcV();
+        const ratio = (P * V) / (n * R * T);
+
+        document.getElementById('hudGasP').innerHTML = P.toFixed(2) + '<span class="hud-metric-unit">atm</span>';
+        document.getElementById('hudGasV').innerHTML = V.toFixed(1) + '<span class="hud-metric-unit">L</span>';
+        document.getElementById('hudGasT').innerHTML = T + '<span class="hud-metric-unit">K</span>';
+        document.getElementById('hudGasN').innerHTML = n.toFixed(2) + '<span class="hud-metric-unit">mol</span>';
+        document.getElementById('hudGasRatio').textContent = ratio.toFixed(3) + ' (Ideal)';
+
+        document.getElementById('pDisplay').textContent = P.toFixed(2) + ' atm';
+        document.getElementById('tDisplay').textContent = T + ' K (' + (T - 273) + '°C)';
+        document.getElementById('nDisplay').textContent = n.toFixed(2) + ' mol';
+
+        document.getElementById('pSlider').value = P;
+        document.getElementById('tSlider').value = T;
+        document.getElementById('nSlider').value = n;
+      }
+
+      function initParticles() {
+        particles = [];
+        const count = Math.min(MAX_PARTICLES, Math.round(n * 20));
+        for (let i = 0; i < count; i++) {
+          particles.push({
+            x: Math.random(),
+            y: Math.random(),
+            vx: (Math.random() - 0.5) * Math.sqrt(T / 273) * 2,
+            vy: (Math.random() - 0.5) * Math.sqrt(T / 273) * 2
+          });
+        }
+      }
+
+      function resize() {
+        const r = canvas.getBoundingClientRect();
+        canvas.width = r.width * (window.devicePixelRatio || 1);
+        canvas.height = r.height * (window.devicePixelRatio || 1);
+        initParticles();
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      function draw() {
+        const w = canvas.width;
+        const h = canvas.height;
+        ctx.clearRect(0, 0, w, h);
+
+        // Cylinder bounds
+        const cx = w * 0.45;
+        const cy = h * 0.55;
+        const cw = w * 0.55;
+        const maxCh = h * 0.70;
+
+        // Piston height inversely proportional to V (min V = 5L, max V = 60L)
+        const vFraction = Math.max(0.12, Math.min(0.95, V / 50.0));
+        const chamberH = maxCh * vFraction;
+        const pistonY = cy + maxCh/2 - chamberH;
+
+        // Cylinder background
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(cx - cw/2, pistonY, cw, chamberH);
+
+        // Draw animated particles
+        const speedScale = Math.sqrt(T / 273);
+        particles.forEach(p => {
+          p.x += p.vx * 0.003 * speedScale;
+          p.y += p.vy * 0.003 * speedScale;
+          if (p.x < 0.05) { p.x = 0.05; p.vx *= -1; }
+          if (p.x > 0.95) { p.x = 0.95; p.vx *= -1; }
+          if (p.y < 0.05) { p.y = 0.05; p.vy *= -1; }
+          if (p.y > 0.95) { p.y = 0.95; p.vy *= -1; }
+
+          const px = (cx - cw/2 + 10) + p.x * (cw - 20);
+          const py = pistonY + 10 + p.y * (chamberH - 20);
+
+          ctx.beginPath();
+          ctx.arc(px, py, 4, 0, Math.PI * 2);
+          ctx.fillStyle = '#3b82f6';
+          ctx.fill();
+        });
+
+        // Piston Head
+        ctx.fillStyle = '#475569';
+        ctx.fillRect(cx - cw/2, pistonY - 14, cw, 14);
+
+        // Piston Rod
+        ctx.fillStyle = '#64748b';
+        ctx.fillRect(cx - 10, pistonY - 70, 20, 56);
+
+        // Weight on top of rod
+        ctx.fillStyle = '#1e293b';
+        ctx.fillRect(cx - 30, pistonY - 95, 60, 25);
+        ctx.fillStyle = '#f8fafc';
+        ctx.font = 'bold 11px Inter, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(P.toFixed(1) + ' atm', cx, pistonY - 78);
+
+        // Cylinder walls outline
+        ctx.strokeStyle = '#334155';
+        ctx.lineWidth = 4;
+        ctx.beginPath();
+        ctx.moveTo(cx - cw/2, cy - maxCh/2);
+        ctx.lineTo(cx - cw/2, cy + maxCh/2);
+        ctx.lineTo(cx + cw/2, cy + maxCh/2);
+        ctx.lineTo(cx + cw/2, cy - maxCh/2);
+        ctx.stroke();
+
+        // Bunsen burner flame beneath if T > 298
+        if (T > 298) {
+          const flameH = Math.min(45, (T - 298) * 0.2 + 15);
+          ctx.fillStyle = 'rgba(239, 68, 68, 0.8)';
+          ctx.beginPath();
+          ctx.moveTo(cx - 18, cy + maxCh/2 + 30);
+          ctx.quadraticCurveTo(cx, cy + maxCh/2 + 30 - flameH, cx + 18, cy + maxCh/2 + 30);
+          ctx.fill();
+          ctx.fillStyle = 'rgba(234, 179, 8, 0.9)';
+          ctx.beginPath();
+          ctx.moveTo(cx - 10, cy + maxCh/2 + 30);
+          ctx.quadraticCurveTo(cx, cy + maxCh/2 + 30 - flameH * 0.6, cx + 10, cy + maxCh/2 + 30);
+          ctx.fill();
+        }
+
+        // Thermometer / Gauge on side
+        const gx = w * 0.82;
+        ctx.fillStyle = '#1e293b';
+        ctx.fillRect(gx - 35, 30, 70, 75);
+        ctx.strokeStyle = '#2563eb';
+        ctx.strokeRect(gx - 35, 30, 70, 75);
+        ctx.fillStyle = '#38bdf8';
+        ctx.font = 'bold 10px Inter, sans-serif';
+        ctx.fillText('TEMP (K)', gx, 48);
+        ctx.fillStyle = '#f8fafc';
+        ctx.font = 'bold 18px monospace';
+        ctx.fillText(T + ' K', gx, 72);
+      }
+
+      function loop() {
+        draw();
+        requestAnimationFrame(loop);
+      }
+      requestAnimationFrame(loop);
+
+      document.getElementById('pSlider').addEventListener('input', (e) => {
+        P = parseFloat(e.target.value);
+        updateHUD();
+      });
+
+      document.getElementById('tSlider').addEventListener('input', (e) => {
+        T = parseInt(e.target.value);
+        updateHUD();
+        initParticles();
+      });
+
+      document.getElementById('nSlider').addEventListener('input', (e) => {
+        n = parseFloat(e.target.value);
+        updateHUD();
+        initParticles();
+      });
+
+      document.getElementById('btnHeatGas').addEventListener('click', () => {
+        T = Math.min(600, T + 25);
+        updateHUD();
+        initParticles();
+      });
+
+      document.getElementById('btnCoolGas').addEventListener('click', () => {
+        T = Math.max(150, T - 25);
+        updateHUD();
+        initParticles();
+      });
+
+      document.getElementById('btnPumpGas').addEventListener('click', () => {
+        n = Math.min(3.0, n + 0.2);
+        updateHUD();
+        initParticles();
+      });
+
+      document.getElementById('btnResetGas').addEventListener('click', () => {
+        P = 1.0;
+        T = 273;
+        n = 1.0;
+        updateHUD();
+        initParticles();
+      });
+
+      updateHUD();
+    })();
+  
+  </script>
+        

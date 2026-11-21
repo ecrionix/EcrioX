@@ -164,6 +164,7 @@
       <nav class="nav-desktop">
         <a href="/" class="nav-link active">Home</a>
         <a href="/physics-labs/" class="nav-link">Physics Labs</a>
+        <a href="/chemistry-labs/" class="nav-link">Chemistry Labs</a>
         <a href="#cat-pdf" class="nav-link">PDF Tools</a>
         <a href="/resume-builder/" class="nav-link">Career Studio</a>
         <a href="/typing-speed-test/" class="nav-link">Typing Arena</a>
@@ -187,6 +188,7 @@
   <div class="mobile-nav">
     <a href="/" class="nav-link active">Home</a>
     <a href="/physics-labs/" class="nav-link">Physics Labs</a>
+        <a href="/chemistry-labs/" class="nav-link">Chemistry Labs</a>
     <a href="#cat-pdf" class="nav-link">PDF Tools</a>
     <a href="/resume-builder/" class="nav-link">Career Studio</a>
     <a href="/typing-speed-test/" class="nav-link">Typing Arena</a>
@@ -486,6 +488,173 @@
       </div>
     </section>
 
+    <!-- =====================================================
+         CHEMISTRY VIRTUAL LABS SHOWCASE SECTION
+         ===================================================== -->
+    <section class="container" id="chemistry-labs-showcase" style="margin-top: 1.5rem; margin-bottom: 3.5rem;">
+      <div style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, rgba(124, 58, 237, 0.08) 100%); border: 1px solid rgba(124, 58, 237, 0.25); border-radius: 20px; padding: 3rem 2rem; position: relative; overflow: hidden;">
+        <div style="text-align: center; max-width: 800px; margin: 0 auto 3rem;">
+          <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(37, 99, 235, 0.1); color: var(--color-primary); padding: 0.35rem 1rem; border-radius: 9999px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 2v7.31L4.1 19.3A2 2 0 0 0 5.9 22h12.2a2 2 0 0 0 1.8-2.7L14 9.31V2"></path></svg>
+            In-Browser Chemistry Simulation Engine
+          </div>
+          <h2 style="font-size: clamp(1.85rem, 3.5vw, 2.5rem); font-weight: 800; color: var(--text-main); line-height: 1.25; margin-bottom: 1rem;">
+            Explore Chemistry Virtual Labs
+          </h2>
+          <p style="font-size: 1.05rem; color: var(--text-muted); line-height: 1.6;">
+            Conduct safe, interactive chemistry experiments online. Synthesize 3D molecules, balance complex equations, explore periodic trends, simulate acid-base titrations, and observe chemical kinetics in real time.
+          </p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.75rem; margin-bottom: 2.5rem;">
+          <!-- 1. Periodic Table -->
+          <div class="tool-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 1.75rem; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.2s, box-shadow 0.2s;">
+            <div>
+              <div style="width: 50px; height: 50px; border-radius: 12px; background: rgba(37, 99, 235, 0.1); color: var(--color-primary); display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem;">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+              </div>
+              <div style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem;">
+                <span class="badge" style="font-size: 0.75rem; font-weight: 600; padding: 0.2rem 0.5rem; border-radius: 6px; background: rgba(37, 99, 235, 0.1); color: var(--color-primary);">Inorganic</span>
+                <span class="badge" style="font-size: 0.75rem; font-weight: 600; padding: 0.2rem 0.5rem; border-radius: 6px; background: rgba(16, 185, 129, 0.1); color: var(--color-success);">118 Elements</span>
+              </div>
+              <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.5rem; line-height: 1.35;">
+                <a href="/chemistry-labs/interactive-periodic-table/" style="color: inherit; text-decoration: none;">Interactive Periodic Table Explorer</a>
+              </h3>
+              <p style="font-size: 0.925rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 1.5rem;">
+                Explore all 118 elements with complete electron configurations, electronegativity trends, atomic radii, oxidation states, and side-by-side element comparison.
+              </p>
+            </div>
+            <a href="/chemistry-labs/interactive-periodic-table/" class="btn btn-secondary btn-sm" style="display: inline-flex; align-items: center; justify-content: space-between; width: 100%; font-weight: 600; padding: 0.65rem 1rem;">
+              <span>Launch Periodic Lab</span>
+              <span>&rarr;</span>
+            </a>
+          </div>
+
+          <!-- 2. Equation Balancer -->
+          <div class="tool-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 1.75rem; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.2s, box-shadow 0.2s;">
+            <div>
+              <div style="width: 50px; height: 50px; border-radius: 12px; background: rgba(124, 58, 237, 0.1); color: var(--color-secondary); display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem;">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"></path></svg>
+              </div>
+              <div style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem;">
+                <span class="badge" style="font-size: 0.75rem; font-weight: 600; padding: 0.2rem 0.5rem; border-radius: 6px; background: rgba(124, 58, 237, 0.1); color: var(--color-secondary);">General</span>
+                <span class="badge" style="font-size: 0.75rem; font-weight: 600; padding: 0.2rem 0.5rem; border-radius: 6px; background: rgba(37, 99, 235, 0.1); color: var(--color-primary);">Gauss-Jordan</span>
+              </div>
+              <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.5rem; line-height: 1.35;">
+                <a href="/chemistry-labs/chemical-equation-balancer/" style="color: inherit; text-decoration: none;">Chemical Equation Balancer</a>
+              </h3>
+              <p style="font-size: 0.925rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 1.5rem;">
+                Balance stoichiometric reactions using rigorous linear algebraic nullspace solvers. Inspect atom conservation tables and calculate mole ratios automatically.
+              </p>
+            </div>
+            <a href="/chemistry-labs/chemical-equation-balancer/" class="btn btn-secondary btn-sm" style="display: inline-flex; align-items: center; justify-content: space-between; width: 100%; font-weight: 600; padding: 0.65rem 1rem;">
+              <span>Launch Balancer</span>
+              <span>&rarr;</span>
+            </a>
+          </div>
+
+          <!-- 3. Acid Base Titration -->
+          <div class="tool-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 1.75rem; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.2s, box-shadow 0.2s;">
+            <div>
+              <div style="width: 50px; height: 50px; border-radius: 12px; background: rgba(236, 72, 153, 0.1); color: #ec4899; display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem;">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+              </div>
+              <div style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem;">
+                <span class="badge" style="font-size: 0.75rem; font-weight: 600; padding: 0.2rem 0.5rem; border-radius: 6px; background: rgba(236, 72, 153, 0.1); color: #ec4899;">Analytical</span>
+                <span class="badge" style="font-size: 0.75rem; font-weight: 600; padding: 0.2rem 0.5rem; border-radius: 6px; background: rgba(37, 99, 235, 0.1); color: var(--color-primary);">Live pH Curve</span>
+              </div>
+              <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.5rem; line-height: 1.35;">
+                <a href="/chemistry-labs/acid-base-titration/" style="color: inherit; text-decoration: none;">Acid-Base Titration Simulator</a>
+              </h3>
+              <p style="font-size: 0.925rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 1.5rem;">
+                Simulate burette titrations drop-by-drop with realistic magnetic stirrers, phenolphthalein/methyl orange transitions, and real-time sigmoidal pH curves.
+              </p>
+            </div>
+            <a href="/chemistry-labs/acid-base-titration/" class="btn btn-secondary btn-sm" style="display: inline-flex; align-items: center; justify-content: space-between; width: 100%; font-weight: 600; padding: 0.65rem 1rem;">
+              <span>Launch Titration Lab</span>
+              <span>&rarr;</span>
+            </a>
+          </div>
+
+          <!-- 4. 3D Molecular Viewer -->
+          <div class="tool-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 1.75rem; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.2s, box-shadow 0.2s;">
+            <div>
+              <div style="width: 50px; height: 50px; border-radius: 12px; background: rgba(16, 185, 129, 0.1); color: var(--color-success); display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem;">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg>
+              </div>
+              <div style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem;">
+                <span class="badge" style="font-size: 0.75rem; font-weight: 600; padding: 0.2rem 0.5rem; border-radius: 6px; background: rgba(16, 185, 129, 0.1); color: var(--color-success);">Structure</span>
+                <span class="badge" style="font-size: 0.75rem; font-weight: 600; padding: 0.2rem 0.5rem; border-radius: 6px; background: rgba(124, 58, 237, 0.1); color: var(--color-secondary);">3D Canvas</span>
+              </div>
+              <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.5rem; line-height: 1.35;">
+                <a href="/chemistry-labs/3d-molecular-viewer/" style="color: inherit; text-decoration: none;">3D Molecular Structure Viewer</a>
+              </h3>
+              <p style="font-size: 0.925rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 1.5rem;">
+                Rotate and inspect molecules in 3D space: H₂O, Benzene, Ethanol, Glucose, and SF₆. Toggle Ball-and-Stick, Space-Filling, and VSEPR geometries.
+              </p>
+            </div>
+            <a href="/chemistry-labs/3d-molecular-viewer/" class="btn btn-secondary btn-sm" style="display: inline-flex; align-items: center; justify-content: space-between; width: 100%; font-weight: 600; padding: 0.65rem 1rem;">
+              <span>Launch 3D Viewer</span>
+              <span>&rarr;</span>
+            </a>
+          </div>
+
+          <!-- 5. Chemical Kinetics -->
+          <div class="tool-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 1.75rem; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.2s, box-shadow 0.2s;">
+            <div>
+              <div style="width: 50px; height: 50px; border-radius: 12px; background: rgba(249, 115, 22, 0.1); color: #f97316; display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem;">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              </div>
+              <div style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem;">
+                <span class="badge" style="font-size: 0.75rem; font-weight: 600; padding: 0.2rem 0.5rem; border-radius: 6px; background: rgba(249, 115, 22, 0.1); color: #f97316;">Physical</span>
+                <span class="badge" style="font-size: 0.75rem; font-weight: 600; padding: 0.2rem 0.5rem; border-radius: 6px; background: rgba(37, 99, 235, 0.1); color: var(--color-primary);">Arrhenius</span>
+              </div>
+              <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.5rem; line-height: 1.35;">
+                <a href="/chemistry-labs/chemical-kinetics-simulator/" style="color: inherit; text-decoration: none;">Chemical Kinetics Simulator</a>
+              </h3>
+              <p style="font-size: 0.925rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 1.5rem;">
+                Investigate zero, first, and second-order reaction rates. Explore temperature effects, activation energy barrier modifications, and catalytic rate enhancements.
+              </p>
+            </div>
+            <a href="/chemistry-labs/chemical-kinetics-simulator/" class="btn btn-secondary btn-sm" style="display: inline-flex; align-items: center; justify-content: space-between; width: 100%; font-weight: 600; padding: 0.65rem 1rem;">
+              <span>Launch Kinetics Lab</span>
+              <span>&rarr;</span>
+            </a>
+          </div>
+
+          <!-- 6. Master Calculators -->
+          <div class="tool-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 1.75rem; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.2s, box-shadow 0.2s;">
+            <div>
+              <div style="width: 50px; height: 50px; border-radius: 12px; background: rgba(37, 99, 235, 0.1); color: var(--color-primary); display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem;">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"></rect><line x1="8" y1="6" x2="16" y2="6"></line><line x1="16" y1="14" x2="16" y2="18"></line><path d="M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M8 18h.01M12 18h.01"></path></svg>
+              </div>
+              <div style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem;">
+                <span class="badge" style="font-size: 0.75rem; font-weight: 600; padding: 0.2rem 0.5rem; border-radius: 6px; background: rgba(37, 99, 235, 0.1); color: var(--color-primary);">Calculators</span>
+                <span class="badge" style="font-size: 0.75rem; font-weight: 600; padding: 0.2rem 0.5rem; border-radius: 6px; background: rgba(16, 185, 129, 0.1); color: var(--color-success);">15 Solvers</span>
+              </div>
+              <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.5rem; line-height: 1.35;">
+                <a href="/chemistry-labs/calculators/" style="color: inherit; text-decoration: none;">Master Chemistry Calculators Section</a>
+              </h3>
+              <p style="font-size: 0.925rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 1.5rem;">
+                Solve molarity, molality, formula weight, dilutions, pH/pOH, stoichiometry, limiting reagent, ideal gas law, and Faraday yields with step-by-step derivations.
+              </p>
+            </div>
+            <a href="/chemistry-labs/calculators/" class="btn btn-secondary btn-sm" style="display: inline-flex; align-items: center; justify-content: space-between; width: 100%; font-weight: 600; padding: 0.65rem 1rem;">
+              <span>Open 15 Calculators</span>
+              <span>&rarr;</span>
+            </a>
+          </div>
+        </div>
+
+        <div style="text-align: center;">
+          <a href="/chemistry-labs/" class="btn btn-primary btn-lg" style="display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 700; box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);">
+            Explore All 15 Chemistry Labs &rarr;
+          </a>
+        </div>
+      </div>
+    </section>
+    
+
     <!-- Main Platform Directory -->
     <div id="tools-directory" class="container" style="padding-top: 1rem; padding-bottom: 4rem;">
       <!-- Category Filter Tabs -->
@@ -712,6 +881,237 @@
           </a>
         </div>
       </section>
+
+      <!-- =====================================================
+           CATEGORY: CHEMISTRY VIRTUAL LABS (15 Experiments)
+           ===================================================== -->
+      <section class="pdf-category-group" id="cat-chemistry">
+        <div class="pdf-cat-header">
+          <div class="pdf-cat-title-wrap">
+            <span class="pdf-cat-badge organize" style="background: rgba(37,99,235,0.1); color: var(--color-primary);">Chemistry Labs</span>
+            <h2 class="pdf-cat-title">Chemistry Virtual Labs & Chemical Calculators</h2>
+          </div>
+          <span class="pdf-cat-count">15 Experiments</span>
+        </div>
+        <p class="pdf-cat-desc">
+          Interactive, browser-based virtual chemistry laboratories. Explore periodic properties, balance equations, perform titrations, build organic molecules, and simulate electrochemistry.
+        </p>
+
+        <div class="pdf-tools-grid">
+    
+          <div class="tool-card" data-category="chemistry-labs">
+            <div class="tool-card-icon" style="background: rgba(37,99,235,0.1); color: var(--color-primary);">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31L4.1 19.3A2 2 0 0 0 5.9 22h12.2a2 2 0 0 0 1.8-2.7L14 9.31V2"></path></svg>
+            </div>
+            <div class="tool-card-content">
+              <h3 class="tool-card-title"><a href="/chemistry-labs/interactive-periodic-table/">Interactive Periodic Table of Elements Explorer</a></h3>
+              <p class="tool-card-desc">The modern periodic table organizes all 118 known chemical elements according to increasing atomic number and recurring periodic c...</p>
+              <div class="tool-card-meta">
+                <span class="tool-card-badge free">Free</span>
+                <span class="tool-card-badge">General Chemistry</span>
+              </div>
+            </div>
+          </div>
+        
+          <div class="tool-card" data-category="chemistry-labs">
+            <div class="tool-card-icon" style="background: rgba(37,99,235,0.1); color: var(--color-primary);">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31L4.1 19.3A2 2 0 0 0 5.9 22h12.2a2 2 0 0 0 1.8-2.7L14 9.31V2"></path></svg>
+            </div>
+            <div class="tool-card-content">
+              <h3 class="tool-card-title"><a href="/chemistry-labs/atomic-structure-simulator/">Atomic Structure & Electron Shells Simulator</a></h3>
+              <p class="tool-card-desc">Construct atoms from fundamental subatomic particles. Add or remove protons, neutrons, and electrons to observe changes in atomic ...</p>
+              <div class="tool-card-meta">
+                <span class="tool-card-badge free">Free</span>
+                <span class="tool-card-badge">Atomic Structure</span>
+              </div>
+            </div>
+          </div>
+        
+          <div class="tool-card" data-category="chemistry-labs">
+            <div class="tool-card-icon" style="background: rgba(37,99,235,0.1); color: var(--color-primary);">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31L4.1 19.3A2 2 0 0 0 5.9 22h12.2a2 2 0 0 0 1.8-2.7L14 9.31V2"></path></svg>
+            </div>
+            <div class="tool-card-content">
+              <h3 class="tool-card-title"><a href="/chemistry-labs/chemical-equation-balancer/">Chemical Equation Balancer & Stoichiometric Solver</a></h3>
+              <p class="tool-card-desc">Balance any chemical equation instantly using a rigorous mathematical Gaussian elimination algorithm. Input unbalanced reactants a...</p>
+              <div class="tool-card-meta">
+                <span class="tool-card-badge free">Free</span>
+                <span class="tool-card-badge">Chemical Reactions</span>
+              </div>
+            </div>
+          </div>
+        
+          <div class="tool-card" data-category="chemistry-labs">
+            <div class="tool-card-icon" style="background: rgba(37,99,235,0.1); color: var(--color-primary);">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31L4.1 19.3A2 2 0 0 0 5.9 22h12.2a2 2 0 0 0 1.8-2.7L14 9.31V2"></path></svg>
+            </div>
+            <div class="tool-card-content">
+              <h3 class="tool-card-title"><a href="/chemistry-labs/chemical-reaction-simulator/">Chemical Reaction Types & Energy Simulator</a></h3>
+              <p class="tool-card-desc">Explore major classes of chemical reactions: synthesis, decomposition, single displacement, double displacement (precipitation), n...</p>
+              <div class="tool-card-meta">
+                <span class="tool-card-badge free">Free</span>
+                <span class="tool-card-badge">Chemical Reactions</span>
+              </div>
+            </div>
+          </div>
+        
+          <div class="tool-card" data-category="chemistry-labs">
+            <div class="tool-card-icon" style="background: rgba(37,99,235,0.1); color: var(--color-primary);">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31L4.1 19.3A2 2 0 0 0 5.9 22h12.2a2 2 0 0 0 1.8-2.7L14 9.31V2"></path></svg>
+            </div>
+            <div class="tool-card-content">
+              <h3 class="tool-card-title"><a href="/chemistry-labs/ph-scale-simulator/">pH Scale & Hydrogen Ion Concentration Simulator</a></h3>
+              <p class="tool-card-desc">Visualize the logarithmic pH scale from 0 to 14. Adjust hydronium [H⁺] and hydroxide [OH⁻] concentrations, observe universal indic...</p>
+              <div class="tool-card-meta">
+                <span class="tool-card-badge free">Free</span>
+                <span class="tool-card-badge">Acids, Bases & Solutions</span>
+              </div>
+            </div>
+          </div>
+        
+          <div class="tool-card" data-category="chemistry-labs">
+            <div class="tool-card-icon" style="background: rgba(37,99,235,0.1); color: var(--color-primary);">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31L4.1 19.3A2 2 0 0 0 5.9 22h12.2a2 2 0 0 0 1.8-2.7L14 9.31V2"></path></svg>
+            </div>
+            <div class="tool-card-content">
+              <h3 class="tool-card-title"><a href="/chemistry-labs/acid-base-titration/">Acid-Base Titration Virtual Laboratory</a></h3>
+              <p class="tool-card-desc">Operate a complete analytical titration workstation with a graduated burette, Erlenmeyer flask, and magnetic stirrer. Titrate stro...</p>
+              <div class="tool-card-meta">
+                <span class="tool-card-badge free">Free</span>
+                <span class="tool-card-badge">Analytical Chemistry</span>
+              </div>
+            </div>
+          </div>
+        
+          <div class="tool-card" data-category="chemistry-labs">
+            <div class="tool-card-icon" style="background: rgba(37,99,235,0.1); color: var(--color-primary);">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31L4.1 19.3A2 2 0 0 0 5.9 22h12.2a2 2 0 0 0 1.8-2.7L14 9.31V2"></path></svg>
+            </div>
+            <div class="tool-card-content">
+              <h3 class="tool-card-title"><a href="/chemistry-labs/solution-concentration-simulator/">Solution Concentration & Dilution Simulator</a></h3>
+              <p class="tool-card-desc">Prepare chemical solutions of precise concentrations. Dissolve salts like NaCl, CuSO₄, and KMnO₄ into aqueous solvents, track mola...</p>
+              <div class="tool-card-meta">
+                <span class="tool-card-badge free">Free</span>
+                <span class="tool-card-badge">Acids, Bases & Solutions</span>
+              </div>
+            </div>
+          </div>
+        
+          <div class="tool-card" data-category="chemistry-labs">
+            <div class="tool-card-icon" style="background: rgba(37,99,235,0.1); color: var(--color-primary);">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31L4.1 19.3A2 2 0 0 0 5.9 22h12.2a2 2 0 0 0 1.8-2.7L14 9.31V2"></path></svg>
+            </div>
+            <div class="tool-card-content">
+              <h3 class="tool-card-title"><a href="/chemistry-labs/organic-molecule-builder/">2D Organic Molecule Builder & Valence Validator</a></h3>
+              <p class="tool-card-desc">Draw and design organic chemical structures using an interactive 2D molecular sketcher. Connect carbon chains, add double/triple b...</p>
+              <div class="tool-card-meta">
+                <span class="tool-card-badge free">Free</span>
+                <span class="tool-card-badge">Organic Chemistry</span>
+              </div>
+            </div>
+          </div>
+        
+          <div class="tool-card" data-category="chemistry-labs">
+            <div class="tool-card-icon" style="background: rgba(37,99,235,0.1); color: var(--color-primary);">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31L4.1 19.3A2 2 0 0 0 5.9 22h12.2a2 2 0 0 0 1.8-2.7L14 9.31V2"></path></svg>
+            </div>
+            <div class="tool-card-content">
+              <h3 class="tool-card-title"><a href="/chemistry-labs/3d-molecular-viewer/">3D Molecular Structure & VSEPR Geometry Viewer</a></h3>
+              <p class="tool-card-desc">Interact with authentic three-dimensional molecular geometries. Rotate, zoom, and inspect ball-and-stick and space-filling CPK mod...</p>
+              <div class="tool-card-meta">
+                <span class="tool-card-badge free">Free</span>
+                <span class="tool-card-badge">Molecular Chemistry</span>
+              </div>
+            </div>
+          </div>
+        
+          <div class="tool-card" data-category="chemistry-labs">
+            <div class="tool-card-icon" style="background: rgba(37,99,235,0.1); color: var(--color-primary);">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31L4.1 19.3A2 2 0 0 0 5.9 22h12.2a2 2 0 0 0 1.8-2.7L14 9.31V2"></path></svg>
+            </div>
+            <div class="tool-card-content">
+              <h3 class="tool-card-title"><a href="/chemistry-labs/isomerism-explorer/">Isomerism & Stereochemistry Explorer</a></h3>
+              <p class="tool-card-desc">Discover the fascinating world of chemical isomerism. Compare molecules that share identical molecular formulas but possess differ...</p>
+              <div class="tool-card-meta">
+                <span class="tool-card-badge free">Free</span>
+                <span class="tool-card-badge">Organic Chemistry</span>
+              </div>
+            </div>
+          </div>
+        
+          <div class="tool-card" data-category="chemistry-labs">
+            <div class="tool-card-icon" style="background: rgba(37,99,235,0.1); color: var(--color-primary);">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31L4.1 19.3A2 2 0 0 0 5.9 22h12.2a2 2 0 0 0 1.8-2.7L14 9.31V2"></path></svg>
+            </div>
+            <div class="tool-card-content">
+              <h3 class="tool-card-title"><a href="/chemistry-labs/chemical-kinetics-simulator/">Chemical Kinetics & Reaction Rates Simulator</a></h3>
+              <p class="tool-card-desc">Investigate how chemical reaction speeds are governed by reactant concentrations, temperature, and activation energy. Toggle betwe...</p>
+              <div class="tool-card-meta">
+                <span class="tool-card-badge free">Free</span>
+                <span class="tool-card-badge">Physical Chemistry</span>
+              </div>
+            </div>
+          </div>
+        
+          <div class="tool-card" data-category="chemistry-labs">
+            <div class="tool-card-icon" style="background: rgba(37,99,235,0.1); color: var(--color-primary);">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31L4.1 19.3A2 2 0 0 0 5.9 22h12.2a2 2 0 0 0 1.8-2.7L14 9.31V2"></path></svg>
+            </div>
+            <div class="tool-card-content">
+              <h3 class="tool-card-title"><a href="/chemistry-labs/chemical-equilibrium-simulator/">Chemical Equilibrium & Le Chatelier's Principle Simulator</a></h3>
+              <p class="tool-card-desc">Experiment with dynamic chemical equilibrium and Le Chatelier's Principle. Simulate the Haber ammonia synthesis and NO₂/N₂O₄ dimer...</p>
+              <div class="tool-card-meta">
+                <span class="tool-card-badge free">Free</span>
+                <span class="tool-card-badge">Physical Chemistry</span>
+              </div>
+            </div>
+          </div>
+        
+          <div class="tool-card" data-category="chemistry-labs">
+            <div class="tool-card-icon" style="background: rgba(37,99,235,0.1); color: var(--color-primary);">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31L4.1 19.3A2 2 0 0 0 5.9 22h12.2a2 2 0 0 0 1.8-2.7L14 9.31V2"></path></svg>
+            </div>
+            <div class="tool-card-content">
+              <h3 class="tool-card-title"><a href="/chemistry-labs/gas-laws-simulator/">Gas Laws & Ideal Gas Simulator</a></h3>
+              <p class="tool-card-desc">Explore the microscopic behavior of gases. Manipulate container volume with an adjustable piston, change temperature with a therma...</p>
+              <div class="tool-card-meta">
+                <span class="tool-card-badge free">Free</span>
+                <span class="tool-card-badge">Physical Chemistry</span>
+              </div>
+            </div>
+          </div>
+        
+          <div class="tool-card" data-category="chemistry-labs">
+            <div class="tool-card-icon" style="background: rgba(37,99,235,0.1); color: var(--color-primary);">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31L4.1 19.3A2 2 0 0 0 5.9 22h12.2a2 2 0 0 0 1.8-2.7L14 9.31V2"></path></svg>
+            </div>
+            <div class="tool-card-content">
+              <h3 class="tool-card-title"><a href="/chemistry-labs/electrochemical-cell-simulator/">Galvanic & Electrochemical Cell Simulator</a></h3>
+              <p class="tool-card-desc">Construct functional Voltaic and Galvanic cells in a digital laboratory. Pair zinc, copper, silver, and magnesium half-cells, obse...</p>
+              <div class="tool-card-meta">
+                <span class="tool-card-badge free">Free</span>
+                <span class="tool-card-badge">Electrochemistry</span>
+              </div>
+            </div>
+          </div>
+        
+          <div class="tool-card" data-category="chemistry-labs">
+            <div class="tool-card-icon" style="background: rgba(37,99,235,0.1); color: var(--color-primary);">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31L4.1 19.3A2 2 0 0 0 5.9 22h12.2a2 2 0 0 0 1.8-2.7L14 9.31V2"></path></svg>
+            </div>
+            <div class="tool-card-content">
+              <h3 class="tool-card-title"><a href="/chemistry-labs/electrolysis-simulator/">Electrolysis & Faraday's Laws Simulator</a></h3>
+              <p class="tool-card-desc">Use electrical energy to drive non-spontaneous chemical reactions. Simulate water splitting (producing H₂ and O₂ gases in a 2:1 ra...</p>
+              <div class="tool-card-meta">
+                <span class="tool-card-badge free">Free</span>
+                <span class="tool-card-badge">Electrochemistry</span>
+              </div>
+            </div>
+          </div>
+        
+        </div>
+      </section>
+    
 
       <!-- ==========================================================================
            CATEGORY 2: IMAGE TOOLS (8 Tools)

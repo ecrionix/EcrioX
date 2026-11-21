@@ -1,0 +1,922 @@
+
+  <!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Electrolysis & Faraday's Laws Simulator – Online Chemistry Virtual Lab | EcrioX</title>
+  <meta name="description" content="Simulate chemical electrolysis online. Model molten NaCl, copper electroplating, and water electrolysis. Calculate deposited mass using Faraday's Laws (m = MIt/nF).">
+  <link rel="canonical" href="https://ecriox.com/chemistry-labs/electrolysis-simulator/">
+  <!-- Favicon & Brand Icons -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#2563EB">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Electrolysis & Faraday's Laws Simulator – Online Chemistry Virtual Lab | EcrioX">
+  <meta property="og:description" content="Simulate chemical electrolysis online. Model molten NaCl, copper electroplating, and water electrolysis. Calculate deposited mass using Faraday's Laws (m = MIt/nF).">
+  <meta property="og:url" content="https://ecriox.com/chemistry-labs/electrolysis-simulator/">
+  <meta property="og:site_name" content="EcrioX">
+  <meta property="og:image" content="https://ecriox.com/og-banner.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Electrolysis & Faraday's Laws Simulator – Online Chemistry Virtual Lab | EcrioX">
+  <meta name="twitter:description" content="Simulate chemical electrolysis online. Model molten NaCl, copper electroplating, and water electrolysis. Calculate deposited mass using Faraday's Laws (m = MIt/nF).">
+  <meta name="twitter:image" content="https://ecriox.com/og-banner.png">
+
+  <!-- Global Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-NNT7J485');
+  </script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6486455437877685" crossorigin="anonymous"></script>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/chemistry-labs.css">
+
+  <!-- Anti-FOUT & Theme Sync -->
+  <script>
+    (function(){
+      try {
+        var savedTheme = localStorage.getItem('ecriox_theme_preference');
+        if (savedTheme) {
+          document.documentElement.setAttribute('data-theme', savedTheme);
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      } catch(e) {}
+    })();
+  </script>
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://ecriox.com/chemistry-labs/electrolysis-simulator/#app",
+      "url": "https://ecriox.com/chemistry-labs/electrolysis-simulator/",
+      "name": "Electrolysis & Faraday's Laws Simulator",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires HTML5 Canvas and JavaScript support",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Simulate chemical electrolysis online. Model molten NaCl, copper electroplating, and water electrolysis. Calculate deposited mass using Faraday's Laws (m = MIt/nF)."
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://ecriox.com/chemistry-labs/electrolysis-simulator/#article",
+      "headline": "Electrolysis Simulator: Faraday's Laws, Electroplating & Water Splitting",
+      "description": "Simulate chemical electrolysis online. Model molten NaCl, copper electroplating, and water electrolysis. Calculate deposited mass using Faraday's Laws (m = MIt/nF).",
+      "author": {
+        "@type": "Organization",
+        "name": "EcrioX Science Team"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "EcrioX",
+        "url": "https://ecriox.com"
+      },
+      "datePublished": "2026-11-21",
+      "dateModified": "2026-11-21"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://ecriox.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Chemistry Virtual Labs",
+          "item": "https://ecriox.com/chemistry-labs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Electrolysis & Faraday's Laws Simulator",
+          "item": "https://ecriox.com/chemistry-labs/electrolysis-simulator/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why is the volume of hydrogen gas double that of oxygen during water electrolysis?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The overall balanced equation is 2H\u2082O \u2192 2H\u2082 + O\u2082. For every 4 moles of electrons transferred, 2 moles of H\u2082 gas are generated at the cathode while only 1 mole of O\u2082 gas is generated at the anode, creating an exact 2:1 volume ratio."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is an overpotential (overvoltage)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Overpotential is the extra voltage beyond theoretical thermodynamic cell potential required to overcome kinetic activation barriers (sluggish electron transfer) at electrode surfaces, particularly for gas-evolving reactions like O\u2082."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why must NaCl be molten rather than aqueous to produce metallic sodium?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In aqueous NaCl, water is reduced much more easily than Na\u207a (reduction potential of H\u2082O is -0.83 V vs Na\u207a at -2.71 V). Electrolysis of aqueous NaCl produces hydrogen gas at the cathode, not sodium metal."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NNT7J485" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="brand-logo" aria-label="EcrioX Home">
+        <div class="logo-symbol">E</div>
+        <span>Ecrio<span class="accent-dot">X</span></span>
+      </a>
+
+      <nav class="nav-desktop">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/physics-labs/" class="nav-link">Physics Labs</a>
+        <a href="/chemistry-labs/" class="nav-link active">Chemistry Labs</a>
+        <a href="/chemistry-labs/calculators/" class="nav-link">Calculators</a>
+        <a href="/resume-builder/" class="nav-link">Career Studio</a>
+        <a href="/typing-speed-test/" class="nav-link">Typing Arena</a>
+        <a href="/tools/" class="nav-link">All Tools</a>
+        <a href="/about/" class="nav-link">About</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn-icon theme-toggle-btn" aria-label="Toggle color theme" id="themeToggleBtn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <button class="btn-icon mobile-toggle" aria-label="Open mobile menu" aria-expanded="false" id="mobileMenuToggle">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav-drawer" id="mobileNavDrawer">
+    <nav class="mobile-nav">
+      <a href="/" class="mobile-nav-link">Home</a>
+      <a href="/physics-labs/" class="mobile-nav-link">Physics Labs</a>
+      <a href="/chemistry-labs/" class="mobile-nav-link active">Chemistry Labs</a>
+      <a href="/chemistry-labs/calculators/" class="mobile-nav-link">Calculators</a>
+      <a href="/resume-builder/" class="mobile-nav-link">Career Studio</a>
+      <a href="/typing-speed-test/" class="mobile-nav-link">Typing Arena</a>
+      <a href="/tools/" class="mobile-nav-link">All Tools</a>
+      <a href="/about/" class="mobile-nav-link">About</a>
+    </nav>
+  </div>
+
+
+  <main id="main-content" class="container" style="padding-top:1.5rem; padding-bottom:3rem;">
+    <!-- Breadcrumbs -->
+    <nav class="chem-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="chem-breadcrumb-sep">/</span>
+      <a href="/chemistry-labs/">Chemistry Virtual Labs</a>
+      <span class="chem-breadcrumb-sep">/</span>
+      <span class="chem-breadcrumb-current">Electrolysis & Faraday's Laws Simulator</span>
+    </nav>
+
+    <!-- Lab Header -->
+    <div class="chem-lab-header">
+      <div class="chem-lab-header-left">
+        <div style="display:flex; gap:0.5rem; align-items:center; margin-bottom:0.5rem; flex-wrap:wrap;">
+          <span class="chem-badge chem-badge-primary">Electrochemistry</span>
+          <span class="chem-badge chem-badge-secondary">Classes 11–12 / B.Sc / Chemical Engineering Level</span>
+          <span class="chem-badge" style="background:#e0f2fe; color:#0369a1;">⏱ 15 mins</span>
+          <span class="chem-badge" style="background:#fef3c7; color:#92400e;">CBSE • JEE • NEET • College</span>
+        </div>
+        <h1 class="chem-lab-title">Electrolysis Simulator: Faraday's Laws, Electroplating & Water Splitting</h1>
+        <p class="chem-lab-intro">Use electrical energy to drive non-spontaneous chemical reactions. Simulate water splitting (producing H₂ and O₂ gases in a 2:1 ratio), copper electrorefining, and molten NaCl electrolysis. Calculate deposited mass and evolved gas volumes using Faraday's Quantitative Laws of Electrolysis.</p>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="chem-lab-actions">
+        <button id="btnFullscreen" class="chem-btn chem-btn-outline" title="Toggle Fullscreen Mode">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
+          Fullscreen
+        </button>
+        <button id="btnResetSimulation" class="chem-btn chem-btn-outline" title="Reset Experiment Parameters">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6"></path><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
+          Reset Lab
+        </button>
+        <button id="btnExportCSV" class="chem-btn chem-btn-outline" title="Download Data Worksheet (CSV)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Export CSV
+        </button>
+        <button id="btnPrintWorksheet" class="chem-btn chem-btn-primary" title="Print Laboratory Worksheet">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+          Print Lab Sheet
+        </button>
+      </div>
+    </div>
+
+    <!-- Interactive Simulation Wrapper -->
+    <div class="chem-lab-wrapper" id="labWrapper">
+      <!-- Live HUD Metrics Panel -->
+      <div class="chem-hud-bar" id="hudBar">
+        
+    <div class="hud-metric"><div class="hud-metric-label">Current (I)</div><div class="hud-metric-value" id="hudElCurrent">2.00<span class="hud-metric-unit">A</span></div></div>
+    <div class="hud-metric"><div class="hud-metric-label">Elapsed Time</div><div class="hud-metric-value" id="hudElTime">0<span class="hud-metric-unit">s</span></div></div>
+    <div class="hud-metric"><div class="hud-metric-label">Total Charge (Q = I·t)</div><div class="hud-metric-value" id="hudElCharge">0<span class="hud-metric-unit">C</span></div></div>
+    <div class="hud-metric"><div class="hud-metric-label">Cathode Yield (H₂)</div><div class="hud-metric-value" id="hudElCathodeYield">0.0<span class="hud-metric-unit">mL</span></div></div>
+    <div class="hud-metric"><div class="hud-metric-label">Anode Yield (O₂)</div><div class="hud-metric-value" id="hudElAnodeYield">0.0<span class="hud-metric-unit">mL</span></div></div>
+  
+      </div>
+
+      <!-- Main Workspace Grid (Viewport + Controls) -->
+      <div class="chem-workspace-grid">
+        <!-- Simulation Viewport -->
+        <div class="chem-viewport-card">
+          <div class="chem-card-header-bar">
+            <span>🔬 Live Virtual Apparatus</span>
+            <span class="chem-status-dot">Interactive 60 FPS</span>
+          </div>
+          <div class="chem-viewport-inner">
+            
+    <canvas id="elCanvas" style="width:100%; height:440px; display:block; border-radius:12px; background:linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);"></canvas>
+  
+          </div>
+        </div>
+
+        <!-- Controls Panel -->
+        <div class="chem-controls-card">
+          <div class="chem-card-header-bar">
+            <span>⚙️ Scientific Controls</span>
+            <span>Calibrated</span>
+          </div>
+          <div class="chem-controls-inner">
+            
+    <div class="chem-form-group">
+      <label class="chem-label">Electrolytic System:</label>
+      <select id="elSystemSelect" class="chem-select">
+        <option value="water" selected>Water Splitting (2 H₂O → 2 H₂ ↑ + O₂ ↑, 2:1 Gas Ratio)</option>
+        <option value="cu_plate">Copper Electroplating (CuSO₄ aq, Cu Anode → Key Cathode)</option>
+        <option value="molten_nacl">Molten NaCl (Downs Cell, 2 NaCl → 2 Na + Cl₂ ↑)</option>
+        <option value="chlor_alkali">Chlor-Alkali (2 NaCl + 2 H₂O → Cl₂ ↑ + H₂ ↑ + 2 NaOH)</option>
+      </select>
+    </div>
+    <div class="chem-form-group">
+      <div style="display:flex; justify-content:space-between;">
+        <label class="chem-label">Current Intensity (I, Amperes):</label>
+        <span id="elCurrentDisplay" style="font-weight:700; color:var(--chem-primary)">2.00 A</span>
+      </div>
+      <input type="range" id="elCurrentSlider" min="0.5" max="10.0" step="0.5" value="2.0" class="chem-slider" />
+    </div>
+    <div class="chem-btn-group" style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem; margin-top:0.75rem;">
+      <button id="btnPowerSwitch" class="chem-btn chem-btn-primary">Power: ON</button>
+      <button id="btnElFast60" class="chem-btn chem-btn-outline">+60s Fast Forward</button>
+      <button id="btnElFast300" class="chem-btn chem-btn-outline">+300s Fast Forward</button>
+      <button id="btnResetEl" class="chem-btn chem-btn-secondary">Reset Cell</button>
+    </div>
+  
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scientific Documentation Tabs -->
+    <section class="chem-doc-section">
+      <div class="chem-tabs-nav">
+        <button class="chem-tab-btn active" data-tab="tab-theory">1. Scientific Theory & Derivations</button>
+        <button class="chem-tab-btn" data-tab="tab-procedure">2. Lab Protocol & Objectives</button>
+        <button class="chem-tab-btn" data-tab="tab-example">3. Worked Calculation Example</button>
+        <button class="chem-tab-btn" data-tab="tab-applications">4. Applications & Misconceptions</button>
+        <button class="chem-tab-btn" data-tab="tab-faqs">5. FAQs (3)</button>
+      </div>
+
+      <!-- Tab 1: Theory -->
+      <div class="chem-tab-pane active" id="tab-theory">
+        <div class="chem-doc-content">
+          <h2>Faraday's Laws of Electrolysis</h2>
+          <div class="chem-formula-hero">
+            <code>m = \frac{M \cdot I \cdot t}{n \cdot F}, \quad Q = I \cdot t, \quad F = 96485 \text{ C/mol e}^-</code>
+          </div>
+          <p class="chem-formula-desc">The mass m of an element deposited or liberated at an electrode is directly proportional to electric charge Q (current I × time t) and molar mass M, and inversely proportional to electron valency n.</p>
+          <div class="chem-text-block">
+            Electrolysis is the process by which electrical energy from an external DC power source forces a non-spontaneous redox reaction to occur (ΔG > 0). The power supply acts as an electron pump, pulling electrons away from the anode (making it positive in electrolytic cells) and forcing electrons onto the cathode (making it negative). Michael Faraday in 1834 established that the amount of chemical change produced is strictly proportional to the total electrical charge passed. One mole of electrons carries approximately 96,485 Coulombs of charge (Faraday's constant F = e × N_A).
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 2: Procedure -->
+      <div class="chem-tab-pane" id="tab-procedure">
+        <div class="chem-doc-content">
+          <h2>Experimental Objectives</h2>
+          <ul class="chem-bullet-list">
+            <li>Differentiate galvanic cells (spontaneous, generate voltage) from electrolytic cells (non-spontaneous, consume voltage).</li><li>Verify Faraday's First and Second Laws of Electrolysis quantitatively.</li><li>Observe water electrolysis gas volume ratios: 2 volumes H₂ at cathode to 1 volume O₂ at anode.</li><li>Calculate mass of electroplated metals from current, time, and stoichiometric valency.</li>
+          </ul>
+          <h2 style="margin-top:2rem;">Step-by-Step Laboratory Procedure</h2>
+          <ol class="chem-step-list">
+            
+            <li class="chem-step-item">
+              <strong>Step 1:</strong>
+              <p>Select an electrolysis system: Water Splitting (dilute H₂SO₄), Copper Electroplating (CuSO₄), or Molten NaCl.</p>
+            </li>
+            
+            <li class="chem-step-item">
+              <strong>Step 2:</strong>
+              <p>Adjust the Applied Current slider (0.5 A to 10.0 A) and Run Time slider (seconds to minutes).</p>
+            </li>
+            
+            <li class="chem-step-item">
+              <strong>Step 3:</strong>
+              <p>Click 'Power On' to observe bubble evolution at electrodes and metal mass accretion.</p>
+            </li>
+            
+            <li class="chem-step-item">
+              <strong>Step 4:</strong>
+              <p>Inspect the live HUD tracking total charge Q (Coulombs), moles of electrons passed, and theoretical deposited mass.</p>
+            </li>
+            
+          </ol>
+        </div>
+      </div>
+
+      <!-- Tab 3: Worked Example -->
+      <div class="chem-tab-pane" id="tab-example">
+        <div class="chem-doc-content">
+          <h2>Worked Example & Step-by-Step Calculation</h2>
+          <div class="chem-example-box">
+            <h3 style="color:var(--chem-primary); font-size:1.15rem; margin-bottom:0.75rem;">Problem Statement:</h3>
+            <p style="font-size:1.05rem; font-weight:600; color:var(--text-main); margin-bottom:1.5rem;">A constant current of 3.00 A is passed through an aqueous copper(II) sulfate (CuSO₄) solution for 45.0 minutes. Calculate the mass of copper metal deposited on the cathode. (Molar mass of Cu = 63.55 g/mol, F = 96,485 C/mol).</p>
+            <h3 style="color:var(--chem-secondary); font-size:1.15rem; margin-bottom:0.75rem;">Mathematical Solution & Derivation:</h3>
+            <div class="chem-example-solution" style="white-space:pre-line; line-height:1.7;">
+              1. Cathode half-reaction: Cu²⁺(aq) + 2e⁻ → Cu(s). Number of electrons n = 2.
+2. Convert time to seconds: t = 45.0 min × 60 s/min = 2700 s.
+3. Calculate total charge passed: Q = I × t = 3.00 A × 2700 s = 8100 Coulombs.
+4. Calculate moles of electrons: n_e = Q / F = 8100 C / 96485 C/mol = 0.08395 mol e⁻.
+5. Apply Faraday's Law:
+   m = (M × Q) / (n × F) = (63.55 g/mol × 8100 C) / (2 × 96485 C/mol)
+   m = 514,755 / 192,970 = 2.668 grams of copper deposited.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 4: Applications & Misconceptions -->
+      <div class="chem-tab-pane" id="tab-applications">
+        <div class="chem-doc-content">
+          <h2>Industrial, Engineering & Everyday Applications</h2>
+          <div class="chem-apps-grid">
+            
+            <div class="chem-app-item">
+              <strong>Aluminum Smelting</strong>
+              <p>Hall-Héroult molten cryolite electrolysis extracting metallic aluminum from bauxite ore.</p>
+            </div>
+            
+            <div class="chem-app-item">
+              <strong>Green Hydrogen Production</strong>
+              <p>Industrial PEM water electrolysis powered by solar and wind renewable energy.</p>
+            </div>
+            
+            <div class="chem-app-item">
+              <strong>Electroplating</strong>
+              <p>Depositing thin protective chromium or decorative gold/silver coatings onto base metals.</p>
+            </div>
+            
+            <div class="chem-app-item">
+              <strong>Chlor-Alkali Industry</strong>
+              <p>Membrane electrolysis of brine producing chlorine gas, hydrogen, and sodium hydroxide.</p>
+            </div>
+            
+          </div>
+          <h2 style="margin-top:2.5rem;">Common Student Misconceptions & Scientific Reality</h2>
+          <div class="chem-misc-list">
+            
+        <div class="chem-misc-card">
+          <div class="chem-misc-fact">💡 <strong>Critical Conceptual Insight:</strong> Students frequently confuse electrode polarity between galvanic and electrolytic cells. In an electrolytic cell, the ANODE is connected to the positive terminal of the power supply (+), and the CATHODE is connected to the negative terminal (-). However, OXIDATION ALWAYS occurs at the anode in both cell types.</div>
+        </div>
+        
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 5: FAQs -->
+      <div class="chem-tab-pane" id="tab-faqs">
+        <div class="chem-doc-content">
+          <h2>Frequently Asked Questions on Electrolysis & Faraday's Laws Simulator</h2>
+          <div class="chem-faq-list" style="margin-top:1.5rem;">
+            
+            <div class="chem-faq-item">
+              <button class="chem-faq-trigger">
+                <span>Why is the volume of hydrogen gas double that of oxygen during water electrolysis?</span>
+                <svg class="chem-faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="chem-faq-content">
+                <p>The overall balanced equation is 2H₂O → 2H₂ + O₂. For every 4 moles of electrons transferred, 2 moles of H₂ gas are generated at the cathode while only 1 mole of O₂ gas is generated at the anode, creating an exact 2:1 volume ratio.</p>
+              </div>
+            </div>
+            
+            <div class="chem-faq-item">
+              <button class="chem-faq-trigger">
+                <span>What is an overpotential (overvoltage)?</span>
+                <svg class="chem-faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="chem-faq-content">
+                <p>Overpotential is the extra voltage beyond theoretical thermodynamic cell potential required to overcome kinetic activation barriers (sluggish electron transfer) at electrode surfaces, particularly for gas-evolving reactions like O₂.</p>
+              </div>
+            </div>
+            
+            <div class="chem-faq-item">
+              <button class="chem-faq-trigger">
+                <span>Why must NaCl be molten rather than aqueous to produce metallic sodium?</span>
+                <svg class="chem-faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="chem-faq-content">
+                <p>In aqueous NaCl, water is reduced much more easily than Na⁺ (reduction potential of H₂O is -0.83 V vs Na⁺ at -2.71 V). Electrolysis of aqueous NaCl produces hydrogen gas at the cathode, not sodium metal.</p>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Experiments Section -->
+    <section class="chem-related-section">
+      <div class="chem-section-header">
+        <h2 class="chem-section-title">Related Chemistry Virtual Labs</h2>
+        <p class="chem-section-desc">Continue your exploration with these interconnected chemical experiments and simulations.</p>
+      </div>
+      <div class="chem-grid">
+        
+            <article class="chem-card" data-category="general">
+              <div class="chem-card-badge-wrap">
+                <span class="chem-badge chem-badge-primary">General Chemistry</span>
+                <span class="chem-badge chem-badge-secondary">Classes 8–12 / College Chemistry</span>
+              </div>
+              <div class="chem-card-icon">
+      <svg viewBox="0 0 100 100" fill="none" stroke="currentColor">
+        <rect x="15" y="15" width="22" height="22" rx="4" stroke="var(--chem-primary)" stroke-width="2" fill="rgba(37,99,235,0.1)"/>
+        <text x="26" y="29" font-size="9" font-weight="bold" fill="var(--chem-primary)" text-anchor="middle">H</text>
+        <rect x="63" y="15" width="22" height="22" rx="4" stroke="#eab308" stroke-width="2" fill="rgba(234,179,8,0.1)"/>
+        <text x="74" y="29" font-size="9" font-weight="bold" fill="#eab308" text-anchor="middle">He</text>
+        <rect x="15" y="42" width="22" height="22" rx="4" stroke="#ec4899" stroke-width="2" fill="rgba(236,72,153,0.1)"/>
+        <text x="26" y="56" font-size="9" font-weight="bold" fill="#ec4899" text-anchor="middle">Li</text>
+        <rect x="39" y="42" width="22" height="22" rx="4" stroke="#10b981" stroke-width="2" fill="rgba(16,185,129,0.1)"/>
+        <text x="50" y="56" font-size="9" font-weight="bold" fill="#10b981" text-anchor="middle">C</text>
+        <rect x="63" y="42" width="22" height="22" rx="4" stroke="#06b6d4" stroke-width="2" fill="rgba(6,182,212,0.1)"/>
+        <text x="74" y="56" font-size="9" font-weight="bold" fill="#06b6d4" text-anchor="middle">Ne</text>
+        <rect x="15" y="69" width="70" height="16" rx="3" stroke="var(--border-color)" stroke-width="1.5" stroke-dasharray="3 3"/>
+        <text x="50" y="81" font-size="8" fill="var(--text-muted)" text-anchor="middle">118 Elements</text>
+      </svg>
+    </div>
+              <h3 class="chem-card-title"><a href="/chemistry-labs/interactive-periodic-table/">Interactive Periodic Table of Elements Explorer</a></h3>
+              <p class="chem-card-desc">The modern periodic table organizes all 118 known chemical elements according to increasing atomic number and recurring ...</p>
+              <a href="/chemistry-labs/interactive-periodic-table/" class="chem-card-btn">Open Lab →</a>
+            </article>
+            
+            <article class="chem-card" data-category="atomic">
+              <div class="chem-card-badge-wrap">
+                <span class="chem-badge chem-badge-primary">Atomic Structure</span>
+                <span class="chem-badge chem-badge-secondary">Classes 8–11 / CBSE / ICSE</span>
+              </div>
+              <div class="chem-card-icon">
+      <svg viewBox="0 0 100 100" fill="none" stroke="currentColor">
+        <circle cx="50" cy="50" r="12" fill="var(--chem-primary)" stroke="var(--chem-primary)" stroke-width="2"/>
+        <text x="50" y="54" font-size="9" font-weight="bold" fill="#ffffff" text-anchor="middle">+6</text>
+        <ellipse cx="50" cy="50" rx="35" ry="14" stroke="var(--chem-secondary)" stroke-width="1.5" stroke-dasharray="4 3"/>
+        <ellipse cx="50" cy="50" rx="14" ry="35" stroke="var(--chem-secondary)" stroke-width="1.5" stroke-dasharray="4 3"/>
+        <circle cx="85" cy="50" r="4" fill="#38bdf8"/>
+        <circle cx="15" cy="50" r="4" fill="#38bdf8"/>
+        <circle cx="50" cy="15" r="4" fill="#38bdf8"/>
+      </svg>
+    </div>
+              <h3 class="chem-card-title"><a href="/chemistry-labs/atomic-structure-simulator/">Atomic Structure & Electron Shells Simulator</a></h3>
+              <p class="chem-card-desc">Construct atoms from fundamental subatomic particles. Add or remove protons, neutrons, and electrons to observe changes ...</p>
+              <a href="/chemistry-labs/atomic-structure-simulator/" class="chem-card-btn">Open Lab →</a>
+            </article>
+            
+            <article class="chem-card" data-category="reactions">
+              <div class="chem-card-badge-wrap">
+                <span class="chem-badge chem-badge-primary">Chemical Reactions</span>
+                <span class="chem-badge chem-badge-secondary">Classes 9–12 / JEE / NEET</span>
+              </div>
+              <div class="chem-card-icon">
+      <svg viewBox="0 0 100 100" fill="none" stroke="currentColor">
+        <path d="M50 20 V80" stroke="var(--border-color)" stroke-width="3"/>
+        <circle cx="50" cy="20" r="6" fill="var(--chem-primary)"/>
+        <line x1="20" y1="35" x2="80" y2="35" stroke="var(--chem-primary)" stroke-width="3"/>
+        <path d="M20 35 L12 60 H28 Z" fill="rgba(37,99,235,0.15)" stroke="var(--chem-primary)" stroke-width="2"/>
+        <path d="M80 35 L72 60 H88 Z" fill="rgba(124,58,237,0.15)" stroke="var(--chem-secondary)" stroke-width="2"/>
+        <text x="20" y="53" font-size="8" font-weight="bold" fill="var(--chem-primary)" text-anchor="middle">React</text>
+        <text x="80" y="53" font-size="8" font-weight="bold" fill="var(--chem-secondary)" text-anchor="middle">Prod</text>
+      </svg>
+    </div>
+              <h3 class="chem-card-title"><a href="/chemistry-labs/chemical-equation-balancer/">Chemical Equation Balancer & Stoichiometric Solver</a></h3>
+              <p class="chem-card-desc">Balance any chemical equation instantly using a rigorous mathematical Gaussian elimination algorithm. Input unbalanced r...</p>
+              <a href="/chemistry-labs/chemical-equation-balancer/" class="chem-card-btn">Open Lab →</a>
+            </article>
+            
+      </div>
+    </section>
+  </main>
+
+  
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="/" class="brand-logo">
+            <div class="logo-symbol">E</div>
+            <span>Ecrio<span class="accent-dot">X</span></span>
+          </a>
+          <p>One Platform. Endless Possibilities. Free, scientifically accurate browser-based virtual laboratories and digital productivity utilities.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Chemistry Labs</h4>
+          <ul class="footer-links">
+            <li><a href="/chemistry-labs/">All Chemistry Labs</a></li>
+            <li><a href="/chemistry-labs/interactive-periodic-table/">Periodic Table Explorer</a></li>
+            <li><a href="/chemistry-labs/chemical-equation-balancer/">Equation Balancer</a></li>
+            <li><a href="/chemistry-labs/acid-base-titration/">Acid-Base Titration</a></li>
+            <li><a href="/chemistry-labs/3d-molecular-viewer/">3D Molecular Viewer</a></li>
+            <li><a href="/chemistry-labs/calculators/">Chemistry Calculators</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Physics Labs</h4>
+          <ul class="footer-links">
+            <li><a href="/physics-labs/">All Physics Labs</a></li>
+            <li><a href="/physics-labs/projectile-motion-simulator/">Projectile Motion</a></li>
+            <li><a href="/physics-labs/electric-circuit-simulator/">Circuit Simulator</a></li>
+            <li><a href="/physics-labs/ray-optics-simulator/">Ray Optics Lab</a></li>
+            <li><a href="/physics-labs/simple-pendulum-experiment/">Simple Pendulum</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Product Suite</h4>
+          <ul class="footer-links">
+            <li><a href="/tools/">All Tools Directory</a></li>
+            <li><a href="/categories/">Tool Categories</a></li>
+            <li><a href="/pdf-compressor/">PDF Compressor</a></li>
+            <li><a href="/resume-builder/">ATS Resume Builder</a></li>
+            <li><a href="/typing-speed-test/">Typing Arena</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company & Legal</h4>
+          <ul class="footer-links">
+            <li><a href="/about/">About EcrioX</a></li>
+            <li><a href="/contact/">Contact Support</a></li>
+            <li><a href="/privacy/">Privacy Policy</a></li>
+            <li><a href="/terms/">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 EcrioX. All rights reserved. Zero client downloads required — 100% private in-browser scientific simulations.</p>
+        <p>Canonical Domain: <a href="https://ecriox.com/" style="color: var(--chem-primary);">ecriox.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Chemistry Engine Script Loaded Globally -->
+  <script src="/js/chemistry-engine.js"></script>
+  <script>
+    // Theme toggle listener
+    const themeBtn = document.getElementById('themeToggleBtn');
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => {
+        const cur = document.documentElement.getAttribute('data-theme') || 'light';
+        const nxt = cur === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', nxt);
+        try { localStorage.setItem('ecriox_theme_preference', nxt); } catch(e){}
+        window.dispatchEvent(new Event('themechange'));
+      });
+    }
+    // Mobile navigation drawer toggle
+    const mobToggle = document.getElementById('mobileMenuToggle');
+    const mobNav = document.getElementById('mobileNavDrawer');
+    if (mobToggle && mobNav) {
+      mobToggle.addEventListener('click', () => {
+        const isOpen = mobNav.classList.toggle('open');
+        mobToggle.setAttribute('aria-expanded', isOpen);
+      });
+    }
+    // FAQ Accordion listener
+    document.querySelectorAll('.chem-faq-trigger').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.parentElement.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>
+
+
+  <!-- Tab Switcher & Lab Actions Script -->
+  <script>
+    (function(){
+      // Tab switcher
+      const tabBtns = document.querySelectorAll('.chem-tab-btn');
+      const tabPanes = document.querySelectorAll('.chem-tab-pane');
+
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          tabBtns.forEach(b => b.classList.remove('active'));
+          tabPanes.forEach(p => p.classList.remove('active'));
+
+          btn.classList.add('active');
+          const target = btn.getAttribute('data-tab');
+          const pane = document.getElementById(target);
+          if (pane) pane.classList.add('active');
+        });
+      });
+
+      // Fullscreen mode toggle
+      const fsBtn = document.getElementById('btnFullscreen');
+      const labWrap = document.getElementById('labWrapper');
+      if (fsBtn && labWrap) {
+        fsBtn.addEventListener('click', () => {
+          if (!document.fullscreenElement) {
+            labWrap.requestFullscreen?.() || labWrap.webkitRequestFullscreen?.();
+            fsBtn.innerHTML = 'Exit Fullscreen';
+          } else {
+            document.exitFullscreen?.() || document.webkitExitFullscreen?.();
+            fsBtn.innerHTML = 'Fullscreen';
+          }
+        });
+      }
+
+      // Print Lab Worksheet
+      const printBtn = document.getElementById('btnPrintWorksheet');
+      if (printBtn) {
+        printBtn.addEventListener('click', () => window.print());
+      }
+
+      // Export CSV Data
+      const csvBtn = document.getElementById('btnExportCSV');
+      if (csvBtn) {
+        csvBtn.addEventListener('click', () => {
+          const metrics = Array.from(document.querySelectorAll('#hudBar .hud-metric')).map(m => {
+            const lbl = m.querySelector('.hud-metric-label')?.textContent.trim() || 'Metric';
+            const val = m.querySelector('.hud-metric-value')?.textContent.trim() || '0';
+            return `"${lbl}","${val}"`;
+          });
+          const csvContent = "data:text/csv;charset=utf-8,Parameter,Value\n" +
+            `"Experiment","Electrolysis & Faraday's Laws Simulator"\n` +
+            `"Timestamp","${new Date().toISOString()}"\n` +
+            metrics.join("\n");
+          const encodedUri = encodeURI(csvContent);
+          const link = document.createElement("a");
+          link.setAttribute("href", encodedUri);
+          link.setAttribute("download", "electrolysis-simulator-lab-data.csv");
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        });
+      }
+    })();
+  </script>
+
+  <!-- Interactive Simulation Engine Execution -->
+  <script>
+    
+    (function(){
+      const canvas = document.getElementById('elCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+
+      const F = 96485.3; // C/mol (Faraday constant)
+      let current = 2.0; // Amperes
+      let timeSec = 0.0;
+      let isPowerOn = true;
+      let system = 'water';
+      let bubbles = [];
+
+      function updateHUD() {
+        const Q = current * timeSec; // Coulombs
+        let catYield = 0;
+        let anYield = 0;
+
+        if (system === 'water') {
+          // Cathode: 2 H+ + 2e- -> H2 (n = 2)
+          // Moles H2 = Q / (2 * F)
+          // Volume at STP = moles * 22400 mL
+          const molH2 = Q / (2 * F);
+          catYield = molH2 * 22400; // mL
+
+          // Anode: 2 H2O -> O2 + 4H+ + 4e- (n = 4)
+          // Moles O2 = Q / (4 * F)
+          const molO2 = Q / (4 * F);
+          anYield = molO2 * 22400; // mL
+          document.getElementById('hudElCathodeYield').innerHTML = catYield.toFixed(1) + '<span class="hud-metric-unit">mL (H₂)</span>';
+          document.getElementById('hudElAnodeYield').innerHTML = anYield.toFixed(1) + '<span class="hud-metric-unit">mL (O₂)</span>';
+        } else if (system === 'cu_plate') {
+          // Cu2+ + 2e- -> Cu (M = 63.55 g/mol, n = 2)
+          const massCu = (63.55 * Q) / (2 * F);
+          document.getElementById('hudElCathodeYield').innerHTML = massCu.toFixed(3) + '<span class="hud-metric-unit">g (Cu plated)</span>';
+          document.getElementById('hudElAnodeYield').innerHTML = massCu.toFixed(3) + '<span class="hud-metric-unit">g (Cu lost)</span>';
+        } else {
+          const molGas = Q / (2 * F);
+          catYield = molGas * 22400;
+          anYield = molGas * 22400;
+          document.getElementById('hudElCathodeYield').innerHTML = catYield.toFixed(1) + '<span class="hud-metric-unit">mL</span>';
+          document.getElementById('hudElAnodeYield').innerHTML = anYield.toFixed(1) + '<span class="hud-metric-unit">mL</span>';
+        }
+
+        document.getElementById('hudElCurrent').innerHTML = current.toFixed(2) + '<span class="hud-metric-unit">A</span>';
+        document.getElementById('hudElTime').innerHTML = timeSec.toFixed(0) + '<span class="hud-metric-unit">s</span>';
+        document.getElementById('hudElCharge').innerHTML = Q.toFixed(0) + '<span class="hud-metric-unit">C</span>';
+        document.getElementById('elCurrentDisplay').textContent = current.toFixed(2) + ' A';
+      }
+
+      function resize() {
+        const r = canvas.getBoundingClientRect();
+        canvas.width = r.width * (window.devicePixelRatio || 1);
+        canvas.height = r.height * (window.devicePixelRatio || 1);
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      function draw() {
+        const w = canvas.width;
+        const h = canvas.height;
+        ctx.clearRect(0, 0, w, h);
+
+        const cx = w * 0.5;
+
+        // Power supply box at top
+        const psW = 140;
+        const psH = 50;
+        ctx.fillStyle = '#1e293b';
+        ctx.fillRect(cx - psW/2, 20, psW, psH);
+        ctx.strokeStyle = isPowerOn ? '#10b981' : '#ef4444';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(cx - psW/2, 20, psW, psH);
+
+        ctx.fillStyle = '#38bdf8';
+        ctx.font = 'bold 11px Inter, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('DC POWER SUPPLY', cx, 38);
+        ctx.fillStyle = '#f8fafc';
+        ctx.font = 'bold 14px monospace';
+        ctx.fillText(current.toFixed(1) + ' A | 6.0 V', cx, 58);
+
+        // Electrolytic tank
+        const tx = w * 0.22;
+        const ty = 140;
+        const tw = w * 0.56;
+        const th = h - ty - 30;
+
+        // Solution fill
+        ctx.fillStyle = system === 'cu_plate' ? 'rgba(59, 130, 246, 0.45)' : 'rgba(203, 213, 225, 0.4)';
+        ctx.fillRect(tx + 4, ty + 20, tw - 8, th - 24);
+
+        // Electrodes
+        const anX = tx + tw * 0.3; // Anode (+)
+        const catX = tx + tw * 0.7; // Cathode (-)
+        const ew = 20;
+        const eh = th * 0.75;
+
+        ctx.fillStyle = '#475569';
+        ctx.fillRect(anX - ew/2, ty + 10, ew, eh);
+        ctx.fillRect(catX - ew/2, ty + 10, ew, eh);
+
+        // Wires from power supply
+        ctx.strokeStyle = '#ef4444'; // Anode wire (Red +)
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.moveTo(cx - 35, 70);
+        ctx.lineTo(cx - 35, 100);
+        ctx.lineTo(anX, 100);
+        ctx.lineTo(anX, ty + 10);
+        ctx.stroke();
+
+        ctx.strokeStyle = '#3b82f6'; // Cathode wire (Black/Blue -)
+        ctx.beginPath();
+        ctx.moveTo(cx + 35, 70);
+        ctx.lineTo(cx + 35, 100);
+        ctx.lineTo(catX, 100);
+        ctx.lineTo(catX, ty + 10);
+        ctx.stroke();
+
+        // Electrode Labels
+        ctx.fillStyle = '#0f172a';
+        ctx.font = 'bold 12px Inter, sans-serif';
+        ctx.fillText('Anode (+)', anX, ty - 6);
+        ctx.fillText('Cathode (-)', catX, ty - 6);
+
+        // Bubbles animation
+        if (isPowerOn) {
+          // Anode bubbles (O2)
+          if (Math.random() < 0.4) {
+            bubbles.push({ x: anX + (Math.random()-0.5)*15, y: ty + eh, vy: -1.5 - Math.random()*2, r: 2.5 });
+          }
+          // Cathode bubbles (H2) - 2x rate!
+          if (Math.random() < 0.8) {
+            bubbles.push({ x: catX + (Math.random()-0.5)*15, y: ty + eh, vy: -1.5 - Math.random()*2, r: 2.5 });
+          }
+        }
+
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';
+        ctx.strokeStyle = '#94a3b8';
+        ctx.lineWidth = 1;
+        for (let i = bubbles.length - 1; i >= 0; i--) {
+          const b = bubbles[i];
+          b.y += b.vy;
+          ctx.beginPath();
+          ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.stroke();
+          if (b.y < ty + 20) bubbles.splice(i, 1);
+        }
+
+        // Tank glass outline
+        ctx.strokeStyle = '#334155';
+        ctx.lineWidth = 3;
+        ctx.strokeRect(tx, ty, tw, th);
+      }
+
+      function loop() {
+        if (isPowerOn) {
+          timeSec += 0.05;
+          updateHUD();
+        }
+        draw();
+        requestAnimationFrame(loop);
+      }
+      requestAnimationFrame(loop);
+
+      const pwrBtn = document.getElementById('btnPowerSwitch');
+      pwrBtn.addEventListener('click', () => {
+        isPowerOn = !isPowerOn;
+        pwrBtn.textContent = isPowerOn ? 'Power: ON' : 'Power: OFF';
+        pwrBtn.className = isPowerOn ? 'chem-btn chem-btn-primary' : 'chem-btn chem-btn-outline';
+      });
+
+      document.getElementById('elCurrentSlider').addEventListener('input', (e) => {
+        current = parseFloat(e.target.value);
+        updateHUD();
+      });
+
+      document.getElementById('btnElFast60').addEventListener('click', () => {
+        timeSec += 60;
+        updateHUD();
+      });
+
+      document.getElementById('btnElFast300').addEventListener('click', () => {
+        timeSec += 300;
+        updateHUD();
+      });
+
+      document.getElementById('btnResetEl').addEventListener('click', () => {
+        timeSec = 0;
+        bubbles = [];
+        updateHUD();
+      });
+
+      document.getElementById('elSystemSelect').addEventListener('change', (e) => {
+        system = e.target.value;
+        timeSec = 0;
+        bubbles = [];
+        updateHUD();
+      });
+
+      updateHUD();
+    })();
+  
+  </script>
+        
