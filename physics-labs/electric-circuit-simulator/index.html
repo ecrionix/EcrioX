@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Electric Circuit Simulator – Ohm's Law, Series & Parallel Lab | EcrioX</title>
+  <meta name="description" content="Build and analyze DC electric circuits online. Connect batteries, resistors, light bulbs, and switches in series and parallel. Measure current, voltage drops, and power.">
+  <link rel="canonical" href="https://ecriox.com/physics-labs/electric-circuit-simulator/">
+  <!-- Favicon & Brand Icons -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#2563EB">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Interactive Electric Circuit Simulator – Ohm's Law, Series & Parallel Lab | EcrioX">
+  <meta property="og:description" content="Build and analyze DC electric circuits online. Connect batteries, resistors, light bulbs, and switches in series and parallel. Measure current, voltage drops, and power.">
+  <meta property="og:url" content="https://ecriox.com/physics-labs/electric-circuit-simulator/">
+  <meta property="og:site_name" content="EcrioX">
+  <meta property="og:image" content="https://ecriox.com/og-banner.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Interactive Electric Circuit Simulator – Ohm's Law, Series & Parallel Lab | EcrioX">
+  <meta name="twitter:description" content="Build and analyze DC electric circuits online. Connect batteries, resistors, light bulbs, and switches in series and parallel. Measure current, voltage drops, and power.">
+  <meta name="twitter:image" content="https://ecriox.com/og-banner.png">
+
+  <!-- Global Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PQFRBJ9F');
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6672302762343789" crossorigin="anonymous"></script>
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://ecriox.com/physics-labs/electric-circuit-simulator/",
+      "url": "https://ecriox.com/physics-labs/electric-circuit-simulator/",
+      "name": "Interactive Electric Circuit Simulator \u2013 Ohm's Law, Series & Parallel Lab | EcrioX",
+      "description": "Build and analyze DC electric circuits online. Connect batteries, resistors, light bulbs, and switches in series and parallel. Measure current, voltage drops, and power.",
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://ecriox.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Physics Labs",
+            "item": "https://ecriox.com/physics-labs/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Electric Circuit Virtual Laboratory: Ohm's Law & Circuit Analysis",
+            "item": "https://ecriox.com/physics-labs/electric-circuit-simulator/"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Electric Circuit Virtual Laboratory: Ohm's Law & Circuit Analysis",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All modern web browsers",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why do lights in parallel stay bright while lights in series get dimmer as more are added?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In parallel, every light bulb receives the full source voltage, and adding more bulbs does not reduce the voltage across existing bulbs. In series, total resistance increases with each additional bulb, causing circuit current to drop and dividing the source voltage into smaller fractions across each bulb."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between an ammeter and a voltmeter?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An ammeter measures current flowing through a line; it has near-zero internal resistance and must be connected in series. A voltmeter measures electrical potential difference between two points; it has extremely high internal resistance to avoid drawing current and must be connected in parallel."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does a closed switch have resistance?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In an ideal circuit model, a closed switch has zero resistance (acting as an ideal wire), and an open switch has infinite resistance (air gap). Real switches possess negligible contact resistance on the order of milliohms."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+
+  <!-- Theme Initialization: Default to LIGHT MODE -->
+  <script>
+    (function(){
+      try {
+        var t = localStorage.getItem("ecriox_theme_preference");
+        // Default MUST be light mode unless user explicitly selected dark previously
+        if (!t) {
+          t = "light";
+        }
+        document.documentElement.setAttribute("data-theme", t);
+      } catch(e){}
+    })();
+  </script>
+
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/physics-labs.css">
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQFRBJ9F" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- Global Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="brand-logo" aria-label="EcrioX Home">
+        <div class="logo-symbol">E</div>
+        <span>Ecrio<span class="accent-dot">X</span></span>
+      </a>
+
+      <nav class="nav-desktop">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/physics-labs/" class="nav-link active">Physics Labs</a>
+        <a href="/tools/calculators/" class="nav-link">Calculators</a>
+        <a href="/resume-builder/" class="nav-link">Career Studio</a>
+        <a href="/typing-speed-test/" class="nav-link">Typing Arena</a>
+        <a href="/tools/" class="nav-link">All Tools</a>
+        <a href="/about/" class="nav-link">About</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn-icon theme-toggle-btn" aria-label="Toggle color theme" id="themeToggleBtn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <button class="btn-icon mobile-toggle" aria-label="Open mobile menu" aria-expanded="false" id="mobileMenuToggle">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav" id="mobileNavDrawer">
+    <a href="/" class="nav-link">Home</a>
+    <a href="/physics-labs/" class="nav-link active">Physics Labs</a>
+    <a href="/tools/calculators/" class="nav-link">Calculators</a>
+    <a href="/resume-builder/" class="nav-link">Career Studio</a>
+    <a href="/typing-speed-test/" class="nav-link">Typing Arena</a>
+    <a href="/tools/" class="nav-link">All Tools</a>
+    <a href="/about/" class="nav-link">About</a>
+  </div>
+
+  <main class="page-wrapper physics-lab-wrapper">
+    <div class="container">
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb-nav" aria-label="Breadcrumb" style="margin-bottom: 1.5rem;">
+        <a href="/">Home</a>
+        <span class="bc-sep">/</span>
+        <a href="/physics-labs/">Physics Labs</a>
+        <span class="bc-sep">/</span>
+        <span class="bc-current">Electric Circuit Virtual Laboratory: Ohm's Law & Circuit Analysis</span>
+      </nav>
+
+      <!-- Experiment Hero Header -->
+      <header class="lab-hero-header">
+        <span class="lab-badge">&#9883; Electricity & Magnetism Virtual Laboratory</span>
+        <h1 class="lab-hero-title">Electric Circuit Virtual Laboratory: Ohm's Law & Circuit Analysis</h1>
+        <p class="lab-hero-subtitle">Construct and simulate live electrical circuits directly in your browser. Connect DC voltage sources, fixed and variable resistors, glowing incandescent bulbs, switches, and digital meters. Verify Ohm's Law (V = IR) and Kirchhoff's Laws across series and parallel circuit configurations.</p>
+        <div style="display:flex; justify-content:center; gap:1rem; margin-top:0.75rem; font-size:0.85rem; color:var(--text-subtle);">
+          <span>&#9201; Duration: <strong>15 mins</strong></span>
+          <span>&bull;</span>
+          <span>&#127891; Target: <strong>Class 10–12 / Basic Electronics</strong></span>
+        </div>
+      </header>
+
+      <!-- Interactive Simulation Interface -->
+      <div class="sim-workspace-layout">
+        <!-- Canvas Viewport Card -->
+        <div class="sim-viewport-card">
+          <div class="sim-toolbar">
+            <div class="sim-toolbar-title">
+              <span style="display:inline-block; width:10px; height:10px; border-radius:50%; background:var(--color-success);"></span>
+              Live Interactive Simulation
+            </div>
+            <div class="sim-toolbar-actions">
+              <span style="font-size:0.75rem; font-weight:700; color:var(--text-subtle); padding:0.2rem 0.5rem; background:var(--bg-surface); border:1px solid var(--border-color); border-radius:4px;">60 FPS ENGINE</span>
+            </div>
+          </div>
+          <div class="sim-canvas-container">
+            <canvas id="simCanvas" class="sim-canvas"></canvas>
+          </div>
+          <!-- Live Measurement HUD Panel -->
+          <div class="sim-live-hud">
+            
+        <div class="hud-metric"><div class="hud-metric-label">Total Voltage (V)</div><div class="hud-metric-value" id="hudV">12.0<span class="hud-metric-unit">V</span></div></div>
+        <div class="hud-metric"><div class="hud-metric-label">Total Resistance (Req)</div><div class="hud-metric-value" id="hudReq">30.0<span class="hud-metric-unit">&Omega;</span></div></div>
+        <div class="hud-metric"><div class="hud-metric-label">Total Current (I)</div><div class="hud-metric-value" id="hudI">0.40<span class="hud-metric-unit">A</span></div></div>
+        <div class="hud-metric"><div class="hud-metric-label">Bulb Voltage (Vb)</div><div class="hud-metric-value" id="hudVb">4.0<span class="hud-metric-unit">V</span></div></div>
+        <div class="hud-metric"><div class="hud-metric-label">Bulb Power (P)</div><div class="hud-metric-value" id="hudP">1.60<span class="hud-metric-unit">W</span></div></div>
+        <div class="hud-metric"><div class="hud-metric-label">Circuit State</div><div class="hud-metric-value" id="hudState" style="font-size:0.95rem;">Closed</div></div>
+    
+          </div>
+        </div>
+
+        <!-- Controls Card -->
+        <div class="sim-controls-card">
+          <div class="sim-controls-header">
+            <span>Experimental Parameters</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line><line x1="1" y1="14" x2="7" y2="14"></line><line x1="9" y1="8" x2="15" y2="8"></line><line x1="17" y1="16" x2="23" y2="16"></line></svg>
+          </div>
+          
+        <div class="control-group">
+          <div class="control-label-row"><span class="control-label">Circuit Topology</span></div>
+          <select class="sim-select-input" id="inTopology">
+            <option value="series" selected>Series Circuit (R1 + Bulb)</option>
+            <option value="parallel">Parallel Circuit (R1 || Bulb)</option>
+          </select>
+        </div>
+        <div class="control-group">
+          <div class="control-label-row"><span class="control-label">DC Source Voltage (V)</span><span class="control-value-badge" id="valVolt">12 V</span></div>
+          <input type="range" class="sim-range-input" id="inVolt" min="2" max="24" step="1" value="12">
+        </div>
+        <div class="control-group">
+          <div class="control-label-row"><span class="control-label">Resistor 1 (R1)</span><span class="control-value-badge" id="valR1">20 &Omega;</span></div>
+          <input type="range" class="sim-range-input" id="inR1" min="5" max="100" step="5" value="20">
+        </div>
+        <div class="control-group">
+          <div class="control-label-row"><span class="control-label">Bulb Resistance</span><span class="control-value-badge" id="valRbulb">10 &Omega;</span></div>
+          <input type="range" class="sim-range-input" id="inRbulb" min="5" max="50" step="5" value="10">
+        </div>
+        <div class="sim-btn-group">
+          <button type="button" class="sim-btn sim-btn-primary" id="btnSwitch">Toggle Switch (Open/Close)</button>
+          <button type="button" class="sim-btn sim-btn-secondary" id="btnReset">Reset Defaults</button>
+        </div>
+    
+        </div>
+      </div>
+
+      <!-- Real-Time Graph Visualization -->
+      <div class="sim-graph-card">
+        <div class="sim-graph-header">
+          <div class="sim-graph-title">&#128200; Real-Time Data &amp; Graph Visualization</div>
+          <div style="font-size:0.85rem; color:var(--text-subtle);">Kinematic Tracking at 60 Hz</div>
+        </div>
+        <div class="graph-canvas-container">
+          <canvas id="graphCanvas" class="graph-canvas"></canvas>
+        </div>
+      </div>
+
+      <!-- Educational Content Section -->
+      <div class="edu-content-container">
+        <!-- Learning Objectives -->
+        <section class="edu-section">
+          <h2>&#127919; Learning Objectives</h2>
+          <p>By conducting this interactive experiment, students and educators will achieve the following pedagogical goals:</p>
+          <ul>
+            <li>Verify Ohm's Law: Current flowing through a conductor is directly proportional to voltage and inversely proportional to resistance.</li><li>Compare equivalent resistance, current, and voltage distribution in series versus parallel combinations.</li><li>Calculate power dissipation and observe how filament brightness scales with electrical power (P = I²R).</li><li>Use virtual ammeters and voltmeters to measure live circuit parameters without disrupting operation.</li>
+          </ul>
+        </section>
+
+        <!-- Mathematical Equations -->
+        <section class="edu-section">
+          <h2>&#9874; Mathematical Equations &amp; Theoretical Formulas</h2>
+          <p>The simulation models the following governing physical relationships:</p>
+          <div class="formula-callout">
+            <div class="formula-main">V = I \cdot R, \quad R_{\text{series}} = R_1 + R_2, \quad \frac{1}{R_{\text{parallel}}} = \frac{1}{R_1} + \frac{1}{R_2}, \quad P = V \cdot I = I^2 R</div>
+            <p class="formula-desc">In series circuits, current is identical across components while voltages add. In parallel circuits, voltage is identical across branches while currents divide.</p>
+          </div>
+        </section>
+
+        <!-- Step-by-Step Procedure -->
+        <section class="edu-section">
+          <h2>&#128221; Step-by-Step Laboratory Procedure</h2>
+          <ol>
+            <li><strong>Step 1:</strong> Select 'Series Circuit' mode and set DC battery voltage to 12 V.</li><li><strong>Step 2:</strong> Set Resistor 1 to 20 Ω and Resistor 2 (Bulb) to 10 Ω.</li><li><strong>Step 3:</strong> Close the circuit switch and read total current I = V / (R1 + R2) = 12 / 30 = 0.40 A.</li><li><strong>Step 4:</strong> Inspect the voltage across the bulb (V = 0.40 · 10 = 4.0 V) and note bulb brightness.</li><li><strong>Step 5:</strong> Switch to 'Parallel Circuit' mode with the same component values and observe that total current jumps to 1.80 A because branch voltage is now the full 12 V.</li>
+          </ol>
+        </section>
+
+        <!-- In-Depth Scientific Theory -->
+        <section class="edu-section">
+          <h2>&#128214; Scientific Explanation &amp; Physics Theory</h2>
+          <p>Electric current is the continuous drift of charge carriers (electrons) driven by an electromotive force (potential difference V). Georg Simon Ohm established that for ohmic conductors at constant temperature, current I is proportional to potential difference: V = IR. In a series circuit, charge must flow through every component sequentially; thus total resistance equals the sum of individual resistances, and failure of any single component breaks the entire circuit. In a parallel circuit, each branch connects independently across the common voltage rails; adding parallel branches decreases total equivalent resistance and increases total current drawn from the power supply.</p>
+        </section>
+
+        <!-- Real-World Applications -->
+        <section class="edu-section">
+          <h2>&#127758; Real-World Engineering Applications</h2>
+          <ul>
+            <li>Household electrical wiring: All domestic appliances are connected in parallel so each receives full 230V/120V mains voltage and can operate independently.</li><li>Automotive electronics: Headlight circuits wired in parallel so if one bulb filament burns out, the opposite headlight stays illuminated.</li><li>Electronic sensors: Voltage divider networks using thermistors or photoresistors to convert environmental changes into measurable voltage signals.</li><li>Power grid transmission: Step-up and step-down transformer networks minimizing I²R transmission power line heating losses.</li>
+          </ul>
+        </section>
+
+        <!-- Example Calculations -->
+        <section class="edu-section">
+          <h2>&#128161; Worked Numerical Example</h2>
+          <div class="calc-example-box">
+            <div class="calc-example-title">Practice Problem:</div>
+            <p style="margin-bottom:0.75rem;">A 24 V power supply is connected to two resistors: R1 = 60 Ω and R2 = 40 Ω. Calculate total current, individual voltage drops, and total power consumed if they are connected: (a) In series, (b) In parallel.</p>
+            <div class="calc-example-title">Step-by-Step Analytical Solution:</div>
+            <pre style="white-space:pre-wrap; font-family:var(--font-mono); font-size:0.9rem; color:var(--text-main); line-height:1.6; margin:0;">1. Series Connection:
+- R_eq = R1 + R2 = 60 + 40 = 100 Ω.
+- Total Current: I = V / R_eq = 24 / 100 = 0.24 A.
+- Voltage drops: V1 = I · R1 = 0.24 · 60 = 14.4 V; V2 = I · R2 = 0.24 · 40 = 9.6 V (14.4 + 9.6 = 24 V).
+- Power: P = V · I = 24 · 0.24 = 5.76 Watts.
+2. Parallel Connection:
+- 1/R_eq = 1/60 + 1/40 = (2 + 3)/120 = 5/120 ⇒ R_eq = 24 Ω.
+- Branch Currents: I1 = 24/60 = 0.40 A; I2 = 24/40 = 0.60 A.
+- Total Current: I_total = I1 + I2 = 0.40 + 0.60 = 1.00 A.
+- Power: P = V · I = 24 · 1.00 = 24.0 Watts (over 4 times more power than series!).</pre>
+          </div>
+        </section>
+
+        <!-- Frequently Asked Questions -->
+        <section class="edu-section">
+          <h2>&#10067; Frequently Asked Questions</h2>
+          <div class="physics-faq-list">
+            
+        <div class="physics-faq-item">
+          <button type="button" class="physics-faq-trigger">
+            <span>Why do lights in parallel stay bright while lights in series get dimmer as more are added?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="physics-faq-answer">
+            In parallel, every light bulb receives the full source voltage, and adding more bulbs does not reduce the voltage across existing bulbs. In series, total resistance increases with each additional bulb, causing circuit current to drop and dividing the source voltage into smaller fractions across each bulb.
+          </div>
+        </div>
+        
+        <div class="physics-faq-item">
+          <button type="button" class="physics-faq-trigger">
+            <span>What is the difference between an ammeter and a voltmeter?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="physics-faq-answer">
+            An ammeter measures current flowing through a line; it has near-zero internal resistance and must be connected in series. A voltmeter measures electrical potential difference between two points; it has extremely high internal resistance to avoid drawing current and must be connected in parallel.
+          </div>
+        </div>
+        
+        <div class="physics-faq-item">
+          <button type="button" class="physics-faq-trigger">
+            <span>Does a closed switch have resistance?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="physics-faq-answer">
+            In an ideal circuit model, a closed switch has zero resistance (acting as an ideal wire), and an open switch has infinite resistance (air gap). Real switches possess negligible contact resistance on the order of milliohms.
+          </div>
+        </div>
+        
+          </div>
+        </section>
+
+        <!-- Related Experiments -->
+        <section class="edu-section">
+          <h2>&#128279; Related Physics Virtual Experiments</h2>
+          <div class="related-experiments-grid">
+            
+        <a href="/physics-labs/projectile-motion-simulator/" class="related-exp-card">
+          <div class="exp-category-pill" style="align-self:flex-start;">Mechanics</div>
+          <div class="related-exp-title">Projectile Motion Virtual Lab & Parabolic Flight Simulator</div>
+          <div class="related-exp-sub">12 mins &bull; Class 11 / CBSE / AP Physics</div>
+        </a>
+        
+        <a href="/physics-labs/newtons-laws-simulator/" class="related-exp-card">
+          <div class="exp-category-pill" style="align-self:flex-start;">Mechanics</div>
+          <div class="related-exp-title">Newton's Laws of Motion Virtual Lab: Force, Mass & Friction</div>
+          <div class="related-exp-sub">10 mins &bull; Class 9–11 / High School Physics</div>
+        </a>
+        
+        <a href="/physics-labs/simple-pendulum-experiment/" class="related-exp-card">
+          <div class="exp-category-pill" style="align-self:flex-start;">Mechanics</div>
+          <div class="related-exp-title">Simple Pendulum Virtual Laboratory: Period & Harmonic Oscillation</div>
+          <div class="related-exp-sub">10 mins &bull; Class 10–12 / College Physics</div>
+        </a>
+        
+        <a href="/physics-labs/collision-simulator/" class="related-exp-card">
+          <div class="exp-category-pill" style="align-self:flex-start;">Mechanics</div>
+          <div class="related-exp-title">Collision Virtual Laboratory: Linear Momentum & Energy Conservation</div>
+          <div class="related-exp-sub">12 mins &bull; Class 11 / CBSE / AP Physics 1</div>
+        </a>
+        
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <script src="/js/physics-engine.js"></script>
+  <script>
+    
+      (function() {
+        const canvas = document.getElementById('simCanvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        const graph = PhysicsEngine.createGraph('graphCanvas', {
+          xLabel: 'Resistance (Ω)', yLabel: 'Current (A)', xMin: 5, xMax: 100, yMin: 0, yMax: 3.0,
+          series: [{ name: 'Current I(R) = V/R', color: '#2563EB' }]
+        });
+
+        let topology = 'series';
+        let V = 12;
+        let R1 = 20;
+        let Rbulb = 10;
+        let isClosed = true;
+        let electronOffset = 0;
+
+        function updateGraphData() {
+          if (!graph) return;
+          graph.clear();
+          for (let r = 5; r <= 100; r += 5) {
+            graph.addPoint(0, r, V / r);
+          }
+        }
+        updateGraphData();
+
+        function draw() {
+          const colors = PhysicsEngine.getThemeColors();
+          const dpr = window.devicePixelRatio || 1;
+          const rect = canvas.getBoundingClientRect();
+          canvas.width = rect.width * dpr;
+          canvas.height = rect.height * dpr;
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+          const w = rect.width;
+          const h = rect.height;
+          ctx.clearRect(0, 0, w, h);
+
+          // Calculations
+          let Req = 0;
+          let Itotal = 0;
+          let Vb = 0;
+          let Ibulb = 0;
+
+          if (isClosed) {
+            if (topology === 'series') {
+              Req = R1 + Rbulb;
+              Itotal = V / Req;
+              Ibulb = Itotal;
+              Vb = Ibulb * Rbulb;
+            } else {
+              Req = (R1 * Rbulb) / (R1 + Rbulb);
+              Itotal = V / Req;
+              Ibulb = V / Rbulb;
+              Vb = V;
+            }
+          }
+
+          const power = Ibulb * Ibulb * Rbulb;
+
+          // Schematic Wiring
+          const padX = 80;
+          const topY = 80;
+          const botY = h - 80;
+          const leftX = padX;
+          const rightX = w - padX;
+
+          ctx.strokeStyle = colors.textMuted;
+          ctx.lineWidth = 3;
+
+          // Main loop outline
+          ctx.beginPath();
+          ctx.moveTo(leftX, topY);
+          ctx.lineTo(rightX, topY);
+          ctx.lineTo(rightX, botY);
+          ctx.lineTo(leftX, botY);
+          ctx.lineTo(leftX, topY);
+          ctx.stroke();
+
+          // Battery on Left side
+          const midY = (topY + botY) / 2;
+          ctx.fillStyle = colors.bg;
+          ctx.fillRect(leftX - 8, midY - 25, 16, 50);
+          ctx.fillStyle = colors.danger;
+          ctx.fillRect(leftX - 16, midY - 15, 32, 5); // Long positive plate
+          ctx.fillStyle = colors.textMain;
+          ctx.fillRect(leftX - 10, midY + 10, 20, 5); // Short negative plate
+          ctx.font = 'bold 12px var(--font-sans)';
+          ctx.textAlign = 'right';
+          ctx.fillText('+' + V + 'V', leftX - 22, midY - 10);
+
+          // Switch on Top wire
+          const switchX = leftX + (rightX - leftX) * 0.3;
+          ctx.fillStyle = colors.bg;
+          ctx.fillRect(switchX - 20, topY - 10, 40, 20);
+          ctx.strokeStyle = colors.primary;
+          ctx.lineWidth = 3;
+          ctx.beginPath();
+          ctx.arc(switchX - 15, topY, 4, 0, Math.PI*2);
+          ctx.arc(switchX + 15, topY, 4, 0, Math.PI*2);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(switchX - 15, topY);
+          if (isClosed) {
+            ctx.lineTo(switchX + 15, topY);
+          } else {
+            ctx.lineTo(switchX + 10, topY - 18);
+          }
+          ctx.stroke();
+
+          // Resistor R1
+          const r1X = leftX + (rightX - leftX) * 0.7;
+          ctx.fillStyle = colors.bg;
+          ctx.fillRect(r1X - 25, topY - 12, 50, 24);
+          ctx.strokeStyle = colors.primary;
+          ctx.strokeRect(r1X - 22, topY - 10, 44, 20);
+          ctx.fillStyle = colors.textMain;
+          ctx.textAlign = 'center';
+          ctx.fillText(R1 + ' Ω', r1X, topY - 16);
+
+          // Light Bulb on Right side
+          const bulbY = (topY + botY) / 2;
+          ctx.fillStyle = colors.bg;
+          ctx.fillRect(rightX - 20, bulbY - 25, 40, 50);
+
+          // Bulb Glow
+          if (isClosed && power > 0.05) {
+            const glowR = Math.min(60, 15 + power * 4);
+            const bGrad = ctx.createRadialGradient(rightX, bulbY, 5, rightX, bulbY, glowR);
+            bGrad.addColorStop(0, 'rgba(251, 191, 36, 0.9)');
+            bGrad.addColorStop(1, 'rgba(251, 191, 36, 0)');
+            ctx.fillStyle = bGrad;
+            ctx.beginPath();
+            ctx.arc(rightX, bulbY, glowR, 0, Math.PI*2);
+            ctx.fill();
+          }
+
+          // Bulb Glass & Filament
+          ctx.strokeStyle = isClosed && power > 0.1 ? '#F59E0B' : colors.textMuted;
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.arc(rightX, bulbY, 16, 0, Math.PI*2);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(rightX - 6, bulbY + 12);
+          ctx.lineTo(rightX, bulbY - 6);
+          ctx.lineTo(rightX + 6, bulbY + 12);
+          ctx.stroke();
+          ctx.fillStyle = colors.textMain;
+          ctx.fillText(Rbulb + ' Ω (Bulb)', rightX + 45, bulbY);
+
+          // Animate electron dots along wire
+          if (isClosed && Itotal > 0.01) {
+            electronOffset = (electronOffset + Itotal * 2.5) % 30;
+            ctx.fillStyle = '#60A5FA';
+            const numDots = 24;
+            for (let i = 0; i < numDots; i++) {
+              const frac = (i * 30 + electronOffset) / (numDots * 30);
+              const perim = 2 * (rightX - leftX) + 2 * (botY - topY);
+              const dist = frac * perim;
+              let dx = 0, dy = 0;
+              if (dist < (rightX - leftX)) {
+                dx = rightX - dist; dy = topY; // Top wire (flowing to left)
+              } else if (dist < (rightX - leftX) + (botY - topY)) {
+                dx = leftX; dy = topY + (dist - (rightX - leftX)); // Left wire
+              } else if (dist < 2 * (rightX - leftX) + (botY - topY)) {
+                dx = leftX + (dist - (rightX - leftX) - (botY - topY)); dy = botY; // Bottom wire
+              } else {
+                dx = rightX; dy = botY - (dist - 2 * (rightX - leftX) - (botY - topY)); // Right wire
+              }
+              ctx.beginPath();
+              ctx.arc(dx, dy, 3, 0, Math.PI*2);
+              ctx.fill();
+            }
+          }
+
+          // HUD Updates
+          document.getElementById('hudV').innerHTML = V.toFixed(1) + '<span class="hud-metric-unit">V</span>';
+          document.getElementById('hudReq').innerHTML = Req.toFixed(1) + '<span class="hud-metric-unit">&Omega;</span>';
+          document.getElementById('hudI').innerHTML = Itotal.toFixed(2) + '<span class="hud-metric-unit">A</span>';
+          document.getElementById('hudVb').innerHTML = Vb.toFixed(1) + '<span class="hud-metric-unit">V</span>';
+          document.getElementById('hudP').innerHTML = power.toFixed(2) + '<span class="hud-metric-unit">W</span>';
+          document.getElementById('hudState').textContent = isClosed ? 'Closed (Active)' : 'Open (No Current)';
+
+          if (graph) graph.draw();
+        }
+
+        function loop() {
+          draw();
+          requestAnimationFrame(loop);
+        }
+        requestAnimationFrame(loop);
+
+        document.getElementById('inTopology').addEventListener('change', (e) => {
+          topology = e.target.value;
+        });
+        document.getElementById('inVolt').addEventListener('input', (e) => {
+          V = Number(e.target.value);
+          document.getElementById('valVolt').textContent = V + ' V';
+          updateGraphData();
+        });
+        document.getElementById('inR1').addEventListener('input', (e) => {
+          R1 = Number(e.target.value);
+          document.getElementById('valR1').textContent = R1 + ' Ω';
+        });
+        document.getElementById('inRbulb').addEventListener('input', (e) => {
+          Rbulb = Number(e.target.value);
+          document.getElementById('valRbulb').textContent = Rbulb + ' Ω';
+        });
+        document.getElementById('btnSwitch').addEventListener('click', () => {
+          isClosed = !isClosed;
+        });
+        document.getElementById('btnReset').addEventListener('click', () => {
+          V = 12; R1 = 20; Rbulb = 10; isClosed = true; topology = 'series';
+          document.getElementById('inVolt').value = 12;
+          document.getElementById('inR1').value = 20;
+          document.getElementById('inRbulb').value = 10;
+          document.getElementById('inTopology').value = 'series';
+          document.getElementById('valVolt').textContent = '12 V';
+          document.getElementById('valR1').textContent = '20 Ω';
+          document.getElementById('valRbulb').textContent = '10 Ω';
+          updateGraphData();
+        });
+
+        window.addEventListener('resize', draw);
+        window.addEventListener('themechange', draw);
+      })();
+    
+  </script>
+
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="/" class="brand-logo">
+            <div class="logo-symbol">E</div>
+            <span>Ecrio<span class="accent-dot">X</span></span>
+          </a>
+          <p>One Platform. Endless Possibilities. Free, mathematically rigorous browser-based physics virtual laboratories and digital productivity utilities.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Physics Labs</h4>
+          <ul class="footer-links">
+            <li><a href="/physics-labs/">All Physics Labs</a></li>
+            <li><a href="/physics-labs/projectile-motion-simulator/">Projectile Motion</a></li>
+            <li><a href="/physics-labs/electric-circuit-simulator/">Circuit Simulator</a></li>
+            <li><a href="/physics-labs/ray-optics-simulator/">Ray Optics Lab</a></li>
+            <li><a href="/physics-labs/simple-pendulum-experiment/">Simple Pendulum</a></li>
+            <li><a href="/physics-labs/photoelectric-effect-simulator/">Photoelectric Effect</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Product Suite</h4>
+          <ul class="footer-links">
+            <li><a href="/tools/">All Tools Directory</a></li>
+            <li><a href="/categories/">Tool Categories</a></li>
+            <li><a href="/pdf-compressor/">PDF Compressor</a></li>
+            <li><a href="/resume-builder/">ATS Resume Builder</a></li>
+            <li><a href="/typing-speed-test/">Typing Arena</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company & Legal</h4>
+          <ul class="footer-links">
+            <li><a href="/about/">About EcrioX</a></li>
+            <li><a href="/contact/">Contact Support</a></li>
+            <li><a href="/privacy/">Privacy Policy</a></li>
+            <li><a href="/terms/">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 EcrioX. All rights reserved. Zero client downloads required — 100% private in-browser educational simulations.</p>
+        <p>Canonical Domain: <a href="https://ecriox.com/" style="color: var(--color-primary);">ecriox.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/physics-engine.js"></script>
+  <script>
+    // Theme toggle listener
+    const themeBtn = document.getElementById('themeToggleBtn');
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => {
+        const cur = document.documentElement.getAttribute('data-theme') || 'light';
+        const nxt = cur === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', nxt);
+        try { localStorage.setItem('ecriox_theme_preference', nxt); } catch(e){}
+        window.dispatchEvent(new Event('themechange'));
+      });
+    }
+    // Mobile navigation drawer toggle
+    const mobToggle = document.getElementById('mobileMenuToggle');
+    const mobNav = document.getElementById('mobileNavDrawer');
+    if (mobToggle && mobNav) {
+      mobToggle.addEventListener('click', () => {
+        const isOpen = mobNav.classList.toggle('open');
+        mobToggle.setAttribute('aria-expanded', isOpen);
+      });
+    }
+    // FAQ Accordion listener
+    document.querySelectorAll('.physics-faq-trigger').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.parentElement.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>

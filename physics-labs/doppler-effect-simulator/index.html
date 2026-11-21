@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doppler Effect Simulator Online – Sound Wavefronts & Pitch Shift Lab | EcrioX</title>
+  <meta name="description" content="Simulate the Doppler effect for sound waves online. Adjust source velocity, observer motion, and listen to real-time acoustic pitch shifts and Mach cone shockwaves.">
+  <link rel="canonical" href="https://ecriox.com/physics-labs/doppler-effect-simulator/">
+  <!-- Favicon & Brand Icons -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#2563EB">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Doppler Effect Simulator Online – Sound Wavefronts & Pitch Shift Lab | EcrioX">
+  <meta property="og:description" content="Simulate the Doppler effect for sound waves online. Adjust source velocity, observer motion, and listen to real-time acoustic pitch shifts and Mach cone shockwaves.">
+  <meta property="og:url" content="https://ecriox.com/physics-labs/doppler-effect-simulator/">
+  <meta property="og:site_name" content="EcrioX">
+  <meta property="og:image" content="https://ecriox.com/og-banner.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Doppler Effect Simulator Online – Sound Wavefronts & Pitch Shift Lab | EcrioX">
+  <meta name="twitter:description" content="Simulate the Doppler effect for sound waves online. Adjust source velocity, observer motion, and listen to real-time acoustic pitch shifts and Mach cone shockwaves.">
+  <meta name="twitter:image" content="https://ecriox.com/og-banner.png">
+
+  <!-- Global Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PQFRBJ9F');
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6672302762343789" crossorigin="anonymous"></script>
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://ecriox.com/physics-labs/doppler-effect-simulator/",
+      "url": "https://ecriox.com/physics-labs/doppler-effect-simulator/",
+      "name": "Doppler Effect Simulator Online \u2013 Sound Wavefronts & Pitch Shift Lab | EcrioX",
+      "description": "Simulate the Doppler effect for sound waves online. Adjust source velocity, observer motion, and listen to real-time acoustic pitch shifts and Mach cone shockwaves.",
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://ecriox.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Physics Labs",
+            "item": "https://ecriox.com/physics-labs/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Doppler Effect Virtual Lab: Sound Wavefronts & Frequency Shift",
+            "item": "https://ecriox.com/physics-labs/doppler-effect-simulator/"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Doppler Effect Virtual Lab: Sound Wavefronts & Frequency Shift",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All modern web browsers",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does the sound source itself emit a different frequency when moving?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The source continues vibrating and emitting sound at its natural frequency f0 without any change. The frequency shift exists entirely due to the relative motion between the wavefronts in the medium and the observer's ear detecting those wavefronts."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens when a source travels faster than the speed of sound?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "When v_source > vs (supersonic flight), the source outruns its own sound waves. The spherical wavefronts overlap along a common conical envelope called a Mach cone with half-angle sin(\u03bc) = vs / v_source. Across this cone, air pressure changes abruptly, producing a loud sonic boom."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does the Doppler effect apply to light waves in astronomy?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Because light is an electromagnetic wave, relative motion between stars and Earth shifts spectral absorption lines. Stars moving toward Earth exhibit a blueshift (shorter wavelength, higher frequency), while galaxies moving away exhibit a redshift (longer wavelength), proving universal cosmic expansion."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+
+  <!-- Theme Initialization: Default to LIGHT MODE -->
+  <script>
+    (function(){
+      try {
+        var t = localStorage.getItem("ecriox_theme_preference");
+        // Default MUST be light mode unless user explicitly selected dark previously
+        if (!t) {
+          t = "light";
+        }
+        document.documentElement.setAttribute("data-theme", t);
+      } catch(e){}
+    })();
+  </script>
+
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/physics-labs.css">
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQFRBJ9F" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- Global Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="brand-logo" aria-label="EcrioX Home">
+        <div class="logo-symbol">E</div>
+        <span>Ecrio<span class="accent-dot">X</span></span>
+      </a>
+
+      <nav class="nav-desktop">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/physics-labs/" class="nav-link active">Physics Labs</a>
+        <a href="/tools/calculators/" class="nav-link">Calculators</a>
+        <a href="/resume-builder/" class="nav-link">Career Studio</a>
+        <a href="/typing-speed-test/" class="nav-link">Typing Arena</a>
+        <a href="/tools/" class="nav-link">All Tools</a>
+        <a href="/about/" class="nav-link">About</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn-icon theme-toggle-btn" aria-label="Toggle color theme" id="themeToggleBtn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <button class="btn-icon mobile-toggle" aria-label="Open mobile menu" aria-expanded="false" id="mobileMenuToggle">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav" id="mobileNavDrawer">
+    <a href="/" class="nav-link">Home</a>
+    <a href="/physics-labs/" class="nav-link active">Physics Labs</a>
+    <a href="/tools/calculators/" class="nav-link">Calculators</a>
+    <a href="/resume-builder/" class="nav-link">Career Studio</a>
+    <a href="/typing-speed-test/" class="nav-link">Typing Arena</a>
+    <a href="/tools/" class="nav-link">All Tools</a>
+    <a href="/about/" class="nav-link">About</a>
+  </div>
+
+  <main class="page-wrapper physics-lab-wrapper">
+    <div class="container">
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb-nav" aria-label="Breadcrumb" style="margin-bottom: 1.5rem;">
+        <a href="/">Home</a>
+        <span class="bc-sep">/</span>
+        <a href="/physics-labs/">Physics Labs</a>
+        <span class="bc-sep">/</span>
+        <span class="bc-current">Doppler Effect Virtual Lab: Sound Wavefronts & Frequency Shift</span>
+      </nav>
+
+      <!-- Experiment Hero Header -->
+      <header class="lab-hero-header">
+        <span class="lab-badge">&#9883; Waves & Sound Virtual Laboratory</span>
+        <h1 class="lab-hero-title">Doppler Effect Virtual Lab: Sound Wavefronts & Frequency Shift</h1>
+        <p class="lab-hero-subtitle">Investigate the Doppler effect for acoustic waves in air. Observe circular sound wavefronts bunching together in front of a moving sound source and stretching apart behind it. Calculate observed frequencies, explore supersonic speeds and shockwave Mach cones, and synthesize the actual shifted audio pitch.</p>
+        <div style="display:flex; justify-content:center; gap:1rem; margin-top:0.75rem; font-size:0.85rem; color:var(--text-subtle);">
+          <span>&#9201; Duration: <strong>12 mins</strong></span>
+          <span>&bull;</span>
+          <span>&#127891; Target: <strong>Class 11–12 / College Physics</strong></span>
+        </div>
+      </header>
+
+      <!-- Interactive Simulation Interface -->
+      <div class="sim-workspace-layout">
+        <!-- Canvas Viewport Card -->
+        <div class="sim-viewport-card">
+          <div class="sim-toolbar">
+            <div class="sim-toolbar-title">
+              <span style="display:inline-block; width:10px; height:10px; border-radius:50%; background:var(--color-success);"></span>
+              Live Interactive Simulation
+            </div>
+            <div class="sim-toolbar-actions">
+              <span style="font-size:0.75rem; font-weight:700; color:var(--text-subtle); padding:0.2rem 0.5rem; background:var(--bg-surface); border:1px solid var(--border-color); border-radius:4px;">60 FPS ENGINE</span>
+            </div>
+          </div>
+          <div class="sim-canvas-container">
+            <canvas id="simCanvas" class="sim-canvas"></canvas>
+          </div>
+          <!-- Live Measurement HUD Panel -->
+          <div class="sim-live-hud">
+            
+        <div class="hud-metric"><div class="hud-metric-label">Source Frequency (f0)</div><div class="hud-metric-value" id="hudF0">440<span class="hud-metric-unit">Hz</span></div></div>
+        <div class="hud-metric"><div class="hud-metric-label">Observed Frequency (f')</div><div class="hud-metric-value" id="hudFprime">550<span class="hud-metric-unit">Hz</span></div></div>
+        <div class="hud-metric"><div class="hud-metric-label">Frequency Shift (&Delta;f)</div><div class="hud-metric-value" id="hudDeltaF">+110<span class="hud-metric-unit">Hz</span></div></div>
+        <div class="hud-metric"><div class="hud-metric-label">Source Velocity</div><div class="hud-metric-value" id="hudVs">68<span class="hud-metric-unit">m/s</span></div></div>
+        <div class="hud-metric"><div class="hud-metric-label">Mach Number</div><div class="hud-metric-value" id="hudMach">0.20</div></div>
+        <div class="hud-metric"><div class="hud-metric-label">Acoustic State</div><div class="hud-metric-value" id="hudState" style="font-size:0.95rem;">Approaching</div></div>
+    
+          </div>
+        </div>
+
+        <!-- Controls Card -->
+        <div class="sim-controls-card">
+          <div class="sim-controls-header">
+            <span>Experimental Parameters</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line><line x1="1" y1="14" x2="7" y2="14"></line><line x1="9" y1="8" x2="15" y2="8"></line><line x1="17" y1="16" x2="23" y2="16"></line></svg>
+          </div>
+          
+        <div class="control-group">
+          <div class="control-label-row"><span class="control-label">Source Speed (vs)</span><span class="control-value-badge" id="valVs">68 m/s</span></div>
+          <input type="range" class="sim-range-input" id="inVs" min="0" max="380" step="10" value="68">
+        </div>
+        <div class="control-group">
+          <div class="control-label-row"><span class="control-label">Source Frequency (f0)</span><span class="control-value-badge" id="valF0">440 Hz</span></div>
+          <input type="range" class="sim-range-input" id="inF0" min="200" max="800" step="20" value="440">
+        </div>
+        <div class="control-group">
+          <div class="control-label-row"><span class="control-label">Motion Scenario</span></div>
+          <select class="sim-select-input" id="inScenario">
+            <option value="subsonic" selected>Subsonic Approach &amp; Recede (vs &lt; c)</option>
+            <option value="mach1">Mach 1.0 Sonic Barrier (vs = c)</option>
+            <option value="supersonic">Supersonic Mach Cone (vs &gt; c)</option>
+          </select>
+        </div>
+        <div class="sim-btn-group">
+          <button type="button" class="sim-btn sim-btn-primary" id="btnRestart">&#9654; Restart Pass</button>
+          <button type="button" class="sim-btn sim-btn-secondary" id="btnAudioToggle">&#128266; Audio Tone</button>
+        </div>
+    
+        </div>
+      </div>
+
+      <!-- Real-Time Graph Visualization -->
+      <div class="sim-graph-card">
+        <div class="sim-graph-header">
+          <div class="sim-graph-title">&#128200; Real-Time Data &amp; Graph Visualization</div>
+          <div style="font-size:0.85rem; color:var(--text-subtle);">Kinematic Tracking at 60 Hz</div>
+        </div>
+        <div class="graph-canvas-container">
+          <canvas id="graphCanvas" class="graph-canvas"></canvas>
+        </div>
+      </div>
+
+      <!-- Educational Content Section -->
+      <div class="edu-content-container">
+        <!-- Learning Objectives -->
+        <section class="edu-section">
+          <h2>&#127919; Learning Objectives</h2>
+          <p>By conducting this interactive experiment, students and educators will achieve the following pedagogical goals:</p>
+          <ul>
+            <li>Demonstrate why perceived frequency increases as a sound source approaches an observer (wavefront compression).</li><li>Demonstrate why perceived frequency drops as the sound source recedes from an observer (wavefront rarefaction).</li><li>Calculate observed frequency for moving source, moving observer, and combined motion scenarios.</li><li>Visualize the sonic barrier and Mach cone angle when source velocity equals or exceeds the speed of sound (v ≥ vs).</li>
+          </ul>
+        </section>
+
+        <!-- Mathematical Equations -->
+        <section class="edu-section">
+          <h2>&#9874; Mathematical Equations &amp; Theoretical Formulas</h2>
+          <p>The simulation models the following governing physical relationships:</p>
+          <div class="formula-callout">
+            <div class="formula-main">f' = f_0 \left( \frac{v_s \pm v_{\text{obs}}}{v_s \mp v_{\text{source}}} \right), \quad \sin(\mu) = \frac{v_s}{v_{\text{source}}} \; [\text{Mach Cone}]</div>
+            <p class="formula-desc">vs is the speed of sound in the medium (343 m/s in air at 20°C). Upper signs apply when moving toward one another (frequency increases); lower signs apply when moving away (frequency decreases).</p>
+          </div>
+        </section>
+
+        <!-- Step-by-Step Procedure -->
+        <section class="edu-section">
+          <h2>&#128221; Step-by-Step Laboratory Procedure</h2>
+          <ol>
+            <li><strong>Step 1:</strong> Set the sound source frequency f0 = 440 Hz (Concert A) and speed of sound vs = 340 m/s.</li><li><strong>Step 2:</strong> Place the observer in the center and set the source speed to 68 m/s (approx 245 km/h, moving left to right).</li><li><strong>Step 3:</strong> Click 'Start Simulation' and observe the circular wavefronts compressing ahead of the source and expanding behind.</li><li><strong>Step 4:</strong> Verify that as the source approaches, the observed frequency rises to f' = 440 · [340 / (340 - 68)] = 440 · (340 / 272) = 550 Hz.</li><li><strong>Step 5:</strong> Observe the sudden pitch drop to f' = 440 · [340 / (340 + 68)] = 440 · (340 / 408) ≈ 367 Hz once the source passes the observer.</li><li><strong>Step 6:</strong> Increase source speed to 340 m/s (Mach 1.0) to observe wavefronts stacking into a shockwave.</li>
+          </ol>
+        </section>
+
+        <!-- In-Depth Scientific Theory -->
+        <section class="edu-section">
+          <h2>&#128214; Scientific Explanation &amp; Physics Theory</h2>
+          <p>Named after Austrian physicist Christian Doppler, the Doppler effect is the change in frequency or wavelength of a wave in relation to an observer moving relative to the wave source. As a sound source moves through stationary air while emitting periodic pressure pulses, each successive wavefront is emitted from a position closer to the preceding wavefront in the direction of motion. The effective wavelength in front is shortened to λ' = (vs - v_source)/f0, resulting in a higher perceived pitch. Behind the source, wavefronts are spaced further apart (λ' = (vs + v_source)/f0), lowering the perceived pitch. When source speed matches or exceeds sound speed, wavefronts construct a constructive conical pressure wave (Mach cone) experienced on the ground as a sonic boom.</p>
+        </section>
+
+        <!-- Real-World Applications -->
+        <section class="edu-section">
+          <h2>&#127758; Real-World Engineering Applications</h2>
+          <ul>
+            <li>Police radar and lidar speed traps: Measuring frequency shifts of reflected electromagnetic radio waves to detect speeding vehicles.</li><li>Medical Doppler echocardiography: Measuring blood flow velocity and detecting cardiac valve leaks non-invasively.</li><li>Astrophysical redshift: Discovering the expansion of the universe and cosmic Big Bang through the redshift of light from receding distant galaxies.</li><li>Aviation weather radar: Detecting rotating mesocyclones and tornadoes in storm systems via radar frequency shifts.</li>
+          </ul>
+        </section>
+
+        <!-- Example Calculations -->
+        <section class="edu-section">
+          <h2>&#128161; Worked Numerical Example</h2>
+          <div class="calc-example-box">
+            <div class="calc-example-title">Practice Problem:</div>
+            <p style="margin-bottom:0.75rem;">An ambulance emitting an 800 Hz siren travels at 34 m/s toward a stationary pedestrian on a sidewalk. The speed of sound in air is 340 m/s. Calculate: (a) Observed frequency as the ambulance approaches, (b) Observed frequency after the ambulance passes and recedes, (c) The percentage pitch drop heard by the pedestrian.</p>
+            <div class="calc-example-title">Step-by-Step Analytical Solution:</div>
+            <pre style="white-space:pre-wrap; font-family:var(--font-mono); font-size:0.9rem; color:var(--text-main); line-height:1.6; margin:0;">1. Approaching source (v_source = 34 m/s, v_obs = 0):
+f'_approach = f0 · [vs / (vs - v_source)] = 800 · [340 / (340 - 34)] = 800 · (340 / 306) ≈ 888.89 Hz.
+2. Receding source (moving away):
+f'_recede = f0 · [vs / (vs + v_source)] = 800 · [340 / (340 + 34)] = 800 · (340 / 374) ≈ 727.27 Hz.
+3. Total frequency drop: Δf = 888.89 - 727.27 = 161.62 Hz.
+4. Percentage drop: (161.62 / 888.89) · 100 ≈ 18.18% drop in perceived musical pitch (more than two whole semitones!).</pre>
+          </div>
+        </section>
+
+        <!-- Frequently Asked Questions -->
+        <section class="edu-section">
+          <h2>&#10067; Frequently Asked Questions</h2>
+          <div class="physics-faq-list">
+            
+        <div class="physics-faq-item">
+          <button type="button" class="physics-faq-trigger">
+            <span>Does the sound source itself emit a different frequency when moving?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="physics-faq-answer">
+            No. The source continues vibrating and emitting sound at its natural frequency f0 without any change. The frequency shift exists entirely due to the relative motion between the wavefronts in the medium and the observer's ear detecting those wavefronts.
+          </div>
+        </div>
+        
+        <div class="physics-faq-item">
+          <button type="button" class="physics-faq-trigger">
+            <span>What happens when a source travels faster than the speed of sound?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="physics-faq-answer">
+            When v_source > vs (supersonic flight), the source outruns its own sound waves. The spherical wavefronts overlap along a common conical envelope called a Mach cone with half-angle sin(μ) = vs / v_source. Across this cone, air pressure changes abruptly, producing a loud sonic boom.
+          </div>
+        </div>
+        
+        <div class="physics-faq-item">
+          <button type="button" class="physics-faq-trigger">
+            <span>How does the Doppler effect apply to light waves in astronomy?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="physics-faq-answer">
+            Because light is an electromagnetic wave, relative motion between stars and Earth shifts spectral absorption lines. Stars moving toward Earth exhibit a blueshift (shorter wavelength, higher frequency), while galaxies moving away exhibit a redshift (longer wavelength), proving universal cosmic expansion.
+          </div>
+        </div>
+        
+          </div>
+        </section>
+
+        <!-- Related Experiments -->
+        <section class="edu-section">
+          <h2>&#128279; Related Physics Virtual Experiments</h2>
+          <div class="related-experiments-grid">
+            
+        <a href="/physics-labs/projectile-motion-simulator/" class="related-exp-card">
+          <div class="exp-category-pill" style="align-self:flex-start;">Mechanics</div>
+          <div class="related-exp-title">Projectile Motion Virtual Lab & Parabolic Flight Simulator</div>
+          <div class="related-exp-sub">12 mins &bull; Class 11 / CBSE / AP Physics</div>
+        </a>
+        
+        <a href="/physics-labs/newtons-laws-simulator/" class="related-exp-card">
+          <div class="exp-category-pill" style="align-self:flex-start;">Mechanics</div>
+          <div class="related-exp-title">Newton's Laws of Motion Virtual Lab: Force, Mass & Friction</div>
+          <div class="related-exp-sub">10 mins &bull; Class 9–11 / High School Physics</div>
+        </a>
+        
+        <a href="/physics-labs/simple-pendulum-experiment/" class="related-exp-card">
+          <div class="exp-category-pill" style="align-self:flex-start;">Mechanics</div>
+          <div class="related-exp-title">Simple Pendulum Virtual Laboratory: Period & Harmonic Oscillation</div>
+          <div class="related-exp-sub">10 mins &bull; Class 10–12 / College Physics</div>
+        </a>
+        
+        <a href="/physics-labs/collision-simulator/" class="related-exp-card">
+          <div class="exp-category-pill" style="align-self:flex-start;">Mechanics</div>
+          <div class="related-exp-title">Collision Virtual Laboratory: Linear Momentum & Energy Conservation</div>
+          <div class="related-exp-sub">12 mins &bull; Class 11 / CBSE / AP Physics 1</div>
+        </a>
+        
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <script src="/js/physics-engine.js"></script>
+  <script>
+    
+      (function() {
+        const canvas = document.getElementById('simCanvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        const graph = PhysicsEngine.createGraph('graphCanvas', {
+          xLabel: 'Time (s)', yLabel: 'Observed Frequency (Hz)', xMin: 0, xMax: 6, yMin: 200, yMax: 1000,
+          series: [{ name: "Observed Pitch f'(t)", color: '#16A34A' }]
+        });
+
+        const SOUND_C = 340; // m/s
+        let v_source = 68;
+        let f0 = 440;
+        let isAudioOn = false;
+        let audioCtx = null;
+        let oscNode = null;
+
+        let sourceX = 50;
+        let simTime = 0;
+        let isRunning = true;
+        let wavefronts = []; // [{x, y, r, t}]
+        let lastWaveTime = 0;
+
+        function updateAudioPitch(freq) {
+          if (isAudioOn && oscNode && audioCtx) {
+            oscNode.frequency.setValueAtTime(Math.max(50, Math.min(2000, freq)), audioCtx.currentTime);
+          }
+        }
+
+        function draw() {
+          const colors = PhysicsEngine.getThemeColors();
+          const dpr = window.devicePixelRatio || 1;
+          const rect = canvas.getBoundingClientRect();
+          canvas.width = rect.width * dpr;
+          canvas.height = rect.height * dpr;
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+          const w = rect.width;
+          const h = rect.height;
+          ctx.clearRect(0, 0, w, h);
+
+          const midY = h / 2;
+          const obsX = w / 2;
+
+          // Road / Flight Path
+          ctx.strokeStyle = colors.border;
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.moveTo(20, midY);
+          ctx.lineTo(w - 20, midY);
+          ctx.stroke();
+
+          // Observer (Ear icon / Marker)
+          ctx.fillStyle = colors.primaryLight;
+          ctx.strokeStyle = colors.primary;
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.arc(obsX, midY + 45, 14, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.stroke();
+          ctx.fillStyle = colors.textMain;
+          ctx.font = 'bold 11px var(--font-sans)';
+          ctx.textAlign = 'center';
+          ctx.fillText('Observer', obsX, midY + 72);
+
+          // Draw Wavefronts
+          ctx.strokeStyle = colors.isDark ? 'rgba(59, 130, 246, 0.4)' : 'rgba(37, 99, 235, 0.35)';
+          ctx.lineWidth = 1.5;
+          wavefronts.forEach(wf => {
+            if (wf.r < w) {
+              ctx.beginPath();
+              ctx.arc(wf.x, wf.y, wf.r, 0, Math.PI * 2);
+              ctx.stroke();
+            }
+          });
+
+          // Moving Source (Vehicle / Jet)
+          ctx.fillStyle = colors.danger;
+          ctx.beginPath();
+          ctx.arc(sourceX, midY, 10, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.strokeStyle = '#ffffff';
+          ctx.lineWidth = 2;
+          ctx.stroke();
+
+          // Calculations
+          const isApproaching = sourceX < obsX;
+          const denom = isApproaching ? (SOUND_C - v_source) : (SOUND_C + v_source);
+          let fPrime = f0;
+          if (denom > 5) {
+            fPrime = f0 * (SOUND_C / denom);
+          } else {
+            fPrime = 2000; // shockwave threshold
+          }
+
+          const mach = v_source / SOUND_C;
+          document.getElementById('hudF0').innerHTML = f0 + '<span class="hud-metric-unit">Hz</span>';
+          document.getElementById('hudFprime').innerHTML = fPrime.toFixed(0) + '<span class="hud-metric-unit">Hz</span>';
+          document.getElementById('hudDeltaF').innerHTML = (fPrime >= f0 ? '+' : '') + (fPrime - f0).toFixed(0) + '<span class="hud-metric-unit">Hz</span>';
+          document.getElementById('hudVs').innerHTML = v_source + '<span class="hud-metric-unit">m/s</span>';
+          document.getElementById('hudMach').textContent = mach.toFixed(2);
+          document.getElementById('hudState').textContent = mach >= 1.0 ? 'Sonic Shockwave' : (isApproaching ? 'Approaching (Higher Pitch)' : 'Receding (Lower Pitch)');
+
+          updateAudioPitch(fPrime);
+          if (graph) graph.draw();
+        }
+
+        let lastT = performance.now();
+        function loop(now) {
+          const dt = Math.min((now - lastT) / 1000, 0.05);
+          lastT = now;
+
+          if (isRunning) {
+            simTime += dt;
+            const screenSpeed = (v_source / SOUND_C) * 120; // pixels per second
+            sourceX += screenSpeed * dt;
+
+            // Emit wave fronts at regular visual intervals
+            if (simTime - lastWaveTime > 0.12) {
+              wavefronts.push({ x: sourceX, y: canvas.clientHeight / 2, r: 0 });
+              lastWaveTime = simTime;
+            }
+
+            // Expand existing wavefronts at speed of sound (120 px/s)
+            wavefronts.forEach(wf => {
+              wf.r += 120 * dt;
+            });
+            wavefronts = wavefronts.filter(wf => wf.r < canvas.clientWidth * 1.5);
+
+            const isApp = sourceX < (canvas.clientWidth / 2);
+            const denom = isApp ? (SOUND_C - v_source) : (SOUND_C + v_source);
+            const curF = denom > 5 ? f0 * (SOUND_C / denom) : 1500;
+            if (graph) graph.addPoint(0, simTime, curF);
+
+            if (sourceX > canvas.clientWidth + 50) {
+              sourceX = 30;
+              simTime = 0;
+              wavefronts = [];
+              if (graph) graph.clear();
+            }
+          }
+          draw();
+          requestAnimationFrame(loop);
+        }
+        requestAnimationFrame(loop);
+
+        document.getElementById('inVs').addEventListener('input', (e) => {
+          v_source = Number(e.target.value);
+          document.getElementById('valVs').textContent = v_source + ' m/s';
+        });
+        document.getElementById('inF0').addEventListener('input', (e) => {
+          f0 = Number(e.target.value);
+          document.getElementById('valF0').textContent = f0 + ' Hz';
+        });
+        document.getElementById('inScenario').addEventListener('change', (e) => {
+          const s = e.target.value;
+          if (s === 'subsonic') v_source = 68;
+          else if (s === 'mach1') v_source = 340;
+          else if (s === 'supersonic') v_source = 450;
+          document.getElementById('inVs').value = v_source;
+          document.getElementById('valVs').textContent = v_source + ' m/s';
+        });
+        document.getElementById('btnRestart').addEventListener('click', () => {
+          sourceX = 30;
+          simTime = 0;
+          wavefronts = [];
+          if (graph) graph.clear();
+        });
+        document.getElementById('btnAudioToggle').addEventListener('click', (e) => {
+          if (!audioCtx) {
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            oscNode = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+            gainNode.gain.value = 0.08;
+            oscNode.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+            oscNode.start();
+          }
+          isAudioOn = !isAudioOn;
+          if (audioCtx.state === 'suspended' && isAudioOn) audioCtx.resume();
+          e.target.innerHTML = isAudioOn ? '&#128264; Mute Tone' : '&#128266; Audio Tone';
+        });
+
+        window.addEventListener('resize', draw);
+        window.addEventListener('themechange', draw);
+      })();
+    
+  </script>
+
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="/" class="brand-logo">
+            <div class="logo-symbol">E</div>
+            <span>Ecrio<span class="accent-dot">X</span></span>
+          </a>
+          <p>One Platform. Endless Possibilities. Free, mathematically rigorous browser-based physics virtual laboratories and digital productivity utilities.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Physics Labs</h4>
+          <ul class="footer-links">
+            <li><a href="/physics-labs/">All Physics Labs</a></li>
+            <li><a href="/physics-labs/projectile-motion-simulator/">Projectile Motion</a></li>
+            <li><a href="/physics-labs/electric-circuit-simulator/">Circuit Simulator</a></li>
+            <li><a href="/physics-labs/ray-optics-simulator/">Ray Optics Lab</a></li>
+            <li><a href="/physics-labs/simple-pendulum-experiment/">Simple Pendulum</a></li>
+            <li><a href="/physics-labs/photoelectric-effect-simulator/">Photoelectric Effect</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Product Suite</h4>
+          <ul class="footer-links">
+            <li><a href="/tools/">All Tools Directory</a></li>
+            <li><a href="/categories/">Tool Categories</a></li>
+            <li><a href="/pdf-compressor/">PDF Compressor</a></li>
+            <li><a href="/resume-builder/">ATS Resume Builder</a></li>
+            <li><a href="/typing-speed-test/">Typing Arena</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company & Legal</h4>
+          <ul class="footer-links">
+            <li><a href="/about/">About EcrioX</a></li>
+            <li><a href="/contact/">Contact Support</a></li>
+            <li><a href="/privacy/">Privacy Policy</a></li>
+            <li><a href="/terms/">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 EcrioX. All rights reserved. Zero client downloads required — 100% private in-browser educational simulations.</p>
+        <p>Canonical Domain: <a href="https://ecriox.com/" style="color: var(--color-primary);">ecriox.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/physics-engine.js"></script>
+  <script>
+    // Theme toggle listener
+    const themeBtn = document.getElementById('themeToggleBtn');
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => {
+        const cur = document.documentElement.getAttribute('data-theme') || 'light';
+        const nxt = cur === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', nxt);
+        try { localStorage.setItem('ecriox_theme_preference', nxt); } catch(e){}
+        window.dispatchEvent(new Event('themechange'));
+      });
+    }
+    // Mobile navigation drawer toggle
+    const mobToggle = document.getElementById('mobileMenuToggle');
+    const mobNav = document.getElementById('mobileNavDrawer');
+    if (mobToggle && mobNav) {
+      mobToggle.addEventListener('click', () => {
+        const isOpen = mobNav.classList.toggle('open');
+        mobToggle.setAttribute('aria-expanded', isOpen);
+      });
+    }
+    // FAQ Accordion listener
+    document.querySelectorAll('.physics-faq-trigger').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.parentElement.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>

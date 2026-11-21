@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Pendulum Experiment Online – Time Period, Length & Gravity Lab | EcrioX</title>
+  <meta name="description" content="Interactive simple pendulum virtual lab. Adjust string length, bob mass, and gravity to measure time period T = 2π√(L/g), frequency, and energy conservation graphs.">
+  <link rel="canonical" href="https://ecriox.com/physics-labs/simple-pendulum-experiment/">
+  <!-- Favicon & Brand Icons -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#2563EB">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Simple Pendulum Experiment Online – Time Period, Length & Gravity Lab | EcrioX">
+  <meta property="og:description" content="Interactive simple pendulum virtual lab. Adjust string length, bob mass, and gravity to measure time period T = 2π√(L/g), frequency, and energy conservation graphs.">
+  <meta property="og:url" content="https://ecriox.com/physics-labs/simple-pendulum-experiment/">
+  <meta property="og:site_name" content="EcrioX">
+  <meta property="og:image" content="https://ecriox.com/og-banner.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Simple Pendulum Experiment Online – Time Period, Length & Gravity Lab | EcrioX">
+  <meta name="twitter:description" content="Interactive simple pendulum virtual lab. Adjust string length, bob mass, and gravity to measure time period T = 2π√(L/g), frequency, and energy conservation graphs.">
+  <meta name="twitter:image" content="https://ecriox.com/og-banner.png">
+
+  <!-- Global Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PQFRBJ9F');
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6672302762343789" crossorigin="anonymous"></script>
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://ecriox.com/physics-labs/simple-pendulum-experiment/",
+      "url": "https://ecriox.com/physics-labs/simple-pendulum-experiment/",
+      "name": "Simple Pendulum Experiment Online \u2013 Time Period, Length & Gravity Lab | EcrioX",
+      "description": "Interactive simple pendulum virtual lab. Adjust string length, bob mass, and gravity to measure time period T = 2\u03c0\u221a(L/g), frequency, and energy conservation graphs.",
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://ecriox.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Physics Labs",
+            "item": "https://ecriox.com/physics-labs/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Simple Pendulum Virtual Laboratory: Period & Harmonic Oscillation",
+            "item": "https://ecriox.com/physics-labs/simple-pendulum-experiment/"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Simple Pendulum Virtual Laboratory: Period & Harmonic Oscillation",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All modern web browsers",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why does bob mass not affect the pendulum's time period?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Although a heavier bob experiences a larger gravitational restoring force (F = mg sin \u03b8), it also possesses greater inertial mass resisting acceleration (F = ma). The mass terms cancel out exactly (ma = -mg sin \u03b8), ensuring that gravitational acceleration and period are completely mass-independent."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens to period at large release angles like 60 degrees?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "At large angles, the small-angle approximation sin(\u03b8) \u2248 \u03b8 breaks down. The restoring force is smaller than linear extrapolation, so the pendulum accelerates slightly more slowly and the actual period is longer than 2\u03c0\u221a(L/g). At 60\u00b0, the true period is approximately 7.3% longer than the small-angle prediction."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Would a simple pendulum swing inside an orbiting space station?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. In free fall (orbit), the effective gravitational acceleration is zero (apparent weightlessness). Since T = 2\u03c0\u221a(L/g) and g_effective = 0, the restoring force is zero and the pendulum will not oscillate."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+
+  <!-- Theme Initialization: Default to LIGHT MODE -->
+  <script>
+    (function(){
+      try {
+        var t = localStorage.getItem("ecriox_theme_preference");
+        // Default MUST be light mode unless user explicitly selected dark previously
+        if (!t) {
+          t = "light";
+        }
+        document.documentElement.setAttribute("data-theme", t);
+      } catch(e){}
+    })();
+  </script>
+
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/physics-labs.css">
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQFRBJ9F" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- Global Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="brand-logo" aria-label="EcrioX Home">
+        <div class="logo-symbol">E</div>
+        <span>Ecrio<span class="accent-dot">X</span></span>
+      </a>
+
+      <nav class="nav-desktop">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/physics-labs/" class="nav-link active">Physics Labs</a>
+        <a href="/tools/calculators/" class="nav-link">Calculators</a>
+        <a href="/resume-builder/" class="nav-link">Career Studio</a>
+        <a href="/typing-speed-test/" class="nav-link">Typing Arena</a>
+        <a href="/tools/" class="nav-link">All Tools</a>
+        <a href="/about/" class="nav-link">About</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn-icon theme-toggle-btn" aria-label="Toggle color theme" id="themeToggleBtn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <button class="btn-icon mobile-toggle" aria-label="Open mobile menu" aria-expanded="false" id="mobileMenuToggle">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav" id="mobileNavDrawer">
+    <a href="/" class="nav-link">Home</a>
+    <a href="/physics-labs/" class="nav-link active">Physics Labs</a>
+    <a href="/tools/calculators/" class="nav-link">Calculators</a>
+    <a href="/resume-builder/" class="nav-link">Career Studio</a>
+    <a href="/typing-speed-test/" class="nav-link">Typing Arena</a>
+    <a href="/tools/" class="nav-link">All Tools</a>
+    <a href="/about/" class="nav-link">About</a>
+  </div>
+
+  <main class="page-wrapper physics-lab-wrapper">
+    <div class="container">
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb-nav" aria-label="Breadcrumb" style="margin-bottom: 1.5rem;">
+        <a href="/">Home</a>
+        <span class="bc-sep">/</span>
+        <a href="/physics-labs/">Physics Labs</a>
+        <span class="bc-sep">/</span>
+        <span class="bc-current">Simple Pendulum Virtual Laboratory: Period & Harmonic Oscillation</span>
+      </nav>
+
+      <!-- Experiment Hero Header -->
+      <header class="lab-hero-header">
+        <span class="lab-badge">&#9883; Mechanics Virtual Laboratory</span>
+        <h1 class="lab-hero-title">Simple Pendulum Virtual Laboratory: Period & Harmonic Oscillation</h1>
+        <p class="lab-hero-subtitle">Perform the classic simple pendulum physics practical online. Verify Galileo's law of isochronism, investigate how pendulum length and local gravity govern oscillation period, observe small-angle approximations, and track continuous energy conversion between kinetic and potential energy.</p>
+        <div style="display:flex; justify-content:center; gap:1rem; margin-top:0.75rem; font-size:0.85rem; color:var(--text-subtle);">
+          <span>&#9201; Duration: <strong>10 mins</strong></span>
+          <span>&bull;</span>
+          <span>&#127891; Target: <strong>Class 10–12 / College Physics</strong></span>
+        </div>
+      </header>
+
+      <!-- Interactive Simulation Interface -->
+      <div class="sim-workspace-layout">
+        <!-- Canvas Viewport Card -->
+        <div class="sim-viewport-card">
+          <div class="sim-toolbar">
+            <div class="sim-toolbar-title">
+              <span style="display:inline-block; width:10px; height:10px; border-radius:50%; background:var(--color-success);"></span>
+              Live Interactive Simulation
+            </div>
+            <div class="sim-toolbar-actions">
+              <span style="font-size:0.75rem; font-weight:700; color:var(--text-subtle); padding:0.2rem 0.5rem; background:var(--bg-surface); border:1px solid var(--border-color); border-radius:4px;">60 FPS ENGINE</span>
+            </div>
+          </div>
+          <div class="sim-canvas-container">
+            <canvas id="simCanvas" class="sim-canvas"></canvas>
+          </div>
+          <!-- Live Measurement HUD Panel -->
+          <div class="sim-live-hud">
+            
+        <div class="hud-metric"><div class="hud-metric-label">Theoretical Period (T0)</div><div class="hud-metric-value" id="hudT0">2.01<span class="hud-metric-unit">s</span></div></div>
+        <div class="hud-metric"><div class="hud-metric-label">Measured Period</div><div class="hud-metric-value" id="hudTmeas">2.01<span class="hud-metric-unit">s</span></div></div>
+        <div class="hud-metric"><div class="hud-metric-label">Frequency (f)</div><div class="hud-metric-value" id="hudFreq">0.50<span class="hud-metric-unit">Hz</span></div></div>
+        <div class="hud-metric"><div class="hud-metric-label">Current Angle (&theta;)</div><div class="hud-metric-value" id="hudTheta">0.0&deg;</div></div>
+        <div class="hud-metric"><div class="hud-metric-label">Oscillations</div><div class="hud-metric-value" id="hudCount">0</div></div>
+        <div class="hud-metric"><div class="hud-metric-label">Total Energy</div><div class="hud-metric-value" id="hudEnergy">1.49<span class="hud-metric-unit">J</span></div></div>
+    
+          </div>
+        </div>
+
+        <!-- Controls Card -->
+        <div class="sim-controls-card">
+          <div class="sim-controls-header">
+            <span>Experimental Parameters</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line><line x1="1" y1="14" x2="7" y2="14"></line><line x1="9" y1="8" x2="15" y2="8"></line><line x1="17" y1="16" x2="23" y2="16"></line></svg>
+          </div>
+          
+        <div class="control-group">
+          <div class="control-label-row"><span class="control-label">String Length (L)</span><span class="control-value-badge" id="valL">1.00 m</span></div>
+          <input type="range" class="sim-range-input" id="inL" min="0.3" max="2.0" step="0.05" value="1.0">
+        </div>
+        <div class="control-group">
+          <div class="control-label-row"><span class="control-label">Bob Mass (m)</span><span class="control-value-badge" id="valM">1.0 kg</span></div>
+          <input type="range" class="sim-range-input" id="inM" min="0.2" max="5.0" step="0.2" value="1.0">
+        </div>
+        <div class="control-group">
+          <div class="control-label-row"><span class="control-label">Release Angle (&theta;0)</span><span class="control-value-badge" id="valTheta0">15&deg;</span></div>
+          <input type="range" class="sim-range-input" id="inTheta0" min="5" max="60" step="1" value="15">
+        </div>
+        <div class="control-group">
+          <div class="control-label-row"><span class="control-label">Gravity (g)</span></div>
+          <select class="sim-select-input" id="inGrav">
+            <option value="9.8" selected>Earth (9.8 m/s&sup2;)</option>
+            <option value="1.62">Moon (1.62 m/s&sup2;)</option>
+            <option value="3.72">Mars (3.72 m/s&sup2;)</option>
+          </select>
+        </div>
+        <div class="sim-btn-group">
+          <button type="button" class="sim-btn sim-btn-primary" id="btnRelease">&#9654; Release</button>
+          <button type="button" class="sim-btn sim-btn-secondary" id="btnReset">Reset</button>
+        </div>
+    
+        </div>
+      </div>
+
+      <!-- Real-Time Graph Visualization -->
+      <div class="sim-graph-card">
+        <div class="sim-graph-header">
+          <div class="sim-graph-title">&#128200; Real-Time Data &amp; Graph Visualization</div>
+          <div style="font-size:0.85rem; color:var(--text-subtle);">Kinematic Tracking at 60 Hz</div>
+        </div>
+        <div class="graph-canvas-container">
+          <canvas id="graphCanvas" class="graph-canvas"></canvas>
+        </div>
+      </div>
+
+      <!-- Educational Content Section -->
+      <div class="edu-content-container">
+        <!-- Learning Objectives -->
+        <section class="edu-section">
+          <h2>&#127919; Learning Objectives</h2>
+          <p>By conducting this interactive experiment, students and educators will achieve the following pedagogical goals:</p>
+          <ul>
+            <li>Verify that the period of a simple pendulum is directly proportional to the square root of its length (T ∝ √L).</li><li>Demonstrate that oscillation period is independent of bob mass and initial release amplitude for small angles.</li><li>Determine local acceleration due to gravity (g) using slope analysis of T² versus L.</li><li>Observe continuous conservation of mechanical energy between potential energy (apex) and kinetic energy (equilibrium).</li>
+          </ul>
+        </section>
+
+        <!-- Mathematical Equations -->
+        <section class="edu-section">
+          <h2>&#9874; Mathematical Equations &amp; Theoretical Formulas</h2>
+          <p>The simulation models the following governing physical relationships:</p>
+          <div class="formula-callout">
+            <div class="formula-main">T = 2\pi \sqrt{\frac{L}{g}}, \quad f = \frac{1}{T} = \frac{1}{2\pi}\sqrt{\frac{g}{L}}, \quad E = m g L (1 - \cos\theta) + \frac{1}{2}m v^2</div>
+            <p class="formula-desc">For small angular amplitudes (θ < 15°), the restoring torque is proportional to displacement, yielding simple harmonic motion with period independent of bob mass.</p>
+          </div>
+        </section>
+
+        <!-- Step-by-Step Procedure -->
+        <section class="edu-section">
+          <h2>&#128221; Step-by-Step Laboratory Procedure</h2>
+          <ol>
+            <li><strong>Step 1:</strong> Set the string length L to 1.0 m, mass to 1.0 kg, and gravity to Earth standard (9.8 m/s²).</li><li><strong>Step 2:</strong> Displace the bob to an initial angle of 10° and click 'Release Pendulum'.</li><li><strong>Step 3:</strong> Observe the oscillation counter and stopwatch to record the time for 10 complete oscillations.</li><li><strong>Step 4:</strong> Calculate the measured period T = Total Time / 10 and compare with the theoretical value T = 2π√(1.0 / 9.8) ≈ 2.006 s.</li><li><strong>Step 5:</strong> Repeat for lengths of 0.25 m, 0.50 m, and 1.50 m to construct a T² versus L relationship.</li>
+          </ol>
+        </section>
+
+        <!-- In-Depth Scientific Theory -->
+        <section class="edu-section">
+          <h2>&#128214; Scientific Explanation &amp; Physics Theory</h2>
+          <p>A simple pendulum consists of a point mass suspended by a light, inextensible string from a frictionless pivot. When displaced by an angle θ, the component of gravity perpendicular to the string acts as a restoring force: F_restoring = -mg sin(θ). For small angles (θ in radians), sin(θ) ≈ θ (within 1% error for θ < 14°), transforming the equation of motion into the standard simple harmonic oscillator equation: d²θ/dt² + (g/L)θ = 0. The angular frequency is ω = √(g/L), yielding the famous period formula T = 2π√(L/g). Notice that bob mass m does not appear in the equation: all masses fall with the same gravitational acceleration.</p>
+        </section>
+
+        <!-- Real-World Applications -->
+        <section class="edu-section">
+          <h2>&#127758; Real-World Engineering Applications</h2>
+          <ul>
+            <li>Horology: Christian Huygens invented the pendulum clock in 1656, which provided the world's most accurate timekeeping standard for nearly 300 years.</li><li>Gravimetry: Measuring microscopic variations in Earth's gravitational acceleration g to detect underground mineral and petroleum deposits.</li><li>Foucault Pendulum: Proving Earth's rotation on its axis through the apparent precession of the pendulum's oscillation plane.</li><li>Tuned mass dampers in skyscrapers: Massive pendulums installed inside towers (such as Taipei 101) counteracting earthquake and typhoon wind vibrations.</li>
+          </ul>
+        </section>
+
+        <!-- Example Calculations -->
+        <section class="edu-section">
+          <h2>&#128161; Worked Numerical Example</h2>
+          <div class="calc-example-box">
+            <div class="calc-example-title">Practice Problem:</div>
+            <p style="margin-bottom:0.75rem;">A simple pendulum has a length of 1.25 meters on the surface of Mars (where g = 3.71 m/s²). Calculate: (a) Time period of oscillation, (b) Frequency of oscillation, (c) What length would produce a 2.00-second period on Earth (g = 9.80 m/s²)?</p>
+            <div class="calc-example-title">Step-by-Step Analytical Solution:</div>
+            <pre style="white-space:pre-wrap; font-family:var(--font-mono); font-size:0.9rem; color:var(--text-main); line-height:1.6; margin:0;">1. Mars period: T = 2π√(L / g_Mars) = 2π√(1.25 / 3.71) = 2π√(0.3369) = 2π · 0.5804 ≈ 3.647 s.
+2. Mars frequency: f = 1 / T = 1 / 3.647 ≈ 0.274 Hz.
+3. Seconds pendulum on Earth (T = 2.0 s): Rearranging T² = 4π²L/g gives L = (g · T²) / (4π²) = (9.80 · 4.0) / (4 · 9.8696) = 39.2 / 39.478 ≈ 0.993 meters (approximately 1 meter).</pre>
+          </div>
+        </section>
+
+        <!-- Frequently Asked Questions -->
+        <section class="edu-section">
+          <h2>&#10067; Frequently Asked Questions</h2>
+          <div class="physics-faq-list">
+            
+        <div class="physics-faq-item">
+          <button type="button" class="physics-faq-trigger">
+            <span>Why does bob mass not affect the pendulum's time period?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="physics-faq-answer">
+            Although a heavier bob experiences a larger gravitational restoring force (F = mg sin θ), it also possesses greater inertial mass resisting acceleration (F = ma). The mass terms cancel out exactly (ma = -mg sin θ), ensuring that gravitational acceleration and period are completely mass-independent.
+          </div>
+        </div>
+        
+        <div class="physics-faq-item">
+          <button type="button" class="physics-faq-trigger">
+            <span>What happens to period at large release angles like 60 degrees?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="physics-faq-answer">
+            At large angles, the small-angle approximation sin(θ) ≈ θ breaks down. The restoring force is smaller than linear extrapolation, so the pendulum accelerates slightly more slowly and the actual period is longer than 2π√(L/g). At 60°, the true period is approximately 7.3% longer than the small-angle prediction.
+          </div>
+        </div>
+        
+        <div class="physics-faq-item">
+          <button type="button" class="physics-faq-trigger">
+            <span>Would a simple pendulum swing inside an orbiting space station?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="physics-faq-answer">
+            No. In free fall (orbit), the effective gravitational acceleration is zero (apparent weightlessness). Since T = 2π√(L/g) and g_effective = 0, the restoring force is zero and the pendulum will not oscillate.
+          </div>
+        </div>
+        
+          </div>
+        </section>
+
+        <!-- Related Experiments -->
+        <section class="edu-section">
+          <h2>&#128279; Related Physics Virtual Experiments</h2>
+          <div class="related-experiments-grid">
+            
+        <a href="/physics-labs/projectile-motion-simulator/" class="related-exp-card">
+          <div class="exp-category-pill" style="align-self:flex-start;">Mechanics</div>
+          <div class="related-exp-title">Projectile Motion Virtual Lab & Parabolic Flight Simulator</div>
+          <div class="related-exp-sub">12 mins &bull; Class 11 / CBSE / AP Physics</div>
+        </a>
+        
+        <a href="/physics-labs/newtons-laws-simulator/" class="related-exp-card">
+          <div class="exp-category-pill" style="align-self:flex-start;">Mechanics</div>
+          <div class="related-exp-title">Newton's Laws of Motion Virtual Lab: Force, Mass & Friction</div>
+          <div class="related-exp-sub">10 mins &bull; Class 9–11 / High School Physics</div>
+        </a>
+        
+        <a href="/physics-labs/collision-simulator/" class="related-exp-card">
+          <div class="exp-category-pill" style="align-self:flex-start;">Mechanics</div>
+          <div class="related-exp-title">Collision Virtual Laboratory: Linear Momentum & Energy Conservation</div>
+          <div class="related-exp-sub">12 mins &bull; Class 11 / CBSE / AP Physics 1</div>
+        </a>
+        
+        <a href="/physics-labs/gravity-orbit-simulator/" class="related-exp-card">
+          <div class="exp-category-pill" style="align-self:flex-start;">Mechanics</div>
+          <div class="related-exp-title">Gravity & Orbital Mechanics Virtual Lab: Kepler's Laws</div>
+          <div class="related-exp-sub">15 mins &bull; Class 11 / Astronomy / Engineering Physics</div>
+        </a>
+        
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <script src="/js/physics-engine.js"></script>
+  <script>
+    
+      (function() {
+        const canvas = document.getElementById('simCanvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        const graph = PhysicsEngine.createGraph('graphCanvas', {
+          xLabel: 'Time (s)', yLabel: 'Angle (deg)', xMin: 0, xMax: 10, yMin: -30, yMax: 30,
+          series: [{ name: 'Angle theta(t)', color: '#7C3AED' }]
+        });
+
+        let L = 1.0;
+        let m = 1.0;
+        let g = 9.8;
+        let theta0 = 15;
+        let theta = (theta0 * Math.PI) / 180;
+        let omega = 0;
+        let isSwinging = false;
+        let simTime = 0;
+        let oscCount = 0;
+        let lastCrossTime = 0;
+        let measuredPeriod = 0;
+
+        function updateTheoretical() {
+          const T0 = 2 * Math.PI * Math.sqrt(L / g);
+          const f0 = 1 / T0;
+          document.getElementById('hudT0').innerHTML = T0.toFixed(2) + '<span class="hud-metric-unit">s</span>';
+          document.getElementById('hudFreq').innerHTML = f0.toFixed(2) + '<span class="hud-metric-unit">Hz</span>';
+        }
+        updateTheoretical();
+
+        function draw() {
+          const colors = PhysicsEngine.getThemeColors();
+          const dpr = window.devicePixelRatio || 1;
+          const rect = canvas.getBoundingClientRect();
+          canvas.width = rect.width * dpr;
+          canvas.height = rect.height * dpr;
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+          const w = rect.width;
+          const h = rect.height;
+          ctx.clearRect(0, 0, w, h);
+
+          const pivotX = w / 2;
+          const pivotY = 40;
+          const pixelL = L * (h - 100) / 2.2;
+
+          const bobX = pivotX + pixelL * Math.sin(theta);
+          const bobY = pivotY + pixelL * Math.cos(theta);
+
+          // Ceiling Bracket
+          ctx.fillStyle = colors.textSubtle;
+          ctx.fillRect(pivotX - 35, pivotY - 8, 70, 8);
+          ctx.beginPath();
+          ctx.arc(pivotX, pivotY, 5, 0, Math.PI * 2);
+          ctx.fillStyle = colors.primary;
+          ctx.fill();
+
+          // Equilibrium dotted line
+          ctx.strokeStyle = colors.border;
+          ctx.setLineDash([4, 4]);
+          ctx.beginPath();
+          ctx.moveTo(pivotX, pivotY);
+          ctx.lineTo(pivotX, pivotY + pixelL + 20);
+          ctx.stroke();
+          ctx.setLineDash([]);
+
+          // String
+          ctx.strokeStyle = colors.textMuted;
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.moveTo(pivotX, pivotY);
+          ctx.lineTo(bobX, bobY);
+          ctx.stroke();
+
+          // Bob
+          const bobRadius = 12 + m * 2;
+          ctx.beginPath();
+          ctx.arc(bobX, bobY, bobRadius, 0, Math.PI * 2);
+          ctx.fillStyle = colors.secondary;
+          ctx.fill();
+          ctx.strokeStyle = '#ffffff';
+          ctx.lineWidth = 2;
+          ctx.stroke();
+
+          // HUD update
+          const deg = (theta * 180) / Math.PI;
+          const PE = m * g * L * (1 - Math.cos(theta));
+          const KE = 0.5 * m * (L * omega) * (L * omega);
+          document.getElementById('hudTheta').textContent = deg.toFixed(1) + '°';
+          document.getElementById('hudEnergy').innerHTML = (PE + KE).toFixed(2) + '<span class="hud-metric-unit">J</span>';
+
+          if (graph) graph.draw();
+        }
+
+        let lastT = performance.now();
+        function loop(now) {
+          const dt = Math.min((now - lastT) / 1000, 0.04);
+          lastT = now;
+
+          if (isSwinging) {
+            simTime += dt;
+            // Nonlinear pendulum RK4
+            const alpha = -(g / L) * Math.sin(theta);
+            omega += alpha * dt;
+            const prevTheta = theta;
+            theta += omega * dt;
+
+            // Detect zero-crossing for period
+            if (prevTheta < 0 && theta >= 0) {
+              oscCount++;
+              if (lastCrossTime > 0) {
+                measuredPeriod = (simTime - lastCrossTime) * 2;
+                document.getElementById('hudTmeas').innerHTML = measuredPeriod.toFixed(2) + '<span class="hud-metric-unit">s</span>';
+              }
+              lastCrossTime = simTime;
+              document.getElementById('hudCount').textContent = oscCount;
+            }
+
+            if (graph) graph.addPoint(0, simTime, (theta * 180) / Math.PI);
+          }
+          draw();
+          requestAnimationFrame(loop);
+        }
+        requestAnimationFrame(loop);
+
+        document.getElementById('inL').addEventListener('input', (e) => {
+          L = Number(e.target.value);
+          document.getElementById('valL').textContent = L.toFixed(2) + ' m';
+          updateTheoretical();
+          if (!isSwinging) {
+            theta = (theta0 * Math.PI) / 180;
+            draw();
+          }
+        });
+        document.getElementById('inM').addEventListener('input', (e) => {
+          m = Number(e.target.value);
+          document.getElementById('valM').textContent = m.toFixed(1) + ' kg';
+        });
+        document.getElementById('inTheta0').addEventListener('input', (e) => {
+          theta0 = Number(e.target.value);
+          document.getElementById('valTheta0').textContent = theta0 + '°';
+          if (!isSwinging) {
+            theta = (theta0 * Math.PI) / 180;
+            draw();
+          }
+        });
+        document.getElementById('inGrav').addEventListener('change', (e) => {
+          g = Number(e.target.value);
+          updateTheoretical();
+        });
+        document.getElementById('btnRelease').addEventListener('click', () => {
+          theta = (theta0 * Math.PI) / 180;
+          omega = 0;
+          simTime = 0;
+          oscCount = 0;
+          lastCrossTime = 0;
+          if (graph) graph.clear();
+          isSwinging = true;
+        });
+        document.getElementById('btnReset').addEventListener('click', () => {
+          isSwinging = false;
+          theta = (theta0 * Math.PI) / 180;
+          omega = 0;
+          simTime = 0;
+          oscCount = 0;
+          if (graph) graph.clear();
+          draw();
+        });
+
+        window.addEventListener('resize', draw);
+        window.addEventListener('themechange', draw);
+      })();
+    
+  </script>
+
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="/" class="brand-logo">
+            <div class="logo-symbol">E</div>
+            <span>Ecrio<span class="accent-dot">X</span></span>
+          </a>
+          <p>One Platform. Endless Possibilities. Free, mathematically rigorous browser-based physics virtual laboratories and digital productivity utilities.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Physics Labs</h4>
+          <ul class="footer-links">
+            <li><a href="/physics-labs/">All Physics Labs</a></li>
+            <li><a href="/physics-labs/projectile-motion-simulator/">Projectile Motion</a></li>
+            <li><a href="/physics-labs/electric-circuit-simulator/">Circuit Simulator</a></li>
+            <li><a href="/physics-labs/ray-optics-simulator/">Ray Optics Lab</a></li>
+            <li><a href="/physics-labs/simple-pendulum-experiment/">Simple Pendulum</a></li>
+            <li><a href="/physics-labs/photoelectric-effect-simulator/">Photoelectric Effect</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Product Suite</h4>
+          <ul class="footer-links">
+            <li><a href="/tools/">All Tools Directory</a></li>
+            <li><a href="/categories/">Tool Categories</a></li>
+            <li><a href="/pdf-compressor/">PDF Compressor</a></li>
+            <li><a href="/resume-builder/">ATS Resume Builder</a></li>
+            <li><a href="/typing-speed-test/">Typing Arena</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company & Legal</h4>
+          <ul class="footer-links">
+            <li><a href="/about/">About EcrioX</a></li>
+            <li><a href="/contact/">Contact Support</a></li>
+            <li><a href="/privacy/">Privacy Policy</a></li>
+            <li><a href="/terms/">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 EcrioX. All rights reserved. Zero client downloads required — 100% private in-browser educational simulations.</p>
+        <p>Canonical Domain: <a href="https://ecriox.com/" style="color: var(--color-primary);">ecriox.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/physics-engine.js"></script>
+  <script>
+    // Theme toggle listener
+    const themeBtn = document.getElementById('themeToggleBtn');
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => {
+        const cur = document.documentElement.getAttribute('data-theme') || 'light';
+        const nxt = cur === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', nxt);
+        try { localStorage.setItem('ecriox_theme_preference', nxt); } catch(e){}
+        window.dispatchEvent(new Event('themechange'));
+      });
+    }
+    // Mobile navigation drawer toggle
+    const mobToggle = document.getElementById('mobileMenuToggle');
+    const mobNav = document.getElementById('mobileNavDrawer');
+    if (mobToggle && mobNav) {
+      mobToggle.addEventListener('click', () => {
+        const isOpen = mobNav.classList.toggle('open');
+        mobToggle.setAttribute('aria-expanded', isOpen);
+      });
+    }
+    // FAQ Accordion listener
+    document.querySelectorAll('.physics-faq-trigger').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.parentElement.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>

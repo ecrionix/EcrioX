@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Electromagnetic Induction Simulator – Faraday's & Lenz's Law Lab | EcrioX</title>
+  <meta name="description" content="Simulate electromagnetic induction online. Move a bar magnet through a wire coil to observe changing magnetic flux, calculate induced EMF, and verify Lenz's law.">
+  <link rel="canonical" href="https://ecriox.com/physics-labs/electromagnetic-induction/">
+  <!-- Favicon & Brand Icons -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#2563EB">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Electromagnetic Induction Simulator – Faraday's & Lenz's Law Lab | EcrioX">
+  <meta property="og:description" content="Simulate electromagnetic induction online. Move a bar magnet through a wire coil to observe changing magnetic flux, calculate induced EMF, and verify Lenz's law.">
+  <meta property="og:url" content="https://ecriox.com/physics-labs/electromagnetic-induction/">
+  <meta property="og:site_name" content="EcrioX">
+  <meta property="og:image" content="https://ecriox.com/og-banner.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Electromagnetic Induction Simulator – Faraday's & Lenz's Law Lab | EcrioX">
+  <meta name="twitter:description" content="Simulate electromagnetic induction online. Move a bar magnet through a wire coil to observe changing magnetic flux, calculate induced EMF, and verify Lenz's law.">
+  <meta name="twitter:image" content="https://ecriox.com/og-banner.png">
+
+  <!-- Global Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PQFRBJ9F');
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6672302762343789" crossorigin="anonymous"></script>
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://ecriox.com/physics-labs/electromagnetic-induction/",
+      "url": "https://ecriox.com/physics-labs/electromagnetic-induction/",
+      "name": "Electromagnetic Induction Simulator \u2013 Faraday's & Lenz's Law Lab | EcrioX",
+      "description": "Simulate electromagnetic induction online. Move a bar magnet through a wire coil to observe changing magnetic flux, calculate induced EMF, and verify Lenz's law.",
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://ecriox.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Physics Labs",
+            "item": "https://ecriox.com/physics-labs/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Electromagnetic Induction Virtual Lab: Faraday & Lenz Laws",
+            "item": "https://ecriox.com/physics-labs/electromagnetic-induction/"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Electromagnetic Induction Virtual Lab: Faraday & Lenz Laws",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All modern web browsers",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why does a stationary magnet inside a coil produce zero current?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Faraday's law states that induced EMF depends strictly on the RATE OF CHANGE of magnetic flux (d\u03a6/dt), not the absolute magnitude of flux. When a magnet is stationary, flux is constant (d\u03a6/dt = 0), so no electromotive force is induced, regardless of how strong the magnet is."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What would happen if Lenz's law had a positive sign instead of negative?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A positive sign would violate the Law of Conservation of Energy. If approaching a magnet created an attracting pole, the magnet would accelerate faster on its own, generating infinite electrical power from zero external work \u2014 a perpetual motion impossibility."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are eddy currents?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Eddy currents are loops of electrical current induced within bulk solid conductors (like copper or aluminum plates) when exposed to a changing magnetic field. They produce opposing magnetic fields and thermal heating, used in induction furnaces and electromagnetic damping."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+
+  <!-- Theme Initialization: Default to LIGHT MODE -->
+  <script>
+    (function(){
+      try {
+        var t = localStorage.getItem("ecriox_theme_preference");
+        // Default MUST be light mode unless user explicitly selected dark previously
+        if (!t) {
+          t = "light";
+        }
+        document.documentElement.setAttribute("data-theme", t);
+      } catch(e){}
+    })();
+  </script>
+
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/physics-labs.css">
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQFRBJ9F" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- Global Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="brand-logo" aria-label="EcrioX Home">
+        <div class="logo-symbol">E</div>
+        <span>Ecrio<span class="accent-dot">X</span></span>
+      </a>
+
+      <nav class="nav-desktop">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/physics-labs/" class="nav-link active">Physics Labs</a>
+        <a href="/tools/calculators/" class="nav-link">Calculators</a>
+        <a href="/resume-builder/" class="nav-link">Career Studio</a>
+        <a href="/typing-speed-test/" class="nav-link">Typing Arena</a>
+        <a href="/tools/" class="nav-link">All Tools</a>
+        <a href="/about/" class="nav-link">About</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn-icon theme-toggle-btn" aria-label="Toggle color theme" id="themeToggleBtn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <button class="btn-icon mobile-toggle" aria-label="Open mobile menu" aria-expanded="false" id="mobileMenuToggle">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav" id="mobileNavDrawer">
+    <a href="/" class="nav-link">Home</a>
+    <a href="/physics-labs/" class="nav-link active">Physics Labs</a>
+    <a href="/tools/calculators/" class="nav-link">Calculators</a>
+    <a href="/resume-builder/" class="nav-link">Career Studio</a>
+    <a href="/typing-speed-test/" class="nav-link">Typing Arena</a>
+    <a href="/tools/" class="nav-link">All Tools</a>
+    <a href="/about/" class="nav-link">About</a>
+  </div>
+
+  <main class="page-wrapper physics-lab-wrapper">
+    <div class="container">
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb-nav" aria-label="Breadcrumb" style="margin-bottom: 1.5rem;">
+        <a href="/">Home</a>
+        <span class="bc-sep">/</span>
+        <a href="/physics-labs/">Physics Labs</a>
+        <span class="bc-sep">/</span>
+        <span class="bc-current">Electromagnetic Induction Virtual Lab: Faraday & Lenz Laws</span>
+      </nav>
+
+      <!-- Experiment Hero Header -->
+      <header class="lab-hero-header">
+        <span class="lab-badge">&#9883; Electricity & Magnetism Virtual Laboratory</span>
+        <h1 class="lab-hero-title">Electromagnetic Induction Virtual Lab: Faraday & Lenz Laws</h1>
+        <p class="lab-hero-subtitle">Experience the fundamental principle that powers the modern electrical grid. Move a permanent bar magnet through a multiturn wire coil, monitor changing magnetic flux, measure induced electromotive force (EMF) on an interactive galvanometer, and understand Lenz's law of opposing induced magnetic fields.</p>
+        <div style="display:flex; justify-content:center; gap:1rem; margin-top:0.75rem; font-size:0.85rem; color:var(--text-subtle);">
+          <span>&#9201; Duration: <strong>12 mins</strong></span>
+          <span>&bull;</span>
+          <span>&#127891; Target: <strong>Class 12 / Engineering Physics</strong></span>
+        </div>
+      </header>
+
+      <!-- Interactive Simulation Interface -->
+      <div class="sim-workspace-layout">
+        <!-- Canvas Viewport Card -->
+        <div class="sim-viewport-card">
+          <div class="sim-toolbar">
+            <div class="sim-toolbar-title">
+              <span style="display:inline-block; width:10px; height:10px; border-radius:50%; background:var(--color-success);"></span>
+              Live Interactive Simulation
+            </div>
+            <div class="sim-toolbar-actions">
+              <span style="font-size:0.75rem; font-weight:700; color:var(--text-subtle); padding:0.2rem 0.5rem; background:var(--bg-surface); border:1px solid var(--border-color); border-radius:4px;">60 FPS ENGINE</span>
+            </div>
+          </div>
+          <div class="sim-canvas-container">
+            <canvas id="simCanvas" class="sim-canvas"></canvas>
+          </div>
+          <!-- Live Measurement HUD Panel -->
+          <div class="sim-live-hud">
+            
+        <div class="hud-metric"><div class="hud-metric-label">Magnetic Flux (&Phi;B)</div><div class="hud-metric-value" id="hudFlux">0.0<span class="hud-metric-unit">mWb</span></div></div>
+        <div class="hud-metric"><div class="hud-metric-label">Flux Rate (d&Phi;/dt)</div><div class="hud-metric-value" id="hudDphi">0.0<span class="hud-metric-unit">mWb/s</span></div></div>
+        <div class="hud-metric"><div class="hud-metric-label">Induced EMF (&Epsilon;)</div><div class="hud-metric-value" id="hudEmf">0.00<span class="hud-metric-unit">V</span></div></div>
+        <div class="hud-metric"><div class="hud-metric-label">Induced Current</div><div class="hud-metric-value" id="hudI">0.00<span class="hud-metric-unit">A</span></div></div>
+        <div class="hud-metric"><div class="hud-metric-label">Deflection</div><div class="hud-metric-value" id="hudDeflect">0.0&deg;</div></div>
+        <div class="hud-metric"><div class="hud-metric-label">Lenz State</div><div class="hud-metric-value" id="hudLenz" style="font-size:0.95rem;">Stationary</div></div>
+    
+          </div>
+        </div>
+
+        <!-- Controls Card -->
+        <div class="sim-controls-card">
+          <div class="sim-controls-header">
+            <span>Experimental Parameters</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line><line x1="1" y1="14" x2="7" y2="14"></line><line x1="9" y1="8" x2="15" y2="8"></line><line x1="17" y1="16" x2="23" y2="16"></line></svg>
+          </div>
+          
+        <div class="control-group">
+          <div class="control-label-row"><span class="control-label">Coil Turns (N)</span><span class="control-value-badge" id="valN">30 turns</span></div>
+          <input type="range" class="sim-range-input" id="inN" min="5" max="60" step="5" value="30">
+        </div>
+        <div class="control-group">
+          <div class="control-label-row"><span class="control-label">Magnet Speed</span><span class="control-value-badge" id="valSpeed">Medium</span></div>
+          <input type="range" class="sim-range-input" id="inSpeed" min="1" max="5" step="1" value="3">
+        </div>
+        <div class="sim-btn-group">
+          <button type="button" class="sim-btn sim-btn-primary" id="btnToggleOsc">Toggle Auto-Oscillation</button>
+          <button type="button" class="sim-btn sim-btn-secondary" id="btnFlip">Flip Poles (N/S)</button>
+        </div>
+    
+        </div>
+      </div>
+
+      <!-- Real-Time Graph Visualization -->
+      <div class="sim-graph-card">
+        <div class="sim-graph-header">
+          <div class="sim-graph-title">&#128200; Real-Time Data &amp; Graph Visualization</div>
+          <div style="font-size:0.85rem; color:var(--text-subtle);">Kinematic Tracking at 60 Hz</div>
+        </div>
+        <div class="graph-canvas-container">
+          <canvas id="graphCanvas" class="graph-canvas"></canvas>
+        </div>
+      </div>
+
+      <!-- Educational Content Section -->
+      <div class="edu-content-container">
+        <!-- Learning Objectives -->
+        <section class="edu-section">
+          <h2>&#127919; Learning Objectives</h2>
+          <p>By conducting this interactive experiment, students and educators will achieve the following pedagogical goals:</p>
+          <ul>
+            <li>Demonstrate that an electric current is induced in a conductor only when the magnetic flux linking it changes over time.</li><li>Verify that induced EMF magnitude scales with magnet velocity, coil turns N, and magnetic field strength.</li><li>Explain Lenz's Law: The direction of induced current always creates an opposing magnetic field that resists the change causing it.</li><li>Observe that a stationary magnet inside a coil produces exactly zero induced EMF regardless of field strength.</li>
+          </ul>
+        </section>
+
+        <!-- Mathematical Equations -->
+        <section class="edu-section">
+          <h2>&#9874; Mathematical Equations &amp; Theoretical Formulas</h2>
+          <p>The simulation models the following governing physical relationships:</p>
+          <div class="formula-callout">
+            <div class="formula-main">\mathcal{E} = -N \frac{d\Phi_B}{dt}, \quad \Phi_B = \int \vec{B} \cdot d\vec{A} = B \cdot A \cos\theta, \quad I_{\text{ind}} = \frac{\mathcal{E}}{R}</div>
+            <p class="formula-desc">Induced EMF is directly proportional to coil turns N and the time rate of change of magnetic flux dΦB/dt. The negative sign (Lenz's law) indicates that induced current opposes the flux change.</p>
+          </div>
+        </section>
+
+        <!-- Step-by-Step Procedure -->
+        <section class="edu-section">
+          <h2>&#128221; Step-by-Step Laboratory Procedure</h2>
+          <ol>
+            <li><strong>Step 1:</strong> Select coil turns N = 20 and position the bar magnet at the left of the coil.</li><li><strong>Step 2:</strong> Move the magnet slowly toward the coil. Observe that the galvanometer needle deflects in the positive direction while the connected bulb glows weakly.</li><li><strong>Step 3:</strong> Move the magnet through the coil at higher speed. Observe that the needle deflection and bulb brightness increase significantly.</li><li><strong>Step 4:</strong> Hold the magnet completely stationary inside the coil. Observe that the galvanometer needle returns immediately to zero.</li><li><strong>Step 5:</strong> Pull the magnet back out to the left. Observe that the galvanometer needle deflects in the opposite negative direction, demonstrating Lenz's Law.</li>
+          </ol>
+        </section>
+
+        <!-- In-Depth Scientific Theory -->
+        <section class="edu-section">
+          <h2>&#128214; Scientific Explanation &amp; Physics Theory</h2>
+          <p>In 1831, Michael Faraday discovered that electric currents could be generated by magnetism, provided the magnetic flux Φ_B passing through a circuit changes over time. Heinrich Lenz recognized the conservation of energy embedded in this phenomenon: the negative sign in ε = -N(dΦ/dt) represents Lenz's Law. When a North pole approaches a coil, induced current circulates counterclockwise (viewed from the front) to establish an opposing North pole repelling the approaching magnet. Work must be done against this magnetic repulsion, and that mechanical work is precisely what transforms into electrical energy.</p>
+        </section>
+
+        <!-- Real-World Applications -->
+        <section class="edu-section">
+          <h2>&#127758; Real-World Engineering Applications</h2>
+          <ul>
+            <li>Electric generators and alternators: Rotating copper wire coils within strong magnetic fields at hydro and thermal power stations to generate world electricity.</li><li>Transformers: Transferring AC power across circuits via mutual induction through laminated ferromagnetic cores.</li><li>Induction cooktops: Using high-frequency changing magnetic fields to induce eddy currents and resistance heating directly inside cookware.</li><li>Magnetic braking systems: Using eddy current induction to decelerate high-speed bullet trains and roller coasters smoothly with zero physical contact wear.</li>
+          </ul>
+        </section>
+
+        <!-- Example Calculations -->
+        <section class="edu-section">
+          <h2>&#128161; Worked Numerical Example</h2>
+          <div class="calc-example-box">
+            <div class="calc-example-title">Practice Problem:</div>
+            <p style="margin-bottom:0.75rem;">A circular coil of 50 turns with radius 5.0 cm and resistance 2.5 Ω is oriented perpendicular to a uniform magnetic field. The magnetic field increases uniformly from 0.10 Tesla to 0.70 Tesla in 0.15 seconds. Calculate: (a) Initial and final magnetic flux, (b) Average induced EMF in the coil, (c) Induced current.</p>
+            <div class="calc-example-title">Step-by-Step Analytical Solution:</div>
+            <pre style="white-space:pre-wrap; font-family:var(--font-mono); font-size:0.9rem; color:var(--text-main); line-height:1.6; margin:0;">1. Coil cross-sectional area: A = π · r² = π · (0.05)² = 0.007854 m².
+2. Magnetic flux:
+- Initial: Φ1 = B1 · A = 0.10 · 0.007854 = 7.854 × 10⁻⁴ Wb.
+- Final: Φ2 = B2 · A = 0.70 · 0.007854 = 5.498 × 10⁻³ Wb.
+- Flux change: ΔΦ = Φ2 - Φ1 = 4.712 × 10⁻³ Wb.
+3. Induced EMF: |ε| = N · (ΔΦ / Δt) = 50 · (4.712 × 10⁻³ / 0.15) = 50 · 0.03141 ≈ 1.571 Volts.
+4. Induced current: I = |ε| / R = 1.571 / 2.5 ≈ 0.628 Amperes.</pre>
+          </div>
+        </section>
+
+        <!-- Frequently Asked Questions -->
+        <section class="edu-section">
+          <h2>&#10067; Frequently Asked Questions</h2>
+          <div class="physics-faq-list">
+            
+        <div class="physics-faq-item">
+          <button type="button" class="physics-faq-trigger">
+            <span>Why does a stationary magnet inside a coil produce zero current?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="physics-faq-answer">
+            Faraday's law states that induced EMF depends strictly on the RATE OF CHANGE of magnetic flux (dΦ/dt), not the absolute magnitude of flux. When a magnet is stationary, flux is constant (dΦ/dt = 0), so no electromotive force is induced, regardless of how strong the magnet is.
+          </div>
+        </div>
+        
+        <div class="physics-faq-item">
+          <button type="button" class="physics-faq-trigger">
+            <span>What would happen if Lenz's law had a positive sign instead of negative?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="physics-faq-answer">
+            A positive sign would violate the Law of Conservation of Energy. If approaching a magnet created an attracting pole, the magnet would accelerate faster on its own, generating infinite electrical power from zero external work — a perpetual motion impossibility.
+          </div>
+        </div>
+        
+        <div class="physics-faq-item">
+          <button type="button" class="physics-faq-trigger">
+            <span>What are eddy currents?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="physics-faq-answer">
+            Eddy currents are loops of electrical current induced within bulk solid conductors (like copper or aluminum plates) when exposed to a changing magnetic field. They produce opposing magnetic fields and thermal heating, used in induction furnaces and electromagnetic damping.
+          </div>
+        </div>
+        
+          </div>
+        </section>
+
+        <!-- Related Experiments -->
+        <section class="edu-section">
+          <h2>&#128279; Related Physics Virtual Experiments</h2>
+          <div class="related-experiments-grid">
+            
+        <a href="/physics-labs/projectile-motion-simulator/" class="related-exp-card">
+          <div class="exp-category-pill" style="align-self:flex-start;">Mechanics</div>
+          <div class="related-exp-title">Projectile Motion Virtual Lab & Parabolic Flight Simulator</div>
+          <div class="related-exp-sub">12 mins &bull; Class 11 / CBSE / AP Physics</div>
+        </a>
+        
+        <a href="/physics-labs/newtons-laws-simulator/" class="related-exp-card">
+          <div class="exp-category-pill" style="align-self:flex-start;">Mechanics</div>
+          <div class="related-exp-title">Newton's Laws of Motion Virtual Lab: Force, Mass & Friction</div>
+          <div class="related-exp-sub">10 mins &bull; Class 9–11 / High School Physics</div>
+        </a>
+        
+        <a href="/physics-labs/simple-pendulum-experiment/" class="related-exp-card">
+          <div class="exp-category-pill" style="align-self:flex-start;">Mechanics</div>
+          <div class="related-exp-title">Simple Pendulum Virtual Laboratory: Period & Harmonic Oscillation</div>
+          <div class="related-exp-sub">10 mins &bull; Class 10–12 / College Physics</div>
+        </a>
+        
+        <a href="/physics-labs/collision-simulator/" class="related-exp-card">
+          <div class="exp-category-pill" style="align-self:flex-start;">Mechanics</div>
+          <div class="related-exp-title">Collision Virtual Laboratory: Linear Momentum & Energy Conservation</div>
+          <div class="related-exp-sub">12 mins &bull; Class 11 / CBSE / AP Physics 1</div>
+        </a>
+        
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <script src="/js/physics-engine.js"></script>
+  <script>
+    
+      (function() {
+        const canvas = document.getElementById('simCanvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        const graph = PhysicsEngine.createGraph('graphCanvas', {
+          xLabel: 'Time (s)', yLabel: 'Induced EMF (V)', xMin: 0, xMax: 6, yMin: -3, yMax: 3,
+          series: [{ name: 'EMF ε(t) = -N dΦ/dt', color: '#16A34A' }]
+        });
+
+        let N = 30;
+        let speedMult = 3;
+        let isOscillating = true;
+        let isFlipped = false; // false = N on right, S on left
+
+        let magnetX = -80; // relative to coil center
+        let magnetVel = 0;
+        let simTime = 0;
+
+        function draw() {
+          const colors = PhysicsEngine.getThemeColors();
+          const dpr = window.devicePixelRatio || 1;
+          const rect = canvas.getBoundingClientRect();
+          canvas.width = rect.width * dpr;
+          canvas.height = rect.height * dpr;
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+          const w = rect.width;
+          const h = rect.height;
+          ctx.clearRect(0, 0, w, h);
+
+          const coilCenterX = w * 0.65;
+          const coilCenterY = h * 0.5;
+
+          // Coil loops
+          const loopH = 90;
+          const loopW = 50;
+          ctx.strokeStyle = '#D97706';
+          ctx.lineWidth = 3.5;
+          for (let i = 0; i < Math.min(10, N/4); i++) {
+            const lx = coilCenterX - loopW/2 + i * 8;
+            ctx.beginPath();
+            ctx.ellipse(lx, coilCenterY, 6, loopH/2, 0, 0, Math.PI * 2);
+            ctx.stroke();
+          }
+
+          // Galvanometer on Bottom Right
+          const galvX = coilCenterX + 70;
+          const galvY = h - 60;
+          ctx.fillStyle = colors.bgSubtle;
+          ctx.strokeStyle = colors.border;
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.arc(galvX, galvY, 32, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.stroke();
+          ctx.fillStyle = colors.textSubtle;
+          ctx.font = '10px var(--font-mono)';
+          ctx.textAlign = 'center';
+          ctx.fillText('G', galvX, galvY + 22);
+
+          // Physical Calculations
+          const dist = (magnetX); // distance in pixels (say 100px = 0.2m)
+          const distM = dist / 500;
+          const B0 = 0.05; // 0.05 Tesla peak
+          const flux = (B0 * (isFlipped ? -1 : 1)) / (1 + 25 * distM * distM);
+          const dPhi_dt = -50 * distM * magnetVel * flux / (1 + 25 * distM * distM);
+          const emf = -N * dPhi_dt * 0.2;
+          const curI = emf / 5.0; // 5 ohm coil
+
+          // Galvanometer needle deflection
+          const maxDeflect = Math.PI / 4;
+          const deflectAngle = Math.max(-maxDeflect, Math.min(maxDeflect, emf * 0.6));
+          ctx.strokeStyle = colors.danger;
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.moveTo(galvX, galvY);
+          ctx.lineTo(galvX + Math.sin(deflectAngle) * 26, galvY - Math.cos(deflectAngle) * 26);
+          ctx.stroke();
+
+          // Bar Magnet
+          const mX = coilCenterX + magnetX;
+          const mY = coilCenterY;
+          const mLen = 110;
+          const mH = 34;
+
+          // North / South pole halves
+          const pole1Color = isFlipped ? '#2563EB' : '#DC2626';
+          const pole1Text = isFlipped ? 'S' : 'N';
+          const pole2Color = isFlipped ? '#DC2626' : '#2563EB';
+          const pole2Text = isFlipped ? 'N' : 'S';
+
+          ctx.fillStyle = pole2Color;
+          ctx.fillRect(mX - mLen/2, mY - mH/2, mLen/2, mH);
+          ctx.fillStyle = pole1Color;
+          ctx.fillRect(mX, mY - mH/2, mLen/2, mH);
+
+          ctx.strokeStyle = '#ffffff';
+          ctx.lineWidth = 1.5;
+          ctx.strokeRect(mX - mLen/2, mY - mH/2, mLen, mH);
+
+          ctx.fillStyle = '#ffffff';
+          ctx.font = 'bold 14px var(--font-sans)';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText(pole2Text, mX - mLen/4, mY);
+          ctx.fillText(pole1Text, mX + mLen/4, mY);
+
+          // Magnetic Field Lines
+          ctx.strokeStyle = colors.isDark ? 'rgba(59, 130, 246, 0.25)' : 'rgba(37, 99, 235, 0.25)';
+          ctx.lineWidth = 1.5;
+          ctx.beginPath();
+          ctx.ellipse(mX, mY, mLen * 0.7, mH * 1.5, 0, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // HUD Updates
+          document.getElementById('hudFlux').innerHTML = (flux * 1000).toFixed(2) + '<span class="hud-metric-unit">mWb</span>';
+          document.getElementById('hudDphi').innerHTML = (dPhi_dt * 1000).toFixed(2) + '<span class="hud-metric-unit">mWb/s</span>';
+          document.getElementById('hudEmf').innerHTML = emf.toFixed(2) + '<span class="hud-metric-unit">V</span>';
+          document.getElementById('hudI').innerHTML = curI.toFixed(2) + '<span class="hud-metric-unit">A</span>';
+          document.getElementById('hudDeflect').textContent = ((deflectAngle * 180) / Math.PI).toFixed(1) + '°';
+
+          let lenz = 'Stationary';
+          if (magnetVel > 5) lenz = 'Opposing Approach (Repelling)';
+          else if (magnetVel < -5) lenz = 'Opposing Withdrawal (Attracting)';
+          document.getElementById('hudLenz').textContent = lenz;
+
+          if (graph) graph.draw();
+        }
+
+        let lastT = performance.now();
+        function loop(now) {
+          const dt = Math.min((now - lastT) / 1000, 0.04);
+          lastT = now;
+          simTime += dt;
+
+          if (isOscillating) {
+            const freq = 0.5 * speedMult;
+            const prevX = magnetX;
+            magnetX = -70 + Math.sin(simTime * freq * Math.PI * 2) * 90;
+            magnetVel = (magnetX - prevX) / dt;
+
+            const distM = magnetX / 500;
+            const B0 = 0.05;
+            const flux = (B0 * (isFlipped ? -1 : 1)) / (1 + 25 * distM * distM);
+            const dPhi_dt = -50 * distM * magnetVel * flux / (1 + 25 * distM * distM);
+            const emf = -N * dPhi_dt * 0.2;
+
+            if (graph) graph.addPoint(0, simTime, emf);
+          } else {
+            magnetVel = 0;
+          }
+          draw();
+          requestAnimationFrame(loop);
+        }
+        requestAnimationFrame(loop);
+
+        document.getElementById('inN').addEventListener('input', (e) => {
+          N = Number(e.target.value);
+          document.getElementById('valN').textContent = N + ' turns';
+        });
+        document.getElementById('inSpeed').addEventListener('input', (e) => {
+          speedMult = Number(e.target.value);
+          const labels = ['', 'Very Slow', 'Slow', 'Medium', 'Fast', 'Very Fast'];
+          document.getElementById('valSpeed').textContent = labels[speedMult];
+        });
+        document.getElementById('btnToggleOsc').addEventListener('click', () => {
+          isOscillating = !isOscillating;
+        });
+        document.getElementById('btnFlip').addEventListener('click', () => {
+          isFlipped = !isFlipped;
+        });
+
+        window.addEventListener('resize', draw);
+        window.addEventListener('themechange', draw);
+      })();
+    
+  </script>
+
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="/" class="brand-logo">
+            <div class="logo-symbol">E</div>
+            <span>Ecrio<span class="accent-dot">X</span></span>
+          </a>
+          <p>One Platform. Endless Possibilities. Free, mathematically rigorous browser-based physics virtual laboratories and digital productivity utilities.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Physics Labs</h4>
+          <ul class="footer-links">
+            <li><a href="/physics-labs/">All Physics Labs</a></li>
+            <li><a href="/physics-labs/projectile-motion-simulator/">Projectile Motion</a></li>
+            <li><a href="/physics-labs/electric-circuit-simulator/">Circuit Simulator</a></li>
+            <li><a href="/physics-labs/ray-optics-simulator/">Ray Optics Lab</a></li>
+            <li><a href="/physics-labs/simple-pendulum-experiment/">Simple Pendulum</a></li>
+            <li><a href="/physics-labs/photoelectric-effect-simulator/">Photoelectric Effect</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Product Suite</h4>
+          <ul class="footer-links">
+            <li><a href="/tools/">All Tools Directory</a></li>
+            <li><a href="/categories/">Tool Categories</a></li>
+            <li><a href="/pdf-compressor/">PDF Compressor</a></li>
+            <li><a href="/resume-builder/">ATS Resume Builder</a></li>
+            <li><a href="/typing-speed-test/">Typing Arena</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company & Legal</h4>
+          <ul class="footer-links">
+            <li><a href="/about/">About EcrioX</a></li>
+            <li><a href="/contact/">Contact Support</a></li>
+            <li><a href="/privacy/">Privacy Policy</a></li>
+            <li><a href="/terms/">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 EcrioX. All rights reserved. Zero client downloads required — 100% private in-browser educational simulations.</p>
+        <p>Canonical Domain: <a href="https://ecriox.com/" style="color: var(--color-primary);">ecriox.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/physics-engine.js"></script>
+  <script>
+    // Theme toggle listener
+    const themeBtn = document.getElementById('themeToggleBtn');
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => {
+        const cur = document.documentElement.getAttribute('data-theme') || 'light';
+        const nxt = cur === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', nxt);
+        try { localStorage.setItem('ecriox_theme_preference', nxt); } catch(e){}
+        window.dispatchEvent(new Event('themechange'));
+      });
+    }
+    // Mobile navigation drawer toggle
+    const mobToggle = document.getElementById('mobileMenuToggle');
+    const mobNav = document.getElementById('mobileNavDrawer');
+    if (mobToggle && mobNav) {
+      mobToggle.addEventListener('click', () => {
+        const isOpen = mobNav.classList.toggle('open');
+        mobToggle.setAttribute('aria-expanded', isOpen);
+      });
+    }
+    // FAQ Accordion listener
+    document.querySelectorAll('.physics-faq-trigger').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.parentElement.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>

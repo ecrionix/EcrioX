@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collision Simulator – Elastic & Inelastic Momentum Conservation Lab | EcrioX</title>
+  <meta name="description" content="Interactive 1D collision simulator. Simulate elastic and inelastic collisions between two carts. Compare total linear momentum and kinetic energy before and after impact.">
+  <link rel="canonical" href="https://ecriox.com/physics-labs/collision-simulator/">
+  <!-- Favicon & Brand Icons -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#2563EB">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Collision Simulator – Elastic & Inelastic Momentum Conservation Lab | EcrioX">
+  <meta property="og:description" content="Interactive 1D collision simulator. Simulate elastic and inelastic collisions between two carts. Compare total linear momentum and kinetic energy before and after impact.">
+  <meta property="og:url" content="https://ecriox.com/physics-labs/collision-simulator/">
+  <meta property="og:site_name" content="EcrioX">
+  <meta property="og:image" content="https://ecriox.com/og-banner.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Collision Simulator – Elastic & Inelastic Momentum Conservation Lab | EcrioX">
+  <meta name="twitter:description" content="Interactive 1D collision simulator. Simulate elastic and inelastic collisions between two carts. Compare total linear momentum and kinetic energy before and after impact.">
+  <meta name="twitter:image" content="https://ecriox.com/og-banner.png">
+
+  <!-- Global Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PQFRBJ9F');
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6672302762343789" crossorigin="anonymous"></script>
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://ecriox.com/physics-labs/collision-simulator/",
+      "url": "https://ecriox.com/physics-labs/collision-simulator/",
+      "name": "Collision Simulator \u2013 Elastic & Inelastic Momentum Conservation Lab | EcrioX",
+      "description": "Interactive 1D collision simulator. Simulate elastic and inelastic collisions between two carts. Compare total linear momentum and kinetic energy before and after impact.",
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://ecriox.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Physics Labs",
+            "item": "https://ecriox.com/physics-labs/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Collision Virtual Laboratory: Linear Momentum & Energy Conservation",
+            "item": "https://ecriox.com/physics-labs/collision-simulator/"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Collision Virtual Laboratory: Linear Momentum & Energy Conservation",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All modern web browsers",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can momentum be lost in a collision?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Never in an isolated system. As long as no external net force acts on the colliding bodies (such as track friction or external cables), total linear momentum is strictly conserved across all physical collisions in the universe."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where does the 'lost' kinetic energy go in an inelastic collision?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The missing mechanical kinetic energy is converted into microscopic internal thermal energy (heating up the bodies), structural plastic deformation (bending metal), and acoustic vibrational energy (the sound of the crash)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the maximum kinetic energy that can be lost in a collision?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The maximum kinetic energy loss occurs in a perfectly inelastic collision (e = 0) where the bodies stick together. However, momentum conservation requires the combined mass to retain center-of-mass kinetic energy, so total kinetic energy cannot drop to zero unless total initial momentum was zero."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+
+  <!-- Theme Initialization: Default to LIGHT MODE -->
+  <script>
+    (function(){
+      try {
+        var t = localStorage.getItem("ecriox_theme_preference");
+        // Default MUST be light mode unless user explicitly selected dark previously
+        if (!t) {
+          t = "light";
+        }
+        document.documentElement.setAttribute("data-theme", t);
+      } catch(e){}
+    })();
+  </script>
+
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/physics-labs.css">
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQFRBJ9F" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- Global Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="brand-logo" aria-label="EcrioX Home">
+        <div class="logo-symbol">E</div>
+        <span>Ecrio<span class="accent-dot">X</span></span>
+      </a>
+
+      <nav class="nav-desktop">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/physics-labs/" class="nav-link active">Physics Labs</a>
+        <a href="/tools/calculators/" class="nav-link">Calculators</a>
+        <a href="/resume-builder/" class="nav-link">Career Studio</a>
+        <a href="/typing-speed-test/" class="nav-link">Typing Arena</a>
+        <a href="/tools/" class="nav-link">All Tools</a>
+        <a href="/about/" class="nav-link">About</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn-icon theme-toggle-btn" aria-label="Toggle color theme" id="themeToggleBtn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <button class="btn-icon mobile-toggle" aria-label="Open mobile menu" aria-expanded="false" id="mobileMenuToggle">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav" id="mobileNavDrawer">
+    <a href="/" class="nav-link">Home</a>
+    <a href="/physics-labs/" class="nav-link active">Physics Labs</a>
+    <a href="/tools/calculators/" class="nav-link">Calculators</a>
+    <a href="/resume-builder/" class="nav-link">Career Studio</a>
+    <a href="/typing-speed-test/" class="nav-link">Typing Arena</a>
+    <a href="/tools/" class="nav-link">All Tools</a>
+    <a href="/about/" class="nav-link">About</a>
+  </div>
+
+  <main class="page-wrapper physics-lab-wrapper">
+    <div class="container">
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb-nav" aria-label="Breadcrumb" style="margin-bottom: 1.5rem;">
+        <a href="/">Home</a>
+        <span class="bc-sep">/</span>
+        <a href="/physics-labs/">Physics Labs</a>
+        <span class="bc-sep">/</span>
+        <span class="bc-current">Collision Virtual Laboratory: Linear Momentum & Energy Conservation</span>
+      </nav>
+
+      <!-- Experiment Hero Header -->
+      <header class="lab-hero-header">
+        <span class="lab-badge">&#9883; Mechanics Virtual Laboratory</span>
+        <h1 class="lab-hero-title">Collision Virtual Laboratory: Linear Momentum & Energy Conservation</h1>
+        <p class="lab-hero-subtitle">Investigate one-dimensional collisions between two objects on a low-friction air track. Adjust cart masses, initial velocities, and the coefficient of restitution to analyze perfectly elastic impacts, inelastic energy dissipation, and perfectly inelastic sticking collisions.</p>
+        <div style="display:flex; justify-content:center; gap:1rem; margin-top:0.75rem; font-size:0.85rem; color:var(--text-subtle);">
+          <span>&#9201; Duration: <strong>12 mins</strong></span>
+          <span>&bull;</span>
+          <span>&#127891; Target: <strong>Class 11 / CBSE / AP Physics 1</strong></span>
+        </div>
+      </header>
+
+      <!-- Interactive Simulation Interface -->
+      <div class="sim-workspace-layout">
+        <!-- Canvas Viewport Card -->
+        <div class="sim-viewport-card">
+          <div class="sim-toolbar">
+            <div class="sim-toolbar-title">
+              <span style="display:inline-block; width:10px; height:10px; border-radius:50%; background:var(--color-success);"></span>
+              Live Interactive Simulation
+            </div>
+            <div class="sim-toolbar-actions">
+              <span style="font-size:0.75rem; font-weight:700; color:var(--text-subtle); padding:0.2rem 0.5rem; background:var(--bg-surface); border:1px solid var(--border-color); border-radius:4px;">60 FPS ENGINE</span>
+            </div>
+          </div>
+          <div class="sim-canvas-container">
+            <canvas id="simCanvas" class="sim-canvas"></canvas>
+          </div>
+          <!-- Live Measurement HUD Panel -->
+          <div class="sim-live-hud">
+            
+        <div class="hud-metric"><div class="hud-metric-label">Cart 1 Velocity (v1)</div><div class="hud-metric-value" id="hudV1">0.0<span class="hud-metric-unit">m/s</span></div></div>
+        <div class="hud-metric"><div class="hud-metric-label">Cart 2 Velocity (v2)</div><div class="hud-metric-value" id="hudV2">0.0<span class="hud-metric-unit">m/s</span></div></div>
+        <div class="hud-metric"><div class="hud-metric-label">Total Momentum (P)</div><div class="hud-metric-value" id="hudP">12.0<span class="hud-metric-unit">kg&middot;m/s</span></div></div>
+        <div class="hud-metric"><div class="hud-metric-label">Total Kinetic Energy</div><div class="hud-metric-value" id="hudKE">24.0<span class="hud-metric-unit">J</span></div></div>
+        <div class="hud-metric"><div class="hud-metric-label">Energy Loss (&Delta;KE)</div><div class="hud-metric-value" id="hudLoss">0.0<span class="hud-metric-unit">J</span></div></div>
+        <div class="hud-metric"><div class="hud-metric-label">Restitution (e)</div><div class="hud-metric-value" id="hudE">1.00</div></div>
+    
+          </div>
+        </div>
+
+        <!-- Controls Card -->
+        <div class="sim-controls-card">
+          <div class="sim-controls-header">
+            <span>Experimental Parameters</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line><line x1="1" y1="14" x2="7" y2="14"></line><line x1="9" y1="8" x2="15" y2="8"></line><line x1="17" y1="16" x2="23" y2="16"></line></svg>
+          </div>
+          
+        <div class="control-group">
+          <div class="control-label-row"><span class="control-label">Cart 1 Mass (m1)</span><span class="control-value-badge" id="valM1">2.0 kg</span></div>
+          <input type="range" class="sim-range-input" id="inM1" min="0.5" max="8.0" step="0.5" value="2.0">
+        </div>
+        <div class="control-group">
+          <div class="control-label-row"><span class="control-label">Cart 1 Initial Speed (u1)</span><span class="control-value-badge" id="valU1">4.0 m/s</span></div>
+          <input type="range" class="sim-range-input" id="inU1" min="1.0" max="8.0" step="0.5" value="4.0">
+        </div>
+        <div class="control-group">
+          <div class="control-label-row"><span class="control-label">Cart 2 Mass (m2)</span><span class="control-value-badge" id="valM2">2.0 kg</span></div>
+          <input type="range" class="sim-range-input" id="inM2" min="0.5" max="8.0" step="0.5" value="2.0">
+        </div>
+        <div class="control-group">
+          <div class="control-label-row"><span class="control-label">Collision Type</span></div>
+          <select class="sim-select-input" id="inRestitution">
+            <option value="1.0" selected>Elastic (e = 1.0) &ndash; Energy Conserved</option>
+            <option value="0.0">Perfect Inelastic (e = 0.0) &ndash; Stick Together</option>
+            <option value="0.5">Partially Inelastic (e = 0.5)</option>
+          </select>
+        </div>
+        <div class="sim-btn-group">
+          <button type="button" class="sim-btn sim-btn-primary" id="btnCollide">&#9654; Start Collision</button>
+          <button type="button" class="sim-btn sim-btn-secondary" id="btnReset">Reset</button>
+        </div>
+    
+        </div>
+      </div>
+
+      <!-- Real-Time Graph Visualization -->
+      <div class="sim-graph-card">
+        <div class="sim-graph-header">
+          <div class="sim-graph-title">&#128200; Real-Time Data &amp; Graph Visualization</div>
+          <div style="font-size:0.85rem; color:var(--text-subtle);">Kinematic Tracking at 60 Hz</div>
+        </div>
+        <div class="graph-canvas-container">
+          <canvas id="graphCanvas" class="graph-canvas"></canvas>
+        </div>
+      </div>
+
+      <!-- Educational Content Section -->
+      <div class="edu-content-container">
+        <!-- Learning Objectives -->
+        <section class="edu-section">
+          <h2>&#127919; Learning Objectives</h2>
+          <p>By conducting this interactive experiment, students and educators will achieve the following pedagogical goals:</p>
+          <ul>
+            <li>Verify the Law of Conservation of Linear Momentum across elastic and inelastic collision scenarios.</li><li>Distinguish between elastic collisions (kinetic energy conserved) and inelastic collisions (kinetic energy converted to thermal energy and deformation).</li><li>Calculate final velocities using restitution coefficient e and relative approach/separation speeds.</li><li>Observe center-of-mass velocity constancy before, during, and after impact.</li>
+          </ul>
+        </section>
+
+        <!-- Mathematical Equations -->
+        <section class="edu-section">
+          <h2>&#9874; Mathematical Equations &amp; Theoretical Formulas</h2>
+          <p>The simulation models the following governing physical relationships:</p>
+          <div class="formula-callout">
+            <div class="formula-main">m_1 u_1 + m_2 u_2 = m_1 v_1 + m_2 v_2, \quad e = \frac{v_2 - v_1}{u_1 - u_2}</div>
+            <p class="formula-desc">Linear momentum is conserved in all isolated collisions. Kinetic energy is conserved only when coefficient of restitution e = 1 (elastic collision). When e = 0, objects stick together.</p>
+          </div>
+        </section>
+
+        <!-- Step-by-Step Procedure -->
+        <section class="edu-section">
+          <h2>&#128221; Step-by-Step Laboratory Procedure</h2>
+          <ol>
+            <li><strong>Step 1:</strong> Configure Cart 1 (m1 = 2 kg, u1 = 4 m/s) and Cart 2 (m2 = 2 kg, u2 = 0 m/s).</li><li><strong>Step 2:</strong> Set the restitution mode to 'Elastic (e = 1.0)' and click 'Start Collision'.</li><li><strong>Step 3:</strong> Observe that Cart 1 comes to a complete standstill while Cart 2 shoots forward with 4 m/s (complete velocity transfer between identical masses).</li><li><strong>Step 4:</strong> Repeat the experiment with 'Inelastic (e = 0.0)' mode to verify that both carts stick together and move at half initial velocity (2 m/s), confirming 50% kinetic energy dissipation.</li>
+          </ol>
+        </section>
+
+        <!-- In-Depth Scientific Theory -->
+        <section class="edu-section">
+          <h2>&#128214; Scientific Explanation &amp; Physics Theory</h2>
+          <p>According to Newton's Third Law, when two bodies collide, Cart 1 exerts force F12 on Cart 2, and Cart 2 exerts equal and opposite force F21 = -F12 on Cart 1 over the contact duration Δt. Because impulses are equal and opposite (J1 = -J2), the total linear momentum of the system remains strictly invariant (P_initial = P_final). In perfectly elastic collisions (e = 1), microscopic repulsive electrostatic forces act like ideal springs with zero mechanical energy loss. In inelastic collisions (0 ≤ e < 1), work is performed in permanently deforming materials, generating acoustic sound waves and heat, resulting in a net decrease in macroscopic kinetic energy.</p>
+        </section>
+
+        <!-- Real-World Applications -->
+        <section class="edu-section">
+          <h2>&#127758; Real-World Engineering Applications</h2>
+          <ul>
+            <li>Automotive crash engineering: Designing crumple zones that deform inelastically to absorb collision kinetic energy and protect cabin occupants.</li><li>Nuclear physics: Moderating fast neutrons in nuclear reactors using elastic collisions with light water or graphite nuclei.</li><li>Billiards and curling: Precision angle and velocity transfers between identical colliding spheres.</li><li>Space probe orbital gravity assists: Treating spacecraft-planet gravitational interactions as hyperbolic elastic scattering collisions.</li>
+          </ul>
+        </section>
+
+        <!-- Example Calculations -->
+        <section class="edu-section">
+          <h2>&#128161; Worked Numerical Example</h2>
+          <div class="calc-example-box">
+            <div class="calc-example-title">Practice Problem:</div>
+            <p style="margin-bottom:0.75rem;">A 3.0 kg cart traveling at +6.0 m/s collides head-on with a stationary 2.0 kg cart. Calculate final velocities if: (a) The collision is perfectly elastic (e = 1.0), (b) The collision is completely inelastic (e = 0.0).</p>
+            <div class="calc-example-title">Step-by-Step Analytical Solution:</div>
+            <pre style="white-space:pre-wrap; font-family:var(--font-mono); font-size:0.9rem; color:var(--text-main); line-height:1.6; margin:0;">1. Elastic collision (e = 1.0):
+v1 = [(m1 - m2)/(m1 + m2)]u1 = [(3 - 2)/(3 + 2)] · 6 = (1/5) · 6 = +1.2 m/s.
+v2 = [2m1 / (m1 + m2)]u1 = [2 · 3 / (3 + 2)] · 6 = (6/5) · 6 = +7.2 m/s.
+Check momentum: (3 · 6) + 0 = 18 kg·m/s. Final: (3 · 1.2) + (2 · 7.2) = 3.6 + 14.4 = 18.0 kg·m/s.
+2. Inelastic collision (e = 0.0):
+v = (m1 u1 + m2 u2) / (m1 + m2) = (3 · 6 + 0) / (3 + 2) = 18 / 5 = +3.6 m/s.
+Kinetic energy lost: KE_initial = ½(3)(6²) = 54 J; KE_final = ½(5)(3.6²) = 32.4 J (loss of 21.6 J or 40%).</pre>
+          </div>
+        </section>
+
+        <!-- Frequently Asked Questions -->
+        <section class="edu-section">
+          <h2>&#10067; Frequently Asked Questions</h2>
+          <div class="physics-faq-list">
+            
+        <div class="physics-faq-item">
+          <button type="button" class="physics-faq-trigger">
+            <span>Can momentum be lost in a collision?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="physics-faq-answer">
+            Never in an isolated system. As long as no external net force acts on the colliding bodies (such as track friction or external cables), total linear momentum is strictly conserved across all physical collisions in the universe.
+          </div>
+        </div>
+        
+        <div class="physics-faq-item">
+          <button type="button" class="physics-faq-trigger">
+            <span>Where does the 'lost' kinetic energy go in an inelastic collision?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="physics-faq-answer">
+            The missing mechanical kinetic energy is converted into microscopic internal thermal energy (heating up the bodies), structural plastic deformation (bending metal), and acoustic vibrational energy (the sound of the crash).
+          </div>
+        </div>
+        
+        <div class="physics-faq-item">
+          <button type="button" class="physics-faq-trigger">
+            <span>What is the maximum kinetic energy that can be lost in a collision?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="physics-faq-answer">
+            The maximum kinetic energy loss occurs in a perfectly inelastic collision (e = 0) where the bodies stick together. However, momentum conservation requires the combined mass to retain center-of-mass kinetic energy, so total kinetic energy cannot drop to zero unless total initial momentum was zero.
+          </div>
+        </div>
+        
+          </div>
+        </section>
+
+        <!-- Related Experiments -->
+        <section class="edu-section">
+          <h2>&#128279; Related Physics Virtual Experiments</h2>
+          <div class="related-experiments-grid">
+            
+        <a href="/physics-labs/projectile-motion-simulator/" class="related-exp-card">
+          <div class="exp-category-pill" style="align-self:flex-start;">Mechanics</div>
+          <div class="related-exp-title">Projectile Motion Virtual Lab & Parabolic Flight Simulator</div>
+          <div class="related-exp-sub">12 mins &bull; Class 11 / CBSE / AP Physics</div>
+        </a>
+        
+        <a href="/physics-labs/newtons-laws-simulator/" class="related-exp-card">
+          <div class="exp-category-pill" style="align-self:flex-start;">Mechanics</div>
+          <div class="related-exp-title">Newton's Laws of Motion Virtual Lab: Force, Mass & Friction</div>
+          <div class="related-exp-sub">10 mins &bull; Class 9–11 / High School Physics</div>
+        </a>
+        
+        <a href="/physics-labs/simple-pendulum-experiment/" class="related-exp-card">
+          <div class="exp-category-pill" style="align-self:flex-start;">Mechanics</div>
+          <div class="related-exp-title">Simple Pendulum Virtual Laboratory: Period & Harmonic Oscillation</div>
+          <div class="related-exp-sub">10 mins &bull; Class 10–12 / College Physics</div>
+        </a>
+        
+        <a href="/physics-labs/gravity-orbit-simulator/" class="related-exp-card">
+          <div class="exp-category-pill" style="align-self:flex-start;">Mechanics</div>
+          <div class="related-exp-title">Gravity & Orbital Mechanics Virtual Lab: Kepler's Laws</div>
+          <div class="related-exp-sub">15 mins &bull; Class 11 / Astronomy / Engineering Physics</div>
+        </a>
+        
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <script src="/js/physics-engine.js"></script>
+  <script>
+    
+      (function() {
+        const canvas = document.getElementById('simCanvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        const graph = PhysicsEngine.createGraph('graphCanvas', {
+          xLabel: 'Time (s)', yLabel: 'Position (m)', xMin: 0, xMax: 4, yMin: -5, yMax: 15,
+          series: [{ name: 'Cart 1', color: '#2563EB' }, { name: 'Cart 2', color: '#7C3AED' }]
+        });
+
+        let m1 = 2.0, u1 = 4.0;
+        let m2 = 2.0, u2 = 0.0;
+        let eRest = 1.0;
+
+        let x1 = -6, v1 = u1;
+        let x2 = 0, v2 = u2;
+        let isRunning = false;
+        let hasCollided = false;
+        let simTime = 0;
+        let initKE = 0;
+
+        function calcCollision() {
+          const v1_f = ((m1 - eRest * m2) / (m1 + m2)) * u1 + (((1 + eRest) * m2) / (m1 + m2)) * u2;
+          const v2_f = (((1 + eRest) * m1) / (m1 + m2)) * u1 + ((m2 - eRest * m1) / (m1 + m2)) * u2;
+          return { v1_f, v2_f };
+        }
+
+        function draw() {
+          const colors = PhysicsEngine.getThemeColors();
+          const dpr = window.devicePixelRatio || 1;
+          const rect = canvas.getBoundingClientRect();
+          canvas.width = rect.width * dpr;
+          canvas.height = rect.height * dpr;
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+          const w = rect.width;
+          const h = rect.height;
+          ctx.clearRect(0, 0, w, h);
+
+          const trackY = h * 0.65;
+          const scale = w / 26;
+          const originX = w / 2;
+
+          // Track
+          ctx.fillStyle = colors.bgSubtle;
+          ctx.fillRect(20, trackY, w - 40, 16);
+          ctx.strokeStyle = colors.border;
+          ctx.lineWidth = 2;
+          ctx.strokeRect(20, trackY, w - 40, 16);
+
+          // Carts
+          const w1 = 30 + m1 * 4;
+          const h1 = 32;
+          const w2 = 30 + m2 * 4;
+          const h2 = 32;
+
+          const px1 = originX + x1 * scale;
+          const px2 = originX + x2 * scale;
+
+          // Cart 1
+          ctx.fillStyle = colors.primaryLight;
+          ctx.strokeStyle = colors.primary;
+          ctx.lineWidth = 2;
+          ctx.fillRect(px1 - w1/2, trackY - h1, w1, h1);
+          ctx.strokeRect(px1 - w1/2, trackY - h1, w1, h1);
+          // Wheels
+          ctx.fillStyle = colors.textMuted;
+          ctx.beginPath();
+          ctx.arc(px1 - w1/3, trackY, 4, 0, Math.PI*2);
+          ctx.arc(px1 + w1/3, trackY, 4, 0, Math.PI*2);
+          ctx.fill();
+          ctx.fillStyle = colors.textMain;
+          ctx.font = 'bold 11px var(--font-sans)';
+          ctx.textAlign = 'center';
+          ctx.fillText(m1 + 'kg', px1, trackY - h1/2 + 4);
+
+          // Cart 2
+          ctx.fillStyle = colors.secondaryLight;
+          ctx.strokeStyle = colors.secondary;
+          ctx.lineWidth = 2;
+          ctx.fillRect(px2 - w2/2, trackY - h2, w2, h2);
+          ctx.strokeRect(px2 - w2/2, trackY - h2, w2, h2);
+          // Wheels
+          ctx.fillStyle = colors.textMuted;
+          ctx.beginPath();
+          ctx.arc(px2 - w2/3, trackY, 4, 0, Math.PI*2);
+          ctx.arc(px2 + w2/3, trackY, 4, 0, Math.PI*2);
+          ctx.fill();
+          ctx.fillStyle = colors.textMain;
+          ctx.font = 'bold 11px var(--font-sans)';
+          ctx.textAlign = 'center';
+          ctx.fillText(m2 + 'kg', px2, trackY - h2/2 + 4);
+
+          // Velocity vectors
+          if (isRunning) {
+            ctx.lineWidth = 2.5;
+            // V1
+            ctx.strokeStyle = colors.primary;
+            ctx.beginPath();
+            ctx.moveTo(px1, trackY - h1 - 8);
+            ctx.lineTo(px1 + v1 * 8, trackY - h1 - 8);
+            ctx.stroke();
+            // V2
+            ctx.strokeStyle = colors.secondary;
+            ctx.beginPath();
+            ctx.moveTo(px2, trackY - h2 - 8);
+            ctx.lineTo(px2 + v2 * 8, trackY - h2 - 8);
+            ctx.stroke();
+          }
+
+          // HUD Updates
+          const P = m1 * v1 + m2 * v2;
+          const curKE = 0.5 * m1 * v1 * v1 + 0.5 * m2 * v2 * v2;
+          const loss = Math.max(0, initKE - curKE);
+
+          document.getElementById('hudV1').innerHTML = v1.toFixed(2) + '<span class="hud-metric-unit">m/s</span>';
+          document.getElementById('hudV2').innerHTML = v2.toFixed(2) + '<span class="hud-metric-unit">m/s</span>';
+          document.getElementById('hudP').innerHTML = P.toFixed(1) + '<span class="hud-metric-unit">kg&middot;m/s</span>';
+          document.getElementById('hudKE').innerHTML = curKE.toFixed(1) + '<span class="hud-metric-unit">J</span>';
+          document.getElementById('hudLoss').innerHTML = loss.toFixed(1) + '<span class="hud-metric-unit">J</span>';
+          document.getElementById('hudE').textContent = eRest.toFixed(2);
+
+          if (graph) graph.draw();
+        }
+
+        let lastT = performance.now();
+        function loop(now) {
+          const dt = Math.min((now - lastT) / 1000, 0.04);
+          lastT = now;
+
+          if (isRunning) {
+            simTime += dt;
+            x1 += v1 * dt;
+            x2 += v2 * dt;
+
+            // Collision condition
+            const minDist = (30 + m1 * 4)/2/18 + (30 + m2 * 4)/2/18;
+            if (!hasCollided && x2 - x1 <= minDist) {
+              const res = calcCollision();
+              v1 = res.v1_f;
+              v2 = res.v2_f;
+              hasCollided = true;
+            }
+
+            if (graph) {
+              graph.addPoint(0, simTime, x1);
+              graph.addPoint(1, simTime, x2);
+            }
+
+            if (simTime > 4 || x2 > 14) isRunning = false;
+          }
+          draw();
+          requestAnimationFrame(loop);
+        }
+        requestAnimationFrame(loop);
+
+        document.getElementById('inM1').addEventListener('input', (e) => {
+          m1 = Number(e.target.value);
+          document.getElementById('valM1').textContent = m1.toFixed(1) + ' kg';
+        });
+        document.getElementById('inU1').addEventListener('input', (e) => {
+          u1 = Number(e.target.value);
+          document.getElementById('valU1').textContent = u1.toFixed(1) + ' m/s';
+          if (!isRunning) v1 = u1;
+        });
+        document.getElementById('inM2').addEventListener('input', (e) => {
+          m2 = Number(e.target.value);
+          document.getElementById('valM2').textContent = m2.toFixed(1) + ' kg';
+        });
+        document.getElementById('inRestitution').addEventListener('change', (e) => {
+          eRest = Number(e.target.value);
+        });
+        document.getElementById('btnCollide').addEventListener('click', () => {
+          x1 = -6;
+          x2 = 0;
+          v1 = u1;
+          v2 = u2;
+          hasCollided = false;
+          simTime = 0;
+          initKE = 0.5 * m1 * u1 * u1 + 0.5 * m2 * u2 * u2;
+          if (graph) graph.clear();
+          isRunning = true;
+        });
+        document.getElementById('btnReset').addEventListener('click', () => {
+          isRunning = false;
+          x1 = -6;
+          x2 = 0;
+          v1 = u1;
+          v2 = u2;
+          hasCollided = false;
+          simTime = 0;
+          if (graph) graph.clear();
+          draw();
+        });
+
+        window.addEventListener('resize', draw);
+        window.addEventListener('themechange', draw);
+      })();
+    
+  </script>
+
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="/" class="brand-logo">
+            <div class="logo-symbol">E</div>
+            <span>Ecrio<span class="accent-dot">X</span></span>
+          </a>
+          <p>One Platform. Endless Possibilities. Free, mathematically rigorous browser-based physics virtual laboratories and digital productivity utilities.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Physics Labs</h4>
+          <ul class="footer-links">
+            <li><a href="/physics-labs/">All Physics Labs</a></li>
+            <li><a href="/physics-labs/projectile-motion-simulator/">Projectile Motion</a></li>
+            <li><a href="/physics-labs/electric-circuit-simulator/">Circuit Simulator</a></li>
+            <li><a href="/physics-labs/ray-optics-simulator/">Ray Optics Lab</a></li>
+            <li><a href="/physics-labs/simple-pendulum-experiment/">Simple Pendulum</a></li>
+            <li><a href="/physics-labs/photoelectric-effect-simulator/">Photoelectric Effect</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Product Suite</h4>
+          <ul class="footer-links">
+            <li><a href="/tools/">All Tools Directory</a></li>
+            <li><a href="/categories/">Tool Categories</a></li>
+            <li><a href="/pdf-compressor/">PDF Compressor</a></li>
+            <li><a href="/resume-builder/">ATS Resume Builder</a></li>
+            <li><a href="/typing-speed-test/">Typing Arena</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company & Legal</h4>
+          <ul class="footer-links">
+            <li><a href="/about/">About EcrioX</a></li>
+            <li><a href="/contact/">Contact Support</a></li>
+            <li><a href="/privacy/">Privacy Policy</a></li>
+            <li><a href="/terms/">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 EcrioX. All rights reserved. Zero client downloads required — 100% private in-browser educational simulations.</p>
+        <p>Canonical Domain: <a href="https://ecriox.com/" style="color: var(--color-primary);">ecriox.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/physics-engine.js"></script>
+  <script>
+    // Theme toggle listener
+    const themeBtn = document.getElementById('themeToggleBtn');
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => {
+        const cur = document.documentElement.getAttribute('data-theme') || 'light';
+        const nxt = cur === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', nxt);
+        try { localStorage.setItem('ecriox_theme_preference', nxt); } catch(e){}
+        window.dispatchEvent(new Event('themechange'));
+      });
+    }
+    // Mobile navigation drawer toggle
+    const mobToggle = document.getElementById('mobileMenuToggle');
+    const mobNav = document.getElementById('mobileNavDrawer');
+    if (mobToggle && mobNav) {
+      mobToggle.addEventListener('click', () => {
+        const isOpen = mobNav.classList.toggle('open');
+        mobToggle.setAttribute('aria-expanded', isOpen);
+      });
+    }
+    // FAQ Accordion listener
+    document.querySelectorAll('.physics-faq-trigger').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.parentElement.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>

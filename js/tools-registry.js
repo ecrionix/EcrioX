@@ -103,6 +103,15 @@ const ECRIOX_CATEGORIES = [
     icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>`,
     title: "EcrioX Career Studio – Free ATS Resume Builder, Checker & Career Tools",
     description: "Create ATS-compliant resumes, check resume scores, match job descriptions, generate cover letters, and export print-ready PDFs."
+  },
+  {
+    id: "physics-labs",
+    name: "Physics Virtual Labs",
+    slug: "physics-labs",
+    route: "/physics-labs/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path></svg>`,
+    title: "Physics Virtual Labs – Interactive Science Simulations Online | EcrioX",
+    description: "Explore interactive physics experiments, mechanics, electricity, optics, waves, and quantum phenomena with 60fps real-time simulations."
   }
 ];
 
@@ -853,6 +862,178 @@ const ECRIOX_TOOLS = [
     status: "available",
     popular: true,
     tags: ["world live cameras", "live webcams", "earth live cameras", "3d globe webcam", "city live camera", "beach webcam", "traffic camera", "nature live stream", "times square live"]
+  },
+
+  // ==========================================
+  // PHYSICS VIRTUAL LABS (14 EXPERIMENTS)
+  // ==========================================
+  {
+    id: "projectile-motion-simulator",
+    name: "Projectile Motion Simulator Online – Interactive 2D Parabolic Flight Lab | EcrioX",
+    category: "physics-labs",
+    categoryName: "Physics Virtual Labs",
+    description: "Simulate 2D projectile motion online. Adjust initial velocity, launch angle, and gravity to visualize trajectories, calculate maximum height, flight range, and hang time.",
+    route: "/physics-labs/projectile-motion-simulator/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path></svg>`,
+    status: "available",
+    popular: true,
+    tags: ["physics", "virtual lab", "simulator", "simulation", "projectile motion simulator", "projectile motion simulator online – interactive 2d parabolic flight lab | ecriox", "mechanics", "simulate", "projectile", "motion"]
+  },
+  {
+    id: "newtons-laws-simulator",
+    name: "Newton's Laws of Motion Simulator – Free Body Diagram & Friction Lab | EcrioX",
+    category: "physics-labs",
+    categoryName: "Physics Virtual Labs",
+    description: "Interactive Newton's laws simulator. Experiment with mass, applied force, static and kinetic friction. Visualize free-body diagrams, acceleration, and real-time net force.",
+    route: "/physics-labs/newtons-laws-simulator/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path></svg>`,
+    status: "available",
+    popular: false,
+    tags: ["physics", "virtual lab", "simulator", "simulation", "newtons laws simulator", "newton's laws of motion simulator – free body diagram & friction lab | ecriox", "mechanics", "interactive", "newton's", "experiment"]
+  },
+  {
+    id: "simple-pendulum-experiment",
+    name: "Simple Pendulum Experiment Online – Time Period, Length & Gravity Lab | EcrioX",
+    category: "physics-labs",
+    categoryName: "Physics Virtual Labs",
+    description: "Interactive simple pendulum virtual lab. Adjust string length, bob mass, and gravity to measure time period T = 2π√(L/g), frequency, and energy conservation graphs.",
+    route: "/physics-labs/simple-pendulum-experiment/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path></svg>`,
+    status: "available",
+    popular: true,
+    tags: ["physics", "virtual lab", "simulator", "simulation", "simple pendulum experiment", "simple pendulum experiment online – time period, length & gravity lab | ecriox", "mechanics", "interactive", "simple", "pendulum"]
+  },
+  {
+    id: "collision-simulator",
+    name: "Collision Simulator – Elastic & Inelastic Momentum Conservation Lab | EcrioX",
+    category: "physics-labs",
+    categoryName: "Physics Virtual Labs",
+    description: "Interactive 1D collision simulator. Simulate elastic and inelastic collisions between two carts. Compare total linear momentum and kinetic energy before and after impact.",
+    route: "/physics-labs/collision-simulator/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path></svg>`,
+    status: "available",
+    popular: false,
+    tags: ["physics", "virtual lab", "simulator", "simulation", "collision simulator", "collision simulator – elastic & inelastic momentum conservation lab | ecriox", "mechanics", "interactive", "collision", "simulate"]
+  },
+  {
+    id: "gravity-orbit-simulator",
+    name: "Gravity and Orbital Motion Simulator – Kepler's Laws & Planetary Orbits | EcrioX",
+    category: "physics-labs",
+    categoryName: "Physics Virtual Labs",
+    description: "Simulate orbital mechanics and planetary orbits online. Adjust central mass, orbital velocity, and distance to visualize circular orbits, ellipses, and escape trajectories.",
+    route: "/physics-labs/gravity-orbit-simulator/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path></svg>`,
+    status: "available",
+    popular: false,
+    tags: ["physics", "virtual lab", "simulator", "simulation", "gravity orbit simulator", "gravity and orbital motion simulator – kepler's laws & planetary orbits | ecriox", "mechanics", "simulate", "orbital", "planetary"]
+  },
+  {
+    id: "electric-circuit-simulator",
+    name: "Interactive Electric Circuit Simulator – Ohm's Law, Series & Parallel Lab | EcrioX",
+    category: "physics-labs",
+    categoryName: "Physics Virtual Labs",
+    description: "Build and analyze DC electric circuits online. Connect batteries, resistors, light bulbs, and switches in series and parallel. Measure current, voltage drops, and power.",
+    route: "/physics-labs/electric-circuit-simulator/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path></svg>`,
+    status: "available",
+    popular: true,
+    tags: ["physics", "virtual lab", "simulator", "simulation", "electric circuit simulator", "interactive electric circuit simulator – ohm's law, series & parallel lab | ecriox", "electricity", "build", "analyze", "electric"]
+  },
+  {
+    id: "coulombs-law-electric-field",
+    name: "Coulomb's Law and Electric Field Simulator – Vector Fields & Point Charges | EcrioX",
+    category: "physics-labs",
+    categoryName: "Physics Virtual Labs",
+    description: "Simulate electrostatic point charges, Coulomb's law force vectors, electric field lines, and electric potential online. Explore attraction, repulsion, and vector fields.",
+    route: "/physics-labs/coulombs-law-electric-field/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path></svg>`,
+    status: "available",
+    popular: false,
+    tags: ["physics", "virtual lab", "simulator", "simulation", "coulombs law electric field", "coulomb's law and electric field simulator – vector fields & point charges | ecriox", "electricity", "simulate", "electrostatic", "point"]
+  },
+  {
+    id: "electromagnetic-induction",
+    name: "Electromagnetic Induction Simulator – Faraday's & Lenz's Law Lab | EcrioX",
+    category: "physics-labs",
+    categoryName: "Physics Virtual Labs",
+    description: "Simulate electromagnetic induction online. Move a bar magnet through a wire coil to observe changing magnetic flux, calculate induced EMF, and verify Lenz's law.",
+    route: "/physics-labs/electromagnetic-induction/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path></svg>`,
+    status: "available",
+    popular: false,
+    tags: ["physics", "virtual lab", "simulator", "simulation", "electromagnetic induction", "electromagnetic induction simulator – faraday's & lenz's law lab | ecriox", "electricity", "simulate", "electromagnetic", "induction"]
+  },
+  {
+    id: "rc-circuit-simulator",
+    name: "RC Circuit Simulator Online – Capacitor Charging & Discharging Lab | EcrioX",
+    category: "physics-labs",
+    categoryName: "Physics Virtual Labs",
+    description: "Simulate RC circuit charging and discharging online. Calculate time constant τ = RC, track voltage and current curves, and observe accumulated capacitor charge.",
+    route: "/physics-labs/rc-circuit-simulator/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path></svg>`,
+    status: "available",
+    popular: false,
+    tags: ["physics", "virtual lab", "simulator", "simulation", "rc circuit simulator", "rc circuit simulator online – capacitor charging & discharging lab | ecriox", "electricity", "simulate", "circuit", "charging"]
+  },
+  {
+    id: "ray-optics-simulator",
+    name: "Ray Optics Simulator – Concave & Convex Lens and Mirror Lab | EcrioX",
+    category: "physics-labs",
+    categoryName: "Physics Virtual Labs",
+    description: "Interactive ray optics simulator. Trace principal light rays through convex lenses, concave lenses, and curved mirrors. Calculate image distance, magnification, and focal length.",
+    route: "/physics-labs/ray-optics-simulator/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path></svg>`,
+    status: "available",
+    popular: true,
+    tags: ["physics", "virtual lab", "simulator", "simulation", "ray optics simulator", "ray optics simulator – concave & convex lens and mirror lab | ecriox", "optics", "interactive", "trace", "principal"]
+  },
+  {
+    id: "wave-simulator",
+    name: "Interactive Wave Simulator – Transverse, Longitudinal & Superposition Lab | EcrioX",
+    category: "physics-labs",
+    categoryName: "Physics Virtual Labs",
+    description: "Simulate mechanical wave motion online. Explore transverse and longitudinal waves, adjust amplitude, frequency, and wavelength, and observe wave interference.",
+    route: "/physics-labs/wave-simulator/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path></svg>`,
+    status: "available",
+    popular: false,
+    tags: ["physics", "virtual lab", "simulator", "simulation", "wave simulator", "interactive wave simulator – transverse, longitudinal & superposition lab | ecriox", "waves", "simulate", "mechanical", "motion"]
+  },
+  {
+    id: "doppler-effect-simulator",
+    name: "Doppler Effect Simulator Online – Sound Wavefronts & Pitch Shift Lab | EcrioX",
+    category: "physics-labs",
+    categoryName: "Physics Virtual Labs",
+    description: "Simulate the Doppler effect for sound waves online. Adjust source velocity, observer motion, and listen to real-time acoustic pitch shifts and Mach cone shockwaves.",
+    route: "/physics-labs/doppler-effect-simulator/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path></svg>`,
+    status: "available",
+    popular: false,
+    tags: ["physics", "virtual lab", "simulator", "simulation", "doppler effect simulator", "doppler effect simulator online – sound wavefronts & pitch shift lab | ecriox", "waves", "simulate", "doppler", "effect"]
+  },
+  {
+    id: "heat-transfer-simulator",
+    name: "Heat Transfer and Thermodynamics Simulator – Specific Heat & Equilibrium Lab | EcrioX",
+    category: "physics-labs",
+    categoryName: "Physics Virtual Labs",
+    description: "Simulate sensible heat transfer, specific heat capacity, and thermal equilibrium online. Track temperature-time curves for water, aluminum, copper, and iron.",
+    route: "/physics-labs/heat-transfer-simulator/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path></svg>`,
+    status: "available",
+    popular: false,
+    tags: ["physics", "virtual lab", "simulator", "simulation", "heat transfer simulator", "heat transfer and thermodynamics simulator – specific heat & equilibrium lab | ecriox", "thermodynamics", "simulate", "sensible", "transfer"]
+  },
+  {
+    id: "photoelectric-effect-simulator",
+    name: "Photoelectric Effect Simulator – Einstein's Quantum Photon Lab | EcrioX",
+    category: "physics-labs",
+    categoryName: "Physics Virtual Labs",
+    description: "Simulate the photoelectric effect online. Adjust light frequency, wavelength, intensity, and target metal work function. Measure stopping potential and verify E = hf.",
+    route: "/physics-labs/photoelectric-effect-simulator/",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path></svg>`,
+    status: "available",
+    popular: false,
+    tags: ["physics", "virtual lab", "simulator", "simulation", "photoelectric effect simulator", "photoelectric effect simulator – einstein's quantum photon lab | ecriox", "modern-physics", "simulate", "photoelectric", "effect"]
   }
 ];
 

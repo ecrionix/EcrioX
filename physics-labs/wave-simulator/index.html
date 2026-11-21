@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Wave Simulator – Transverse, Longitudinal & Superposition Lab | EcrioX</title>
+  <meta name="description" content="Simulate mechanical wave motion online. Explore transverse and longitudinal waves, adjust amplitude, frequency, and wavelength, and observe wave interference.">
+  <link rel="canonical" href="https://ecriox.com/physics-labs/wave-simulator/">
+  <!-- Favicon & Brand Icons -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#2563EB">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Interactive Wave Simulator – Transverse, Longitudinal & Superposition Lab | EcrioX">
+  <meta property="og:description" content="Simulate mechanical wave motion online. Explore transverse and longitudinal waves, adjust amplitude, frequency, and wavelength, and observe wave interference.">
+  <meta property="og:url" content="https://ecriox.com/physics-labs/wave-simulator/">
+  <meta property="og:site_name" content="EcrioX">
+  <meta property="og:image" content="https://ecriox.com/og-banner.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Interactive Wave Simulator – Transverse, Longitudinal & Superposition Lab | EcrioX">
+  <meta name="twitter:description" content="Simulate mechanical wave motion online. Explore transverse and longitudinal waves, adjust amplitude, frequency, and wavelength, and observe wave interference.">
+  <meta name="twitter:image" content="https://ecriox.com/og-banner.png">
+
+  <!-- Global Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PQFRBJ9F');
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6672302762343789" crossorigin="anonymous"></script>
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://ecriox.com/physics-labs/wave-simulator/",
+      "url": "https://ecriox.com/physics-labs/wave-simulator/",
+      "name": "Interactive Wave Simulator \u2013 Transverse, Longitudinal & Superposition Lab | EcrioX",
+      "description": "Simulate mechanical wave motion online. Explore transverse and longitudinal waves, adjust amplitude, frequency, and wavelength, and observe wave interference.",
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://ecriox.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Physics Labs",
+            "item": "https://ecriox.com/physics-labs/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Wave Motion Virtual Laboratory: Transverse & Longitudinal Waves",
+            "item": "https://ecriox.com/physics-labs/wave-simulator/"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Wave Motion Virtual Laboratory: Transverse & Longitudinal Waves",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All modern web browsers",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Do medium particles travel along with the wave?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Medium particles only oscillate locally about their equilibrium positions (up-and-down for transverse, back-and-forth for longitudinal). It is the disturbance, energy, and momentum that propagate through the medium."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What determines the speed of a mechanical wave?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Wave speed is determined solely by the mechanical properties of the medium itself (such as tension and linear mass density for a string, or bulk modulus and density for sound in a gas), NOT by wave amplitude or frequency. Changing frequency simply changes wavelength inversely."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can transverse mechanical waves travel through liquids or gases?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Transverse mechanical waves require shear elasticity (resistance to sliding forces) to propagate. Because liquids and gases lack shear rigidity and flow under shear stress, they can only support longitudinal compression waves (sound)."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+
+  <!-- Theme Initialization: Default to LIGHT MODE -->
+  <script>
+    (function(){
+      try {
+        var t = localStorage.getItem("ecriox_theme_preference");
+        // Default MUST be light mode unless user explicitly selected dark previously
+        if (!t) {
+          t = "light";
+        }
+        document.documentElement.setAttribute("data-theme", t);
+      } catch(e){}
+    })();
+  </script>
+
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/physics-labs.css">
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQFRBJ9F" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- Global Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="brand-logo" aria-label="EcrioX Home">
+        <div class="logo-symbol">E</div>
+        <span>Ecrio<span class="accent-dot">X</span></span>
+      </a>
+
+      <nav class="nav-desktop">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/physics-labs/" class="nav-link active">Physics Labs</a>
+        <a href="/tools/calculators/" class="nav-link">Calculators</a>
+        <a href="/resume-builder/" class="nav-link">Career Studio</a>
+        <a href="/typing-speed-test/" class="nav-link">Typing Arena</a>
+        <a href="/tools/" class="nav-link">All Tools</a>
+        <a href="/about/" class="nav-link">About</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn-icon theme-toggle-btn" aria-label="Toggle color theme" id="themeToggleBtn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <button class="btn-icon mobile-toggle" aria-label="Open mobile menu" aria-expanded="false" id="mobileMenuToggle">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav" id="mobileNavDrawer">
+    <a href="/" class="nav-link">Home</a>
+    <a href="/physics-labs/" class="nav-link active">Physics Labs</a>
+    <a href="/tools/calculators/" class="nav-link">Calculators</a>
+    <a href="/resume-builder/" class="nav-link">Career Studio</a>
+    <a href="/typing-speed-test/" class="nav-link">Typing Arena</a>
+    <a href="/tools/" class="nav-link">All Tools</a>
+    <a href="/about/" class="nav-link">About</a>
+  </div>
+
+  <main class="page-wrapper physics-lab-wrapper">
+    <div class="container">
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb-nav" aria-label="Breadcrumb" style="margin-bottom: 1.5rem;">
+        <a href="/">Home</a>
+        <span class="bc-sep">/</span>
+        <a href="/physics-labs/">Physics Labs</a>
+        <span class="bc-sep">/</span>
+        <span class="bc-current">Wave Motion Virtual Laboratory: Transverse & Longitudinal Waves</span>
+      </nav>
+
+      <!-- Experiment Hero Header -->
+      <header class="lab-hero-header">
+        <span class="lab-badge">&#9883; Waves & Sound Virtual Laboratory</span>
+        <h1 class="lab-hero-title">Wave Motion Virtual Laboratory: Transverse & Longitudinal Waves</h1>
+        <p class="lab-hero-subtitle">Visualize wave kinematics and superposition in real time. Compare transverse waves (particle oscillation perpendicular to propagation) and longitudinal waves (compressions and rarefactions along propagation). Adjust amplitude, frequency, and wave speed, and observe constructive and destructive wave interference.</p>
+        <div style="display:flex; justify-content:center; gap:1rem; margin-top:0.75rem; font-size:0.85rem; color:var(--text-subtle);">
+          <span>&#9201; Duration: <strong>12 mins</strong></span>
+          <span>&bull;</span>
+          <span>&#127891; Target: <strong>Class 11 / CBSE / AP Physics 1</strong></span>
+        </div>
+      </header>
+
+      <!-- Interactive Simulation Interface -->
+      <div class="sim-workspace-layout">
+        <!-- Canvas Viewport Card -->
+        <div class="sim-viewport-card">
+          <div class="sim-toolbar">
+            <div class="sim-toolbar-title">
+              <span style="display:inline-block; width:10px; height:10px; border-radius:50%; background:var(--color-success);"></span>
+              Live Interactive Simulation
+            </div>
+            <div class="sim-toolbar-actions">
+              <span style="font-size:0.75rem; font-weight:700; color:var(--text-subtle); padding:0.2rem 0.5rem; background:var(--bg-surface); border:1px solid var(--border-color); border-radius:4px;">60 FPS ENGINE</span>
+            </div>
+          </div>
+          <div class="sim-canvas-container">
+            <canvas id="simCanvas" class="sim-canvas"></canvas>
+          </div>
+          <!-- Live Measurement HUD Panel -->
+          <div class="sim-live-hud">
+            
+        <div class="hud-metric"><div class="hud-metric-label">Amplitude (A)</div><div class="hud-metric-value" id="hudA">4.0<span class="hud-metric-unit">cm</span></div></div>
+        <div class="hud-metric"><div class="hud-metric-label">Frequency (f)</div><div class="hud-metric-value" id="hudF">1.0<span class="hud-metric-unit">Hz</span></div></div>
+        <div class="hud-metric"><div class="hud-metric-label">Wavelength (&lambda;)</div><div class="hud-metric-value" id="hudLambda">20.0<span class="hud-metric-unit">cm</span></div></div>
+        <div class="hud-metric"><div class="hud-metric-label">Wave Speed (v)</div><div class="hud-metric-value" id="hudSpeed">20.0<span class="hud-metric-unit">cm/s</span></div></div>
+        <div class="hud-metric"><div class="hud-metric-label">Period (T)</div><div class="hud-metric-value" id="hudPeriod">1.00<span class="hud-metric-unit">s</span></div></div>
+        <div class="hud-metric"><div class="hud-metric-label">Interference</div><div class="hud-metric-value" id="hudInter" style="font-size:0.95rem;">Single Wave</div></div>
+    
+          </div>
+        </div>
+
+        <!-- Controls Card -->
+        <div class="sim-controls-card">
+          <div class="sim-controls-header">
+            <span>Experimental Parameters</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line><line x1="1" y1="14" x2="7" y2="14"></line><line x1="9" y1="8" x2="15" y2="8"></line><line x1="17" y1="16" x2="23" y2="16"></line></svg>
+          </div>
+          
+        <div class="control-group">
+          <div class="control-label-row"><span class="control-label">Wave Mode</span></div>
+          <select class="sim-select-input" id="inMode">
+            <option value="transverse" selected>Transverse String Wave</option>
+            <option value="longitudinal">Longitudinal Sound Compression</option>
+            <option value="superposition">Wave Superposition (Interference)</option>
+          </select>
+        </div>
+        <div class="control-group">
+          <div class="control-label-row"><span class="control-label">Amplitude (A)</span><span class="control-value-badge" id="valA">4.0 cm</span></div>
+          <input type="range" class="sim-range-input" id="inA" min="1.0" max="8.0" step="0.5" value="4.0">
+        </div>
+        <div class="control-group">
+          <div class="control-label-row"><span class="control-label">Frequency (f)</span><span class="control-value-badge" id="valF">1.0 Hz</span></div>
+          <input type="range" class="sim-range-input" id="inF" min="0.5" max="3.0" step="0.25" value="1.0">
+        </div>
+        <div class="control-group">
+          <div class="control-label-row"><span class="control-label">Wavelength (&lambda;)</span><span class="control-value-badge" id="valLambda">20 cm</span></div>
+          <input type="range" class="sim-range-input" id="inLambda" min="10" max="40" step="2" value="20">
+        </div>
+        <div class="control-group" id="groupPhase" style="display:none;">
+          <div class="control-label-row"><span class="control-label">Phase Difference (&Delta;&phi;)</span><span class="control-value-badge" id="valPhase">0&deg;</span></div>
+          <input type="range" class="sim-range-input" id="inPhase" min="0" max="360" step="15" value="0">
+        </div>
+        <div class="sim-btn-group">
+          <button type="button" class="sim-btn sim-btn-primary" id="btnPlayPause">&#10074;&#10074; Pause</button>
+          <button type="button" class="sim-btn sim-btn-secondary" id="btnReset">Reset</button>
+        </div>
+    
+        </div>
+      </div>
+
+      <!-- Real-Time Graph Visualization -->
+      <div class="sim-graph-card">
+        <div class="sim-graph-header">
+          <div class="sim-graph-title">&#128200; Real-Time Data &amp; Graph Visualization</div>
+          <div style="font-size:0.85rem; color:var(--text-subtle);">Kinematic Tracking at 60 Hz</div>
+        </div>
+        <div class="graph-canvas-container">
+          <canvas id="graphCanvas" class="graph-canvas"></canvas>
+        </div>
+      </div>
+
+      <!-- Educational Content Section -->
+      <div class="edu-content-container">
+        <!-- Learning Objectives -->
+        <section class="edu-section">
+          <h2>&#127919; Learning Objectives</h2>
+          <p>By conducting this interactive experiment, students and educators will achieve the following pedagogical goals:</p>
+          <ul>
+            <li>Distinguish between particle motion and wave energy propagation in transverse versus longitudinal waves.</li><li>Verify the fundamental wave relationship: wave speed equals frequency multiplied by wavelength (v = f·λ).</li><li>Demonstrate the Principle of Superposition: Observe constructive interference (in-phase) and destructive interference (out-of-phase).</li><li>Analyze wave characteristics: amplitude, wavelength (crest-to-crest), period, and frequency.</li>
+          </ul>
+        </section>
+
+        <!-- Mathematical Equations -->
+        <section class="edu-section">
+          <h2>&#9874; Mathematical Equations &amp; Theoretical Formulas</h2>
+          <p>The simulation models the following governing physical relationships:</p>
+          <div class="formula-callout">
+            <div class="formula-main">v = f \cdot \lambda = \frac{\omega}{k}, \quad y(x,t) = A \sin(k x - \omega t + \phi), \quad k = \frac{2\pi}{\lambda}, \quad \omega = 2\pi f</div>
+            <p class="formula-desc">Wave speed v depends entirely on the mechanical properties of the medium. The principle of superposition states that resultant displacement equals the algebraic sum of individual wave displacements.</p>
+          </div>
+        </section>
+
+        <!-- Step-by-Step Procedure -->
+        <section class="edu-section">
+          <h2>&#128221; Step-by-Step Laboratory Procedure</h2>
+          <ol>
+            <li><strong>Step 1:</strong> Select 'Transverse Wave' mode and set Amplitude A = 4.0 cm, Frequency f = 1.0 Hz, and Wavelength λ = 20 cm.</li><li><strong>Step 2:</strong> Click 'Play' and calculate wave speed: v = f · λ = 1.0 · 20 = 20 cm/s.</li><li><strong>Step 3:</strong> Track an individual colored particle on the string to verify that it only oscillates vertically up and down in simple harmonic motion without traveling horizontally.</li><li><strong>Step 4:</strong> Switch to 'Longitudinal Wave' mode and observe compression regions (high density) and rarefaction regions (low density) moving horizontally.</li><li><strong>Step 5:</strong> Enable 'Wave Superposition' with two waves of identical frequency to observe constructive interference (Δφ = 0°) and destructive cancellation (Δφ = 180°).</li>
+          </ol>
+        </section>
+
+        <!-- In-Depth Scientific Theory -->
+        <section class="edu-section">
+          <h2>&#128214; Scientific Explanation &amp; Physics Theory</h2>
+          <p>A wave is a periodic disturbance that transfers energy and momentum through space or a medium without transporting physical matter. In transverse waves (such as vibrating guitar strings or electromagnetic waves), displacement of medium particles is perpendicular to the direction of wave velocity. In longitudinal waves (such as sound waves in air), particles oscillate parallel to the wave direction, creating alternating zones of high pressure (compressions) and low pressure (rarefactions). When two waves occupy the same medium, the net displacement at any point is y_total = y1 + y2; when phase difference Δφ = 0, amplitudes add (constructive), and when Δφ = π (180°), amplitudes subtract (destructive).</p>
+        </section>
+
+        <!-- Real-World Applications -->
+        <section class="edu-section">
+          <h2>&#127758; Real-World Engineering Applications</h2>
+          <ul>
+            <li>Seismology: Distinguishing fast-moving longitudinal Primary (P) waves from slower transverse Secondary (S) waves to locate earthquake epicenters.</li><li>Noise-canceling headphones: Using destructive acoustic wave interference to eliminate ambient environmental noise.</li><li>Telecommunications: Modulating carrier wave amplitude, frequency, and phase to transmit data over fiber-optic and radio channels.</li><li>Medical ultrasound imaging: High-frequency acoustic longitudinal waves reflecting off internal tissue boundaries to generate organ imagery.</li>
+          </ul>
+        </section>
+
+        <!-- Example Calculations -->
+        <section class="edu-section">
+          <h2>&#128161; Worked Numerical Example</h2>
+          <div class="calc-example-box">
+            <div class="calc-example-title">Practice Problem:</div>
+            <p style="margin-bottom:0.75rem;">A transverse wave traveling along a taut string is described by y(x,t) = 0.05 · sin(4πx - 12πt) where x and y are in meters and t is in seconds. Determine: (a) Amplitude, (b) Wave number k and wavelength λ, (c) Angular frequency ω and frequency f, (d) Wave propagation speed v.</p>
+            <div class="calc-example-title">Step-by-Step Analytical Solution:</div>
+            <pre style="white-space:pre-wrap; font-family:var(--font-mono); font-size:0.9rem; color:var(--text-main); line-height:1.6; margin:0;">1. Comparing with standard form y(x,t) = A · sin(kx - ωt):
+- Amplitude: A = 0.05 meters (5.0 cm).
+2. Wave number: k = 4π rad/m. Since k = 2π / λ, Wavelength: λ = 2π / k = 2π / (4π) = 0.50 meters.
+3. Angular frequency: ω = 12π rad/s. Since ω = 2πf, Frequency: f = ω / (2π) = 12π / (2π) = 6.0 Hz.
+4. Wave propagation speed: v = f · λ = 6.0 · 0.50 = 3.0 m/s (or v = ω / k = 12π / 4π = 3.0 m/s).</pre>
+          </div>
+        </section>
+
+        <!-- Frequently Asked Questions -->
+        <section class="edu-section">
+          <h2>&#10067; Frequently Asked Questions</h2>
+          <div class="physics-faq-list">
+            
+        <div class="physics-faq-item">
+          <button type="button" class="physics-faq-trigger">
+            <span>Do medium particles travel along with the wave?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="physics-faq-answer">
+            No. Medium particles only oscillate locally about their equilibrium positions (up-and-down for transverse, back-and-forth for longitudinal). It is the disturbance, energy, and momentum that propagate through the medium.
+          </div>
+        </div>
+        
+        <div class="physics-faq-item">
+          <button type="button" class="physics-faq-trigger">
+            <span>What determines the speed of a mechanical wave?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="physics-faq-answer">
+            Wave speed is determined solely by the mechanical properties of the medium itself (such as tension and linear mass density for a string, or bulk modulus and density for sound in a gas), NOT by wave amplitude or frequency. Changing frequency simply changes wavelength inversely.
+          </div>
+        </div>
+        
+        <div class="physics-faq-item">
+          <button type="button" class="physics-faq-trigger">
+            <span>Can transverse mechanical waves travel through liquids or gases?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="physics-faq-answer">
+            No. Transverse mechanical waves require shear elasticity (resistance to sliding forces) to propagate. Because liquids and gases lack shear rigidity and flow under shear stress, they can only support longitudinal compression waves (sound).
+          </div>
+        </div>
+        
+          </div>
+        </section>
+
+        <!-- Related Experiments -->
+        <section class="edu-section">
+          <h2>&#128279; Related Physics Virtual Experiments</h2>
+          <div class="related-experiments-grid">
+            
+        <a href="/physics-labs/projectile-motion-simulator/" class="related-exp-card">
+          <div class="exp-category-pill" style="align-self:flex-start;">Mechanics</div>
+          <div class="related-exp-title">Projectile Motion Virtual Lab & Parabolic Flight Simulator</div>
+          <div class="related-exp-sub">12 mins &bull; Class 11 / CBSE / AP Physics</div>
+        </a>
+        
+        <a href="/physics-labs/newtons-laws-simulator/" class="related-exp-card">
+          <div class="exp-category-pill" style="align-self:flex-start;">Mechanics</div>
+          <div class="related-exp-title">Newton's Laws of Motion Virtual Lab: Force, Mass & Friction</div>
+          <div class="related-exp-sub">10 mins &bull; Class 9–11 / High School Physics</div>
+        </a>
+        
+        <a href="/physics-labs/simple-pendulum-experiment/" class="related-exp-card">
+          <div class="exp-category-pill" style="align-self:flex-start;">Mechanics</div>
+          <div class="related-exp-title">Simple Pendulum Virtual Laboratory: Period & Harmonic Oscillation</div>
+          <div class="related-exp-sub">10 mins &bull; Class 10–12 / College Physics</div>
+        </a>
+        
+        <a href="/physics-labs/collision-simulator/" class="related-exp-card">
+          <div class="exp-category-pill" style="align-self:flex-start;">Mechanics</div>
+          <div class="related-exp-title">Collision Virtual Laboratory: Linear Momentum & Energy Conservation</div>
+          <div class="related-exp-sub">12 mins &bull; Class 11 / CBSE / AP Physics 1</div>
+        </a>
+        
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <script src="/js/physics-engine.js"></script>
+  <script>
+    
+      (function() {
+        const canvas = document.getElementById('simCanvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        const graph = PhysicsEngine.createGraph('graphCanvas', {
+          xLabel: 'Position x (cm)', yLabel: 'Displacement y (cm)', xMin: 0, xMax: 100, yMin: -10, yMax: 10,
+          series: [{ name: 'Snapshot y(x)', color: '#2563EB' }]
+        });
+
+        let mode = 'transverse';
+        let A = 4.0;
+        let f = 1.0;
+        let lambda = 20;
+        let phaseDeg = 0;
+        let isRunning = true;
+        let simTime = 0;
+
+        function updateHUD() {
+          const v = f * lambda;
+          const T = 1 / f;
+          document.getElementById('hudA').innerHTML = A.toFixed(1) + '<span class="hud-metric-unit">cm</span>';
+          document.getElementById('hudF').innerHTML = f.toFixed(2) + '<span class="hud-metric-unit">Hz</span>';
+          document.getElementById('hudLambda').innerHTML = lambda.toFixed(1) + '<span class="hud-metric-unit">cm</span>';
+          document.getElementById('hudSpeed').innerHTML = v.toFixed(1) + '<span class="hud-metric-unit">cm/s</span>';
+          document.getElementById('hudPeriod').innerHTML = T.toFixed(2) + '<span class="hud-metric-unit">s</span>';
+
+          if (mode === 'superposition') {
+            const p = phaseDeg % 360;
+            if (p === 0) document.getElementById('hudInter').textContent = 'Constructive (2A)';
+            else if (p === 180) document.getElementById('hudInter').textContent = 'Destructive (0A)';
+            else document.getElementById('hudInter').textContent = 'Partial (' + p + '°)';
+          } else {
+            document.getElementById('hudInter').textContent = mode === 'transverse' ? 'Transverse' : 'Longitudinal';
+          }
+        }
+        updateHUD();
+
+        function draw() {
+          const colors = PhysicsEngine.getThemeColors();
+          const dpr = window.devicePixelRatio || 1;
+          const rect = canvas.getBoundingClientRect();
+          canvas.width = rect.width * dpr;
+          canvas.height = rect.height * dpr;
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+          const w = rect.width;
+          const h = rect.height;
+          ctx.clearRect(0, 0, w, h);
+
+          const midY = h / 2;
+          const k = (2 * Math.PI) / lambda;
+          const omega = 2 * Math.PI * f;
+          const scaleY = 8; // pixels per cm
+
+          // Equilibrium baseline
+          ctx.strokeStyle = colors.border;
+          ctx.lineWidth = 1;
+          ctx.setLineDash([4, 4]);
+          ctx.beginPath();
+          ctx.moveTo(20, midY);
+          ctx.lineTo(w - 20, midY);
+          ctx.stroke();
+          ctx.setLineDash([]);
+
+          if (mode === 'transverse' || mode === 'superposition') {
+            // Continuous Sine Curve
+            ctx.strokeStyle = colors.primary;
+            ctx.lineWidth = 2.5;
+            ctx.beginPath();
+            const dPhase = (phaseDeg * Math.PI) / 180;
+
+            if (graph) graph.clear();
+
+            for (let px = 20; px < w - 20; px += 2) {
+              const xCm = ((px - 20) / (w - 40)) * 100;
+              let y = A * Math.sin(k * xCm - omega * simTime);
+              if (mode === 'superposition') {
+                const y2 = A * Math.sin(k * xCm - omega * simTime + dPhase);
+                y += y2;
+              }
+
+              const py = midY - y * scaleY;
+              if (px === 20) ctx.moveTo(px, py);
+              else ctx.lineTo(px, py);
+
+              if (graph && px % 6 === 0) graph.addPoint(0, xCm, y);
+            }
+            ctx.stroke();
+
+            // Trace individual highlighted particle
+            const testX = 120;
+            const testXcm = ((testX - 20) / (w - 40)) * 100;
+            let testY = A * Math.sin(k * testXcm - omega * simTime);
+            if (mode === 'superposition') {
+              testY += A * Math.sin(k * testXcm - omega * simTime + (phaseDeg * Math.PI)/180);
+            }
+            ctx.beginPath();
+            ctx.arc(testX, midY - testY * scaleY, 6, 0, Math.PI * 2);
+            ctx.fillStyle = colors.danger;
+            ctx.fill();
+
+          } else if (mode === 'longitudinal') {
+            // Longitudinal Compression / Rarefaction Particles
+            const numParticles = 70;
+            ctx.fillStyle = colors.primary;
+
+            for (let i = 0; i < numParticles; i++) {
+              const eqX = 30 + (i / numParticles) * (w - 60);
+              const xCm = (i / numParticles) * 100;
+              const disp = A * Math.sin(k * xCm - omega * simTime) * 3;
+              const px = eqX + disp;
+
+              for (let row = -3; row <= 3; row++) {
+                ctx.beginPath();
+                ctx.arc(px, midY + row * 14, 3, 0, Math.PI * 2);
+                ctx.fill();
+              }
+            }
+          }
+
+          updateHUD();
+          if (graph) graph.draw();
+        }
+
+        let lastT = performance.now();
+        function loop(now) {
+          const dt = Math.min((now - lastT) / 1000, 0.05);
+          lastT = now;
+          if (isRunning) {
+            simTime += dt;
+          }
+          draw();
+          requestAnimationFrame(loop);
+        }
+        requestAnimationFrame(loop);
+
+        document.getElementById('inMode').addEventListener('change', (e) => {
+          mode = e.target.value;
+          document.getElementById('groupPhase').style.display = mode === 'superposition' ? 'block' : 'none';
+        });
+        document.getElementById('inA').addEventListener('input', (e) => {
+          A = Number(e.target.value);
+          document.getElementById('valA').textContent = A.toFixed(1) + ' cm';
+        });
+        document.getElementById('inF').addEventListener('input', (e) => {
+          f = Number(e.target.value);
+          document.getElementById('valF').textContent = f.toFixed(2) + ' Hz';
+        });
+        document.getElementById('inLambda').addEventListener('input', (e) => {
+          lambda = Number(e.target.value);
+          document.getElementById('valLambda').textContent = lambda + ' cm';
+        });
+        document.getElementById('inPhase').addEventListener('input', (e) => {
+          phaseDeg = Number(e.target.value);
+          document.getElementById('valPhase').textContent = phaseDeg + '°';
+        });
+        document.getElementById('btnPlayPause').addEventListener('click', (e) => {
+          isRunning = !isRunning;
+          e.target.innerHTML = isRunning ? '&#10074;&#10074; Pause' : '&#9654; Resume';
+        });
+        document.getElementById('btnReset').addEventListener('click', () => {
+          A = 4.0; f = 1.0; lambda = 20; phaseDeg = 0; simTime = 0; isRunning = true;
+          document.getElementById('btnPlayPause').innerHTML = '&#10074;&#10074; Pause';
+          document.getElementById('inA').value = 4.0;
+          document.getElementById('inF').value = 1.0;
+          document.getElementById('inLambda').value = 20;
+          document.getElementById('inPhase').value = 0;
+          document.getElementById('valA').textContent = '4.0 cm';
+          document.getElementById('valF').textContent = '1.0 Hz';
+          document.getElementById('valLambda').textContent = '20 cm';
+          document.getElementById('valPhase').textContent = '0°';
+        });
+
+        window.addEventListener('resize', draw);
+        window.addEventListener('themechange', draw);
+      })();
+    
+  </script>
+
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="/" class="brand-logo">
+            <div class="logo-symbol">E</div>
+            <span>Ecrio<span class="accent-dot">X</span></span>
+          </a>
+          <p>One Platform. Endless Possibilities. Free, mathematically rigorous browser-based physics virtual laboratories and digital productivity utilities.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Physics Labs</h4>
+          <ul class="footer-links">
+            <li><a href="/physics-labs/">All Physics Labs</a></li>
+            <li><a href="/physics-labs/projectile-motion-simulator/">Projectile Motion</a></li>
+            <li><a href="/physics-labs/electric-circuit-simulator/">Circuit Simulator</a></li>
+            <li><a href="/physics-labs/ray-optics-simulator/">Ray Optics Lab</a></li>
+            <li><a href="/physics-labs/simple-pendulum-experiment/">Simple Pendulum</a></li>
+            <li><a href="/physics-labs/photoelectric-effect-simulator/">Photoelectric Effect</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Product Suite</h4>
+          <ul class="footer-links">
+            <li><a href="/tools/">All Tools Directory</a></li>
+            <li><a href="/categories/">Tool Categories</a></li>
+            <li><a href="/pdf-compressor/">PDF Compressor</a></li>
+            <li><a href="/resume-builder/">ATS Resume Builder</a></li>
+            <li><a href="/typing-speed-test/">Typing Arena</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company & Legal</h4>
+          <ul class="footer-links">
+            <li><a href="/about/">About EcrioX</a></li>
+            <li><a href="/contact/">Contact Support</a></li>
+            <li><a href="/privacy/">Privacy Policy</a></li>
+            <li><a href="/terms/">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 EcrioX. All rights reserved. Zero client downloads required — 100% private in-browser educational simulations.</p>
+        <p>Canonical Domain: <a href="https://ecriox.com/" style="color: var(--color-primary);">ecriox.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/physics-engine.js"></script>
+  <script>
+    // Theme toggle listener
+    const themeBtn = document.getElementById('themeToggleBtn');
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => {
+        const cur = document.documentElement.getAttribute('data-theme') || 'light';
+        const nxt = cur === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', nxt);
+        try { localStorage.setItem('ecriox_theme_preference', nxt); } catch(e){}
+        window.dispatchEvent(new Event('themechange'));
+      });
+    }
+    // Mobile navigation drawer toggle
+    const mobToggle = document.getElementById('mobileMenuToggle');
+    const mobNav = document.getElementById('mobileNavDrawer');
+    if (mobToggle && mobNav) {
+      mobToggle.addEventListener('click', () => {
+        const isOpen = mobNav.classList.toggle('open');
+        mobToggle.setAttribute('aria-expanded', isOpen);
+      });
+    }
+    // FAQ Accordion listener
+    document.querySelectorAll('.physics-faq-trigger').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.parentElement.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>

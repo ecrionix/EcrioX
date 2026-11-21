@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heat Transfer and Thermodynamics Simulator – Specific Heat & Equilibrium Lab | EcrioX</title>
+  <meta name="description" content="Simulate sensible heat transfer, specific heat capacity, and thermal equilibrium online. Track temperature-time curves for water, aluminum, copper, and iron.">
+  <link rel="canonical" href="https://ecriox.com/physics-labs/heat-transfer-simulator/">
+  <!-- Favicon & Brand Icons -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#2563EB">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Heat Transfer and Thermodynamics Simulator – Specific Heat & Equilibrium Lab | EcrioX">
+  <meta property="og:description" content="Simulate sensible heat transfer, specific heat capacity, and thermal equilibrium online. Track temperature-time curves for water, aluminum, copper, and iron.">
+  <meta property="og:url" content="https://ecriox.com/physics-labs/heat-transfer-simulator/">
+  <meta property="og:site_name" content="EcrioX">
+  <meta property="og:image" content="https://ecriox.com/og-banner.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Heat Transfer and Thermodynamics Simulator – Specific Heat & Equilibrium Lab | EcrioX">
+  <meta name="twitter:description" content="Simulate sensible heat transfer, specific heat capacity, and thermal equilibrium online. Track temperature-time curves for water, aluminum, copper, and iron.">
+  <meta name="twitter:image" content="https://ecriox.com/og-banner.png">
+
+  <!-- Global Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PQFRBJ9F');
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6672302762343789" crossorigin="anonymous"></script>
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://ecriox.com/physics-labs/heat-transfer-simulator/",
+      "url": "https://ecriox.com/physics-labs/heat-transfer-simulator/",
+      "name": "Heat Transfer and Thermodynamics Simulator \u2013 Specific Heat & Equilibrium Lab | EcrioX",
+      "description": "Simulate sensible heat transfer, specific heat capacity, and thermal equilibrium online. Track temperature-time curves for water, aluminum, copper, and iron.",
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://ecriox.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Physics Labs",
+            "item": "https://ecriox.com/physics-labs/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Thermodynamics & Heat Transfer Virtual Laboratory",
+            "item": "https://ecriox.com/physics-labs/heat-transfer-simulator/"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Thermodynamics & Heat Transfer Virtual Laboratory",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All modern web browsers",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the difference between temperature and heat?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Temperature is an intensive property measuring the average kinetic energy of individual molecules within a substance. Heat is an extensive property representing the total thermal energy transferred between systems due to a temperature difference."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does water have such a high specific heat capacity?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Water molecules form extensive networks of intermolecular hydrogen bonds. When heat is added to water, a large portion of the energy is consumed in breaking and flexing these strong hydrogen bonds rather than immediately accelerating the rotational and translational motion of the molecules."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the three modes of heat transfer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Conduction (thermal energy transfer through direct atomic/molecular collisions in solids), Convection (bulk fluid motion carrying thermal energy in liquids and gases), and Radiation (electromagnetic infrared waves traveling through vacuum at the speed of light)."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+
+  <!-- Theme Initialization: Default to LIGHT MODE -->
+  <script>
+    (function(){
+      try {
+        var t = localStorage.getItem("ecriox_theme_preference");
+        // Default MUST be light mode unless user explicitly selected dark previously
+        if (!t) {
+          t = "light";
+        }
+        document.documentElement.setAttribute("data-theme", t);
+      } catch(e){}
+    })();
+  </script>
+
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/physics-labs.css">
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQFRBJ9F" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- Global Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="brand-logo" aria-label="EcrioX Home">
+        <div class="logo-symbol">E</div>
+        <span>Ecrio<span class="accent-dot">X</span></span>
+      </a>
+
+      <nav class="nav-desktop">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/physics-labs/" class="nav-link active">Physics Labs</a>
+        <a href="/tools/calculators/" class="nav-link">Calculators</a>
+        <a href="/resume-builder/" class="nav-link">Career Studio</a>
+        <a href="/typing-speed-test/" class="nav-link">Typing Arena</a>
+        <a href="/tools/" class="nav-link">All Tools</a>
+        <a href="/about/" class="nav-link">About</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn-icon theme-toggle-btn" aria-label="Toggle color theme" id="themeToggleBtn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <button class="btn-icon mobile-toggle" aria-label="Open mobile menu" aria-expanded="false" id="mobileMenuToggle">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav" id="mobileNavDrawer">
+    <a href="/" class="nav-link">Home</a>
+    <a href="/physics-labs/" class="nav-link active">Physics Labs</a>
+    <a href="/tools/calculators/" class="nav-link">Calculators</a>
+    <a href="/resume-builder/" class="nav-link">Career Studio</a>
+    <a href="/typing-speed-test/" class="nav-link">Typing Arena</a>
+    <a href="/tools/" class="nav-link">All Tools</a>
+    <a href="/about/" class="nav-link">About</a>
+  </div>
+
+  <main class="page-wrapper physics-lab-wrapper">
+    <div class="container">
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb-nav" aria-label="Breadcrumb" style="margin-bottom: 1.5rem;">
+        <a href="/">Home</a>
+        <span class="bc-sep">/</span>
+        <a href="/physics-labs/">Physics Labs</a>
+        <span class="bc-sep">/</span>
+        <span class="bc-current">Thermodynamics & Heat Transfer Virtual Laboratory</span>
+      </nav>
+
+      <!-- Experiment Hero Header -->
+      <header class="lab-hero-header">
+        <span class="lab-badge">&#9883; Thermodynamics Virtual Laboratory</span>
+        <h1 class="lab-hero-title">Thermodynamics & Heat Transfer Virtual Laboratory</h1>
+        <p class="lab-hero-subtitle">Explore sensible heat exchange, specific heat capacity, and thermal equilibrium between materials. Place hot and cold blocks of known mass and thermal capacity in an insulated calorimeter, visualize microscopic molecular thermal agitation, and track asymptotic temperature convergence governed by the First Law of Thermodynamics.</p>
+        <div style="display:flex; justify-content:center; gap:1rem; margin-top:0.75rem; font-size:0.85rem; color:var(--text-subtle);">
+          <span>&#9201; Duration: <strong>12 mins</strong></span>
+          <span>&bull;</span>
+          <span>&#127891; Target: <strong>Class 10–12 / Engineering Thermodynamics</strong></span>
+        </div>
+      </header>
+
+      <!-- Interactive Simulation Interface -->
+      <div class="sim-workspace-layout">
+        <!-- Canvas Viewport Card -->
+        <div class="sim-viewport-card">
+          <div class="sim-toolbar">
+            <div class="sim-toolbar-title">
+              <span style="display:inline-block; width:10px; height:10px; border-radius:50%; background:var(--color-success);"></span>
+              Live Interactive Simulation
+            </div>
+            <div class="sim-toolbar-actions">
+              <span style="font-size:0.75rem; font-weight:700; color:var(--text-subtle); padding:0.2rem 0.5rem; background:var(--bg-surface); border:1px solid var(--border-color); border-radius:4px;">60 FPS ENGINE</span>
+            </div>
+          </div>
+          <div class="sim-canvas-container">
+            <canvas id="simCanvas" class="sim-canvas"></canvas>
+          </div>
+          <!-- Live Measurement HUD Panel -->
+          <div class="sim-live-hud">
+            
+        <div class="hud-metric"><div class="hud-metric-label">Substance 1 Temp</div><div class="hud-metric-value" id="hudT1">20.0<span class="hud-metric-unit">&deg;C</span></div></div>
+        <div class="hud-metric"><div class="hud-metric-label">Substance 2 Temp</div><div class="hud-metric-value" id="hudT2">90.0<span class="hud-metric-unit">&deg;C</span></div></div>
+        <div class="hud-metric"><div class="hud-metric-label">Equilibrium (Teq)</div><div class="hud-metric-value" id="hudTeq">30.9<span class="hud-metric-unit">&deg;C</span></div></div>
+        <div class="hud-metric"><div class="hud-metric-label">Heat Transferred (Q)</div><div class="hud-metric-value" id="hudQ">45.6<span class="hud-metric-unit">kJ</span></div></div>
+        <div class="hud-metric"><div class="hud-metric-label">Heat Rate (dQ/dt)</div><div class="hud-metric-value" id="hudDq">0.0<span class="hud-metric-unit">W</span></div></div>
+        <div class="hud-metric"><div class="hud-metric-label">State</div><div class="hud-metric-value" id="hudState" style="font-size:0.95rem;">Contact Ready</div></div>
+    
+          </div>
+        </div>
+
+        <!-- Controls Card -->
+        <div class="sim-controls-card">
+          <div class="sim-controls-header">
+            <span>Experimental Parameters</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line><line x1="1" y1="14" x2="7" y2="14"></line><line x1="9" y1="8" x2="15" y2="8"></line><line x1="17" y1="16" x2="23" y2="16"></line></svg>
+          </div>
+          
+        <div class="control-group">
+          <div class="control-label-row"><span class="control-label">Material 1 (Cooler)</span></div>
+          <select class="sim-select-input" id="inMat1">
+            <option value="water" selected>Water (c = 4184 J/kg&middot;K)</option>
+            <option value="aluminum">Aluminum (c = 900 J/kg&middot;K)</option>
+            <option value="copper">Copper (c = 385 J/kg&middot;K)</option>
+          </select>
+        </div>
+        <div class="control-group">
+          <div class="control-label-row"><span class="control-label">Material 1 Temp (T1)</span><span class="control-value-badge" id="valT1">20&deg;C</span></div>
+          <input type="range" class="sim-range-input" id="inT1" min="0" max="50" step="2" value="20">
+        </div>
+        <div class="control-group">
+          <div class="control-label-row"><span class="control-label">Material 2 (Hotter)</span></div>
+          <select class="sim-select-input" id="inMat2">
+            <option value="copper" selected>Copper (c = 385 J/kg&middot;K)</option>
+            <option value="aluminum">Aluminum (c = 900 J/kg&middot;K)</option>
+            <option value="iron">Iron (c = 450 J/kg&middot;K)</option>
+          </select>
+        </div>
+        <div class="control-group">
+          <div class="control-label-row"><span class="control-label">Material 2 Temp (T2)</span><span class="control-value-badge" id="valT2">90&deg;C</span></div>
+          <input type="range" class="sim-range-input" id="inT2" min="50" max="100" step="2" value="90">
+        </div>
+        <div class="sim-btn-group">
+          <button type="button" class="sim-btn sim-btn-primary" id="btnContact">&#9654; Start Contact</button>
+          <button type="button" class="sim-btn sim-btn-secondary" id="btnReset">Reset</button>
+        </div>
+    
+        </div>
+      </div>
+
+      <!-- Real-Time Graph Visualization -->
+      <div class="sim-graph-card">
+        <div class="sim-graph-header">
+          <div class="sim-graph-title">&#128200; Real-Time Data &amp; Graph Visualization</div>
+          <div style="font-size:0.85rem; color:var(--text-subtle);">Kinematic Tracking at 60 Hz</div>
+        </div>
+        <div class="graph-canvas-container">
+          <canvas id="graphCanvas" class="graph-canvas"></canvas>
+        </div>
+      </div>
+
+      <!-- Educational Content Section -->
+      <div class="edu-content-container">
+        <!-- Learning Objectives -->
+        <section class="edu-section">
+          <h2>&#127919; Learning Objectives</h2>
+          <p>By conducting this interactive experiment, students and educators will achieve the following pedagogical goals:</p>
+          <ul>
+            <li>Demonstrate the relationship between heat energy, mass, specific heat capacity, and temperature change (Q = mcΔT).</li><li>Verify the Principle of Calorimetry: Heat lost by hot objects equals heat gained by cold objects in an isolated system.</li><li>Calculate final thermal equilibrium temperature for mixtures of different substances.</li><li>Compare the thermal buffering capacity of water (high specific heat) with metals (low specific heat).</li>
+          </ul>
+        </section>
+
+        <!-- Mathematical Equations -->
+        <section class="edu-section">
+          <h2>&#9874; Mathematical Equations &amp; Theoretical Formulas</h2>
+          <p>The simulation models the following governing physical relationships:</p>
+          <div class="formula-callout">
+            <div class="formula-main">Q = m \cdot c \cdot \Delta T, \quad T_{\text{equilibrium}} = \frac{m_1 c_1 T_1 + m_2 c_2 T_2}{m_1 c_1 + m_2 c_2}, \quad Q_{\text{lost}} = Q_{\text{gained}}</div>
+            <p class="formula-desc">c is specific heat capacity in J/(kg·K). In an isolated calorimeter with no heat loss to surroundings, thermal energy lost by the hotter body equals thermal energy gained by the cooler body.</p>
+          </div>
+        </section>
+
+        <!-- Step-by-Step Procedure -->
+        <section class="edu-section">
+          <h2>&#128221; Step-by-Step Laboratory Procedure</h2>
+          <ol>
+            <li><strong>Step 1:</strong> Select Substance 1 as Water (c1 = 4184 J/kg·K, m1 = 1.0 kg, T1 = 20°C).</li><li><strong>Step 2:</strong> Select Substance 2 as Copper (c2 = 385 J/kg·K, m2 = 2.0 kg, T2 = 90°C).</li><li><strong>Step 3:</strong> Calculate expected thermal equilibrium: Teq = (1.0·4184·20 + 2.0·385·90) / (1.0·4184 + 2.0·385) = (83680 + 69300) / (4184 + 770) = 152980 / 4954 ≈ 30.88°C.</li><li><strong>Step 4:</strong> Click 'Start Thermal Contact' and observe thermal energy flowing from the hot copper block into the water.</li><li><strong>Step 5:</strong> Verify that the water temperature rises gently to ~30.9°C while the copper temperature drops sharply by almost 60°C due to water's massive heat capacity.</li>
+          </ol>
+        </section>
+
+        <!-- In-Depth Scientific Theory -->
+        <section class="edu-section">
+          <h2>&#128214; Scientific Explanation &amp; Physics Theory</h2>
+          <p>Heat is the transfer of thermal energy between systems driven by a temperature gradient. The First Law of Thermodynamics establishes that energy cannot be created or destroyed. When two bodies at different initial temperatures T1 and T2 are placed in thermal contact within an insulated boundary, heat flows spontaneously from the higher temperature to the lower temperature until their average molecular kinetic energies equalize (Zeroth Law of Thermodynamics). Specific heat capacity c represents the energy required to raise the temperature of 1 kg of a substance by 1 Kelvin. Water has an extraordinarily high specific heat (4184 J/kg·K) compared to metals like copper (385 J/kg·K), meaning water can absorb large amounts of heat with only modest temperature changes.</p>
+        </section>
+
+        <!-- Real-World Applications -->
+        <section class="edu-section">
+          <h2>&#127758; Real-World Engineering Applications</h2>
+          <ul>
+            <li>Engine cooling systems: Using liquid water and coolant mixtures to absorb excessive engine combustion heat without boiling.</li><li>Oceanic climate moderation: Earth's vast oceans storing solar heat in summer and releasing it gradually in winter to stabilize continental temperatures.</li><li>Calorimetry in nutrition: Measuring the caloric energy content of food samples by combustion in bomb calorimeters.</li><li>Thermal insulation in buildings: Selecting materials with low thermal conductivity to minimize HVAC heating and cooling electricity consumption.</li>
+          </ul>
+        </section>
+
+        <!-- Example Calculations -->
+        <section class="edu-section">
+          <h2>&#128161; Worked Numerical Example</h2>
+          <div class="calc-example-box">
+            <div class="calc-example-title">Practice Problem:</div>
+            <p style="margin-bottom:0.75rem;">A 0.50 kg block of aluminum at 95.0°C is dropped into an insulated container containing 0.80 kg of water at 18.0°C. Given c_aluminum = 900 J/(kg·K) and c_water = 4184 J/(kg·K), calculate: (a) Final thermal equilibrium temperature, (b) Total heat transferred from aluminum to water.</p>
+            <div class="calc-example-title">Step-by-Step Analytical Solution:</div>
+            <pre style="white-space:pre-wrap; font-family:var(--font-mono); font-size:0.9rem; color:var(--text-main); line-height:1.6; margin:0;">1. Heat capacity of Aluminum: C1 = m1 · c1 = 0.50 · 900 = 450 J/K.
+2. Heat capacity of Water: C2 = m2 · c2 = 0.80 · 4184 = 3347.2 J/K.
+3. Equilibrium temperature Teq:
+Teq = (C1 · T1 + C2 · T2) / (C1 + C2) = (450 · 95.0 + 3347.2 · 18.0) / (450 + 3347.2)
+Teq = (42,750 + 60,249.6) / 3,797.2 = 102,999.6 / 3,797.2 ≈ 27.12°C.
+4. Heat transferred: Q = m_water · c_water · (Teq - T_water) = 0.80 · 4184 · (27.12 - 18.0) = 3347.2 · 9.12 ≈ 30,526 Joules (30.53 kJ).</pre>
+          </div>
+        </section>
+
+        <!-- Frequently Asked Questions -->
+        <section class="edu-section">
+          <h2>&#10067; Frequently Asked Questions</h2>
+          <div class="physics-faq-list">
+            
+        <div class="physics-faq-item">
+          <button type="button" class="physics-faq-trigger">
+            <span>What is the difference between temperature and heat?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="physics-faq-answer">
+            Temperature is an intensive property measuring the average kinetic energy of individual molecules within a substance. Heat is an extensive property representing the total thermal energy transferred between systems due to a temperature difference.
+          </div>
+        </div>
+        
+        <div class="physics-faq-item">
+          <button type="button" class="physics-faq-trigger">
+            <span>Why does water have such a high specific heat capacity?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="physics-faq-answer">
+            Water molecules form extensive networks of intermolecular hydrogen bonds. When heat is added to water, a large portion of the energy is consumed in breaking and flexing these strong hydrogen bonds rather than immediately accelerating the rotational and translational motion of the molecules.
+          </div>
+        </div>
+        
+        <div class="physics-faq-item">
+          <button type="button" class="physics-faq-trigger">
+            <span>What are the three modes of heat transfer?</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="physics-faq-answer">
+            Conduction (thermal energy transfer through direct atomic/molecular collisions in solids), Convection (bulk fluid motion carrying thermal energy in liquids and gases), and Radiation (electromagnetic infrared waves traveling through vacuum at the speed of light).
+          </div>
+        </div>
+        
+          </div>
+        </section>
+
+        <!-- Related Experiments -->
+        <section class="edu-section">
+          <h2>&#128279; Related Physics Virtual Experiments</h2>
+          <div class="related-experiments-grid">
+            
+        <a href="/physics-labs/projectile-motion-simulator/" class="related-exp-card">
+          <div class="exp-category-pill" style="align-self:flex-start;">Mechanics</div>
+          <div class="related-exp-title">Projectile Motion Virtual Lab & Parabolic Flight Simulator</div>
+          <div class="related-exp-sub">12 mins &bull; Class 11 / CBSE / AP Physics</div>
+        </a>
+        
+        <a href="/physics-labs/newtons-laws-simulator/" class="related-exp-card">
+          <div class="exp-category-pill" style="align-self:flex-start;">Mechanics</div>
+          <div class="related-exp-title">Newton's Laws of Motion Virtual Lab: Force, Mass & Friction</div>
+          <div class="related-exp-sub">10 mins &bull; Class 9–11 / High School Physics</div>
+        </a>
+        
+        <a href="/physics-labs/simple-pendulum-experiment/" class="related-exp-card">
+          <div class="exp-category-pill" style="align-self:flex-start;">Mechanics</div>
+          <div class="related-exp-title">Simple Pendulum Virtual Laboratory: Period & Harmonic Oscillation</div>
+          <div class="related-exp-sub">10 mins &bull; Class 10–12 / College Physics</div>
+        </a>
+        
+        <a href="/physics-labs/collision-simulator/" class="related-exp-card">
+          <div class="exp-category-pill" style="align-self:flex-start;">Mechanics</div>
+          <div class="related-exp-title">Collision Virtual Laboratory: Linear Momentum & Energy Conservation</div>
+          <div class="related-exp-sub">12 mins &bull; Class 11 / CBSE / AP Physics 1</div>
+        </a>
+        
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <script src="/js/physics-engine.js"></script>
+  <script>
+    
+      (function() {
+        const canvas = document.getElementById('simCanvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        const graph = PhysicsEngine.createGraph('graphCanvas', {
+          xLabel: 'Time (s)', yLabel: 'Temperature (°C)', xMin: 0, xMax: 15, yMin: 10, yMax: 100,
+          series: [{ name: 'Material 1 Temp', color: '#2563EB' }, { name: 'Material 2 Temp', color: '#DC2626' }]
+        });
+
+        const C_VALS = { water: 4184, aluminum: 900, copper: 385, iron: 450 };
+        let mat1 = 'water', m1 = 1.0, T1_init = 20;
+        let mat2 = 'copper', m2 = 1.0, T2_init = 90;
+
+        let curT1 = T1_init;
+        let curT2 = T2_init;
+        let inContact = false;
+        let simTime = 0;
+
+        function calcEquilibrium() {
+          const c1 = C_VALS[mat1];
+          const c2 = C_VALS[mat2];
+          return (m1 * c1 * T1_init + m2 * c2 * T2_init) / (m1 * c1 + m2 * c2);
+        }
+
+        function draw() {
+          const colors = PhysicsEngine.getThemeColors();
+          const dpr = window.devicePixelRatio || 1;
+          const rect = canvas.getBoundingClientRect();
+          canvas.width = rect.width * dpr;
+          canvas.height = rect.height * dpr;
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+          const w = rect.width;
+          const h = rect.height;
+          ctx.clearRect(0, 0, w, h);
+
+          const blockW = Math.min(130, w * 0.28);
+          const blockH = 120;
+          const midY = h / 2 - 10;
+          const b1X = inContact ? w/2 - blockW : w/2 - blockW - 35;
+          const b2X = inContact ? w/2 : w/2 + 35;
+
+          // Color representation based on temp (Blue 0C to Red 100C)
+          function getTempColor(t) {
+            const frac = Math.max(0, Math.min(1, (t - 10) / 85));
+            const r = Math.floor(37 + frac * (220 - 37));
+            const g = Math.floor(99 - frac * 50);
+            const b = Math.floor(235 - frac * 200);
+            return 'rgb(' + r + ',' + g + ',' + b + ')';
+          }
+
+          // Block 1
+          ctx.fillStyle = getTempColor(curT1);
+          ctx.fillRect(b1X, midY - blockH/2, blockW, blockH);
+          ctx.strokeStyle = colors.border;
+          ctx.lineWidth = 2;
+          ctx.strokeRect(b1X, midY - blockH/2, blockW, blockH);
+          ctx.fillStyle = '#ffffff';
+          ctx.font = 'bold 13px var(--font-sans)';
+          ctx.textAlign = 'center';
+          ctx.fillText(mat1.toUpperCase(), b1X + blockW/2, midY - 10);
+          ctx.fillText(curT1.toFixed(1) + ' °C', b1X + blockW/2, midY + 15);
+
+          // Block 2
+          ctx.fillStyle = getTempColor(curT2);
+          ctx.fillRect(b2X, midY - blockH/2, blockW, blockH);
+          ctx.strokeRect(b2X, midY - blockH/2, blockW, blockH);
+          ctx.fillStyle = '#ffffff';
+          ctx.fillText(mat2.toUpperCase(), b2X + blockW/2, midY - 10);
+          ctx.fillText(curT2.toFixed(1) + ' °C', b2X + blockW/2, midY + 15);
+
+          // Heat Flow Arrows if in contact and not balanced
+          if (inContact && Math.abs(curT2 - curT1) > 0.5) {
+            ctx.fillStyle = colors.warning;
+            ctx.font = 'bold 16px var(--font-sans)';
+            ctx.textAlign = 'center';
+            ctx.fillText('⚡ Heat Transfer (Q) ➔', w/2, midY - blockH/2 - 20);
+          }
+
+          // HUD Updates
+          const Teq = calcEquilibrium();
+          const c1 = C_VALS[mat1];
+          const Q_trans = (m1 * c1 * (curT1 - T1_init)) / 1000;
+
+          document.getElementById('hudT1').innerHTML = curT1.toFixed(1) + '<span class="hud-metric-unit">&deg;C</span>';
+          document.getElementById('hudT2').innerHTML = curT2.toFixed(1) + '<span class="hud-metric-unit">&deg;C</span>';
+          document.getElementById('hudTeq').innerHTML = Teq.toFixed(1) + '<span class="hud-metric-unit">&deg;C</span>';
+          document.getElementById('hudQ').innerHTML = Q_trans.toFixed(1) + '<span class="hud-metric-unit">kJ</span>';
+
+          let state = 'Separated';
+          if (inContact) {
+            state = Math.abs(curT2 - curT1) < 0.2 ? 'Thermal Equilibrium Reached' : 'Heat Flowing (Newtonian Cooling)';
+          }
+          document.getElementById('hudState').textContent = state;
+
+          if (graph) graph.draw();
+        }
+
+        let lastT = performance.now();
+        function loop(now) {
+          const dt = Math.min((now - lastT) / 1000, 0.05);
+          lastT = now;
+
+          if (inContact) {
+            simTime += dt;
+            const kCool = 0.25; // heat conductance coefficient
+            const dQ = kCool * (curT2 - curT1) * dt;
+
+            const c1 = C_VALS[mat1];
+            const c2 = C_VALS[mat2];
+            curT1 += (dQ / (m1 * c1)) * 300;
+            curT2 -= (dQ / (m2 * c2)) * 300;
+
+            const Teq = calcEquilibrium();
+            if (curT1 > Teq) curT1 = Teq;
+            if (curT2 < Teq) curT2 = Teq;
+
+            if (graph) {
+              graph.addPoint(0, simTime, curT1);
+              graph.addPoint(1, simTime, curT2);
+            }
+          }
+          draw();
+          requestAnimationFrame(loop);
+        }
+        requestAnimationFrame(loop);
+
+        document.getElementById('inMat1').addEventListener('change', (e) => { mat1 = e.target.value; draw(); });
+        document.getElementById('inT1').addEventListener('input', (e) => {
+          T1_init = Number(e.target.value);
+          curT1 = T1_init;
+          document.getElementById('valT1').textContent = T1_init + '°C';
+          draw();
+        });
+        document.getElementById('inMat2').addEventListener('change', (e) => { mat2 = e.target.value; draw(); });
+        document.getElementById('inT2').addEventListener('input', (e) => {
+          T2_init = Number(e.target.value);
+          curT2 = T2_init;
+          document.getElementById('valT2').textContent = T2_init + '°C';
+          draw();
+        });
+        document.getElementById('btnContact').addEventListener('click', () => {
+          inContact = true;
+          simTime = 0;
+          if (graph) graph.clear();
+        });
+        document.getElementById('btnReset').addEventListener('click', () => {
+          inContact = false;
+          curT1 = T1_init;
+          curT2 = T2_init;
+          simTime = 0;
+          if (graph) graph.clear();
+          draw();
+        });
+
+        window.addEventListener('resize', draw);
+        window.addEventListener('themechange', draw);
+      })();
+    
+  </script>
+
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="/" class="brand-logo">
+            <div class="logo-symbol">E</div>
+            <span>Ecrio<span class="accent-dot">X</span></span>
+          </a>
+          <p>One Platform. Endless Possibilities. Free, mathematically rigorous browser-based physics virtual laboratories and digital productivity utilities.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Physics Labs</h4>
+          <ul class="footer-links">
+            <li><a href="/physics-labs/">All Physics Labs</a></li>
+            <li><a href="/physics-labs/projectile-motion-simulator/">Projectile Motion</a></li>
+            <li><a href="/physics-labs/electric-circuit-simulator/">Circuit Simulator</a></li>
+            <li><a href="/physics-labs/ray-optics-simulator/">Ray Optics Lab</a></li>
+            <li><a href="/physics-labs/simple-pendulum-experiment/">Simple Pendulum</a></li>
+            <li><a href="/physics-labs/photoelectric-effect-simulator/">Photoelectric Effect</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Product Suite</h4>
+          <ul class="footer-links">
+            <li><a href="/tools/">All Tools Directory</a></li>
+            <li><a href="/categories/">Tool Categories</a></li>
+            <li><a href="/pdf-compressor/">PDF Compressor</a></li>
+            <li><a href="/resume-builder/">ATS Resume Builder</a></li>
+            <li><a href="/typing-speed-test/">Typing Arena</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company & Legal</h4>
+          <ul class="footer-links">
+            <li><a href="/about/">About EcrioX</a></li>
+            <li><a href="/contact/">Contact Support</a></li>
+            <li><a href="/privacy/">Privacy Policy</a></li>
+            <li><a href="/terms/">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 EcrioX. All rights reserved. Zero client downloads required — 100% private in-browser educational simulations.</p>
+        <p>Canonical Domain: <a href="https://ecriox.com/" style="color: var(--color-primary);">ecriox.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/physics-engine.js"></script>
+  <script>
+    // Theme toggle listener
+    const themeBtn = document.getElementById('themeToggleBtn');
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => {
+        const cur = document.documentElement.getAttribute('data-theme') || 'light';
+        const nxt = cur === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', nxt);
+        try { localStorage.setItem('ecriox_theme_preference', nxt); } catch(e){}
+        window.dispatchEvent(new Event('themechange'));
+      });
+    }
+    // Mobile navigation drawer toggle
+    const mobToggle = document.getElementById('mobileMenuToggle');
+    const mobNav = document.getElementById('mobileNavDrawer');
+    if (mobToggle && mobNav) {
+      mobToggle.addEventListener('click', () => {
+        const isOpen = mobNav.classList.toggle('open');
+        mobToggle.setAttribute('aria-expanded', isOpen);
+      });
+    }
+    // FAQ Accordion listener
+    document.querySelectorAll('.physics-faq-trigger').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.parentElement.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>
